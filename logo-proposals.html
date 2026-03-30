@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Logo Proposals</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f5f3f0;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    padding: 60px 40px;
+  }
+
+  h1 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 60px;
+  }
+
+  .proposal {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .proposal:last-child {
+    border-bottom: none;
+  }
+
+  .proposal-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .proposal-number {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  .proposal-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+  }
+
+  .proposal-desc {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 40px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .logo-row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .logo-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+    border-radius: 12px;
+    min-width: 320px;
+    min-height: 200px;
+  }
+
+  .logo-card.light {
+    background: #ffffff;
+    border: 1px solid #e8e6e3;
+  }
+
+  .logo-card.dark {
+    background: #1a1a1a;
+  }
+
+  .logo-card.warm {
+    background: #2c2420;
+  }
+
+  .logo-card.navy {
+    background: #1a2332;
+  }
+
+  /* ========== PROPOSAL 1 — Space Grotesk, Uppercase, Wide ========== */
+  .p1-logo {
+    text-align: center;
+  }
+  .p1-logo .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 42px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+  .p1-logo .baseline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-top: 14px;
+    opacity: 0.55;
+  }
+  .p1-logo.on-light .wordmark { color: #1a1a1a; }
+  .p1-logo.on-light .baseline { color: #1a1a1a; }
+  .p1-logo.on-dark .wordmark { color: #f5f3f0; }
+  .p1-logo.on-dark .baseline { color: #f5f3f0; }
+
+  /* ========== PROPOSAL 2 — Manrope, Lowercase, Tight ========== */
+  .p2-logo {
+    text-align: center;
+  }
+  .p2-logo .wordmark {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+  }
+  .p2-logo .baseline {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    margin-top: 10px;
+    opacity: 0.5;
+  }
+  .p2-logo.on-light .wordmark { color: #1a1a1a; }
+  .p2-logo.on-light .baseline { color: #1a1a1a; }
+  .p2-logo.on-dark .wordmark { color: #f5f3f0; }
+  .p2-logo.on-dark .baseline { color: #f5f3f0; }
+
+  /* ========== PROPOSAL 3 — DM Sans, Title Case, Medium weight ========== */
+  .p3-logo {
+    text-align: center;
+  }
+  .p3-logo .wordmark {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 44px;
+    letter-spacing: 0.12em;
+  }
+  .p3-logo .baseline {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: lowercase;
+    margin-top: 12px;
+    opacity: 0.5;
+  }
+  .p3-logo.on-light .wordmark { color: #1a1a1a; }
+  .p3-logo.on-light .baseline { color: #1a1a1a; }
+  .p3-logo.on-dark .wordmark { color: #f5f3f0; }
+  .p3-logo.on-dark .baseline { color: #f5f3f0; }
+
+  /* ========== PROPOSAL 4 — Outfit, Ultra-spaced, Light ========== */
+  .p4-logo {
+    text-align: center;
+  }
+  .p4-logo .wordmark {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 38px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+  }
+  .p4-logo .baseline {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 9.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 16px;
+    opacity: 0.45;
+  }
+  .p4-logo.on-light .wordmark { color: #1a1a1a; }
+  .p4-logo.on-light .baseline { color: #1a1a1a; }
+  .p4-logo.on-dark .wordmark { color: #f5f3f0; }
+  .p4-logo.on-dark .baseline { color: #f5f3f0; }
+
+  /* ========== PROPOSAL 5 — Sora, Mixed case with F accent ========== */
+  .p5-logo {
+    text-align: center;
+  }
+  .p5-logo .wordmark {
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    font-size: 44px;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+  }
+  .p5-logo .wordmark .f-accent {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 48px;
+  }
+  .p5-logo .baseline {
+    font-family: 'Sora', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: lowercase;
+    margin-top: 12px;
+    opacity: 0.45;
+  }
+  .p5-logo.on-light .wordmark { color: #1a1a1a; }
+  .p5-logo.on-light .baseline { color: #1a1a1a; }
+  .p5-logo.on-dark .wordmark { color: #f5f3f0; }
+  .p5-logo.on-dark .baseline { color: #f5f3f0; }
+
+  /* ========== PROPOSAL 6 — Space Grotesk, Separated F ========== */
+  .p6-logo {
+    text-align: center;
+  }
+  .p6-logo .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    font-size: 42px;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+  }
+  .p6-logo .wordmark .sep-f {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 6px;
+    display: inline-block;
+    border-bottom: 2.5px solid currentColor;
+    padding-bottom: 2px;
+    line-height: 1;
+  }
+  .p6-logo .baseline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
+    margin-top: 14px;
+    opacity: 0.45;
+  }
+  .p6-logo.on-light .wordmark { color: #1a1a1a; }
+  .p6-logo.on-light .baseline { color: #1a1a1a; }
+  .p6-logo.on-dark .wordmark { color: #f5f3f0; }
+  .p6-logo.on-dark .baseline { color: #f5f3f0; }
+
+  /* ========== F MARK SECTION ========== */
+  .f-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid #ddd;
+  }
+
+  .f-row {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .f-card {
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    font-weight: 500;
+  }
+
+  .f-card.f1 {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #1a1a1a;
+    color: #f5f3f0;
+    letter-spacing: -0.02em;
+  }
+  .f-card.f2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    background: #2c2420;
+    color: #f5f3f0;
+    font-size: 56px;
+  }
+  .f-card.f3 {
+    font-family: 'DM Sans', sans-serif;
+    background: #1a2332;
+    color: #f5f3f0;
+  }
+  .f-card.f4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    background: #f5f3f0;
+    color: #1a1a1a;
+    border: 1px solid #ddd;
+    font-size: 56px;
+  }
+  .f-card.f5 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    background: #3a3530;
+    color: #d4c5b0;
+  }
+  .f-card.f6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    background: #1a1a1a;
+    color: #f5f3f0;
+    border-bottom: 3px solid #f5f3f0;
+    border-radius: 24px;
+    padding-bottom: 3px;
+  }
+
+  /* ========== BASELINE OPTIONS ========== */
+  .baseline-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid #ddd;
+  }
+
+  .baseline-list {
+    list-style: none;
+    margin-top: 30px;
+  }
+
+  .baseline-list li {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: #666;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .baseline-list li span {
+    font-weight: 400;
+    color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<h1>Faraday — Propositions de logotype</h1>
+
+<!-- PROPOSAL 1 -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">01</span>
+    <span class="proposal-name">Architecturale</span>
+  </div>
+  <p class="proposal-desc">
+    Space Grotesk, capitales, espacement large. Solide, structurel, confiant.
+    Evoque un objet d'architecture plus qu'un gadget tech.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card light">
+      <div class="p1-logo on-light">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">la pause volontaire</div>
+      </div>
+    </div>
+    <div class="logo-card dark">
+      <div class="p1-logo on-dark">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">la pause volontaire</div>
+      </div>
+    </div>
+    <div class="logo-card warm">
+      <div class="p1-logo on-dark">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">la pause volontaire</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSAL 2 -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">02</span>
+    <span class="proposal-name">Douce</span>
+  </div>
+  <p class="proposal-desc">
+    Manrope light, minuscules, espacement serré. Intime, accessible, chaleureux.
+    Le contraste de la légèreté typographique avec le poids du nom "Faraday".
+  </p>
+  <div class="logo-row">
+    <div class="logo-card light">
+      <div class="p2-logo on-light">
+        <div class="wordmark">faraday</div>
+        <div class="baseline">votre temps, protege</div>
+      </div>
+    </div>
+    <div class="logo-card dark">
+      <div class="p2-logo on-dark">
+        <div class="wordmark">faraday</div>
+        <div class="baseline">votre temps, protege</div>
+      </div>
+    </div>
+    <div class="logo-card navy">
+      <div class="p2-logo on-dark">
+        <div class="wordmark">faraday</div>
+        <div class="baseline">votre temps, protege</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSAL 3 -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">03</span>
+    <span class="proposal-name">Editoriale</span>
+  </div>
+  <p class="proposal-desc">
+    DM Sans medium, title case, espacement moyen. Equilibre entre autorité et accessibilité.
+    Rappelle les marques lifestyle premium (Bellroy, Nomad).
+  </p>
+  <div class="logo-row">
+    <div class="logo-card light">
+      <div class="p3-logo on-light">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">deconnexion par design</div>
+      </div>
+    </div>
+    <div class="logo-card dark">
+      <div class="p3-logo on-dark">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">deconnexion par design</div>
+      </div>
+    </div>
+    <div class="logo-card warm">
+      <div class="p3-logo on-dark">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">deconnexion par design</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSAL 4 -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">04</span>
+    <span class="proposal-name">Monumentale</span>
+  </div>
+  <p class="proposal-desc">
+    Outfit light, capitales ultra-espacees. Aerien, minimal, presque sculptural.
+    L'espace entre les lettres evoque le silence et la respiration.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card light">
+      <div class="p4-logo on-light">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le rituel de la deconnexion</div>
+      </div>
+    </div>
+    <div class="logo-card dark">
+      <div class="p4-logo on-dark">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le rituel de la deconnexion</div>
+      </div>
+    </div>
+    <div class="logo-card navy">
+      <div class="p4-logo on-dark">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le rituel de la deconnexion</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSAL 5 -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">05</span>
+    <span class="proposal-name">Signature</span>
+  </div>
+  <p class="proposal-desc">
+    Sora, minuscules avec F majuscule accentue. Le F porte l'identite, le reste est discret.
+    Un jeu de hierarchie qui isole naturellement le F comme marque.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card light">
+      <div class="p5-logo on-light">
+        <div class="wordmark"><span class="f-accent">F</span>araday</div>
+        <div class="baseline">pause. presence. protection.</div>
+      </div>
+    </div>
+    <div class="logo-card dark">
+      <div class="p5-logo on-dark">
+        <div class="wordmark"><span class="f-accent">F</span>araday</div>
+        <div class="baseline">pause. presence. protection.</div>
+      </div>
+    </div>
+    <div class="logo-card warm">
+      <div class="p5-logo on-dark">
+        <div class="wordmark"><span class="f-accent">F</span>araday</div>
+        <div class="baseline">pause. presence. protection.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSAL 6 -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">06</span>
+    <span class="proposal-name">Affirmee</span>
+  </div>
+  <p class="proposal-desc">
+    Space Grotesk, F detache et souligne, reste en minuscules. Le F est un ancrage visuel,
+    une fondation. Le soulignement evoque la stabilite et l'assise de l'objet.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card light">
+      <div class="p6-logo on-light">
+        <div class="wordmark"><span class="sep-f">F</span>araday</div>
+        <div class="baseline">se deconnecter pour se retrouver</div>
+      </div>
+    </div>
+    <div class="logo-card dark">
+      <div class="p6-logo on-dark">
+        <div class="wordmark"><span class="sep-f">F</span>araday</div>
+        <div class="baseline">se deconnecter pour se retrouver</div>
+      </div>
+    </div>
+    <div class="logo-card warm">
+      <div class="p6-logo on-dark">
+        <div class="wordmark"><span class="sep-f">F</span>araday</div>
+        <div class="baseline">se deconnecter pour se retrouver</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F MARKS -->
+<div class="f-section">
+  <div class="proposal-header">
+    <span class="proposal-number">App Icons</span>
+    <span class="proposal-name">Declinaison du F isole</span>
+  </div>
+  <p class="proposal-desc">
+    Le "F" isole pour l'icone mobile, le favicon, et le marquage sur la box.
+    Chaque variante correspond a une proposition ci-dessus.
+  </p>
+  <div class="f-row">
+    <div class="f-card f1">F</div>
+    <div class="f-card f2">f</div>
+    <div class="f-card f3">F</div>
+    <div class="f-card f4">F</div>
+    <div class="f-card f5">F</div>
+    <div class="f-card f6">F</div>
+  </div>
+</div>
+
+<!-- BASELINES -->
+<div class="baseline-section">
+  <div class="proposal-header">
+    <span class="proposal-number">Baselines</span>
+    <span class="proposal-name">Options de signature</span>
+  </div>
+  <p class="proposal-desc">
+    Chaque baseline peut etre combinee avec n'importe quelle proposition typographique.
+  </p>
+  <ul class="baseline-list">
+    <li><span>la pause volontaire</span> — acte conscient, choix personnel</li>
+    <li><span>votre temps, protege</span> — protection, valeur du temps</li>
+    <li><span>deconnexion par design</span> — intentionnel, design-driven</li>
+    <li><span>le rituel de la deconnexion</span> — habitude noble, ceremonie</li>
+    <li><span>pause. presence. protection.</span> — triptyque rythme, manifeste</li>
+    <li><span>se deconnecter pour se retrouver</span> — benefice humain, profond</li>
+    <li><span>le silence est un choix</span> — empowerment, philosophique</li>
+    <li><span>ici commence le calme</span> — spatial, lie a l'objet physique</li>
+  </ul>
+</div>
+
+</body>
+</html>

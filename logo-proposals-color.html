@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Logo Proposals — Couleur</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f5f3f0;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    padding: 60px 40px;
+  }
+
+  h1 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 16px;
+  }
+
+  .page-desc {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 60px;
+    max-width: 700px;
+    line-height: 1.7;
+  }
+
+  .proposal {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid #ddd;
+  }
+  .proposal:last-child { border-bottom: none; }
+
+  .proposal-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .proposal-number {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .proposal-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+  }
+  .proposal-desc {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 40px;
+    max-width: 650px;
+    line-height: 1.6;
+  }
+
+  .logo-row {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .logo-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 70px;
+    border-radius: 14px;
+    min-width: 310px;
+    min-height: 200px;
+  }
+
+  /* ===================================================================
+     C07 — Terre & Cuivre
+     Warm terracotta / copper accent on dark backgrounds
+     =================================================================== */
+  .c07-bg-cream  { background: #faf6f1; border: 1px solid #e8e2d8; }
+  .c07-bg-dark   { background: #1c1916; }
+  .c07-bg-forest { background: #1a2420; }
+
+  .c07-logo { text-align: center; }
+  .c07-logo .wordmark {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 44px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .c07-logo .baseline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
+    margin-top: 14px;
+  }
+  .c07-logo.on-cream .wordmark { color: #8B4513; }
+  .c07-logo.on-cream .baseline { color: #a07050; opacity: 0.7; }
+  .c07-logo.on-dark .wordmark { color: #c8845a; }
+  .c07-logo.on-dark .baseline { color: #c8845a; opacity: 0.5; }
+  .c07-logo.on-forest .wordmark { color: #d4956a; }
+  .c07-logo.on-forest .baseline { color: #d4956a; opacity: 0.45; }
+
+  /* ===================================================================
+     C08 — Bleu Nuit & Or
+     Deep navy with warm gold accent
+     =================================================================== */
+  .c08-bg-light { background: #f0ede8; border: 1px solid #ddd8cf; }
+  .c08-bg-navy  { background: #0f1a2e; }
+  .c08-bg-slate { background: #1e2a3a; }
+
+  .c08-logo { text-align: center; }
+  .c08-logo .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 42px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .c08-logo .baseline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  .c08-logo.on-light .wordmark { color: #0f1a2e; }
+  .c08-logo.on-light .baseline { color: #b8953e; opacity: 0.8; }
+  .c08-logo.on-navy .wordmark { color: #d4b062; }
+  .c08-logo.on-navy .baseline { color: #d4b062; opacity: 0.45; }
+  .c08-logo.on-slate .wordmark { color: #e8c872; }
+  .c08-logo.on-slate .baseline { color: #e8c872; opacity: 0.4; }
+
+  /* ===================================================================
+     C09 — Vert Sauge
+     Muted sage green, organic and calming
+     =================================================================== */
+  .c09-bg-white { background: #fafaf7; border: 1px solid #e5e5dd; }
+  .c09-bg-dark  { background: #1a1e1a; }
+  .c09-bg-sage  { background: #6b7c6b; }
+
+  .c09-logo { text-align: center; }
+  .c09-logo .wordmark {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 46px;
+    letter-spacing: 0.06em;
+  }
+  .c09-logo .baseline {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: lowercase;
+    margin-top: 12px;
+  }
+  .c09-logo.on-white .wordmark { color: #4a5c4a; }
+  .c09-logo.on-white .baseline { color: #6b7c6b; opacity: 0.7; }
+  .c09-logo.on-dark .wordmark { color: #8fa88f; }
+  .c09-logo.on-dark .baseline { color: #8fa88f; opacity: 0.5; }
+  .c09-logo.on-sage .wordmark { color: #f5f3ed; }
+  .c09-logo.on-sage .baseline { color: #f5f3ed; opacity: 0.55; }
+
+  /* ===================================================================
+     C10 — Ambre & Charbon
+     Rich amber on deep charcoal, warmth meets authority
+     =================================================================== */
+  .c10-bg-sand    { background: #f2ede4; border: 1px solid #e0d8cc; }
+  .c10-bg-charcoal { background: #222020; }
+  .c10-bg-brown   { background: #2a2218; }
+
+  .c10-logo { text-align: center; }
+  .c10-logo .wordmark {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 44px;
+    letter-spacing: 0.14em;
+  }
+  .c10-logo .baseline {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: lowercase;
+    margin-top: 13px;
+  }
+  .c10-logo.on-sand .wordmark { color: #b5761a; }
+  .c10-logo.on-sand .baseline { color: #c49040; opacity: 0.65; }
+  .c10-logo.on-charcoal .wordmark { color: #d4a44a; }
+  .c10-logo.on-charcoal .baseline { color: #d4a44a; opacity: 0.45; }
+  .c10-logo.on-brown .wordmark { color: #e0b860; }
+  .c10-logo.on-brown .baseline { color: #e0b860; opacity: 0.42; }
+
+  /* ===================================================================
+     C11 — Brique Sourde
+     Muted brick red, grounded and confident
+     =================================================================== */
+  .c11-bg-offwhite { background: #f5f0ea; border: 1px solid #e2dbd0; }
+  .c11-bg-dark     { background: #1e1a18; }
+  .c11-bg-brick    { background: #8c4a3a; }
+
+  .c11-logo { text-align: center; }
+  .c11-logo .wordmark {
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
+    font-size: 43px;
+    letter-spacing: 0.10em;
+    text-transform: lowercase;
+  }
+  .c11-logo .wordmark .f-hl {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 47px;
+  }
+  .c11-logo .baseline {
+    font-family: 'Sora', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: lowercase;
+    margin-top: 12px;
+  }
+  .c11-logo.on-offwhite .wordmark { color: #8c4a3a; }
+  .c11-logo.on-offwhite .baseline { color: #a06050; opacity: 0.6; }
+  .c11-logo.on-dark .wordmark { color: #c47060; }
+  .c11-logo.on-dark .baseline { color: #c47060; opacity: 0.45; }
+  .c11-logo.on-brick .wordmark { color: #f5f0ea; }
+  .c11-logo.on-brick .baseline { color: #f5f0ea; opacity: 0.55; }
+
+  /* ===================================================================
+     C12 — Indigo Profond
+     Deep indigo/violet, intellectual and distinctive
+     =================================================================== */
+  .c12-bg-pearl  { background: #f2f0f5; border: 1px solid #dddae5; }
+  .c12-bg-deep   { background: #14121e; }
+  .c12-bg-indigo { background: #2d2845; }
+
+  .c12-logo { text-align: center; }
+  .c12-logo .wordmark {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+  .c12-logo .baseline {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 9.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 15px;
+  }
+  .c12-logo.on-pearl .wordmark { color: #3d3570; }
+  .c12-logo.on-pearl .baseline { color: #5a50a0; opacity: 0.6; }
+  .c12-logo.on-deep .wordmark { color: #8878c8; }
+  .c12-logo.on-deep .baseline { color: #8878c8; opacity: 0.42; }
+  .c12-logo.on-indigo .wordmark { color: #c0b4e8; }
+  .c12-logo.on-indigo .baseline { color: #c0b4e8; opacity: 0.45; }
+
+  /* ===================================================================
+     C13 — Gradient Dusk
+     Gradient text: warm-to-cool transition
+     =================================================================== */
+  .c13-bg-warm  { background: #faf5ee; border: 1px solid #ede6da; }
+  .c13-bg-dark  { background: #161418; }
+  .c13-bg-deep  { background: #1a1520; }
+
+  .c13-logo { text-align: center; }
+  .c13-logo .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 44px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #c8845a 0%, #8878c8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .c13-logo .baseline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
+    margin-top: 14px;
+  }
+  .c13-logo.on-warm .wordmark {
+    background: linear-gradient(135deg, #9a5a30 0%, #5a4590 100%);
+    -webkit-background-clip: text; background-clip: text;
+  }
+  .c13-logo.on-warm .baseline { color: #8a7060; opacity: 0.6; }
+  .c13-logo.on-dark .wordmark {
+    background: linear-gradient(135deg, #d4956a 0%, #a090d8 100%);
+    -webkit-background-clip: text; background-clip: text;
+  }
+  .c13-logo.on-dark .baseline { color: #a090a0; opacity: 0.4; }
+  .c13-logo.on-deep .wordmark {
+    background: linear-gradient(135deg, #e0a878 0%, #b8a8e8 100%);
+    -webkit-background-clip: text; background-clip: text;
+  }
+  .c13-logo.on-deep .baseline { color: #b0a0b8; opacity: 0.42; }
+
+  /* ===================================================================
+     C14 — Olive & Creme
+     Earthy olive green, natural and grounded
+     =================================================================== */
+  .c14-bg-cream { background: #f8f5ed; border: 1px solid #e8e2d4; }
+  .c14-bg-dark  { background: #1a1c16; }
+  .c14-bg-olive { background: #4a4c30; }
+
+  .c14-logo { text-align: center; }
+  .c14-logo .wordmark {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 43px;
+    letter-spacing: 0.12em;
+  }
+  .c14-logo .baseline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: lowercase;
+    margin-top: 13px;
+  }
+  .c14-logo.on-cream .wordmark { color: #5c5e38; }
+  .c14-logo.on-cream .baseline { color: #7a7c50; opacity: 0.65; }
+  .c14-logo.on-dark .wordmark { color: #a0a468; }
+  .c14-logo.on-dark .baseline { color: #a0a468; opacity: 0.45; }
+  .c14-logo.on-olive .wordmark { color: #f0ede2; }
+  .c14-logo.on-olive .baseline { color: #f0ede2; opacity: 0.5; }
+
+  /* ===================================================================
+     F MARKS — COLOR
+     =================================================================== */
+  .f-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid #ddd;
+  }
+  .f-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .f-card {
+    width: 110px;
+    height: 110px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 500;
+  }
+  .f-card.fc7 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;
+    background: #1c1916; color: #c8845a;
+  }
+  .f-card.fc8 {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #0f1a2e; color: #d4b062;
+  }
+  .f-card.fc9 {
+    font-family: 'Manrope', sans-serif; font-weight: 400;
+    background: #6b7c6b; color: #f5f3ed;
+  }
+  .f-card.fc10 {
+    font-family: 'DM Sans', sans-serif;
+    background: #222020; color: #d4a44a;
+  }
+  .f-card.fc11 {
+    font-family: 'Sora', sans-serif; font-weight: 600;
+    background: #8c4a3a; color: #f5f0ea;
+  }
+  .f-card.fc12 {
+    font-family: 'Outfit', sans-serif; font-weight: 400;
+    background: #2d2845; color: #c0b4e8;
+  }
+  .f-card.fc13 {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #161418;
+    background-image: linear-gradient(135deg, #d4956a, #a090d8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border: 1px solid #333;
+  }
+  .f-card.fc14 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #4a4c30; color: #f0ede2;
+  }
+</style>
+</head>
+<body>
+
+<h1>Faraday — Propositions couleur</h1>
+<p class="page-desc">
+  8 palettes chromatiques explorant des univers au-dela du noir & blanc.
+  Chaque direction reste ancree dans le premium et le calme, mais apporte
+  de la personnalite et de la chaleur par la couleur.
+</p>
+
+<!-- C07 — Terre & Cuivre -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">07</span>
+    <span class="proposal-name">Terre & Cuivre</span>
+  </div>
+  <p class="proposal-desc">
+    Terracotta et cuivre sur fonds profonds. Chaleur organique, ancrage naturel.
+    Evoque le bois, la ceramique, les materiaux nobles du moodboard.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c07-bg-cream">
+      <div class="c07-logo on-cream">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">la pause volontaire</div>
+      </div>
+    </div>
+    <div class="logo-card c07-bg-dark">
+      <div class="c07-logo on-dark">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">la pause volontaire</div>
+      </div>
+    </div>
+    <div class="logo-card c07-bg-forest">
+      <div class="c07-logo on-forest">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">la pause volontaire</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C08 — Bleu Nuit & Or -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">08</span>
+    <span class="proposal-name">Bleu Nuit & Or</span>
+  </div>
+  <p class="proposal-desc">
+    Bleu profond avec accent dore. Prestige discret, confiance, protection.
+    L'or n'est pas bling — c'est le reflet chaud d'un objet de valeur.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c08-bg-light">
+      <div class="c08-logo on-light">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le rituel de la deconnexion</div>
+      </div>
+    </div>
+    <div class="logo-card c08-bg-navy">
+      <div class="c08-logo on-navy">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le rituel de la deconnexion</div>
+      </div>
+    </div>
+    <div class="logo-card c08-bg-slate">
+      <div class="c08-logo on-slate">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le rituel de la deconnexion</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C09 — Vert Sauge -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">09</span>
+    <span class="proposal-name">Vert Sauge</span>
+  </div>
+  <p class="proposal-desc">
+    Vert sauge sourd et organique. Calme vegetal, respiration, reconnexion a soi.
+    Tres eloigne du tech, ancre dans le vivant et l'apaisant.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c09-bg-white">
+      <div class="c09-logo on-white">
+        <div class="wordmark">faraday</div>
+        <div class="baseline">ici commence le calme</div>
+      </div>
+    </div>
+    <div class="logo-card c09-bg-dark">
+      <div class="c09-logo on-dark">
+        <div class="wordmark">faraday</div>
+        <div class="baseline">ici commence le calme</div>
+      </div>
+    </div>
+    <div class="logo-card c09-bg-sage">
+      <div class="c09-logo on-sage">
+        <div class="wordmark">faraday</div>
+        <div class="baseline">ici commence le calme</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C10 — Ambre & Charbon -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">10</span>
+    <span class="proposal-name">Ambre & Charbon</span>
+  </div>
+  <p class="proposal-desc">
+    Ambre riche sur charbon profond. Chaleur d'un whisky, autorite d'un bureau en chene.
+    Le plus proche du vocabulaire "noyer chaud" du moodboard.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c10-bg-sand">
+      <div class="c10-logo on-sand">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">deconnexion par design</div>
+      </div>
+    </div>
+    <div class="logo-card c10-bg-charcoal">
+      <div class="c10-logo on-charcoal">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">deconnexion par design</div>
+      </div>
+    </div>
+    <div class="logo-card c10-bg-brown">
+      <div class="c10-logo on-brown">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">deconnexion par design</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C11 — Brique Sourde -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">11</span>
+    <span class="proposal-name">Brique Sourde</span>
+  </div>
+  <p class="proposal-desc">
+    Rouge brique desature, terreux et confiant. Ni agressif, ni passif.
+    L'energie contenue d'un objet qui protege sans crier.
+    Le F majuscule porte la couleur avec autorite.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c11-bg-offwhite">
+      <div class="c11-logo on-offwhite">
+        <div class="wordmark"><span class="f-hl">F</span>araday</div>
+        <div class="baseline">pause. presence. protection.</div>
+      </div>
+    </div>
+    <div class="logo-card c11-bg-dark">
+      <div class="c11-logo on-dark">
+        <div class="wordmark"><span class="f-hl">F</span>araday</div>
+        <div class="baseline">pause. presence. protection.</div>
+      </div>
+    </div>
+    <div class="logo-card c11-bg-brick">
+      <div class="c11-logo on-brick">
+        <div class="wordmark"><span class="f-hl">F</span>araday</div>
+        <div class="baseline">pause. presence. protection.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C12 — Indigo Profond -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">12</span>
+    <span class="proposal-name">Indigo Profond</span>
+  </div>
+  <p class="proposal-desc">
+    Indigo-violet profond, intellectuel et singulier. Distinction, introspection, nuit.
+    Se demarque nettement du bleu tech corporate. Plus contemplatif.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c12-bg-pearl">
+      <div class="c12-logo on-pearl">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le silence est un choix</div>
+      </div>
+    </div>
+    <div class="logo-card c12-bg-deep">
+      <div class="c12-logo on-deep">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le silence est un choix</div>
+      </div>
+    </div>
+    <div class="logo-card c12-bg-indigo">
+      <div class="c12-logo on-indigo">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">le silence est un choix</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C13 — Gradient Dusk -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">13</span>
+    <span class="proposal-name">Gradient Crepuscule</span>
+  </div>
+  <p class="proposal-desc">
+    Degrade chaud-froid (cuivre vers indigo). Le passage du jour a la nuit,
+    la transition entre connexion et deconnexion. Moderne sans etre tech-bro.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c13-bg-warm">
+      <div class="c13-logo on-warm">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">se deconnecter pour se retrouver</div>
+      </div>
+    </div>
+    <div class="logo-card c13-bg-dark">
+      <div class="c13-logo on-dark">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">se deconnecter pour se retrouver</div>
+      </div>
+    </div>
+    <div class="logo-card c13-bg-deep">
+      <div class="c13-logo on-deep">
+        <div class="wordmark">FARADAY</div>
+        <div class="baseline">se deconnecter pour se retrouver</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C14 — Olive & Creme -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">14</span>
+    <span class="proposal-name">Olive & Creme</span>
+  </div>
+  <p class="proposal-desc">
+    Olive sourd et creme chaude. Naturel, ancre, japonisant.
+    La direction la plus organique — muji, wabi-sabi, sobriete zen.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card c14-bg-cream">
+      <div class="c14-logo on-cream">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">votre temps, protege</div>
+      </div>
+    </div>
+    <div class="logo-card c14-bg-dark">
+      <div class="c14-logo on-dark">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">votre temps, protege</div>
+      </div>
+    </div>
+    <div class="logo-card c14-bg-olive">
+      <div class="c14-logo on-olive">
+        <div class="wordmark">Faraday</div>
+        <div class="baseline">votre temps, protege</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F MARKS COLOR -->
+<div class="f-section">
+  <div class="proposal-header">
+    <span class="proposal-number">App Icons</span>
+    <span class="proposal-name">Declinaisons couleur du F</span>
+  </div>
+  <p class="proposal-desc">
+    Le "F" isole dans chaque palette. Icone app, favicon, marquage produit.
+  </p>
+  <div class="f-row">
+    <div class="f-card fc7">F</div>
+    <div class="f-card fc8">F</div>
+    <div class="f-card fc9">F</div>
+    <div class="f-card fc10">F</div>
+    <div class="f-card fc11">F</div>
+    <div class="f-card fc12">F</div>
+    <div class="f-card fc13">F</div>
+    <div class="f-card fc14">F</div>
+  </div>
+</div>
+
+</body>
+</html>
