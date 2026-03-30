@@ -836,6 +836,130 @@
   </div>
 </div>
 
+<!-- SCREEN 4 — Add Box -->
+<div class="screen-wrapper">
+  <div class="screen-label">04 — Ajouter une box</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">&#9679; &#9679; &#9679;</div>
+    </div>
+    <div class="modal-handle"></div>
+    <div class="modal-title">Ajouter une box</div>
+    <div class="modal-subtitle">Scannez le QR code sous votre Faraday Box pour l'associer a ce workspace.</div>
+    <div class="content">
+      <div style="width:calc(100%);aspect-ratio:1;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden;margin-bottom:20px;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);animation:scan 2s ease-in-out infinite;"></div>
+        <div style="font-size:40px;opacity:0.4;">&#9633;</div>
+        <div style="font-size:14px;color:var(--text-secondary);">Placez le QR code dans le cadre</div>
+      </div>
+      <style>@keyframes scan{0%,100%{top:20%;opacity:0.3}50%{top:80%;opacity:1}}</style>
+      <div class="form-group">
+        <label class="form-label">Nom de la box</label>
+        <input class="form-input" type="text" placeholder="Ex: Salon, Chambre, Bureau..." value="Chambre enfants">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Workspace</label>
+        <div style="width:100%;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:15px;">&#127968; Maison</div>
+      </div>
+      <button class="primary-btn">Ajouter la box</button>
+      <div style="display:block;width:calc(100% - 40px);margin:0 20px 12px;padding:14px;background:transparent;color:var(--text-secondary);font-size:14px;font-weight:500;border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center;">Entrer le code manuellement</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 5 — Invite Member -->
+<div class="screen-wrapper">
+  <div class="screen-label">05 — Inviter un membre</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">&#9679; &#9679; &#9679;</div>
+    </div>
+    <div class="modal-handle"></div>
+    <div class="modal-title">Inviter un membre</div>
+    <div class="modal-subtitle">Ajoutez quelqu'un au workspace Maison.</div>
+    <div class="content">
+      <div class="form-group">
+        <label class="form-label">Email ou telephone</label>
+        <input class="form-input" type="text" placeholder="email@exemple.com" value="gabriel@gmail.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Role</label>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <div style="flex:1;padding:12px;border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center;background:var(--surface);">
+            <div style="font-size:13px;font-weight:600;">Admin</div>
+            <div style="font-size:10px;color:var(--text-secondary);margin-top:4px;">Gere les boxes et les membres</div>
+          </div>
+          <div style="flex:1;padding:12px;border:1px solid var(--accent);border-radius:var(--radius-sm);text-align:center;background:var(--accent-dim);">
+            <div style="font-size:13px;font-weight:600;color:var(--accent);">Membre</div>
+            <div style="font-size:10px;color:var(--text-secondary);margin-top:4px;">Voit ses sessions et les analytics</div>
+          </div>
+        </div>
+      </div>
+      <div class="section-header"><div class="section-title">Methode d'invitation</div></div>
+      <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:10px;">
+        <div style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--surface-3);">&#128231;</div>
+        <div style="flex:1;"><div style="font-size:14px;font-weight:500;">Par email</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Un lien d'invitation sera envoye</div></div>
+        <span class="chevron">&rsaquo;</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:10px;">
+        <div style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--surface-3);">&#128279;</div>
+        <div style="flex:1;"><div style="font-size:14px;font-weight:500;">Lien de partage</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Copiez un lien a envoyer vous-meme</div></div>
+        <span class="chevron">&rsaquo;</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:10px;">
+        <div style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--surface-3);">&#9634;</div>
+        <div style="flex:1;"><div style="font-size:14px;font-weight:500;">QR Code</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Scannez pour rejoindre depuis l'app</div></div>
+        <span class="chevron">&rsaquo;</span>
+      </div>
+      <button class="primary-btn">Envoyer l'invitation</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 6 — First Connection / Onboarding -->
+<div class="screen-wrapper">
+  <div class="screen-label">06 — Premiere connexion</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">&#9679; &#9679; &#9679;</div>
+    </div>
+    <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 30px;">
+      <div style="font-size:56px;margin-bottom:24px;opacity:0.8;">&#127968;</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin-bottom:8px;">Bienvenue chez Faraday</h2>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:40px;">Votre premier workspace <strong style="color:var(--text);">Maison</strong> a ete cree. Scannez votre box pour commencer.</p>
+      <div style="width:100%;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:20px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:14px;text-align:left;">
+          <div style="width:44px;height:44px;background:var(--green-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">&#10003;</div>
+          <div><div style="font-weight:600;font-size:14px;">Compte cree</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">pol@faraday-box.fr</div></div>
+        </div>
+      </div>
+      <div style="width:100%;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:20px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:14px;text-align:left;">
+          <div style="width:44px;height:44px;background:var(--green-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">&#10003;</div>
+          <div><div style="font-weight:600;font-size:14px;">Workspace "Maison" cree</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Votre espace par defaut</div></div>
+        </div>
+      </div>
+      <div style="width:100%;background:var(--accent-dim);border-radius:var(--radius);border:1.5px solid var(--accent);padding:20px;margin-bottom:32px;">
+        <div style="display:flex;align-items:center;gap:14px;text-align:left;">
+          <div style="width:44px;height:44px;background:var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:#fff;">&#9633;</div>
+          <div><div style="font-weight:600;font-size:14px;color:var(--accent);">Scanner votre box</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Associez votre premiere Faraday Box</div></div>
+        </div>
+      </div>
+      <button class="primary-btn" style="width:100%;margin:0;">Scanner ma box</button>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-item"><div class="nav-icon">&#9711;</div>Sessions</div>
+      <div class="bottom-nav-item active"><div class="nav-icon">&#9632;</div>Espaces</div>
+      <div class="bottom-nav-item"><div class="nav-icon">&#9829;</div>Groupes</div>
+      <div class="bottom-nav-item"><div class="nav-icon">&#9650;</div>Stats</div>
+      <div class="bottom-nav-item"><div class="nav-icon">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /screens-row -->
 
 <!-- ================================================================
@@ -848,9 +972,9 @@
 
 <div class="screens-row">
 
-<!-- SCREEN 4 — Groups List -->
+<!-- SCREEN 7 — Groups List -->
 <div class="screen-wrapper">
-  <div class="screen-label">04 — Liste des groupes</div>
+  <div class="screen-label">07 — Liste des groupes</div>
   <div class="phone">
     <div class="status-bar">
       <span class="time">9:41</span>
@@ -967,9 +1091,9 @@
   </div>
 </div>
 
-<!-- SCREEN 5 — Group Detail: Ranking -->
+<!-- SCREEN 8 — Group Detail: Ranking -->
 <div class="screen-wrapper">
-  <div class="screen-label">05 — Classement du groupe</div>
+  <div class="screen-label">08 — Classement du groupe</div>
   <div class="phone">
     <div class="status-bar">
       <span class="time">9:41</span>
@@ -1071,9 +1195,9 @@
   </div>
 </div>
 
-<!-- SCREEN 6 — Group: Sessions Feed -->
+<!-- SCREEN 9 — Group: Sessions Feed -->
 <div class="screen-wrapper">
-  <div class="screen-label">06 — Sessions des membres</div>
+  <div class="screen-label">09 — Sessions des membres</div>
   <div class="phone">
     <div class="status-bar">
       <span class="time">9:41</span>
@@ -1162,9 +1286,9 @@
   </div>
 </div>
 
-<!-- SCREEN 7 — Group: Defis -->
+<!-- SCREEN 10 — Group: Defis -->
 <div class="screen-wrapper">
-  <div class="screen-label">07 — Defis de groupe</div>
+  <div class="screen-label">10 — Defis de groupe</div>
   <div class="phone">
     <div class="status-bar">
       <span class="time">9:41</span>
@@ -1270,9 +1394,9 @@
   </div>
 </div>
 
-<!-- SCREEN 8 — Privacy Settings -->
+<!-- SCREEN 11 — Privacy Settings -->
 <div class="screen-wrapper">
-  <div class="screen-label">08 — Partage & confidentialite</div>
+  <div class="screen-label">11 — Partage & confidentialite</div>
   <div class="phone">
     <div class="status-bar">
       <span class="time">9:41</span>
@@ -1332,9 +1456,9 @@
   </div>
 </div>
 
-<!-- SCREEN 9 — Create Group -->
+<!-- SCREEN 12 — Create Group -->
 <div class="screen-wrapper">
-  <div class="screen-label">09 — Creer un groupe</div>
+  <div class="screen-label">12 — Creer un groupe</div>
   <div class="phone">
     <div class="status-bar">
       <span class="time">9:41</span>
