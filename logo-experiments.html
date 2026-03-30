@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Logo Experiments</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 30px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .page-desc{font-size:13px;color:#999;margin-bottom:60px;max-width:700px;line-height:1.7;}
+  .section-break{text-align:center;padding:50px 0 36px;border-top:1px solid #ddd;margin-top:40px;}
+  .section-break h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .section-break p{font-size:12px;color:#bbb;margin-top:4px;}
+
+  .grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
+  .logo-block{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .logo-box{width:160px;height:160px;border-radius:28px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .logo-box svg{width:100%;height:100%;}
+  .logo-name{font-size:11px;font-weight:600;color:#666;text-align:center;max-width:160px;}
+  .logo-desc{font-size:10px;color:#aaa;text-align:center;max-width:160px;line-height:1.4;}
+
+  /* Full lockup cards */
+  .lockup-row{display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;margin-bottom:60px;justify-content:center;}
+  .lockup-card{display:flex;align-items:center;gap:16px;padding:36px 44px;border-radius:16px;min-width:340px;}
+  .lockup-card.light{background:#f5f0e8;border:1px solid #e5dfd4;}
+  .lockup-card.dark{background:#2e1e14;}
+  .lockup-card.sage{background:#2d3b28;}
+  .lockup-card.teal{background:#1a3a3a;}
+  .lockup-card.navy{background:#0f1a2e;}
+  .lockup-card.stone{background:#4a4640;}
+  .lockup-icon{width:52px;height:52px;flex-shrink:0;}
+  .lockup-icon svg{width:100%;height:100%;}
+  .lockup-text{display:flex;flex-direction:column;}
+  .lockup-wm{font-size:26px;font-weight:500;letter-spacing:.02em;}
+  .lockup-bl{font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.45;margin-top:4px;font-weight:300;}
+  .lc{color:#f5f0e8;} .dc{color:#2e1e14;}
+</style>
+</head>
+<body>
+
+<h1>Faraday — Explorations libres</h1>
+<p class="page-desc">
+  Logos carres, ronds, symboles abstraits. Beaucoup de liberte.
+  L'objectif : trouver une forme singuliere qui porte le sens du produit.
+</p>
+
+<!-- ============================================================
+     SECTION 1 — MARQUES CARREES
+     ============================================================ -->
+<div class="section-break" style="border:none;padding-top:0;">
+  <h2>Marques carrees</h2>
+  <p>Format app icon natif — chaque forme doit fonctionner a 32px comme a 512px</p>
+</div>
+
+<div class="grid">
+
+<!-- 1. Boite ouverte — fente du haut -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2e1e14;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2e1e14"/>
+      <!-- Box shape with opening slit at top -->
+      <rect x="32" y="48" width="96" height="80" rx="8" fill="none" stroke="#f5f0e8" stroke-width="4"/>
+      <!-- Opening slit -->
+      <rect x="56" y="44" width="48" height="8" rx="2" fill="#2e1e14"/>
+      <!-- Phone going in — abstract rectangle tilted -->
+      <rect x="68" y="28" width="24" height="36" rx="4" fill="#f5f0e8" opacity=".7" transform="rotate(-8 80 46)"/>
+    </svg>
+  </div>
+  <div class="logo-name">Le Depot</div>
+  <div class="logo-desc">Le geste fondateur — le telephone qui entre dans la box</div>
+</div>
+
+<!-- 2. Signal qui meurt -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2d3b28;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2d3b28"/>
+      <g transform="translate(28,36)">
+        <!-- Signal bars decreasing to nothing -->
+        <rect x="0" y="68" width="14" height="20" rx="2" fill="#f5f0e8"/>
+        <rect x="22" y="52" width="14" height="36" rx="2" fill="#f5f0e8"/>
+        <rect x="44" y="36" width="14" height="52" rx="2" fill="#f5f0e8" opacity=".6"/>
+        <rect x="66" y="20" width="14" height="68" rx="2" fill="#f5f0e8" opacity=".25"/>
+        <rect x="88" y="4" width="14" height="84" rx="2" fill="#f5f0e8" opacity=".08"/>
+      </g>
+    </svg>
+  </div>
+  <div class="logo-name">Signal Zero</div>
+  <div class="logo-desc">Les barres de signal qui s'eteignent progressivement</div>
+</div>
+
+<!-- 3. Deux rectangles — ouvert/ferme -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#1a3a3a;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#1a3a3a"/>
+      <!-- Bottom: closed box -->
+      <rect x="36" y="78" width="88" height="50" rx="6" fill="#f5f0e8"/>
+      <!-- Top: lid lifted -->
+      <rect x="36" y="36" width="88" height="12" rx="4" fill="#f5f0e8" opacity=".5" transform="rotate(-6 80 42)"/>
+    </svg>
+  </div>
+  <div class="logo-name">Couvercle</div>
+  <div class="logo-desc">La boite et son couvercle souleve — invitation a deposer</div>
+</div>
+
+<!-- 4. Cercle brise -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#0f1a2e;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#0f1a2e"/>
+      <!-- Broken circle — gap at top right -->
+      <path d="M80,36 A44,44 0 1,1 116,52" fill="none" stroke="#f5f0e8" stroke-width="6" stroke-linecap="round"/>
+      <!-- Small dot where it breaks -->
+      <circle cx="80" cy="36" r="4" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Rupture</div>
+  <div class="logo-desc">Un cercle interrompu — la boucle du scroll brisee</div>
+</div>
+
+<!-- 5. F dans disque -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#4a4640;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#4a4640"/>
+      <circle cx="80" cy="80" r="44" fill="#f5f0e8" opacity=".1"/>
+      <g transform="translate(58,48)">
+        <rect x="0" y="0" width="10" height="64" rx="1.5" fill="#f5f0e8"/>
+        <rect x="10" y="0" width="36" height="10" rx="1.5" fill="#f5f0e8"/>
+        <rect x="10" y="26" width="24" height="8" rx="1.5" fill="#f5f0e8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="logo-name">F Halo</div>
+  <div class="logo-desc">Le F dans un halo subtil — protection, aura</div>
+</div>
+
+<!-- 6. Deux barres paralleles (pause) avec arrondi -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#6b3a2a;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#6b3a2a"/>
+      <rect x="52" y="40" width="16" height="80" rx="8" fill="#f5f0e8"/>
+      <rect x="92" y="40" width="16" height="80" rx="8" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Pause Pure</div>
+  <div class="logo-desc">Le symbole pause — rien d'autre. Radical, universel.</div>
+</div>
+
+<!-- 7. Empreinte / Nested squares -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2e1e14;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2e1e14"/>
+      <rect x="30" y="30" width="100" height="100" rx="12" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".2"/>
+      <rect x="44" y="44" width="72" height="72" rx="10" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".4"/>
+      <rect x="58" y="58" width="44" height="44" rx="8" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".7"/>
+      <rect x="70" y="70" width="20" height="20" rx="4" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Couches</div>
+  <div class="logo-desc">Carres concentriques — les couches de protection de la cage de Faraday</div>
+</div>
+
+<!-- 8. Switch off -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2d3b28;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2d3b28"/>
+      <!-- Power/off symbol simplified -->
+      <path d="M80,40 L80,76" stroke="#f5f0e8" stroke-width="6" stroke-linecap="round"/>
+      <path d="M60,52 A32,32 0 1,0 100,52" fill="none" stroke="#f5f0e8" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="logo-name">Off</div>
+  <div class="logo-desc">Le bouton power — deconnexion totale, instinctif</div>
+</div>
+
+<!-- 9. Horizon / Sunset line -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#0f1a2e;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#0f1a2e"/>
+      <!-- Sun dipping below horizon -->
+      <circle cx="80" cy="88" r="22" fill="#f5f0e8" opacity=".15"/>
+      <circle cx="80" cy="88" r="14" fill="#f5f0e8" opacity=".3"/>
+      <!-- Horizon line -->
+      <line x1="28" y1="88" x2="132" y2="88" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round"/>
+      <!-- Below horizon: solid -->
+      <rect x="28" y="88" width="104" height="40" rx="0" fill="#0f1a2e"/>
+      <line x1="28" y1="88" x2="132" y2="88" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="logo-name">Digital Sunset</div>
+  <div class="logo-desc">Le soleil qui se couche — fin de la journee numerique</div>
+</div>
+
+<!-- 10. Carre avec coin ouvert -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#1a3a3a;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#1a3a3a"/>
+      <!-- Square with open corner -->
+      <path d="M44,40 L116,40 L116,112 L52,112 Q44,112 44,104 Z" fill="none" stroke="#f5f0e8" stroke-width="4" stroke-linejoin="round"/>
+      <!-- Peeled corner -->
+      <path d="M44,40 L44,68" stroke="#f5f0e8" stroke-width="4" stroke-linecap="round" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="logo-name">Coin Ouvert</div>
+  <div class="logo-desc">Un carre avec un coin souleve — curiosite, ouverture</div>
+</div>
+
+<!-- 11. Onde unique qui s'aplatit -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#4a4640;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#4a4640"/>
+      <!-- Wave becoming flat line -->
+      <path d="M28,80 Q42,50 56,80 Q66,100 76,80 Q82,68 88,80 Q91,86 94,80 L132,80" fill="none" stroke="#f5f0e8" stroke-width="4.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="logo-name">Flatline</div>
+  <div class="logo-desc">L'onde qui s'aplatit — le bruit devient silence</div>
+</div>
+
+<!-- 12. Main qui depose -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2e1e14;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2e1e14"/>
+      <!-- Simplified phone -->
+      <rect x="64" y="42" width="32" height="50" rx="5" fill="#f5f0e8" opacity=".7"/>
+      <!-- Arrow down -->
+      <path d="M80,96 L80,118" stroke="#f5f0e8" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M72,112 L80,120 L88,112" fill="none" stroke="#f5f0e8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="logo-name">Deposer</div>
+  <div class="logo-desc">Le telephone qui descend — le geste de lacher prise</div>
+</div>
+
+<!-- 13. F + crescent moon -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2e1e2e;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2e1e2e"/>
+      <!-- Crescent moon -->
+      <circle cx="96" cy="56" r="18" fill="#f5f0e8" opacity=".2"/>
+      <circle cx="104" cy="50" r="16" fill="#2e1e2e"/>
+      <!-- F -->
+      <g transform="translate(40,50)">
+        <rect x="0" y="0" width="10" height="68" rx="1.5" fill="#f5f0e8"/>
+        <rect x="10" y="0" width="36" height="10" rx="1.5" fill="#f5f0e8"/>
+        <rect x="10" y="28" width="24" height="8" rx="1.5" fill="#f5f0e8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="logo-name">F Lune</div>
+  <div class="logo-desc">F + croissant de lune — repos, nuit, rituel du soir</div>
+</div>
+
+<!-- 14. Rounded square F with weight shift -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2c3a48;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2c3a48"/>
+      <!-- Bold rounded F -->
+      <g transform="translate(40,32)">
+        <rect x="0" y="0" width="18" height="96" rx="9" fill="#f5f0e8"/>
+        <rect x="9" y="0" width="60" height="18" rx="9" fill="#f5f0e8"/>
+        <rect x="9" y="38" width="42" height="16" rx="8" fill="#f5f0e8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="logo-name">F Doux</div>
+  <div class="logo-desc">F tout en rondeur — bords arrondis, chaleureux, accessible</div>
+</div>
+
+<!-- 15. Abstract: two shapes meeting -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#0f1a2e;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#0f1a2e"/>
+      <!-- Two rectangles meeting/closing -->
+      <rect x="30" y="50" width="44" height="60" rx="6" fill="#f5f0e8" opacity=".6" transform="rotate(4 52 80)"/>
+      <rect x="86" y="50" width="44" height="60" rx="6" fill="#f5f0e8" opacity=".6" transform="rotate(-4 108 80)"/>
+      <!-- Meeting point glow -->
+      <ellipse cx="80" cy="80" rx="4" ry="20" fill="#f5f0e8" opacity=".3"/>
+    </svg>
+  </div>
+  <div class="logo-name">Fermeture</div>
+  <div class="logo-desc">Deux volets qui se referment — la box qui se ferme</div>
+</div>
+
+<!-- 16. Minimal: dot becoming line -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2d3b28;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2d3b28"/>
+      <circle cx="40" cy="80" r="8" fill="#f5f0e8"/>
+      <circle cx="62" cy="80" r="6" fill="#f5f0e8" opacity=".7"/>
+      <circle cx="80" cy="80" r="4.5" fill="#f5f0e8" opacity=".45"/>
+      <circle cx="95" cy="80" r="3" fill="#f5f0e8" opacity=".25"/>
+      <circle cx="107" cy="80" r="2" fill="#f5f0e8" opacity=".12"/>
+      <circle cx="116" cy="80" r="1.2" fill="#f5f0e8" opacity=".06"/>
+    </svg>
+  </div>
+  <div class="logo-name">Dissolution</div>
+  <div class="logo-desc">Des points qui s'effacent — le numerique qui se dissout</div>
+</div>
+
+<!-- 17. Hourglass / Time -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#6b3a2a;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#6b3a2a"/>
+      <!-- Abstract hourglass -->
+      <path d="M56,36 L104,36 L84,76 L80,80 L76,76 Z" fill="#f5f0e8" opacity=".3"/>
+      <path d="M56,124 L104,124 L84,84 L80,80 L76,84 Z" fill="#f5f0e8" opacity=".6"/>
+      <!-- Top/bottom lines -->
+      <line x1="52" y1="36" x2="108" y2="36" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round"/>
+      <line x1="52" y1="124" x2="108" y2="124" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="logo-name">Sablier</div>
+  <div class="logo-desc">Le temps qui s'accumule en bas — temps recupere</div>
+</div>
+
+<!-- 18. Brackets / Container -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#4a4640;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#4a4640"/>
+      <!-- Thick brackets containing F -->
+      <path d="M38,40 L38,120" stroke="#f5f0e8" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+      <path d="M38,40 L52,40" stroke="#f5f0e8" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+      <path d="M38,120 L52,120" stroke="#f5f0e8" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+      <path d="M122,40 L122,120" stroke="#f5f0e8" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+      <path d="M108,40 L122,40" stroke="#f5f0e8" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+      <path d="M108,120 L122,120" stroke="#f5f0e8" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+      <!-- F inside -->
+      <g transform="translate(56,50)">
+        <rect x="0" y="0" width="10" height="60" rx="1.5" fill="#f5f0e8"/>
+        <rect x="10" y="0" width="32" height="10" rx="1.5" fill="#f5f0e8"/>
+        <rect x="10" y="24" width="22" height="8" rx="1.5" fill="#f5f0e8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="logo-name">[F] Contenu</div>
+  <div class="logo-desc">Le F entre crochets — contenu, protege, encadre</div>
+</div>
+
+</div><!-- /grid -->
+
+<!-- ============================================================
+     SECTION 2 — MARQUES RONDES
+     ============================================================ -->
+<div class="section-break">
+  <h2>Marques rondes</h2>
+  <p>Plus douces, plus organiques</p>
+</div>
+
+<div class="grid">
+
+<!-- R1. Circle with F and gap -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2e1e14;border-radius:80px;">
+    <svg viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="80" fill="#2e1e14"/>
+      <circle cx="80" cy="80" r="56" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".2"/>
+      <g transform="translate(58,50)">
+        <rect x="0" y="0" width="11" height="60" rx="1.5" fill="#f5f0e8"/>
+        <rect x="11" y="0" width="36" height="10" rx="1.5" fill="#f5f0e8"/>
+        <rect x="11" y="24" width="24" height="8" rx="1.5" fill="#f5f0e8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="logo-name">F Orbe</div>
+  <div class="logo-desc">F dans un cercle fin — bulle de protection</div>
+</div>
+
+<!-- R2. Concentric circles fading -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#2d3b28;border-radius:80px;">
+    <svg viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="80" fill="#2d3b28"/>
+      <circle cx="80" cy="80" r="52" fill="none" stroke="#f5f0e8" stroke-width="2" opacity=".08"/>
+      <circle cx="80" cy="80" r="40" fill="none" stroke="#f5f0e8" stroke-width="2.5" opacity=".15"/>
+      <circle cx="80" cy="80" r="28" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".3"/>
+      <circle cx="80" cy="80" r="16" fill="none" stroke="#f5f0e8" stroke-width="3.5" opacity=".5"/>
+      <circle cx="80" cy="80" r="5" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Ondes Inversees</div>
+  <div class="logo-desc">Les ondes viennent vers le centre — absorption, pas emission</div>
+</div>
+
+<!-- R3. Pause in circle -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#1a3a3a;border-radius:80px;">
+    <svg viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="80" fill="#1a3a3a"/>
+      <rect x="60" y="52" width="12" height="56" rx="6" fill="#f5f0e8"/>
+      <rect x="88" y="52" width="12" height="56" rx="6" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Pause Cercle</div>
+  <div class="logo-desc">Le plus minimal possible — pause dans un cercle</div>
+</div>
+
+<!-- R4. Crescent / Eclipse -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#0f1a2e;border-radius:80px;">
+    <svg viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="80" fill="#0f1a2e"/>
+      <circle cx="80" cy="80" r="40" fill="#f5f0e8" opacity=".12"/>
+      <circle cx="92" cy="74" r="38" fill="#0f1a2e"/>
+    </svg>
+  </div>
+  <div class="logo-name">Eclipse</div>
+  <div class="logo-desc">L'eclipse — le telephone disparait, la lumiere revient</div>
+</div>
+
+<!-- R5. Fingerprint / Spiral -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#4a4640;border-radius:80px;">
+    <svg viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="80" fill="#4a4640"/>
+      <!-- Abstract spiral/fingerprint -->
+      <path d="M80,56 A24,24 0 0,1 104,80" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+      <path d="M104,80 A24,24 0 0,1 80,104" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <path d="M80,104 A24,24 0 0,1 56,80" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity=".3"/>
+      <!-- Inner -->
+      <path d="M80,68 A12,12 0 0,1 92,80" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+      <path d="M92,80 A12,12 0 0,1 80,92" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+      <circle cx="80" cy="80" r="3" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Empreinte</div>
+  <div class="logo-desc">Spirale incomplete — empreinte, identite, retour a soi</div>
+</div>
+
+<!-- R6. Dot surrounded by space -->
+<div class="logo-block">
+  <div class="logo-box" style="background:#6b3a2a;border-radius:80px;">
+    <svg viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="80" fill="#6b3a2a"/>
+      <circle cx="80" cy="80" r="10" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Point</div>
+  <div class="logo-desc">Un point seul — l'essentiel, le moment present, ici et maintenant</div>
+</div>
+
+</div><!-- /grid -->
+
+<!-- ============================================================
+     SECTION 3 — FAVORIS EN CONTEXTE (lockups)
+     ============================================================ -->
+<div class="section-break">
+  <h2>Lockups — symbole + logotype</h2>
+  <p>Les symboles les plus prometteurs associes au mot Faraday</p>
+</div>
+
+<!-- Lockup: F Interrompu + logotype -->
+<div style="margin-bottom:16px;font-size:12px;font-weight:600;color:#666;">F Interrompu + Essentielle</div>
+<div class="lockup-row">
+  <div class="lockup-card light">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#2e1e14"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><rect x="18" y="14" width="6" height="4" rx="1" fill="#f5f0e8" opacity=".3"/><rect x="27" y="14" width="3" height="4" rx="1" fill="#f5f0e8" opacity=".1"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm dc" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;">Faraday</div><div class="lockup-bl dc">the present starts here</div></div>
+  </div>
+  <div class="lockup-card dark">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><rect x="18" y="14" width="6" height="4" rx="1" fill="#f5f0e8" opacity=".3"/><rect x="27" y="14" width="3" height="4" rx="1" fill="#f5f0e8" opacity=".1"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;">Faraday</div><div class="lockup-bl lc">the present starts here</div></div>
+  </div>
+  <div class="lockup-card sage">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><rect x="18" y="14" width="6" height="4" rx="1" fill="#f5f0e8" opacity=".3"/><rect x="27" y="14" width="3" height="4" rx="1" fill="#f5f0e8" opacity=".1"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;">Faraday</div><div class="lockup-bl lc">the present starts here</div></div>
+  </div>
+  <div class="lockup-card teal">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><rect x="18" y="14" width="6" height="4" rx="1" fill="#f5f0e8" opacity=".3"/><rect x="27" y="14" width="3" height="4" rx="1" fill="#f5f0e8" opacity=".1"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;">Faraday</div><div class="lockup-bl lc">the present starts here</div></div>
+  </div>
+</div>
+
+<!-- Lockup: Flatline + logotype -->
+<div style="margin-bottom:16px;font-size:12px;font-weight:600;color:#666;">Flatline + Respiree</div>
+<div class="lockup-row">
+  <div class="lockup-card light">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#2d3b28"/><path d="M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26" fill="none" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm dc" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;">Faraday</div><div class="lockup-bl dc">where noise ends</div></div>
+  </div>
+  <div class="lockup-card sage">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><path d="M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26" fill="none" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;">Faraday</div><div class="lockup-bl lc">where noise ends</div></div>
+  </div>
+  <div class="lockup-card navy">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><path d="M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26" fill="none" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;">Faraday</div><div class="lockup-bl lc">where noise ends</div></div>
+  </div>
+  <div class="lockup-card stone">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><path d="M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26" fill="none" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;">Faraday</div><div class="lockup-bl lc">where noise ends</div></div>
+  </div>
+</div>
+
+<!-- Lockup: Couches + logotype -->
+<div style="margin-bottom:16px;font-size:12px;font-weight:600;color:#666;">Couches + Architecturale</div>
+<div class="lockup-row">
+  <div class="lockup-card light">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#1a3a3a"/><rect x="8" y="8" width="36" height="36" rx="5" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".2"/><rect x="13" y="13" width="26" height="26" rx="4" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".4"/><rect x="18" y="18" width="16" height="16" rx="3" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".7"/><rect x="22" y="22" width="8" height="8" rx="2" fill="#f5f0e8"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm dc" style="font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:22px;">Faraday</div><div class="lockup-bl dc">the present starts here</div></div>
+  </div>
+  <div class="lockup-card dark">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".08"/><rect x="8" y="8" width="36" height="36" rx="5" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".2"/><rect x="13" y="13" width="26" height="26" rx="4" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".4"/><rect x="18" y="18" width="16" height="16" rx="3" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".7"/><rect x="22" y="22" width="8" height="8" rx="2" fill="#f5f0e8"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:22px;">Faraday</div><div class="lockup-bl lc">the present starts here</div></div>
+  </div>
+  <div class="lockup-card teal">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".08"/><rect x="8" y="8" width="36" height="36" rx="5" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".2"/><rect x="13" y="13" width="26" height="26" rx="4" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".4"/><rect x="18" y="18" width="16" height="16" rx="3" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".7"/><rect x="22" y="22" width="8" height="8" rx="2" fill="#f5f0e8"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:22px;">Faraday</div><div class="lockup-bl lc">the present starts here</div></div>
+  </div>
+  <div class="lockup-card navy">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".08"/><rect x="8" y="8" width="36" height="36" rx="5" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".2"/><rect x="13" y="13" width="26" height="26" rx="4" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".4"/><rect x="18" y="18" width="16" height="16" rx="3" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".7"/><rect x="22" y="22" width="8" height="8" rx="2" fill="#f5f0e8"/></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:22px;">Faraday</div><div class="lockup-bl lc">the present starts here</div></div>
+  </div>
+</div>
+
+<!-- Lockup: F. Point + logotype -->
+<div style="margin-bottom:16px;font-size:12px;font-weight:600;color:#666;">F. (point final) + Douce</div>
+<div class="lockup-row">
+  <div class="lockup-card light">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#4a4640"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><circle cx="28" cy="31" r="3.5" fill="#f5f0e8"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm dc" style="font-family:'Manrope',sans-serif;font-weight:300;font-size:30px;">faraday</div><div class="lockup-bl dc">silence is a choice</div></div>
+  </div>
+  <div class="lockup-card stone">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><circle cx="28" cy="31" r="3.5" fill="#f5f0e8"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Manrope',sans-serif;font-weight:300;font-size:30px;">faraday</div><div class="lockup-bl lc">silence is a choice</div></div>
+  </div>
+  <div class="lockup-card sage">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><circle cx="28" cy="31" r="3.5" fill="#f5f0e8"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Manrope',sans-serif;font-weight:300;font-size:30px;">faraday</div><div class="lockup-bl lc">silence is a choice</div></div>
+  </div>
+  <div class="lockup-card dark">
+    <div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><g transform="translate(10,8)"><rect x="0" y="0" width="5" height="34" rx="1" fill="#f5f0e8"/><rect x="5" y="0" width="16" height="5" rx="1" fill="#f5f0e8"/><rect x="5" y="14" width="10" height="4" rx="1" fill="#f5f0e8"/><circle cx="28" cy="31" r="3.5" fill="#f5f0e8"/></g></svg></div>
+    <div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Manrope',sans-serif;font-weight:300;font-size:30px;">faraday</div><div class="lockup-bl lc">silence is a choice</div></div>
+  </div>
+</div>
+
+</body>
+</html>
