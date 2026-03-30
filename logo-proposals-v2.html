@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Logo Proposals V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=General+Sans:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --brown: #3d2b1f;
+    --brown-light: #5c3d2e;
+    --brown-warm: #7a5240;
+    --sage: #5a6b52;
+    --sage-light: #7a8b70;
+    --sage-pale: #a3b098;
+    --navy: #1a2744;
+    --navy-light: #2a3d5e;
+    --navy-pale: #4a6088;
+    --cream: #f5f0e8;
+    --offwhite: #faf7f2;
+    --charcoal: #1a1a1a;
+  }
+
+  body {
+    background: var(--offwhite);
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    padding: 60px 40px;
+  }
+
+  h1 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .page-desc {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 60px;
+    max-width: 700px;
+    line-height: 1.7;
+  }
+
+  .section-break {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+  }
+  .section-break h2 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .section-break p {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+
+  .proposal {
+    margin-bottom: 70px;
+    padding-bottom: 70px;
+    border-bottom: 1px solid #e5e0d8;
+  }
+  .proposal:last-child { border-bottom: none; }
+
+  .proposal-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .proposal-number {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .proposal-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+  }
+  .proposal-desc {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 36px;
+    max-width: 650px;
+    line-height: 1.6;
+  }
+
+  .logo-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .logo-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 60px;
+    border-radius: 14px;
+    min-width: 280px;
+    min-height: 180px;
+  }
+  .logo-card.on-cream { background: var(--cream); border: 1px solid #e5dfd4; }
+  .logo-card.on-brown { background: var(--brown); }
+  .logo-card.on-sage { background: var(--sage); }
+  .logo-card.on-navy { background: var(--navy); }
+  .logo-card.on-charcoal { background: var(--charcoal); }
+  .logo-card.on-white { background: #fff; border: 1px solid #e8e4dc; }
+  .logo-card.on-brown-light { background: var(--brown-light); }
+  .logo-card.on-sage-light { background: #eef1ea; border: 1px solid #d8ddd2; }
+
+  .logo-inner { text-align: center; }
+  .baseline-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    opacity: 0.5;
+  }
+
+  /* ===== TYPOGRAPHIC DIRECTIONS ===== */
+
+  /* 01 Architecturale */
+  .t-archi .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
+  .t-archi .baseline-text { font-size: 9.5px; }
+
+  /* 02 Douce */
+  .t-douce .wordmark {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 46px;
+    letter-spacing: 0.02em;
+  }
+  .t-douce .baseline-text { font-size: 10px; letter-spacing: 0.18em; font-family: 'Manrope', sans-serif; }
+
+  /* 03 Affirmee */
+  .t-affirm .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+  }
+  .t-affirm .wordmark .sep-f {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 5px;
+    display: inline-block;
+    border-bottom: 2.5px solid currentColor;
+    padding-bottom: 2px;
+    line-height: 1;
+  }
+  .t-affirm .baseline-text { font-size: 9.5px; }
+
+  /* 04 Monumentale */
+  .t-monum .wordmark {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 36px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+  }
+  .t-monum .baseline-text { font-size: 9px; letter-spacing: 0.3em; font-family: 'Outfit', sans-serif; }
+
+  /* 05 Essentielle (NEW) */
+  .t-essent .wordmark {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 42px;
+    letter-spacing: 0.06em;
+  }
+  .t-essent .baseline-text { font-size: 10px; letter-spacing: 0.2em; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  /* 06 Brute (NEW) */
+  .t-brute .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .t-brute .baseline-text { font-size: 9px; letter-spacing: 0.25em; }
+
+  /* 07 Respiree (NEW) */
+  .t-respir .wordmark {
+    font-family: 'Sora', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    letter-spacing: 0.20em;
+  }
+  .t-respir .baseline-text { font-size: 9.5px; letter-spacing: 0.22em; font-family: 'Sora', sans-serif; }
+
+  /* Color utility */
+  .c-cream { color: var(--cream); }
+  .c-brown { color: var(--brown); }
+  .c-brown-warm { color: var(--brown-warm); }
+  .c-sage { color: var(--sage); }
+  .c-sage-light { color: var(--sage-light); }
+  .c-sage-pale { color: var(--sage-pale); }
+  .c-navy { color: var(--navy); }
+  .c-navy-light { color: var(--navy-light); }
+  .c-navy-pale { color: var(--navy-pale); }
+  .c-charcoal { color: var(--charcoal); }
+  .c-white { color: #fff; }
+
+  /* ===== APP ICONS ===== */
+  .icons-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .icon-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .icon-label {
+    font-size: 10px;
+    color: #999;
+    text-align: center;
+    max-width: 100px;
+  }
+  .app-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Color swatches */
+  .swatch-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+  }
+  .swatch-name {
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .swatch-hex {
+    font-size: 8px;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+<h1>Faraday — Propositions V2</h1>
+<p class="page-desc">
+  7 directions typographiques, symboles pour app icons, palette centree sur brun profond, vert sauge et bleu nuit.
+</p>
+
+<!-- ============================================================
+     TYPOGRAPHIC DIRECTIONS
+     ============================================================ -->
+
+<!-- 01 Architecturale -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">01</span>
+    <span class="proposal-name">Architecturale</span>
+  </div>
+  <p class="proposal-desc">
+    Space Grotesk, capitales, espacement large. Solide, structurel, confiant.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card on-cream">
+      <div class="logo-inner t-archi">
+        <div class="wordmark c-brown">FARADAY</div>
+        <div class="baseline-text c-brown">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-brown">
+      <div class="logo-inner t-archi">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-sage">
+      <div class="logo-inner t-archi">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-navy">
+      <div class="logo-inner t-archi">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 Douce -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">02</span>
+    <span class="proposal-name">Douce</span>
+  </div>
+  <p class="proposal-desc">
+    Manrope light, minuscules, serré. Intime, accessible, chaleureux.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card on-cream">
+      <div class="logo-inner t-douce">
+        <div class="wordmark c-brown">faraday</div>
+        <div class="baseline-text c-brown">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-brown">
+      <div class="logo-inner t-douce">
+        <div class="wordmark c-cream">faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-sage">
+      <div class="logo-inner t-douce">
+        <div class="wordmark c-cream">faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-navy">
+      <div class="logo-inner t-douce">
+        <div class="wordmark c-cream">faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 Affirmee -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">03</span>
+    <span class="proposal-name">Affirmee</span>
+  </div>
+  <p class="proposal-desc">
+    Space Grotesk, F detache et souligne. Le F est un ancrage visuel, une fondation.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card on-cream">
+      <div class="logo-inner t-affirm">
+        <div class="wordmark c-brown"><span class="sep-f">F</span>araday</div>
+        <div class="baseline-text c-brown">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-brown">
+      <div class="logo-inner t-affirm">
+        <div class="wordmark c-cream"><span class="sep-f">F</span>araday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-sage">
+      <div class="logo-inner t-affirm">
+        <div class="wordmark c-cream"><span class="sep-f">F</span>araday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-navy">
+      <div class="logo-inner t-affirm">
+        <div class="wordmark c-cream"><span class="sep-f">F</span>araday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 Monumentale -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">04</span>
+    <span class="proposal-name">Monumentale</span>
+  </div>
+  <p class="proposal-desc">
+    Outfit light, capitales ultra-espacees. Aerien, sculptural, le silence entre les lettres.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card on-cream">
+      <div class="logo-inner t-monum">
+        <div class="wordmark c-brown">FARADAY</div>
+        <div class="baseline-text c-brown">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-brown">
+      <div class="logo-inner t-monum">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-sage">
+      <div class="logo-inner t-monum">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-navy">
+      <div class="logo-inner t-monum">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 Essentielle (NEW) -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">05</span>
+    <span class="proposal-name">Essentielle — nouveau</span>
+  </div>
+  <p class="proposal-desc">
+    Plus Jakarta Sans semi-bold, title case, espacement contenu. Directe, premium, contemporaine.
+    Proche de Bellroy et Grovemade. Le poids typographique exprime la confiance sans crier.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card on-cream">
+      <div class="logo-inner t-essent">
+        <div class="wordmark c-brown">Faraday</div>
+        <div class="baseline-text c-brown">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-brown">
+      <div class="logo-inner t-essent">
+        <div class="wordmark c-cream">Faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-sage">
+      <div class="logo-inner t-essent">
+        <div class="wordmark c-cream">Faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-navy">
+      <div class="logo-inner t-essent">
+        <div class="wordmark c-cream">Faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 Brute (NEW) -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">06</span>
+    <span class="proposal-name">Brute — nouveau</span>
+  </div>
+  <p class="proposal-desc">
+    Space Grotesk bold, capitales, espacement serre. Compacte, dense, affirmee.
+    Le contraste avec les materiaux doux de la box cree une tension interessante.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card on-cream">
+      <div class="logo-inner t-brute">
+        <div class="wordmark c-brown">FARADAY</div>
+        <div class="baseline-text c-brown">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-brown">
+      <div class="logo-inner t-brute">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-sage">
+      <div class="logo-inner t-brute">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-navy">
+      <div class="logo-inner t-brute">
+        <div class="wordmark c-cream">FARADAY</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 Respiree (NEW) -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">07</span>
+    <span class="proposal-name">Respiree — nouveau</span>
+  </div>
+  <p class="proposal-desc">
+    Sora light, title case, espacement large. Aeree mais presente. Le "y" final
+    apporte un mouvement organique. Plus douce que Monumentale, plus presente que Douce.
+  </p>
+  <div class="logo-row">
+    <div class="logo-card on-cream">
+      <div class="logo-inner t-respir">
+        <div class="wordmark c-brown">Faraday</div>
+        <div class="baseline-text c-brown">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-brown">
+      <div class="logo-inner t-respir">
+        <div class="wordmark c-cream">Faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-sage">
+      <div class="logo-inner t-respir">
+        <div class="wordmark c-cream">Faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+    <div class="logo-card on-navy">
+      <div class="logo-inner t-respir">
+        <div class="wordmark c-cream">Faraday</div>
+        <div class="baseline-text c-cream">the present starts here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     APP ICONS WITH SYMBOLS
+     ============================================================ -->
+<div class="section-break">
+  <h2>App Icons — Symboles</h2>
+  <p>Le F seul ne suffit pas. Voici des symboles qui portent le sens du produit.</p>
+</div>
+
+<div class="proposal" style="border-bottom: none;">
+  <div class="proposal-header">
+    <span class="proposal-number">A</span>
+    <span class="proposal-name">F Interrompu — le signal qui s'arrete</span>
+  </div>
+  <p class="proposal-desc">
+    La barre horizontale du F est coupee net. Le signal est interrompu.
+    Simple, lisible, porteur de sens.
+  </p>
+  <div class="icons-grid">
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#3d2b1f"/>
+          <g transform="translate(52, 42)">
+            <!-- F with interrupted horizontal bar -->
+            <rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/>
+            <!-- Gap then fade -->
+            <rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity="0.3"/>
+            <rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity="0.12"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Brun profond</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#5a6b52"/>
+          <g transform="translate(52, 42)">
+            <rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/>
+            <rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity="0.3"/>
+            <rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity="0.12"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Sauge</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#1a2744"/>
+          <g transform="translate(52, 42)">
+            <rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/>
+            <rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity="0.3"/>
+            <rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity="0.12"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Bleu nuit</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#f5f0e8"/>
+          <g transform="translate(52, 42)">
+            <rect x="0" y="0" width="14" height="116" rx="2" fill="#3d2b1f"/>
+            <rect x="14" y="0" width="52" height="14" rx="2" fill="#3d2b1f"/>
+            <rect x="14" y="50" width="30" height="12" rx="2" fill="#3d2b1f"/>
+            <rect x="54" y="50" width="16" height="12" rx="2" fill="#3d2b1f" opacity="0.3"/>
+            <rect x="78" y="50" width="10" height="12" rx="2" fill="#3d2b1f" opacity="0.12"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Creme / brun</div>
+    </div>
+  </div>
+</div>
+
+<div class="proposal" style="border-bottom: none;">
+  <div class="proposal-header">
+    <span class="proposal-number">B</span>
+    <span class="proposal-name">F + Pause — la deconnexion incarnee</span>
+  </div>
+  <p class="proposal-desc">
+    Le F integre les deux barres du symbole pause (||) dans sa structure.
+    La barre verticale du F + une seconde barre parallele forment le signe universel de la pause.
+  </p>
+  <div class="icons-grid">
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#3d2b1f"/>
+          <g transform="translate(44, 40)">
+            <!-- F stem -->
+            <rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/>
+            <!-- F top bar -->
+            <rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/>
+            <!-- F middle bar -->
+            <rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/>
+            <!-- Pause second bar -->
+            <rect x="28" y="0" width="14" height="120" rx="2" fill="#f5f0e8" opacity="0.0"/>
+            <rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Brun profond</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#5a6b52"/>
+          <g transform="translate(44, 40)">
+            <rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/>
+            <rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Sauge</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#1a2744"/>
+          <g transform="translate(44, 40)">
+            <rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/>
+            <rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/>
+            <rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Bleu nuit</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#f5f0e8"/>
+          <g transform="translate(44, 40)">
+            <rect x="0" y="0" width="14" height="120" rx="2" fill="#3d2b1f"/>
+            <rect x="14" y="0" width="50" height="13" rx="2" fill="#3d2b1f"/>
+            <rect x="14" y="48" width="36" height="12" rx="2" fill="#3d2b1f"/>
+            <rect x="80" y="24" width="12" height="72" rx="2" fill="#3d2b1f" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Creme / brun</div>
+    </div>
+  </div>
+</div>
+
+<div class="proposal" style="border-bottom: none;">
+  <div class="proposal-header">
+    <span class="proposal-number">C</span>
+    <span class="proposal-name">F dans un cadre ouvert — le depot, la boite</span>
+  </div>
+  <p class="proposal-desc">
+    Le F est contenu dans un cadre dont le haut est ouvert — l'ouverture de la box.
+    Evoque le geste de deposer, l'accueil, la protection sans enfermement.
+  </p>
+  <div class="icons-grid">
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#3d2b1f"/>
+          <g transform="translate(36, 32)">
+            <!-- Open frame (no top) -->
+            <path d="M8,40 L8,128 Q8,136 16,136 L112,136 Q120,136 120,128 L120,40" fill="none" stroke="#f5f0e8" stroke-width="5" opacity="0.3"/>
+            <!-- F inside -->
+            <g transform="translate(36, 38)">
+              <rect x="0" y="0" width="11" height="88" rx="1.5" fill="#f5f0e8"/>
+              <rect x="11" y="0" width="40" height="11" rx="1.5" fill="#f5f0e8"/>
+              <rect x="11" y="38" width="28" height="10" rx="1.5" fill="#f5f0e8"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Brun profond</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#5a6b52"/>
+          <g transform="translate(36, 32)">
+            <path d="M8,40 L8,128 Q8,136 16,136 L112,136 Q120,136 120,128 L120,40" fill="none" stroke="#f5f0e8" stroke-width="5" opacity="0.3"/>
+            <g transform="translate(36, 38)">
+              <rect x="0" y="0" width="11" height="88" rx="1.5" fill="#f5f0e8"/>
+              <rect x="11" y="0" width="40" height="11" rx="1.5" fill="#f5f0e8"/>
+              <rect x="11" y="38" width="28" height="10" rx="1.5" fill="#f5f0e8"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Sauge</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#1a2744"/>
+          <g transform="translate(36, 32)">
+            <path d="M8,40 L8,128 Q8,136 16,136 L112,136 Q120,136 120,128 L120,40" fill="none" stroke="#f5f0e8" stroke-width="5" opacity="0.3"/>
+            <g transform="translate(36, 38)">
+              <rect x="0" y="0" width="11" height="88" rx="1.5" fill="#f5f0e8"/>
+              <rect x="11" y="0" width="40" height="11" rx="1.5" fill="#f5f0e8"/>
+              <rect x="11" y="38" width="28" height="10" rx="1.5" fill="#f5f0e8"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Bleu nuit</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#f5f0e8"/>
+          <g transform="translate(36, 32)">
+            <path d="M8,40 L8,128 Q8,136 16,136 L112,136 Q120,136 120,128 L120,40" fill="none" stroke="#3d2b1f" stroke-width="5" opacity="0.3"/>
+            <g transform="translate(36, 38)">
+              <rect x="0" y="0" width="11" height="88" rx="1.5" fill="#3d2b1f"/>
+              <rect x="11" y="0" width="40" height="11" rx="1.5" fill="#3d2b1f"/>
+              <rect x="11" y="38" width="28" height="10" rx="1.5" fill="#3d2b1f"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Creme / brun</div>
+    </div>
+  </div>
+</div>
+
+<div class="proposal" style="border-bottom: none;">
+  <div class="proposal-header">
+    <span class="proposal-number">D</span>
+    <span class="proposal-name">F + ondes absorbees — la cage de Faraday abstraite</span>
+  </div>
+  <p class="proposal-desc">
+    Des lignes d'ondes a droite du F qui se dissipent, s'estompent, disparaissent.
+    Pas une cage litteral, mais le principe rendu visible : les ondes meurent au contact de la box.
+  </p>
+  <div class="icons-grid">
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#3d2b1f"/>
+          <g transform="translate(34, 42)">
+            <!-- F -->
+            <rect x="0" y="0" width="13" height="116" rx="2" fill="#f5f0e8"/>
+            <rect x="13" y="0" width="46" height="13" rx="2" fill="#f5f0e8"/>
+            <rect x="13" y="48" width="32" height="11" rx="2" fill="#f5f0e8"/>
+            <!-- Absorbed waves -->
+            <path d="M78,30 Q86,44 78,58 Q70,72 78,86" fill="none" stroke="#f5f0e8" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+            <path d="M94,22 Q104,42 94,58 Q84,74 94,94" fill="none" stroke="#f5f0e8" stroke-width="3.5" stroke-linecap="round" opacity="0.22"/>
+            <path d="M110,16 Q122,40 110,58 Q98,76 110,100" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity="0.08"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Brun profond</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#5a6b52"/>
+          <g transform="translate(34, 42)">
+            <rect x="0" y="0" width="13" height="116" rx="2" fill="#f5f0e8"/>
+            <rect x="13" y="0" width="46" height="13" rx="2" fill="#f5f0e8"/>
+            <rect x="13" y="48" width="32" height="11" rx="2" fill="#f5f0e8"/>
+            <path d="M78,30 Q86,44 78,58 Q70,72 78,86" fill="none" stroke="#f5f0e8" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+            <path d="M94,22 Q104,42 94,58 Q84,74 94,94" fill="none" stroke="#f5f0e8" stroke-width="3.5" stroke-linecap="round" opacity="0.22"/>
+            <path d="M110,16 Q122,40 110,58 Q98,76 110,100" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity="0.08"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Sauge</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#1a2744"/>
+          <g transform="translate(34, 42)">
+            <rect x="0" y="0" width="13" height="116" rx="2" fill="#f5f0e8"/>
+            <rect x="13" y="0" width="46" height="13" rx="2" fill="#f5f0e8"/>
+            <rect x="13" y="48" width="32" height="11" rx="2" fill="#f5f0e8"/>
+            <path d="M78,30 Q86,44 78,58 Q70,72 78,86" fill="none" stroke="#f5f0e8" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+            <path d="M94,22 Q104,42 94,58 Q84,74 94,94" fill="none" stroke="#f5f0e8" stroke-width="3.5" stroke-linecap="round" opacity="0.22"/>
+            <path d="M110,16 Q122,40 110,58 Q98,76 110,100" fill="none" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity="0.08"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Bleu nuit</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="44" fill="#f5f0e8"/>
+          <g transform="translate(34, 42)">
+            <rect x="0" y="0" width="13" height="116" rx="2" fill="#3d2b1f"/>
+            <rect x="13" y="0" width="46" height="13" rx="2" fill="#3d2b1f"/>
+            <rect x="13" y="48" width="32" height="11" rx="2" fill="#3d2b1f"/>
+            <path d="M78,30 Q86,44 78,58 Q70,72 78,86" fill="none" stroke="#3d2b1f" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+            <path d="M94,22 Q104,42 94,58 Q84,74 94,94" fill="none" stroke="#3d2b1f" stroke-width="3.5" stroke-linecap="round" opacity="0.22"/>
+            <path d="M110,16 Q122,40 110,58 Q98,76 110,100" fill="none" stroke="#3d2b1f" stroke-width="3" stroke-linecap="round" opacity="0.08"/>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-label">Creme / brun</div>
+    </div>
+  </div>
+</div>
+
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">E</span>
+    <span class="proposal-name">F Negatif — le vide comme presence</span>
+  </div>
+  <p class="proposal-desc">
+    Le F est decoupe dans une forme pleine. Il n'est pas dessine, il est revele par l'absence.
+    Evoque le silence, la soustraction, le retrait volontaire.
+  </p>
+  <div class="icons-grid">
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <mask id="fmask1">
+              <rect width="200" height="200" fill="white"/>
+              <g transform="translate(56, 38)">
+                <rect x="0" y="0" width="16" height="124" rx="2" fill="black"/>
+                <rect x="16" y="0" width="56" height="16" rx="2" fill="black"/>
+                <rect x="16" y="52" width="38" height="14" rx="2" fill="black"/>
+              </g>
+            </mask>
+          </defs>
+          <rect width="200" height="200" rx="44" fill="#3d2b1f" mask="url(#fmask1)"/>
+        </svg>
+      </div>
+      <div class="icon-label">Brun profond</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <mask id="fmask2">
+              <rect width="200" height="200" fill="white"/>
+              <g transform="translate(56, 38)">
+                <rect x="0" y="0" width="16" height="124" rx="2" fill="black"/>
+                <rect x="16" y="0" width="56" height="16" rx="2" fill="black"/>
+                <rect x="16" y="52" width="38" height="14" rx="2" fill="black"/>
+              </g>
+            </mask>
+          </defs>
+          <rect width="200" height="200" rx="44" fill="#5a6b52" mask="url(#fmask2)"/>
+        </svg>
+      </div>
+      <div class="icon-label">Sauge</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <mask id="fmask3">
+              <rect width="200" height="200" fill="white"/>
+              <g transform="translate(56, 38)">
+                <rect x="0" y="0" width="16" height="124" rx="2" fill="black"/>
+                <rect x="16" y="0" width="56" height="16" rx="2" fill="black"/>
+                <rect x="16" y="52" width="38" height="14" rx="2" fill="black"/>
+              </g>
+            </mask>
+          </defs>
+          <rect width="200" height="200" rx="44" fill="#1a2744" mask="url(#fmask3)"/>
+        </svg>
+      </div>
+      <div class="icon-label">Bleu nuit</div>
+    </div>
+    <div class="icon-group">
+      <div class="app-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <mask id="fmask4">
+              <rect width="200" height="200" fill="white"/>
+              <g transform="translate(56, 38)">
+                <rect x="0" y="0" width="16" height="124" rx="2" fill="black"/>
+                <rect x="16" y="0" width="56" height="16" rx="2" fill="black"/>
+                <rect x="16" y="52" width="38" height="14" rx="2" fill="black"/>
+              </g>
+            </mask>
+          </defs>
+          <rect width="200" height="200" rx="44" fill="#1a1a1a" mask="url(#fmask4)"/>
+        </svg>
+      </div>
+      <div class="icon-label">Charbon</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     COLOR PALETTE
+     ============================================================ -->
+<div class="section-break">
+  <h2>Palette chromatique</h2>
+  <p>Bruns profonds, verts sauge, bleus nuit — et leurs declinaisons</p>
+</div>
+
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">Palette</span>
+    <span class="proposal-name">Couleurs principales</span>
+  </div>
+  <p class="proposal-desc">
+    Trois familles chromatiques qui fonctionnent ensemble ou separement.
+    Chaque couleur a 3 valeurs : profonde (fonds), medium (accents), pale (textes secondaires).
+  </p>
+
+  <div style="margin-bottom: 32px;">
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 12px;">Bruns</div>
+    <div class="swatch-row">
+      <div class="swatch" style="background: #3d2b1f;"><span class="swatch-name" style="color: #f5f0e8;">Profond</span><span class="swatch-hex" style="color: #f5f0e8;">#3d2b1f</span></div>
+      <div class="swatch" style="background: #5c3d2e;"><span class="swatch-name" style="color: #f5f0e8;">Medium</span><span class="swatch-hex" style="color: #f5f0e8;">#5c3d2e</span></div>
+      <div class="swatch" style="background: #7a5240;"><span class="swatch-name" style="color: #f5f0e8;">Chaud</span><span class="swatch-hex" style="color: #f5f0e8;">#7a5240</span></div>
+      <div class="swatch" style="background: #a07860;"><span class="swatch-name" style="color: #fff;">Cuivre</span><span class="swatch-hex" style="color: #fff;">#a07860</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 32px;">
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 12px;">Sauge</div>
+    <div class="swatch-row">
+      <div class="swatch" style="background: #3a4a34;"><span class="swatch-name" style="color: #f5f0e8;">Profond</span><span class="swatch-hex" style="color: #f5f0e8;">#3a4a34</span></div>
+      <div class="swatch" style="background: #5a6b52;"><span class="swatch-name" style="color: #f5f0e8;">Medium</span><span class="swatch-hex" style="color: #f5f0e8;">#5a6b52</span></div>
+      <div class="swatch" style="background: #7a8b70;"><span class="swatch-name" style="color: #fff;">Clair</span><span class="swatch-hex" style="color: #fff;">#7a8b70</span></div>
+      <div class="swatch" style="background: #a3b098;"><span class="swatch-name" style="color: #3a4a34;">Pale</span><span class="swatch-hex" style="color: #3a4a34;">#a3b098</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 32px;">
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 12px;">Bleus nuit</div>
+    <div class="swatch-row">
+      <div class="swatch" style="background: #0f1a2e;"><span class="swatch-name" style="color: #f5f0e8;">Abyssal</span><span class="swatch-hex" style="color: #f5f0e8;">#0f1a2e</span></div>
+      <div class="swatch" style="background: #1a2744;"><span class="swatch-name" style="color: #f5f0e8;">Profond</span><span class="swatch-hex" style="color: #f5f0e8;">#1a2744</span></div>
+      <div class="swatch" style="background: #2a3d5e;"><span class="swatch-name" style="color: #f5f0e8;">Medium</span><span class="swatch-hex" style="color: #f5f0e8;">#2a3d5e</span></div>
+      <div class="swatch" style="background: #4a6088;"><span class="swatch-name" style="color: #fff;">Clair</span><span class="swatch-hex" style="color: #fff;">#4a6088</span></div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 12px;">Neutres</div>
+    <div class="swatch-row">
+      <div class="swatch" style="background: #1a1a1a;"><span class="swatch-name" style="color: #f5f0e8;">Charbon</span><span class="swatch-hex" style="color: #f5f0e8;">#1a1a1a</span></div>
+      <div class="swatch" style="background: #f5f0e8;border:1px solid #e0d8cc;"><span class="swatch-name" style="color: #3d2b1f;">Creme</span><span class="swatch-hex" style="color: #3d2b1f;">#f5f0e8</span></div>
+      <div class="swatch" style="background: #faf7f2;border:1px solid #e8e2d8;"><span class="swatch-name" style="color: #3d2b1f;">Ecru</span><span class="swatch-hex" style="color: #3d2b1f;">#faf7f2</span></div>
+      <div class="swatch" style="background: #ffffff;border:1px solid #e5e0d8;"><span class="swatch-name" style="color: #3d2b1f;">Blanc</span><span class="swatch-hex" style="color: #3d2b1f;">#ffffff</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
