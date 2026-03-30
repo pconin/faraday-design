@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Logo V3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 40px;}
+
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .page-desc{font-size:13px;color:#999;margin-bottom:60px;max-width:700px;line-height:1.7;}
+
+  .section-break{text-align:center;padding:60px 0 40px;border-top:1px solid #ddd;margin-top:40px;}
+  .section-break h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .section-break p{font-size:12px;color:#bbb;margin-top:4px;}
+
+  .proposal{margin-bottom:70px;padding-bottom:70px;border-bottom:1px solid #e5e0d8;}
+  .proposal:last-child{border-bottom:none;}
+  .proposal-header{display:flex;align-items:baseline;gap:16px;margin-bottom:10px;}
+  .proposal-number{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#999;}
+  .proposal-name{font-size:13px;font-weight:600;color:#555;}
+  .proposal-desc{font-size:13px;color:#999;margin-bottom:36px;max-width:650px;line-height:1.6;}
+
+  .logo-row{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-bottom:12px;}
+  .logo-card{display:flex;align-items:center;justify-content:center;padding:48px 56px;border-radius:14px;min-width:260px;min-height:170px;}
+
+  /* Backgrounds */
+  .bg-cream{background:#f5f0e8;border:1px solid #e5dfd4;}
+  .bg-brown-deep{background:#2e1e14;}
+  .bg-brown{background:#3d2b1f;}
+  .bg-brown-warm{background:#4a3228;}
+  .bg-sage-deep{background:#2d3b28;}
+  .bg-sage{background:#5a6b52;}
+  .bg-sage-mist{background:#dfe5d8;border:1px solid #c8d0be;}
+  .bg-navy-deep{background:#0f1a2e;}
+  .bg-navy{background:#1a2744;}
+  .bg-slate{background:#2c3a48;}
+  .bg-teal{background:#1a3a3a;}
+  .bg-terracotta{background:#6b3a2a;}
+  .bg-stone{background:#4a4640;}
+  .bg-charcoal{background:#1a1a1a;}
+  .bg-warm-black{background:#1e1a16;}
+  .bg-forest{background:#1c2e1c;}
+  .bg-plum{background:#2e1e2e;}
+  .bg-white{background:#fff;border:1px solid #e8e4dc;}
+
+  .logo-inner{text-align:center;}
+  .bl{font-family:'Inter',sans-serif;font-weight:300;letter-spacing:.28em;text-transform:uppercase;margin-top:12px;opacity:.5;}
+
+  /* Colors */
+  .c-cream{color:#f5f0e8;} .c-brown{color:#3d2b1f;} .c-sage{color:#5a6b52;} .c-sage-light{color:#7a8b70;}
+  .c-navy{color:#1a2744;} .c-charcoal{color:#1a1a1a;} .c-stone{color:#6a6560;} .c-terracotta{color:#a06048;}
+  .c-teal{color:#4a8a8a;} .c-warm{color:#c8a882;} .c-sage-mist{color:#a3b098;}
+
+  /* Typo: Architecturale */
+  .t-archi .wm{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:40px;letter-spacing:.26em;text-transform:uppercase;}
+  .t-archi .bl{font-size:9.5px;}
+
+  /* Typo: Douce */
+  .t-douce .wm{font-family:'Manrope',sans-serif;font-weight:300;font-size:46px;letter-spacing:.02em;}
+  .t-douce .bl{font-size:10px;letter-spacing:.18em;font-family:'Manrope',sans-serif;}
+
+  /* Typo: Affirmee */
+  .t-affirm .wm{font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:40px;letter-spacing:.14em;text-transform:lowercase;}
+  .t-affirm .wm .sf{font-weight:600;text-transform:uppercase;margin-right:5px;display:inline-block;border-bottom:2.5px solid currentColor;padding-bottom:2px;line-height:1;}
+  .t-affirm .bl{font-size:9.5px;}
+
+  /* Typo: Monumentale */
+  .t-monum .wm{font-family:'Outfit',sans-serif;font-weight:300;font-size:36px;letter-spacing:.42em;text-transform:uppercase;}
+  .t-monum .bl{font-size:9px;letter-spacing:.3em;font-family:'Outfit',sans-serif;}
+
+  /* Typo: Essentielle */
+  .t-essent .wm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:42px;letter-spacing:.06em;}
+  .t-essent .bl{font-size:10px;letter-spacing:.2em;font-family:'Plus Jakarta Sans',sans-serif;}
+
+  /* Typo: Respiree */
+  .t-respir .wm{font-family:'Sora',sans-serif;font-weight:300;font-size:40px;letter-spacing:.20em;}
+  .t-respir .bl{font-size:9.5px;letter-spacing:.22em;font-family:'Sora',sans-serif;}
+
+  /* NEW Typo: Ancree — wider Douce */
+  .t-ancree .wm{font-family:'Manrope',sans-serif;font-weight:400;font-size:42px;letter-spacing:.14em;}
+  .t-ancree .bl{font-size:9.5px;letter-spacing:.22em;font-family:'Manrope',sans-serif;}
+
+  /* Icons */
+  .icons-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px;}
+  .icon-group{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .icon-label{font-size:10px;color:#999;text-align:center;max-width:100px;}
+  .app-icon{width:96px;height:96px;border-radius:22px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .app-icon svg{width:100%;height:100%;}
+
+  /* Swatches */
+  .swatch-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+  .swatch{width:74px;height:74px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:7px;}
+  .swatch-name{font-size:8px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;}
+  .swatch-hex{font-size:7.5px;opacity:.6;}
+  .sw-light .swatch-name,.sw-light .swatch-hex{color:#f5f0e8;}
+  .sw-dark .swatch-name,.sw-dark .swatch-hex{color:#3d2b1f;}
+</style>
+</head>
+<body>
+
+<h1>Faraday — Propositions V3</h1>
+<p class="page-desc">
+  7 directions typographiques avec baselines variees, explorations couleur elargies, nouveaux symboles app.
+</p>
+
+<!-- ============================================================
+     TYPOGRAPHIC DIRECTIONS
+     ============================================================ -->
+
+<!-- 01 Architecturale -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">01</span><span class="proposal-name">Architecturale</span></div>
+  <p class="proposal-desc">Space Grotesk medium, capitales, espacement large. Structurelle, confiante.</p>
+  <div class="logo-row">
+    <div class="logo-card bg-cream"><div class="logo-inner t-archi"><div class="wm c-brown">FARADAY</div><div class="bl c-brown">the present starts here</div></div></div>
+    <div class="logo-card bg-brown-deep"><div class="logo-inner t-archi"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the present starts here</div></div></div>
+    <div class="logo-card bg-sage-deep"><div class="logo-inner t-archi"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the present starts here</div></div></div>
+    <div class="logo-card bg-navy-deep"><div class="logo-inner t-archi"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the present starts here</div></div></div>
+    <div class="logo-card bg-teal"><div class="logo-inner t-archi"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the present starts here</div></div></div>
+    <div class="logo-card bg-stone"><div class="logo-inner t-archi"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the present starts here</div></div></div>
+  </div>
+</div>
+
+<!-- 02 Douce -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">02</span><span class="proposal-name">Douce</span></div>
+  <p class="proposal-desc">Manrope light, minuscules, serre. Intime, accessible.</p>
+  <div class="logo-row">
+    <div class="logo-card bg-cream"><div class="logo-inner t-douce"><div class="wm c-sage">faraday</div><div class="bl c-sage">silence is a choice</div></div></div>
+    <div class="logo-card bg-sage"><div class="logo-inner t-douce"><div class="wm c-cream">faraday</div><div class="bl c-cream">silence is a choice</div></div></div>
+    <div class="logo-card bg-sage-mist"><div class="logo-inner t-douce"><div class="wm c-sage-deep" style="color:#2d3b28;">faraday</div><div class="bl" style="color:#2d3b28;">silence is a choice</div></div></div>
+    <div class="logo-card bg-teal"><div class="logo-inner t-douce"><div class="wm c-cream">faraday</div><div class="bl c-cream">silence is a choice</div></div></div>
+    <div class="logo-card bg-warm-black"><div class="logo-inner t-douce"><div class="wm c-warm">faraday</div><div class="bl c-warm">silence is a choice</div></div></div>
+    <div class="logo-card bg-plum"><div class="logo-inner t-douce"><div class="wm c-cream">faraday</div><div class="bl c-cream">silence is a choice</div></div></div>
+  </div>
+</div>
+
+<!-- 03 Affirmee -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">03</span><span class="proposal-name">Affirmee</span></div>
+  <p class="proposal-desc">Space Grotesk, F detache et souligne. Ancrage, fondation.</p>
+  <div class="logo-row">
+    <div class="logo-card bg-cream"><div class="logo-inner t-affirm"><div class="wm c-brown"><span class="sf">F</span>araday</div><div class="bl c-brown">disconnect to reconnect</div></div></div>
+    <div class="logo-card bg-brown"><div class="logo-inner t-affirm"><div class="wm c-cream"><span class="sf">F</span>araday</div><div class="bl c-cream">disconnect to reconnect</div></div></div>
+    <div class="logo-card bg-terracotta"><div class="logo-inner t-affirm"><div class="wm c-cream"><span class="sf">F</span>araday</div><div class="bl c-cream">disconnect to reconnect</div></div></div>
+    <div class="logo-card bg-navy"><div class="logo-inner t-affirm"><div class="wm c-cream"><span class="sf">F</span>araday</div><div class="bl c-cream">disconnect to reconnect</div></div></div>
+    <div class="logo-card bg-forest"><div class="logo-inner t-affirm"><div class="wm c-cream"><span class="sf">F</span>araday</div><div class="bl c-cream">disconnect to reconnect</div></div></div>
+    <div class="logo-card bg-stone"><div class="logo-inner t-affirm"><div class="wm c-cream"><span class="sf">F</span>araday</div><div class="bl c-cream">disconnect to reconnect</div></div></div>
+  </div>
+</div>
+
+<!-- 04 Monumentale -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">04</span><span class="proposal-name">Monumentale</span></div>
+  <p class="proposal-desc">Outfit light, capitales ultra-espacees. Aerien, sculptural.</p>
+  <div class="logo-row">
+    <div class="logo-card bg-sage-mist"><div class="logo-inner t-monum"><div class="wm" style="color:#2d3b28;">FARADAY</div><div class="bl" style="color:#2d3b28;">the art of pause</div></div></div>
+    <div class="logo-card bg-sage-deep"><div class="logo-inner t-monum"><div class="wm c-sage-mist">FARADAY</div><div class="bl c-sage-mist">the art of pause</div></div></div>
+    <div class="logo-card bg-navy-deep"><div class="logo-inner t-monum"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the art of pause</div></div></div>
+    <div class="logo-card bg-slate"><div class="logo-inner t-monum"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the art of pause</div></div></div>
+    <div class="logo-card bg-warm-black"><div class="logo-inner t-monum"><div class="wm c-warm">FARADAY</div><div class="bl c-warm">the art of pause</div></div></div>
+    <div class="logo-card bg-plum"><div class="logo-inner t-monum"><div class="wm c-cream">FARADAY</div><div class="bl c-cream">the art of pause</div></div></div>
+  </div>
+</div>
+
+<!-- 05 Essentielle -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">05</span><span class="proposal-name">Essentielle</span></div>
+  <p class="proposal-desc">Plus Jakarta Sans semi-bold, title case. Directe, premium, contemporaine.</p>
+  <div class="logo-row">
+    <div class="logo-card bg-cream"><div class="logo-inner t-essent"><div class="wm c-navy">Faraday</div><div class="bl c-navy">come back to yourself</div></div></div>
+    <div class="logo-card bg-navy"><div class="logo-inner t-essent"><div class="wm c-cream">Faraday</div><div class="bl c-cream">come back to yourself</div></div></div>
+    <div class="logo-card bg-brown-warm"><div class="logo-inner t-essent"><div class="wm c-cream">Faraday</div><div class="bl c-cream">come back to yourself</div></div></div>
+    <div class="logo-card bg-teal"><div class="logo-inner t-essent"><div class="wm c-cream">Faraday</div><div class="bl c-cream">come back to yourself</div></div></div>
+    <div class="logo-card bg-terracotta"><div class="logo-inner t-essent"><div class="wm c-cream">Faraday</div><div class="bl c-cream">come back to yourself</div></div></div>
+    <div class="logo-card bg-charcoal"><div class="logo-inner t-essent"><div class="wm c-sage-light" style="color:#8fa888;">Faraday</div><div class="bl" style="color:#8fa888;">come back to yourself</div></div></div>
+  </div>
+</div>
+
+<!-- 06 Respiree -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">06</span><span class="proposal-name">Respiree</span></div>
+  <p class="proposal-desc">Sora light, title case, espacement large. Aeree, organique.</p>
+  <div class="logo-row">
+    <div class="logo-card bg-white"><div class="logo-inner t-respir"><div class="wm c-stone">Faraday</div><div class="bl c-stone">where noise ends</div></div></div>
+    <div class="logo-card bg-stone"><div class="logo-inner t-respir"><div class="wm c-cream">Faraday</div><div class="bl c-cream">where noise ends</div></div></div>
+    <div class="logo-card bg-sage"><div class="logo-inner t-respir"><div class="wm c-cream">Faraday</div><div class="bl c-cream">where noise ends</div></div></div>
+    <div class="logo-card bg-navy-deep"><div class="logo-inner t-respir"><div class="wm c-cream">Faraday</div><div class="bl c-cream">where noise ends</div></div></div>
+    <div class="logo-card bg-forest"><div class="logo-inner t-respir"><div class="wm c-cream">Faraday</div><div class="bl c-cream">where noise ends</div></div></div>
+    <div class="logo-card bg-brown-deep"><div class="logo-inner t-respir"><div class="wm c-warm">Faraday</div><div class="bl c-warm">where noise ends</div></div></div>
+  </div>
+</div>
+
+<!-- 07 Ancree (NEW) -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">07</span><span class="proposal-name">Ancree — nouveau</span></div>
+  <p class="proposal-desc">Manrope regular, title case, espacement moyen. Entre Douce et Essentielle.
+    Plus de poids que Douce, plus d'air que Essentielle. Equilibree.</p>
+  <div class="logo-row">
+    <div class="logo-card bg-cream"><div class="logo-inner t-ancree"><div class="wm c-brown">Faraday</div><div class="bl c-brown">reclaim your time</div></div></div>
+    <div class="logo-card bg-brown"><div class="logo-inner t-ancree"><div class="wm c-cream">Faraday</div><div class="bl c-cream">reclaim your time</div></div></div>
+    <div class="logo-card bg-sage"><div class="logo-inner t-ancree"><div class="wm c-cream">Faraday</div><div class="bl c-cream">reclaim your time</div></div></div>
+    <div class="logo-card bg-teal"><div class="logo-inner t-ancree"><div class="wm c-cream">Faraday</div><div class="bl c-cream">reclaim your time</div></div></div>
+    <div class="logo-card bg-slate"><div class="logo-inner t-ancree"><div class="wm c-cream">Faraday</div><div class="bl c-cream">reclaim your time</div></div></div>
+    <div class="logo-card bg-warm-black"><div class="logo-inner t-ancree"><div class="wm c-warm">Faraday</div><div class="bl c-warm">reclaim your time</div></div></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     APP ICONS — SYMBOLS
+     ============================================================ -->
+<div class="section-break">
+  <h2>App Icons — Symboles</h2>
+  <p>5 concepts. Chacun decliné sur toute la palette.</p>
+</div>
+
+<!-- A — F Interrompu -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">A</span><span class="proposal-name">F Interrompu — le signal qui s'arrete</span></div>
+  <p class="proposal-desc">La barre horizontale du F se dissipe. Le signal est coupe.</p>
+  <div class="icons-grid">
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2e1e14"/><g transform="translate(52,42)"><rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/><rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity=".3"/><rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity=".1"/></g></svg></div><div class="icon-label">Brun profond</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2d3b28"/><g transform="translate(52,42)"><rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/><rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity=".3"/><rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity=".1"/></g></svg></div><div class="icon-label">Foret</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#1a3a3a"/><g transform="translate(52,42)"><rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/><rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity=".3"/><rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity=".1"/></g></svg></div><div class="icon-label">Teal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#0f1a2e"/><g transform="translate(52,42)"><rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/><rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity=".3"/><rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity=".1"/></g></svg></div><div class="icon-label">Bleu abyssal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#4a4640"/><g transform="translate(52,42)"><rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/><rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity=".3"/><rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity=".1"/></g></svg></div><div class="icon-label">Pierre</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#6b3a2a"/><g transform="translate(52,42)"><rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/><rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity=".3"/><rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity=".1"/></g></svg></div><div class="icon-label">Terracotta</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2e1e2e"/><g transform="translate(52,42)"><rect x="0" y="0" width="14" height="116" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="52" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="30" height="12" rx="2" fill="#f5f0e8"/><rect x="54" y="50" width="16" height="12" rx="2" fill="#f5f0e8" opacity=".3"/><rect x="78" y="50" width="10" height="12" rx="2" fill="#f5f0e8" opacity=".1"/></g></svg></div><div class="icon-label">Prune</div></div>
+  </div>
+</div>
+
+<!-- B — F + Pause -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">B</span><span class="proposal-name">F + Pause — la deconnexion incarnee</span></div>
+  <p class="proposal-desc">Le F + une barre parallele forment le symbole universel de la pause.</p>
+  <div class="icons-grid">
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2e1e14"/><g transform="translate(44,40)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/><rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/><rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity=".55"/></g></svg></div><div class="icon-label">Brun profond</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2d3b28"/><g transform="translate(44,40)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/><rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/><rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity=".55"/></g></svg></div><div class="icon-label">Foret</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#1a3a3a"/><g transform="translate(44,40)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/><rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/><rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity=".55"/></g></svg></div><div class="icon-label">Teal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#0f1a2e"/><g transform="translate(44,40)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/><rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/><rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity=".55"/></g></svg></div><div class="icon-label">Bleu abyssal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#4a4640"/><g transform="translate(44,40)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/><rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/><rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity=".55"/></g></svg></div><div class="icon-label">Pierre</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2c3a48"/><g transform="translate(44,40)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="50" height="13" rx="2" fill="#f5f0e8"/><rect x="14" y="48" width="36" height="12" rx="2" fill="#f5f0e8"/><rect x="80" y="24" width="12" height="72" rx="2" fill="#f5f0e8" opacity=".55"/></g></svg></div><div class="icon-label">Ardoise</div></div>
+  </div>
+</div>
+
+<!-- C — F + Point final -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">C</span><span class="proposal-name">F. — le point final</span></div>
+  <p class="proposal-desc">Un point apres le F. Comme une phrase qui s'arrete. Un point final sur le bruit.
+    Minimaliste, affirme, memorable. Le point devient un element graphique fort.</p>
+  <div class="icons-grid">
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2e1e14"/><g transform="translate(40,38)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="36" height="12" rx="2" fill="#f5f0e8"/><circle cx="96" cy="108" r="10" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Brun profond</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2d3b28"/><g transform="translate(40,38)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="36" height="12" rx="2" fill="#f5f0e8"/><circle cx="96" cy="108" r="10" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Foret</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#1a3a3a"/><g transform="translate(40,38)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="36" height="12" rx="2" fill="#f5f0e8"/><circle cx="96" cy="108" r="10" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Teal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#0f1a2e"/><g transform="translate(40,38)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="36" height="12" rx="2" fill="#f5f0e8"/><circle cx="96" cy="108" r="10" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Bleu abyssal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#6b3a2a"/><g transform="translate(40,38)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="36" height="12" rx="2" fill="#f5f0e8"/><circle cx="96" cy="108" r="10" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Terracotta</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#4a4640"/><g transform="translate(40,38)"><rect x="0" y="0" width="14" height="120" rx="2" fill="#f5f0e8"/><rect x="14" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="14" y="50" width="36" height="12" rx="2" fill="#f5f0e8"/><circle cx="96" cy="108" r="10" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Pierre</div></div>
+  </div>
+</div>
+
+<!-- D — F avec encoche -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">D</span><span class="proposal-name">F Entaille — la coupure volontaire</span></div>
+  <p class="proposal-desc">La barre verticale du F a une encoche, une coupure nette. Le flux est interrompu
+    deliberement. Le F reste lisible mais porte sa cicatrice de deconnexion.</p>
+  <div class="icons-grid">
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2e1e14"/><g transform="translate(50,38)"><rect x="0" y="0" width="15" height="48" rx="2" fill="#f5f0e8"/><rect x="0" y="60" width="15" height="64" rx="2" fill="#f5f0e8"/><rect x="15" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="15" y="40" width="38" height="12" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Brun profond</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2d3b28"/><g transform="translate(50,38)"><rect x="0" y="0" width="15" height="48" rx="2" fill="#f5f0e8"/><rect x="0" y="60" width="15" height="64" rx="2" fill="#f5f0e8"/><rect x="15" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="15" y="40" width="38" height="12" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Foret</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#1a3a3a"/><g transform="translate(50,38)"><rect x="0" y="0" width="15" height="48" rx="2" fill="#f5f0e8"/><rect x="0" y="60" width="15" height="64" rx="2" fill="#f5f0e8"/><rect x="15" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="15" y="40" width="38" height="12" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Teal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#0f1a2e"/><g transform="translate(50,38)"><rect x="0" y="0" width="15" height="48" rx="2" fill="#f5f0e8"/><rect x="0" y="60" width="15" height="64" rx="2" fill="#f5f0e8"/><rect x="15" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="15" y="40" width="38" height="12" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Bleu abyssal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2c3a48"/><g transform="translate(50,38)"><rect x="0" y="0" width="15" height="48" rx="2" fill="#f5f0e8"/><rect x="0" y="60" width="15" height="64" rx="2" fill="#f5f0e8"/><rect x="15" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="15" y="40" width="38" height="12" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Ardoise</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2e1e2e"/><g transform="translate(50,38)"><rect x="0" y="0" width="15" height="48" rx="2" fill="#f5f0e8"/><rect x="0" y="60" width="15" height="64" rx="2" fill="#f5f0e8"/><rect x="15" y="0" width="54" height="14" rx="2" fill="#f5f0e8"/><rect x="15" y="40" width="38" height="12" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Prune</div></div>
+  </div>
+</div>
+
+<!-- E — F + Underline -->
+<div class="proposal">
+  <div class="proposal-header"><span class="proposal-number">E</span><span class="proposal-name">F Souligne — l'assise, la fondation</span></div>
+  <p class="proposal-desc">Le F repose sur une ligne horizontale epaisse qui depasse a droite.
+    La ligne evoque la stabilite de la box, le sol, l'ancrage physique de l'objet. Lien direct avec la direction "Affirmee".</p>
+  <div class="icons-grid">
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2e1e14"/><g transform="translate(46,36)"><rect x="0" y="0" width="13" height="104" rx="2" fill="#f5f0e8"/><rect x="13" y="0" width="48" height="13" rx="2" fill="#f5f0e8"/><rect x="13" y="44" width="32" height="11" rx="2" fill="#f5f0e8"/><rect x="0" y="114" width="108" height="5" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Brun profond</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#2d3b28"/><g transform="translate(46,36)"><rect x="0" y="0" width="13" height="104" rx="2" fill="#f5f0e8"/><rect x="13" y="0" width="48" height="13" rx="2" fill="#f5f0e8"/><rect x="13" y="44" width="32" height="11" rx="2" fill="#f5f0e8"/><rect x="0" y="114" width="108" height="5" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Foret</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#1a3a3a"/><g transform="translate(46,36)"><rect x="0" y="0" width="13" height="104" rx="2" fill="#f5f0e8"/><rect x="13" y="0" width="48" height="13" rx="2" fill="#f5f0e8"/><rect x="13" y="44" width="32" height="11" rx="2" fill="#f5f0e8"/><rect x="0" y="114" width="108" height="5" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Teal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#0f1a2e"/><g transform="translate(46,36)"><rect x="0" y="0" width="13" height="104" rx="2" fill="#f5f0e8"/><rect x="13" y="0" width="48" height="13" rx="2" fill="#f5f0e8"/><rect x="13" y="44" width="32" height="11" rx="2" fill="#f5f0e8"/><rect x="0" y="114" width="108" height="5" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Bleu abyssal</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#4a4640"/><g transform="translate(46,36)"><rect x="0" y="0" width="13" height="104" rx="2" fill="#f5f0e8"/><rect x="13" y="0" width="48" height="13" rx="2" fill="#f5f0e8"/><rect x="13" y="44" width="32" height="11" rx="2" fill="#f5f0e8"/><rect x="0" y="114" width="108" height="5" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Pierre</div></div>
+    <div class="icon-group"><div class="app-icon"><svg viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#6b3a2a"/><g transform="translate(46,36)"><rect x="0" y="0" width="13" height="104" rx="2" fill="#f5f0e8"/><rect x="13" y="0" width="48" height="13" rx="2" fill="#f5f0e8"/><rect x="13" y="44" width="32" height="11" rx="2" fill="#f5f0e8"/><rect x="0" y="114" width="108" height="5" rx="2" fill="#f5f0e8"/></g></svg></div><div class="icon-label">Terracotta</div></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     COLOR PALETTE
+     ============================================================ -->
+<div class="section-break">
+  <h2>Explorations chromatiques</h2>
+  <p>Au-dela du brun/sauge/navy — nouvelles pistes</p>
+</div>
+
+<div class="proposal">
+  <div class="proposal-desc" style="margin-bottom: 24px;">Trois familles confirmees + quatre nouvelles pistes a explorer.</div>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:12px;">Bruns — confirmé</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#2e1e14;"><span class="swatch-name">Abyssal</span><span class="swatch-hex">#2e1e14</span></div>
+      <div class="swatch sw-light" style="background:#3d2b1f;"><span class="swatch-name">Profond</span><span class="swatch-hex">#3d2b1f</span></div>
+      <div class="swatch sw-light" style="background:#5c3d2e;"><span class="swatch-name">Medium</span><span class="swatch-hex">#5c3d2e</span></div>
+      <div class="swatch sw-light" style="background:#7a5240;"><span class="swatch-name">Chaud</span><span class="swatch-hex">#7a5240</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:12px;">Verts — confirme</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#1c2e1c;"><span class="swatch-name">Foret</span><span class="swatch-hex">#1c2e1c</span></div>
+      <div class="swatch sw-light" style="background:#2d3b28;"><span class="swatch-name">Mousse</span><span class="swatch-hex">#2d3b28</span></div>
+      <div class="swatch sw-light" style="background:#5a6b52;"><span class="swatch-name">Sauge</span><span class="swatch-hex">#5a6b52</span></div>
+      <div class="swatch sw-dark" style="background:#a3b098;"><span class="swatch-name">Brume</span><span class="swatch-hex">#a3b098</span></div>
+      <div class="swatch sw-dark" style="background:#dfe5d8;border:1px solid #c8d0be;"><span class="swatch-name">Rosee</span><span class="swatch-hex">#dfe5d8</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:12px;">Bleus — confirme</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#0f1a2e;"><span class="swatch-name">Abyssal</span><span class="swatch-hex">#0f1a2e</span></div>
+      <div class="swatch sw-light" style="background:#1a2744;"><span class="swatch-name">Nuit</span><span class="swatch-hex">#1a2744</span></div>
+      <div class="swatch sw-light" style="background:#2c3a48;"><span class="swatch-name">Ardoise</span><span class="swatch-hex">#2c3a48</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#c8845a;margin-bottom:12px;">&#9733; Teal profond — nouveau</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#0e2a2a;"><span class="swatch-name">Abyssal</span><span class="swatch-hex">#0e2a2a</span></div>
+      <div class="swatch sw-light" style="background:#1a3a3a;"><span class="swatch-name">Profond</span><span class="swatch-hex">#1a3a3a</span></div>
+      <div class="swatch sw-light" style="background:#2a5050;"><span class="swatch-name">Medium</span><span class="swatch-hex">#2a5050</span></div>
+      <div class="swatch sw-light" style="background:#4a7a7a;"><span class="swatch-name">Clair</span><span class="swatch-hex">#4a7a7a</span></div>
+    </div>
+    <p style="font-size:12px;color:#999;margin-top:8px;">Entre bleu et vert. Profondeur oceanique, calme, singulier. Pas corporate.</p>
+  </div>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#c8845a;margin-bottom:12px;">&#9733; Pierre chaude — nouveau</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#2a2622;"><span class="swatch-name">Basalte</span><span class="swatch-hex">#2a2622</span></div>
+      <div class="swatch sw-light" style="background:#4a4640;"><span class="swatch-name">Pierre</span><span class="swatch-hex">#4a4640</span></div>
+      <div class="swatch sw-light" style="background:#6a6560;"><span class="swatch-name">Galet</span><span class="swatch-hex">#6a6560</span></div>
+      <div class="swatch sw-dark" style="background:#a09a90;"><span class="swatch-name">Sable</span><span class="swatch-hex">#a09a90</span></div>
+    </div>
+    <p style="font-size:12px;color:#999;margin-top:8px;">Gris avec sous-ton chaud. Mineral, neutre mais pas froid. Tres beton brut / architecture.</p>
+  </div>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#c8845a;margin-bottom:12px;">&#9733; Terracotta — nouveau</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#3a1e14;"><span class="swatch-name">Brique</span><span class="swatch-hex">#3a1e14</span></div>
+      <div class="swatch sw-light" style="background:#6b3a2a;"><span class="swatch-name">Terre</span><span class="swatch-hex">#6b3a2a</span></div>
+      <div class="swatch sw-light" style="background:#a06048;"><span class="swatch-name">Argile</span><span class="swatch-hex">#a06048</span></div>
+      <div class="swatch sw-dark" style="background:#c8a882;"><span class="swatch-name">Cuivre</span><span class="swatch-hex">#c8a882</span></div>
+    </div>
+    <p style="font-size:12px;color:#999;margin-top:8px;">Plus rouge que le brun. Ceramique, poterie, artisanat. Tres ancre, tres materiau.</p>
+  </div>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#c8845a;margin-bottom:12px;">&#9733; Prune / Aubergine — nouveau</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#1e121e;"><span class="swatch-name">Nuit</span><span class="swatch-hex">#1e121e</span></div>
+      <div class="swatch sw-light" style="background:#2e1e2e;"><span class="swatch-name">Prune</span><span class="swatch-hex">#2e1e2e</span></div>
+      <div class="swatch sw-light" style="background:#4a3048;"><span class="swatch-name">Mure</span><span class="swatch-hex">#4a3048</span></div>
+      <div class="swatch sw-light" style="background:#6a4a68;"><span class="swatch-name">Bruyere</span><span class="swatch-hex">#6a4a68</span></div>
+    </div>
+    <p style="font-size:12px;color:#999;margin-top:8px;">Violet tres desature. Introspection, nuit, contemplation. Singulier et inattendu.</p>
+  </div>
+
+  <div>
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:12px;">Neutres / Fonds clairs</div>
+    <div class="swatch-row">
+      <div class="swatch sw-light" style="background:#1e1a16;"><span class="swatch-name">Noir chaud</span><span class="swatch-hex">#1e1a16</span></div>
+      <div class="swatch sw-light" style="background:#1a1a1a;"><span class="swatch-name">Charbon</span><span class="swatch-hex">#1a1a1a</span></div>
+      <div class="swatch sw-dark" style="background:#f5f0e8;border:1px solid #e0d8cc;"><span class="swatch-name">Creme</span><span class="swatch-hex">#f5f0e8</span></div>
+      <div class="swatch sw-dark" style="background:#faf7f2;border:1px solid #e8e2d8;"><span class="swatch-name">Ecru</span><span class="swatch-hex">#faf7f2</span></div>
+      <div class="swatch sw-dark" style="background:#dfe5d8;border:1px solid #c8d0be;"><span class="swatch-name">Rosee</span><span class="swatch-hex">#dfe5d8</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
