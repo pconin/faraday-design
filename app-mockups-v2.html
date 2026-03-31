@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — App V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  :root{
+    --bg:#0e0e10;--surface:#1a1a1e;--surface-2:#222226;--surface-3:#2a2a2f;
+    --border:#2e2e34;--text:#f0ede8;--text-secondary:#8a8a94;--text-tertiary:#5a5a64;
+    --accent:#c8845a;--accent-light:#d4956a;--accent-dim:rgba(200,132,90,.12);
+    --green:#6b9b6b;--green-dim:rgba(107,155,107,.12);
+    --blue:#6888b8;--blue-dim:rgba(104,136,184,.12);
+    --purple:#8878c8;--purple-dim:rgba(136,120,200,.12);
+    --red:#b86868;--red-dim:rgba(184,104,104,.12);
+    --gold:#d4a44a;--gold-dim:rgba(212,164,74,.15);
+    --silver:#a0a0b0;--bronze:#b08050;
+    --radius:14px;--radius-sm:10px;
+  }
+
+  body{background:#1a1a1e;font-family:'Inter',sans-serif;color:var(--text);padding:40px 20px;}
+
+  .section-divider{text-align:center;padding:60px 0 40px;}
+  .section-divider h2{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .section-divider p{font-size:12px;color:var(--text-tertiary);}
+
+  .screens-row{display:flex;flex-wrap:wrap;gap:40px;justify-content:center;align-items:flex-start;margin-bottom:20px;}
+  .screen-wrapper{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .screen-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-tertiary);}
+
+  .phone{width:375px;height:812px;background:var(--bg);border-radius:40px;border:2px solid var(--border);overflow:hidden;display:flex;flex-direction:column;}
+
+  .status-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 28px 8px;font-size:12px;font-weight:600;}
+  .status-bar .time{font-size:15px;font-weight:600;}
+  .si{display:flex;gap:5px;font-size:11px;}
+
+  .nav-header{padding:8px 20px 16px;}
+  .nav-header h1{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;letter-spacing:-.02em;}
+  .nav-header .subtitle{font-size:13px;color:var(--text-secondary);margin-top:4px;}
+
+  .tab-bar-top{display:flex;gap:0;padding:0 20px;margin-bottom:16px;border-bottom:1px solid var(--border);}
+  .tab-item{padding:10px 14px 12px;font-size:13px;font-weight:500;color:var(--text-tertiary);position:relative;}
+  .tab-item.active{color:var(--accent);}
+  .tab-item.active::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--accent);border-radius:2px;}
+
+  .content{flex:1;overflow-y:auto;padding:0 20px 20px;}
+
+  .bottom-nav{display:flex;justify-content:space-around;padding:10px 0 28px;border-top:1px solid var(--border);background:var(--bg);}
+  .bni{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--text-tertiary);}
+  .bni.active{color:var(--accent);}
+  .bni .ni{font-size:18px;height:22px;display:flex;align-items:center;}
+
+  .back-btn{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);padding:8px 20px 4px;font-weight:500;}
+
+  .section-header{display:flex;justify-content:space-between;align-items:center;padding:16px 0 10px;}
+  .section-title{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);}
+  .section-action{font-size:12px;color:var(--accent);font-weight:500;}
+
+  .chevron{margin-left:auto;color:var(--text-tertiary);font-size:14px;}
+
+  .add-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border:1.5px dashed var(--border);border-radius:var(--radius);color:var(--text-secondary);font-size:13px;font-weight:500;margin-bottom:16px;}
+
+  .avatar{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;border:2px solid var(--bg);margin-right:-8px;}
+  .a1{background:#c8845a;color:#fff;} .a2{background:#6888b8;color:#fff;} .a3{background:#6b9b6b;color:#fff;} .a4{background:#b8688a;color:#fff;} .a5{background:#8878c8;color:#fff;}
+
+  .primary-btn{display:block;width:calc(100% - 40px);margin:24px 20px;padding:16px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;border:none;border-radius:var(--radius-sm);text-align:center;font-family:'Inter',sans-serif;}
+  .secondary-btn{display:block;width:calc(100% - 40px);margin:0 20px 12px;padding:14px;background:transparent;color:var(--text-secondary);font-size:14px;font-weight:500;border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center;}
+
+  .modal-handle{width:36px;height:4px;background:var(--surface-3);border-radius:2px;margin:10px auto 0;}
+  .modal-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;padding:20px 20px 4px;}
+  .modal-subtitle{font-size:13px;color:var(--text-secondary);padding:0 20px 20px;}
+
+  .form-group{padding:0 20px;margin-bottom:18px;}
+  .form-label{font-size:12px;font-weight:500;color:var(--text-secondary);margin-bottom:8px;display:block;}
+  .form-input{width:100%;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:15px;font-family:'Inter',sans-serif;}
+
+  .filter-pills{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;}
+  .pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;white-space:nowrap;background:var(--surface);color:var(--text-secondary);border:1px solid var(--border);}
+  .pill.active{background:var(--accent-dim);color:var(--accent);border-color:var(--accent);}
+
+  /* Box card */
+  .box-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:12px;padding:16px;display:flex;align-items:center;gap:14px;}
+  .box-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .box-info{flex:1;}
+  .box-name{font-size:15px;font-weight:600;}
+  .box-meta{font-size:12px;color:var(--text-secondary);margin-top:2px;}
+  .box-stat-right{text-align:right;}
+  .box-stat-val{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--accent-light);}
+  .box-stat-lbl{font-size:10px;color:var(--text-tertiary);}
+
+  .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .dot.on{background:var(--green);} .dot.off{background:var(--text-tertiary);}
+
+  .tag{display:inline-block;font-size:10px;font-weight:500;padding:3px 8px;border-radius:6px;background:var(--surface-3);color:var(--text-secondary);margin-left:6px;}
+
+  /* Analytics */
+  .analytics-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:18px;margin-bottom:12px;}
+  .ac-label{font-size:11px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;font-weight:500;}
+  .ac-value{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;margin-top:6px;letter-spacing:-.02em;}
+  .ac-change{font-size:12px;margin-top:4px;}
+  .ac-change.up{color:var(--green);} .ac-change.down{color:var(--red);}
+  .analytics-row{display:flex;gap:12px;margin-bottom:12px;}
+  .analytics-row .analytics-card{flex:1;margin-bottom:0;}
+
+  .bar-chart{display:flex;align-items:flex-end;gap:6px;height:80px;margin-top:16px;padding-top:8px;}
+  .bar-group{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .bar{width:100%;border-radius:4px 4px 0 0;min-height:4px;}
+  .bar.accent{background:var(--accent);}
+  .bar-label{font-size:9px;color:var(--text-tertiary);}
+
+  .mb-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+  .mb-row:last-child{border-bottom:none;}
+  .mb-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#fff;}
+  .mb-name{flex:1;font-size:13px;font-weight:500;}
+  .mb-bar-c{width:100px;height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden;}
+  .mb-bar-f{height:100%;border-radius:3px;background:var(--accent);}
+  .mb-value{font-size:12px;font-weight:600;width:40px;text-align:right;}
+
+  /* Group specific */
+  .group-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;overflow:hidden;}
+  .group-card-header{display:flex;align-items:center;padding:16px;}
+  .group-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-right:14px;flex-shrink:0;}
+  .group-info{flex:1;}
+  .group-name{font-weight:600;font-size:15px;}
+  .group-meta{font-size:12px;color:var(--text-secondary);margin-top:2px;}
+  .group-stats-row{display:flex;padding:0 16px 14px;gap:8px;}
+  .gsc{flex:1;background:var(--surface-2);border-radius:var(--radius-sm);padding:10px 12px;text-align:center;}
+  .gsc-value{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;}
+  .gsc-label{font-size:10px;color:var(--text-tertiary);margin-top:2px;}
+  .members-row{display:flex;align-items:center;padding:12px 16px;border-top:1px solid var(--border);gap:6px;}
+  .members-text{margin-left:14px;font-size:12px;color:var(--text-secondary);}
+
+  /* Rank */
+  .rank-row{display:flex;align-items:center;gap:12px;padding:14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:8px;}
+  .rank-row.first{border:1px solid var(--gold);background:var(--gold-dim);}
+  .rank-row.second{border:1px solid rgba(160,160,176,.25);}
+  .rank-row.third{border:1px solid rgba(176,128,80,.25);}
+  .rank-pos{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .rank-pos.p1{background:var(--gold);color:#1a1a1a;} .rank-pos.p2{background:var(--silver);color:#1a1a1a;} .rank-pos.p3{background:var(--bronze);color:#fff;} .rank-pos.p4{background:var(--surface-3);color:var(--text-secondary);}
+  .rank-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;flex-shrink:0;}
+  .rank-info{flex:1;}
+  .rank-name{font-size:14px;font-weight:500;}
+  .rank-detail{font-size:11px;color:var(--text-secondary);margin-top:1px;}
+  .rank-time{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;text-align:right;}
+  .rank-unit{font-size:11px;color:var(--text-secondary);font-weight:400;}
+  .rank-you{font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);padding:2px 6px;border-radius:4px;margin-left:6px;}
+
+  /* Challenge */
+  .challenge-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px;margin-bottom:12px;}
+  .challenge-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .challenge-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .challenge-title{font-size:14px;font-weight:600;}
+  .challenge-desc{font-size:12px;color:var(--text-secondary);margin-top:2px;}
+  .challenge-progress{width:100%;height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden;margin-bottom:8px;}
+  .challenge-fill{height:100%;border-radius:4px;}
+  .challenge-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--text-secondary);}
+
+  /* Session mini */
+  .session-mini{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:8px;}
+  .session-badge{background:var(--accent-dim);color:var(--accent);font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;padding:8px 12px;border-radius:8px;min-width:58px;text-align:center;}
+  .session-info{flex:1;}
+  .session-date{font-size:13px;font-weight:500;}
+  .session-detail{font-size:11px;color:var(--text-secondary);margin-top:2px;}
+
+  /* Privacy */
+  .privacy-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-bottom:12px;}
+  .privacy-option{display:flex;align-items:center;gap:14px;padding:16px;border-bottom:1px solid var(--border);}
+  .privacy-option:last-child{border-bottom:none;}
+  .privacy-option.selected{background:var(--accent-dim);}
+  .privacy-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .privacy-radio.checked{border-color:var(--accent);}
+  .privacy-radio.checked::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--accent);}
+  .privacy-label{font-size:14px;font-weight:500;}
+  .privacy-desc{font-size:11px;color:var(--text-secondary);margin-top:2px;}
+
+  /* Box filter chip in groups */
+  .box-filter-banner{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:16px;border:1px solid var(--border);}
+  .box-filter-icon{font-size:14px;}
+  .box-filter-text{font-size:12px;color:var(--text-secondary);flex:1;}
+  .box-filter-chips{display:flex;gap:6px;flex-wrap:wrap;}
+  .box-chip{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:500;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(200,132,90,.25);}
+
+  @keyframes scan{0%,100%{top:20%;opacity:.3}50%{top:80%;opacity:1}}
+
+  .visitor-badge{font-size:10px;padding:3px 7px;border-radius:5px;background:var(--surface-3);color:var(--text-tertiary);font-weight:500;}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     SECTION: MES BOXES
+     ================================================================ -->
+<div class="section-divider">
+  <h2>Mes Boxes</h2>
+  <p>Gestion simple, tags, analytics opt-in</p>
+</div>
+
+<div class="screens-row">
+
+<!-- S01 — Box list -->
+<div class="screen-wrapper">
+  <div class="screen-label">01 — Mes boxes</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="nav-header">
+      <h1>Mes Boxes</h1>
+      <div class="subtitle">4 boxes</div>
+    </div>
+    <div class="content">
+      <div class="box-card">
+        <div class="box-icon" style="background:var(--accent-dim);">&#9632;</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-right:8px;"><div class="dot on"></div></div>
+        <div class="box-info">
+          <div class="box-name">Salon <span class="tag">Maison</span></div>
+          <div class="box-meta">Faraday Box Pro &middot; En ligne</div>
+        </div>
+        <div class="box-stat-right">
+          <div class="box-stat-val">2h14</div>
+          <div class="box-stat-lbl">aujourd'hui</div>
+        </div>
+      </div>
+
+      <div class="box-card">
+        <div class="box-icon" style="background:var(--accent-dim);">&#9632;</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-right:8px;"><div class="dot on"></div></div>
+        <div class="box-info">
+          <div class="box-name">Chambre <span class="tag">Maison</span></div>
+          <div class="box-meta">Faraday Box &middot; En ligne</div>
+        </div>
+        <div class="box-stat-right">
+          <div class="box-stat-val">7h32</div>
+          <div class="box-stat-lbl">aujourd'hui</div>
+        </div>
+      </div>
+
+      <div class="box-card">
+        <div class="box-icon" style="background:var(--blue-dim);">&#9632;</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-right:8px;"><div class="dot on"></div></div>
+        <div class="box-info">
+          <div class="box-name">Salle de reu <span class="tag">Bureau</span></div>
+          <div class="box-meta">Faraday Box Pro &middot; En ligne</div>
+        </div>
+        <div class="box-stat-right">
+          <div class="box-stat-val">4h05</div>
+          <div class="box-stat-lbl">aujourd'hui</div>
+        </div>
+      </div>
+
+      <div class="box-card">
+        <div class="box-icon" style="background:var(--green-dim);">&#9632;</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-right:8px;"><div class="dot off"></div></div>
+        <div class="box-info">
+          <div class="box-name">Hotel Nantes <span class="tag" style="background:var(--purple-dim);color:var(--purple);">Visiteur</span></div>
+          <div class="box-meta">Claimee hier &middot; Hors ligne</div>
+        </div>
+        <div class="box-stat-right">
+          <div class="box-stat-val">3h10</div>
+          <div class="box-stat-lbl">hier</div>
+        </div>
+      </div>
+
+      <div class="add-btn">+ Ajouter une box</div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bni"><div class="ni">&#9711;</div>Sessions</div>
+      <div class="bni active"><div class="ni">&#9632;</div>Boxes</div>
+      <div class="bni"><div class="ni">&#9829;</div>Groupes</div>
+      <div class="bni"><div class="ni">&#9650;</div>Stats</div>
+      <div class="bni"><div class="ni">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
+<!-- S02 — Box detail -->
+<div class="screen-wrapper">
+  <div class="screen-label">02 — Detail box</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="back-btn">&lsaquo; Mes Boxes</div>
+    <div style="padding:8px 20px 20px;display:flex;align-items:center;gap:14px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:24px;">&#9632;</div>
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Salon</h2>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;"><span class="dot on" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span>En ligne &middot; Faraday Box Pro &middot; <span class="tag" style="margin-left:0;">Maison</span></div>
+      </div>
+    </div>
+    <div class="tab-bar-top">
+      <div class="tab-item active">Infos</div>
+      <div class="tab-item">Analytics</div>
+      <div class="tab-item">Sessions</div>
+    </div>
+    <div class="content">
+      <div class="analytics-row">
+        <div class="analytics-card">
+          <div class="ac-label">Aujourd'hui</div>
+          <div class="ac-value" style="font-size:28px;">2<span style="font-size:16px;color:var(--text-secondary);">h</span>14</div>
+        </div>
+        <div class="analytics-card">
+          <div class="ac-label">Sessions</div>
+          <div class="ac-value" style="font-size:28px;">3</div>
+        </div>
+      </div>
+
+      <div class="section-header"><div class="section-title">Informations</div></div>
+      <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;">
+        <div style="display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border);"><span style="font-size:13px;color:var(--text-secondary);">Nom</span><span style="font-size:13px;font-weight:500;">Salon</span></div>
+        <div style="display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border);"><span style="font-size:13px;color:var(--text-secondary);">Tag</span><span style="font-size:13px;font-weight:500;">Maison</span></div>
+        <div style="display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border);"><span style="font-size:13px;color:var(--text-secondary);">Modele</span><span style="font-size:13px;font-weight:500;">Faraday Box Pro</span></div>
+        <div style="display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border);"><span style="font-size:13px;color:var(--text-secondary);">Firmware</span><span style="font-size:13px;font-weight:500;">v2.1.4</span></div>
+        <div style="display:flex;justify-content:space-between;padding:14px 16px;"><span style="font-size:13px;color:var(--text-secondary);">WiFi</span><span style="font-size:13px;font-weight:500;">Maison-5G</span></div>
+      </div>
+
+      <div class="section-header"><div class="section-title">Partage des visiteurs</div></div>
+      <div class="analytics-card">
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
+          Quand quelqu'un depose son telephone dans cette box, ses donnees de session sont partagees selon son choix.
+        </div>
+        <div style="margin-top:14px;">
+          <div class="mb-row" style="padding:8px 0;">
+            <div class="mb-avatar" style="background:var(--surface-3);color:var(--text-tertiary);">G</div>
+            <div class="mb-name">Gabriel <span class="visitor-badge">partage complet</span></div>
+            <div class="mb-value">45m</div>
+          </div>
+          <div class="mb-row" style="padding:8px 0;">
+            <div class="mb-avatar" style="background:var(--surface-3);color:var(--text-tertiary);">?</div>
+            <div class="mb-name">Visiteur <span class="visitor-badge">anonymise</span></div>
+            <div class="mb-value">1h20</div>
+          </div>
+          <div class="mb-row" style="padding:8px 0;opacity:.35;">
+            <div class="mb-avatar" style="background:var(--surface-3);color:var(--text-tertiary);">&#8212;</div>
+            <div class="mb-name" style="color:var(--text-tertiary);">Visiteur masque</div>
+            <div class="mb-value" style="color:var(--text-tertiary);">&#8212;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bni"><div class="ni">&#9711;</div>Sessions</div>
+      <div class="bni active"><div class="ni">&#9632;</div>Boxes</div>
+      <div class="bni"><div class="ni">&#9829;</div>Groupes</div>
+      <div class="bni"><div class="ni">&#9650;</div>Stats</div>
+      <div class="bni"><div class="ni">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
+<!-- S03 — Box analytics -->
+<div class="screen-wrapper">
+  <div class="screen-label">03 — Analytics box</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="back-btn">&lsaquo; Salon</div>
+    <div class="nav-header" style="padding-bottom:10px;"><h1 style="font-size:22px;">Analytics</h1></div>
+    <div class="tab-bar-top">
+      <div class="tab-item">Infos</div>
+      <div class="tab-item active">Analytics</div>
+      <div class="tab-item">Sessions</div>
+    </div>
+    <div class="content">
+      <div class="filter-pills">
+        <div class="pill active">7 jours</div>
+        <div class="pill">30 jours</div>
+        <div class="pill">3 mois</div>
+      </div>
+      <div class="analytics-row">
+        <div class="analytics-card">
+          <div class="ac-label">Temps total</div>
+          <div class="ac-value">18<span style="font-size:18px;color:var(--text-secondary);">h</span>40</div>
+          <div class="ac-change up">&#9650; 22% vs precedent</div>
+        </div>
+        <div class="analytics-card">
+          <div class="ac-label">Sessions</div>
+          <div class="ac-value">12</div>
+          <div class="ac-change up">&#9650; 3 de plus</div>
+        </div>
+      </div>
+      <div class="analytics-card">
+        <div class="ac-label">Activite par jour</div>
+        <div class="bar-chart">
+          <div class="bar-group"><div class="bar accent" style="height:45px;"></div><div class="bar-label">L</div></div>
+          <div class="bar-group"><div class="bar accent" style="height:62px;"></div><div class="bar-label">M</div></div>
+          <div class="bar-group"><div class="bar accent" style="height:28px;"></div><div class="bar-label">M</div></div>
+          <div class="bar-group"><div class="bar accent" style="height:72px;"></div><div class="bar-label">J</div></div>
+          <div class="bar-group"><div class="bar accent" style="height:55px;"></div><div class="bar-label">V</div></div>
+          <div class="bar-group"><div class="bar accent" style="height:80px;"></div><div class="bar-label">S</div></div>
+          <div class="bar-group"><div class="bar accent" style="height:68px;"></div><div class="bar-label">D</div></div>
+        </div>
+      </div>
+      <div class="analytics-card">
+        <div class="ac-label">Utilisateurs de cette box</div>
+        <div style="margin-top:12px;">
+          <div class="mb-row"><div class="mb-avatar" style="background:#c8845a;">PC</div><div class="mb-name">Vous</div><div class="mb-bar-c"><div class="mb-bar-f" style="width:70%;"></div></div><div class="mb-value">10h</div></div>
+          <div class="mb-row"><div class="mb-avatar" style="background:#6888b8;">EB</div><div class="mb-name">Elisabeth</div><div class="mb-bar-c"><div class="mb-bar-f" style="width:45%;"></div></div><div class="mb-value">6h</div></div>
+          <div class="mb-row"><div class="mb-avatar" style="background:var(--surface-3);color:var(--text-tertiary);">G</div><div class="mb-name">Gabriel</div><div class="mb-bar-c"><div class="mb-bar-f" style="width:12%;background:var(--text-tertiary);"></div></div><div class="mb-value">45m</div></div>
+          <div class="mb-row"><div class="mb-avatar" style="background:var(--surface-3);color:var(--text-tertiary);">?</div><div class="mb-name">Anonyme <span class="visitor-badge">2 visiteurs</span></div><div class="mb-bar-c"><div class="mb-bar-f" style="width:18%;background:var(--text-tertiary);"></div></div><div class="mb-value">1h55</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bni"><div class="ni">&#9711;</div>Sessions</div>
+      <div class="bni active"><div class="ni">&#9632;</div>Boxes</div>
+      <div class="bni"><div class="ni">&#9829;</div>Groupes</div>
+      <div class="bni"><div class="ni">&#9650;</div>Stats</div>
+      <div class="bni"><div class="ni">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
+<!-- S04 — Claim box -->
+<div class="screen-wrapper">
+  <div class="screen-label">04 — Claimer une box</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="modal-handle"></div>
+    <div class="modal-title">Nouvelle box detectee</div>
+    <div class="modal-subtitle">Une Faraday Box a proximite souhaite se connecter.</div>
+    <div class="content">
+      <div style="text-align:center;padding:20px 0 30px;">
+        <div style="width:80px;height:80px;border-radius:20px;background:var(--accent-dim);display:inline-flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:16px;">&#9632;</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">Faraday Box Pro</div>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">SN: FDY-2024-08A42</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Donner un nom a cette box</label>
+        <input class="form-input" type="text" placeholder="Ex: Salon, Chambre, Hotel..." value="Chambre 204">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Tag (optionnel)</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <div class="pill">Maison</div>
+          <div class="pill">Bureau</div>
+          <div class="pill active">Hotel</div>
+          <div class="pill" style="border-style:dashed;">+ Nouveau</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Partage de vos donnees avec cette box</label>
+      </div>
+      <div class="privacy-card" style="margin:0 20px 20px;">
+        <div class="privacy-option selected">
+          <div class="privacy-radio checked"></div>
+          <div><div class="privacy-label">Partager tout</div><div class="privacy-desc">Le proprietaire voit vos sessions, durees, nom</div></div>
+        </div>
+        <div class="privacy-option">
+          <div class="privacy-radio"></div>
+          <div><div class="privacy-label">Anonymiser</div><div class="privacy-desc">Le proprietaire voit qu'il y a eu une session, sans votre identite</div></div>
+        </div>
+        <div class="privacy-option">
+          <div class="privacy-radio"></div>
+          <div><div class="privacy-label">Ne rien partager</div><div class="privacy-desc">Aucune donnee transmise au proprietaire de la box</div></div>
+        </div>
+      </div>
+
+      <button class="primary-btn">Connecter cette box</button>
+      <div class="secondary-btn" style="text-align:center;">Ignorer</div>
+    </div>
+  </div>
+</div>
+
+<!-- S05 — First connection -->
+<div class="screen-wrapper">
+  <div class="screen-label">05 — Premiere box</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 30px;">
+      <div style="font-size:56px;margin-bottom:24px;opacity:.8;">&#9632;</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin-bottom:8px;">Bienvenue chez Faraday</h2>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:40px;">Scannez ou approchez votre telephone de votre premiere box pour commencer.</p>
+      <div style="width:100%;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:20px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:14px;text-align:left;">
+          <div style="width:44px;height:44px;background:var(--green-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">&#10003;</div>
+          <div><div style="font-weight:600;font-size:14px;">Compte cree</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">pol@faraday-box.fr</div></div>
+        </div>
+      </div>
+      <div style="width:100%;background:var(--accent-dim);border-radius:var(--radius);border:1.5px solid var(--accent);padding:20px;margin-bottom:32px;">
+        <div style="display:flex;align-items:center;gap:14px;text-align:left;">
+          <div style="width:44px;height:44px;background:var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:#fff;">&#9632;</div>
+          <div><div style="font-weight:600;font-size:14px;color:var(--accent);">Scanner votre box</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Associez votre premiere Faraday Box</div></div>
+        </div>
+      </div>
+      <button class="primary-btn" style="width:100%;margin:0;">Scanner ma box</button>
+    </div>
+    <div class="bottom-nav">
+      <div class="bni"><div class="ni">&#9711;</div>Sessions</div>
+      <div class="bni active"><div class="ni">&#9632;</div>Boxes</div>
+      <div class="bni"><div class="ni">&#9829;</div>Groupes</div>
+      <div class="bni"><div class="ni">&#9650;</div>Stats</div>
+      <div class="bni"><div class="ni">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /screens-row -->
+
+<!-- ================================================================
+     SECTION: GROUPES SOCIAUX
+     ================================================================ -->
+<div class="section-divider">
+  <h2>Groupes sociaux</h2>
+  <p>Ranking, defis, filtre optionnel par boxes</p>
+</div>
+
+<div class="screens-row">
+
+<!-- S06 — Groups list -->
+<div class="screen-wrapper">
+  <div class="screen-label">06 — Mes groupes</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="nav-header">
+      <h1>Groupes</h1>
+      <div class="subtitle">3 groupes &middot; 14 membres</div>
+    </div>
+    <div class="content">
+      <!-- Famille — linked to boxes -->
+      <div class="group-card">
+        <div class="group-card-header">
+          <div class="group-icon" style="background:var(--accent-dim);">&#128106;</div>
+          <div class="group-info">
+            <div class="group-name">La Famille</div>
+            <div class="group-meta">5 membres &middot; 3 boxes &middot; Defi en cours</div>
+          </div>
+          <span class="chevron">&rsaquo;</span>
+        </div>
+        <div class="group-stats-row">
+          <div class="gsc"><div class="gsc-value" style="color:var(--gold);">&#127942; 1er</div><div class="gsc-label">votre rang</div></div>
+          <div class="gsc"><div class="gsc-value">12<span style="font-size:11px;color:var(--text-secondary);">h</span></div><div class="gsc-label">cette semaine</div></div>
+          <div class="gsc"><div class="gsc-value" style="color:var(--green);">&#9650; 3h</div><div class="gsc-label">vs precedent</div></div>
+        </div>
+        <div class="members-row">
+          <div class="avatar a1">PC</div><div class="avatar a2">EB</div><div class="avatar a3">GM</div><div class="avatar a4">SC</div><div class="avatar a5">JP</div>
+          <span class="members-text">5 membres</span>
+        </div>
+      </div>
+
+      <!-- Bureau — filtered to specific boxes -->
+      <div class="group-card">
+        <div class="group-card-header">
+          <div class="group-icon" style="background:var(--blue-dim);">&#128188;</div>
+          <div class="group-info">
+            <div class="group-name">Le Bureau</div>
+            <div class="group-meta">3 membres &middot; 2 boxes</div>
+          </div>
+          <span class="chevron">&rsaquo;</span>
+        </div>
+        <!-- Box filter visible -->
+        <div style="padding:0 16px 12px;">
+          <div class="box-filter-banner">
+            <div class="box-filter-icon">&#9632;</div>
+            <div class="box-filter-text">Stats limitees a :</div>
+            <div class="box-filter-chips">
+              <div class="box-chip">Salle de reu</div>
+              <div class="box-chip">Open space</div>
+            </div>
+          </div>
+        </div>
+        <div class="group-stats-row">
+          <div class="gsc"><div class="gsc-value" style="color:var(--gold);">&#127942; 1er</div><div class="gsc-label">votre rang</div></div>
+          <div class="gsc"><div class="gsc-value">8<span style="font-size:11px;color:var(--text-secondary);">h</span></div><div class="gsc-label">cette semaine</div></div>
+        </div>
+        <div class="members-row">
+          <div class="avatar a1">PC</div><div class="avatar a3">LG</div><div class="avatar a4">MR</div>
+          <span class="members-text">3 membres</span>
+        </div>
+      </div>
+
+      <!-- Amis — no box filter -->
+      <div class="group-card">
+        <div class="group-card-header">
+          <div class="group-icon" style="background:var(--purple-dim);">&#127881;</div>
+          <div class="group-info">
+            <div class="group-name">Les Deconnectes</div>
+            <div class="group-meta">6 membres &middot; Toutes les boxes</div>
+          </div>
+          <span class="chevron">&rsaquo;</span>
+        </div>
+        <div class="group-stats-row">
+          <div class="gsc"><div class="gsc-value" style="color:var(--silver);">&#127942; 3e</div><div class="gsc-label">votre rang</div></div>
+          <div class="gsc"><div class="gsc-value">6<span style="font-size:11px;color:var(--text-secondary);">h</span></div><div class="gsc-label">cette semaine</div></div>
+        </div>
+      </div>
+
+      <div class="add-btn">+ Creer un groupe</div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bni"><div class="ni">&#9711;</div>Sessions</div>
+      <div class="bni"><div class="ni">&#9632;</div>Boxes</div>
+      <div class="bni active"><div class="ni">&#9829;</div>Groupes</div>
+      <div class="bni"><div class="ni">&#9650;</div>Stats</div>
+      <div class="bni"><div class="ni">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
+<!-- S07 — Group ranking with box filter -->
+<div class="screen-wrapper">
+  <div class="screen-label">07 — Classement + filtre boxes</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="back-btn">&lsaquo; Groupes</div>
+    <div style="padding:8px 20px 16px;display:flex;align-items:center;gap:14px;">
+      <div class="group-icon" style="background:var(--blue-dim);width:48px;height:48px;border-radius:14px;font-size:22px;">&#128188;</div>
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Le Bureau</h2>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">3 membres &middot; 2 boxes</div>
+      </div>
+    </div>
+    <div class="tab-bar-top">
+      <div class="tab-item active">Classement</div>
+      <div class="tab-item">Sessions</div>
+      <div class="tab-item">Defis</div>
+      <div class="tab-item">Membres</div>
+    </div>
+    <div class="content">
+      <!-- Box filter reminder -->
+      <div class="box-filter-banner">
+        <div class="box-filter-icon">&#9632;</div>
+        <div class="box-filter-text">Filtre actif :</div>
+        <div class="box-filter-chips">
+          <div class="box-chip">Salle de reu</div>
+          <div class="box-chip">Open space</div>
+        </div>
+      </div>
+
+      <div class="filter-pills">
+        <div class="pill active">Cette semaine</div>
+        <div class="pill">Ce mois</div>
+        <div class="pill">Tout temps</div>
+      </div>
+
+      <div class="rank-row first">
+        <div class="rank-pos p1">1</div>
+        <div class="rank-avatar" style="background:#c8845a;">PC</div>
+        <div class="rank-info"><div class="rank-name">Pol Conin <span class="rank-you">vous</span></div><div class="rank-detail">12 sessions au bureau</div></div>
+        <div class="rank-time">8<span class="rank-unit">h</span>20</div>
+      </div>
+      <div class="rank-row second">
+        <div class="rank-pos p2">2</div>
+        <div class="rank-avatar" style="background:#6b9b6b;">LG</div>
+        <div class="rank-info"><div class="rank-name">Louis Goulet</div><div class="rank-detail">8 sessions au bureau</div></div>
+        <div class="rank-time">5<span class="rank-unit">h</span>45</div>
+      </div>
+      <div class="rank-row third">
+        <div class="rank-pos p3">3</div>
+        <div class="rank-avatar" style="background:#b8688a;">MR</div>
+        <div class="rank-info"><div class="rank-name">Marie R.</div><div class="rank-detail">6 sessions au bureau</div></div>
+        <div class="rank-time">3<span class="rank-unit">h</span>10</div>
+      </div>
+
+      <div class="section-header"><div class="section-title">Stats du groupe</div></div>
+      <div class="analytics-row">
+        <div class="analytics-card"><div class="ac-label">Total bureau</div><div class="ac-value" style="font-size:24px;">17<span style="font-size:14px;color:var(--text-secondary);">h</span>15</div></div>
+        <div class="analytics-card"><div class="ac-label">Moy / membre</div><div class="ac-value" style="font-size:24px;">5<span style="font-size:14px;color:var(--text-secondary);">h</span>45</div></div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bni"><div class="ni">&#9711;</div>Sessions</div>
+      <div class="bni"><div class="ni">&#9632;</div>Boxes</div>
+      <div class="bni active"><div class="ni">&#9829;</div>Groupes</div>
+      <div class="bni"><div class="ni">&#9650;</div>Stats</div>
+      <div class="bni"><div class="ni">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
+<!-- S08 — Group defis -->
+<div class="screen-wrapper">
+  <div class="screen-label">08 — Defis de groupe</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="back-btn">&lsaquo; La Famille</div>
+    <div class="nav-header" style="padding-bottom:10px;"><h1 style="font-size:22px;">Defis</h1></div>
+    <div class="tab-bar-top">
+      <div class="tab-item">Classement</div>
+      <div class="tab-item">Sessions</div>
+      <div class="tab-item active">Defis</div>
+      <div class="tab-item">Membres</div>
+    </div>
+    <div class="content">
+      <div class="challenge-card" style="border-color:var(--accent);">
+        <div class="challenge-header">
+          <div class="challenge-icon" style="background:var(--accent-dim);">&#127775;</div>
+          <div><div class="challenge-title">Semaine sans ecran le soir</div><div class="challenge-desc">Deposer son tel entre 20h et 8h &middot; 5 jours restants</div></div>
+        </div>
+        <div class="challenge-progress"><div class="challenge-fill" style="width:65%;background:var(--accent);"></div></div>
+        <div class="challenge-meta"><span>4/5 participent</span><span style="color:var(--accent);font-weight:600;">65%</span></div>
+        <div style="margin-top:14px;">
+          <div class="mb-row" style="padding:8px 0;"><div class="mb-avatar" style="background:#c8845a;">PC</div><div class="mb-name">Pol</div><div class="mb-bar-c"><div class="mb-bar-f" style="width:100%;background:var(--green);"></div></div><div class="mb-value" style="color:var(--green);">5/5</div></div>
+          <div class="mb-row" style="padding:8px 0;"><div class="mb-avatar" style="background:#6888b8;">EB</div><div class="mb-name">Elisabeth</div><div class="mb-bar-c"><div class="mb-bar-f" style="width:80%;background:var(--green);"></div></div><div class="mb-value">4/5</div></div>
+          <div class="mb-row" style="padding:8px 0;"><div class="mb-avatar" style="background:#6b9b6b;">GM</div><div class="mb-name">Grand-mere</div><div class="mb-bar-c"><div class="mb-bar-f" style="width:60%;"></div></div><div class="mb-value">3/5</div></div>
+          <div class="mb-row" style="padding:8px 0;"><div class="mb-avatar" style="background:#b8688a;">SC</div><div class="mb-name">Sophie</div><div class="mb-bar-c"><div class="mb-bar-f" style="width:40%;background:var(--red);"></div></div><div class="mb-value" style="color:var(--red);">2/5</div></div>
+        </div>
+      </div>
+      <div class="challenge-card" style="opacity:.6;">
+        <div class="challenge-header">
+          <div class="challenge-icon" style="background:var(--green-dim);">&#9989;</div>
+          <div><div class="challenge-title">Marathon deconnexion</div><div class="challenge-desc">50h cumulees en 1 semaine &middot; Termine</div></div>
+        </div>
+        <div class="challenge-progress"><div class="challenge-fill" style="width:100%;background:var(--green);"></div></div>
+        <div class="challenge-meta"><span>5/5 membres</span><span style="color:var(--green);font-weight:600;">Reussi &#10003;</span></div>
+      </div>
+      <div class="challenge-card" style="border-style:dashed;">
+        <div class="challenge-header">
+          <div class="challenge-icon" style="background:var(--surface-3);">&#128161;</div>
+          <div><div class="challenge-title">Weekend digital detox</div><div class="challenge-desc">Propose par Elisabeth &middot; Commence samedi</div></div>
+        </div>
+        <div class="challenge-meta"><span>2/5 ont accepte</span><span style="color:var(--accent);">Rejoindre &rsaquo;</span></div>
+      </div>
+      <div class="add-btn" style="margin-top:4px;">+ Creer un defi</div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bni"><div class="ni">&#9711;</div>Sessions</div>
+      <div class="bni"><div class="ni">&#9632;</div>Boxes</div>
+      <div class="bni active"><div class="ni">&#9829;</div>Groupes</div>
+      <div class="bni"><div class="ni">&#9650;</div>Stats</div>
+      <div class="bni"><div class="ni">&#9679;</div>Profil</div>
+    </div>
+  </div>
+</div>
+
+<!-- S09 — Create group with optional box filter -->
+<div class="screen-wrapper">
+  <div class="screen-label">09 — Creer un groupe</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="modal-handle"></div>
+    <div class="modal-title">Nouveau groupe</div>
+    <div class="modal-subtitle">Creez un groupe pour suivre votre deconnexion ensemble.</div>
+    <div class="content">
+      <div class="form-group">
+        <label class="form-label">Nom du groupe</label>
+        <input class="form-input" type="text" value="Le Bureau">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Icone</label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div style="width:48px;height:48px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;">&#128106;</div>
+          <div style="width:48px;height:48px;border-radius:12px;background:var(--surface);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;">&#128188;</div>
+          <div style="width:48px;height:48px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;">&#127881;</div>
+          <div style="width:48px;height:48px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;">&#127942;</div>
+          <div style="width:48px;height:48px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;">&#127795;</div>
+        </div>
+      </div>
+
+      <!-- Optional box filter -->
+      <div class="form-group">
+        <label class="form-label">Limiter a certaines boxes ? <span style="color:var(--text-tertiary);font-weight:300;">(optionnel)</span></label>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-top:4px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:20px;height:20px;border-radius:4px;border:2px solid var(--accent);background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--accent);">&#10003;</div>
+            <span style="font-size:13px;">Salle de reu</span><span class="tag" style="margin-left:auto;">Bureau</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:20px;height:20px;border-radius:4px;border:2px solid var(--accent);background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--accent);">&#10003;</div>
+            <span style="font-size:13px;">Open space</span><span class="tag" style="margin-left:auto;">Bureau</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;opacity:.4;">
+            <div style="width:20px;height:20px;border-radius:4px;border:2px solid var(--border);"></div>
+            <span style="font-size:13px;">Salon</span><span class="tag" style="margin-left:auto;">Maison</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;opacity:.4;">
+            <div style="width:20px;height:20px;border-radius:4px;border:2px solid var(--border);"></div>
+            <span style="font-size:13px;">Chambre</span><span class="tag" style="margin-left:auto;">Maison</span>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text-tertiary);margin-top:8px;">Seules les sessions sur ces boxes compteront dans le classement et les stats du groupe.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Inviter des membres</label>
+        <input class="form-input" type="text" placeholder="Email, telephone ou nom...">
+      </div>
+      <div style="padding:0 20px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:8px;">
+          <div class="mb-avatar" style="background:#6b9b6b;">LG</div>
+          <div style="flex:1;"><div style="font-size:14px;font-weight:500;">Louis Goulet</div></div>
+          <span style="font-size:12px;color:var(--green);">&#10003;</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface);border-radius:var(--radius-sm);margin-bottom:8px;">
+          <div class="mb-avatar" style="background:#b8688a;">MR</div>
+          <div style="flex:1;"><div style="font-size:14px;font-weight:500;">Marie R.</div></div>
+          <span style="font-size:12px;color:var(--green);">&#10003;</span>
+        </div>
+      </div>
+
+      <button class="primary-btn">Creer le groupe</button>
+    </div>
+  </div>
+</div>
+
+<!-- S10 — Privacy settings for group -->
+<div class="screen-wrapper">
+  <div class="screen-label">10 — Partage dans le groupe</div>
+  <div class="phone">
+    <div class="status-bar"><span class="time">9:41</span><div class="si">&#9679; &#9679; &#9679;</div></div>
+    <div class="modal-handle"></div>
+    <div class="modal-title">Votre partage</div>
+    <div class="modal-subtitle">Choisissez ce que les membres de "La Famille" voient de vous.</div>
+    <div class="content">
+      <div class="privacy-card">
+        <div class="privacy-option selected">
+          <div class="privacy-radio checked"></div>
+          <div><div class="privacy-label">Partage complet</div><div class="privacy-desc">Detail des sessions : heures, durees, frequence. Profil visible dans classements et fil.</div></div>
+        </div>
+        <div class="privacy-option">
+          <div class="privacy-radio"></div>
+          <div><div class="privacy-label">L'essentiel</div><div class="privacy-desc">Temps de deconnexion quotidien seulement. Pas de detail horaire. Vous restez dans les classements.</div></div>
+        </div>
+        <div class="privacy-option">
+          <div class="privacy-radio"></div>
+          <div><div class="privacy-label">Masque</div><div class="privacy-desc">Vous restez membre mais rien n'est partage. Invisible dans les classements.</div></div>
+        </div>
+      </div>
+      <div class="section-header"><div class="section-title">Ce que les autres voient</div></div>
+      <div class="analytics-card" style="border-color:var(--accent);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div class="mb-avatar" style="background:#c8845a;width:32px;height:32px;">PC</div>
+          <div style="font-size:13px;font-weight:500;">Apercu pour les membres</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.7;">
+          &#10003; Temps quotidien : <strong style="color:var(--text);">2h14 aujourd'hui</strong><br>
+          &#10003; Sessions : <strong style="color:var(--text);">14:20 — 16:02</strong><br>
+          &#10003; Position : <strong style="color:var(--text);">1er</strong><br>
+          &#10003; Defis : <strong style="color:var(--text);">5/5 soirs</strong>
+        </div>
+      </div>
+      <button class="primary-btn" style="width:100%;margin:24px 0;">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /screens-row -->
+
+</body>
+</html>
