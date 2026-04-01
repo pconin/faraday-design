@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Logos in Context</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#f5f0e8;font-family:'Inter',sans-serif;color:#1a1a1a;}
+
+  /* Selector bar */
+  .selector{position:sticky;top:0;z-index:100;background:#1a1a1a;padding:16px 24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:2px solid #333;}
+  .selector-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-right:8px;}
+  .sel-btn{padding:10px 20px;border-radius:10px;border:2px solid #333;background:transparent;color:#999;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+  .sel-btn:hover{border-color:#666;color:#ccc;}
+  .sel-btn.active{border-color:#c8845a;background:rgba(200,132,90,.12);color:#c8845a;}
+
+  .page{padding:40px 24px;max-width:1400px;margin:0 auto;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:40px;}
+
+  .section-title{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#999;margin:60px 0 24px;padding-top:40px;border-top:1px solid #ddd;}
+
+  .mockups-row{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
+
+  /* Phone mockup */
+  .phone{width:375px;height:680px;border-radius:40px;border:2px solid #ddd;overflow:hidden;display:flex;flex-direction:column;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.08);}
+  .phone-status{display:flex;justify-content:space-between;padding:14px 28px 8px;font-size:12px;font-weight:600;color:#999;}
+  .phone-nav{display:flex;justify-content:space-around;padding:12px 0 28px;border-top:1px solid #eee;font-size:10px;color:#999;}
+  .phone-nav .pn-item{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .phone-content{flex:1;overflow:hidden;display:flex;flex-direction:column;}
+
+  /* App header area */
+  .app-header{padding:20px 24px 16px;display:flex;align-items:center;gap:14px;}
+  .app-logo-icon{width:40px;height:40px;border-radius:10px;overflow:hidden;}
+  .app-logo-icon svg{width:100%;height:100%;}
+  .app-wordmark{font-size:22px;}
+  .app-body{flex:1;padding:0 24px 20px;overflow:hidden;}
+
+  /* Splash screen phone */
+  .splash-phone{width:375px;height:680px;border-radius:40px;border:2px solid #ddd;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(0,0,0,.08);}
+  .splash-icon{width:80px;height:80px;border-radius:20px;overflow:hidden;margin-bottom:20px;}
+  .splash-icon svg{width:100%;height:100%;}
+  .splash-wordmark{font-size:32px;margin-bottom:8px;}
+  .splash-baseline{font-size:10px;letter-spacing:.25em;text-transform:uppercase;opacity:.5;}
+
+  /* Business card */
+  .card-container{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+  .bcard{width:420px;height:252px;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:32px;box-shadow:0 8px 30px rgba(0,0,0,.1);}
+  .bcard-logo{display:flex;align-items:center;gap:12px;}
+  .bcard-icon{width:36px;height:36px;border-radius:8px;overflow:hidden;}
+  .bcard-icon svg{width:100%;height:100%;}
+  .bcard-wm{font-size:20px;}
+  .bcard-info{font-size:11px;line-height:1.8;opacity:.7;}
+  .bcard-name{font-size:14px;font-weight:600;opacity:1;margin-bottom:4px;}
+  .bcard-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;}
+
+  .bcard-back{width:420px;height:252px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;box-shadow:0 8px 30px rgba(0,0,0,.1);}
+  .bcard-back-icon{width:60px;height:60px;border-radius:14px;overflow:hidden;}
+  .bcard-back-icon svg{width:100%;height:100%;}
+  .bcard-back-wm{font-size:26px;}
+  .bcard-back-bl{font-size:9px;letter-spacing:.25em;text-transform:uppercase;opacity:.45;}
+
+  /* Metro ad */
+  .metro{width:100%;max-width:900px;height:400px;border-radius:16px;overflow:hidden;display:flex;align-items:center;padding:60px 80px;gap:60px;box-shadow:0 12px 40px rgba(0,0,0,.1);margin:0 auto;}
+  .metro-left{flex:1;}
+  .metro-wm{font-size:48px;margin-bottom:12px;}
+  .metro-bl{font-size:14px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:32px;}
+  .metro-tagline{font-size:20px;line-height:1.5;opacity:.75;max-width:380px;}
+  .metro-right{display:flex;align-items:center;justify-content:center;}
+  .metro-icon{width:140px;height:140px;border-radius:32px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.2);}
+  .metro-icon svg{width:100%;height:100%;}
+  .metro-url{font-size:12px;letter-spacing:.1em;opacity:.4;margin-top:16px;text-align:center;}
+
+  /* Notification mockup */
+  .notif-card{background:#fff;border-radius:16px;padding:16px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;}
+  .notif-icon{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;}
+  .notif-icon svg{width:100%;height:100%;}
+  .notif-text{flex:1;}
+  .notif-app{font-size:11px;font-weight:600;opacity:.5;}
+  .notif-msg{font-size:13px;font-weight:500;margin-top:2px;}
+  .notif-time{font-size:11px;color:#999;}
+</style>
+</head>
+<body>
+
+<div class="selector">
+  <span class="selector-label">Proposition :</span>
+  <button class="sel-btn active" onclick="setProposal(0)">01 — F Interrompu</button>
+  <button class="sel-btn" onclick="setProposal(1)">02 — Flatline</button>
+  <button class="sel-btn" onclick="setProposal(2)">03 — Couches</button>
+  <button class="sel-btn" onclick="setProposal(3)">04 — F. Point</button>
+</div>
+
+<div class="page">
+<h1>Faraday — Logos en contexte</h1>
+
+<!-- IN-APP -->
+<div class="section-title" style="border:none;margin-top:0;padding-top:0;">In-App</div>
+<div class="mockups-row">
+
+  <!-- Home screen -->
+  <div>
+    <div style="font-size:11px;color:#999;text-align:center;margin-bottom:12px;">Home</div>
+    <div class="phone" id="phone-home">
+      <div class="phone-status"><span>9:41</span><span>&#9679; &#9679; &#9679;</span></div>
+      <div class="app-header">
+        <div class="app-logo-icon" id="app-icon-home"></div>
+        <div>
+          <div class="app-wordmark" id="app-wm-home"></div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div style="background:rgba(200,132,90,.08);border:1px solid rgba(200,132,90,.2);border-radius:12px;padding:14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#c8845a;"></div>
+          <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#c8845a;">Session en cours</div><div style="font-size:11px;color:#999;margin-top:2px;">Salon &middot; Depuis 14:20</div></div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:#c8845a;">1h42</div>
+        </div>
+        <div style="text-align:center;padding:16px 0;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;">9<span style="font-size:16px;color:#999;">h</span>46</div>
+          <div style="font-size:12px;color:#999;margin-top:4px;">deconnecte aujourd'hui</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:16px;">
+          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">5</div><div style="font-size:9px;color:#999;margin-top:2px;">sessions</div></div>
+          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">1h57</div><div style="font-size:9px;color:#999;margin-top:2px;">moyenne</div></div>
+          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#6b9b6b;">+18%</div><div style="font-size:9px;color:#999;margin-top:2px;">vs semaine</div></div>
+        </div>
+        <div style="background:#f8f5f0;border-radius:12px;padding:14px;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#999;margin-bottom:8px;">&#128293; Streak — 12 jours</div>
+          <div style="display:flex;gap:4px;">
+            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">L</div>
+            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">M</div>
+            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">M</div>
+            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">J</div>
+            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">V</div>
+            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">S</div>
+            <div style="flex:1;height:24px;border-radius:4px;background:#c8845a;display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;font-weight:600;">D</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="pn-item" style="color:#c8845a;"><span>&#9679;</span>Home</div>
+        <div class="pn-item"><span>&#9829;</span>Groupes</div>
+        <div class="pn-item"><span>&#9632;</span>Boxes</div>
+        <div class="pn-item"><span>&#9650;</span>Stats</div>
+        <div class="pn-item"><span>&#9783;</span>Plus</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Splash screen -->
+  <div>
+    <div style="font-size:11px;color:#999;text-align:center;margin-bottom:12px;">Splash</div>
+    <div class="splash-phone" id="phone-splash">
+      <div class="splash-icon" id="splash-icon"></div>
+      <div class="splash-wordmark" id="splash-wm"></div>
+      <div class="splash-baseline" id="splash-bl"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NOTIFICATION -->
+<div class="section-title">Notification</div>
+<div style="display:flex;justify-content:center;">
+  <div class="notif-card">
+    <div class="notif-icon" id="notif-icon"></div>
+    <div class="notif-text">
+      <div class="notif-app" id="notif-app">FARADAY</div>
+      <div class="notif-msg">Session terminee — 1h42 au Salon</div>
+    </div>
+    <div class="notif-time">now</div>
+  </div>
+</div>
+
+<!-- BUSINESS CARD -->
+<div class="section-title">Carte de visite</div>
+<div class="card-container">
+  <div class="bcard" id="bcard-front">
+    <div>
+      <div class="bcard-logo">
+        <div class="bcard-icon" id="bcard-icon"></div>
+        <div class="bcard-wm" id="bcard-wm"></div>
+      </div>
+    </div>
+    <div>
+      <div class="bcard-name" id="bcard-name">Pol Conin</div>
+      <div class="bcard-info" id="bcard-info">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78</div>
+    </div>
+    <div class="bcard-bl" id="bcard-bl"></div>
+  </div>
+  <div class="bcard-back" id="bcard-back">
+    <div class="bcard-back-icon" id="bcard-back-icon"></div>
+    <div class="bcard-back-wm" id="bcard-back-wm"></div>
+    <div class="bcard-back-bl" id="bcard-back-bl"></div>
+  </div>
+</div>
+
+<!-- METRO AD -->
+<div class="section-title">Affiche metro</div>
+<div class="metro" id="metro-ad">
+  <div class="metro-left">
+    <div class="metro-wm" id="metro-wm"></div>
+    <div class="metro-bl" id="metro-bl"></div>
+    <div class="metro-tagline" id="metro-tagline">Deposez votre telephone.<br>Reprenez votre temps.</div>
+  </div>
+  <div class="metro-right">
+    <div>
+      <div class="metro-icon" id="metro-icon"></div>
+      <div class="metro-url" id="metro-url">faraday-box.fr</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+const proposals = [
+  {
+    id: '01',
+    name: 'F Interrompu + Essentielle',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: '600',
+    fontSize: '22px',
+    letterSpacing: '.04em',
+    textTransform: 'none',
+    wordmark: 'Faraday',
+    baseline: 'the present starts here',
+    bg: '#2e1e14',
+    fg: '#f5f0e8',
+    splashBg: '#2e1e14',
+    metroBg: '#2e1e14',
+    cardBg: '#2e1e14',
+    iconSvg: function(s) {
+      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#2e1e14"/><g transform="translate(${s*.19},${s*.16})"><rect x="0" y="0" width="${s*.1}" height="${s*.65}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="0" width="${s*.38}" height="${s*.1}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="${s*.27}" width="${s*.23}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.38}" y="${s*.27}" width="${s*.12}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8" opacity=".3"/><rect x="${s*.54}" y="${s*.27}" width="${s*.07}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8" opacity=".1"/></g></svg>`;
+    }
+  },
+  {
+    id: '02',
+    name: 'Flatline + Respiree',
+    fontFamily: "'Sora', sans-serif",
+    fontWeight: '300',
+    fontSize: '22px',
+    letterSpacing: '.12em',
+    textTransform: 'none',
+    wordmark: 'Faraday',
+    baseline: 'disconnect to reconnect',
+    bg: '#2d3b28',
+    fg: '#f5f0e8',
+    splashBg: '#2d3b28',
+    metroBg: '#2d3b28',
+    cardBg: '#2d3b28',
+    iconSvg: function(s) {
+      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#2d3b28"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="#f5f0e8" stroke-width="${s*.04}" stroke-linecap="round"/></svg>`;
+    }
+  },
+  {
+    id: '03',
+    name: 'Couches + Architecturale',
+    fontFamily: "'Space Grotesk', sans-serif",
+    fontWeight: '500',
+    fontSize: '20px',
+    letterSpacing: '.2em',
+    textTransform: 'uppercase',
+    wordmark: 'Faraday',
+    baseline: 'the present starts here',
+    bg: '#08654a',
+    fg: '#f5f0e8',
+    splashBg: '#08654a',
+    metroBg: '#08654a',
+    cardBg: '#08654a',
+    iconSvg: function(s) {
+      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#08654a"/><rect x="${s*.15}" y="${s*.15}" width="${s*.7}" height="${s*.7}" rx="${s*.08}" fill="none" stroke="#f5f0e8" stroke-width="${s*.025}" opacity=".2"/><rect x="${s*.24}" y="${s*.24}" width="${s*.52}" height="${s*.52}" rx="${s*.06}" fill="none" stroke="#f5f0e8" stroke-width="${s*.025}" opacity=".4"/><rect x="${s*.33}" y="${s*.33}" width="${s*.34}" height="${s*.34}" rx="${s*.05}" fill="none" stroke="#f5f0e8" stroke-width="${s*.025}" opacity=".7"/><rect x="${s*.41}" y="${s*.41}" width="${s*.18}" height="${s*.18}" rx="${s*.03}" fill="#f5f0e8"/></svg>`;
+    }
+  },
+  {
+    id: '04',
+    name: 'F. Point + Douce',
+    fontFamily: "'Manrope', sans-serif",
+    fontWeight: '300',
+    fontSize: '26px',
+    letterSpacing: '.02em',
+    textTransform: 'lowercase',
+    wordmark: 'faraday',
+    baseline: 'come back to yourself',
+    bg: '#6a2040',
+    fg: '#f5f0e8',
+    splashBg: '#6a2040',
+    metroBg: '#6a2040',
+    cardBg: '#6a2040',
+    iconSvg: function(s) {
+      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#6a2040"/><g transform="translate(${s*.19},${s*.15})"><rect x="0" y="0" width="${s*.1}" height="${s*.65}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="0" width="${s*.33}" height="${s*.1}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="${s*.27}" width="${s*.2}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8"/><circle cx="${s*.5}" cy="${s*.6}" r="${s*.07}" fill="#f5f0e8"/></g></svg>`;
+    }
+  }
+];
+
+function setProposal(idx) {
+  const p = proposals[idx];
+  // Buttons
+  document.querySelectorAll('.sel-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+
+  // Style helper
+  const setWm = (el, size) => {
+    if(!el) return;
+    el.style.fontFamily = p.fontFamily;
+    el.style.fontWeight = p.fontWeight;
+    el.style.fontSize = size || p.fontSize;
+    el.style.letterSpacing = p.letterSpacing;
+    el.style.textTransform = p.textTransform;
+    el.textContent = p.wordmark;
+  };
+  const setIcon = (el, size) => { if(el) el.innerHTML = p.iconSvg(size); };
+
+  // App home
+  setIcon(document.getElementById('app-icon-home'), 40);
+  setWm(document.getElementById('app-wm-home'));
+
+  // Splash
+  const sp = document.getElementById('phone-splash');
+  sp.style.background = p.splashBg;
+  sp.style.color = p.fg;
+  setIcon(document.getElementById('splash-icon'), 80);
+  setWm(document.getElementById('splash-wm'), '32px');
+  const sbl = document.getElementById('splash-bl');
+  sbl.textContent = p.baseline;
+
+  // Notification
+  setIcon(document.getElementById('notif-icon'), 40);
+  document.getElementById('notif-app').textContent = p.wordmark.toUpperCase();
+
+  // Business card front
+  const bcf = document.getElementById('bcard-front');
+  bcf.style.background = p.cardBg;
+  bcf.style.color = p.fg;
+  setIcon(document.getElementById('bcard-icon'), 36);
+  setWm(document.getElementById('bcard-wm'), '18px');
+  document.getElementById('bcard-bl').textContent = p.baseline;
+  document.getElementById('bcard-name').style.color = p.fg;
+
+  // Business card back
+  const bcb = document.getElementById('bcard-back');
+  bcb.style.background = p.cardBg;
+  bcb.style.color = p.fg;
+  setIcon(document.getElementById('bcard-back-icon'), 60);
+  setWm(document.getElementById('bcard-back-wm'), '26px');
+  document.getElementById('bcard-back-bl').textContent = p.baseline;
+
+  // Metro
+  const metro = document.getElementById('metro-ad');
+  metro.style.background = p.metroBg;
+  metro.style.color = p.fg;
+  setWm(document.getElementById('metro-wm'), '48px');
+  document.getElementById('metro-bl').textContent = p.baseline;
+  setIcon(document.getElementById('metro-icon'), 140);
+}
+
+// Init
+setProposal(0);
+</script>
+
+</body>
+</html>
