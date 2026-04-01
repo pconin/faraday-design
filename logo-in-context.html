@@ -9,354 +9,358 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:#f5f0e8;font-family:'Inter',sans-serif;color:#1a1a1a;}
 
-  /* Selector bar */
-  .selector{position:sticky;top:0;z-index:100;background:#1a1a1a;padding:16px 24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:2px solid #333;}
-  .selector-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-right:8px;}
-  .sel-btn{padding:10px 20px;border-radius:10px;border:2px solid #333;background:transparent;color:#999;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
-  .sel-btn:hover{border-color:#666;color:#ccc;}
+  .selector{position:sticky;top:0;z-index:100;background:#1a1a1a;padding:14px 24px;display:flex;flex-direction:column;gap:10px;border-bottom:2px solid #333;}
+  .sel-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .sel-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#555;min-width:70px;}
+  .sel-btn{padding:8px 16px;border-radius:8px;border:2px solid #333;background:transparent;color:#888;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
+  .sel-btn:hover{border-color:#555;color:#bbb;}
   .sel-btn.active{border-color:#c8845a;background:rgba(200,132,90,.12);color:#c8845a;}
+  .color-btn{width:32px;height:32px;border-radius:8px;border:2px solid #333;cursor:pointer;transition:all .15s;position:relative;}
+  .color-btn:hover{border-color:#666;}
+  .color-btn.active{border-color:#f5f0e8;box-shadow:0 0 0 2px #c8845a;}
+  .color-btn-label{font-size:8px;color:#555;position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;}
 
   .page{padding:40px 24px;max-width:1400px;margin:0 auto;}
   h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:40px;}
+  .st2{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#999;margin:60px 0 24px;padding-top:40px;border-top:1px solid #ddd;}
+  .mr{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
 
-  .section-title{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#999;margin:60px 0 24px;padding-top:40px;border-top:1px solid #ddd;}
-
-  .mockups-row{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
-
-  /* Phone mockup */
+  /* Phone */
   .phone{width:375px;height:680px;border-radius:40px;border:2px solid #ddd;overflow:hidden;display:flex;flex-direction:column;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.08);}
-  .phone-status{display:flex;justify-content:space-between;padding:14px 28px 8px;font-size:12px;font-weight:600;color:#999;}
-  .phone-nav{display:flex;justify-content:space-around;padding:12px 0 28px;border-top:1px solid #eee;font-size:10px;color:#999;}
-  .phone-nav .pn-item{display:flex;flex-direction:column;align-items:center;gap:3px;}
-  .phone-content{flex:1;overflow:hidden;display:flex;flex-direction:column;}
+  .p-sb{display:flex;justify-content:space-between;padding:14px 28px 8px;font-size:12px;font-weight:600;color:#999;}
+  .p-nav{display:flex;justify-content:space-around;padding:12px 0 28px;border-top:1px solid #eee;font-size:10px;color:#999;}
+  .p-nav .pni{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .p-ct{flex:1;overflow:hidden;padding:0 24px 12px;}
+  .p-hd{padding:20px 24px 16px;display:flex;align-items:center;gap:14px;}
+  .p-icon{width:40px;height:40px;border-radius:10px;overflow:hidden;}
+  .p-icon svg{width:100%;height:100%;}
+  .p-wm{font-size:22px;}
 
-  /* App header area */
-  .app-header{padding:20px 24px 16px;display:flex;align-items:center;gap:14px;}
-  .app-logo-icon{width:40px;height:40px;border-radius:10px;overflow:hidden;}
-  .app-logo-icon svg{width:100%;height:100%;}
-  .app-wordmark{font-size:22px;}
-  .app-body{flex:1;padding:0 24px 20px;overflow:hidden;}
+  .splash{width:375px;height:680px;border-radius:40px;border:2px solid #ddd;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(0,0,0,.08);}
+  .sp-icon{width:80px;height:80px;border-radius:20px;overflow:hidden;margin-bottom:20px;}
+  .sp-icon svg{width:100%;height:100%;}
+  .sp-wm{font-size:32px;margin-bottom:8px;}
+  .sp-bl{font-size:10px;letter-spacing:.25em;text-transform:uppercase;opacity:.5;}
 
-  /* Splash screen phone */
-  .splash-phone{width:375px;height:680px;border-radius:40px;border:2px solid #ddd;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(0,0,0,.08);}
-  .splash-icon{width:80px;height:80px;border-radius:20px;overflow:hidden;margin-bottom:20px;}
-  .splash-icon svg{width:100%;height:100%;}
-  .splash-wordmark{font-size:32px;margin-bottom:8px;}
-  .splash-baseline{font-size:10px;letter-spacing:.25em;text-transform:uppercase;opacity:.5;}
+  /* Card */
+  .cc{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+  .bc{width:420px;height:252px;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:32px;box-shadow:0 8px 30px rgba(0,0,0,.1);}
+  .bc-logo{display:flex;align-items:center;gap:12px;}
+  .bc-ico{width:36px;height:36px;border-radius:8px;overflow:hidden;} .bc-ico svg{width:100%;height:100%;}
+  .bc-wm{font-size:18px;}
+  .bc-info{font-size:11px;line-height:1.8;opacity:.7;}
+  .bc-name{font-size:14px;font-weight:600;margin-bottom:4px;}
+  .bc-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;}
+  .bcb{width:420px;height:252px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;box-shadow:0 8px 30px rgba(0,0,0,.1);}
+  .bcb-ico{width:60px;height:60px;border-radius:14px;overflow:hidden;} .bcb-ico svg{width:100%;height:100%;}
+  .bcb-wm{font-size:26px;}
+  .bcb-bl{font-size:9px;letter-spacing:.25em;text-transform:uppercase;opacity:.45;}
 
-  /* Business card */
-  .card-container{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
-  .bcard{width:420px;height:252px;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:32px;box-shadow:0 8px 30px rgba(0,0,0,.1);}
-  .bcard-logo{display:flex;align-items:center;gap:12px;}
-  .bcard-icon{width:36px;height:36px;border-radius:8px;overflow:hidden;}
-  .bcard-icon svg{width:100%;height:100%;}
-  .bcard-wm{font-size:20px;}
-  .bcard-info{font-size:11px;line-height:1.8;opacity:.7;}
-  .bcard-name{font-size:14px;font-weight:600;opacity:1;margin-bottom:4px;}
-  .bcard-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;}
-
-  .bcard-back{width:420px;height:252px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;box-shadow:0 8px 30px rgba(0,0,0,.1);}
-  .bcard-back-icon{width:60px;height:60px;border-radius:14px;overflow:hidden;}
-  .bcard-back-icon svg{width:100%;height:100%;}
-  .bcard-back-wm{font-size:26px;}
-  .bcard-back-bl{font-size:9px;letter-spacing:.25em;text-transform:uppercase;opacity:.45;}
-
-  /* Metro ad */
+  /* Metro */
   .metro{width:100%;max-width:900px;height:400px;border-radius:16px;overflow:hidden;display:flex;align-items:center;padding:60px 80px;gap:60px;box-shadow:0 12px 40px rgba(0,0,0,.1);margin:0 auto;}
-  .metro-left{flex:1;}
-  .metro-wm{font-size:48px;margin-bottom:12px;}
-  .metro-bl{font-size:14px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:32px;}
-  .metro-tagline{font-size:20px;line-height:1.5;opacity:.75;max-width:380px;}
-  .metro-right{display:flex;align-items:center;justify-content:center;}
-  .metro-icon{width:140px;height:140px;border-radius:32px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.2);}
-  .metro-icon svg{width:100%;height:100%;}
-  .metro-url{font-size:12px;letter-spacing:.1em;opacity:.4;margin-top:16px;text-align:center;}
+  .m-wm{font-size:48px;margin-bottom:12px;}
+  .m-bl{font-size:14px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:32px;}
+  .m-tl{font-size:20px;line-height:1.5;opacity:.75;max-width:380px;}
+  .m-ico{width:140px;height:140px;border-radius:32px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.2);} .m-ico svg{width:100%;height:100%;}
+  .m-url{font-size:12px;letter-spacing:.1em;opacity:.4;margin-top:16px;text-align:center;}
 
-  /* Notification mockup */
-  .notif-card{background:#fff;border-radius:16px;padding:16px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;}
-  .notif-icon{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;}
-  .notif-icon svg{width:100%;height:100%;}
-  .notif-text{flex:1;}
-  .notif-app{font-size:11px;font-weight:600;opacity:.5;}
-  .notif-msg{font-size:13px;font-weight:500;margin-top:2px;}
-  .notif-time{font-size:11px;color:#999;}
+  /* Notif */
+  .nf{background:#fff;border-radius:16px;padding:16px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;}
+  .nf-ico{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;} .nf-ico svg{width:100%;height:100%;}
+  .nf-app{font-size:11px;font-weight:600;opacity:.5;}
+  .nf-msg{font-size:13px;font-weight:500;margin-top:2px;}
+
+  /* Research section */
+  .research{max-width:1200px;margin:0 auto;padding:0 24px 60px;}
+  .r-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+  .r-block{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .r-box{width:140px;height:140px;border-radius:24px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .r-box svg{width:100%;height:100%;}
+  .r-name{font-size:10px;font-weight:600;color:#666;text-align:center;max-width:140px;}
+  .r-desc{font-size:9px;color:#aaa;text-align:center;max-width:140px;line-height:1.3;}
+  .r-grid-round .r-box{border-radius:70px;}
+
+  .swatch-section{max-width:800px;margin:40px auto 0;}
+  .sw-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .sw{width:66px;height:66px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:6px;}
+  .sw span{font-size:7px;font-weight:500;letter-spacing:.04em;}
+  .sw .hex{opacity:.6;font-size:6.5px;}
+  .sw-l span{color:#f5f0e8;} .sw-d span{color:#2e1e14;}
+  .sw-title{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-top:24px;}
 </style>
 </head>
 <body>
 
 <div class="selector">
-  <span class="selector-label">Proposition :</span>
-  <button class="sel-btn active" onclick="setProposal(0)">01 — F Interrompu</button>
-  <button class="sel-btn" onclick="setProposal(1)">02 — Flatline</button>
-  <button class="sel-btn" onclick="setProposal(2)">03 — Couches</button>
-  <button class="sel-btn" onclick="setProposal(3)">04 — F. Point</button>
+  <div class="sel-row">
+    <span class="sel-label">Logo :</span>
+    <button class="sel-btn active" onclick="setProp(0)">01 — F Interrompu</button>
+    <button class="sel-btn" onclick="setProp(1)">02 — Flatline</button>
+    <button class="sel-btn" onclick="setProp(2)">03 — Couches</button>
+    <button class="sel-btn" onclick="setProp(3)">04 — F. Point</button>
+  </div>
+  <div class="sel-row" id="color-row">
+    <span class="sel-label">Couleur :</span>
+    <!-- Filled dynamically -->
+  </div>
 </div>
 
 <div class="page">
 <h1>Faraday — Logos en contexte</h1>
 
-<!-- IN-APP -->
-<div class="section-title" style="border:none;margin-top:0;padding-top:0;">In-App</div>
-<div class="mockups-row">
-
-  <!-- Home screen -->
+<div class="st2" style="border:none;margin-top:0;padding-top:0;">In-App</div>
+<div class="mr">
   <div>
     <div style="font-size:11px;color:#999;text-align:center;margin-bottom:12px;">Home</div>
-    <div class="phone" id="phone-home">
-      <div class="phone-status"><span>9:41</span><span>&#9679; &#9679; &#9679;</span></div>
-      <div class="app-header">
-        <div class="app-logo-icon" id="app-icon-home"></div>
-        <div>
-          <div class="app-wordmark" id="app-wm-home"></div>
+    <div class="phone">
+      <div class="p-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+      <div class="p-hd"><div class="p-icon" id="ai1"></div><div class="p-wm" id="aw1"></div></div>
+      <div class="p-ct">
+        <div id="accent-card" style="border-radius:12px;padding:14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+          <div style="width:10px;height:10px;border-radius:50%;" id="accent-dot"></div>
+          <div style="flex:1;"><div style="font-size:13px;font-weight:600;" id="accent-title">Session en cours</div><div style="font-size:11px;color:#999;margin-top:2px;">Salon &middot; Depuis 14:20</div></div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;" id="accent-time">1h42</div>
+        </div>
+        <div style="text-align:center;padding:12px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;">9<span style="font-size:16px;color:#999;">h</span>46</div><div style="font-size:12px;color:#999;margin-top:4px;">deconnecte aujourd'hui</div></div>
+        <div style="display:flex;gap:8px;margin:12px 0;">
+          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;">5</div><div style="font-size:9px;color:#999;">sessions</div></div>
+          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;">1h57</div><div style="font-size:9px;color:#999;">moyenne</div></div>
+          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#6b9b6b;">+18%</div><div style="font-size:9px;color:#999;">vs semaine</div></div>
+        </div>
+        <div style="background:#f8f5f0;border-radius:12px;padding:12px;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#999;margin-bottom:6px;">&#128293; Streak — 12 jours</div>
+          <div style="display:flex;gap:3px;" id="streak-row"></div>
         </div>
       </div>
-      <div class="app-body">
-        <div style="background:rgba(200,132,90,.08);border:1px solid rgba(200,132,90,.2);border-radius:12px;padding:14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
-          <div style="width:10px;height:10px;border-radius:50%;background:#c8845a;"></div>
-          <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#c8845a;">Session en cours</div><div style="font-size:11px;color:#999;margin-top:2px;">Salon &middot; Depuis 14:20</div></div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:#c8845a;">1h42</div>
-        </div>
-        <div style="text-align:center;padding:16px 0;">
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;">9<span style="font-size:16px;color:#999;">h</span>46</div>
-          <div style="font-size:12px;color:#999;margin-top:4px;">deconnecte aujourd'hui</div>
-        </div>
-        <div style="display:flex;gap:8px;margin-bottom:16px;">
-          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">5</div><div style="font-size:9px;color:#999;margin-top:2px;">sessions</div></div>
-          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">1h57</div><div style="font-size:9px;color:#999;margin-top:2px;">moyenne</div></div>
-          <div style="flex:1;background:#f8f5f0;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#6b9b6b;">+18%</div><div style="font-size:9px;color:#999;margin-top:2px;">vs semaine</div></div>
-        </div>
-        <div style="background:#f8f5f0;border-radius:12px;padding:14px;">
-          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#999;margin-bottom:8px;">&#128293; Streak — 12 jours</div>
-          <div style="display:flex;gap:4px;">
-            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">L</div>
-            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">M</div>
-            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">M</div>
-            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">J</div>
-            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">V</div>
-            <div style="flex:1;height:24px;border-radius:4px;background:rgba(200,132,90,.15);display:flex;align-items:center;justify-content:center;font-size:8px;color:#c8845a;font-weight:500;">S</div>
-            <div style="flex:1;height:24px;border-radius:4px;background:#c8845a;display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;font-weight:600;">D</div>
-          </div>
-        </div>
-      </div>
-      <div class="phone-nav">
-        <div class="pn-item" style="color:#c8845a;"><span>&#9679;</span>Home</div>
-        <div class="pn-item"><span>&#9829;</span>Groupes</div>
-        <div class="pn-item"><span>&#9632;</span>Boxes</div>
-        <div class="pn-item"><span>&#9650;</span>Stats</div>
-        <div class="pn-item"><span>&#9783;</span>Plus</div>
-      </div>
+      <div class="p-nav"><div class="pni" id="nav-home"><span>&#9679;</span>Home</div><div class="pni"><span>&#9829;</span>Groupes</div><div class="pni"><span>&#9632;</span>Boxes</div><div class="pni"><span>&#9650;</span>Stats</div><div class="pni"><span>&#9783;</span>Plus</div></div>
     </div>
   </div>
-
-  <!-- Splash screen -->
   <div>
     <div style="font-size:11px;color:#999;text-align:center;margin-bottom:12px;">Splash</div>
-    <div class="splash-phone" id="phone-splash">
-      <div class="splash-icon" id="splash-icon"></div>
-      <div class="splash-wordmark" id="splash-wm"></div>
-      <div class="splash-baseline" id="splash-bl"></div>
-    </div>
+    <div class="splash" id="splash"><div class="sp-icon" id="si"></div><div class="sp-wm" id="sw"></div><div class="sp-bl" id="sb"></div></div>
   </div>
-
 </div>
 
-<!-- NOTIFICATION -->
-<div class="section-title">Notification</div>
+<div class="st2">Notification</div>
 <div style="display:flex;justify-content:center;">
-  <div class="notif-card">
-    <div class="notif-icon" id="notif-icon"></div>
-    <div class="notif-text">
-      <div class="notif-app" id="notif-app">FARADAY</div>
-      <div class="notif-msg">Session terminee — 1h42 au Salon</div>
-    </div>
-    <div class="notif-time">now</div>
-  </div>
+  <div class="nf"><div class="nf-ico" id="ni"></div><div style="flex:1;"><div class="nf-app" id="na">FARADAY</div><div class="nf-msg">Session terminee — 1h42 au Salon</div></div><div style="font-size:11px;color:#999;">now</div></div>
 </div>
 
-<!-- BUSINESS CARD -->
-<div class="section-title">Carte de visite</div>
-<div class="card-container">
-  <div class="bcard" id="bcard-front">
-    <div>
-      <div class="bcard-logo">
-        <div class="bcard-icon" id="bcard-icon"></div>
-        <div class="bcard-wm" id="bcard-wm"></div>
-      </div>
-    </div>
-    <div>
-      <div class="bcard-name" id="bcard-name">Pol Conin</div>
-      <div class="bcard-info" id="bcard-info">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78</div>
-    </div>
-    <div class="bcard-bl" id="bcard-bl"></div>
-  </div>
-  <div class="bcard-back" id="bcard-back">
-    <div class="bcard-back-icon" id="bcard-back-icon"></div>
-    <div class="bcard-back-wm" id="bcard-back-wm"></div>
-    <div class="bcard-back-bl" id="bcard-back-bl"></div>
-  </div>
+<div class="st2">Carte de visite</div>
+<div class="cc">
+  <div class="bc" id="cf"><div><div class="bc-logo"><div class="bc-ico" id="ci"></div><div class="bc-wm" id="cw"></div></div></div><div><div class="bc-name">Pol Conin</div><div class="bc-info">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78</div></div><div class="bc-bl" id="cb"></div></div>
+  <div class="bcb" id="cbk"><div class="bcb-ico" id="cbi"></div><div class="bcb-wm" id="cbw"></div><div class="bcb-bl" id="cbb"></div></div>
 </div>
 
-<!-- METRO AD -->
-<div class="section-title">Affiche metro</div>
-<div class="metro" id="metro-ad">
-  <div class="metro-left">
-    <div class="metro-wm" id="metro-wm"></div>
-    <div class="metro-bl" id="metro-bl"></div>
-    <div class="metro-tagline" id="metro-tagline">Deposez votre telephone.<br>Reprenez votre temps.</div>
-  </div>
-  <div class="metro-right">
-    <div>
-      <div class="metro-icon" id="metro-icon"></div>
-      <div class="metro-url" id="metro-url">faraday-box.fr</div>
-    </div>
-  </div>
+<div class="st2">Affiche metro</div>
+<div class="metro" id="metro"><div style="flex:1;"><div class="m-wm" id="mw"></div><div class="m-bl" id="mb"></div><div class="m-tl">Deposez votre telephone.<br>Reprenez votre temps.</div></div><div><div class="m-ico" id="mi"></div><div class="m-url">faraday-box.fr</div></div></div>
+
+<!-- ============================================================
+     RESEARCH
+     ============================================================ -->
+<div class="st2" style="margin-top:80px;">Recherches — Marques carrees</div>
+<div class="research">
+<div class="r-grid" id="rg-sq"></div>
 </div>
+
+<div class="st2">Recherches — Marques rondes</div>
+<div class="research">
+<div class="r-grid r-grid-round" id="rg-rd"></div>
+</div>
+
+<div class="st2">Palette chromatique</div>
+<div class="swatch-section" id="swatch-area"></div>
 
 </div><!-- /page -->
 
 <script>
-const proposals = [
-  {
-    id: '01',
-    name: 'F Interrompu + Essentielle',
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
-    fontWeight: '600',
-    fontSize: '22px',
-    letterSpacing: '.04em',
-    textTransform: 'none',
-    wordmark: 'Faraday',
-    baseline: 'the present starts here',
-    bg: '#2e1e14',
-    fg: '#f5f0e8',
-    splashBg: '#2e1e14',
-    metroBg: '#2e1e14',
-    cardBg: '#2e1e14',
-    iconSvg: function(s) {
-      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#2e1e14"/><g transform="translate(${s*.19},${s*.16})"><rect x="0" y="0" width="${s*.1}" height="${s*.65}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="0" width="${s*.38}" height="${s*.1}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="${s*.27}" width="${s*.23}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.38}" y="${s*.27}" width="${s*.12}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8" opacity=".3"/><rect x="${s*.54}" y="${s*.27}" width="${s*.07}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8" opacity=".1"/></g></svg>`;
-    }
-  },
-  {
-    id: '02',
-    name: 'Flatline + Respiree',
-    fontFamily: "'Sora', sans-serif",
-    fontWeight: '300',
-    fontSize: '22px',
-    letterSpacing: '.12em',
-    textTransform: 'none',
-    wordmark: 'Faraday',
-    baseline: 'disconnect to reconnect',
-    bg: '#2d3b28',
-    fg: '#f5f0e8',
-    splashBg: '#2d3b28',
-    metroBg: '#2d3b28',
-    cardBg: '#2d3b28',
-    iconSvg: function(s) {
-      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#2d3b28"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="#f5f0e8" stroke-width="${s*.04}" stroke-linecap="round"/></svg>`;
-    }
-  },
-  {
-    id: '03',
-    name: 'Couches + Architecturale',
-    fontFamily: "'Space Grotesk', sans-serif",
-    fontWeight: '500',
-    fontSize: '20px',
-    letterSpacing: '.2em',
-    textTransform: 'uppercase',
-    wordmark: 'Faraday',
-    baseline: 'the present starts here',
-    bg: '#08654a',
-    fg: '#f5f0e8',
-    splashBg: '#08654a',
-    metroBg: '#08654a',
-    cardBg: '#08654a',
-    iconSvg: function(s) {
-      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#08654a"/><rect x="${s*.15}" y="${s*.15}" width="${s*.7}" height="${s*.7}" rx="${s*.08}" fill="none" stroke="#f5f0e8" stroke-width="${s*.025}" opacity=".2"/><rect x="${s*.24}" y="${s*.24}" width="${s*.52}" height="${s*.52}" rx="${s*.06}" fill="none" stroke="#f5f0e8" stroke-width="${s*.025}" opacity=".4"/><rect x="${s*.33}" y="${s*.33}" width="${s*.34}" height="${s*.34}" rx="${s*.05}" fill="none" stroke="#f5f0e8" stroke-width="${s*.025}" opacity=".7"/><rect x="${s*.41}" y="${s*.41}" width="${s*.18}" height="${s*.18}" rx="${s*.03}" fill="#f5f0e8"/></svg>`;
-    }
-  },
-  {
-    id: '04',
-    name: 'F. Point + Douce',
-    fontFamily: "'Manrope', sans-serif",
-    fontWeight: '300',
-    fontSize: '26px',
-    letterSpacing: '.02em',
-    textTransform: 'lowercase',
-    wordmark: 'faraday',
-    baseline: 'come back to yourself',
-    bg: '#6a2040',
-    fg: '#f5f0e8',
-    splashBg: '#6a2040',
-    metroBg: '#6a2040',
-    cardBg: '#6a2040',
-    iconSvg: function(s) {
-      return `<svg viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg"><rect width="${s}" height="${s}" rx="${s*.22}" fill="#6a2040"/><g transform="translate(${s*.19},${s*.15})"><rect x="0" y="0" width="${s*.1}" height="${s*.65}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="0" width="${s*.33}" height="${s*.1}" rx="${s*.02}" fill="#f5f0e8"/><rect x="${s*.1}" y="${s*.27}" width="${s*.2}" height="${s*.08}" rx="${s*.02}" fill="#f5f0e8"/><circle cx="${s*.5}" cy="${s*.6}" r="${s*.07}" fill="#f5f0e8"/></g></svg>`;
-    }
-  }
+const colors = [
+  {name:'Brun',bg:'#2e1e14',fg:'#f5f0e8'},
+  {name:'Foret',bg:'#2d3b28',fg:'#f5f0e8'},
+  {name:'Emeraude',bg:'#08654a',fg:'#f5f0e8'},
+  {name:'Ocean',bg:'#1a5a8a',fg:'#f5f0e8'},
+  {name:'Rouille',bg:'#b04828',fg:'#f5f0e8'},
+  {name:'Teal',bg:'#1a3a3a',fg:'#f5f0e8'},
+  {name:'Vin',bg:'#6a2040',fg:'#f5f0e8'},
+  {name:'Sunset',bg:'#c06020',fg:'#f5f0e8'},
+  {name:'Encre',bg:'#2a2a5a',fg:'#f5f0e8'},
+  {name:'Mousse',bg:'#3a7028',fg:'#f5f0e8'},
+  {name:'Pierre',bg:'#4a4640',fg:'#f5f0e8'},
+  {name:'Argile',bg:'#b87a38',fg:'#f5f0e8'},
+  {name:'Navy',bg:'#0f1a2e',fg:'#f5f0e8'},
 ];
 
-function setProposal(idx) {
-  const p = proposals[idx];
-  // Buttons
-  document.querySelectorAll('.sel-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+const props = [
+  {id:'01',name:'F Interrompu',ff:"'Plus Jakarta Sans',sans-serif",fw:'600',fs:'22px',ls:'.04em',tt:'none',wm:'Faraday',bl:'the present starts here',defColor:0,
+    icon:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.22}" fill="${bg}"/><g transform="translate(${s*.19},${s*.16})"><rect width="${s*.1}" height="${s*.65}" rx="${s*.02}" fill="${fg}"/><rect x="${s*.1}" width="${s*.38}" height="${s*.1}" rx="${s*.02}" fill="${fg}"/><rect x="${s*.1}" y="${s*.27}" width="${s*.23}" height="${s*.08}" rx="${s*.02}" fill="${fg}"/><rect x="${s*.38}" y="${s*.27}" width="${s*.12}" height="${s*.08}" rx="${s*.02}" fill="${fg}" opacity=".3"/><rect x="${s*.54}" y="${s*.27}" width="${s*.07}" height="${s*.08}" rx="${s*.02}" fill="${fg}" opacity=".1"/></g></svg>`},
+  {id:'02',name:'Flatline',ff:"'Sora',sans-serif",fw:'300',fs:'22px',ls:'.12em',tt:'none',wm:'Faraday',bl:'disconnect to reconnect',defColor:1,
+    icon:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.22}" fill="${bg}"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.04}" stroke-linecap="round"/></svg>`},
+  {id:'03',name:'Couches',ff:"'Space Grotesk',sans-serif",fw:'500',fs:'20px',ls:'.2em',tt:'uppercase',wm:'Faraday',bl:'the present starts here',defColor:2,
+    icon:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.22}" fill="${bg}"/><rect x="${s*.15}" y="${s*.15}" width="${s*.7}" height="${s*.7}" rx="${s*.08}" fill="none" stroke="${fg}" stroke-width="${s*.025}" opacity=".2"/><rect x="${s*.24}" y="${s*.24}" width="${s*.52}" height="${s*.52}" rx="${s*.06}" fill="none" stroke="${fg}" stroke-width="${s*.025}" opacity=".4"/><rect x="${s*.33}" y="${s*.33}" width="${s*.34}" height="${s*.34}" rx="${s*.05}" fill="none" stroke="${fg}" stroke-width="${s*.025}" opacity=".7"/><rect x="${s*.41}" y="${s*.41}" width="${s*.18}" height="${s*.18}" rx="${s*.03}" fill="${fg}"/></svg>`},
+  {id:'04',name:'F. Point',ff:"'Manrope',sans-serif",fw:'300',fs:'26px',ls:'.02em',tt:'lowercase',wm:'faraday',bl:'come back to yourself',defColor:6,
+    icon:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.22}" fill="${bg}"/><g transform="translate(${s*.19},${s*.15})"><rect width="${s*.1}" height="${s*.65}" rx="${s*.02}" fill="${fg}"/><rect x="${s*.1}" width="${s*.33}" height="${s*.1}" rx="${s*.02}" fill="${fg}"/><rect x="${s*.1}" y="${s*.27}" width="${s*.2}" height="${s*.08}" rx="${s*.02}" fill="${fg}"/><circle cx="${s*.5}" cy="${s*.6}" r="${s*.07}" fill="${fg}"/></g></svg>`},
+];
 
-  // Style helper
-  const setWm = (el, size) => {
-    if(!el) return;
-    el.style.fontFamily = p.fontFamily;
-    el.style.fontWeight = p.fontWeight;
-    el.style.fontSize = size || p.fontSize;
-    el.style.letterSpacing = p.letterSpacing;
-    el.style.textTransform = p.textTransform;
-    el.textContent = p.wordmark;
-  };
-  const setIcon = (el, size) => { if(el) el.innerHTML = p.iconSvg(size); };
+// Research marks data
+const sqMarks = [
+  {n:'Le Depot',d:'Le telephone entre dans la box',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><rect x="${s*.2}" y="${s*.3}" width="${s*.6}" height="${s*.5}" rx="${s*.05}" fill="none" stroke="${fg}" stroke-width="${s*.025}"/><rect x="${s*.35}" y="${s*.275}" width="${s*.3}" height="${s*.05}" rx="${s*.01}" fill="${bg}"/><rect x="${s*.425}" y="${s*.175}" width="${s*.15}" height="${s*.225}" rx="${s*.025}" fill="${fg}" opacity=".7" transform="rotate(-8 ${s*.5} ${s*.288})"/></svg>`},
+  {n:'Signal Zero',d:'Barres qui s\'eteignent',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><g transform="translate(${s*.175},${s*.225})"><rect y="${s*.425}" width="${s*.088}" height="${s*.125}" rx="${s*.012}" fill="${fg}"/><rect x="${s*.138}" y="${s*.325}" width="${s*.088}" height="${s*.225}" rx="${s*.012}" fill="${fg}"/><rect x="${s*.275}" y="${s*.225}" width="${s*.088}" height="${s*.325}" rx="${s*.012}" fill="${fg}" opacity=".6"/><rect x="${s*.413}" y="${s*.125}" width="${s*.088}" height="${s*.425}" rx="${s*.012}" fill="${fg}" opacity=".25"/><rect x="${s*.55}" y="${s*.025}" width="${s*.088}" height="${s*.525}" rx="${s*.012}" fill="${fg}" opacity=".08"/></g></svg>`},
+  {n:'Couvercle',d:'Box avec couvercle souleve',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><rect x="${s*.225}" y="${s*.488}" width="${s*.55}" height="${s*.313}" rx="${s*.038}" fill="${fg}"/><rect x="${s*.225}" y="${s*.225}" width="${s*.55}" height="${s*.075}" rx="${s*.025}" fill="${fg}" opacity=".5" transform="rotate(-6 ${s*.5} ${s*.263})"/></svg>`},
+  {n:'Rupture',d:'Cercle interrompu',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><path d="M${s*.5},${s*.225} A${s*.275},${s*.275} 0 1,1 ${s*.725},${s*.325}" fill="none" stroke="${fg}" stroke-width="${s*.038}" stroke-linecap="round"/><circle cx="${s*.5}" cy="${s*.225}" r="${s*.025}" fill="${fg}"/></svg>`},
+  {n:'Pause Pure',d:'Symbole pause radical',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><rect x="${s*.325}" y="${s*.25}" width="${s*.1}" height="${s*.5}" rx="${s*.05}" fill="${fg}"/><rect x="${s*.575}" y="${s*.25}" width="${s*.1}" height="${s*.5}" rx="${s*.05}" fill="${fg}"/></svg>`},
+  {n:'Couches',d:'Carres concentriques',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><rect x="${s*.188}" y="${s*.188}" width="${s*.625}" height="${s*.625}" rx="${s*.075}" fill="none" stroke="${fg}" stroke-width="${s*.019}" opacity=".2"/><rect x="${s*.275}" y="${s*.275}" width="${s*.45}" height="${s*.45}" rx="${s*.063}" fill="none" stroke="${fg}" stroke-width="${s*.019}" opacity=".4"/><rect x="${s*.363}" y="${s*.363}" width="${s*.275}" height="${s*.275}" rx="${s*.05}" fill="none" stroke="${fg}" stroke-width="${s*.019}" opacity=".7"/><rect x="${s*.438}" y="${s*.438}" width="${s*.125}" height="${s*.125}" rx="${s*.025}" fill="${fg}"/></svg>`},
+  {n:'Off',d:'Bouton power',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><path d="M${s*.5},${s*.25} L${s*.5},${s*.475}" stroke="${fg}" stroke-width="${s*.038}" stroke-linecap="round"/><path d="M${s*.375},${s*.325} A${s*.2},${s*.2} 0 1,0 ${s*.625},${s*.325}" fill="none" stroke="${fg}" stroke-width="${s*.031}" stroke-linecap="round"/></svg>`},
+  {n:'Flatline',d:'Onde qui s\'aplatit',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><path d="M${s*.175},${s*.5} Q${s*.263},${s*.313} ${s*.35},${s*.5} Q${s*.413},${s*.625} ${s*.475},${s*.5} Q${s*.513},${s*.425} ${s*.55},${s*.5} Q${s*.569},${s*.538} ${s*.588},${s*.5} L${s*.825},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.028}" stroke-linecap="round"/></svg>`},
+  {n:'Dissolution',d:'Points qui s\'effacent',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><circle cx="${s*.25}" cy="${s*.5}" r="${s*.05}" fill="${fg}"/><circle cx="${s*.388}" cy="${s*.5}" r="${s*.038}" fill="${fg}" opacity=".7"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.028}" fill="${fg}" opacity=".45"/><circle cx="${s*.594}" cy="${s*.5}" r="${s*.019}" fill="${fg}" opacity=".25"/><circle cx="${s*.669}" cy="${s*.5}" r="${s*.013}" fill="${fg}" opacity=".12"/></svg>`},
+  {n:'Sablier',d:'Temps recupere',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><path d="M${s*.35},${s*.225} L${s*.65},${s*.225} L${s*.525},${s*.475} L${s*.5},${s*.5} L${s*.475},${s*.475} Z" fill="${fg}" opacity=".3"/><path d="M${s*.35},${s*.775} L${s*.65},${s*.775} L${s*.525},${s*.525} L${s*.5},${s*.5} L${s*.475},${s*.525} Z" fill="${fg}" opacity=".6"/><line x1="${s*.325}" y1="${s*.225}" x2="${s*.675}" y2="${s*.225}" stroke="${fg}" stroke-width="${s*.019}" stroke-linecap="round"/><line x1="${s*.325}" y1="${s*.775}" x2="${s*.675}" y2="${s*.775}" stroke="${fg}" stroke-width="${s*.019}" stroke-linecap="round"/></svg>`},
+  {n:'F Doux',d:'F tout en rondeur',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><g transform="translate(${s*.25},${s*.2})"><rect width="${s*.113}" height="${s*.6}" rx="${s*.056}" fill="${fg}"/><rect x="${s*.056}" width="${s*.375}" height="${s*.113}" rx="${s*.056}" fill="${fg}"/><rect x="${s*.056}" y="${s*.238}" width="${s*.263}" height="${s*.1}" rx="${s*.05}" fill="${fg}"/></g></svg>`},
+  {n:'[F] Contenu',d:'F entre crochets',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.175}" fill="${bg}"/><path d="M${s*.238},${s*.25} L${s*.238},${s*.75}" stroke="${fg}" stroke-width="${s*.031}" stroke-linecap="round" opacity=".35"/><path d="M${s*.238},${s*.25} L${s*.325},${s*.25}" stroke="${fg}" stroke-width="${s*.031}" stroke-linecap="round" opacity=".35"/><path d="M${s*.238},${s*.75} L${s*.325},${s*.75}" stroke="${fg}" stroke-width="${s*.031}" stroke-linecap="round" opacity=".35"/><path d="M${s*.763},${s*.25} L${s*.763},${s*.75}" stroke="${fg}" stroke-width="${s*.031}" stroke-linecap="round" opacity=".35"/><path d="M${s*.675},${s*.25} L${s*.763},${s*.25}" stroke="${fg}" stroke-width="${s*.031}" stroke-linecap="round" opacity=".35"/><path d="M${s*.675},${s*.75} L${s*.763},${s*.75}" stroke="${fg}" stroke-width="${s*.031}" stroke-linecap="round" opacity=".35"/><g transform="translate(${s*.35},${s*.313})"><rect width="${s*.063}" height="${s*.375}" rx="${s*.01}" fill="${fg}"/><rect x="${s*.063}" width="${s*.2}" height="${s*.063}" rx="${s*.01}" fill="${fg}"/><rect x="${s*.063}" y="${s*.15}" width="${s*.138}" height="${s*.05}" rx="${s*.01}" fill="${fg}"/></g></svg>`},
+];
+const rdMarks = [
+  {n:'F Orbe',d:'F + cercle fin',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.35}" fill="none" stroke="${fg}" stroke-width="${s*.019}" opacity=".2"/><g transform="translate(${s*.363},${s*.313})"><rect width="${s*.069}" height="${s*.375}" rx="${s*.01}" fill="${fg}"/><rect x="${s*.069}" width="${s*.225}" height="${s*.063}" rx="${s*.01}" fill="${fg}"/><rect x="${s*.069}" y="${s*.15}" width="${s*.15}" height="${s*.05}" rx="${s*.01}" fill="${fg}"/></g></svg>`},
+  {n:'Pause Cercle',d:'Pause minimal',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><rect x="${s*.375}" y="${s*.325}" width="${s*.075}" height="${s*.35}" rx="${s*.038}" fill="${fg}"/><rect x="${s*.55}" y="${s*.325}" width="${s*.075}" height="${s*.35}" rx="${s*.038}" fill="${fg}"/></svg>`},
+  {n:'Eclipse',d:'Lumiere qui revient',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.25}" fill="${fg}" opacity=".12"/><circle cx="${s*.575}" cy="${s*.463}" r="${s*.238}" fill="${bg}"/></svg>`},
+  {n:'Empreinte',d:'Spirale, retour a soi',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><path d="M${s*.5},${s*.35} A${s*.15},${s*.15} 0 0,1 ${s*.65},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.019}" stroke-linecap="round" opacity=".7"/><path d="M${s*.65},${s*.5} A${s*.15},${s*.15} 0 0,1 ${s*.5},${s*.65}" fill="none" stroke="${fg}" stroke-width="${s*.019}" stroke-linecap="round" opacity=".5"/><path d="M${s*.5},${s*.65} A${s*.15},${s*.15} 0 0,1 ${s*.35},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.019}" stroke-linecap="round" opacity=".3"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.019}" fill="${fg}"/></svg>`},
+  {n:'Point',d:'L\'essentiel',svg:(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.063}" fill="${fg}"/></svg>`},
+];
 
-  // App home
-  setIcon(document.getElementById('app-icon-home'), 40);
-  setWm(document.getElementById('app-wm-home'));
+const swatchFamilies = [
+  {title:'Bruns',items:[{n:'Abyssal',c:'#2e1e14'},{n:'Profond',c:'#3d2b1f'},{n:'Medium',c:'#5c3d2e'},{n:'Chaud',c:'#7a5240'}]},
+  {title:'Verts',items:[{n:'Foret',c:'#1c2e1c'},{n:'Mousse',c:'#2d3b28'},{n:'Sauge',c:'#5a6b52'},{n:'Brume',c:'#a3b098'}]},
+  {title:'Emeraude',items:[{n:'Abyssal',c:'#063028'},{n:'Profond',c:'#08654a'},{n:'Vif',c:'#1a7a5a'},{n:'Clair',c:'#40b080'}]},
+  {title:'Ocean',items:[{n:'Abysse',c:'#0a2a4a'},{n:'Ocean',c:'#1a5a8a'},{n:'Vague',c:'#2a7aaa'},{n:'Ciel',c:'#5aaad0'}]},
+  {title:'Rouille',items:[{n:'Brule',c:'#4a1a0a'},{n:'Rouille',c:'#b04828'},{n:'Cuivre',c:'#c05a30'},{n:'Peche',c:'#e8a070'}]},
+  {title:'Vin',items:[{n:'Nuit',c:'#2a0a14'},{n:'Vin',c:'#6a2040'},{n:'Cerise',c:'#7a3050'},{n:'Rose',c:'#a04a6a'}]},
+  {title:'Sunset',items:[{n:'Terre',c:'#4a2a0a'},{n:'Ambre',c:'#c06020'},{n:'Miel',c:'#c07a30'},{n:'Dore',c:'#e8b060'}]},
+  {title:'Encre',items:[{n:'Nuit',c:'#0a0a2a'},{n:'Encre',c:'#2a2a5a'},{n:'Indigo',c:'#3a3a6a'},{n:'Lavande',c:'#6a6aa0'}]},
+  {title:'Neutres',items:[{n:'Charbon',c:'#1a1a1a'},{n:'Pierre',c:'#4a4640'},{n:'Creme',c:'#f5f0e8'},{n:'Blanc',c:'#ffffff'}]},
+];
 
-  // Splash
-  const sp = document.getElementById('phone-splash');
-  sp.style.background = p.splashBg;
-  sp.style.color = p.fg;
-  setIcon(document.getElementById('splash-icon'), 80);
-  setWm(document.getElementById('splash-wm'), '32px');
-  const sbl = document.getElementById('splash-bl');
-  sbl.textContent = p.baseline;
+let curProp = 0, curColor = 0;
 
-  // Notification
-  setIcon(document.getElementById('notif-icon'), 40);
-  document.getElementById('notif-app').textContent = p.wordmark.toUpperCase();
-
-  // Business card front
-  const bcf = document.getElementById('bcard-front');
-  bcf.style.background = p.cardBg;
-  bcf.style.color = p.fg;
-  setIcon(document.getElementById('bcard-icon'), 36);
-  setWm(document.getElementById('bcard-wm'), '18px');
-  document.getElementById('bcard-bl').textContent = p.baseline;
-  document.getElementById('bcard-name').style.color = p.fg;
-
-  // Business card back
-  const bcb = document.getElementById('bcard-back');
-  bcb.style.background = p.cardBg;
-  bcb.style.color = p.fg;
-  setIcon(document.getElementById('bcard-back-icon'), 60);
-  setWm(document.getElementById('bcard-back-wm'), '26px');
-  document.getElementById('bcard-back-bl').textContent = p.baseline;
-
-  // Metro
-  const metro = document.getElementById('metro-ad');
-  metro.style.background = p.metroBg;
-  metro.style.color = p.fg;
-  setWm(document.getElementById('metro-wm'), '48px');
-  document.getElementById('metro-bl').textContent = p.baseline;
-  setIcon(document.getElementById('metro-icon'), 140);
+function buildColorRow(propIdx) {
+  const row = document.getElementById('color-row');
+  const label = row.querySelector('.sel-label');
+  row.innerHTML = '';
+  row.appendChild(label);
+  colors.forEach((c,i) => {
+    const btn = document.createElement('div');
+    btn.className = 'color-btn' + (i === curColor ? ' active' : '');
+    btn.style.background = c.bg;
+    btn.title = c.name;
+    btn.onclick = () => setColor(i);
+    row.appendChild(btn);
+  });
 }
 
-// Init
-setProposal(0);
-</script>
+function setProp(idx) {
+  curProp = idx;
+  curColor = props[idx].defColor;
+  document.querySelectorAll('.sel-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+  buildColorRow(idx);
+  render();
+}
 
+function setColor(idx) {
+  curColor = idx;
+  document.querySelectorAll('.color-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+  render();
+}
+
+function render() {
+  const p = props[curProp];
+  const c = colors[curColor];
+  const bg = c.bg, fg = c.fg;
+
+  const setWm = (el, size) => { if(!el)return; el.style.fontFamily=p.ff; el.style.fontWeight=p.fw; el.style.fontSize=size||p.fs; el.style.letterSpacing=p.ls; el.style.textTransform=p.tt; el.textContent=p.wm; };
+  const setIco = (el, s) => { if(el) el.innerHTML = p.icon(s, bg, fg); };
+
+  // App
+  setIco(document.getElementById('ai1'), 40);
+  setWm(document.getElementById('aw1'));
+
+  // Accent card
+  const ac = document.getElementById('accent-card');
+  ac.style.background = bg + '12';
+  ac.style.border = '1px solid ' + bg + '30';
+  document.getElementById('accent-dot').style.background = bg;
+  document.getElementById('accent-title').style.color = bg;
+  document.getElementById('accent-time').style.color = bg;
+  document.getElementById('nav-home').style.color = bg;
+
+  // Streak
+  const sr = document.getElementById('streak-row');
+  sr.innerHTML = '';
+  'LMMJVSD'.split('').forEach((d,i) => {
+    const div = document.createElement('div');
+    div.style.cssText = `flex:1;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:500;`;
+    if (i < 6) { div.style.background = bg + '20'; div.style.color = bg; }
+    else { div.style.background = bg; div.style.color = fg; div.style.fontWeight = '600'; }
+    div.textContent = d;
+    sr.appendChild(div);
+  });
+
+  // Splash
+  const sp = document.getElementById('splash');
+  sp.style.background = bg; sp.style.color = fg;
+  setIco(document.getElementById('si'), 80);
+  setWm(document.getElementById('sw'), '32px');
+  document.getElementById('sb').textContent = p.bl;
+
+  // Notif
+  setIco(document.getElementById('ni'), 40);
+  document.getElementById('na').textContent = p.wm.toUpperCase();
+
+  // Card front
+  const cf = document.getElementById('cf');
+  cf.style.background = bg; cf.style.color = fg;
+  setIco(document.getElementById('ci'), 36);
+  setWm(document.getElementById('cw'), '18px');
+  document.getElementById('cb').textContent = p.bl;
+
+  // Card back
+  const cbk = document.getElementById('cbk');
+  cbk.style.background = bg; cbk.style.color = fg;
+  setIco(document.getElementById('cbi'), 60);
+  setWm(document.getElementById('cbw'), '26px');
+  document.getElementById('cbb').textContent = p.bl;
+
+  // Metro
+  const metro = document.getElementById('metro');
+  metro.style.background = bg; metro.style.color = fg;
+  setWm(document.getElementById('mw'), '48px');
+  document.getElementById('mb').textContent = p.bl;
+  setIco(document.getElementById('mi'), 140);
+
+  // Research squares
+  const rgs = document.getElementById('rg-sq');
+  rgs.innerHTML = '';
+  sqMarks.forEach(m => {
+    rgs.innerHTML += `<div class="r-block"><div class="r-box">${m.svg(140,bg,fg)}</div><div class="r-name">${m.n}</div><div class="r-desc">${m.d}</div></div>`;
+  });
+
+  // Research rounds
+  const rgr = document.getElementById('rg-rd');
+  rgr.innerHTML = '';
+  rdMarks.forEach(m => {
+    rgr.innerHTML += `<div class="r-block"><div class="r-box" style="border-radius:70px;">${m.svg(140,bg,fg)}</div><div class="r-name">${m.n}</div><div class="r-desc">${m.d}</div></div>`;
+  });
+
+  // Swatches
+  const sa = document.getElementById('swatch-area');
+  sa.innerHTML = '';
+  swatchFamilies.forEach(f => {
+    let h = `<div class="sw-title">${f.title}</div><div class="sw-row">`;
+    f.items.forEach(s => {
+      const isLight = s.c === '#f5f0e8' || s.c === '#ffffff' || s.c === '#a3b098' || s.c === '#e8a070' || s.c === '#e8b060' || s.c === '#8aba68' || s.c === '#40b080' || s.c === '#5aaad0';
+      h += `<div class="sw ${isLight?'sw-d':'sw-l'}" style="background:${s.c};${isLight?'border:1px solid #ddd;':''}"><span>${s.n}</span><span class="hex">${s.c}</span></div>`;
+    });
+    h += '</div>';
+    sa.innerHTML += h;
+  });
+}
+
+setProp(0);
+</script>
 </body>
 </html>
