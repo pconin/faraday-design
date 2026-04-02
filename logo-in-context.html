@@ -55,6 +55,22 @@
   .cb:hover{border-color:#666;}
   .cb.a{border-color:#f5f0e8;box-shadow:0 0 0 2px #c8845a;}
 
+  /* Dark mode toggle */
+  .mode-toggle{display:flex;align-items:center;gap:6px;margin-left:auto;}
+  .mode-btn{padding:6px 12px;border-radius:6px;border:2px solid #333;background:transparent;color:#888;font-size:10px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
+  .mode-btn:hover{border-color:#555;color:#bbb;}
+  .mode-btn.a{border-color:#c8845a;background:rgba(200,132,90,.12);color:#c8845a;}
+
+  /* Dark phone overrides */
+  .ph.dark{background:#0e0e10;border-color:#2e2e34;}
+  .ph.dark .ph-sb{color:#555;}
+  .ph.dark .ph-nav{border-color:#2e2e34;color:#555;}
+  .splash.dark{border-color:#2e2e34;}
+  .nf.dark{background:#1a1a1e;color:#f0ede8;}
+  .nf.dark .nf-msg{color:#f0ede8;}
+  .nf.dark .nf-sub{color:#8a8a94;}
+  .nf.dark .nf-t{color:#5a5a64;}
+
   .sim-page{max-width:1400px;margin:0 auto;padding:40px 24px;}
   .sim-h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:40px;}
   .st{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#999;margin:50px 0 20px;padding-top:30px;border-top:1px solid #ddd;}
@@ -165,6 +181,13 @@
       <button class="sel-b" onclick="setProp(3)">04 — F. Point</button>
     </div>
     <div class="sel-r" id="cr"><span class="sel-l">Couleur :</span></div>
+    <div class="sel-r">
+      <span class="sel-l">Mode :</span>
+      <div class="mode-toggle">
+        <button class="mode-btn a" onclick="setMode('light')">&#9788; Light</button>
+        <button class="mode-btn" onclick="setMode('dark')">&#9790; Dark</button>
+      </div>
+    </div>
   </div>
 
   <div class="sim-page">
@@ -689,7 +712,7 @@ const palettes = [
   ],
 ];
 
-let cP=0,cC=0;
+let cP=0,cC=0,darkMode=false;
 
 function buildResearch(){
   // Lockups — 8 colors per proposal
@@ -756,6 +779,12 @@ function buildColorRow(){
   });
 }
 
+function setMode(m){
+  darkMode = m==='dark';
+  document.querySelectorAll('.mode-btn').forEach((b,i)=>b.classList.toggle('a',i===(darkMode?1:0)));
+  render();
+}
+
 function setProp(i){
   cP=i;cC=P[i].dc;
   document.querySelectorAll('.sel-b').forEach((b,j)=>b.classList.toggle('a',j===i));
@@ -770,8 +799,36 @@ function setCol(i){
 
 function render(){
   const p=P[cP],c=C[cC],bg=c.bg,fg=c.fg;
-  const wm=(el,sz)=>{if(!el)return;el.style.fontFamily=p.ff;el.style.fontWeight=p.fw;el.style.fontSize=sz||p.fs;el.style.letterSpacing=p.ls;el.style.textTransform=p.tt;el.textContent=p.wm;};
+  const dk=darkMode;
+  const pbg=dk?'#0e0e10':'#fff', ptx=dk?'#f0ede8':'#1a1a1a', psub=dk?'#8a8a94':'#999', pter=dk?'#5a5a64':'#ccc';
+  const pbrd=dk?'#2e2e34':'#eee', psurf=dk?'#1a1a1e':'#f5f2ec', psurf2=dk?'#222226':'#f0ede5';
+
+  const wm=(el,sz)=>{if(!el)return;el.style.fontFamily=p.ff;el.style.fontWeight=p.fw;el.style.fontSize=sz||p.fs;el.style.letterSpacing=p.ls;el.style.textTransform=p.tt;el.textContent=p.wm;el.style.color=ptx;};
   const ic=(el,s)=>{if(el)el.innerHTML=p.ico(s,bg,fg);};
+
+  // Apply dark/light to all phones + supports
+  const sim=document.getElementById('simulator');
+  sim.style.background=dk?'#111':'#f0ede5';
+  document.querySelectorAll('.ph').forEach(ph=>{
+    ph.style.background=pbg;ph.style.borderColor=dk?'#2e2e34':'#ddd';ph.style.color=ptx;ph.style.boxShadow=dk?'0 16px 50px rgba(0,0,0,.3)':'0 16px 50px rgba(0,0,0,.07)';
+    ph.querySelectorAll('.ph-sb').forEach(sb=>sb.style.color=dk?'#555':'#aaa');
+    ph.querySelectorAll('.ph-nav').forEach(nav=>{nav.style.borderColor=pbrd;nav.style.color=dk?'#555':'#aaa';});
+  });
+  document.querySelectorAll('.splash').forEach(s=>{s.style.borderColor=dk?'#2e2e34':'#ddd';s.style.boxShadow=dk?'0 16px 50px rgba(0,0,0,.3)':'0 16px 50px rgba(0,0,0,.07)';});
+  document.querySelectorAll('.nf').forEach(n=>{n.style.background=dk?'#1a1a1e':'#fff';n.style.color=ptx;n.style.boxShadow=dk?'0 4px 14px rgba(0,0,0,.2)':'0 4px 14px rgba(0,0,0,.05)';});
+  document.querySelectorAll('.insta').forEach(n=>{n.style.background=dk?'#1a1a1e':'#fff';n.style.color=ptx;n.style.boxShadow=dk?'0 6px 24px rgba(0,0,0,.2)':'0 6px 24px rgba(0,0,0,.08)';});
+  document.querySelectorAll('.bc,.bcb').forEach(n=>{n.style.boxShadow=dk?'0 6px 24px rgba(0,0,0,.3)':'0 6px 24px rgba(0,0,0,.08)';});
+  // Override inline bg/border colors in phone content
+  document.querySelectorAll('.ph').forEach(ph=>{
+    ph.querySelectorAll('[style]').forEach(el=>{
+      const s=el.style;
+      if(s.background==='#f5f2ec'||s.background==='rgb(245, 242, 236)')s.background=psurf;
+      if(s.background==='#f8f5f0'||s.background==='rgb(248, 245, 240)')s.background=psurf;
+      if(s.background==='#f0ede5'||s.background==='rgb(240, 237, 229)')s.background=psurf2;
+      if(s.borderColor==='#eee'||s.borderColor==='rgb(238, 238, 238)')s.borderColor=pbrd;
+      if(s.color==='#999'||s.color==='rgb(153, 153, 153)')s.color=psub;
+    });
+  });
 
   // App home
   ic(document.getElementById('v-ai'),34);
