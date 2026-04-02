@@ -808,7 +808,7 @@ function render(){
 
   // Apply dark/light to all phones + supports
   const sim=document.getElementById('simulator');
-  sim.style.background=dk?'#111':'#f0ede5';
+  sim.style.background='#f0ede5';
   document.querySelectorAll('.ph').forEach(ph=>{
     ph.style.background=pbg;ph.style.borderColor=dk?'#2e2e34':'#ddd';ph.style.color=ptx;ph.style.boxShadow=dk?'0 16px 50px rgba(0,0,0,.3)':'0 16px 50px rgba(0,0,0,.07)';
     ph.querySelectorAll('.ph-sb').forEach(sb=>sb.style.color=dk?'#555':'#aaa');

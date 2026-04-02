@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Logo Research V4</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 24px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:750px;line-height:1.7;}
+  .sb{text-align:center;padding:50px 0 28px;border-top:1px solid #ddd;margin-top:40px;}
+  .sb h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .sb p{font-size:12px;color:#bbb;margin-top:4px;}
+  .grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:30px;}
+  .bl{display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .bx{width:110px;height:110px;border-radius:22px;overflow:hidden;} .bx svg{width:100%;height:100%;}
+  .bx-round{border-radius:55px;}
+  .nm{font-size:9px;font-weight:600;color:#555;text-align:center;max-width:110px;}
+  .ds{font-size:8px;color:#aaa;text-align:center;max-width:110px;line-height:1.3;}
+
+  .lockup-section{margin:30px 0 50px;}
+  .lk-title{font-size:11px;font-weight:600;color:#666;margin-bottom:14px;}
+  .lk-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px;}
+  .lk{display:flex;align-items:center;gap:12px;padding:26px 32px;border-radius:12px;min-width:280px;}
+  .lk-ico{width:42px;height:42px;border-radius:10px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
+  .lk-wm{font-size:20px;}
+  .lk-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
+</style>
+</head>
+<body>
+
+<h1>Faraday — Recherche V4</h1>
+<p class="desc">
+  Pas de F. Pas de carres concentriques. Exploration massive autour du flatline
+  et de nouvelles formes abstraites : ondes, lignes, gestes, equilibres, silences.
+</p>
+
+<script>
+const colors = [
+  {bg:'#2e1e14',fg:'#f5f0e8'}, // brun
+  {bg:'#2d3b28',fg:'#f5f0e8'}, // foret
+  {bg:'#08654a',fg:'#f5f0e8'}, // emeraude
+  {bg:'#1a5a8a',fg:'#f5f0e8'}, // ocean
+  {bg:'#b04828',fg:'#f5f0e8'}, // rouille
+  {bg:'#6a2040',fg:'#f5f0e8'}, // vin
+  {bg:'#c06020',fg:'#f5f0e8'}, // sunset
+  {bg:'#2a2a5a',fg:'#f5f0e8'}, // encre
+  {bg:'#3a7028',fg:'#f5f0e8'}, // mousse
+  {bg:'#4a4640',fg:'#f5f0e8'}, // pierre
+  {bg:'#0f1a2e',fg:'#f5f0e8'}, // navy
+  {bg:'#1a3a3a',fg:'#f5f0e8'}, // teal
+];
+
+// ============================================================
+// FLATLINE VARIATIONS
+// ============================================================
+const flatlines = [
+  // Original
+  {n:'Flatline Original',d:'Onde qui s\'aplatit — la reference',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`},
+  // More amplitude
+  {n:'Flatline Ample',d:'Plus d\'amplitude au depart',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.5} Q${s*.18},${s*.2} ${s*.26},${s*.5} Q${s*.32},${s*.72} ${s*.4},${s*.5} Q${s*.45},${s*.38} ${s*.5},${s*.5} Q${s*.53},${s*.55} ${s*.56},${s*.5} L${s*.9},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`},
+  // Slower decay
+  {n:'Flatline Lente',d:'Decroissance plus progressive',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.5} Q${s*.2},${s*.28} ${s*.3},${s*.5} Q${s*.38},${s*.66} ${s*.46},${s*.5} Q${s*.52},${s*.38} ${s*.58},${s*.5} Q${s*.63},${s*.56} ${s*.68},${s*.5} L${s*.9},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`},
+  // Sharp start
+  {n:'Flatline Sharp',d:'Demarrage sec, decroissance rapide',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.12},${s*.5} L${s*.18},${s*.18} L${s*.24},${s*.72} L${s*.32},${s*.35} L${s*.38},${s*.58} L${s*.44},${s*.46} L${s*.48},${s*.52} L${s*.52},${s*.5} L${s*.88},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.032}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  // Single peak
+  {n:'Flatline Peak',d:'Un seul pic puis silence',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.5} L${s*.28},${s*.5} L${s*.35},${s*.2} L${s*.42},${s*.7} L${s*.48},${s*.5} L${s*.9},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  // Double peak symmetric
+  {n:'Flatline Double',d:'Deux pics symetriques',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.5} L${s*.22},${s*.5} L${s*.28},${s*.25} L${s*.34},${s*.5} L${s*.42},${s*.5} L${s*.48},${s*.25} L${s*.54},${s*.5} L${s*.9},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.032}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  // Heart rate then flat
+  {n:'Flatline Cardio',d:'Battement cardiaque qui s\'arrete',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.08},${s*.5} L${s*.2},${s*.5} L${s*.24},${s*.4} L${s*.28},${s*.5} L${s*.32},${s*.5} L${s*.35},${s*.22} L${s*.38},${s*.7} L${s*.41},${s*.5} L${s*.9},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  // Thick to thin
+  {n:'Flatline Fade',d:'Trait epais qui s\'affine',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.5} Q${s*.22},${s*.28} ${s*.34},${s*.5} Q${s*.42},${s*.64} ${s*.5},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.05}" stroke-linecap="round"/><path d="M${s*.5},${s*.5} Q${s*.55},${s*.44} ${s*.6},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round"/><line x1="${s*.6}" y1="${s*.5}" x2="${s*.9}" y2="${s*.5}" stroke="${f}" stroke-width="${s*.015}" stroke-linecap="round"/></svg>`},
+  // Wave from right (reverse)
+  {n:'Flatline Inverse',d:'Le silence a gauche, l\'onde arrive',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.5} L${s*.48},${s*.5} Q${s*.52},${s*.42} ${s*.56},${s*.5} Q${s*.62},${s*.62} ${s*.68},${s*.5} Q${s*.76},${s*.28} ${s*.88},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`},
+  // Sine dying
+  {n:'Flatline Sine',d:'Sinusoide mourante, douce',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.08},${s*.5} C${s*.14},${s*.25} ${s*.22},${s*.75} ${s*.3},${s*.5} C${s*.35},${s*.35} ${s*.4},${s*.62} ${s*.48},${s*.5} C${s*.52},${s*.44} ${s*.56},${s*.55} ${s*.62},${s*.5} C${s*.65},${s*.48} ${s*.68},${s*.52} ${s*.72},${s*.5} L${s*.92},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.032}" stroke-linecap="round"/></svg>`},
+  // Seismic
+  {n:'Flatline Sismique',d:'Secousse breve et intense',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.08},${s*.5} L${s*.3},${s*.5} L${s*.33},${s*.15} L${s*.36},${s*.78} L${s*.39},${s*.22} L${s*.42},${s*.68} L${s*.45},${s*.42} L${s*.48},${s*.54} L${s*.5},${s*.5} L${s*.92},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.028}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  // Centered pulse
+  {n:'Flatline Centre',d:'Pulse au centre, silence des deux cotes',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.08},${s*.5} L${s*.35},${s*.5} Q${s*.42},${s*.22} ${s*.5},${s*.5} Q${s*.58},${s*.78} ${s*.65},${s*.5} L${s*.92},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`},
+  // Dot + line
+  {n:'Flatline Point',d:'Un point marque le debut du silence',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.5} Q${s*.2},${s*.28} ${s*.3},${s*.5} Q${s*.36},${s*.64} ${s*.42},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/><circle cx="${s*.46}" cy="${s*.5}" r="${s*.035}" fill="${f}"/><line x1="${s*.52}" y1="${s*.5}" x2="${s*.9}" y2="${s*.5}" stroke="${f}" stroke-width="${s*.02}" stroke-linecap="round" opacity=".5"/></svg>`},
+  // Broken line
+  {n:'Flatline Brisee',d:'Ligne brisee qui se calme',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><polyline points="${s*.1},${s*.5} ${s*.18},${s*.3} ${s*.24},${s*.6} ${s*.3},${s*.35} ${s*.36},${s*.58} ${s*.42},${s*.45} ${s*.48},${s*.52} ${s*.54},${s*.49} ${s*.6},${s*.5} ${s*.9},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.028}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  // Minimal — just a bump
+  {n:'Flatline Minimal',d:'Presque rien — juste un souffle',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.08},${s*.5} L${s*.4},${s*.5} Q${s*.46},${s*.4} ${s*.52},${s*.5} L${s*.92},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.032}" stroke-linecap="round"/></svg>`},
+  // Stepped decay
+  {n:'Flatline Escalier',d:'Paliers descendants',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.1},${s*.28} L${s*.22},${s*.28} L${s*.22},${s*.38} L${s*.34},${s*.38} L${s*.34},${s*.44} L${s*.46},${s*.44} L${s*.46},${s*.48} L${s*.58},${s*.48} L${s*.58},${s*.5} L${s*.9},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.028}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+];
+
+// ============================================================
+// NEW ABSTRACT MARKS (no F, no concentric squares)
+// ============================================================
+const abstracts = [
+  {n:'Horizon',d:'Ligne d\'horizon — calme absolu',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><line x1="${s*.12}" y1="${s*.52}" x2="${s*.88}" y2="${s*.52}" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round"/><circle cx="${s*.5}" cy="${s*.42}" r="${s*.08}" fill="${f}" opacity=".15"/></svg>`},
+  {n:'Pause Bars',d:'Symbole pause — universel',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><rect x="${s*.33}" y="${s*.28}" width="${s*.09}" height="${s*.44}" rx="${s*.045}" fill="${f}"/><rect x="${s*.58}" y="${s*.28}" width="${s*.09}" height="${s*.44}" rx="${s*.045}" fill="${f}"/></svg>`},
+  {n:'Eclipse',d:'Croissant — ce qui disparait revele la lumiere',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><circle cx="${s*.46}" cy="${s*.5}" r="${s*.22}" fill="${f}" opacity=".12"/><circle cx="${s*.56}" cy="${s*.46}" r="${s*.21}" fill="${b}"/></svg>`},
+  {n:'Deux Pierres',d:'Deux masses en equilibre',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><circle cx="${s*.38}" cy="${s*.52}" r="${s*.16}" fill="${f}" opacity=".5"/><circle cx="${s*.62}" cy="${s*.48}" r="${s*.1}" fill="${f}" opacity=".8"/></svg>`},
+  {n:'Off',d:'Power button minimal',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.5},${s*.26} L${s*.5},${s*.46}" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.38},${s*.34} A${s*.18},${s*.18} 0 1,0 ${s*.62},${s*.34}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round"/></svg>`},
+  {n:'Goutte',d:'Une goutte qui tombe — le geste de deposer',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.5},${s*.22} C${s*.5},${s*.22} ${s*.36},${s*.5} ${s*.36},${s*.58} A${s*.14},${s*.14} 0 0,0 ${s*.64},${s*.58} C${s*.64},${s*.5} ${s*.5},${s*.22} ${s*.5},${s*.22} Z" fill="${f}" opacity=".7"/></svg>`},
+  {n:'Souffle',d:'Arc de respiration — inspirer, expirer',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.15},${s*.6} Q${s*.5},${s*.2} ${s*.85},${s*.6}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round"/></svg>`},
+  {n:'Deux Lignes',d:'Paralleles — calme, balance, pause',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><line x1="${s*.2}" y1="${s*.42}" x2="${s*.8}" y2="${s*.42}" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round"/><line x1="${s*.2}" y1="${s*.58}" x2="${s*.8}" y2="${s*.58}" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round"/></svg>`},
+  {n:'Fenetre',d:'Rectangle ouvert en haut — vue sur le calme',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.3},${s*.3} L${s*.3},${s*.72} L${s*.7},${s*.72} L${s*.7},${s*.3}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  {n:'Point Seul',d:'L\'essentiel — rien de plus',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.07}" fill="${f}"/></svg>`},
+  {n:'Trait',d:'Un simple trait horizontal — zero bruit',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><line x1="${s*.2}" y1="${s*.5}" x2="${s*.8}" y2="${s*.5}" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round"/></svg>`},
+  {n:'Ondes Mortes',d:'Trois arcs qui se calment',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.25},${s*.5} Q${s*.33},${s*.3} ${s*.41},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round" opacity=".7"/><path d="M${s*.41},${s*.5} Q${s*.47},${s*.38} ${s*.53},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".4"/><path d="M${s*.53},${s*.5} Q${s*.57},${s*.44} ${s*.61},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.02}" stroke-linecap="round" opacity=".2"/><line x1="${s*.61}" y1="${s*.5}" x2="${s*.78}" y2="${s*.5}" stroke="${f}" stroke-width="${s*.015}" stroke-linecap="round" opacity=".15"/></svg>`},
+  {n:'Coquillage',d:'Spirale ouverte — retour a soi',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.5},${s*.35} A${s*.15},${s*.15} 0 0,1 ${s*.65},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".7"/><path d="M${s*.65},${s*.5} A${s*.15},${s*.15} 0 0,1 ${s*.5},${s*.65}" fill="none" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".5"/><path d="M${s*.5},${s*.65} A${s*.15},${s*.15} 0 0,1 ${s*.35},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".3"/></svg>`},
+  {n:'Montagne',d:'Sommet puis descente douce',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.15},${s*.65} L${s*.4},${s*.3} L${s*.65},${s*.55} L${s*.85},${s*.65}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  {n:'Bulle',d:'Cercle fin — espace protege',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.24}" fill="none" stroke="${f}" stroke-width="${s*.02}" opacity=".5"/></svg>`},
+  {n:'Parentheses',d:'( ) — le contenu protege',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.38},${s*.28} Q${s*.28},${s*.5} ${s*.38},${s*.72}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round"/><path d="M${s*.62},${s*.28} Q${s*.72},${s*.5} ${s*.62},${s*.72}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round"/></svg>`},
+  {n:'Pli',d:'Ligne pliee — le moment de la decision',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><polyline points="${s*.15},${s*.4} ${s*.45},${s*.4} ${s*.55},${s*.6} ${s*.85},${s*.6}" fill="none" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  {n:'Asymetrie',d:'Deux formes inegales en tension',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><rect x="${s*.2}" y="${s*.35}" width="${s*.28}" height="${s*.3}" rx="${s*.04}" fill="${f}" opacity=".4"/><rect x="${s*.58}" y="${s*.42}" width="${s*.2}" height="${s*.16}" rx="${s*.03}" fill="${f}" opacity=".7"/></svg>`},
+  {n:'Vague Unique',d:'Une seule courbe — simplicite totale',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.15},${s*.55} Q${s*.35},${s*.3} ${s*.55},${s*.55} Q${s*.75},${s*.7} ${s*.85},${s*.5}" fill="none" stroke="${f}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`},
+  {n:'Coupure',d:'Ligne coupee net — interruption volontaire',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><line x1="${s*.15}" y1="${s*.5}" x2="${s*.44}" y2="${s*.5}" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round"/><line x1="${s*.56}" y1="${s*.5}" x2="${s*.85}" y2="${s*.5}" stroke="${f}" stroke-width="${s*.03}" stroke-linecap="round" opacity=".25"/></svg>`},
+  {n:'Decroissant',d:'Barres qui diminuent',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><rect x="${s*.18}" y="${s*.3}" width="${s*.08}" height="${s*.4}" rx="${s*.02}" fill="${f}"/><rect x="${s*.32}" y="${s*.36}" width="${s*.08}" height="${s*.34}" rx="${s*.02}" fill="${f}" opacity=".7"/><rect x="${s*.46}" y="${s*.42}" width="${s*.08}" height="${s*.28}" rx="${s*.02}" fill="${f}" opacity=".4"/><rect x="${s*.6}" y="${s*.46}" width="${s*.08}" height="${s*.24}" rx="${s*.02}" fill="${f}" opacity=".2"/><rect x="${s*.74}" y="${s*.48}" width="${s*.08}" height="${s*.22}" rx="${s*.02}" fill="${f}" opacity=".08"/></svg>`},
+  {n:'Noeud',d:'Deux lignes croisees — le moment de transition',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><line x1="${s*.2}" y1="${s*.4}" x2="${s*.8}" y2="${s*.6}" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round"/><line x1="${s*.2}" y1="${s*.6}" x2="${s*.8}" y2="${s*.4}" stroke="${f}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".4"/></svg>`},
+  {n:'Porte',d:'Rectangle avec ouverture — seuil',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><rect x="${s*.3}" y="${s*.25}" width="${s*.4}" height="${s*.5}" rx="${s*.03}" fill="none" stroke="${f}" stroke-width="${s*.025}"/><line x1="${s*.3}" y1="${s*.5}" x2="${s*.42}" y2="${s*.5}" stroke="${f}" stroke-width="${s*.025}" opacity=".4"/></svg>`},
+  {n:'Empreinte Doigt',d:'Lignes paralleles courbes',
+    svg:(s,b,f)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${b}"/><path d="M${s*.3},${s*.65} Q${s*.3},${s*.3} ${s*.5},${s*.3} Q${s*.7},${s*.3} ${s*.7},${s*.65}" fill="none" stroke="${f}" stroke-width="${s*.02}" opacity=".25"/><path d="M${s*.36},${s*.62} Q${s*.36},${s*.36} ${s*.5},${s*.36} Q${s*.64},${s*.36} ${s*.64},${s*.62}" fill="none" stroke="${f}" stroke-width="${s*.02}" opacity=".45"/><path d="M${s*.42},${s*.6} Q${s*.42},${s*.42} ${s*.5},${s*.42} Q${s*.58},${s*.42} ${s*.58},${s*.6}" fill="none" stroke="${f}" stroke-width="${s*.02}" opacity=".7"/></svg>`},
+];
+
+// ============================================================
+// RENDER
+// ============================================================
+
+function renderSection(containerId, marks, cols) {
+  const el = document.getElementById(containerId);
+  let h = '';
+  marks.forEach((m, i) => {
+    const c = cols[i % cols.length];
+    h += `<div class="bl"><div class="bx">${m.svg(110, c.bg, c.fg)}</div><div class="nm">${m.n}</div><div class="ds">${m.d}</div></div>`;
+  });
+  el.innerHTML = h;
+}
+
+// Flatline section
+document.write('<div class="sb" style="border:none;padding-top:0;"><h2>Variations Flatline — 16 declinaisons</h2><p>La meme idee (onde qui meurt) exploree sous toutes ses formes</p></div>');
+document.write('<div class="grid" id="g-flat"></div>');
+
+// Flatline lockups
+document.write('<div class="sb"><h2>Flatline Lockups — les meilleures en contexte</h2></div>');
+document.write('<div class="lockup-section" id="g-flat-lk"></div>');
+
+// Abstract marks
+document.write('<div class="sb"><h2>Formes abstraites — 24 propositions</h2><p>Sans lettre, sans sigle. Des formes pures qui portent le sens.</p></div>');
+document.write('<div class="grid" id="g-abs"></div>');
+
+// Abstract lockups
+document.write('<div class="sb"><h2>Abstraits Lockups — en contexte</h2></div>');
+document.write('<div class="lockup-section" id="g-abs-lk"></div>');
+
+// Render grids
+const flatCols = [colors[0],colors[1],colors[2],colors[3],colors[4],colors[5],colors[6],colors[7],colors[8],colors[9],colors[10],colors[11],colors[0],colors[2],colors[5],colors[3]];
+renderSection('g-flat', flatlines, flatCols);
+
+const absCols = [];
+for(let i=0;i<abstracts.length;i++) absCols.push(colors[i%colors.length]);
+renderSection('g-abs', abstracts, absCols);
+
+// Lockups for best flatlines
+const bestFlat = [0,3,4,6,7,9,10,12];
+const flatLkEl = document.getElementById('g-flat-lk');
+let flh = '';
+const typos = [
+  {ff:"'Sora',sans-serif",fw:'300',ls:'.12em',tt:'none',wm:'Faraday',bl:'disconnect to reconnect'},
+  {ff:"'Plus Jakarta Sans',sans-serif",fw:'600',ls:'.04em',tt:'none',wm:'Faraday',bl:'the present starts here'},
+  {ff:"'Space Grotesk',sans-serif",fw:'500',ls:'.2em',tt:'uppercase',wm:'Faraday',bl:'the present starts here'},
+  {ff:"'Manrope',sans-serif",fw:'300',ls:'.02em',tt:'lowercase',wm:'faraday',bl:'come back to yourself'},
+];
+bestFlat.forEach((fi,i) => {
+  const m = flatlines[fi];
+  const t = typos[i%typos.length];
+  const lkColors = [colors[0],colors[1],colors[2],colors[4],colors[5],colors[7]];
+  flh += `<div class="lk-title">${m.n}</div><div class="lk-row">`;
+  lkColors.forEach(c => {
+    flh += `<div class="lk" style="background:${c.bg};color:${c.fg};"><div class="lk-ico">${m.svg(42,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:20px;letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div></div>`;
+  });
+  flh += '</div>';
+});
+flatLkEl.innerHTML = flh;
+
+// Lockups for best abstracts
+const bestAbs = [0,1,5,6,7,15,16,19];
+const absLkEl = document.getElementById('g-abs-lk');
+let alh = '';
+bestAbs.forEach((ai,i) => {
+  const m = abstracts[ai];
+  const t = typos[i%typos.length];
+  const lkColors = [colors[0],colors[2],colors[3],colors[5],colors[6],colors[10]];
+  alh += `<div class="lk-title">${m.n}</div><div class="lk-row">`;
+  lkColors.forEach(c => {
+    alh += `<div class="lk" style="background:${c.bg};color:${c.fg};"><div class="lk-ico">${m.svg(42,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:20px;letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div></div>`;
+  });
+  alh += '</div>';
+});
+absLkEl.innerHTML = alh;
+</script>
+
+</body>
+</html>
