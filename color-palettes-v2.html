@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Palettes V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 24px;padding-top:100px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:750px;line-height:1.7;}
+
+  .palette{margin-bottom:70px;padding-bottom:60px;border-bottom:1px solid #e5e0d8;}
+  .palette:last-of-type{border-bottom:none;}
+  .p-num{font-size:11px;font-weight:600;color:#999;font-family:'Space Grotesk',sans-serif;}
+  .p-name{font-size:18px;font-weight:600;color:#333;margin:4px 0;}
+  .p-desc{font-size:13px;color:#888;margin-bottom:24px;max-width:550px;line-height:1.6;}
+
+  .swatches{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap;align-items:flex-end;}
+  .sw{width:90px;height:90px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:7px;}
+  .sw-n{font-size:8px;font-weight:600;letter-spacing:.03em;}
+  .sw-h{font-size:7px;opacity:.55;}
+  .sw-l .sw-n,.sw-l .sw-h{color:#f5f0e8;}
+  .sw-d .sw-n,.sw-d .sw-h{color:#333;}
+
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+  .ic{width:80px;height:80px;border-radius:18px;overflow:hidden;} .ic svg{width:100%;height:100%;}
+  .ic-r{border-radius:40px;}
+  .iw{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .iw-n{font-size:7px;color:#bbb;font-family:'Space Grotesk',sans-serif;}
+
+  .lk{display:flex;align-items:center;gap:10px;padding:20px 26px;border-radius:10px;min-width:250px;position:relative;}
+  .lk-n{position:absolute;bottom:4px;right:8px;font-size:6.5px;font-weight:500;opacity:.3;font-family:'Space Grotesk',sans-serif;}
+  .lk-ico{width:34px;height:34px;border-radius:8px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
+  .lk-ico-r{border-radius:50%;}
+  .lk-wm{font-size:17px;}
+  .lk-bl{font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.35;margin-top:2px;font-weight:300;}
+
+  .label{font-size:9px;font-weight:600;color:#aaa;letter-spacing:.08em;text-transform:uppercase;margin:18px 0 8px;}
+</style>
+</head>
+<body>
+
+<h1>Faraday — Palettes V2 — idees fraiches</h1>
+<p class="desc">
+  6 jeux de couleurs completement differents. Uniquement parentheses asymetriques + flatline.
+</p>
+
+<script>
+let g=1;
+const NI=()=>`<div class="iw-n">${String(g++).padStart(3,'0')}</div>`;
+const NL=()=>`<div class="lk-n">${String(g++).padStart(3,'0')}</div>`;
+const bdr=c=>c>'#c'?'border:1px solid #ddd;':'';
+
+function asymP(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.34},${s*.2} Q${s*.2},${s*.5} ${s*.34},${s*.8}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.66},${s*.3} Q${s*.76},${s*.5} ${s*.66},${s*.7}" fill="none" stroke="${fg}" stroke-width="${s*.02}" stroke-linecap="round" opacity=".45"/></svg>`;}
+function asymPR(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><path d="M${s*.34},${s*.22} Q${s*.2},${s*.5} ${s*.34},${s*.78}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.66},${s*.3} Q${s*.76},${s*.5} ${s*.66},${s*.7}" fill="none" stroke="${fg}" stroke-width="${s*.02}" stroke-linecap="round" opacity=".45"/></svg>`;}
+function flat(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`;}
+function asym2C(s,bg,fgL,fgR){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.34},${s*.2} Q${s*.2},${s*.5} ${s*.34},${s*.8}" fill="none" stroke="${fgL}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.66},${s*.3} Q${s*.76},${s*.5} ${s*.66},${s*.7}" fill="none" stroke="${fgR}" stroke-width="${s*.022}" stroke-linecap="round" opacity=".65"/></svg>`;}
+
+const T=[
+  {ff:"'Sora',sans-serif",fw:'300',ls:'.12em',tt:'none',wm:'Faraday',bl:'disconnect to reconnect'},
+  {ff:"'Plus Jakarta Sans',sans-serif",fw:'600',ls:'.04em',tt:'none',wm:'Faraday',bl:'the present starts here'},
+  {ff:"'Manrope',sans-serif",fw:'300',ls:'.02em',tt:'lowercase',wm:'faraday',bl:'come back to yourself'},
+];
+
+const palettes = [
+  {
+    num:'01', name:'Charbon & Miel',
+    desc:'Le noir chaud du charbon de bois. Le miel ambré comme seul éclat. L\'os blanchi comme respiration.',
+    colors:[
+      {n:'Charbon',h:'#252220',fg:'#f2ece0',light:false},
+      {n:'Miel',h:'#d4a44a',fg:'#252220',light:false},
+      {n:'Os',h:'#f2ece0',fg:'#252220',light:true},
+    ]
+  },
+  {
+    num:'02', name:'Étang',
+    desc:'L\'eau dormante d\'un étang au matin. Vert d\'eau très sourd, presque gris. Le silence liquide.',
+    colors:[
+      {n:'Etang',h:'#2a3a34',fg:'#e0e8e2',light:false},
+      {n:'Roseau',h:'#7a8a78',fg:'#f0f2ee',light:false},
+      {n:'Vapeur',h:'#e8ece6',fg:'#2a3a34',light:true},
+    ]
+  },
+  {
+    num:'03', name:'Graphite',
+    desc:'Trois gris. Pas de couleur. Le crayon sur le papier. La rigueur absolue, presque japonaise.',
+    colors:[
+      {n:'Graphite',h:'#2e2e30',fg:'#e8e6e2',light:false},
+      {n:'Plomb',h:'#6a686a',fg:'#f0eee8',light:false},
+      {n:'Papier',h:'#f0eee8',fg:'#2e2e30',light:true},
+    ]
+  },
+  {
+    num:'04', name:'Argile Rouge',
+    desc:'La terre cuite au soleil. Chaud, organique, tactile. Un objet qu\'on a envie de toucher.',
+    colors:[
+      {n:'Brique',h:'#3a2218',fg:'#f0e0d0',light:false},
+      {n:'Argile',h:'#c07048',fg:'#f8f0e8',light:false},
+      {n:'Paille',h:'#f0e4d0',fg:'#3a2218',light:true},
+    ]
+  },
+  {
+    num:'05', name:'Lac Noir',
+    desc:'Le reflet du ciel dans un lac la nuit. Bleu si profond qu\'il est presque noir. L\'émeraude de l\'eau.',
+    colors:[
+      {n:'Abysse',h:'#0c1420',fg:'#d0dce8',light:false},
+      {n:'Algue',h:'#2a6a5a',fg:'#f0f4f0',light:false},
+      {n:'Reflet',h:'#d8e4e0',fg:'#0c1420',light:true},
+    ]
+  },
+  {
+    num:'06', name:'Cendre & Ambre',
+    desc:'Le feu qui s\'éteint. La cendre encore chaude. L\'ambre qui conserve et protège.',
+    colors:[
+      {n:'Cendre',h:'#38342e',fg:'#e8e0d4',light:false},
+      {n:'Ambre',h:'#c88a40',fg:'#2a2418',light:false},
+      {n:'Fumee',h:'#e8e0d4',fg:'#38342e',light:true},
+    ]
+  },
+];
+
+let html = '';
+
+palettes.forEach(p => {
+  const [c1,c2,c3] = p.colors;
+
+  html += `<div class="palette">`;
+  html += `<div class="p-num">${p.num}</div>`;
+  html += `<div class="p-name">${p.name}</div>`;
+  html += `<p class="p-desc">${p.desc}</p>`;
+
+  // Swatches
+  html += `<div class="swatches">`;
+  p.colors.forEach(c => {
+    html += `<div class="sw ${c.light?'sw-d':'sw-l'}" style="background:${c.h};${c.light?'border:1px solid #ddd;':''}">`
+      + `<div class="sw-n">${c.n}</div><div class="sw-h">${c.h}</div></div>`;
+  });
+  html += `</div>`;
+
+  // Icons: asym square × 3 colors, asym round × 3, flat × 3, 2-color × 2
+  html += `<div class="label">Parentheses asymetriques</div><div class="row">`;
+  p.colors.forEach(c => {
+    html += `<div class="iw"><div class="ic" style="${bdr(c.h)}">${asymP(80,c.h,c.fg)}</div>${NI()}</div>`;
+  });
+  p.colors.forEach(c => {
+    html += `<div class="iw"><div class="ic ic-r" style="${bdr(c.h)}">${asymPR(80,c.h,c.fg)}</div>${NI()}</div>`;
+  });
+  // 2-color: dark bg, left=fg, right=c2 color
+  html += `<div class="iw"><div class="ic">${asym2C(80,c1.h,c1.fg,c2.h)}</div>${NI()}</div>`;
+  html += `<div class="iw"><div class="ic ic-r">${asym2C(80,c1.h,c1.fg,c2.h).replace('<rect','<circle cx="40" cy="40" r="40"').replace('rx="16"','')}</div>${NI()}</div>`;
+  html += `</div>`;
+
+  html += `<div class="label">Flatline</div><div class="row">`;
+  p.colors.forEach(c => {
+    html += `<div class="iw"><div class="ic" style="${bdr(c.h)}">${flat(80,c.h,c.fg)}</div>${NI()}</div>`;
+  });
+  html += `</div>`;
+
+  // Lockups: 3 typos × fond dark + fond mid + fond light + 2-color
+  html += `<div class="label">Lockups — parentheses</div>`;
+  T.forEach(t => {
+    html += `<div class="row">`;
+    p.colors.forEach(c => {
+      html += `<div class="lk" style="background:${c.h};color:${c.fg};${bdr(c.h)}">${NL()}<div class="lk-ico">${asymP(34,c.h,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div></div>`;
+    });
+    // 2-color on dark
+    html += `<div class="lk" style="background:${c1.h};color:${c1.fg};">${NL()}<div class="lk-ico">${asym2C(34,c1.h,c1.fg,c2.h)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div></div>`;
+    html += `</div>`;
+  });
+
+  // Lockups flatline
+  html += `<div class="label">Lockups — flatline</div>`;
+  T.forEach(t => {
+    html += `<div class="row">`;
+    p.colors.forEach(c => {
+      html += `<div class="lk" style="background:${c.h};color:${c.fg};${bdr(c.h)}">${NL()}<div class="lk-ico">${flat(34,c.h,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div></div>`;
+    });
+    html += `</div>`;
+  });
+
+  // Round lockups
+  html += `<div class="label">Lockups ronds</div><div class="row">`;
+  p.colors.forEach(c => {
+    html += `<div class="lk" style="background:${c.h};color:${c.fg};${bdr(c.h)}">${NL()}<div class="lk-ico lk-ico-r">${asymPR(34,c.h,c.fg)}</div><div><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;">${'Faraday'}</div><div class="lk-bl">disconnect to reconnect</div></div></div>`;
+  });
+  html += `</div>`;
+
+  html += `</div>`; // /palette
+});
+
+html += `<div style="text-align:center;padding:40px 0;font-size:12px;color:#999;">Total : <strong style="font-family:'Space Grotesk',sans-serif;">${g-1}</strong> declinaisons</div>`;
+
+document.write(html);
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>
