@@ -2,6 +2,7 @@
 (function() {
   const pages = [
     { label: 'Simulateur', file: 'logo-in-context.html', icon: '&#9654;' },
+    { label: 'Palettes', file: 'color-palettes.html', icon: '&#9673;' },
     { label: 'Recherche V6', file: 'logo-research-v6.html', icon: '&#9733;' },
     { label: 'Recherche V5', file: 'logo-research-v5.html', icon: '&#9733;' },
     { label: 'Recherche V4', file: 'logo-research-v4.html', icon: '&#9733;' },

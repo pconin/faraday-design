@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Palettes de couleurs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 24px;padding-top:100px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:750px;line-height:1.7;}
+
+  .palette{margin-bottom:60px;padding-bottom:50px;border-bottom:1px solid #e5e0d8;}
+  .palette:last-of-type{border-bottom:none;}
+  .p-header{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+  .p-num{font-size:11px;font-weight:600;color:#c8845a;font-family:'Space Grotesk',sans-serif;}
+  .p-name{font-size:15px;font-weight:600;color:#333;}
+  .p-desc{font-size:13px;color:#999;margin-bottom:24px;max-width:600px;line-height:1.6;}
+  .p-why{font-size:12px;color:#aaa;margin-bottom:20px;max-width:600px;line-height:1.5;font-style:italic;}
+
+  .swatches{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
+  .sw{width:100px;height:100px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px;transition:transform .15s;}
+  .sw:hover{transform:scale(1.05);}
+  .sw-n{font-size:9px;font-weight:600;letter-spacing:.04em;}
+  .sw-h{font-size:8px;opacity:.6;}
+  .sw-l .sw-n,.sw-l .sw-h{color:#f5f0e8;}
+  .sw-d .sw-n,.sw-d .sw-h{color:#333;}
+  .sw-role{font-size:8px;opacity:.5;margin-top:1px;}
+
+  .logos-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+  .logo-card{display:flex;align-items:center;gap:11px;padding:22px 28px;border-radius:11px;min-width:260px;position:relative;}
+  .logo-card .num{position:absolute;bottom:5px;right:9px;font-size:7px;font-weight:500;opacity:.35;font-family:'Space Grotesk',sans-serif;}
+  .lc-ico{width:38px;height:38px;border-radius:9px;overflow:hidden;flex-shrink:0;} .lc-ico svg{width:100%;height:100%;}
+  .lc-ico-r{border-radius:50%;}
+  .lc-wm{font-size:18px;}
+  .lc-bl{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:2px;font-weight:300;}
+
+  .icons-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+  .ic{width:90px;height:90px;border-radius:20px;overflow:hidden;} .ic svg{width:100%;height:100%;}
+  .ic-r{border-radius:45px;}
+  .ic-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .ic-n{font-size:7.5px;color:#bbb;font-family:'Space Grotesk',sans-serif;}
+
+  .section-label{font-size:10px;font-weight:600;color:#999;letter-spacing:.08em;text-transform:uppercase;margin:16px 0 10px;}
+</style>
+</head>
+<body>
+
+<h1>Faraday — 6 palettes de couleurs</h1>
+<p class="desc">
+  Chaque palette est composee de 3 couleurs choisies pour resonner avec l'univers Faraday :
+  calme, protection, deconnexion, materiaux nobles, technologie silencieuse.
+  Declinaisons de logos avec chaque jeu de couleurs.
+</p>
+
+<script>
+let g=1;
+const NL=()=>`<div class="num">${String(g++).padStart(3,'0')}</div>`;
+const NI=()=>`<div class="ic-n">${String(g++).padStart(3,'0')}</div>`;
+
+// Symbols
+function asymP(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.34},${s*.2} Q${s*.2},${s*.5} ${s*.34},${s*.8}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.66},${s*.3} Q${s*.76},${s*.5} ${s*.66},${s*.7}" fill="none" stroke="${fg}" stroke-width="${s*.02}" stroke-linecap="round" opacity=".45"/></svg>`;}
+function asymPR(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><path d="M${s*.34},${s*.22} Q${s*.2},${s*.5} ${s*.34},${s*.78}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.66},${s*.3} Q${s*.76},${s*.5} ${s*.66},${s*.7}" fill="none" stroke="${fg}" stroke-width="${s*.02}" stroke-linecap="round" opacity=".45"/></svg>`;}
+function flat(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`;}
+function rupFade(s,bg,fg){const cx=s*.5,cy=s*.5,r=s*.28,ops=[1,.72,.48,.28,.14,.06],wds=[.035,.03,.025,.02,.016,.012];let p='';for(let i=0;i<6;i++){const a1=(270+i*55)*Math.PI/180,a2=(270+i*55+49)*Math.PI/180;const x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1),x2=cx+r*Math.cos(a2),y2=cy+r*Math.sin(a2);p+=`<path d="M${x1},${y1} A${r},${r} 0 0,1 ${x2},${y2}" fill="none" stroke="${fg}" stroke-width="${s*wds[i]}" stroke-linecap="round" opacity="${ops[i]}"/>`;}return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/>${p}</svg>`;}
+function asym2C(s,bg,fgL,fgR){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.34},${s*.2} Q${s*.2},${s*.5} ${s*.34},${s*.8}" fill="none" stroke="${fgL}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.66},${s*.3} Q${s*.76},${s*.5} ${s*.66},${s*.7}" fill="none" stroke="${fgR}" stroke-width="${s*.022}" stroke-linecap="round" opacity=".65"/></svg>`;}
+function parenFlat(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.24},${s*.25} Q${s*.14},${s*.5} ${s*.24},${s*.75}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.36},${s*.5} Q${s*.42},${s*.35} ${s*.48},${s*.5} Q${s*.52},${s*.56} ${s*.56},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".6"/></svg>`;}
+
+const T=[
+  {ff:"'Sora',sans-serif",fw:'300',ls:'.12em',tt:'none',wm:'Faraday',bl:'disconnect to reconnect'},
+  {ff:"'Plus Jakarta Sans',sans-serif",fw:'600',ls:'.04em',tt:'none',wm:'Faraday',bl:'the present starts here'},
+  {ff:"'Manrope',sans-serif",fw:'300',ls:'.02em',tt:'lowercase',wm:'faraday',bl:'come back to yourself'},
+];
+
+const palettes = [
+  {
+    num:'01', name:'Nuit & Sauge',
+    desc:'L\'encre de la nuit rencontre le calme vegetal. Profondeur intellectuelle + douceur organique. Le cuivre chaud apporte la vie et la noblesse du materiau.',
+    why:'Faraday = deconnexion nocturne + retour au naturel. Le soir, on depose le telephone. La sauge evoque le vivant retrouve. Le cuivre rappelle les materiaux nobles du moodboard (noyer, laiton).',
+    colors:[
+      {n:'Encre Nuit',h:'#1a1a3a',fg:'#f5f0e8',role:'Fond principal'},
+      {n:'Sauge Douce',h:'#8a9a7a',fg:'#1a1a1a',role:'Accent vegetal'},
+      {n:'Cuivre Mat',h:'#b08060',fg:'#f5f0e8',role:'Accent chaud'},
+    ]
+  },
+  {
+    num:'02', name:'Foret Profonde',
+    desc:'Trois verts qui se repondent : de l\'ombre a la lumiere. Un univers entierement vegetal, apaisant, ancre dans le vivant.',
+    why:'La foret = le lieu sans signal. Pas de reseau, pas de bruit. L\'antithese du monde connecte. Trois valeurs d\'un meme vert = coherence totale et calme monochrome.',
+    colors:[
+      {n:'Foret',h:'#1c2e1c',fg:'#f5f0e8',role:'Fond principal'},
+      {n:'Mousse',h:'#4a6a3a',fg:'#f5f0e8',role:'Accent moyen'},
+      {n:'Brume',h:'#c8d4be',fg:'#1c2e1c',role:'Fond clair'},
+    ]
+  },
+  {
+    num:'03', name:'Mineral',
+    desc:'Navy profond, pierre chaude, creme douce. L\'univers d\'un bureau d\'architecte : beton, noyer, papier.',
+    why:'Faraday se positionne comme un objet d\'interieur haut de gamme. Ces couleurs evoquent les materiaux du moodboard : metal fonce, bois, feutre. Pas de couleur vive = sobriete architecturale.',
+    colors:[
+      {n:'Navy',h:'#0f1a2e',fg:'#f5f0e8',role:'Fond principal'},
+      {n:'Pierre',h:'#6a6458',fg:'#f5f0e8',role:'Accent mineral'},
+      {n:'Lin',h:'#ece6da',fg:'#2a2418',role:'Fond clair'},
+    ]
+  },
+  {
+    num:'04', name:'Encre & Or',
+    desc:'L\'elegance discrete d\'un objet precieux. L\'encre absorbe, l\'or revele. Tension entre silence profond et chaleur contenue.',
+    why:'L\'or n\'est pas bling — c\'est la lumiere qui filtre quand on ferme la box. L\'encre profonde est le silence numerique. Le sable tempere l\'ensemble et ancre dans le quotidien.',
+    colors:[
+      {n:'Encre',h:'#2a2a5a',fg:'#f5f0e8',role:'Fond principal'},
+      {n:'Or Sourd',h:'#c4a050',fg:'#1a1a1a',role:'Accent precieux'},
+      {n:'Sable',h:'#e8e0d0',fg:'#2a2a3a',role:'Fond clair'},
+    ]
+  },
+  {
+    num:'05', name:'Teal & Terre',
+    desc:'L\'ocean profond rencontre la terre chaude. Equilibre entre fraicheur contemplative et ancrage materiel.',
+    why:'Le teal evoque le calme oceanique — pas le bleu tech corporate. La terre/cuivre rappelle la ceramique, la poterie, l\'artisanat. Ensemble ils creent un univers ni froid ni chaud, juste equilibre.',
+    colors:[
+      {n:'Teal',h:'#1a3a38',fg:'#f5f0e8',role:'Fond principal'},
+      {n:'Terre',h:'#a07050',fg:'#f5f0e8',role:'Accent chaud'},
+      {n:'Ecru',h:'#f0ebe0',fg:'#1a2a28',role:'Fond clair'},
+    ]
+  },
+  {
+    num:'06', name:'Crepuscule',
+    desc:'Le moment ou le jour bascule dans la nuit. Le bleu s\'assombrit, la sauge se reveille, le creme reste comme derniere lumiere.',
+    why:'Le crepuscule est le moment Faraday par excellence — la transition entre connexion et deconnexion. On pose le telephone quand le soleil se couche. Trois couleurs = trois etapes de la transition.',
+    colors:[
+      {n:'Nuit Bleue',h:'#162040',fg:'#f5f0e8',role:'Fond principal'},
+      {n:'Sauge Soir',h:'#7a8a6a',fg:'#f5f0e8',role:'Accent transition'},
+      {n:'Derniere Lumiere',h:'#f5f0e0',fg:'#1a2030',role:'Fond clair'},
+    ]
+  },
+];
+
+let html = '';
+
+palettes.forEach((p,pi) => {
+  const c = p.colors;
+  const dark = c[0], mid = c[1], light = c[2];
+
+  html += `<div class="palette">`;
+  html += `<div class="p-header"><span class="p-num">${p.num}</span><span class="p-name">${p.name}</span></div>`;
+  html += `<p class="p-desc">${p.desc}</p>`;
+  html += `<p class="p-why">${p.why}</p>`;
+
+  // Swatches
+  html += `<div class="swatches">`;
+  c.forEach(s => {
+    const isL = s.h > '#c';
+    html += `<div class="sw ${isL?'sw-d':'sw-l'}" style="background:${s.h};${isL?'border:1px solid #ddd;':''}"><div class="sw-n">${s.n}</div><div class="sw-h">${s.h}</div><div class="sw-role ${isL?'sw-d':'sw-l'}">${s.role}</div></div>`;
+  });
+  // Extended swatches: dark at 50%, light at 50%
+  const midH = dark.h.replace('#','');
+  html += `</div>`;
+
+  // Icons row: 4 symbols × 3 colors
+  html += `<div class="section-label">Icones</div><div class="icons-row">`;
+  // Asym on dark
+  html += `<div class="ic-wrap"><div class="ic">${asymP(90,dark.h,dark.fg)}</div>${NI()}</div>`;
+  html += `<div class="ic-wrap"><div class="ic">${asymP(90,mid.h,mid.fg)}</div>${NI()}</div>`;
+  html += `<div class="ic-wrap"><div class="ic" style="${light.h>'#c'?'border:1px solid #ddd;':''}">${asymP(90,light.h,light.fg)}</div>${NI()}</div>`;
+  // Round
+  html += `<div class="ic-wrap"><div class="ic ic-r">${asymPR(90,dark.h,dark.fg)}</div>${NI()}</div>`;
+  html += `<div class="ic-wrap"><div class="ic ic-r">${asymPR(90,mid.h,mid.fg)}</div>${NI()}</div>`;
+  // Flatline
+  html += `<div class="ic-wrap"><div class="ic">${flat(90,dark.h,dark.fg)}</div>${NI()}</div>`;
+  html += `<div class="ic-wrap"><div class="ic">${flat(90,mid.h,mid.fg)}</div>${NI()}</div>`;
+  // Rupture
+  html += `<div class="ic-wrap"><div class="ic">${rupFade(90,dark.h,dark.fg)}</div>${NI()}</div>`;
+  // 2-color
+  html += `<div class="ic-wrap"><div class="ic">${asym2C(90,dark.h,dark.fg,mid.h)}</div>${NI()}</div>`;
+  html += `<div class="ic-wrap"><div class="ic">${asym2C(90,dark.h,dark.fg,mid.fg==='#f5f0e8'?mid.h:mid.fg)}</div>${NI()}</div>`;
+  // Combo
+  html += `<div class="ic-wrap"><div class="ic">${parenFlat(90,dark.h,dark.fg)}</div>${NI()}</div>`;
+  html += `</div>`;
+
+  // Lockups: 3 typos × fond dark, fond mid, fond light
+  html += `<div class="section-label">Lockups</div>`;
+  T.forEach((t,ti) => {
+    html += `<div class="logos-row">`;
+    // On dark bg
+    html += `<div class="logo-card" style="background:${dark.h};color:${dark.fg};">${NL()}<div class="lc-ico">${asymP(38,dark.h,dark.fg)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+    // On mid bg
+    html += `<div class="logo-card" style="background:${mid.h};color:${mid.fg};${mid.h>'#c'?'border:1px solid #ddd;':''}">${NL()}<div class="lc-ico">${asymP(38,mid.h,mid.fg)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+    // On light bg
+    html += `<div class="logo-card" style="background:${light.h};color:${light.fg};${light.h>'#c'?'border:1px solid #ddd;':''}">${NL()}<div class="lc-ico">${asymP(38,light.h,light.fg)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+    // 2-color on dark: icon uses mid as accent
+    html += `<div class="logo-card" style="background:${dark.h};color:${dark.fg};">${NL()}<div class="lc-ico">${asym2C(38,dark.h,dark.fg,mid.h)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+    // Flatline on dark
+    html += `<div class="logo-card" style="background:${dark.h};color:${dark.fg};">${NL()}<div class="lc-ico">${flat(38,dark.h,dark.fg)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+    // Rupture on dark
+    html += `<div class="logo-card" style="background:${dark.h};color:${dark.fg};">${NL()}<div class="lc-ico">${rupFade(38,dark.h,dark.fg)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+    html += `</div>`;
+  });
+
+  // Round lockups
+  html += `<div class="section-label">Lockups ronds</div><div class="logos-row">`;
+  [dark,mid,light].forEach(col => {
+    const t = T[0];
+    html += `<div class="logo-card" style="background:${col.h};color:${col.fg};${col.h>'#c'?'border:1px solid #ddd;':''}">${NL()}<div class="lc-ico lc-ico-r">${asymPR(38,col.h,col.fg)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+  });
+  html += `</div>`;
+
+  // Combo lockup
+  html += `<div class="section-label">Combo paren+flatline</div><div class="logos-row">`;
+  [dark,mid].forEach(col => {
+    T.slice(0,2).forEach(t => {
+      html += `<div class="logo-card" style="background:${col.h};color:${col.fg};">${NL()}<div class="lc-ico">${parenFlat(38,col.h,col.fg)}</div><div><div class="lc-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lc-bl">${t.bl}</div></div></div>`;
+    });
+  });
+  html += `</div>`;
+
+  html += `</div>`; // /palette
+});
+
+html += `<div style="text-align:center;padding:40px 0;font-size:12px;color:#999;">Total : <strong style="font-family:'Space Grotesk',sans-serif;">${g-1}</strong> declinaisons</div>`;
+
+document.write(html);
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>
