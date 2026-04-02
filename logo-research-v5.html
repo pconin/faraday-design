@@ -137,7 +137,7 @@ html+=`</div>`;
 
 // B. Icon rond
 html+=`<div class="lk-title">B. Icone ronde</div><div class="grid">`;
-mixed.forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx bx-round">${parenIconRound(120,c.bg,c.fg)}</div>${numBelow(c.n)}</div>`;});
+mixed.forEach(c=>{html+=`<div class="lb"><div class="bx bx-round">${parenIconRound(120,c.bg,c.fg)}</div>${numBelow(c.n)}</div>`;});
 html+=`</div>`;
 
 // C. Variantes de trait : fine, epaisse, dot, asym, line
