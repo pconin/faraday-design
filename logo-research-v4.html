@@ -14,7 +14,9 @@
   .sb h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
   .sb p{font-size:12px;color:#bbb;margin-top:4px;}
   .grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:30px;}
-  .bl{display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .bl{display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .bl-num{font-size:8px;font-weight:500;color:#bbb;font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;}
+  .bl-color{font-size:7px;color:#bbb;}
   .bx{width:110px;height:110px;border-radius:22px;overflow:hidden;} .bx svg{width:100%;height:100%;}
   .bx-round{border-radius:55px;}
   .nm{font-size:9px;font-weight:600;color:#555;text-align:center;max-width:110px;}
@@ -23,7 +25,8 @@
   .lockup-section{margin:30px 0 50px;}
   .lk-title{font-size:11px;font-weight:600;color:#666;margin-bottom:14px;}
   .lk-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px;}
-  .lk{display:flex;align-items:center;gap:12px;padding:26px 32px;border-radius:12px;min-width:280px;}
+  .lk{display:flex;align-items:center;gap:12px;padding:26px 32px;border-radius:12px;min-width:280px;position:relative;}
+  .lk-num{position:absolute;bottom:6px;right:10px;font-size:7px;font-weight:500;opacity:.4;font-family:'Space Grotesk',sans-serif;}
   .lk-ico{width:42px;height:42px;border-radius:10px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
   .lk-wm{font-size:20px;}
   .lk-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
@@ -39,18 +42,18 @@
 
 <script>
 const colors = [
-  {bg:'#2e1e14',fg:'#f5f0e8'}, // brun
-  {bg:'#2d3b28',fg:'#f5f0e8'}, // foret
-  {bg:'#08654a',fg:'#f5f0e8'}, // emeraude
-  {bg:'#1a5a8a',fg:'#f5f0e8'}, // ocean
-  {bg:'#b04828',fg:'#f5f0e8'}, // rouille
-  {bg:'#6a2040',fg:'#f5f0e8'}, // vin
-  {bg:'#c06020',fg:'#f5f0e8'}, // sunset
-  {bg:'#2a2a5a',fg:'#f5f0e8'}, // encre
-  {bg:'#3a7028',fg:'#f5f0e8'}, // mousse
-  {bg:'#4a4640',fg:'#f5f0e8'}, // pierre
-  {bg:'#0f1a2e',fg:'#f5f0e8'}, // navy
-  {bg:'#1a3a3a',fg:'#f5f0e8'}, // teal
+  {n:'Brun',bg:'#2e1e14',fg:'#f5f0e8'},
+  {n:'Foret',bg:'#2d3b28',fg:'#f5f0e8'},
+  {n:'Emeraude',bg:'#08654a',fg:'#f5f0e8'},
+  {n:'Ocean',bg:'#1a5a8a',fg:'#f5f0e8'},
+  {n:'Rouille',bg:'#b04828',fg:'#f5f0e8'},
+  {n:'Vin',bg:'#6a2040',fg:'#f5f0e8'},
+  {n:'Sunset',bg:'#c06020',fg:'#f5f0e8'},
+  {n:'Encre',bg:'#2a2a5a',fg:'#f5f0e8'},
+  {n:'Mousse',bg:'#3a7028',fg:'#f5f0e8'},
+  {n:'Pierre',bg:'#4a4640',fg:'#f5f0e8'},
+  {n:'Navy',bg:'#0f1a2e',fg:'#f5f0e8'},
+  {n:'Teal',bg:'#1a3a3a',fg:'#f5f0e8'},
 ];
 
 // ============================================================
@@ -165,12 +168,13 @@ const abstracts = [
 // RENDER
 // ============================================================
 
+let v4num=1;
 function renderSection(containerId, marks, cols) {
   const el = document.getElementById(containerId);
   let h = '';
   marks.forEach((m, i) => {
     const c = cols[i % cols.length];
-    h += `<div class="bl"><div class="bx">${m.svg(110, c.bg, c.fg)}</div><div class="nm">${m.n}</div><div class="ds">${m.d}</div></div>`;
+    h += `<div class="bl"><div class="bx">${m.svg(110, c.bg, c.fg)}</div><div class="bl-num">${String(v4num++).padStart(3,'0')}</div><div class="nm">${m.n}</div><div class="bl-color">${c.n||''}</div></div>`;
   });
   el.innerHTML = h;
 }
@@ -215,7 +219,7 @@ bestFlat.forEach((fi,i) => {
   const lkColors = [colors[0],colors[1],colors[2],colors[4],colors[5],colors[7]];
   flh += `<div class="lk-title">${m.n}</div><div class="lk-row">`;
   lkColors.forEach(c => {
-    flh += `<div class="lk" style="background:${c.bg};color:${c.fg};"><div class="lk-ico">${m.svg(42,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:20px;letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div></div>`;
+    flh += `<div class="lk" style="background:${c.bg};color:${c.fg};"><div class="lk-ico">${m.svg(42,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:20px;letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div><div class="lk-num">${String(v4num++).padStart(3,'0')}</div></div>`;
   });
   flh += '</div>';
 });
@@ -231,7 +235,7 @@ bestAbs.forEach((ai,i) => {
   const lkColors = [colors[0],colors[2],colors[3],colors[5],colors[6],colors[10]];
   alh += `<div class="lk-title">${m.n}</div><div class="lk-row">`;
   lkColors.forEach(c => {
-    alh += `<div class="lk" style="background:${c.bg};color:${c.fg};"><div class="lk-ico">${m.svg(42,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:20px;letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div></div>`;
+    alh += `<div class="lk" style="background:${c.bg};color:${c.fg};"><div class="lk-ico">${m.svg(42,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:20px;letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${t.bl}</div></div><div class="lk-num">${String(v4num++).padStart(3,'0')}</div></div>`;
   });
   alh += '</div>';
 });

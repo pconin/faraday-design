@@ -16,10 +16,10 @@
 
   .grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-bottom:30px;}
 
-  /* Numbered logo block */
-  .lb{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;}
-  .lb-num{position:absolute;top:4px;left:6px;font-size:8px;font-weight:700;color:rgba(255,255,255,.5);z-index:1;font-family:'Space Grotesk',sans-serif;}
-  .lb-num-dark{color:rgba(0,0,0,.3);}
+  /* Numbered logo block — number BELOW, discrete */
+  .lb{display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .lb-num{font-size:8px;font-weight:500;color:#bbb;font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;}
+  .lb-color{font-size:7px;color:#bbb;}
   .bx{width:120px;height:120px;border-radius:24px;overflow:hidden;} .bx svg{width:100%;height:100%;}
   .bx-round{border-radius:60px;}
   .bx-rect{width:180px;height:100px;border-radius:20px;}
@@ -30,7 +30,7 @@
   /* Lockup blocks */
   .lk-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;}
   .lk{display:flex;align-items:center;gap:12px;padding:24px 30px;border-radius:12px;min-width:270px;position:relative;}
-  .lk .lb-num{top:8px;left:10px;}
+  .lk .lb-num{position:absolute;bottom:6px;right:10px;font-size:7px;opacity:.4;}
   .lk-ico{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
   .lk-wm{font-size:20px;}
   .lk-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
@@ -53,19 +53,20 @@
 </p>
 
 <script>
-// Colors: encre + doux
+// Colors: encre (profonds bleu-nuit) + doux (sable, sauge, creme — pas de rose, pas de violet)
 const encre=[
   {n:'Encre',bg:'#2a2a5a',fg:'#f5f0e8'},
-  {n:'Indigo',bg:'#3a3a6a',fg:'#f5f0e8'},
   {n:'Navy',bg:'#0f1a2e',fg:'#f5f0e8'},
-  {n:'Nuit encre',bg:'#14142a',fg:'#c0c0e0'},
+  {n:'Nuit',bg:'#14142a',fg:'#b8c0d8'},
+  {n:'Foret',bg:'#1c2e1c',fg:'#f5f0e8'},
+  {n:'Teal',bg:'#1a3a3a',fg:'#f5f0e8'},
 ];
 const doux=[
-  {n:'Pastel lavande',bg:'#d8d0e8',fg:'#2a2050'},
-  {n:'Pastel ciel',bg:'#c8d8e8',fg:'#1a3050'},
-  {n:'Pastel rose',bg:'#e8d0d8',fg:'#4a1a2a'},
-  {n:'Pastel sable',bg:'#e8e0d0',fg:'#3a2a1a'},
-  {n:'Creme',bg:'#f5f0e8',fg:'#2a2a5a'},
+  {n:'Sable',bg:'#e8e0d0',fg:'#2a2818'},
+  {n:'Creme',bg:'#f5f0e8',fg:'#2a2a4a'},
+  {n:'Sauge clair',bg:'#dfe5d8',fg:'#2a3a22'},
+  {n:'Brume',bg:'#e0e4e0',fg:'#1a2a2a'},
+  {n:'Lin',bg:'#ece6da',fg:'#3a3020'},
 ];
 const mixed=[...encre,...doux];
 
@@ -81,7 +82,10 @@ const T=[
 const baselines=['the present starts here','disconnect to reconnect','come back to yourself'];
 let gNum=1;
 
-function num(light){return `<div class="lb-num ${light?'lb-num-dark':''}">${String(gNum++).padStart(3,'0')}</div>`;}
+// Number BELOW the logo, with color name
+function numBelow(colorName){return `<div class="lb-num">${String(gNum++).padStart(3,'0')}</div><div class="lb-color">${colorName}</div>`;}
+// Number inside lockup (bottom right, discrete)
+function numLk(){return `<div class="lb-num" style="position:absolute;bottom:6px;right:10px;">${String(gNum++).padStart(3,'0')}</div>`;}
 function isLight(bg){return bg>'#c';}
 
 // ============================================================
@@ -128,12 +132,12 @@ html+=`<div class="sb" style="border:none;padding-top:0;"><h2>Parentheses — 8 
 
 // A. Icon carré — 9 couleurs
 html+=`<div class="lk-title">A. Icone carree — parentheses seules</div><div class="grid">`;
-mixed.forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${parenIcon(120,c.bg,c.fg)}</div><div class="nm">${c.n}</div></div>`;});
+mixed.forEach(c=>{html+=`<div class="lb"><div class="bx">${parenIcon(120,c.bg,c.fg)}</div>${numBelow(c.n)}</div>`;});
 html+=`</div>`;
 
 // B. Icon rond
 html+=`<div class="lk-title">B. Icone ronde</div><div class="grid">`;
-mixed.forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx bx-round">${parenIconRound(120,c.bg,c.fg)}</div><div class="nm">${c.n}</div></div>`;});
+mixed.forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx bx-round">${parenIconRound(120,c.bg,c.fg)}</div>${numBelow(c.n)}</div>`;});
 html+=`</div>`;
 
 // C. Variantes de trait : fine, epaisse, dot, asym, line
@@ -141,14 +145,14 @@ html+=`<div class="lk-title">C. Variantes de forme</div><div class="grid">`;
 [parenThin,parenThick,parenDot,parenAsym,parenLine].forEach((fn,i)=>{
   const names=['Fines','Epaisses','Avec point','Asymetriques','Avec trait'];
   [encre[0],encre[2],doux[0],doux[4]].forEach(c=>{
-    html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[i]}</div></div>`;
+    html+=`<div class="lb"><div class="bx">${fn(120,c.bg,c.fg)}</div>${numBelow(names[i]+' — '+c.n)}</div>`;
   });
 });
 html+=`</div>`;
 
 // D. Rectangle horizontal
 html+=`<div class="lk-title">D. Format rectangle</div><div class="grid">`;
-mixed.slice(0,6).forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx-rect">${parenRect(100,c.bg,c.fg)}</div><div class="nm">${c.n}</div></div>`;});
+mixed.slice(0,6).forEach(c=>{html+=`<div class="lb"><div class="bx-rect">${parenRect(100,c.bg,c.fg)}</div>${numBelow(c.n)}</div>`;});
 html+=`</div>`;
 
 // E. Lockup: icone AVANT le texte
@@ -158,7 +162,7 @@ T.forEach((t,ti)=>{
   const cols = ti<2 ? [encre[0],encre[2],doux[0],doux[4]] : [encre[1],encre[3],doux[1],doux[3]];
   cols.forEach(c=>{
     const bl=baselines[ti%3];
-    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${parenIcon(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${numLk()}<div class="lk-ico">${parenIcon(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
   });
   html+=`</div>`;
 });
@@ -172,7 +176,7 @@ T.forEach((t,ti)=>{
     const bl=baselines[ti%3];
     const sz = t.tt==='uppercase'?'18px':'22px';
     const psz = t.tt==='uppercase'?'32px':'38px';
-    html+=`<div class="lk-wrap" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-paren" style="font-family:${t.ff};font-size:${psz};font-weight:200;">(</div><div class="lk-wrap-text"><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:${sz};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div><div class="lk-paren" style="font-family:${t.ff};font-size:${psz};font-weight:200;">)</div></div>`;
+    html+=`<div class="lk-wrap" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${numLk()}<div class="lk-paren" style="font-family:${t.ff};font-size:${psz};font-weight:200;">(</div><div class="lk-wrap-text"><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:${sz};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div><div class="lk-paren" style="font-family:${t.ff};font-size:${psz};font-weight:200;">)</div></div>`;
   });
   html+=`</div>`;
 });
@@ -181,7 +185,7 @@ T.forEach((t,ti)=>{
 html+=`<div class="lk-title">G. Lockup — parentheses avec point</div><div class="lk-row">`;
 [encre[0],encre[2],doux[0],doux[2],doux[4],encre[3]].forEach((c,i)=>{
   const t=T[i%T.length];const bl=baselines[i%3];
-  html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${parenDot(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+  html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${numLk()}<div class="lk-ico">${parenDot(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
 });
 html+=`</div>`;
 
@@ -189,7 +193,7 @@ html+=`</div>`;
 html+=`<div class="lk-title">H. Lockup — parentheses asymetriques</div><div class="lk-row">`;
 [encre[0],encre[1],doux[1],doux[3],doux[4],encre[3]].forEach((c,i)=>{
   const t=T[i%T.length];const bl=baselines[i%3];
-  html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${parenAsym(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+  html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${numLk()}<div class="lk-ico">${parenAsym(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
 });
 html+=`</div>`;
 
@@ -203,7 +207,7 @@ html+=`<div class="lk-title">Icones</div><div class="grid">`;
 [rupture,ruptureOpen,ruptureFade].forEach((fn,fi)=>{
   const names=['Classique','Ouvert','Fade'];
   mixed.forEach((c,ci)=>{
-    if(ci<5){html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">Rupture ${names[fi]}</div></div>`;}
+    if(ci<5){html+=`<div class="lb"><div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">Rupture ${names[fi]}</div></div>`;}
   });
 });
 html+=`</div>`;
@@ -213,7 +217,7 @@ html+=`<div class="lk-title">Lockups Rupture</div>`;
   html+=`<div class="lk-row">`;
   [encre[0],encre[2],doux[0],doux[4],encre[3],doux[2]].forEach((c,i)=>{
     const t=T[i%T.length];const bl=baselines[i%3];
-    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${numLk()}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
   });
   html+=`</div>`;
 });
@@ -228,7 +232,7 @@ html+=`<div class="lk-title">Icones</div><div class="grid">`;
 [dissolution,dissolutionVert,dissolutionScatter].forEach((fn,fi)=>{
   const names=['Horizontal','Vertical','Scatter'];
   mixed.forEach((c,ci)=>{
-    if(ci<5){html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[fi]}</div></div>`;}
+    if(ci<5){html+=`<div class="lb"><div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[fi]}</div></div>`;}
   });
 });
 html+=`</div>`;
@@ -238,7 +242,7 @@ html+=`<div class="lk-title">Lockups Dissolution</div>`;
   html+=`<div class="lk-row">`;
   [encre[0],encre[2],doux[0],doux[4],encre[1],doux[3]].forEach((c,i)=>{
     const t=T[i%T.length];const bl=baselines[i%3];
-    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${numLk()}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
   });
   html+=`</div>`;
 });
@@ -253,7 +257,7 @@ html+=`<div class="lk-title">Icones</div><div class="grid">`;
 [flat1,flat2,flat3].forEach((fn,fi)=>{
   const names=['Original','Peak','Centre'];
   mixed.forEach((c,ci)=>{
-    if(ci<5){html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[fi]}</div></div>`;}
+    if(ci<5){html+=`<div class="lb"><div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[fi]}</div></div>`;}
   });
 });
 html+=`</div>`;
@@ -263,7 +267,7 @@ html+=`<div class="lk-title">Lockups Flatline</div>`;
   html+=`<div class="lk-row">`;
   [encre[0],encre[2],doux[0],doux[4],encre[3],doux[1]].forEach((c,i)=>{
     const t=T[i%T.length];const bl=baselines[i%3];
-    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${numLk()}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
   });
   html+=`</div>`;
 });
