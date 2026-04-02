@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Research V5</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 24px;padding-top:100px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:750px;line-height:1.7;}
+  .sb{text-align:center;padding:50px 0 28px;border-top:1px solid #ddd;margin-top:40px;}
+  .sb h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .sb p{font-size:12px;color:#bbb;margin-top:4px;}
+
+  .grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-bottom:30px;}
+
+  /* Numbered logo block */
+  .lb{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;}
+  .lb-num{position:absolute;top:4px;left:6px;font-size:8px;font-weight:700;color:rgba(255,255,255,.5);z-index:1;font-family:'Space Grotesk',sans-serif;}
+  .lb-num-dark{color:rgba(0,0,0,.3);}
+  .bx{width:120px;height:120px;border-radius:24px;overflow:hidden;} .bx svg{width:100%;height:100%;}
+  .bx-round{border-radius:60px;}
+  .bx-rect{width:180px;height:100px;border-radius:20px;}
+  .bx-rect svg{width:100%;height:100%;}
+  .nm{font-size:9px;font-weight:600;color:#555;text-align:center;max-width:180px;}
+  .ds{font-size:8px;color:#aaa;text-align:center;max-width:180px;line-height:1.3;}
+
+  /* Lockup blocks */
+  .lk-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;}
+  .lk{display:flex;align-items:center;gap:12px;padding:24px 30px;border-radius:12px;min-width:270px;position:relative;}
+  .lk .lb-num{top:8px;left:10px;}
+  .lk-ico{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
+  .lk-wm{font-size:20px;}
+  .lk-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
+
+  /* Wrap lockup — text inside parentheses */
+  .lk-wrap{display:flex;align-items:center;gap:0;padding:28px 34px;border-radius:12px;min-width:280px;position:relative;}
+  .lk-paren{font-weight:300;opacity:.35;line-height:1;}
+  .lk-wrap-text{display:flex;flex-direction:column;align-items:center;padding:0 8px;}
+
+  .lk-title{font-size:11px;font-weight:600;color:#666;margin-bottom:12px;margin-top:20px;}
+  .counter{font-family:'Space Grotesk',sans-serif;}
+</style>
+</head>
+<body>
+
+<h1>Faraday — Research V5</h1>
+<p class="desc">
+  Focus : Parentheses (8 utilisations), Rupture, Dissolution, Flatline.<br>
+  Palettes : encre / doux. Chaque logo numerote.
+</p>
+
+<script>
+// Colors: encre + doux
+const encre=[
+  {n:'Encre',bg:'#2a2a5a',fg:'#f5f0e8'},
+  {n:'Indigo',bg:'#3a3a6a',fg:'#f5f0e8'},
+  {n:'Navy',bg:'#0f1a2e',fg:'#f5f0e8'},
+  {n:'Nuit encre',bg:'#14142a',fg:'#c0c0e0'},
+];
+const doux=[
+  {n:'Pastel lavande',bg:'#d8d0e8',fg:'#2a2050'},
+  {n:'Pastel ciel',bg:'#c8d8e8',fg:'#1a3050'},
+  {n:'Pastel rose',bg:'#e8d0d8',fg:'#4a1a2a'},
+  {n:'Pastel sable',bg:'#e8e0d0',fg:'#3a2a1a'},
+  {n:'Creme',bg:'#f5f0e8',fg:'#2a2a5a'},
+];
+const mixed=[...encre,...doux];
+
+// Typos
+const T=[
+  {nm:'Sora',ff:"'Sora',sans-serif",fw:'300',ls:'.12em',tt:'none',wm:'Faraday'},
+  {nm:'Jakarta',ff:"'Plus Jakarta Sans',sans-serif",fw:'600',ls:'.04em',tt:'none',wm:'Faraday'},
+  {nm:'Grotesk',ff:"'Space Grotesk',sans-serif",fw:'500',ls:'.18em',tt:'uppercase',wm:'Faraday'},
+  {nm:'Manrope',ff:"'Manrope',sans-serif",fw:'300',ls:'.02em',tt:'lowercase',wm:'faraday'},
+  {nm:'Manrope Med',ff:"'Manrope',sans-serif",fw:'500',ls:'.08em',tt:'none',wm:'Faraday'},
+];
+
+const baselines=['the present starts here','disconnect to reconnect','come back to yourself'];
+let gNum=1;
+
+function num(light){return `<div class="lb-num ${light?'lb-num-dark':''}">${String(gNum++).padStart(3,'0')}</div>`;}
+function isLight(bg){return bg>'#c';}
+
+// ============================================================
+// PARENTHESES SVGs
+// ============================================================
+// 1. Icon only (square)
+function parenIcon(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.36},${s*.24} Q${s*.24},${s*.5} ${s*.36},${s*.76}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.64},${s*.24} Q${s*.76},${s*.5} ${s*.64},${s*.76}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`;}
+// 2. Icon round
+function parenIconRound(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><path d="M${s*.36},${s*.26} Q${s*.24},${s*.5} ${s*.36},${s*.74}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.64},${s*.26} Q${s*.76},${s*.5} ${s*.64},${s*.74}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`;}
+// 3. Thin paren
+function parenThin(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.38},${s*.22} Q${s*.26},${s*.5} ${s*.38},${s*.78}" fill="none" stroke="${fg}" stroke-width="${s*.02}" stroke-linecap="round"/><path d="M${s*.62},${s*.22} Q${s*.74},${s*.5} ${s*.62},${s*.78}" fill="none" stroke="${fg}" stroke-width="${s*.02}" stroke-linecap="round"/></svg>`;}
+// 4. Thick paren tight
+function parenThick(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.4},${s*.26} Q${s*.3},${s*.5} ${s*.4},${s*.74}" fill="none" stroke="${fg}" stroke-width="${s*.05}" stroke-linecap="round"/><path d="M${s*.6},${s*.26} Q${s*.7},${s*.5} ${s*.6},${s*.74}" fill="none" stroke="${fg}" stroke-width="${s*.05}" stroke-linecap="round"/></svg>`;}
+// 5. Paren with dot inside
+function parenDot(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.34},${s*.24} Q${s*.22},${s*.5} ${s*.34},${s*.76}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round"/><path d="M${s*.66},${s*.24} Q${s*.78},${s*.5} ${s*.66},${s*.76}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round"/><circle cx="${s*.5}" cy="${s*.5}" r="${s*.055}" fill="${fg}"/></svg>`;}
+// 6. Asymmetric paren
+function parenAsym(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.34},${s*.2} Q${s*.2},${s*.5} ${s*.34},${s*.8}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.66},${s*.3} Q${s*.76},${s*.5} ${s*.66},${s*.7}" fill="none" stroke="${fg}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".5"/></svg>`;}
+// 7. Rectangle horizontal
+function parenRect(s,bg,fg){const w=s*1.5;return `<svg viewBox="0 0 ${w} ${s}"><rect width="${w}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${w*.22},${s*.22} Q${w*.16},${s*.5} ${w*.22},${s*.78}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round"/><path d="M${w*.78},${s*.22} Q${w*.84},${s*.5} ${w*.78},${s*.78}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round"/></svg>`;}
+// 8. Paren with line
+function parenLine(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.32},${s*.24} Q${s*.2},${s*.5} ${s*.32},${s*.76}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round"/><path d="M${s*.68},${s*.24} Q${s*.8},${s*.5} ${s*.68},${s*.76}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round"/><line x1="${s*.4}" y1="${s*.5}" x2="${s*.6}" y2="${s*.5}" stroke="${fg}" stroke-width="${s*.02}" stroke-linecap="round" opacity=".4"/></svg>`;}
+
+// Rupture
+function rupture(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.5},${s*.22} A${s*.28},${s*.28} 0 1,1 ${s*.73},${s*.33}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><circle cx="${s*.5}" cy="${s*.22}" r="${s*.025}" fill="${fg}"/></svg>`;}
+function ruptureOpen(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.5},${s*.2} A${s*.3},${s*.3} 0 1,1 ${s*.78},${s*.4}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round"/></svg>`;}
+function ruptureFade(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.5},${s*.22} A${s*.28},${s*.28} 0 0,0 ${s*.22},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/><path d="M${s*.22},${s*.5} A${s*.28},${s*.28} 0 0,0 ${s*.5},${s*.78}" fill="none" stroke="${fg}" stroke-width="${s*.03}" stroke-linecap="round" opacity=".6"/><path d="M${s*.5},${s*.78} A${s*.28},${s*.28} 0 0,0 ${s*.73},${s*.6}" fill="none" stroke="${fg}" stroke-width="${s*.025}" stroke-linecap="round" opacity=".25"/></svg>`;}
+
+// Dissolution
+function dissolution(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><circle cx="${s*.22}" cy="${s*.5}" r="${s*.05}" fill="${fg}"/><circle cx="${s*.36}" cy="${s*.5}" r="${s*.038}" fill="${fg}" opacity=".7"/><circle cx="${s*.48}" cy="${s*.5}" r="${s*.028}" fill="${fg}" opacity=".45"/><circle cx="${s*.58}" cy="${s*.5}" r="${s*.02}" fill="${fg}" opacity=".25"/><circle cx="${s*.66}" cy="${s*.5}" r="${s*.014}" fill="${fg}" opacity=".12"/><circle cx="${s*.72}" cy="${s*.5}" r="${s*.008}" fill="${fg}" opacity=".06"/></svg>`;}
+function dissolutionVert(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><circle cx="${s*.5}" cy="${s*.22}" r="${s*.05}" fill="${fg}"/><circle cx="${s*.5}" cy="${s*.36}" r="${s*.038}" fill="${fg}" opacity=".7"/><circle cx="${s*.5}" cy="${s*.48}" r="${s*.028}" fill="${fg}" opacity=".45"/><circle cx="${s*.5}" cy="${s*.58}" r="${s*.02}" fill="${fg}" opacity=".25"/><circle cx="${s*.5}" cy="${s*.66}" r="${s*.014}" fill="${fg}" opacity=".12"/></svg>`;}
+function dissolutionScatter(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><circle cx="${s*.25}" cy="${s*.48}" r="${s*.05}" fill="${fg}"/><circle cx="${s*.38}" cy="${s*.42}" r="${s*.036}" fill="${fg}" opacity=".7"/><circle cx="${s*.49}" cy="${s*.52}" r="${s*.026}" fill="${fg}" opacity=".45"/><circle cx="${s*.6}" cy="${s*.46}" r="${s*.018}" fill="${fg}" opacity=".25"/><circle cx="${s*.68}" cy="${s*.54}" r="${s*.012}" fill="${fg}" opacity=".12"/></svg>`;}
+
+// Flatlines
+function flat1(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`;}
+function flat2(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.12},${s*.5} L${s*.28},${s*.5} L${s*.35},${s*.2} L${s*.42},${s*.7} L${s*.48},${s*.5} L${s*.9},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+function flat3(s,bg,fg){return `<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.18}" fill="${bg}"/><path d="M${s*.08},${s*.5} L${s*.35},${s*.5} Q${s*.42},${s*.22} ${s*.5},${s*.5} Q${s*.58},${s*.78} ${s*.65},${s*.5} L${s*.92},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.035}" stroke-linecap="round"/></svg>`;}
+
+let html='';
+
+// ============================================================
+// SECTION 1: PARENTHESES — 8 UTILISATIONS
+// ============================================================
+html+=`<div class="sb" style="border:none;padding-top:0;"><h2>Parentheses — 8 utilisations du symbole</h2><p>Icone seule, lockup, wrap, formes variees</p></div>`;
+
+// A. Icon carré — 9 couleurs
+html+=`<div class="lk-title">A. Icone carree — parentheses seules</div><div class="grid">`;
+mixed.forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${parenIcon(120,c.bg,c.fg)}</div><div class="nm">${c.n}</div></div>`;});
+html+=`</div>`;
+
+// B. Icon rond
+html+=`<div class="lk-title">B. Icone ronde</div><div class="grid">`;
+mixed.forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx bx-round">${parenIconRound(120,c.bg,c.fg)}</div><div class="nm">${c.n}</div></div>`;});
+html+=`</div>`;
+
+// C. Variantes de trait : fine, epaisse, dot, asym, line
+html+=`<div class="lk-title">C. Variantes de forme</div><div class="grid">`;
+[parenThin,parenThick,parenDot,parenAsym,parenLine].forEach((fn,i)=>{
+  const names=['Fines','Epaisses','Avec point','Asymetriques','Avec trait'];
+  [encre[0],encre[2],doux[0],doux[4]].forEach(c=>{
+    html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[i]}</div></div>`;
+  });
+});
+html+=`</div>`;
+
+// D. Rectangle horizontal
+html+=`<div class="lk-title">D. Format rectangle</div><div class="grid">`;
+mixed.slice(0,6).forEach(c=>{html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx-rect">${parenRect(100,c.bg,c.fg)}</div><div class="nm">${c.n}</div></div>`;});
+html+=`</div>`;
+
+// E. Lockup: icone AVANT le texte
+html+=`<div class="lk-title">E. Lockup — icone avant le texte</div>`;
+T.forEach((t,ti)=>{
+  html+=`<div class="lk-row">`;
+  const cols = ti<2 ? [encre[0],encre[2],doux[0],doux[4]] : [encre[1],encre[3],doux[1],doux[3]];
+  cols.forEach(c=>{
+    const bl=baselines[ti%3];
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${parenIcon(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+  });
+  html+=`</div>`;
+});
+
+// F. Lockup: parentheses AUTOUR du texte — ( Faraday )
+html+=`<div class="lk-title">F. Lockup — parentheses autour du texte</div>`;
+T.forEach((t,ti)=>{
+  html+=`<div class="lk-row">`;
+  const cols = [encre[ti%encre.length], doux[ti%doux.length], mixed[(ti+3)%mixed.length], mixed[(ti+6)%mixed.length]];
+  cols.forEach(c=>{
+    const bl=baselines[ti%3];
+    const sz = t.tt==='uppercase'?'18px':'22px';
+    const psz = t.tt==='uppercase'?'32px':'38px';
+    html+=`<div class="lk-wrap" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-paren" style="font-family:${t.ff};font-size:${psz};font-weight:200;">(</div><div class="lk-wrap-text"><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};font-size:${sz};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div><div class="lk-paren" style="font-family:${t.ff};font-size:${psz};font-weight:200;">)</div></div>`;
+  });
+  html+=`</div>`;
+});
+
+// G. Lockup icone + variante dot
+html+=`<div class="lk-title">G. Lockup — parentheses avec point</div><div class="lk-row">`;
+[encre[0],encre[2],doux[0],doux[2],doux[4],encre[3]].forEach((c,i)=>{
+  const t=T[i%T.length];const bl=baselines[i%3];
+  html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${parenDot(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+});
+html+=`</div>`;
+
+// H. Lockup icone + variante asymetrique
+html+=`<div class="lk-title">H. Lockup — parentheses asymetriques</div><div class="lk-row">`;
+[encre[0],encre[1],doux[1],doux[3],doux[4],encre[3]].forEach((c,i)=>{
+  const t=T[i%T.length];const bl=baselines[i%3];
+  html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${parenAsym(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+});
+html+=`</div>`;
+
+
+// ============================================================
+// SECTION 2: RUPTURE — declinaisons
+// ============================================================
+html+=`<div class="sb"><h2>Rupture — declinaisons</h2><p>Cercle brise : ouvert, fade, variantes</p></div>`;
+
+html+=`<div class="lk-title">Icones</div><div class="grid">`;
+[rupture,ruptureOpen,ruptureFade].forEach((fn,fi)=>{
+  const names=['Classique','Ouvert','Fade'];
+  mixed.forEach((c,ci)=>{
+    if(ci<5){html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">Rupture ${names[fi]}</div></div>`;}
+  });
+});
+html+=`</div>`;
+
+html+=`<div class="lk-title">Lockups Rupture</div>`;
+[rupture,ruptureOpen,ruptureFade].forEach((fn,fi)=>{
+  html+=`<div class="lk-row">`;
+  [encre[0],encre[2],doux[0],doux[4],encre[3],doux[2]].forEach((c,i)=>{
+    const t=T[i%T.length];const bl=baselines[i%3];
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+  });
+  html+=`</div>`;
+});
+
+
+// ============================================================
+// SECTION 3: DISSOLUTION — declinaisons
+// ============================================================
+html+=`<div class="sb"><h2>Dissolution — declinaisons</h2><p>Points qui s'effacent : horizontal, vertical, scatter</p></div>`;
+
+html+=`<div class="lk-title">Icones</div><div class="grid">`;
+[dissolution,dissolutionVert,dissolutionScatter].forEach((fn,fi)=>{
+  const names=['Horizontal','Vertical','Scatter'];
+  mixed.forEach((c,ci)=>{
+    if(ci<5){html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[fi]}</div></div>`;}
+  });
+});
+html+=`</div>`;
+
+html+=`<div class="lk-title">Lockups Dissolution</div>`;
+[dissolution,dissolutionVert,dissolutionScatter].forEach((fn,fi)=>{
+  html+=`<div class="lk-row">`;
+  [encre[0],encre[2],doux[0],doux[4],encre[1],doux[3]].forEach((c,i)=>{
+    const t=T[i%T.length];const bl=baselines[i%3];
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+  });
+  html+=`</div>`;
+});
+
+
+// ============================================================
+// SECTION 4: FLATLINE — declinaisons
+// ============================================================
+html+=`<div class="sb"><h2>Flatline — declinaisons</h2><p>Original, Peak, Centre</p></div>`;
+
+html+=`<div class="lk-title">Icones</div><div class="grid">`;
+[flat1,flat2,flat3].forEach((fn,fi)=>{
+  const names=['Original','Peak','Centre'];
+  mixed.forEach((c,ci)=>{
+    if(ci<5){html+=`<div class="lb">${num(isLight(c.bg))}<div class="bx">${fn(120,c.bg,c.fg)}</div><div class="nm">${names[fi]}</div></div>`;}
+  });
+});
+html+=`</div>`;
+
+html+=`<div class="lk-title">Lockups Flatline</div>`;
+[flat1,flat2,flat3].forEach((fn,fi)=>{
+  html+=`<div class="lk-row">`;
+  [encre[0],encre[2],doux[0],doux[4],encre[3],doux[1]].forEach((c,i)=>{
+    const t=T[i%T.length];const bl=baselines[i%3];
+    html+=`<div class="lk" style="background:${c.bg};color:${c.fg};${isLight(c.bg)?'border:1px solid #ddd;':''}">${num(isLight(c.bg))}<div class="lk-ico">${fn(40,c.bg,c.fg)}</div><div><div class="lk-wm" style="font-family:${t.ff};font-weight:${t.fw};letter-spacing:${t.ls};text-transform:${t.tt};">${t.wm}</div><div class="lk-bl">${bl}</div></div></div>`;
+  });
+  html+=`</div>`;
+});
+
+html+=`<div style="text-align:center;padding:40px 0;font-size:12px;color:#999;">Total : <strong class="counter">${gNum-1}</strong> propositions numerotees</div>`;
+
+document.write(html);
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>
