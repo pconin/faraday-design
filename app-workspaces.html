@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Workspaces App Views</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0e0e10;
+    --surface: #1a1a1e;
+    --surface-2: #222226;
+    --surface-3: #2a2a2f;
+    --border: #2e2e34;
+    --text: #f0ede8;
+    --text-secondary: #8a8a94;
+    --text-tertiary: #5a5a64;
+    --accent: #c8845a;
+    --accent-light: #d4956a;
+    --accent-dim: rgba(200, 132, 90, 0.12);
+    --green: #6b9b6b;
+    --green-dim: rgba(107, 155, 107, 0.12);
+    --blue: #6888b8;
+    --blue-dim: rgba(104, 136, 184, 0.12);
+    --red: #b86868;
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+
+  body {
+    background: #1a1a1e;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .screen-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .screen-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .phone {
+    width: 375px;
+    height: 812px;
+    background: var(--bg);
+    border-radius: 40px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== Status Bar ===== */
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .status-bar .time { font-size: 15px; font-weight: 600; }
+  .status-icons { display: flex; gap: 5px; font-size: 11px; }
+
+  /* ===== Navigation ===== */
+  .nav-header {
+    padding: 8px 20px 16px;
+  }
+  .nav-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .nav-header .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* ===== Tab Bar ===== */
+  .tab-bar-top {
+    display: flex;
+    gap: 0;
+    padding: 0 20px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-item {
+    padding: 10px 16px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    position: relative;
+    cursor: pointer;
+  }
+  .tab-item.active {
+    color: var(--accent);
+  }
+  .tab-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* ===== Content ===== */
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 20px;
+  }
+
+  /* ===== Workspace Card ===== */
+  .workspace-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .workspace-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 16px 12px;
+  }
+  .workspace-card-header .ws-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  .ws-icon.home { background: var(--accent-dim); }
+  .ws-icon.work { background: var(--blue-dim); }
+  .ws-icon.cabin { background: var(--green-dim); }
+
+  .ws-info { flex: 1; }
+  .ws-info .ws-name {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .ws-info .ws-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .ws-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+  .ws-badge.member {
+    background: var(--surface-3);
+    color: var(--text-secondary);
+  }
+
+  /* Box row inside workspace */
+  .box-list {
+    padding: 0 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .box-row {
+    display: flex;
+    align-items: center;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    gap: 12px;
+  }
+  .box-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .box-dot.online { background: var(--green); }
+  .box-dot.offline { background: var(--text-tertiary); }
+  .box-info { flex: 1; }
+  .box-info .box-name {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .box-info .box-location {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 1px;
+  }
+  .box-stat {
+    text-align: right;
+  }
+  .box-stat .stat-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-light);
+  }
+  .box-stat .stat-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  /* Members row */
+  .members-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    gap: 6px;
+  }
+  .avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    border: 2px solid var(--bg);
+    margin-right: -8px;
+  }
+  .avatar.a1 { background: #c8845a; color: #fff; }
+  .avatar.a2 { background: #6888b8; color: #fff; }
+  .avatar.a3 { background: #6b9b6b; color: #fff; }
+  .avatar.a4 { background: #b8688a; color: #fff; }
+  .members-text {
+    margin-left: 14px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .chevron {
+    margin-left: auto;
+    color: var(--text-tertiary);
+    font-size: 14px;
+  }
+
+  /* Add workspace button */
+  .add-workspace-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  /* ===== Bottom Nav ===== */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0 28px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+  .bottom-nav-item.active { color: var(--accent); }
+  .bottom-nav-item .nav-icon {
+    font-size: 18px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ===== SCREEN 2 — Single Workspace ===== */
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--accent);
+    padding: 8px 20px 4px;
+    font-weight: 500;
+  }
+
+  .ws-detail-header {
+    padding: 8px 20px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ws-detail-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .ws-detail-info h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .ws-detail-info .ws-detail-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  /* Section headers */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0 10px;
+  }
+  .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .section-action {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Member list */
+  .member-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    gap: 12px;
+  }
+  .member-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .member-info { flex: 1; }
+  .member-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .member-role {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 1px;
+  }
+  .member-stats {
+    text-align: right;
+  }
+  .member-stats .ms-value {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .member-stats .ms-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  /* ===== SCREEN 3 — Analytics ===== */
+  .analytics-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 18px;
+    margin-bottom: 12px;
+  }
+  .analytics-card .ac-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .analytics-card .ac-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 6px;
+    letter-spacing: -0.02em;
+  }
+  .analytics-card .ac-change {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .ac-change.up { color: var(--green); }
+  .ac-change.down { color: var(--red); }
+
+  .analytics-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .analytics-row .analytics-card { flex: 1; margin-bottom: 0; }
+
+  /* Bar chart */
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 80px;
+    margin-top: 16px;
+    padding-top: 8px;
+  }
+  .bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .bar {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    min-height: 4px;
+  }
+  .bar.accent { background: var(--accent); }
+  .bar.dim { background: var(--surface-3); }
+  .bar-label {
+    font-size: 9px;
+    color: var(--text-tertiary);
+  }
+
+  /* Member breakdown */
+  .member-breakdown {
+    margin-top: 16px;
+  }
+  .mb-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mb-row:last-child { border-bottom: none; }
+  .mb-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .mb-name {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .mb-bar-container {
+    width: 100px;
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .mb-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+  .mb-value {
+    font-size: 12px;
+    font-weight: 600;
+    width: 40px;
+    text-align: right;
+  }
+
+  /* Filter pills */
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+  }
+  .pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .pill.active {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ===== SCREEN 4 — Add Box ===== */
+  .modal-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+
+  .modal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px 20px 4px;
+  }
+  .modal-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 0 20px 20px;
+  }
+
+  .form-group {
+    padding: 0 20px;
+    margin-bottom: 18px;
+  }
+  .form-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .form-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+  }
+  .form-input::placeholder { color: var(--text-tertiary); }
+  .form-input:focus { border-color: var(--accent); }
+
+  .form-select {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    appearance: none;
+  }
+
+  .primary-btn {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 24px 20px;
+    padding: 16px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .secondary-btn {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 0 20px 12px;
+    padding: 14px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Scan animation */
+  .scan-area {
+    width: calc(100% - 40px);
+    margin: 0 20px 20px;
+    aspect-ratio: 1;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .scan-area::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    animation: scan 2s ease-in-out infinite;
+  }
+  @keyframes scan {
+    0%, 100% { top: 20%; opacity: 0.3; }
+    50% { top: 80%; opacity: 1; }
+  }
+  .scan-icon {
+    font-size: 40px;
+    opacity: 0.4;
+  }
+  .scan-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  /* Visitor badge */
+  .visitor-badge {
+    font-size: 10px;
+    padding: 3px 7px;
+    border-radius: 5px;
+    background: var(--surface-3);
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+
+  /* Invite section */
+  .invite-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    margin-bottom: 10px;
+  }
+  .invite-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--surface-3);
+  }
+  .invite-info { flex: 1; }
+  .invite-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .invite-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  /* Role selector */
+  .role-selector {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .role-option {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    background: var(--surface);
+  }
+  .role-option.selected {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+  .role-option .role-name {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .role-option.selected .role-name { color: var(--accent); }
+  .role-option .role-desc {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SCREEN 1 — WORKSPACES LIST (Overview)
+     ============================================================ -->
+<div class="screen-wrapper">
+  <div class="screen-label">01 — Liste des workspaces</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">
+        <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
+      </div>
+    </div>
+
+    <div class="nav-header">
+      <h1>Workspaces</h1>
+      <div class="subtitle">3 espaces &middot; 5 boxes</div>
+    </div>
+
+    <div class="content">
+
+      <!-- Workspace: Maison -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="ws-icon home">&#127968;</div>
+          <div class="ws-info">
+            <div class="ws-name">Maison</div>
+            <div class="ws-meta">3 boxes &middot; 2 membres</div>
+          </div>
+          <div class="ws-badge">Admin</div>
+        </div>
+        <div class="box-list">
+          <div class="box-row">
+            <div class="box-dot online"></div>
+            <div class="box-info">
+              <div class="box-name">Salon</div>
+              <div class="box-location">Faraday Box Pro</div>
+            </div>
+            <div class="box-stat">
+              <div class="stat-value">2h14</div>
+              <div class="stat-label">aujourd'hui</div>
+            </div>
+          </div>
+          <div class="box-row">
+            <div class="box-dot online"></div>
+            <div class="box-info">
+              <div class="box-name">Chambre parentale</div>
+              <div class="box-location">Faraday Box</div>
+            </div>
+            <div class="box-stat">
+              <div class="stat-value">7h32</div>
+              <div class="stat-label">aujourd'hui</div>
+            </div>
+          </div>
+          <div class="box-row">
+            <div class="box-dot offline"></div>
+            <div class="box-info">
+              <div class="box-name">Bureau</div>
+              <div class="box-location">Faraday Box</div>
+            </div>
+            <div class="box-stat">
+              <div class="stat-value">&mdash;</div>
+              <div class="stat-label">hors ligne</div>
+            </div>
+          </div>
+        </div>
+        <div class="members-row">
+          <div class="avatar a1">PC</div>
+          <div class="avatar a2">EB</div>
+          <span class="members-text">Pol, Elisabeth</span>
+          <span class="chevron">&rsaquo;</span>
+        </div>
+      </div>
+
+      <!-- Workspace: Bureau -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="ws-icon work">&#128188;</div>
+          <div class="ws-info">
+            <div class="ws-name">Bureau Faraday</div>
+            <div class="ws-meta">2 boxes &middot; 3 membres</div>
+          </div>
+          <div class="ws-badge">Admin</div>
+        </div>
+        <div class="box-list">
+          <div class="box-row">
+            <div class="box-dot online"></div>
+            <div class="box-info">
+              <div class="box-name">Salle de reunion</div>
+              <div class="box-location">Faraday Box Pro</div>
+            </div>
+            <div class="box-stat">
+              <div class="stat-value">4h05</div>
+              <div class="stat-label">aujourd'hui</div>
+            </div>
+          </div>
+          <div class="box-row">
+            <div class="box-dot online"></div>
+            <div class="box-info">
+              <div class="box-name">Open space</div>
+              <div class="box-location">Faraday Box</div>
+            </div>
+            <div class="box-stat">
+              <div class="stat-value">1h48</div>
+              <div class="stat-label">aujourd'hui</div>
+            </div>
+          </div>
+        </div>
+        <div class="members-row">
+          <div class="avatar a1">PC</div>
+          <div class="avatar a3">LG</div>
+          <div class="avatar a4">MR</div>
+          <span class="members-text">Pol, Louis, Marie</span>
+          <span class="chevron">&rsaquo;</span>
+        </div>
+      </div>
+
+      <!-- Workspace: Cabane -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="ws-icon cabin">&#127795;</div>
+          <div class="ws-info">
+            <div class="ws-name">Maison de campagne</div>
+            <div class="ws-meta">1 box &middot; 1 membre</div>
+          </div>
+          <div class="ws-badge member">Membre</div>
+        </div>
+        <div class="box-list">
+          <div class="box-row">
+            <div class="box-dot offline"></div>
+            <div class="box-info">
+              <div class="box-name">Entree</div>
+              <div class="box-location">Faraday Box</div>
+            </div>
+            <div class="box-stat">
+              <div class="stat-value">&mdash;</div>
+              <div class="stat-label">hors ligne</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add workspace -->
+      <div class="add-workspace-btn">
+        + Creer un workspace
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9711;</div>
+        Sessions
+      </div>
+      <div class="bottom-nav-item active">
+        <div class="nav-icon">&#9632;</div>
+        Workspaces
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9650;</div>
+        Analytics
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9679;</div>
+        Profil
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 2 — SINGLE WORKSPACE DETAIL
+     ============================================================ -->
+<div class="screen-wrapper">
+  <div class="screen-label">02 — Detail workspace</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">
+        <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
+      </div>
+    </div>
+
+    <div class="back-btn">&lsaquo; Workspaces</div>
+
+    <div class="ws-detail-header">
+      <div class="ws-detail-icon" style="background: var(--accent-dim);">&#127968;</div>
+      <div class="ws-detail-info">
+        <h2>Maison</h2>
+        <div class="ws-detail-meta">3 boxes &middot; 2 membres &middot; Admin</div>
+      </div>
+    </div>
+
+    <div class="tab-bar-top">
+      <div class="tab-item active">Boxes</div>
+      <div class="tab-item">Membres</div>
+      <div class="tab-item">Analytics</div>
+      <div class="tab-item">Reglages</div>
+    </div>
+
+    <div class="content">
+      <div class="box-row" style="background: var(--surface); margin-bottom: 8px; border-radius: var(--radius-sm);">
+        <div class="box-dot online"></div>
+        <div class="box-info">
+          <div class="box-name">Salon</div>
+          <div class="box-location">Faraday Box Pro &middot; En ligne</div>
+        </div>
+        <div class="box-stat">
+          <div class="stat-value">2h14</div>
+          <div class="stat-label">aujourd'hui</div>
+        </div>
+      </div>
+      <div class="box-row" style="background: var(--surface); margin-bottom: 8px; border-radius: var(--radius-sm);">
+        <div class="box-dot online"></div>
+        <div class="box-info">
+          <div class="box-name">Chambre parentale</div>
+          <div class="box-location">Faraday Box &middot; En ligne</div>
+        </div>
+        <div class="box-stat">
+          <div class="stat-value">7h32</div>
+          <div class="stat-label">aujourd'hui</div>
+        </div>
+      </div>
+      <div class="box-row" style="background: var(--surface); margin-bottom: 8px; border-radius: var(--radius-sm);">
+        <div class="box-dot offline"></div>
+        <div class="box-info">
+          <div class="box-name">Bureau</div>
+          <div class="box-location">Faraday Box &middot; Hors ligne</div>
+        </div>
+        <div class="box-stat">
+          <div class="stat-value">&mdash;</div>
+          <div class="stat-label">hors ligne</div>
+        </div>
+      </div>
+
+      <div class="add-workspace-btn" style="margin-top: 12px;">
+        + Ajouter une box
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Membres</div>
+        <div class="section-action">Inviter +</div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar" style="background: #c8845a;">PC</div>
+        <div class="member-info">
+          <div class="member-name">Pol Conin</div>
+          <div class="member-role">Admin &middot; Vous</div>
+        </div>
+        <div class="member-stats">
+          <div class="ms-value">9h46</div>
+          <div class="ms-label">aujourd'hui</div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar" style="background: #6888b8;">EB</div>
+        <div class="member-info">
+          <div class="member-name">Elisabeth B.</div>
+          <div class="member-role">Admin</div>
+        </div>
+        <div class="member-stats">
+          <div class="ms-value">3h12</div>
+          <div class="ms-label">aujourd'hui</div>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top: 8px;">
+        <div class="section-title">Visiteurs recents</div>
+      </div>
+
+      <div class="member-row" style="opacity: 0.6;">
+        <div class="member-avatar" style="background: var(--surface-3); color: var(--text-tertiary);">G</div>
+        <div class="member-info">
+          <div class="member-name">Gabriel</div>
+          <div class="member-role">Visiteur &middot; Partage actif</div>
+        </div>
+        <div class="member-stats">
+          <div class="ms-value">45m</div>
+          <div class="ms-label">hier</div>
+        </div>
+      </div>
+
+      <div class="member-row" style="opacity: 0.35;">
+        <div class="member-avatar" style="background: var(--surface-3); color: var(--text-tertiary);">?</div>
+        <div class="member-info">
+          <div class="member-name">Visiteur anonyme</div>
+          <div class="member-role">Partage refuse</div>
+        </div>
+        <div class="member-stats">
+          <div class="ms-value">&mdash;</div>
+          <div class="ms-label">masque</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9711;</div>
+        Sessions
+      </div>
+      <div class="bottom-nav-item active">
+        <div class="nav-icon">&#9632;</div>
+        Workspaces
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9650;</div>
+        Analytics
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9679;</div>
+        Profil
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 3 — WORKSPACE ANALYTICS
+     ============================================================ -->
+<div class="screen-wrapper">
+  <div class="screen-label">03 — Analytics workspace</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">
+        <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
+      </div>
+    </div>
+
+    <div class="back-btn">&lsaquo; Maison</div>
+
+    <div class="nav-header" style="padding-bottom: 10px;">
+      <h1 style="font-size: 22px;">Analytics</h1>
+    </div>
+
+    <div class="tab-bar-top">
+      <div class="tab-item">Boxes</div>
+      <div class="tab-item">Membres</div>
+      <div class="tab-item active">Analytics</div>
+      <div class="tab-item">Reglages</div>
+    </div>
+
+    <div class="content">
+
+      <div class="filter-pills">
+        <div class="pill active">7 jours</div>
+        <div class="pill">30 jours</div>
+        <div class="pill">3 mois</div>
+        <div class="pill">Toutes les boxes</div>
+      </div>
+
+      <div class="analytics-row">
+        <div class="analytics-card">
+          <div class="ac-label">Temps total</div>
+          <div class="ac-value">47<span style="font-size: 18px; color: var(--text-secondary);">h</span>12</div>
+          <div class="ac-change up">&#9650; 12% vs semaine precedente</div>
+        </div>
+        <div class="analytics-card">
+          <div class="ac-label">Sessions</div>
+          <div class="ac-value">23</div>
+          <div class="ac-change up">&#9650; 4 de plus</div>
+        </div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="ac-label">Duree moyenne / session</div>
+        <div class="ac-value">2<span style="font-size: 18px; color: var(--text-secondary);">h</span>03</div>
+        <div class="ac-change down">&#9660; 8 min vs precedent</div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="ac-label">Activite par jour</div>
+        <div class="bar-chart">
+          <div class="bar-group">
+            <div class="bar accent" style="height: 45px;"></div>
+            <div class="bar-label">Lun</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar accent" style="height: 62px;"></div>
+            <div class="bar-label">Mar</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar accent" style="height: 38px;"></div>
+            <div class="bar-label">Mer</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar accent" style="height: 72px;"></div>
+            <div class="bar-label">Jeu</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar accent" style="height: 55px;"></div>
+            <div class="bar-label">Ven</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar accent" style="height: 80px;"></div>
+            <div class="bar-label">Sam</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar accent" style="height: 68px;"></div>
+            <div class="bar-label">Dim</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="ac-label">Temps par membre</div>
+        <div class="member-breakdown">
+          <div class="mb-row">
+            <div class="mb-avatar" style="background: #c8845a;">PC</div>
+            <div class="mb-name">Pol</div>
+            <div class="mb-bar-container"><div class="mb-bar-fill" style="width: 85%;"></div></div>
+            <div class="mb-value">28h</div>
+          </div>
+          <div class="mb-row">
+            <div class="mb-avatar" style="background: #6888b8;">EB</div>
+            <div class="mb-name">Elisabeth</div>
+            <div class="mb-bar-container"><div class="mb-bar-fill" style="width: 55%;"></div></div>
+            <div class="mb-value">16h</div>
+          </div>
+          <div class="mb-row">
+            <div class="mb-avatar" style="background: var(--surface-3); color: var(--text-tertiary);">G</div>
+            <div class="mb-name">Gabriel <span class="visitor-badge">visiteur</span></div>
+            <div class="mb-bar-container"><div class="mb-bar-fill" style="width: 12%; background: var(--text-tertiary);"></div></div>
+            <div class="mb-value">3h</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="ac-label">Temps par box</div>
+        <div class="member-breakdown">
+          <div class="mb-row">
+            <div class="mb-avatar" style="background: var(--accent-dim); font-size: 12px;">&#9632;</div>
+            <div class="mb-name">Salon</div>
+            <div class="mb-bar-container"><div class="mb-bar-fill" style="width: 40%;"></div></div>
+            <div class="mb-value">12h</div>
+          </div>
+          <div class="mb-row">
+            <div class="mb-avatar" style="background: var(--accent-dim); font-size: 12px;">&#9632;</div>
+            <div class="mb-name">Chambre</div>
+            <div class="mb-bar-container"><div class="mb-bar-fill" style="width: 90%;"></div></div>
+            <div class="mb-value">32h</div>
+          </div>
+          <div class="mb-row">
+            <div class="mb-avatar" style="background: var(--accent-dim); font-size: 12px;">&#9632;</div>
+            <div class="mb-name">Bureau</div>
+            <div class="mb-bar-container"><div class="mb-bar-fill" style="width: 15%;"></div></div>
+            <div class="mb-value">3h</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9711;</div>
+        Sessions
+      </div>
+      <div class="bottom-nav-item active">
+        <div class="nav-icon">&#9632;</div>
+        Workspaces
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9650;</div>
+        Analytics
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9679;</div>
+        Profil
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 4 — ADD BOX (Scan)
+     ============================================================ -->
+<div class="screen-wrapper">
+  <div class="screen-label">04 — Ajouter une box</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">
+        <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
+      </div>
+    </div>
+
+    <div class="modal-handle"></div>
+    <div class="modal-title">Ajouter une box</div>
+    <div class="modal-subtitle">Scannez le QR code sous votre Faraday Box pour l'associer a ce workspace.</div>
+
+    <div class="content">
+
+      <div class="scan-area">
+        <div class="scan-icon">&#9633;</div>
+        <div class="scan-text">Placez le QR code dans le cadre</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nom de la box</label>
+        <input class="form-input" type="text" placeholder="Ex: Salon, Chambre, Bureau..." value="Chambre enfants">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Workspace</label>
+        <div class="form-select">&#127968; Maison</div>
+      </div>
+
+      <button class="primary-btn">Ajouter la box</button>
+      <button class="secondary-btn">Entrer le code manuellement</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 5 — INVITE MEMBER
+     ============================================================ -->
+<div class="screen-wrapper">
+  <div class="screen-label">05 — Inviter un membre</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">
+        <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
+      </div>
+    </div>
+
+    <div class="modal-handle"></div>
+    <div class="modal-title">Inviter un membre</div>
+    <div class="modal-subtitle">Ajoutez quelqu'un au workspace Maison.</div>
+
+    <div class="content">
+
+      <div class="form-group">
+        <label class="form-label">Email ou telephone</label>
+        <input class="form-input" type="text" placeholder="email@exemple.com" value="gabriel@gmail.com">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Role</label>
+        <div class="role-selector">
+          <div class="role-option">
+            <div class="role-name">Admin</div>
+            <div class="role-desc">Gere les boxes et les membres</div>
+          </div>
+          <div class="role-option selected">
+            <div class="role-name">Membre</div>
+            <div class="role-desc">Voit ses sessions et les analytics</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Methode d'invitation</div>
+      </div>
+
+      <div class="invite-option">
+        <div class="invite-icon">&#128231;</div>
+        <div class="invite-info">
+          <div class="invite-title">Par email</div>
+          <div class="invite-desc">Un lien d'invitation sera envoye</div>
+        </div>
+        <span class="chevron">&rsaquo;</span>
+      </div>
+
+      <div class="invite-option">
+        <div class="invite-icon">&#128279;</div>
+        <div class="invite-info">
+          <div class="invite-title">Lien de partage</div>
+          <div class="invite-desc">Copiez un lien a envoyer vous-meme</div>
+        </div>
+        <span class="chevron">&rsaquo;</span>
+      </div>
+
+      <div class="invite-option">
+        <div class="invite-icon">&#9634;</div>
+        <div class="invite-info">
+          <div class="invite-title">QR Code</div>
+          <div class="invite-desc">Scannez pour rejoindre depuis l'app</div>
+        </div>
+        <span class="chevron">&rsaquo;</span>
+      </div>
+
+      <button class="primary-btn">Envoyer l'invitation</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 6 — FIRST CONNECTION / ONBOARDING
+     ============================================================ -->
+<div class="screen-wrapper">
+  <div class="screen-label">06 — Premiere connexion</div>
+  <div class="phone">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="status-icons">
+        <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
+      </div>
+    </div>
+
+    <div class="content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 30px;">
+
+      <div style="font-size: 56px; margin-bottom: 24px; opacity: 0.8;">&#127968;</div>
+
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 8px;">
+        Bienvenue chez Faraday
+      </h2>
+      <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 40px;">
+        Votre premier workspace <strong style="color: var(--text);">Maison</strong> a ete cree. Scannez votre box pour commencer.
+      </p>
+
+      <div style="width: 100%; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px; text-align: left;">
+          <div style="width: 44px; height: 44px; background: var(--green-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;">&#10003;</div>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Compte cree</div>
+            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">pol@faraday-box.fr</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 100%; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px; text-align: left;">
+          <div style="width: 44px; height: 44px; background: var(--green-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;">&#10003;</div>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Workspace "Maison" cree</div>
+            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Votre espace par defaut</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 100%; background: var(--accent-dim); border-radius: var(--radius); border: 1.5px solid var(--accent); padding: 20px; margin-bottom: 32px;">
+        <div style="display: flex; align-items: center; gap: 14px; text-align: left;">
+          <div style="width: 44px; height: 44px; background: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; color: #fff;">&#9633;</div>
+          <div>
+            <div style="font-weight: 600; font-size: 14px; color: var(--accent);">Scanner votre box</div>
+            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Associez votre premiere Faraday Box</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="primary-btn" style="width: 100%; margin: 0;">Scanner ma box</button>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9711;</div>
+        Sessions
+      </div>
+      <div class="bottom-nav-item active">
+        <div class="nav-icon">&#9632;</div>
+        Workspaces
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9650;</div>
+        Analytics
+      </div>
+      <div class="bottom-nav-item">
+        <div class="nav-icon">&#9679;</div>
+        Profil
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
