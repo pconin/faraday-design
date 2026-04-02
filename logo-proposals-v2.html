@@ -1020,6 +1020,40 @@
   </div>
 </div>
 
+<script>
+(function(){
+  var s=document.createElement('style');
+  s.textContent='.auto-num{font-size:8px;font-weight:500;color:#bbb;font-family:"Space Grotesk",sans-serif;letter-spacing:.04em;text-align:center;margin-top:4px;}.auto-color{font-size:7px;color:#ccc;text-align:center;}';
+  document.head.appendChild(s);
+
+  document.querySelectorAll('.logo-card').forEach(function(el,i){
+    var pad=String(i+1).padStart(3,'0');
+    var colorName='';
+    var cls=el.className.split(/\s+/);
+    for(var j=0;j<cls.length;j++){
+      if(cls[j].indexOf('on-')===0||cls[j].indexOf('-bg-')!==-1){
+        var parts=cls[j].split('-');
+        colorName=parts[parts.length-1];
+        colorName=colorName.charAt(0).toUpperCase()+colorName.slice(1);
+        break;
+      }
+    }
+    el.style.position='relative';
+    var d=document.createElement('div');
+    d.className='auto-num';
+    d.style.cssText='position:absolute;bottom:4px;left:0;right:0;';
+    d.textContent=pad;
+    el.appendChild(d);
+    if(colorName){
+      var c=document.createElement('div');
+      c.className='auto-color';
+      c.style.cssText='position:absolute;bottom:-6px;left:0;right:0;';
+      c.textContent=colorName;
+      el.appendChild(c);
+    }
+  });
+})();
+</script>
 <script src="nav.js"></script>
 </body>
 </html>

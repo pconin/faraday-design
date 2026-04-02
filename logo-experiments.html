@@ -600,6 +600,56 @@
 
 </div><!-- /grid -->
 
+<script>
+(function(){
+  // CSS
+  var s=document.createElement('style');
+  s.textContent='.auto-num{font-size:8px;font-weight:500;color:#bbb;font-family:"Space Grotesk",sans-serif;letter-spacing:.04em;text-align:center;margin-top:4px;}.auto-color{font-size:7px;color:#ccc;text-align:center;}';
+  document.head.appendChild(s);
+
+  var lockupColorMap={light:'Creme',dark:'Brun',sage:'Sauge',teal:'Teal',navy:'Navy',stone:'Pierre',emerald:'Emeraude',rust:'Rouille',ocean:'Ocean',clay:'Argile',wine:'Vin',moss:'Mousse',sunset:'Sunset',ink:'Encre'};
+  var num=0;
+
+  // Logo blocks (icon marks)
+  document.querySelectorAll('.logo-block').forEach(function(el){
+    num++;
+    var pad=String(num).padStart(3,'0');
+    var colorName='';
+    var nameEl=el.querySelector('.logo-name');
+    if(nameEl) colorName=nameEl.textContent.trim();
+    if(!colorName){
+      var box=el.querySelector('.logo-box');
+      if(box&&box.style.background) colorName=box.style.background;
+    }
+    var d=document.createElement('div');
+    d.className='auto-num';
+    d.textContent=pad;
+    el.appendChild(d);
+    if(colorName){
+      var c=document.createElement('div');
+      c.className='auto-color';
+      c.textContent=colorName;
+      el.appendChild(c);
+    }
+  });
+
+  // Lockup cards
+  document.querySelectorAll('.lockup-card').forEach(function(el){
+    num++;
+    var pad=String(num).padStart(3,'0');
+    var colorName='';
+    var cls=el.className.split(/\s+/);
+    for(var i=0;i<cls.length;i++){
+      if(lockupColorMap[cls[i]]){colorName=lockupColorMap[cls[i]];break;}
+    }
+    el.style.position='relative';
+    var d=document.createElement('div');
+    d.style.cssText='position:absolute;bottom:5px;right:8px;font-size:7px;font-weight:500;opacity:.35;font-family:"Space Grotesk",sans-serif;';
+    d.textContent=pad+(colorName?' — '+colorName:'');
+    el.appendChild(d);
+  });
+})();
+</script>
 <script src="nav.js"></script>
 </body>
 </html>
