@@ -5,432 +5,285 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faraday — Selection</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 30px;padding-top:100px;}
 h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
 .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:700px;line-height:1.7;}
-
 .section{margin-top:50px;padding-top:40px;border-top:1px solid #ddd;}
-.section h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;margin-bottom:30px;text-align:center;}
+.section > h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;margin-bottom:30px;text-align:center;}
+.row{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-bottom:24px;}
 
-.row{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;align-items:center;}
-.pair{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
-.lk{display:flex;align-items:center;gap:14px;padding:28px 36px;border-radius:14px;min-width:320px;position:relative;}
-.lk-num{position:absolute;top:6px;right:10px;font-size:8px;font-weight:500;opacity:.4;font-family:'Space Grotesk',sans-serif;}
-.lk-ico{width:46px;height:46px;border-radius:11px;overflow:hidden;flex-shrink:0;}
-.lk-ico.round{border-radius:50%;}
-.lk-ico svg{width:100%;height:100%;}
-.lk-wm-up{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;letter-spacing:.18em;text-transform:uppercase;}
-.lk-wm-low{font-family:'Manrope',sans-serif;font-weight:300;font-size:22px;letter-spacing:.02em;text-transform:lowercase;}
-.lk-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
+/* === V6 styles === */
 
-.bdr-light{border:1px solid #ddd;}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 24px;padding-top:100px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:750px;line-height:1.7;}
+  .sb{text-align:center;padding:50px 0 28px;border-top:1px solid #ddd;margin-top:40px;}
+  .sb h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .sb p{font-size:12px;color:#bbb;margin-top:4px;}
+  .grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-bottom:30px;}
+  .lb{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .lb-n{font-size:7.5px;font-weight:500;color:#bbb;font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;}
+  .lb-c{font-size:7px;color:#ccc;}
+  .bx{width:110px;height:110px;border-radius:22px;overflow:hidden;} .bx svg{width:100%;height:100%;}
+  .bx-r{border-radius:55px;}
+  .bx-rect{width:170px;height:95px;border-radius:18px;} .bx-rect svg{width:100%;height:100%;}
+  .lk-t{font-size:11px;font-weight:600;color:#666;margin:20px 0 12px;}
+  .lk-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;justify-content:center;}
+  .lk{display:flex;align-items:center;gap:11px;padding:22px 28px;border-radius:11px;min-width:260px;position:relative;}
+  .lk-n{position:absolute;bottom:5px;right:9px;font-size:7px;font-weight:500;opacity:.35;font-family:'Space Grotesk',sans-serif;}
+  .lk-ico{width:38px;height:38px;border-radius:9px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
+  .lk-wm{font-size:18px;}
+  .lk-bl{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:2px;font-weight:300;}
+  .lk-wrap{display:flex;align-items:center;gap:0;padding:24px 30px;border-radius:11px;min-width:260px;position:relative;}
+  .lk-paren{font-weight:200;opacity:.3;line-height:1;}
+  .lk-wrap-text{display:flex;flex-direction:column;align-items:center;padding:0 6px;}
 
-/* Wraps (parens around text) */
-.wrap{display:flex;align-items:center;gap:0;padding:30px 36px;border-radius:14px;min-width:320px;position:relative;}
-.wrap-paren{font-weight:200;line-height:1;}
-.wrap-text{display:flex;flex-direction:column;align-items:center;padding:0 8px;}
-.wrap .lk-num{top:6px;right:10px;}
+
+/* === V5 styles (overrides where shared) === */
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 24px;padding-top:100px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:750px;line-height:1.7;}
+  .sb{text-align:center;padding:50px 0 28px;border-top:1px solid #ddd;margin-top:40px;}
+  .sb h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .sb p{font-size:12px;color:#bbb;margin-top:4px;}
+
+  .grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-bottom:30px;}
+
+  /* Numbered logo block — number BELOW, discrete */
+  .lb{display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .lb-num{font-size:8px;font-weight:500;color:#bbb;font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;}
+  .lb-color{font-size:7px;color:#bbb;}
+  .bx{width:120px;height:120px;border-radius:24px;overflow:hidden;} .bx svg{width:100%;height:100%;}
+  .bx-round{border-radius:60px;}
+  .bx-rect{width:180px;height:100px;border-radius:20px;}
+  .bx-rect svg{width:100%;height:100%;}
+  .nm{font-size:9px;font-weight:600;color:#555;text-align:center;max-width:180px;}
+  .ds{font-size:8px;color:#aaa;text-align:center;max-width:180px;line-height:1.3;}
+
+  /* Lockup blocks */
+  .lk-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;}
+  .lk{display:flex;align-items:center;gap:12px;padding:24px 30px;border-radius:12px;min-width:270px;position:relative;}
+  .lk .lb-num{position:absolute;bottom:6px;right:10px;font-size:7px;opacity:.4;}
+  .lk-ico{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
+  .lk-wm{font-size:20px;}
+  .lk-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
+
+  /* Wrap lockup — text inside parentheses */
+  .lk-wrap{display:flex;align-items:center;gap:0;padding:28px 34px;border-radius:12px;min-width:280px;position:relative;}
+  .lk-paren{font-weight:300;opacity:.35;line-height:1;}
+  .lk-wrap-text{display:flex;flex-direction:column;align-items:center;padding:0 8px;}
+
+  .lk-title{font-size:11px;font-weight:600;color:#666;margin-bottom:12px;margin-top:20px;}
+  .counter{font-family:'Space Grotesk',sans-serif;}
+
+
+/* === V4 styles === */
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 24px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .desc{font-size:13px;color:#999;margin-bottom:50px;max-width:750px;line-height:1.7;}
+  .sb{text-align:center;padding:50px 0 28px;border-top:1px solid #ddd;margin-top:40px;}
+  .sb h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .sb p{font-size:12px;color:#bbb;margin-top:4px;}
+  .grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:30px;}
+  .bl{display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .bl-num{font-size:8px;font-weight:500;color:#bbb;font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;}
+  .bl-color{font-size:7px;color:#bbb;}
+  .bx{width:110px;height:110px;border-radius:22px;overflow:hidden;} .bx svg{width:100%;height:100%;}
+  .bx-round{border-radius:55px;}
+  .nm{font-size:9px;font-weight:600;color:#555;text-align:center;max-width:110px;}
+  .ds{font-size:8px;color:#aaa;text-align:center;max-width:110px;line-height:1.3;}
+
+  .lockup-section{margin:30px 0 50px;}
+  .lk-title{font-size:11px;font-weight:600;color:#666;margin-bottom:14px;}
+  .lk-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px;}
+  .lk{display:flex;align-items:center;gap:12px;padding:26px 32px;border-radius:12px;min-width:280px;position:relative;}
+  .lk-num{position:absolute;bottom:6px;right:10px;font-size:7px;font-weight:500;opacity:.4;font-family:'Space Grotesk',sans-serif;}
+  .lk-ico{width:42px;height:42px;border-radius:10px;overflow:hidden;flex-shrink:0;} .lk-ico svg{width:100%;height:100%;}
+  .lk-wm{font-size:20px;}
+  .lk-bl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
+
+
+/* === Experiments styles === */
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 30px;}
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .page-desc{font-size:13px;color:#999;margin-bottom:60px;max-width:700px;line-height:1.7;}
+  .section-break{text-align:center;padding:50px 0 36px;border-top:1px solid #ddd;margin-top:40px;}
+  .section-break h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .section-break p{font-size:12px;color:#bbb;margin-top:4px;}
+
+  .grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
+  .logo-block{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .logo-box{width:160px;height:160px;border-radius:28px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .logo-box svg{width:100%;height:100%;}
+  .logo-name{font-size:11px;font-weight:600;color:#666;text-align:center;max-width:160px;}
+  .logo-desc{font-size:10px;color:#aaa;text-align:center;max-width:160px;line-height:1.4;}
+
+  /* Full lockup cards */
+  .lockup-row{display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;margin-bottom:60px;justify-content:center;}
+  .lockup-card{display:flex;align-items:center;gap:16px;padding:36px 44px;border-radius:16px;min-width:340px;}
+  .lockup-card.light{background:#f5f0e8;border:1px solid #e5dfd4;}
+  .lockup-card.dark{background:#2e1e14;}
+  .lockup-card.sage{background:#2d3b28;}
+  .lockup-card.teal{background:#1a3a3a;}
+  .lockup-card.navy{background:#0f1a2e;}
+  .lockup-card.stone{background:#4a4640;}
+  .lockup-icon{width:52px;height:52px;flex-shrink:0;}
+  .lockup-icon svg{width:100%;height:100%;}
+  .lockup-text{display:flex;flex-direction:column;}
+  .lockup-wm{font-size:26px;font-weight:500;letter-spacing:.02em;}
+  .lockup-bl{font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.45;margin-top:4px;font-weight:300;}
+  .lc{color:#f5f0e8;} .dc{color:#2e1e14;}
+
+  /* Vivid lockup additions — more saturated */
+  .lockup-card.emerald{background:#08654a;}
+  .lockup-card.rust{background:#b04828;}
+  .lockup-card.ocean{background:#1a5a8a;}
+  .lockup-card.clay{background:#b87a38;}
+  .lockup-card.wine{background:#6a2040;}
+  .lockup-card.moss{background:#3a7028;}
+  .lockup-card.sunset{background:#c06020;}
+  .lockup-card.ink{background:#2a2a5a;}
+
+  .swatch-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+  .swatch{width:74px;height:74px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:7px;}
+  .sw-l span{color:#f5f0e8;} .sw-d span{color:#2e1e14;}
+  .swatch span{font-size:8px;font-weight:500;letter-spacing:.04em;}
+  .swatch .hex{opacity:.6;font-size:7.5px;}
+
+
+/* === V3 styles === */
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{background:#faf7f2;font-family:'Inter',sans-serif;color:#1a1a1a;padding:60px 40px;}
+
+  h1{font-size:14px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+  .page-desc{font-size:13px;color:#999;margin-bottom:60px;max-width:700px;line-height:1.7;}
+
+  .section-break{text-align:center;padding:60px 0 40px;border-top:1px solid #ddd;margin-top:40px;}
+  .section-break h2{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;}
+  .section-break p{font-size:12px;color:#bbb;margin-top:4px;}
+
+  .proposal{margin-bottom:70px;padding-bottom:70px;border-bottom:1px solid #e5e0d8;}
+  .proposal:last-child{border-bottom:none;}
+  .proposal-header{display:flex;align-items:baseline;gap:16px;margin-bottom:10px;}
+  .proposal-number{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#999;}
+  .proposal-name{font-size:13px;font-weight:600;color:#555;}
+  .proposal-desc{font-size:13px;color:#999;margin-bottom:36px;max-width:650px;line-height:1.6;}
+
+  .logo-row{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-bottom:12px;}
+  .logo-card{display:flex;align-items:center;justify-content:center;padding:48px 56px;border-radius:14px;min-width:260px;min-height:170px;}
+
+  /* Backgrounds */
+  .bg-cream{background:#f5f0e8;border:1px solid #e5dfd4;}
+  .bg-brown-deep{background:#2e1e14;}
+  .bg-brown{background:#3d2b1f;}
+  .bg-brown-warm{background:#4a3228;}
+  .bg-sage-deep{background:#2d3b28;}
+  .bg-sage{background:#5a6b52;}
+  .bg-sage-mist{background:#dfe5d8;border:1px solid #c8d0be;}
+  .bg-navy-deep{background:#0f1a2e;}
+  .bg-navy{background:#1a2744;}
+  .bg-slate{background:#2c3a48;}
+  .bg-teal{background:#1a3a3a;}
+  .bg-terracotta{background:#6b3a2a;}
+  .bg-stone{background:#4a4640;}
+  .bg-charcoal{background:#1a1a1a;}
+  .bg-warm-black{background:#1e1a16;}
+  .bg-forest{background:#1c2e1c;}
+  .bg-plum{background:#2e1e2e;}
+  .bg-white{background:#fff;border:1px solid #e8e4dc;}
+
+  .logo-inner{text-align:center;}
+  .bl{font-family:'Inter',sans-serif;font-weight:300;letter-spacing:.28em;text-transform:uppercase;margin-top:12px;opacity:.5;}
+
+  /* Colors */
+  .c-cream{color:#f5f0e8;} .c-brown{color:#3d2b1f;} .c-sage{color:#5a6b52;} .c-sage-light{color:#7a8b70;}
+  .c-navy{color:#1a2744;} .c-charcoal{color:#1a1a1a;} .c-stone{color:#6a6560;} .c-terracotta{color:#a06048;}
+  .c-teal{color:#4a8a8a;} .c-warm{color:#c8a882;} .c-sage-mist{color:#a3b098;}
+
+  /* Typo: Architecturale */
+  .t-archi .wm{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:40px;letter-spacing:.26em;text-transform:uppercase;}
+  .t-archi .bl{font-size:9.5px;}
+
+  /* Typo: Douce */
+  .t-douce .wm{font-family:'Manrope',sans-serif;font-weight:300;font-size:46px;letter-spacing:.02em;}
+  .t-douce .bl{font-size:10px;letter-spacing:.18em;font-family:'Manrope',sans-serif;}
+
+  /* Typo: Affirmee */
+  .t-affirm .wm{font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:40px;letter-spacing:.14em;text-transform:lowercase;}
+  .t-affirm .wm .sf{font-weight:600;text-transform:uppercase;margin-right:5px;display:inline-block;border-bottom:2.5px solid currentColor;padding-bottom:2px;line-height:1;}
+  .t-affirm .bl{font-size:9.5px;}
+
+  /* Typo: Monumentale */
+  .t-monum .wm{font-family:'Outfit',sans-serif;font-weight:300;font-size:36px;letter-spacing:.42em;text-transform:uppercase;}
+  .t-monum .bl{font-size:9px;letter-spacing:.3em;font-family:'Outfit',sans-serif;}
+
+  /* Typo: Essentielle */
+  .t-essent .wm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:42px;letter-spacing:.06em;}
+  .t-essent .bl{font-size:10px;letter-spacing:.2em;font-family:'Plus Jakarta Sans',sans-serif;}
+
+  /* Typo: Respiree */
+  .t-respir .wm{font-family:'Sora',sans-serif;font-weight:300;font-size:40px;letter-spacing:.20em;}
+  .t-respir .bl{font-size:9.5px;letter-spacing:.22em;font-family:'Sora',sans-serif;}
+
+  /* NEW Typo: Ancree — wider Douce */
+  .t-ancree .wm{font-family:'Manrope',sans-serif;font-weight:400;font-size:42px;letter-spacing:.14em;}
+  .t-ancree .bl{font-size:9.5px;letter-spacing:.22em;font-family:'Manrope',sans-serif;}
+
+  /* Icons */
+  .icons-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px;}
+  .icon-group{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .icon-label{font-size:10px;color:#999;text-align:center;max-width:100px;}
+  .app-icon{width:96px;height:96px;border-radius:22px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .app-icon svg{width:100%;height:100%;}
+
+  /* Swatches */
+  .swatch-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+  .swatch{width:74px;height:74px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:7px;}
+  .swatch-name{font-size:8px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;}
+  .swatch-hex{font-size:7.5px;opacity:.6;}
+  .sw-light .swatch-name,.sw-light .swatch-hex{color:#f5f0e8;}
+  .sw-dark .swatch-name,.sw-dark .swatch-hex{color:#3d2b1f;}
+
+
+/* Page-specific overrides */
+body{padding-top:100px;}
+.row .lb,.row .lk,.row .lk-wrap,.row .logo-block,.row .lockup-card,.row .logo-card,.row .bl{margin:0;}
 </style>
 </head>
 <body>
 
 <h1>Faraday — Selection finale</h1>
-<p class="desc">Selection des logos que tu as marques comme favoris. Chaque logo est presente en deux versions : MAJUSCULES (Space Grotesk) et minuscules (Manrope).</p>
+<p class="desc">Selection des logos que tu as marques comme favoris. Reproduits a l'identique.</p>
 
-<script>
-const items = [
-  {
-    "source": "Experiments",
-    "items": [
-      {
-        "num": 41,
-        "bg": "#f5f0e8",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 52 52\"><rect width=\"52\" height=\"52\" rx=\"12\" fill=\"#f5f0e8\" opacity=\".08\"/><rect x=\"8\" y=\"8\" width=\"36\" height=\"36\" rx=\"5\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.5\" opacity=\".2\"/><rect x=\"13\" y=\"13\" width=\"26\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.5\" opacity=\".4\"/><rect x=\"18\" y=\"18\" width=\"16\" height=\"16\" rx=\"3\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.5\" opacity=\".7\"/><rect x=\"22\" y=\"22\" width=\"8\" height=\"8\" rx=\"2\" fill=\"#f5f0e8\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lockup-card stone\"><div class=\"lockup-icon\"><svg viewBox=\"0 0 52 52\"><rect width=\"52\" height=\"52\" rx=\"12\" fill=\"#f5f0e8\" opacity=\".08\"/><rect x=\"8\" y=\"8\" width=\"36\" height=\"36\" rx=\"5\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.5\" opacity=\".2\"/><rect x=\"13\" y=\"13\" width=\"26\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.5\" opacity=\".4\"/><rect x=\"18\" y=\"18\" width=\"16\" height=\"16\" rx=\"3\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.5\" opacity=\".7\"/><rect x=\"22\" y=\"22\" width=\"8\" height=\"8\" rx=\"2\" fill=\"#f5f0e8\"/></svg></div><div class=\"lockup-text\"><div class=\"lockup-wm lc\" style=\"font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:22px;\">Faraday</div><div class=\"lockup-bl lc\">the present starts here</div></div></div>"
-      },
-      {
-        "num": 31,
-        "bg": "#2d3b28",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 52 52\"><rect width=\"52\" height=\"52\" rx=\"12\" fill=\"#2d3b28\"/><path d=\"M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lockup-card light\"><div class=\"lockup-icon\"><svg viewBox=\"0 0 52 52\"><rect width=\"52\" height=\"52\" rx=\"12\" fill=\"#2d3b28\"/><path d=\"M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg></div><div class=\"lockup-text\"><div class=\"lockup-wm dc\" style=\"font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;\">Faraday</div><div class=\"lockup-bl dc\">disconnect to reconnect</div></div></div>"
-      },
-      {
-        "num": 36,
-        "bg": "#f5f0e8",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 52 52\"><rect width=\"52\" height=\"52\" rx=\"12\" fill=\"#f5f0e8\" opacity=\".1\"/><path d=\"M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lockup-card navy\"><div class=\"lockup-icon\"><svg viewBox=\"0 0 52 52\"><rect width=\"52\" height=\"52\" rx=\"12\" fill=\"#f5f0e8\" opacity=\".1\"/><path d=\"M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg></div><div class=\"lockup-text\"><div class=\"lockup-wm lc\" style=\"font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;\">Faraday</div><div class=\"lockup-bl lc\">disconnect to reconnect</div></div></div>"
-      },
-      {
-        "num": 7,
-        "bg": "#2e1e14",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 160 160\">\n      <rect width=\"160\" height=\"160\" rx=\"28\" fill=\"#2e1e14\"/>\n      <rect x=\"30\" y=\"30\" width=\"100\" height=\"100\" rx=\"12\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3\" opacity=\".2\"/>\n      <rect x=\"44\" y=\"44\" width=\"72\" height=\"72\" rx=\"10\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3\" opacity=\".4\"/>\n      <rect x=\"58\" y=\"58\" width=\"44\" height=\"44\" rx=\"8\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3\" opacity=\".7\"/>\n      <rect x=\"70\" y=\"70\" width=\"20\" height=\"20\" rx=\"4\" fill=\"#f5f0e8\"/>\n    </svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"logo-block\">\n  <div class=\"logo-box\" style=\"background:#2e1e14;\">\n    <svg viewBox=\"0 0 160 160\">\n      <rect width=\"160\" height=\"160\" rx=\"28\" fill=\"#2e1e14\"/>\n      <rect x=\"30\" y=\"30\" width=\"100\" height=\"100\" rx=\"12\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3\" opacity=\".2\"/>\n      <rect x=\"44\" y=\"44\" width=\"72\" height=\"72\" rx=\"10\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3\" opacity=\".4\"/>\n      <rect x=\"58\" y=\"58\" width=\"44\" height=\"44\" rx=\"8\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3\" opacity=\".7\"/>\n      <rect x=\"70\" y=\"70\" width=\"20\" height=\"20\" rx=\"4\" fill=\"#f5f0e8\"/>\n    </svg>\n  </div>\n  <div class=\"logo-name\">Couches</div>\n  <div class=\"logo-desc\">Carres concentriques — les couches de protection de la cage de Faraday</div>\n</div>"
-      }
-    ]
-  },
-  {
-    "source": "Recherche V6",
-    "items": [
-      {
-        "num": 89,
-        "bg": "#a3b098",
-        "fg": "#0f1a2e",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#a3b098\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#0f1a2e\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#0f1a2e\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#a3b098;color:#0f1a2e;\"><div class=\"lk-n\">089</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#a3b098\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#0f1a2e\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#0f1a2e\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">come back to yourself</div></div></div>"
-      },
-      {
-        "num": 70,
-        "bg": "#dfe5d8",
-        "fg": "#1c2e1c",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#dfe5d8\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;\"><div class=\"lk-n\">070</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#dfe5d8\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div></div>"
-      },
-      {
-        "num": 202,
-        "bg": "#dfe5d8",
-        "fg": "#1c2e1c",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#dfe5d8\"/><path d=\"M18.999999999999996,8.36 A10.64,10.64 0 0,1 27.030109933570294,12.019531931541001\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\" opacity=\"1\"/><path d=\"M27.71577775123487,12.897146717224864 A10.64,10.64 0 0,1 29.323946527576602,21.57404896918047\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.14\" stroke-linecap=\"round\" opacity=\"0.72\"/><path d=\"M28.998329485162067,22.639094324985116 A10.64,10.64 0 0,1 22.81303498316199,28.93329573793023\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.9500000000000001\" stroke-linecap=\"round\" opacity=\"0.48\"/><path d=\"M21.75383463989082,29.277450791715687 A10.64,10.64 0 0,1 13.050187507071254,27.820959771985642\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.28\"/><path d=\"M12.160739832935231,27.150712874785935 A10.64,10.64 0 0,1 8.361620523535997,19.185693604492688\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.608\" stroke-linecap=\"round\" opacity=\"0.14\"/><path d=\"M8.400488412303828,18.07266289716492 A10.64,10.64 0 0,1 12.74596491560808,10.39205917985056\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.456\" stroke-linecap=\"round\" opacity=\"0.06\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;\"><div class=\"lk-n\">202</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#dfe5d8\"/><path d=\"M18.999999999999996,8.36 A10.64,10.64 0 0,1 27.030109933570294,12.019531931541001\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\" opacity=\"1\"/><path d=\"M27.71577775123487,12.897146717224864 A10.64,10.64 0 0,1 29.323946527576602,21.57404896918047\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.14\" stroke-linecap=\"round\" opacity=\"0.72\"/><path d=\"M28.998329485162067,22.639094324985116 A10.64,10.64 0 0,1 22.81303498316199,28.93329573793023\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.9500000000000001\" stroke-linecap=\"round\" opacity=\"0.48\"/><path d=\"M21.75383463989082,29.277450791715687 A10.64,10.64 0 0,1 13.050187507071254,27.820959771985642\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.28\"/><path d=\"M12.160739832935231,27.150712874785935 A10.64,10.64 0 0,1 8.361620523535997,19.185693604492688\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.608\" stroke-linecap=\"round\" opacity=\"0.14\"/><path d=\"M8.400488412303828,18.07266289716492 A10.64,10.64 0 0,1 12.74596491560808,10.39205917985056\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.456\" stroke-linecap=\"round\" opacity=\"0.06\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.18em;text-transform:uppercase;\">Faraday</div><div class=\"lk-bl\">the present starts here</div></div></div>"
-      },
-      {
-        "num": 190,
-        "bg": "#dfe5d8",
-        "fg": "#1c2e1c",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#dfe5d8\"/><path d=\"M18.999999999999996,8.36 A10.64,10.64 0 0,1 27.030109933570294,12.019531931541001\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\" opacity=\"1\"/><path d=\"M27.71577775123487,12.897146717224864 A10.64,10.64 0 0,1 29.323946527576602,21.57404896918047\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.14\" stroke-linecap=\"round\" opacity=\"0.72\"/><path d=\"M28.998329485162067,22.639094324985116 A10.64,10.64 0 0,1 22.81303498316199,28.93329573793023\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.9500000000000001\" stroke-linecap=\"round\" opacity=\"0.48\"/><path d=\"M21.75383463989082,29.277450791715687 A10.64,10.64 0 0,1 13.050187507071254,27.820959771985642\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.28\"/><path d=\"M12.160739832935231,27.150712874785935 A10.64,10.64 0 0,1 8.361620523535997,19.185693604492688\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.608\" stroke-linecap=\"round\" opacity=\"0.14\"/><path d=\"M8.400488412303828,18.07266289716492 A10.64,10.64 0 0,1 12.74596491560808,10.39205917985056\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.456\" stroke-linecap=\"round\" opacity=\"0.06\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;\"><div class=\"lk-n\">190</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#dfe5d8\"/><path d=\"M18.999999999999996,8.36 A10.64,10.64 0 0,1 27.030109933570294,12.019531931541001\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\" opacity=\"1\"/><path d=\"M27.71577775123487,12.897146717224864 A10.64,10.64 0 0,1 29.323946527576602,21.57404896918047\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.14\" stroke-linecap=\"round\" opacity=\"0.72\"/><path d=\"M28.998329485162067,22.639094324985116 A10.64,10.64 0 0,1 22.81303498316199,28.93329573793023\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.9500000000000001\" stroke-linecap=\"round\" opacity=\"0.48\"/><path d=\"M21.75383463989082,29.277450791715687 A10.64,10.64 0 0,1 13.050187507071254,27.820959771985642\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.28\"/><path d=\"M12.160739832935231,27.150712874785935 A10.64,10.64 0 0,1 8.361620523535997,19.185693604492688\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.608\" stroke-linecap=\"round\" opacity=\"0.14\"/><path d=\"M8.400488412303828,18.07266289716492 A10.64,10.64 0 0,1 12.74596491560808,10.39205917985056\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.456\" stroke-linecap=\"round\" opacity=\"0.06\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div></div>"
-      },
-      {
-        "num": 101,
-        "bg": "#dfe5d8",
-        "fg": "#1c2e1c",
-        "svg": null,
-        "isWrap": true,
-        "isRound": false,
-        "raw": "<div class=\"lk-wrap\" style=\"background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;\"><div class=\"lk-n\">101</div><div class=\"lk-paren\" style=\"font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;\">(</div><div class=\"lk-wrap-text\"><div class=\"lk-wm\" style=\"font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">the present starts here</div></div><div class=\"lk-paren\" style=\"font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;opacity:.15;\">)</div></div>"
-      },
-      {
-        "num": 209,
-        "bg": "#a3b098",
-        "fg": "#0f1a2e",
-        "svg": "<svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#a3b098\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#0f1a2e\" stroke-width=\"2.75\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lb\"><div class=\"bx\" style=\"\"><svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#a3b098\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#0f1a2e\" stroke-width=\"2.75\" stroke-linecap=\"round\"/></svg></div><div class=\"lb-n\">209</div><div class=\"lb-c\">Thin — Brume sauge</div></div>"
-      },
-      {
-        "num": 204,
-        "bg": "#2a2a5a",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#2a2a5a\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2.75\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lb\"><div class=\"bx\" style=\"\"><svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#2a2a5a\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2.75\" stroke-linecap=\"round\"/></svg></div><div class=\"lb-n\">204</div><div class=\"lb-c\">Thin — Encre</div></div>"
-      },
-      {
-        "num": 210,
-        "bg": "#a07860",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#a07860\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2.75\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lb\"><div class=\"bx\" style=\"\"><svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#a07860\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"2.75\" stroke-linecap=\"round\"/></svg></div><div class=\"lb-n\">210</div><div class=\"lb-c\">Thin — Cuivre fond</div></div>"
-      },
-      {
-        "num": 211,
-        "bg": "#2a2a5a",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#2a2a5a\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3.8500000000000005\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lb\"><div class=\"bx\" style=\"\"><svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#2a2a5a\"/><path d=\"M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"3.8500000000000005\" stroke-linecap=\"round\"/></svg></div><div class=\"lb-n\">211</div><div class=\"lb-c\">Regular — Encre</div></div>"
-      },
-      {
-        "num": 241,
-        "bg": "#dfe5d8",
-        "fg": "#1c2e1c",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#dfe5d8\"/><path d=\"M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;\"><div class=\"lk-n\">241</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#dfe5d8\"/><path d=\"M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div></div>"
-      },
-      {
-        "num": 251,
-        "bg": "#1c2e1c",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#1c2e1c\"/><path d=\"M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#1c2e1c;color:#f5f0e8;\"><div class=\"lk-n\">251</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#1c2e1c\"/><path d=\"M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.18em;text-transform:uppercase;\">Faraday</div><div class=\"lk-bl\">the present starts here</div></div></div>"
-      },
-      {
-        "num": 237,
-        "bg": "#2a2a5a",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#2a2a5a\"/><path d=\"M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#2a2a5a;color:#f5f0e8;\"><div class=\"lk-n\">237</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"6.84\" fill=\"#2a2a5a\"/><path d=\"M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div></div>"
-      },
-      {
-        "num": 272,
-        "bg": "#dfe5d8",
-        "fg": "#1c2e1c",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#dfe5d8\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;\"><div class=\"lk-n\">272</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#dfe5d8\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#1c2e1c\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div></div>"
-      },
-      {
-        "num": 85,
-        "bg": "#2a2a5a",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#2a2a5a\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#2a2a5a;color:#f5f0e8;\"><div class=\"lk-n\">085</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#2a2a5a\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">come back to yourself</div></div></div>"
-      },
-      {
-        "num": 90,
-        "bg": "#1c2e1c",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#1c2e1c\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#1c2e1c;color:#f5f0e8;\"><div class=\"lk-n\">090</div><div class=\"lk-ico\"><svg viewBox=\"0 0 38 38\"><rect width=\"38\" height=\"38\" rx=\"7.6000000000000005\" fill=\"#1c2e1c\"/><path d=\"M13.68,7.98 Q9.120000000000001,19 13.68,30.02\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.33\" stroke-linecap=\"round\"/><path d=\"M24.32,11.02 Q28.12,19 24.32,26.979999999999997\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"0.76\" stroke-linecap=\"round\" opacity=\"0.45\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">come back to yourself</div></div></div>"
-      }
-    ]
-  },
-  {
-    "source": "Recherche V5",
-    "items": [
-      {
-        "num": 85,
-        "bg": "#dfe5d8",
-        "fg": "#2a3a22",
-        "svg": null,
-        "isWrap": true,
-        "isRound": false,
-        "raw": "<div class=\"lk-wrap\" style=\"background:#dfe5d8;color:#2a3a22;border:1px solid #ddd;\"><div class=\"lb-num\" style=\"position:absolute;bottom:6px;right:10px;\">085</div><div class=\"lk-paren\" style=\"font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;\">(</div><div class=\"lk-wrap-text\"><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:500;font-size:22px;letter-spacing:.08em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div><div class=\"lk-paren\" style=\"font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;\">)</div></div>"
-      },
-      {
-        "num": 10,
-        "bg": "#ece6da",
-        "fg": "#3a3020",
-        "svg": "<svg viewBox=\"0 0 120 120\"><rect width=\"120\" height=\"120\" rx=\"24\" fill=\"#ece6da\"/><path d=\"M43.199999999999996,28.799999999999997 Q28.799999999999997,60 43.199999999999996,91.2\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"4.2\" stroke-linecap=\"round\"/><path d=\"M76.8,28.799999999999997 Q91.2,60 76.8,91.2\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"4.2\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lb\"><div class=\"bx\"><svg viewBox=\"0 0 120 120\"><rect width=\"120\" height=\"120\" rx=\"24\" fill=\"#ece6da\"/><path d=\"M43.199999999999996,28.799999999999997 Q28.799999999999997,60 43.199999999999996,91.2\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"4.2\" stroke-linecap=\"round\"/><path d=\"M76.8,28.799999999999997 Q91.2,60 76.8,91.2\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"4.2\" stroke-linecap=\"round\"/></svg></div><div class=\"lb-num\">010</div><div class=\"lb-color\">Lin</div></div>"
-      },
-      {
-        "num": 18,
-        "bg": "#dfe5d8",
-        "fg": "#2a3a22",
-        "svg": "<svg viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"60\" r=\"60\" fill=\"#dfe5d8\"/><path d=\"M43.199999999999996,31.200000000000003 Q28.799999999999997,60 43.199999999999996,88.8\" fill=\"none\" stroke=\"#2a3a22\" stroke-width=\"4.2\" stroke-linecap=\"round\"/><path d=\"M76.8,31.200000000000003 Q91.2,60 76.8,88.8\" fill=\"none\" stroke=\"#2a3a22\" stroke-width=\"4.2\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": true,
-        "raw": "<div class=\"lb\"><div class=\"bx bx-round\"><svg viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"60\" r=\"60\" fill=\"#dfe5d8\"/><path d=\"M43.199999999999996,31.200000000000003 Q28.799999999999997,60 43.199999999999996,88.8\" fill=\"none\" stroke=\"#2a3a22\" stroke-width=\"4.2\" stroke-linecap=\"round\"/><path d=\"M76.8,31.200000000000003 Q91.2,60 76.8,88.8\" fill=\"none\" stroke=\"#2a3a22\" stroke-width=\"4.2\" stroke-linecap=\"round\"/></svg></div><div class=\"lb-num\">018</div><div class=\"lb-color\">Sauge clair</div></div>"
-      },
-      {
-        "num": 80,
-        "bg": "#e0e4e0",
-        "fg": "#1a2a2a",
-        "svg": null,
-        "isWrap": true,
-        "isRound": false,
-        "raw": "<div class=\"lk-wrap\" style=\"background:#e0e4e0;color:#1a2a2a;border:1px solid #ddd;\"><div class=\"lb-num\" style=\"position:absolute;bottom:6px;right:10px;\">080</div><div class=\"lk-paren\" style=\"font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;\">(</div><div class=\"lk-wrap-text\"><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;font-size:22px;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">the present starts here</div></div><div class=\"lk-paren\" style=\"font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;\">)</div></div>"
-      },
-      {
-        "num": 68,
-        "bg": "#e8e0d0",
-        "fg": "#2a2818",
-        "svg": null,
-        "isWrap": true,
-        "isRound": false,
-        "raw": "<div class=\"lk-wrap\" style=\"background:#e8e0d0;color:#2a2818;border:1px solid #ddd;\"><div class=\"lb-num\" style=\"position:absolute;bottom:6px;right:10px;\">068</div><div class=\"lk-paren\" style=\"font-family:'Sora',sans-serif;font-size:38px;font-weight:200;\">(</div><div class=\"lk-wrap-text\"><div class=\"lk-wm\" style=\"font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:.12em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">the present starts here</div></div><div class=\"lk-paren\" style=\"font-family:'Sora',sans-serif;font-size:38px;font-weight:200;\">)</div></div>"
-      },
-      {
-        "num": 96,
-        "bg": "#e0e4e0",
-        "fg": "#1a2a2a",
-        "svg": "<svg viewBox=\"0 0 40 40\"><rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#e0e4e0\"/><path d=\"M13.600000000000001,8 Q8,20 13.600000000000001,32\" fill=\"none\" stroke=\"#1a2a2a\" stroke-width=\"1.4000000000000001\" stroke-linecap=\"round\"/><path d=\"M26.400000000000002,12 Q30.4,20 26.400000000000002,28\" fill=\"none\" stroke=\"#1a2a2a\" stroke-width=\"1\" stroke-linecap=\"round\" opacity=\".5\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#e0e4e0;color:#1a2a2a;border:1px solid #ddd;\"><div class=\"lb-num\" style=\"position:absolute;bottom:6px;right:10px;\">096</div><div class=\"lk-ico\"><svg viewBox=\"0 0 40 40\"><rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#e0e4e0\"/><path d=\"M13.600000000000001,8 Q8,20 13.600000000000001,32\" fill=\"none\" stroke=\"#1a2a2a\" stroke-width=\"1.4000000000000001\" stroke-linecap=\"round\"/><path d=\"M26.400000000000002,12 Q30.4,20 26.400000000000002,28\" fill=\"none\" stroke=\"#1a2a2a\" stroke-width=\"1\" stroke-linecap=\"round\" opacity=\".5\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">the present starts here</div></div></div>"
-      },
-      {
-        "num": 114,
-        "bg": "#ece6da",
-        "fg": "#3a3020",
-        "svg": "<svg viewBox=\"0 0 40 40\"><rect width=\"40\" height=\"40\" rx=\"7.199999999999999\" fill=\"#ece6da\"/><path d=\"M20,8.8 A11.200000000000001,11.200000000000001 0 0,0 8.8,20\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"1.4000000000000001\" stroke-linecap=\"round\"/><path d=\"M8.8,20 A11.200000000000001,11.200000000000001 0 0,0 20,31.200000000000003\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"1.2\" stroke-linecap=\"round\" opacity=\".6\"/><path d=\"M20,31.200000000000003 A11.200000000000001,11.200000000000001 0 0,0 29.2,24\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"1\" stroke-linecap=\"round\" opacity=\".25\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#ece6da;color:#3a3020;border:1px solid #ddd;\"><div class=\"lb-num\" style=\"position:absolute;bottom:6px;right:10px;\">114</div><div class=\"lk-ico\"><svg viewBox=\"0 0 40 40\"><rect width=\"40\" height=\"40\" rx=\"7.199999999999999\" fill=\"#ece6da\"/><path d=\"M20,8.8 A11.200000000000001,11.200000000000001 0 0,0 8.8,20\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"1.4000000000000001\" stroke-linecap=\"round\"/><path d=\"M8.8,20 A11.200000000000001,11.200000000000001 0 0,0 20,31.200000000000003\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"1.2\" stroke-linecap=\"round\" opacity=\".6\"/><path d=\"M20,31.200000000000003 A11.200000000000001,11.200000000000001 0 0,0 29.2,24\" fill=\"none\" stroke=\"#3a3020\" stroke-width=\"1\" stroke-linecap=\"round\" opacity=\".25\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">the present starts here</div></div></div>"
-      },
-      {
-        "num": 130,
-        "bg": "#14142a",
-        "fg": "#b8c0d8",
-        "svg": "<svg viewBox=\"0 0 40 40\"><rect width=\"40\" height=\"40\" rx=\"7.199999999999999\" fill=\"#14142a\"/><circle cx=\"10\" cy=\"19.2\" r=\"2\" fill=\"#b8c0d8\"/><circle cx=\"15.2\" cy=\"16.8\" r=\"1.44\" fill=\"#b8c0d8\" opacity=\".7\"/><circle cx=\"19.6\" cy=\"20.8\" r=\"1.04\" fill=\"#b8c0d8\" opacity=\".45\"/><circle cx=\"24\" cy=\"18.400000000000002\" r=\"0.72\" fill=\"#b8c0d8\" opacity=\".25\"/><circle cx=\"27.200000000000003\" cy=\"21.6\" r=\"0.48\" fill=\"#b8c0d8\" opacity=\".12\"/></svg>",
-        "isWrap": false,
-        "isRound": true,
-        "raw": "<div class=\"lk\" style=\"background:#14142a;color:#b8c0d8;\"><div class=\"lb-num\" style=\"position:absolute;bottom:6px;right:10px;\">130</div><div class=\"lk-ico\"><svg viewBox=\"0 0 40 40\"><rect width=\"40\" height=\"40\" rx=\"7.199999999999999\" fill=\"#14142a\"/><circle cx=\"10\" cy=\"19.2\" r=\"2\" fill=\"#b8c0d8\"/><circle cx=\"15.2\" cy=\"16.8\" r=\"1.44\" fill=\"#b8c0d8\" opacity=\".7\"/><circle cx=\"19.6\" cy=\"20.8\" r=\"1.04\" fill=\"#b8c0d8\" opacity=\".45\"/><circle cx=\"24\" cy=\"18.400000000000002\" r=\"0.72\" fill=\"#b8c0d8\" opacity=\".25\"/><circle cx=\"27.200000000000003\" cy=\"21.6\" r=\"0.48\" fill=\"#b8c0d8\" opacity=\".12\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;letter-spacing:.04em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div></div>"
-      }
-    ]
-  },
-  {
-    "source": "Recherche V4",
-    "items": [
-      {
-        "num": 46,
-        "bg": "#2a2a5a",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 42 42\"><rect width=\"42\" height=\"42\" rx=\"7.56\" fill=\"#2a2a5a\"/><path d=\"M6.3,21 Q10.5,12.6 14.7,21 Q16.8,25.2 19.32,21 Q21,17.64 22.68,21 L35.699999999999996,21\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.4700000000000002\" stroke-linecap=\"round\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#2a2a5a;color:#f5f0e8;\"><div class=\"lk-ico\"><svg viewBox=\"0 0 42 42\"><rect width=\"42\" height=\"42\" rx=\"7.56\" fill=\"#2a2a5a\"/><path d=\"M6.3,21 Q10.5,12.6 14.7,21 Q16.8,25.2 19.32,21 Q21,17.64 22.68,21 L35.699999999999996,21\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.4700000000000002\" stroke-linecap=\"round\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.12em;text-transform:none;\">Faraday</div><div class=\"lk-bl\">disconnect to reconnect</div></div><div class=\"lk-num\">046</div></div>"
-      },
-      {
-        "num": 88,
-        "bg": "#2a2a5a",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 42 42\"><rect width=\"42\" height=\"42\" rx=\"7.56\" fill=\"#2a2a5a\"/><path d=\"M4.2,21 Q8.4,11.760000000000002 12.6,21 Q15.12,26.88 17.64,21\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.4700000000000002\" stroke-linecap=\"round\"/><circle cx=\"19.32\" cy=\"21\" r=\"1.4700000000000002\" fill=\"#f5f0e8\"/><line x1=\"21.84\" y1=\"21\" x2=\"37.800000000000004\" y2=\"21\" stroke=\"#f5f0e8\" stroke-width=\"0.84\" stroke-linecap=\"round\" opacity=\".5\"/></svg>",
-        "isWrap": false,
-        "isRound": true,
-        "raw": "<div class=\"lk\" style=\"background:#2a2a5a;color:#f5f0e8;\"><div class=\"lk-ico\"><svg viewBox=\"0 0 42 42\"><rect width=\"42\" height=\"42\" rx=\"7.56\" fill=\"#2a2a5a\"/><path d=\"M4.2,21 Q8.4,11.760000000000002 12.6,21 Q15.12,26.88 17.64,21\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"1.4700000000000002\" stroke-linecap=\"round\"/><circle cx=\"19.32\" cy=\"21\" r=\"1.4700000000000002\" fill=\"#f5f0e8\"/><line x1=\"21.84\" y1=\"21\" x2=\"37.800000000000004\" y2=\"21\" stroke=\"#f5f0e8\" stroke-width=\"0.84\" stroke-linecap=\"round\" opacity=\".5\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">come back to yourself</div></div><div class=\"lk-num\">088</div></div>"
-      },
-      {
-        "num": 37,
-        "bg": "#3a7028",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#3a7028\"/><rect x=\"19.8\" y=\"33\" width=\"8.8\" height=\"44\" rx=\"2.2\" fill=\"#f5f0e8\"/><rect x=\"35.2\" y=\"39.6\" width=\"8.8\" height=\"37.400000000000006\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".7\"/><rect x=\"50.6\" y=\"46.199999999999996\" width=\"8.8\" height=\"30.800000000000004\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".4\"/><rect x=\"66\" y=\"50.6\" width=\"8.8\" height=\"26.4\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".2\"/><rect x=\"81.4\" y=\"52.8\" width=\"8.8\" height=\"24.2\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".08\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"bl\"><div class=\"bx\"><svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#3a7028\"/><rect x=\"19.8\" y=\"33\" width=\"8.8\" height=\"44\" rx=\"2.2\" fill=\"#f5f0e8\"/><rect x=\"35.2\" y=\"39.6\" width=\"8.8\" height=\"37.400000000000006\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".7\"/><rect x=\"50.6\" y=\"46.199999999999996\" width=\"8.8\" height=\"30.800000000000004\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".4\"/><rect x=\"66\" y=\"50.6\" width=\"8.8\" height=\"26.4\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".2\"/><rect x=\"81.4\" y=\"52.8\" width=\"8.8\" height=\"24.2\" rx=\"2.2\" fill=\"#f5f0e8\" opacity=\".08\"/></svg></div><div class=\"bl-num\">037</div><div class=\"nm\">Decroissant</div><div class=\"bl-color\">Mousse</div></div>"
-      },
-      {
-        "num": 36,
-        "bg": "#2a2a5a",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#2a2a5a\"/><line x1=\"16.5\" y1=\"55\" x2=\"48.4\" y2=\"55\" stroke=\"#f5f0e8\" stroke-width=\"3.3\" stroke-linecap=\"round\"/><line x1=\"61.60000000000001\" y1=\"55\" x2=\"93.5\" y2=\"55\" stroke=\"#f5f0e8\" stroke-width=\"3.3\" stroke-linecap=\"round\" opacity=\".25\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"bl\"><div class=\"bx\"><svg viewBox=\"0 0 110 110\"><rect width=\"110\" height=\"110\" rx=\"19.8\" fill=\"#2a2a5a\"/><line x1=\"16.5\" y1=\"55\" x2=\"48.4\" y2=\"55\" stroke=\"#f5f0e8\" stroke-width=\"3.3\" stroke-linecap=\"round\"/><line x1=\"61.60000000000001\" y1=\"55\" x2=\"93.5\" y2=\"55\" stroke=\"#f5f0e8\" stroke-width=\"3.3\" stroke-linecap=\"round\" opacity=\".25\"/></svg></div><div class=\"bl-num\">036</div><div class=\"nm\">Coupure</div><div class=\"bl-color\">Encre</div></div>"
-      },
-      {
-        "num": 136,
-        "bg": "#0f1a2e",
-        "fg": "#f5f0e8",
-        "svg": "<svg viewBox=\"0 0 42 42\"><rect width=\"42\" height=\"42\" rx=\"7.56\" fill=\"#0f1a2e\"/><line x1=\"6.3\" y1=\"21\" x2=\"18.48\" y2=\"21\" stroke=\"#f5f0e8\" stroke-width=\"1.26\" stroke-linecap=\"round\"/><line x1=\"23.520000000000003\" y1=\"21\" x2=\"35.699999999999996\" y2=\"21\" stroke=\"#f5f0e8\" stroke-width=\"1.26\" stroke-linecap=\"round\" opacity=\".25\"/></svg>",
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"lk\" style=\"background:#0f1a2e;color:#f5f0e8;\"><div class=\"lk-ico\"><svg viewBox=\"0 0 42 42\"><rect width=\"42\" height=\"42\" rx=\"7.56\" fill=\"#0f1a2e\"/><line x1=\"6.3\" y1=\"21\" x2=\"18.48\" y2=\"21\" stroke=\"#f5f0e8\" stroke-width=\"1.26\" stroke-linecap=\"round\"/><line x1=\"23.520000000000003\" y1=\"21\" x2=\"35.699999999999996\" y2=\"21\" stroke=\"#f5f0e8\" stroke-width=\"1.26\" stroke-linecap=\"round\" opacity=\".25\"/></svg></div><div><div class=\"lk-wm\" style=\"font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;letter-spacing:.02em;text-transform:lowercase;\">faraday</div><div class=\"lk-bl\">come back to yourself</div></div><div class=\"lk-num\">136</div></div>"
-      }
-    ]
-  },
-  {
-    "source": "Logos V3",
-    "items": [
-      {
-        "num": 8,
-        "bg": "",
-        "fg": "#f5f0e8",
-        "svg": null,
-        "isWrap": false,
-        "isRound": false,
-        "raw": "<div class=\"logo-card bg-sage\"><div class=\"logo-inner t-douce\"><div class=\"wm c-cream\">faraday</div><div class=\"bl c-cream\">silence is a choice</div></div></div>"
-      }
-    ]
-  }
-];
-
-function isLight(bg){return bg && bg.toLowerCase()>'#c';}
-
-function fixSvgSize(svg) {
-  // Make svg fill its container
-  return svg.replace(/<svg /, '<svg preserveAspectRatio="xMidYMid meet" ');
-}
-
-function renderItem(item) {
-  const bdr = isLight(item.bg) ? 'bdr-light' : '';
-  let html = '';
-
-  if (item.isWrap) {
-    // Wrap version: show ( faraday ) twice with up + low
-    const wrap = item.raw;
-    // Extract paren style from raw
-    const parenMatch = wrap.match(/font-family:([^;"]+);font-size:(\d+px)/);
-    const ff = parenMatch ? parenMatch[1] : "'Sora',sans-serif";
-    const psz = '36px';
-    // UP version
-    html += '<div class="wrap ' + bdr + '" style="background:' + item.bg + ';color:' + item.fg + ';">' +
-      '<div class="lk-num">' + String(item.num).padStart(3,'0') + '</div>' +
-      '<div class="wrap-paren" style="font-family:' + ff + ';font-size:' + psz + ';opacity:.4;">(</div>' +
-      '<div class="wrap-text"><div class="lk-wm-up">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div>' +
-      '<div class="wrap-paren" style="font-family:' + ff + ';font-size:' + psz + ';opacity:.15;">)</div>' +
-      '</div>';
-    // LOW version
-    html += '<div class="wrap ' + bdr + '" style="background:' + item.bg + ';color:' + item.fg + ';">' +
-      '<div class="lk-num">' + String(item.num).padStart(3,'0') + '</div>' +
-      '<div class="wrap-paren" style="font-family:' + ff + ';font-size:' + psz + ';opacity:.4;">(</div>' +
-      '<div class="wrap-text"><div class="lk-wm-low">faraday</div><div class="lk-bl">disconnect to reconnect</div></div>' +
-      '<div class="wrap-paren" style="font-family:' + ff + ';font-size:' + psz + ';opacity:.15;">)</div>' +
-      '</div>';
-    return html;
-  }
-
-  if (!item.svg) return '';
-  const svg = fixSvgSize(item.svg);
-  const round = item.isRound ? 'round' : '';
-
-  // Uppercase lockup
-  html += '<div class="lk ' + bdr + '" style="background:' + item.bg + ';color:' + item.fg + ';">' +
-    '<div class="lk-num">' + String(item.num).padStart(3,'0') + '</div>' +
-    '<div class="lk-ico ' + round + '">' + svg + '</div>' +
-    '<div><div class="lk-wm-up">FARADAY</div><div class="lk-bl">disconnect to reconnect</div></div>' +
-    '</div>';
-  // Lowercase lockup
-  html += '<div class="lk ' + bdr + '" style="background:' + item.bg + ';color:' + item.fg + ';">' +
-    '<div class="lk-num">' + String(item.num).padStart(3,'0') + '</div>' +
-    '<div class="lk-ico ' + round + '">' + svg + '</div>' +
-    '<div><div class="lk-wm-low">faraday</div><div class="lk-bl">disconnect to reconnect</div></div>' +
-    '</div>';
-  return html;
-}
-
-let out = '';
-items.forEach(section => {
-  out += '<div class="section"><h2>' + section.source + '</h2>';
-  section.items.forEach(item => {
-    out += '<div class="row"><div class="pair">' + renderItem(item) + '</div></div>';
-  });
-  out += '</div>';
-});
-
-document.write(out);
-</script>
-
+<div class="section"><h2>Experiments</h2><div class="row"><div class="lockup-card stone"><div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".08"/><rect x="8" y="8" width="36" height="36" rx="5" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".2"/><rect x="13" y="13" width="26" height="26" rx="4" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".4"/><rect x="18" y="18" width="16" height="16" rx="3" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity=".7"/><rect x="22" y="22" width="8" height="8" rx="2" fill="#f5f0e8"/></svg></div><div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:22px;">Faraday</div><div class="lockup-bl lc">the present starts here</div></div></div><div class="lockup-card light"><div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#2d3b28"/><path d="M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26" fill="none" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/></svg></div><div class="lockup-text"><div class="lockup-wm dc" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;">Faraday</div><div class="lockup-bl dc">disconnect to reconnect</div></div></div><div class="lockup-card navy"><div class="lockup-icon"><svg viewBox="0 0 52 52"><rect width="52" height="52" rx="12" fill="#f5f0e8" opacity=".1"/><path d="M8,26 Q13,16 18,26 Q21,32 24,26 Q26,22 28,26 L44,26" fill="none" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/></svg></div><div class="lockup-text"><div class="lockup-wm lc" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;">Faraday</div><div class="lockup-bl lc">disconnect to reconnect</div></div></div><div class="logo-block">
+  <div class="logo-box" style="background:#2e1e14;">
+    <svg viewBox="0 0 160 160">
+      <rect width="160" height="160" rx="28" fill="#2e1e14"/>
+      <rect x="30" y="30" width="100" height="100" rx="12" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".2"/>
+      <rect x="44" y="44" width="72" height="72" rx="10" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".4"/>
+      <rect x="58" y="58" width="44" height="44" rx="8" fill="none" stroke="#f5f0e8" stroke-width="3" opacity=".7"/>
+      <rect x="70" y="70" width="20" height="20" rx="4" fill="#f5f0e8"/>
+    </svg>
+  </div>
+  <div class="logo-name">Couches</div>
+  <div class="logo-desc">Carres concentriques — les couches de protection de la cage de Faraday</div>
+</div></div></div><div class="section"><h2>Recherche V6</h2><div class="row"><div class="lk" style="background:#a3b098;color:#0f1a2e;"><div class="lk-n">089</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="7.6000000000000005" fill="#a3b098"/><path d="M13.68,7.98 Q9.120000000000001,19 13.68,30.02" fill="none" stroke="#0f1a2e" stroke-width="1.33" stroke-linecap="round"/><path d="M24.32,11.02 Q28.12,19 24.32,26.979999999999997" fill="none" stroke="#0f1a2e" stroke-width="0.76" stroke-linecap="round" opacity="0.45"/></svg></div><div><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">come back to yourself</div></div></div><div class="lk" style="background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;"><div class="lk-n">070</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="7.6000000000000005" fill="#dfe5d8"/><path d="M13.68,7.98 Q9.120000000000001,19 13.68,30.02" fill="none" stroke="#1c2e1c" stroke-width="1.33" stroke-linecap="round"/><path d="M24.32,11.02 Q28.12,19 24.32,26.979999999999997" fill="none" stroke="#1c2e1c" stroke-width="0.76" stroke-linecap="round" opacity="0.45"/></svg></div><div><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div></div><div class="lk" style="background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;"><div class="lk-n">202</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="6.84" fill="#dfe5d8"/><path d="M18.999999999999996,8.36 A10.64,10.64 0 0,1 27.030109933570294,12.019531931541001" fill="none" stroke="#1c2e1c" stroke-width="1.33" stroke-linecap="round" opacity="1"/><path d="M27.71577775123487,12.897146717224864 A10.64,10.64 0 0,1 29.323946527576602,21.57404896918047" fill="none" stroke="#1c2e1c" stroke-width="1.14" stroke-linecap="round" opacity="0.72"/><path d="M28.998329485162067,22.639094324985116 A10.64,10.64 0 0,1 22.81303498316199,28.93329573793023" fill="none" stroke="#1c2e1c" stroke-width="0.9500000000000001" stroke-linecap="round" opacity="0.48"/><path d="M21.75383463989082,29.277450791715687 A10.64,10.64 0 0,1 13.050187507071254,27.820959771985642" fill="none" stroke="#1c2e1c" stroke-width="0.76" stroke-linecap="round" opacity="0.28"/><path d="M12.160739832935231,27.150712874785935 A10.64,10.64 0 0,1 8.361620523535997,19.185693604492688" fill="none" stroke="#1c2e1c" stroke-width="0.608" stroke-linecap="round" opacity="0.14"/><path d="M8.400488412303828,18.07266289716492 A10.64,10.64 0 0,1 12.74596491560808,10.39205917985056" fill="none" stroke="#1c2e1c" stroke-width="0.456" stroke-linecap="round" opacity="0.06"/></svg></div><div><div class="lk-wm" style="font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.18em;text-transform:uppercase;">Faraday</div><div class="lk-bl">the present starts here</div></div></div><div class="lk" style="background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;"><div class="lk-n">190</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="6.84" fill="#dfe5d8"/><path d="M18.999999999999996,8.36 A10.64,10.64 0 0,1 27.030109933570294,12.019531931541001" fill="none" stroke="#1c2e1c" stroke-width="1.33" stroke-linecap="round" opacity="1"/><path d="M27.71577775123487,12.897146717224864 A10.64,10.64 0 0,1 29.323946527576602,21.57404896918047" fill="none" stroke="#1c2e1c" stroke-width="1.14" stroke-linecap="round" opacity="0.72"/><path d="M28.998329485162067,22.639094324985116 A10.64,10.64 0 0,1 22.81303498316199,28.93329573793023" fill="none" stroke="#1c2e1c" stroke-width="0.9500000000000001" stroke-linecap="round" opacity="0.48"/><path d="M21.75383463989082,29.277450791715687 A10.64,10.64 0 0,1 13.050187507071254,27.820959771985642" fill="none" stroke="#1c2e1c" stroke-width="0.76" stroke-linecap="round" opacity="0.28"/><path d="M12.160739832935231,27.150712874785935 A10.64,10.64 0 0,1 8.361620523535997,19.185693604492688" fill="none" stroke="#1c2e1c" stroke-width="0.608" stroke-linecap="round" opacity="0.14"/><path d="M8.400488412303828,18.07266289716492 A10.64,10.64 0 0,1 12.74596491560808,10.39205917985056" fill="none" stroke="#1c2e1c" stroke-width="0.456" stroke-linecap="round" opacity="0.06"/></svg></div><div><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div></div><div class="lk-wrap" style="background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;"><div class="lk-n">101</div><div class="lk-paren" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;">(</div><div class="lk-wrap-text"><div class="lk-wm" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:none;">Faraday</div><div class="lk-bl">the present starts here</div></div><div class="lk-paren" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;opacity:.15;">)</div></div><div class="lb"><div class="bx" style=""><svg viewBox="0 0 110 110"><rect width="110" height="110" rx="19.8" fill="#a3b098"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55" fill="none" stroke="#0f1a2e" stroke-width="2.75" stroke-linecap="round"/></svg></div><div class="lb-n">209</div><div class="lb-c">Thin — Brume sauge</div></div><div class="lb"><div class="bx" style=""><svg viewBox="0 0 110 110"><rect width="110" height="110" rx="19.8" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.75" stroke-linecap="round"/></svg></div><div class="lb-n">204</div><div class="lb-c">Thin — Encre</div></div><div class="lb"><div class="bx" style=""><svg viewBox="0 0 110 110"><rect width="110" height="110" rx="19.8" fill="#a07860"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.75" stroke-linecap="round"/></svg></div><div class="lb-n">210</div><div class="lb-c">Thin — Cuivre fond</div></div><div class="lb"><div class="bx" style=""><svg viewBox="0 0 110 110"><rect width="110" height="110" rx="19.8" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46.199999999999996 59.400000000000006,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="3.8500000000000005" stroke-linecap="round"/></svg></div><div class="lb-n">211</div><div class="lb-c">Regular — Encre</div></div><div class="lk" style="background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;"><div class="lk-n">241</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="6.84" fill="#dfe5d8"/><path d="M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19" fill="none" stroke="#1c2e1c" stroke-width="1.33" stroke-linecap="round"/></svg></div><div><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div></div><div class="lk" style="background:#1c2e1c;color:#f5f0e8;"><div class="lk-n">251</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="6.84" fill="#1c2e1c"/><path d="M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19" fill="none" stroke="#f5f0e8" stroke-width="1.33" stroke-linecap="round"/></svg></div><div><div class="lk-wm" style="font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.18em;text-transform:uppercase;">Faraday</div><div class="lk-bl">the present starts here</div></div></div><div class="lk" style="background:#2a2a5a;color:#f5f0e8;"><div class="lk-n">237</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="6.84" fill="#2a2a5a"/><path d="M5.7,19 Q9.5,11.4 13.299999999999999,19 Q15.200000000000001,22.8 17.48,19 Q19,15.959999999999999 20.520000000000003,19 L32.3,19" fill="none" stroke="#f5f0e8" stroke-width="1.33" stroke-linecap="round"/></svg></div><div><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div></div><div class="lk" style="background:#dfe5d8;color:#1c2e1c;border:1px solid #ddd;"><div class="lk-n">272</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="7.6000000000000005" fill="#dfe5d8"/><path d="M13.68,7.98 Q9.120000000000001,19 13.68,30.02" fill="none" stroke="#1c2e1c" stroke-width="1.33" stroke-linecap="round"/><path d="M24.32,11.02 Q28.12,19 24.32,26.979999999999997" fill="none" stroke="#1c2e1c" stroke-width="0.76" stroke-linecap="round" opacity="0.45"/></svg></div><div><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div></div><div class="lk" style="background:#2a2a5a;color:#f5f0e8;"><div class="lk-n">085</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="7.6000000000000005" fill="#2a2a5a"/><path d="M13.68,7.98 Q9.120000000000001,19 13.68,30.02" fill="none" stroke="#f5f0e8" stroke-width="1.33" stroke-linecap="round"/><path d="M24.32,11.02 Q28.12,19 24.32,26.979999999999997" fill="none" stroke="#f5f0e8" stroke-width="0.76" stroke-linecap="round" opacity="0.45"/></svg></div><div><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">come back to yourself</div></div></div><div class="lk" style="background:#1c2e1c;color:#f5f0e8;"><div class="lk-n">090</div><div class="lk-ico"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="7.6000000000000005" fill="#1c2e1c"/><path d="M13.68,7.98 Q9.120000000000001,19 13.68,30.02" fill="none" stroke="#f5f0e8" stroke-width="1.33" stroke-linecap="round"/><path d="M24.32,11.02 Q28.12,19 24.32,26.979999999999997" fill="none" stroke="#f5f0e8" stroke-width="0.76" stroke-linecap="round" opacity="0.45"/></svg></div><div><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">come back to yourself</div></div></div></div></div><div class="section"><h2>Recherche V5</h2><div class="row"><div class="lk-wrap" style="background:#dfe5d8;color:#2a3a22;border:1px solid #ddd;"><div class="lb-num" style="position:absolute;bottom:6px;right:10px;">085</div><div class="lk-paren" style="font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;">(</div><div class="lk-wrap-text"><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:500;font-size:22px;letter-spacing:.08em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div><div class="lk-paren" style="font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;">)</div></div><div class="lb"><div class="bx"><svg viewBox="0 0 120 120"><rect width="120" height="120" rx="24" fill="#ece6da"/><path d="M43.199999999999996,28.799999999999997 Q28.799999999999997,60 43.199999999999996,91.2" fill="none" stroke="#3a3020" stroke-width="4.2" stroke-linecap="round"/><path d="M76.8,28.799999999999997 Q91.2,60 76.8,91.2" fill="none" stroke="#3a3020" stroke-width="4.2" stroke-linecap="round"/></svg></div><div class="lb-num">010</div><div class="lb-color">Lin</div></div><div class="lb"><div class="bx bx-round"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="60" fill="#dfe5d8"/><path d="M43.199999999999996,31.200000000000003 Q28.799999999999997,60 43.199999999999996,88.8" fill="none" stroke="#2a3a22" stroke-width="4.2" stroke-linecap="round"/><path d="M76.8,31.200000000000003 Q91.2,60 76.8,88.8" fill="none" stroke="#2a3a22" stroke-width="4.2" stroke-linecap="round"/></svg></div><div class="lb-num">018</div><div class="lb-color">Sauge clair</div></div><div class="lk-wrap" style="background:#e0e4e0;color:#1a2a2a;border:1px solid #ddd;"><div class="lb-num" style="position:absolute;bottom:6px;right:10px;">080</div><div class="lk-paren" style="font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;">(</div><div class="lk-wrap-text"><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;font-size:22px;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">the present starts here</div></div><div class="lk-paren" style="font-family:'Manrope',sans-serif;font-size:38px;font-weight:200;">)</div></div><div class="lk-wrap" style="background:#e8e0d0;color:#2a2818;border:1px solid #ddd;"><div class="lb-num" style="position:absolute;bottom:6px;right:10px;">068</div><div class="lk-paren" style="font-family:'Sora',sans-serif;font-size:38px;font-weight:200;">(</div><div class="lk-wrap-text"><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:.12em;text-transform:none;">Faraday</div><div class="lk-bl">the present starts here</div></div><div class="lk-paren" style="font-family:'Sora',sans-serif;font-size:38px;font-weight:200;">)</div></div><div class="lk" style="background:#e0e4e0;color:#1a2a2a;border:1px solid #ddd;"><div class="lb-num" style="position:absolute;bottom:6px;right:10px;">096</div><div class="lk-ico"><svg viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#e0e4e0"/><path d="M13.600000000000001,8 Q8,20 13.600000000000001,32" fill="none" stroke="#1a2a2a" stroke-width="1.4000000000000001" stroke-linecap="round"/><path d="M26.400000000000002,12 Q30.4,20 26.400000000000002,28" fill="none" stroke="#1a2a2a" stroke-width="1" stroke-linecap="round" opacity=".5"/></svg></div><div><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">the present starts here</div></div></div><div class="lk" style="background:#ece6da;color:#3a3020;border:1px solid #ddd;"><div class="lb-num" style="position:absolute;bottom:6px;right:10px;">114</div><div class="lk-ico"><svg viewBox="0 0 40 40"><rect width="40" height="40" rx="7.199999999999999" fill="#ece6da"/><path d="M20,8.8 A11.200000000000001,11.200000000000001 0 0,0 8.8,20" fill="none" stroke="#3a3020" stroke-width="1.4000000000000001" stroke-linecap="round"/><path d="M8.8,20 A11.200000000000001,11.200000000000001 0 0,0 20,31.200000000000003" fill="none" stroke="#3a3020" stroke-width="1.2" stroke-linecap="round" opacity=".6"/><path d="M20,31.200000000000003 A11.200000000000001,11.200000000000001 0 0,0 29.2,24" fill="none" stroke="#3a3020" stroke-width="1" stroke-linecap="round" opacity=".25"/></svg></div><div><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">the present starts here</div></div></div><div class="lk" style="background:#14142a;color:#b8c0d8;"><div class="lb-num" style="position:absolute;bottom:6px;right:10px;">130</div><div class="lk-ico"><svg viewBox="0 0 40 40"><rect width="40" height="40" rx="7.199999999999999" fill="#14142a"/><circle cx="10" cy="19.2" r="2" fill="#b8c0d8"/><circle cx="15.2" cy="16.8" r="1.44" fill="#b8c0d8" opacity=".7"/><circle cx="19.6" cy="20.8" r="1.04" fill="#b8c0d8" opacity=".45"/><circle cx="24" cy="18.400000000000002" r="0.72" fill="#b8c0d8" opacity=".25"/><circle cx="27.200000000000003" cy="21.6" r="0.48" fill="#b8c0d8" opacity=".12"/></svg></div><div><div class="lk-wm" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;letter-spacing:.04em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div></div></div></div><div class="section"><h2>Recherche V4</h2><div class="row"><div class="lk" style="background:#2a2a5a;color:#f5f0e8;"><div class="lk-ico"><svg viewBox="0 0 42 42"><rect width="42" height="42" rx="7.56" fill="#2a2a5a"/><path d="M6.3,21 Q10.5,12.6 14.7,21 Q16.8,25.2 19.32,21 Q21,17.64 22.68,21 L35.699999999999996,21" fill="none" stroke="#f5f0e8" stroke-width="1.4700000000000002" stroke-linecap="round"/></svg></div><div><div class="lk-wm" style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.12em;text-transform:none;">Faraday</div><div class="lk-bl">disconnect to reconnect</div></div><div class="lk-num">046</div></div><div class="lk" style="background:#2a2a5a;color:#f5f0e8;"><div class="lk-ico"><svg viewBox="0 0 42 42"><rect width="42" height="42" rx="7.56" fill="#2a2a5a"/><path d="M4.2,21 Q8.4,11.760000000000002 12.6,21 Q15.12,26.88 17.64,21" fill="none" stroke="#f5f0e8" stroke-width="1.4700000000000002" stroke-linecap="round"/><circle cx="19.32" cy="21" r="1.4700000000000002" fill="#f5f0e8"/><line x1="21.84" y1="21" x2="37.800000000000004" y2="21" stroke="#f5f0e8" stroke-width="0.84" stroke-linecap="round" opacity=".5"/></svg></div><div><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">come back to yourself</div></div><div class="lk-num">088</div></div><div class="bl"><div class="bx"><svg viewBox="0 0 110 110"><rect width="110" height="110" rx="19.8" fill="#3a7028"/><rect x="19.8" y="33" width="8.8" height="44" rx="2.2" fill="#f5f0e8"/><rect x="35.2" y="39.6" width="8.8" height="37.400000000000006" rx="2.2" fill="#f5f0e8" opacity=".7"/><rect x="50.6" y="46.199999999999996" width="8.8" height="30.800000000000004" rx="2.2" fill="#f5f0e8" opacity=".4"/><rect x="66" y="50.6" width="8.8" height="26.4" rx="2.2" fill="#f5f0e8" opacity=".2"/><rect x="81.4" y="52.8" width="8.8" height="24.2" rx="2.2" fill="#f5f0e8" opacity=".08"/></svg></div><div class="bl-num">037</div><div class="nm">Decroissant</div><div class="bl-color">Mousse</div></div><div class="bl"><div class="bx"><svg viewBox="0 0 110 110"><rect width="110" height="110" rx="19.8" fill="#2a2a5a"/><line x1="16.5" y1="55" x2="48.4" y2="55" stroke="#f5f0e8" stroke-width="3.3" stroke-linecap="round"/><line x1="61.60000000000001" y1="55" x2="93.5" y2="55" stroke="#f5f0e8" stroke-width="3.3" stroke-linecap="round" opacity=".25"/></svg></div><div class="bl-num">036</div><div class="nm">Coupure</div><div class="bl-color">Encre</div></div><div class="lk" style="background:#0f1a2e;color:#f5f0e8;"><div class="lk-ico"><svg viewBox="0 0 42 42"><rect width="42" height="42" rx="7.56" fill="#0f1a2e"/><line x1="6.3" y1="21" x2="18.48" y2="21" stroke="#f5f0e8" stroke-width="1.26" stroke-linecap="round"/><line x1="23.520000000000003" y1="21" x2="35.699999999999996" y2="21" stroke="#f5f0e8" stroke-width="1.26" stroke-linecap="round" opacity=".25"/></svg></div><div><div class="lk-wm" style="font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;letter-spacing:.02em;text-transform:lowercase;">faraday</div><div class="lk-bl">come back to yourself</div></div><div class="lk-num">136</div></div></div></div><div class="section"><h2>Logos V3</h2><div class="row"><div class="logo-card bg-sage"><div class="logo-inner t-douce"><div class="wm c-cream">faraday</div><div class="bl c-cream">silence is a choice</div></div></div></div></div>
 <script src="nav.js"></script>
 </body>
 </html>
