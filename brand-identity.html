@@ -61,17 +61,89 @@
   .fav-box{border-radius:20%;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);}
 
   /* ===== ANIMATIONS ===== */
+  /* 1. Line Draw — trace de gauche a droite */
   @keyframes draw{0%{stroke-dashoffset:200;}100%{stroke-dashoffset:0;}}
-  @keyframes collapse{0%,20%{d:path("M16.5,55 Q27.5,25 38.5,55 Q44,75 50.6,55 Q55,40 59.4,55 L93.5,55");}80%,100%{d:path("M16.5,55 Q27.5,50 38.5,55 Q44,58 50.6,55 Q55,53 59.4,55 L93.5,55");}}
-  @keyframes pulse{0%,100%{opacity:.7;}50%{opacity:1;}}
-  @keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
-  @keyframes waveLoop{0%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}25%{d:path("M16.5,55 Q27.5,40 38.5,55 Q44,62 50.6,55 Q55,50 59.4,55 L93.5,55");}50%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}75%{d:path("M16.5,55 Q27.5,40 38.5,55 Q44,62 50.6,55 Q55,50 59.4,55 L93.5,55");}100%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}}
+  .anim-draw path{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 2.5s cubic-bezier(.4,0,.2,1) forwards;}
 
-  .anim-draw path{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 2s ease-out forwards;}
-  .anim-collapse path{animation:collapse 3s ease-in-out infinite alternate;}
-  .anim-pulse svg{animation:pulse 3s ease-in-out infinite;}
-  .anim-fade svg{animation:fadeIn 2.5s ease-out forwards;}
-  .anim-wave path{animation:waveLoop 4s ease-in-out infinite;}
+  /* 2. Wave to Flat — onde vive qui s'aplatit progressivement */
+  @keyframes toFlat{
+    0%,10%{d:path("M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55");}
+    40%{d:path("M16.5,55 Q27.5,35 38.5,55 Q44,68 50.6,55 Q55,45 59.4,55 L93.5,55");}
+    70%{d:path("M16.5,55 Q27.5,45 38.5,55 Q44,60 50.6,55 Q55,50 59.4,55 L93.5,55");}
+    90%,100%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}
+  }
+  .anim-toflat path{animation:toFlat 4s cubic-bezier(.4,0,.2,1) forwards;}
+
+  /* 3. Flat to Wave — silence puis la vie revient */
+  @keyframes fromFlat{
+    0%,30%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}
+    60%{d:path("M16.5,55 Q27.5,45 38.5,55 Q44,62 50.6,55 Q55,48 59.4,55 L93.5,55");}
+    100%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}
+  }
+  .anim-fromflat path{animation:fromFlat 3.5s cubic-bezier(.2,0,.4,1) forwards;}
+
+  /* 4. Respiration lente — wave amplitude pulse */
+  @keyframes breathe{
+    0%,100%{d:path("M16.5,55 Q27.5,40 38.5,55 Q44,63 50.6,55 Q55,48 59.4,55 L93.5,55");stroke-opacity:0.6;}
+    50%{d:path("M16.5,55 Q27.5,28 38.5,55 Q44,72 50.6,55 Q55,42 59.4,55 L93.5,55");stroke-opacity:1;}
+  }
+  .anim-breathe path{animation:breathe 5s ease-in-out infinite;}
+
+  /* 5. Scan — ligne horizontale qui balaie de haut en bas */
+  @keyframes scanLine{
+    0%{transform:translateY(-30px);opacity:0;}
+    20%{opacity:1;}
+    80%{opacity:1;}
+    100%{transform:translateY(30px);opacity:0;}
+  }
+  .anim-scan .scan-line{animation:scanLine 2.5s ease-in-out infinite;}
+
+  /* 6. Trace + Glow — dessin puis halo qui pulse */
+  @keyframes drawGlow{0%{stroke-dashoffset:200;filter:drop-shadow(0 0 0px #f5f0e8);}60%{stroke-dashoffset:0;filter:drop-shadow(0 0 0px #f5f0e8);}80%{filter:drop-shadow(0 0 8px rgba(245,240,232,.6));}100%{filter:drop-shadow(0 0 3px rgba(245,240,232,.2));}}
+  .anim-glow path{stroke-dasharray:200;stroke-dashoffset:200;animation:drawGlow 3s cubic-bezier(.4,0,.2,1) forwards;}
+
+  /* 7. Glitch micro — leger tremblement */
+  @keyframes glitch{
+    0%,90%,100%{transform:translate(0,0);}
+    92%{transform:translate(-1px,0.5px);}
+    94%{transform:translate(1px,-0.5px);}
+    96%{transform:translate(-0.5px,0);}
+    98%{transform:translate(0.5px,0.5px);}
+  }
+  .anim-glitch path{animation:glitch 4s ease-in-out infinite;}
+
+  /* 8. Draw inverse — de droite a gauche */
+  .anim-draw-rtl path{stroke-dasharray:200;stroke-dashoffset:-200;animation:draw 2.5s cubic-bezier(.4,0,.2,1) forwards;}
+
+  /* 9. Appear segment by segment */
+  @keyframes seg1{0%,15%{opacity:0;}25%,100%{opacity:1;}}
+  @keyframes seg2{0%,30%{opacity:0;}45%,100%{opacity:1;}}
+  @keyframes seg3{0%,50%{opacity:0;}65%,100%{opacity:1;}}
+  @keyframes seg4{0%,65%{opacity:0;}80%,100%{opacity:1;}}
+  .anim-segments .s1{opacity:0;animation:seg1 3s ease forwards;}
+  .anim-segments .s2{opacity:0;animation:seg2 3s ease forwards;}
+  .anim-segments .s3{opacity:0;animation:seg3 3s ease forwards;}
+  .anim-segments .s4{opacity:0;animation:seg4 3s ease forwards;}
+
+  /* 10. Scale in — icone qui apparait en zoom */
+  @keyframes scaleIn{0%{transform:scale(0.3);opacity:0;}60%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);}}
+  .anim-scale svg{animation:scaleIn 1s cubic-bezier(.2,0,.2,1.4) forwards;}
+
+  /* 11. Wave continuous — cardiogramme vivant */
+  @keyframes waveContinuous{
+    0%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}
+    16%{d:path("M16.5,55 Q27.5,44 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}
+    33%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,33 50.6,55 Q55,66 59.4,55 L93.5,55");}
+    50%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,44 50.6,55 Q55,55 59.4,55 L93.5,55");}
+    66%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,33 59.4,55 L93.5,55");}
+    83%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,44 59.4,55 L93.5,55");}
+    100%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}
+  }
+  .anim-heartbeat path{animation:waveContinuous 3s linear infinite;}
+
+  /* 12. Morphing round <-> square */
+  @keyframes morph{0%,100%{rx:22px;}50%{rx:55px;}}
+  .anim-morph rect{animation:morph 4s ease-in-out infinite;}
 
   /* ===== LOCKUPS ===== */
   .lockup{display:flex;align-items:center;gap:16px;padding:32px 40px;border-radius:14px;}
@@ -224,44 +296,94 @@
 <!-- ANIMATIONS -->
 <div class="section">
   <div class="sh">03 — Animations</div>
-  <div class="st">Logo anime</div>
-  <div class="sd">5 animations pour le web et l'app. Survolez ou attendez le cycle.</div>
+  <div class="st">Logo anime — 12 variantes</div>
+  <div class="sd">Animations CSS pures pour le web, l'app, les presentations. Chaque animation porte un sens lie au produit.</div>
 
   <div class="grid">
-    <!-- Draw -->
+    <!-- 1. Draw L→R -->
     <div>
       <div class="logo-card anim-draw" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 140 140" width="140"><rect width="140" height="140" rx="28" fill="#2a2a5a"/><path d="M21,70 Q35,42 49,70 Q56,84 64,70 Q70,58 75,70 L119,70" fill="none" stroke="#f5f0e8" stroke-width="2.8" stroke-linecap="round"/></svg>
-      </div>
-      <div class="logo-label">Line Draw</div>
-    </div>
-    <!-- Collapse -->
-    <div>
-      <div class="logo-card anim-collapse" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
         <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
-      <div class="logo-label">Wave Collapse</div>
+      <div class="logo-label">1. Line Draw<br><span style="opacity:.5;">Trace de gauche a droite</span></div>
     </div>
-    <!-- Pulse -->
+    <!-- 2. Wave to Flat -->
     <div>
-      <div class="logo-card anim-pulse" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 140 140" width="140"><rect width="140" height="140" rx="28" fill="#2a2a5a"/><path d="M21,70 Q35,42 49,70 Q56,84 64,70 Q70,58 75,70 L119,70" fill="none" stroke="#f5f0e8" stroke-width="2.8" stroke-linecap="round"/></svg>
+      <div class="logo-card anim-toflat" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
-      <div class="logo-label">Pulse</div>
+      <div class="logo-label">2. Wave → Flat<br><span style="opacity:.5;">Le bruit qui meurt — splash screen</span></div>
     </div>
-    <!-- Fade -->
+    <!-- 3. Flat to Wave -->
     <div>
-      <div class="logo-card anim-fade" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 140 140" width="140"><rect width="140" height="140" rx="28" fill="#2a2a5a"/><path d="M21,70 Q35,42 49,70 Q56,84 64,70 Q70,58 75,70 L119,70" fill="none" stroke="#f5f0e8" stroke-width="2.8" stroke-linecap="round"/></svg>
+      <div class="logo-card anim-fromflat" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
-      <div class="logo-label">Fade In</div>
+      <div class="logo-label">3. Flat → Wave<br><span style="opacity:.5;">La vie qui revient — fin de session</span></div>
     </div>
-    <!-- Wave loop -->
+    <!-- 4. Breathe -->
     <div>
-      <div class="logo-card anim-wave" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+      <div class="logo-card anim-breathe" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,40 38.5,55 Q44,63 50.6,55 Q55,48 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="logo-label">4. Respiration<br><span style="opacity:.5;">Amplitude qui pulse lentement</span></div>
+    </div>
+    <!-- 5. Glow -->
+    <div>
+      <div class="logo-card anim-glow" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
         <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
-      <div class="logo-label">Wave Loop (respiration)</div>
+      <div class="logo-label">5. Draw + Glow<br><span style="opacity:.5;">Trace puis halo lumineux</span></div>
+    </div>
+    <!-- 6. Glitch -->
+    <div>
+      <div class="logo-card anim-glitch" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="logo-label">6. Micro Glitch<br><span style="opacity:.5;">Tremblement subtil — perturbation</span></div>
+    </div>
+    <!-- 7. Draw R→L -->
+    <div>
+      <div class="logo-card anim-draw-rtl" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="logo-label">7. Draw Inverse<br><span style="opacity:.5;">Trace de droite a gauche</span></div>
+    </div>
+    <!-- 8. Segments -->
+    <div>
+      <div class="logo-card anim-segments" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path class="s1" d="M16.5,55 Q27.5,33 38.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/><path class="s2" d="M38.5,55 Q44,66 50.6,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/><path class="s3" d="M50.6,55 Q55,46 59.4,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/><path class="s4" d="M59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="logo-label">8. Segments<br><span style="opacity:.5;">Apparition segment par segment</span></div>
+    </div>
+    <!-- 9. Scale -->
+    <div>
+      <div class="logo-card anim-scale" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="logo-label">9. Scale In<br><span style="opacity:.5;">Zoom elastique — notification</span></div>
+    </div>
+    <!-- 10. Heartbeat -->
+    <div>
+      <div class="logo-card anim-heartbeat" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="logo-label">10. Heartbeat<br><span style="opacity:.5;">Onde voyageante continue</span></div>
+    </div>
+    <!-- 11. Morph -->
+    <div>
+      <div class="logo-card anim-morph" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="logo-label">11. Morph carre ↔ rond<br><span style="opacity:.5;">Transition de forme</span></div>
+    </div>
+    <!-- 12. Scan -->
+    <div>
+      <div class="logo-card anim-scan" style="width:140px;height:140px;background:var(--encre);border-radius:28px;position:relative;overflow:hidden;">
+        <svg viewBox="0 0 110 110" width="140" style="position:relative;z-index:1;"><rect width="110" height="110" rx="22" fill="#2a2a5a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#f5f0e8" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <div class="scan-line" style="position:absolute;left:10%;right:10%;height:2px;background:rgba(245,240,232,.4);z-index:2;top:50%;"></div>
+      </div>
+      <div class="logo-label">12. Scan<br><span style="opacity:.5;">Ligne de scan — detection box</span></div>
     </div>
   </div>
 </div>
