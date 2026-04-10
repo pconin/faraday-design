@@ -9,8 +9,8 @@
   *{margin:0;padding:0;box-sizing:border-box;}
 
   :root{
-    --encre:#2a3a34;--creme:#e8ece6;--cuivre:#7a8a78;--sable:#dce2da;
-    --charbon:#1a2a24;--brume:#a8b4a8;--encre-light:#4a5a50;--encre-pale:#6a7a70;
+    --encre:#50514f;--creme:#fffcff;--cuivre:#247ba0;--sable:#c3b299;
+    --charbon:#3a3b39;--brume:#cbd4c2;--encre-light:#6a6b69;--encre-pale:#8a8b89;
   }
 
   body{background:var(--creme);font-family:'Inter',sans-serif;color:var(--encre);padding-top:60px;}
@@ -99,7 +99,7 @@
   .anim-scan .scan-line{animation:scanLine 2.5s ease-in-out infinite;}
 
   /* 6. Trace + Glow — dessin puis halo qui pulse */
-  @keyframes drawGlow{0%{stroke-dashoffset:200;filter:drop-shadow(0 0 0px #e8ece6);}60%{stroke-dashoffset:0;filter:drop-shadow(0 0 0px #e8ece6);}80%{filter:drop-shadow(0 0 8px rgba(232,236,230,.6));}100%{filter:drop-shadow(0 0 3px rgba(232,236,230,.2));}}
+  @keyframes drawGlow{0%{stroke-dashoffset:200;filter:drop-shadow(0 0 0px #fffcff);}60%{stroke-dashoffset:0;filter:drop-shadow(0 0 0px #fffcff);}80%{filter:drop-shadow(0 0 8px rgba(255,252,255,.6));}100%{filter:drop-shadow(0 0 3px rgba(255,252,255,.2));}}
   .anim-glow path{stroke-dasharray:200;stroke-dashoffset:200;animation:drawGlow 3s cubic-bezier(.4,0,.2,1) forwards;}
 
   /* 7. Glitch micro — leger tremblement */
@@ -170,7 +170,7 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-icon">
-    <svg viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#2a3a34"/><path d="M18,60 Q30,36 42,60 Q48,72 55,60 Q60,50 65,60 L102,60" fill="none" stroke="#e8ece6" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#50514f"/><path d="M18,60 Q30,36 42,60 Q48,72 55,60 Q60,50 65,60 L102,60" fill="none" stroke="#fffcff" stroke-width="2.5" stroke-linecap="round"/></svg>
   </div>
   <div class="hero-wm">Faraday</div>
   <div class="hero-bl">disconnect to reconnect</div>
@@ -186,42 +186,42 @@
     <!-- Square dark -->
     <div>
       <div class="logo-card" style="width:160px;height:160px;background:var(--encre);">
-        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#2a3a34"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#e8ece6" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#50514f"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#fffcff" stroke-width="3.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">Carre — fond Encre</div>
     </div>
     <!-- Round dark -->
     <div>
       <div class="logo-card" style="width:160px;height:160px;background:var(--encre);border-radius:50%;">
-        <svg viewBox="0 0 160 160" width="160"><circle cx="80" cy="80" r="80" fill="#2a3a34"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#e8ece6" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 160 160" width="160"><circle cx="80" cy="80" r="80" fill="#50514f"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#fffcff" stroke-width="3.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">Rond — fond Encre</div>
     </div>
     <!-- Square light -->
     <div>
       <div class="logo-card" style="width:160px;height:160px;background:var(--creme);border:1px solid #ddd;">
-        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#e8ece6"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#2a3a34" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#fffcff"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#50514f" stroke-width="3.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">Carre — fond Creme</div>
     </div>
     <!-- Round light -->
     <div>
       <div class="logo-card" style="width:160px;height:160px;background:var(--creme);border-radius:50%;border:1px solid #ddd;">
-        <svg viewBox="0 0 160 160" width="160"><circle cx="80" cy="80" r="80" fill="#e8ece6"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#2a3a34" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 160 160" width="160"><circle cx="80" cy="80" r="80" fill="#fffcff"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#50514f" stroke-width="3.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">Rond — fond Creme</div>
     </div>
     <!-- Cuivre -->
     <div>
       <div class="logo-card" style="width:160px;height:160px;background:var(--cuivre);">
-        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#7a8a78"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#e8ece6" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#247ba0"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#fffcff" stroke-width="3.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">Carre — fond Cuivre</div>
     </div>
     <!-- Charbon -->
     <div>
       <div class="logo-card" style="width:160px;height:160px;background:var(--charbon);">
-        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#1a2a24"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#e8ece6" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 160 160" width="160"><rect width="160" height="160" rx="32" fill="#3a3b39"/><path d="M24,80 Q40,48 56,80 Q64,96 73,80 Q80,66 86,80 L136,80" fill="none" stroke="#fffcff" stroke-width="3.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">Carre — fond Charbon</div>
     </div>
@@ -238,15 +238,15 @@
   <div class="sh" style="margin-top:30px;">Horizontal — avec baseline</div>
   <div class="grid" style="margin-bottom:30px;">
     <div class="lockup" style="background:var(--encre);">
-      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#2a3a34"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#e8ece6" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#50514f"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#fffcff" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div><div class="lockup-wm" style="font-size:22px;color:var(--creme);">Faraday</div><div class="lockup-bl" style="color:var(--creme);">disconnect to reconnect</div></div>
     </div>
     <div class="lockup" style="background:var(--creme);border:1px solid #ddd;">
-      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#e8ece6"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#2a3a34" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#fffcff"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#50514f" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div><div class="lockup-wm" style="font-size:22px;color:var(--encre);">Faraday</div><div class="lockup-bl" style="color:var(--encre);">disconnect to reconnect</div></div>
     </div>
     <div class="lockup" style="background:var(--cuivre);">
-      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#7a8a78"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#e8ece6" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#247ba0"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#fffcff" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div><div class="lockup-wm" style="font-size:22px;color:var(--creme);">Faraday</div><div class="lockup-bl" style="color:var(--creme);">disconnect to reconnect</div></div>
     </div>
   </div>
@@ -254,11 +254,11 @@
   <div class="sh">Horizontal — sans baseline</div>
   <div class="grid" style="margin-bottom:30px;">
     <div class="lockup" style="background:var(--encre);">
-      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#2a3a34"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#e8ece6" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#50514f"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#fffcff" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div class="lockup-wm" style="font-size:22px;color:var(--creme);">Faraday</div>
     </div>
     <div class="lockup" style="background:var(--creme);border:1px solid #ddd;">
-      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#e8ece6"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#2a3a34" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="lockup-ico"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#fffcff"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#50514f" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div class="lockup-wm" style="font-size:22px;color:var(--encre);">Faraday</div>
     </div>
   </div>
@@ -266,11 +266,11 @@
   <div class="sh">Horizontal — rond</div>
   <div class="grid" style="margin-bottom:30px;">
     <div class="lockup" style="background:var(--encre);">
-      <div class="lockup-ico round"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#2a3a34"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#e8ece6" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="lockup-ico round"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#50514f"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#fffcff" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div><div class="lockup-wm" style="font-size:22px;color:var(--creme);">Faraday</div><div class="lockup-bl" style="color:var(--creme);">disconnect to reconnect</div></div>
     </div>
     <div class="lockup" style="background:var(--creme);border:1px solid #ddd;">
-      <div class="lockup-ico round"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#e8ece6"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#2a3a34" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="lockup-ico round"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#fffcff"/><path d="M7,24 Q12,14 17,24 Q19,29 22,24 Q24,20 26,24 L41,24" fill="none" stroke="#50514f" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div><div class="lockup-wm" style="font-size:22px;color:var(--encre);">Faraday</div><div class="lockup-bl" style="color:var(--encre);">disconnect to reconnect</div></div>
     </div>
   </div>
@@ -278,15 +278,15 @@
   <div class="sh">Empile</div>
   <div class="grid">
     <div class="lockup-stack" style="background:var(--encre);color:var(--creme);">
-      <div class="lockup-stack-ico"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2a3a34"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#e8ece6" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="lockup-stack-ico"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#50514f"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#fffcff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
       <div style="text-align:center;"><div class="lockup-wm" style="font-size:24px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div>
     </div>
     <div class="lockup-stack" style="background:var(--creme);color:var(--encre);border:1px solid #ddd;">
-      <div class="lockup-stack-ico"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#e8ece6"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#2a3a34" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="lockup-stack-ico"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#fffcff"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#50514f" stroke-width="1.6" stroke-linecap="round"/></svg></div>
       <div style="text-align:center;"><div class="lockup-wm" style="font-size:24px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div>
     </div>
     <div class="lockup-stack" style="background:var(--cuivre);color:var(--creme);">
-      <div class="lockup-stack-ico round"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#7a8a78"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#e8ece6" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="lockup-stack-ico round"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#247ba0"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#fffcff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
       <div style="text-align:center;"><div class="lockup-wm" style="font-size:24px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div>
     </div>
   </div>
@@ -303,85 +303,85 @@
     <!-- 1. Draw L→R -->
     <div>
       <div class="logo-card anim-draw" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">1. Line Draw<br><span style="opacity:.5;">Trace de gauche a droite</span></div>
     </div>
     <!-- 2. Wave to Flat -->
     <div>
       <div class="logo-card anim-toflat" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">2. Wave → Flat<br><span style="opacity:.5;">Le bruit qui meurt — splash screen</span></div>
     </div>
     <!-- 3. Flat to Wave -->
     <div>
       <div class="logo-card anim-fromflat" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">3. Flat → Wave<br><span style="opacity:.5;">La vie qui revient — fin de session</span></div>
     </div>
     <!-- 4. Breathe -->
     <div>
       <div class="logo-card anim-breathe" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,40 38.5,55 Q44,63 50.6,55 Q55,48 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,40 38.5,55 Q44,63 50.6,55 Q55,48 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">4. Respiration<br><span style="opacity:.5;">Amplitude qui pulse lentement</span></div>
     </div>
     <!-- 5. Glow -->
     <div>
       <div class="logo-card anim-glow" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">5. Draw + Glow<br><span style="opacity:.5;">Trace puis halo lumineux</span></div>
     </div>
     <!-- 6. Glitch -->
     <div>
       <div class="logo-card anim-glitch" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">6. Micro Glitch<br><span style="opacity:.5;">Tremblement subtil — perturbation</span></div>
     </div>
     <!-- 7. Draw R→L -->
     <div>
       <div class="logo-card anim-draw-rtl" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">7. Draw Inverse<br><span style="opacity:.5;">Trace de droite a gauche</span></div>
     </div>
     <!-- 8. Segments -->
     <div>
       <div class="logo-card anim-segments" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path class="s1" d="M16.5,55 Q27.5,33 38.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/><path class="s2" d="M38.5,55 Q44,66 50.6,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/><path class="s3" d="M50.6,55 Q55,46 59.4,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/><path class="s4" d="M59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path class="s1" d="M16.5,55 Q27.5,33 38.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/><path class="s2" d="M38.5,55 Q44,66 50.6,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/><path class="s3" d="M50.6,55 Q55,46 59.4,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/><path class="s4" d="M59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">8. Segments<br><span style="opacity:.5;">Apparition segment par segment</span></div>
     </div>
     <!-- 9. Scale -->
     <div>
       <div class="logo-card anim-scale" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">9. Scale In<br><span style="opacity:.5;">Zoom elastique — notification</span></div>
     </div>
     <!-- 10. Heartbeat -->
     <div>
       <div class="logo-card anim-heartbeat" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">10. Heartbeat<br><span style="opacity:.5;">Onde voyageante continue</span></div>
     </div>
     <!-- 11. Morph -->
     <div>
       <div class="logo-card anim-morph" style="width:140px;height:140px;background:var(--encre);border-radius:28px;">
-        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 110 110" width="140"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
       </div>
       <div class="logo-label">11. Morph carre ↔ rond<br><span style="opacity:.5;">Transition de forme</span></div>
     </div>
     <!-- 12. Scan -->
     <div>
       <div class="logo-card anim-scan" style="width:140px;height:140px;background:var(--encre);border-radius:28px;position:relative;overflow:hidden;">
-        <svg viewBox="0 0 110 110" width="140" style="position:relative;z-index:1;"><rect width="110" height="110" rx="22" fill="#2a3a34"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#e8ece6" stroke-width="2.2" stroke-linecap="round"/></svg>
-        <div class="scan-line" style="position:absolute;left:10%;right:10%;height:2px;background:rgba(232,236,230,.4);z-index:2;top:50%;"></div>
+        <svg viewBox="0 0 110 110" width="140" style="position:relative;z-index:1;"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <div class="scan-line" style="position:absolute;left:10%;right:10%;height:2px;background:rgba(255,252,255,.4);z-index:2;top:50%;"></div>
       </div>
       <div class="logo-label">12. Scan<br><span style="opacity:.5;">Ligne de scan — detection box</span></div>
     </div>
@@ -393,27 +393,24 @@
 <div class="section" style="padding-top:0;padding-bottom:0;">
   <div class="sh">04 — Couleurs</div>
   <div class="st">Palette</div>
-  <div class="sd">Palette Etang — trois couleurs tirees de l'eau dormante au matin. Du vert profond a la vapeur claire.</div>
+  <div class="sd">5 couleurs equilibrees — du charbon chaud au bleu profond, avec la douceur du sable et de la sauge.</div>
 
-  <div class="sh" style="margin-top:20px;">Primaires</div>
+  <div class="sh" style="margin-top:20px;">Palette principale</div>
   <div class="grid" style="margin-bottom:30px;justify-content:flex-start;">
-    <div class="swatch"><div class="swatch-color" style="background:#2a3a34;"><span style="color:#e8ece6;font-size:10px;font-weight:600;">Etang</span></div><div class="swatch-info"><div class="swatch-name">Etang</div><div class="swatch-hex">#2a3a34</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#e8ece6;border:1px solid #d0d8d0;"><span style="color:#2a3a34;font-size:10px;font-weight:600;">Vapeur</span></div><div class="swatch-info"><div class="swatch-name">Vapeur</div><div class="swatch-hex">#e8ece6</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#50514f;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Charbon</span></div><div class="swatch-info"><div class="swatch-name">Charbon</div><div class="swatch-hex">#50514F</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#cbd4c2;border:1px solid #b8c0b0;"><span style="color:#50514f;font-size:10px;font-weight:600;">Sauge</span></div><div class="swatch-info"><div class="swatch-name">Sauge</div><div class="swatch-hex">#CBD4C2</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#fffcff;border:1px solid #e0e0e0;"><span style="color:#50514f;font-size:10px;font-weight:600;">Blanc</span></div><div class="swatch-info"><div class="swatch-name">Blanc</div><div class="swatch-hex">#FFFCFF</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#247ba0;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Bleu</span></div><div class="swatch-info"><div class="swatch-name">Bleu</div><div class="swatch-hex">#247BA0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c3b299;"><span style="color:#50514f;font-size:10px;font-weight:600;">Sable</span></div><div class="swatch-info"><div class="swatch-name">Sable</div><div class="swatch-hex">#C3B299</div></div></div>
   </div>
 
-  <div class="sh">Accent</div>
-  <div class="grid" style="margin-bottom:30px;justify-content:flex-start;">
-    <div class="swatch"><div class="swatch-color" style="background:#7a8a78;"><span style="color:#f0f2ee;font-size:10px;font-weight:600;">Roseau</span></div><div class="swatch-info"><div class="swatch-name">Roseau</div><div class="swatch-hex">#7a8a78</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#5a6a58;"><span style="color:#e8ece6;font-size:10px;font-weight:600;">Mousse</span></div><div class="swatch-info"><div class="swatch-name">Mousse</div><div class="swatch-hex">#5a6a58</div></div></div>
-  </div>
-
-  <div class="sh">Neutres & etendus</div>
+  <div class="sh">Etendus</div>
   <div class="grid" style="justify-content:flex-start;">
-    <div class="swatch"><div class="swatch-color" style="background:#1a2a24;"><span style="color:#e8ece6;font-size:10px;font-weight:600;">Profond</span></div><div class="swatch-info"><div class="swatch-name">Profond</div><div class="swatch-hex">#1a2a24</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#4a5a50;"><span style="color:#e8ece6;font-size:10px;font-weight:600;">Etang Clair</span></div><div class="swatch-info"><div class="swatch-name">Etang Clair</div><div class="swatch-hex">#4a5a50</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#6a7a70;"><span style="color:#f0f2ee;font-size:10px;font-weight:600;">Galet</span></div><div class="swatch-info"><div class="swatch-name">Galet</div><div class="swatch-hex">#6a7a70</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#a8b4a8;"><span style="color:#2a3a34;font-size:10px;font-weight:600;">Brume</span></div><div class="swatch-info"><div class="swatch-name">Brume</div><div class="swatch-hex">#a8b4a8</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#dce2da;border:1px solid #c8d0c8;"><span style="color:#2a3a34;font-size:10px;font-weight:600;">Rosee</span></div><div class="swatch-info"><div class="swatch-name">Rosee</div><div class="swatch-hex">#dce2da</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3a3b39;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Profond</span></div><div class="swatch-info"><div class="swatch-name">Profond</div><div class="swatch-hex">#3A3B39</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6a6b69;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Gris</span></div><div class="swatch-info"><div class="swatch-name">Gris</div><div class="swatch-hex">#6A6B69</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8a8b89;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Gris Clair</span></div><div class="swatch-info"><div class="swatch-name">Gris Clair</div><div class="swatch-hex">#8A8B89</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1b5e7a;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Bleu Profond</span></div><div class="swatch-info"><div class="swatch-name">Bleu Profond</div><div class="swatch-hex">#1B5E7A</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d8cbb4;border:1px solid #c8baa0;"><span style="color:#50514f;font-size:10px;font-weight:600;">Sable Clair</span></div><div class="swatch-info"><div class="swatch-name">Sable Clair</div><div class="swatch-hex">#D8CBB4</div></div></div>
   </div>
 </div>
 </div>
@@ -453,23 +450,23 @@
 
   <div class="fav-row">
     <div class="fav">
-      <div class="fav-box" style="width:16px;height:16px;"><svg viewBox="0 0 16 16"><rect width="16" height="16" rx="3" fill="#2a3a34"/><path d="M2.4,8 Q4,4.8 5.6,8 Q6.4,9.6 7.3,8 Q8,7.2 8.6,8 L13.6,8" fill="none" stroke="#e8ece6" stroke-width="1" stroke-linecap="round"/></svg></div>
+      <div class="fav-box" style="width:16px;height:16px;"><svg viewBox="0 0 16 16"><rect width="16" height="16" rx="3" fill="#50514f"/><path d="M2.4,8 Q4,4.8 5.6,8 Q6.4,9.6 7.3,8 Q8,7.2 8.6,8 L13.6,8" fill="none" stroke="#fffcff" stroke-width="1" stroke-linecap="round"/></svg></div>
       <div class="fav-size">16px</div>
     </div>
     <div class="fav">
-      <div class="fav-box" style="width:32px;height:32px;"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#2a3a34"/><path d="M4.8,16 Q8,9.6 11.2,16 Q12.8,19.2 14.6,16 Q16,13.4 17.2,16 L27.2,16" fill="none" stroke="#e8ece6" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div class="fav-box" style="width:32px;height:32px;"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#50514f"/><path d="M4.8,16 Q8,9.6 11.2,16 Q12.8,19.2 14.6,16 Q16,13.4 17.2,16 L27.2,16" fill="none" stroke="#fffcff" stroke-width="1.2" stroke-linecap="round"/></svg></div>
       <div class="fav-size">32px</div>
     </div>
     <div class="fav">
-      <div class="fav-box" style="width:64px;height:64px;"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2a3a34"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#e8ece6" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="fav-box" style="width:64px;height:64px;"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#50514f"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#fffcff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
       <div class="fav-size">64px</div>
     </div>
     <div class="fav">
-      <div class="fav-box" style="width:120px;height:120px;"><svg viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#2a3a34"/><path d="M18,60 Q30,36 42,60 Q48,72 55,60 Q60,50 65,60 L102,60" fill="none" stroke="#e8ece6" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+      <div class="fav-box" style="width:120px;height:120px;"><svg viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#50514f"/><path d="M18,60 Q30,36 42,60 Q48,72 55,60 Q60,50 65,60 L102,60" fill="none" stroke="#fffcff" stroke-width="2.4" stroke-linecap="round"/></svg></div>
       <div class="fav-size">120px (Touch icon)</div>
     </div>
     <div class="fav">
-      <div class="fav-box" style="width:180px;height:180px;"><svg viewBox="0 0 180 180"><rect width="180" height="180" rx="40" fill="#2a3a34"/><path d="M27,90 Q45,54 63,90 Q72,108 82,90 Q90,75 97,90 L153,90" fill="none" stroke="#e8ece6" stroke-width="3.6" stroke-linecap="round"/></svg></div>
+      <div class="fav-box" style="width:180px;height:180px;"><svg viewBox="0 0 180 180"><rect width="180" height="180" rx="40" fill="#50514f"/><path d="M27,90 Q45,54 63,90 Q72,108 82,90 Q90,75 97,90 L153,90" fill="none" stroke="#fffcff" stroke-width="3.6" stroke-linecap="round"/></svg></div>
       <div class="fav-size">180px (Apple Touch)</div>
     </div>
   </div>
@@ -479,7 +476,7 @@
     <div class="app-grid">
       <div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div>
       <div class="app-slot"></div>
-      <div class="app-slot active"><svg viewBox="0 0 60 60"><rect width="60" height="60" rx="13" fill="#2a3a34"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#e8ece6" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="app-slot active"><svg viewBox="0 0 60 60"><rect width="60" height="60" rx="13" fill="#50514f"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#fffcff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="app-slot"></div><div class="app-slot"></div>
       <div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div>
     </div>
