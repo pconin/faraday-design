@@ -25,7 +25,6 @@
   const nav = document.createElement('div');
   nav.innerHTML = `
     <div style="
-      position:sticky;top:0;z-index:9999;
       background:#111;
       padding:10px 16px;
       display:flex;gap:6px;align-items:center;flex-wrap:wrap;
