@@ -151,6 +151,10 @@
         object-fit: cover;
       }
 
+      .product-shot.led-ref img {
+        object-position: 64% 48%;
+      }
+
       .hero-grid {
         position: relative;
         z-index: 1;
@@ -469,6 +473,59 @@
         }
       }
 
+      @keyframes led-core-breathe {
+        0%, 100% {
+          opacity: 0.64;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes led-halo-expand {
+        0%, 100% {
+          opacity: 0.1;
+          transform: scale(0.92);
+        }
+        50% {
+          opacity: 0.34;
+          transform: scale(1.08);
+        }
+      }
+
+      @keyframes led-double-blink {
+        0%, 18%, 32%, 100% {
+          opacity: 0.28;
+        }
+        8%, 24% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes led-rise-in {
+        0% {
+          opacity: 0;
+          transform: translateY(10px) scaleY(0.72);
+        }
+        40% {
+          opacity: 0.92;
+          transform: translateY(0) scaleY(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scaleY(1);
+        }
+      }
+
+      @keyframes led-shell-settle {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
       @keyframes slow-rotate {
         from {
           transform: rotate(0deg);
@@ -498,6 +555,38 @@
 
       .anim-rotate svg {
         animation: slow-rotate 10s linear infinite;
+      }
+
+      .anim-led-breathe .led-core,
+      .anim-led-halo .led-core {
+        animation: led-core-breathe 3.6s ease-in-out infinite;
+      }
+
+      .anim-led-breathe .led-aura,
+      .anim-led-halo .led-aura {
+        animation: led-halo-expand 3.6s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .anim-led-blink .led-core {
+        animation: led-double-blink 4.2s ease-in-out infinite;
+      }
+
+      .anim-led-rise .led-core {
+        animation: led-rise-in 2.9s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .anim-led-rise .led-shell {
+        animation: led-shell-settle 2.9s ease-in-out infinite;
+      }
+
+      .anim-led-rise .led-aura {
+        animation: led-halo-expand 2.9s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
       }
 
       .icon-grid {
@@ -766,13 +855,13 @@
         <div class="hero-top">
           <div class="hero-copy">
             <span class="eyebrow">Faraday · Brand Exploration</span>
-            <h1>3 propositions de charte graphique pour une marque de déconnexion désirable.</h1>
+            <h1>2 propositions de charte graphique centrées sur la LED comme signe vivant.</h1>
             <p>
-              Base stratégique retenue : <strong>grand public, familles, jeunes urbains connectés</strong>,
-              avec un équilibre volontaire entre <strong>bien-être, tech et objet premium</strong>.
-              J’ai construit <strong>une seule piste d’évolution</strong> proche du signal actuel, puis
-              <strong>deux pistes volontairement plus affranchies</strong> pour donner à Faraday une vraie
-              marge de croissance au-delà de la box et de sa silhouette produit.
+              Point de départ retenu : <strong>la LED frontale est l’un des détails les plus propriétaires du produit</strong>.
+              Elle raconte mieux Faraday qu’une flatline : <strong>présence, statut, rituel, calme actif</strong>.
+              J’ai donc recentré le travail sur <strong>deux pistes complémentaires</strong> :
+              une évolution douce de la piste 1, puis une direction plus radicale où la LED devient
+              le cœur complet du système de marque.
             </p>
           </div>
 
@@ -780,8 +869,8 @@
             <div class="product-shot">
               <img src="./assets/box-black.jpeg" alt="Faraday Box noire" />
             </div>
-            <div class="product-shot">
-              <img src="./assets/box-cream.jpeg" alt="Faraday Box crème" />
+            <div class="product-shot led-ref">
+              <img src="./assets/led-reference.jpg" alt="Référence LED Faraday" />
             </div>
           </div>
         </div>
@@ -790,27 +879,27 @@
           <article class="summary-card">
             <h3>Ce qui doit rester vrai</h3>
             <ul>
-              <li>Le logo doit être fort en <strong>app icon</strong> et très lisible à petite taille.</li>
-              <li>La marque doit fonctionner en <strong>gravure</strong>, embossage et marquage monochrome.</li>
-              <li>Faraday ne doit pas sonner gadget ou anti-tech : la promesse est <strong>mieux vivre avec la tech</strong>.</li>
+              <li>Le logo doit être fort en <strong>app icon</strong>, favicon et très lisible à petite taille.</li>
+              <li>La marque doit rester crédible en <strong>gravure, embossage et marquage monochrome</strong>.</li>
+              <li>Le signe doit exprimer <strong>la vie et la présence</strong>, pas l’arrêt ou la coupure au sens anxiogène.</li>
             </ul>
           </article>
 
           <article class="summary-card">
             <h3>Lecture produit</h3>
             <p>
-              Le produit dit déjà quelque chose de précieux : <strong>rituel, présence, objet de foyer</strong>.
-              Les finitions bois, crème, noir et métal donnent une matière premium naturelle. La marque peut
-              donc monter en gamme sans perdre l’accessibilité grand public.
+              Le bois, le métal et la lumière chaude créent déjà une grammaire riche :
+              <strong>objet domestique premium, presque rituel</strong>. La LED est intéressante parce qu’elle
+              fait le lien entre <strong>hardware, app, statut, session et émotion</strong> avec un seul geste graphique.
             </p>
           </article>
 
           <article class="summary-card recommendation">
             <h3>Recommandation</h3>
             <p>
-              <strong>Je recommande la piste 02 — Protected Time.</strong> C’est la plus robuste si tu veux une
-              marque qui ne soit pas prisonnière de l’objet, tout en restant crédible sur la box, l’app,
-              les groupes, l’univers famille et une future plateforme de bien-être connecté.
+              <strong>Je recommande la piste 01 — Signal Calm LED.</strong> C’est le meilleur compromis :
+              elle garde la douceur et la retenue de la première proposition, tout en remplaçant la
+              métaphore problématique de l’EEG plat par un signe plus juste, plus vivant et plus propriétaire.
             </p>
           </article>
         </div>
@@ -819,20 +908,23 @@
       <section class="section concept-1">
         <div class="section-header">
           <div>
-            <span class="section-kicker">01 · Signal Calm</span>
-            <h2>Évolution premium du signal existant.</h2>
+            <span class="section-kicker">01 · Signal Calm LED</span>
+            <h2>La piste 1, mais avec une LED-signature à la place de la flatline.</h2>
             <p>
-              La seule piste vraiment proche de l’intuition actuelle. Elle part d’une ligne vivante qui se calme
-              progressivement : <strong>du bruit vers le silence</strong>, de l’agitation vers la présence.
-              C’est la proposition la plus simple à déployer rapidement sans casser l’ADN déjà amorcé.
+              Ici on conserve ce qui marchait le mieux dans la première direction :
+              <strong>calme, respiration, douceur premium, accessibilité grand public</strong>.
+              Le signe n’est plus une ligne qui se fige. Il devient une <strong>LED verticale logée dans un écrin discret</strong> :
+              un indicateur de présence, de session, de mise au calme. Le résultat reste très Faraday,
+              mais sans imaginaire médical mortuaire.
             </p>
           </div>
 
           <aside class="fit-box">
             <strong>Quand la choisir</strong>
             <p>
-              Si tu veux garder <strong>une seule direction liée à l’héritage actuel</strong>, tout en installant
-              Faraday comme une marque <strong>calme, chaleureuse et immédiatement mémorisable</strong>.
+              Si tu veux une évolution <strong>immédiatement exploitable</strong>, forte sur le produit,
+              sobre dans l’app, et suffisamment chaleureuse pour parler à la fois aux familles,
+              aux urbains très connectés et à un univers wellbeing / longevity.
             </p>
           </aside>
         </div>
@@ -844,9 +936,11 @@
               <div class="lockups">
                 <div class="logo-stage" style="background:#c5cfbf;">
                   <div class="logo-lockup type-signal" style="color:#151d2a;">
-                    <svg class="mark" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                      <rect width="110" height="110" rx="22" fill="#C5CFBF"></rect>
-                      <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#151D2A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#C5CFBF"></rect>
+                      <rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" fill="rgba(21,29,42,0.06)" stroke="rgba(21,29,42,0.16)" stroke-width="2.5"></rect>
+                      <rect class="led-aura" x="36" y="21" width="24" height="54" rx="12" fill="#F4A267" opacity="0.20"></rect>
+                      <rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="#B87552"></rect>
                     </svg>
                     <div class="wordmark">
                       <div class="wordmark-title">faraday</div>
@@ -857,9 +951,11 @@
 
                 <div class="logo-stage dark" style="background:#151d2a;">
                   <div class="logo-lockup type-signal" style="color:#f6f3ec;">
-                    <svg class="mark" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                      <rect width="110" height="110" rx="22" fill="#151D2A"></rect>
-                      <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#F6F3EC" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#151D2A"></rect>
+                      <rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" fill="rgba(246,243,236,0.05)" stroke="rgba(246,243,236,0.18)" stroke-width="2.5"></rect>
+                      <rect class="led-aura" x="36" y="21" width="24" height="54" rx="12" fill="#F4A267" opacity="0.28"></rect>
+                      <rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="#F4A267"></rect>
                     </svg>
                     <div class="wordmark">
                       <div class="wordmark-title">faraday</div>
@@ -871,15 +967,17 @@
 
               <div class="mini-row">
                 <div class="mini-card">
-                  <svg class="mark small" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                    <rect width="110" height="110" rx="22" fill="#C5CFBF"></rect>
-                    <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#151D2A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect width="96" height="96" rx="26" fill="#C5CFBF"></rect>
+                    <rect x="31" y="14" width="34" height="68" rx="17" fill="rgba(21,29,42,0.06)" stroke="rgba(21,29,42,0.16)" stroke-width="2.5"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" fill="#B87552"></rect>
                   </svg>
                   <span>Icône seule</span>
                 </div>
                 <div class="mini-card">
-                  <svg class="mark small" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                    <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#151D2A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="4"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" fill="#151D2A"></rect>
                   </svg>
                   <span>Gravure mono</span>
                 </div>
@@ -888,9 +986,16 @@
                   <span>Wordmark</span>
                 </div>
                 <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="43" y="26" width="10" height="44" rx="5" fill="#B87552"></rect>
+                  </svg>
+                  <span>Micro-signe</span>
+                </div>
+                <div class="mini-card">
                   <div class="stacked-lockup type-signal" style="color:#151d2a;">
-                    <svg class="mark small" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                      <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#151D2A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="4"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#151D2A"></rect>
                     </svg>
                     <div class="wordmark-title" style="font-size:25px;">faraday</div>
                     <div class="wordmark-baseline" style="font-size:9px;">Disconnect to reconnect</div>
@@ -906,48 +1011,55 @@
               <h3 class="panel-title">App icon, favicon, gravure</h3>
               <div class="icon-grid">
                 <div>
-                  <div class="app-icon" style="background:#c5cfbf;">
-                    <svg class="mark" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                      <rect width="110" height="110" rx="22" fill="#C5CFBF"></rect>
-                      <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#151D2A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <div class="app-icon" style="background:#151d2a;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#151D2A"></rect>
+                      <rect x="31" y="14" width="34" height="68" rx="17" fill="rgba(246,243,236,0.04)" stroke="rgba(246,243,236,0.18)" stroke-width="2.5"></rect>
+                      <rect x="36" y="21" width="24" height="54" rx="12" fill="#F4A267" opacity="0.28"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#F4A267"></rect>
                     </svg>
                   </div>
                   <div class="icon-label">App icon</div>
                 </div>
                 <div>
-                  <div class="favicon" style="background:#151d2a;">
-                    <svg class="mark small" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                      <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#F6F3EC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <div class="favicon" style="background:#f6f3ec;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#151D2A"></rect>
                     </svg>
                   </div>
                   <div class="icon-label">32 px</div>
                 </div>
                 <div>
-                  <div class="favicon" style="background:#f6f3ec;">
-                    <svg class="mark small" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                      <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#151D2A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <div class="favicon" style="background:#c5cfbf;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#B87552"></rect>
                     </svg>
                   </div>
                   <div class="icon-label">64 px</div>
                 </div>
                 <div>
-                  <div class="favicon" style="background:#4a8395;">
-                    <svg class="mark small" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                      <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#F6F3EC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <div class="favicon" style="background:#f4a267;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#151D2A"></rect>
                     </svg>
                   </div>
-                  <div class="icon-label">Accent digital</div>
+                  <div class="icon-label">Accent LED</div>
                 </div>
               </div>
 
               <div class="engraving" style="margin-top:18px;">
                 <div class="engraving-surface">
-                  <svg width="180" height="48" viewBox="0 0 180 48" fill="none" aria-hidden="true">
-                    <path d="M16.5 24Q27.5 2 38.5 24Q44 35 50.6 24Q55 15.2 59.4 24L93.5 24" stroke="rgba(255,255,255,0.78)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <svg width="150" height="72" viewBox="0 0 150 72" fill="none" aria-hidden="true">
+                    <rect x="56" y="8" width="38" height="56" rx="19" stroke="rgba(255,255,255,0.78)" stroke-width="4"></rect>
+                    <rect x="70" y="20" width="10" height="32" rx="5" fill="rgba(255,255,255,0.78)"></rect>
                   </svg>
                 </div>
                 <div class="engraving-note">
-                  Très bon comportement en gravure laser, sérigraphie et animation d’onboarding.
+                  Très bon comportement sur le bois et en badge discret. Le signe reste immédiatement lisible
+                  même sans glow, donc il tient parfaitement en gravure produit.
                 </div>
               </div>
             </div>
@@ -959,40 +1071,41 @@
               <div class="swatches">
                 <div class="swatch">
                   <div class="chip" style="background:#c5cfbf;"></div>
-                  <div><strong>Sage Mist</strong><small>Couleur maître, calme, naturelle, premium.</small></div>
+                  <div><strong>Sage Mist</strong><small>Couleur maîtresse calme, domestique, premium.</small></div>
                   <div class="hex">#C5CFBF</div>
                 </div>
                 <div class="swatch">
                   <div class="chip" style="background:#151d2a;"></div>
-                  <div><strong>Ink Charcoal</strong><small>Technologie, lisibilité, profondeur.</small></div>
+                  <div><strong>Ink Charcoal</strong><small>Assise tech, profondeur et lisibilité.</small></div>
                   <div class="hex">#151D2A</div>
                 </div>
                 <div class="swatch">
                   <div class="chip" style="background:#f6f3ec;"></div>
-                  <div><strong>Porcelain</strong><small>Fond premium, respirant, chaleureux.</small></div>
+                  <div><strong>Porcelain</strong><small>Fond respirant, premium, non clinique.</small></div>
                   <div class="hex">#F6F3EC</div>
                 </div>
                 <div class="swatch">
-                  <div class="chip" style="background:#4a8395;"></div>
-                  <div><strong>Lake Accent</strong><small>Usage app, stats, CTA doux.</small></div>
-                  <div class="hex">#4A8395</div>
+                  <div class="chip" style="background:#f4a267;"></div>
+                  <div><strong>LED Amber</strong><small>Vie, statut, chaleur, rappel direct de la box.</small></div>
+                  <div class="hex">#F4A267</div>
                 </div>
                 <div class="swatch">
                   <div class="chip" style="background:#b87552;"></div>
-                  <div><strong>Walnut Copper</strong><small>Lien subtil avec le bois et la matière.</small></div>
+                  <div><strong>Walnut Copper</strong><small>Lien avec le bois, la matière et la chaleur hardware.</small></div>
                   <div class="hex">#B87552</div>
                 </div>
               </div>
 
               <div class="font-stack">
-                <div class="font-row"><strong>Sora</strong><small>Display marque. Léger, propre, calme, légèrement futuriste.</small></div>
-                <div class="font-row"><strong>Manrope</strong><small>Interface. Douce, lisible, plus chaleureuse qu’un sans générique.</small></div>
-                <div class="font-row"><strong>IBM Plex Mono</strong><small>Données, sessions, temps, métriques.</small></div>
+                <div class="font-row"><strong>Sora</strong><small>Display marque. Léger, précis, calme, légèrement futuriste.</small></div>
+                <div class="font-row"><strong>Manrope</strong><small>Interface chaleureuse, très lisible, moins standard qu’un sans SaaS dur.</small></div>
+                <div class="font-row"><strong>IBM Plex Mono</strong><small>Temps, statut de session, métriques, logs de présence.</small></div>
               </div>
 
               <ul class="notes">
-                <li><strong>Pourquoi ça marche :</strong> le logo raconte immédiatement Faraday, sans texte d’explication.</li>
-                <li><strong>Risque :</strong> la piste reste assez “quiet tech”; elle projette moins une ambition lifestyle plus large.</li>
+                <li><strong>Pourquoi ça marche :</strong> on conserve tout ce qui rendait la piste 1 attachante, mais on remplace la référence anxiogène par un signe de présence beaucoup plus juste.</li>
+                <li><strong>Pourquoi ces couleurs ensemble :</strong> le sage et le porcelain posent le calme, tandis que l’ambre fait vivre le système sans l’agresser. Le charbon maintient la crédibilité tech.</li>
+                <li><strong>Risque :</strong> si l’ambre devient trop omniprésent, le système peut glisser vers un vocabulaire IoT générique. Il faut le garder comme accent vivant, pas comme couleur de fond dominante.</li>
               </ul>
             </div>
           </article>
@@ -1001,7 +1114,7 @@
         <div class="tag-row">
           <span class="tag">Rassurante</span>
           <span class="tag">Calme</span>
-          <span class="tag">Objet-compatible</span>
+          <span class="tag">LED propriétaire</span>
           <span class="tag">Déploiement rapide</span>
         </div>
 
@@ -1010,28 +1123,44 @@
             <h3 class="panel-title">Animations proposées</h3>
             <div class="anim-grid">
               <div class="anim-card">
-                <div class="anim-preview anim-draw" style="background:#c5cfbf;">
-                  <svg width="86" height="86" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                    <path class="stroke-anim" d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#151D2A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <div class="anim-preview anim-led-breathe" style="background:#151d2a;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" fill="rgba(246,243,236,0.04)" stroke="rgba(246,243,236,0.18)" stroke-width="2.5"></rect>
+                    <rect x="36" y="21" width="24" height="54" rx="12" class="led-aura" fill="#F4A267" opacity="0.24"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#F4A267"></rect>
                   </svg>
                 </div>
-                <div class="anim-meta"><strong>Line Draw</strong><small>Pour splash screen, onboarding, reveal du mot-symbole.</small></div>
+                <div class="anim-meta"><strong>Gentle Wake</strong><small>La LED apparaît puis se pose. Très bon onboarding de session ou écran de lancement.</small></div>
               </div>
               <div class="anim-card">
-                <div class="anim-preview anim-pulse" style="background:#151d2a;">
-                  <svg width="86" height="86" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                    <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#F6F3EC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <div class="anim-preview anim-led-halo" style="background:#c5cfbf;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" fill="rgba(21,29,42,0.05)" stroke="rgba(21,29,42,0.16)" stroke-width="2.5"></rect>
+                    <rect x="36" y="21" width="24" height="54" rx="12" class="led-aura" fill="#F4A267" opacity="0.18"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#B87552"></rect>
                   </svg>
                 </div>
-                <div class="anim-meta"><strong>Quiet Pulse</strong><small>Très bien pour une session active, sans tomber dans le gadget.</small></div>
+                <div class="anim-meta"><strong>Quiet Halo</strong><small>Une respiration lumineuse très sobre pour les moments d’attente ou de focus actif.</small></div>
               </div>
               <div class="anim-card">
-                <div class="anim-preview anim-float" style="background:#f6f3ec;">
-                  <svg width="86" height="86" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-                    <path d="M16.5 55Q27.5 33 38.5 55Q44 66 50.6 55Q55 46.2 59.4 55L93.5 55" stroke="#4A8395" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <div class="anim-preview anim-led-blink" style="background:#f6f3ec;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" fill="rgba(21,29,42,0.04)" stroke="rgba(21,29,42,0.16)" stroke-width="2.5"></rect>
+                    <rect x="36" y="21" width="24" height="54" rx="12" class="led-aura" fill="#F4A267" opacity="0.14"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#B87552"></rect>
                   </svg>
                 </div>
-                <div class="anim-meta"><strong>Soft Drift</strong><small>Animation de hero ou d’écran d’attente, plus respirante que démonstrative.</small></div>
+                <div class="anim-meta"><strong>Soft Confirm</strong><small>Double blink léger pour confirmer une action, une mise en session ou la fin d’un timer.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-rise" style="background:#f4a267;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" fill="rgba(21,29,42,0.08)" stroke="rgba(21,29,42,0.20)" stroke-width="2.5"></rect>
+                    <rect x="36" y="21" width="24" height="54" rx="12" class="led-aura" fill="#F6F3EC" opacity="0.18"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#151D2A"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Lock In</strong><small>Le cœur LED se fixe dans son écrin. Très adapté à la narration “je dépose, je m’engage, je reconnecte autrement”.</small></div>
               </div>
             </div>
           </div>
@@ -1041,21 +1170,24 @@
       <section class="section concept-2">
         <div class="section-header">
           <div>
-            <span class="section-kicker">02 · Protected Time</span>
-            <h2>La marque comme sanctuaire de temps protégé.</h2>
+            <span class="section-kicker">02 · Living Beacon</span>
+            <h2>Une piste entièrement construite autour de la LED comme balise de présence.</h2>
             <p>
-              Ici, Faraday n’est plus définie par l’objet. C’est une <strong>architecture mentale</strong> :
-              on crée un espace protégé au milieu du bruit. Le signe prend la forme d’un <strong>portail
-              monolithique</strong>, suffisamment abstrait pour vivre en app icon, suffisamment concret pour évoquer
-              le “mettre à l’abri”.
+              Cette direction pousse la logique beaucoup plus loin :
+              <strong>Faraday devient un système visuel fondé sur un seul signal lumineux</strong>.
+              Le logo n’est plus un signe encadré par un écrin. C’est la LED elle-même,
+              traitée comme une <strong>balise chaude</strong> qui indique l’entrée en session,
+              la présence calme, la fin, le réveil, la reprise. C’est plus radical, plus iconique,
+              plus motion-first.
             </p>
           </div>
 
           <aside class="fit-box">
             <strong>Quand la choisir</strong>
             <p>
-              Si tu veux une marque plus ambitieuse, plus “plateforme”, capable de parler à la fois
-              d’objet, d’app, de rituels de famille, de groupe et de santé numérique.
+              Si tu veux une marque plus distinctive, plus <strong>hardware-native</strong>, avec un
+              potentiel très fort en motion design, en app icon et en système d’états à travers
+              le produit, l’application et les futurs rituels collectifs.
             </p>
           </aside>
         </div>
@@ -1065,29 +1197,33 @@
             <div class="panel-pad">
               <h3 class="panel-title">Logo principal &amp; déclinaisons</h3>
               <div class="lockups">
-                <div class="logo-stage" style="background:#eef3f1;">
-                  <div class="logo-lockup type-portal" style="color:#101826;">
-                    <svg class="mark" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <rect width="88" height="88" rx="24" fill="#101826"></rect>
-                      <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" fill="#EEF3F1"></path>
-                      <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                <div class="logo-stage dark" style="background:#181b1e;">
+                  <div class="logo-lockup" style="color:#f5f0e7;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#181B1E"></rect>
+                      <rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="#FFD2B1" opacity="0.16"></rect>
+                      <rect class="led-aura" x="37" y="24" width="22" height="48" rx="11" fill="#FF9361" opacity="0.24"></rect>
+                      <rect class="led-core" x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                      <path d="M35 76C39 79.3 43.4 81 48 81C52.6 81 57 79.3 61 76" stroke="rgba(245,240,231,0.22)" stroke-width="3.5" stroke-linecap="round"></path>
                     </svg>
-                    <div class="wordmark">
-                      <div class="wordmark-title">Faraday</div>
+                    <div class="wordmark" style="font-family:'Plus Jakarta Sans',sans-serif;">
+                      <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
                       <div class="wordmark-baseline">Disconnect to reconnect</div>
                     </div>
                   </div>
                 </div>
 
-                <div class="logo-stage dark" style="background:#101826;">
-                  <div class="logo-lockup type-portal" style="color:#eef3f1;">
-                    <svg class="mark" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <rect width="88" height="88" rx="24" fill="#EEF3F1"></rect>
-                      <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" fill="#101826"></path>
-                      <rect x="39" y="28" width="10" height="34" rx="5" fill="#EEF3F1"></rect>
+                <div class="logo-stage" style="background:#f5f0e7;">
+                  <div class="logo-lockup" style="color:#181b1e;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#F5F0E7"></rect>
+                      <rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="#FFD2B1" opacity="0.36"></rect>
+                      <rect class="led-aura" x="37" y="24" width="22" height="48" rx="11" fill="#FF9361" opacity="0.28"></rect>
+                      <rect class="led-core" x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                      <path d="M35 76C39 79.3 43.4 81 48 81C52.6 81 57 79.3 61 76" stroke="rgba(24,27,30,0.18)" stroke-width="3.5" stroke-linecap="round"></path>
                     </svg>
-                    <div class="wordmark">
-                      <div class="wordmark-title">Faraday</div>
+                    <div class="wordmark" style="font-family:'Plus Jakarta Sans',sans-serif;">
+                      <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
                       <div class="wordmark-baseline">Disconnect to reconnect</div>
                     </div>
                   </div>
@@ -1096,31 +1232,38 @@
 
               <div class="mini-row">
                 <div class="mini-card">
-                  <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <rect width="88" height="88" rx="24" fill="#101826"></rect>
-                    <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" fill="#EEF3F1"></path>
-                    <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="37" y="24" width="22" height="48" rx="11" fill="#FF9361" opacity="0.24"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
                   </svg>
-                  <span>Icône seule</span>
+                  <span>Cœur LED</span>
                 </div>
                 <div class="mini-card">
-                  <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" stroke="#101826" stroke-width="5"></path>
-                    <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="33" y="18" width="30" height="60" rx="15" stroke="#181B1E" stroke-width="4" opacity="0.16"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" fill="#181B1E"></rect>
+                    <path d="M35 76C39 79.3 43.4 81 48 81C52.6 81 57 79.3 61 76" stroke="#181B1E" stroke-width="4" stroke-linecap="round" opacity="0.2"></path>
                   </svg>
                   <span>Gravure mono</span>
                 </div>
                 <div class="mini-card">
-                  <div class="type-portal" style="display:grid;place-items:center;height:48px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:28px;letter-spacing:-0.04em;">Faraday</div>
+                  <div style="display:grid;place-items:center;height:48px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.05em;">Faraday</div>
                   <span>Wordmark</span>
                 </div>
                 <div class="mini-card">
-                  <div class="stacked-lockup type-portal" style="color:#101826;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" stroke="#101826" stroke-width="5"></path>
-                      <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" fill="#FF9361" opacity="0.14"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                  </svg>
+                  <span>Halo state</span>
+                </div>
+                <div class="mini-card">
+                  <div class="stacked-lockup" style="color:#181b1e;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="33" y="18" width="30" height="60" rx="15" fill="#FFD2B1" opacity="0.30"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
                     </svg>
-                    <div class="wordmark-title" style="font-size:24px;">Faraday</div>
+                    <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
                     <div class="wordmark-baseline" style="font-size:9px;">Disconnect to reconnect</div>
                   </div>
                   <span>Empilé</span>
@@ -1134,53 +1277,54 @@
               <h3 class="panel-title">App icon, favicon, gravure</h3>
               <div class="icon-grid">
                 <div>
-                  <div class="app-icon" style="background:#101826;">
-                    <svg class="mark" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <rect width="88" height="88" rx="24" fill="#101826"></rect>
-                      <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" fill="#EEF3F1"></path>
-                      <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                  <div class="app-icon" style="background:#181b1e;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#181B1E"></rect>
+                      <rect x="33" y="18" width="30" height="60" rx="15" fill="#FFD2B1" opacity="0.16"></rect>
+                      <rect x="37" y="24" width="22" height="48" rx="11" fill="#FF9361" opacity="0.24"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
                     </svg>
                   </div>
                   <div class="icon-label">App icon</div>
                 </div>
                 <div>
-                  <div class="favicon" style="background:#eef3f1;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" stroke="#101826" stroke-width="6"></path>
-                      <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                  <div class="favicon" style="background:#f5f0e7;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="37" y="24" width="22" height="48" rx="11" fill="#FF9361" opacity="0.24"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
                     </svg>
                   </div>
                   <div class="icon-label">32 px</div>
                 </div>
                 <div>
-                  <div class="favicon" style="background:#2fd0c1;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" stroke="#101826" stroke-width="6"></path>
-                      <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                  <div class="favicon" style="background:#ff9361;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="33" y="18" width="30" height="60" rx="15" fill="#F5F0E7" opacity="0.28"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#181B1E"></rect>
                     </svg>
                   </div>
-                  <div class="icon-label">Accent</div>
+                  <div class="icon-label">Accent light</div>
                 </div>
                 <div>
-                  <div class="favicon" style="background:#101826;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" stroke="#EEF3F1" stroke-width="6"></path>
-                      <rect x="39" y="28" width="10" height="34" rx="5" fill="#EEF3F1"></rect>
+                  <div class="favicon" style="background:#181b1e;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="37" y="24" width="22" height="48" rx="11" fill="#FFD2B1" opacity="0.24"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#F5F0E7"></rect>
                     </svg>
                   </div>
-                  <div class="icon-label">Dark mode</div>
+                  <div class="icon-label">Sleep mode</div>
                 </div>
               </div>
 
-              <div class="engraving" style="margin-top:18px;background:linear-gradient(180deg, rgba(17,26,34,0.18), rgba(17,26,34,0.22)), linear-gradient(90deg, #9a714f 0%, #7b573c 100%);">
+              <div class="engraving" style="margin-top:18px;background:linear-gradient(180deg, rgba(17,22,29,0.18), rgba(17,22,29,0.22)), linear-gradient(90deg, #9a714f 0%, #7b573c 100%);">
                 <div class="engraving-surface">
-                  <svg width="130" height="68" viewBox="0 0 130 68" fill="none" aria-hidden="true">
-                    <path d="M20 49V25C20 15.6112 27.6112 8 37 8H51C60.3888 8 68 15.6112 68 25V49C68 55.6274 62.6274 61 56 61H32C25.3726 61 20 55.6274 20 49Z" stroke="rgba(255,255,255,0.78)" stroke-width="4"></path>
-                    <rect x="40" y="20" width="8" height="28" rx="4" fill="rgba(255,255,255,0.78)"></rect>
+                  <svg width="130" height="72" viewBox="0 0 130 72" fill="none" aria-hidden="true">
+                    <rect x="58" y="16" width="14" height="40" rx="7" fill="rgba(255,255,255,0.82)"></rect>
                   </svg>
                 </div>
                 <div class="engraving-note">
-                  Le signe reste propre en creux, en plein, ou en marquage métallique. Très bon candidat pour un badge produit discret.
+                  Ici la force vient de l’extrême simplicité : un seul geste vertical peut devenir
+                  l’emblème, le témoin physique et le système de statut.
                 </div>
               </div>
             </div>
@@ -1191,51 +1335,52 @@
               <h3 class="panel-title">Palette &amp; système typo</h3>
               <div class="swatches">
                 <div class="swatch">
-                  <div class="chip" style="background:#101826;"></div>
-                  <div><strong>Midnight</strong><small>Socle tech premium, sérieux, non anxiogène.</small></div>
-                  <div class="hex">#101826</div>
+                  <div class="chip" style="background:#181b1e;"></div>
+                  <div><strong>Graphite</strong><small>Base premium, hardware, contraste, densité.</small></div>
+                  <div class="hex">#181B1E</div>
                 </div>
                 <div class="swatch">
-                  <div class="chip" style="background:#eef3f1;"></div>
-                  <div><strong>Vapor</strong><small>Respiration, clarté, douceur santé.</small></div>
-                  <div class="hex">#EEF3F1</div>
+                  <div class="chip" style="background:#f5f0e7;"></div>
+                  <div><strong>Bone Light</strong><small>Respiration chaude, premium, non clinique.</small></div>
+                  <div class="hex">#F5F0E7</div>
                 </div>
                 <div class="swatch">
-                  <div class="chip" style="background:#2fd0c1;"></div>
-                  <div><strong>Signal Mint</strong><small>Accent app, statut, onboarding, énergie.</small></div>
-                  <div class="hex">#2FD0C1</div>
+                  <div class="chip" style="background:#ff9361;"></div>
+                  <div><strong>Beacon Ember</strong><small>Cœur de marque, énergie, visibilité, mémorisation.</small></div>
+                  <div class="hex">#FF9361</div>
                 </div>
                 <div class="swatch">
-                  <div class="chip" style="background:#ff7443;"></div>
-                  <div><strong>Voltage Orange</strong><small>CTA forts, rappel d’action, usage ponctuel.</small></div>
-                  <div class="hex">#FF7443</div>
+                  <div class="chip" style="background:#ffd2b1;"></div>
+                  <div><strong>Glow Mist</strong><small>Aura, motion, écrans de focus, transitions douces.</small></div>
+                  <div class="hex">#FFD2B1</div>
                 </div>
                 <div class="swatch">
-                  <div class="chip" style="background:#74808a;"></div>
-                  <div><strong>Alloy</strong><small>Neutralité interface, analytics, systèmes.</small></div>
-                  <div class="hex">#74808A</div>
+                  <div class="chip" style="background:#8f877b;"></div>
+                  <div><strong>Warm Alloy</strong><small>Relais neutre entre l’objet, le bois et l’interface.</small></div>
+                  <div class="hex">#8F877B</div>
                 </div>
               </div>
 
               <div class="font-stack">
-                <div class="font-row"><strong>Space Grotesk</strong><small>Display expressif, technologique sans froideur corporate.</small></div>
-                <div class="font-row"><strong>Inter</strong><small>Interface rapide, solide, internationale, très mobile-friendly.</small></div>
-                <div class="font-row"><strong>IBM Plex Mono</strong><small>Mesure, temps protégé, streaks, logs, scoreboards.</small></div>
+                <div class="font-row"><strong>Plus Jakarta Sans</strong><small>Display plus dense, plus contemporain, plus app-native que Sora.</small></div>
+                <div class="font-row"><strong>Inter</strong><small>UI solide, compacte, robuste pour un système d’états et de produits.</small></div>
+                <div class="font-row"><strong>IBM Plex Mono</strong><small>Protocoles, timers, stats de session, signaux système.</small></div>
               </div>
 
               <ul class="notes">
-                <li><strong>Pourquoi ça marche :</strong> le signe est simple, propriétaire, très app-first et n’enferme pas Faraday dans la seule forme de la box.</li>
-                <li><strong>Risque :</strong> la piste est un peu plus “système de marque” que “objet émotionnel”; elle demandera une direction photo chaleureuse pour garder l’âme.</li>
+                <li><strong>Pourquoi ça marche :</strong> la LED devient un symbole extrêmement simple, donc très fort. Tu peux la faire vivre sur le hardware, le splash app, les statuts et les campagnes sans changer de logique.</li>
+                <li><strong>Pourquoi ces couleurs ensemble :</strong> le graphite crée l’écrin, le bone garde l’élégance domestique, et l’ember construit l’attachement émotionnel autour de la lumière.</li>
+                <li><strong>Risque :</strong> c’est plus signé, plus visuel, plus motion-driven. Il faut tenir une exécution très propre pour ne pas basculer dans du vocabulaire “device/notification”.</li>
               </ul>
             </div>
           </article>
         </div>
 
         <div class="tag-row">
-          <span class="tag">Scalable</span>
-          <span class="tag">App-first</span>
-          <span class="tag">Famille + communauté</span>
-          <span class="tag">Tech x wellbeing</span>
+          <span class="tag">Distinctive</span>
+          <span class="tag">Motion-first</span>
+          <span class="tag">Hardware-native</span>
+          <span class="tag">Iconique</span>
         </div>
 
         <article class="panel" style="margin-top:18px;">
@@ -1243,276 +1388,42 @@
             <h3 class="panel-title">Animations proposées</h3>
             <div class="anim-grid">
               <div class="anim-card">
-                <div class="anim-preview anim-glow" style="background:#101826;">
-                  <svg width="82" height="82" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <rect width="88" height="88" rx="24" fill="#101826"></rect>
-                    <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" fill="#EEF3F1"></path>
-                    <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                <div class="anim-preview anim-led-breathe" style="background:#181b1e;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="33" y="18" width="30" height="60" rx="15" class="led-aura" fill="#FFD2B1" opacity="0.16"></rect>
+                    <rect x="37" y="24" width="22" height="48" rx="11" class="led-aura" fill="#FF9361" opacity="0.22"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#FF9361"></rect>
                   </svg>
                 </div>
-                <div class="anim-meta"><strong>Sanctuary Glow</strong><small>Très bon comportement pour landing, app icon splash ou modal focus.</small></div>
+                <div class="anim-meta"><strong>Beacon Breathe</strong><small>La version la plus premium. Une respiration de lumière simple, hypnotique, jamais gadget.</small></div>
               </div>
               <div class="anim-card">
-                <div class="anim-preview anim-float" style="background:#eef3f1;">
-                  <svg width="82" height="82" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" stroke="#101826" stroke-width="5"></path>
-                    <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                <div class="anim-preview anim-led-halo" style="background:#f5f0e7;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="33" y="18" width="30" height="60" rx="15" class="led-aura" fill="#FFD2B1" opacity="0.28"></rect>
+                    <rect x="37" y="24" width="22" height="48" rx="11" class="led-aura" fill="#FF9361" opacity="0.18"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#FF9361"></rect>
                   </svg>
                 </div>
-                <div class="anim-meta"><strong>Portal Rise</strong><small>Parfait pour le moment où l’on “entre” en session ou dans un flow dédié.</small></div>
+                <div class="anim-meta"><strong>Warm Halo</strong><small>L’aura s’élargit pour signifier le focus, la protection ou la fin réussie d’une session.</small></div>
               </div>
               <div class="anim-card">
-                <div class="anim-preview anim-pulse" style="background:#2fd0c1;">
-                  <svg width="82" height="82" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M23 61V34C23 24.6112 30.6112 17 40 17H48C57.3888 17 65 24.6112 65 34V61C65 67.6274 59.6274 73 53 73H35C28.3726 73 23 67.6274 23 61Z" stroke="#101826" stroke-width="5"></path>
-                    <rect x="39" y="28" width="10" height="34" rx="5" fill="#101826"></rect>
+                <div class="anim-preview anim-led-rise" style="background:#ff9361;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="33" y="18" width="30" height="60" rx="15" class="led-aura" fill="#F5F0E7" opacity="0.18"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#181B1E"></rect>
                   </svg>
                 </div>
-                <div class="anim-meta"><strong>Focus Pulse</strong><small>Version plus énergique pour stats, streaks, CTA ou notifications.</small></div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section class="section concept-3">
-        <div class="section-header">
-          <div>
-            <span class="section-kicker">03 · Presence Loop</span>
-            <h2>La marque comme rituel, cercle et retour à soi.</h2>
-            <p>
-              La piste la plus éditoriale et la plus lifestyle. Le signe n’a plus besoin de citer l’objet.
-              La version principale devient une
-              <strong>boucle ouverte</strong> : un cycle qui respire, qui reste disponible, qui invite au retour à soi.
-              Elle donne à Faraday une présence plus culturelle, plus premium et plus “longevity” que purement tech.
-            </p>
-          </div>
-
-          <aside class="fit-box">
-            <strong>Quand la choisir</strong>
-            <p>
-              Si tu veux que Faraday ressemble moins à une startup hardware et plus à une
-              <strong>marque de rituel contemporain</strong>, de bien-être exigeant et de design domestique.
-            </p>
-          </aside>
-        </div>
-
-        <div class="concept-grid">
-          <article class="panel">
-            <div class="panel-pad">
-              <h3 class="panel-title">Logo principal &amp; déclinaisons</h3>
-              <div class="lockups">
-                <div class="logo-stage" style="background:#f5efe7;">
-                  <div class="logo-lockup type-loop" style="color:#111416;">
-                    <svg class="mark" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <rect width="88" height="88" rx="24" fill="#F5EFE7"></rect>
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                    </svg>
-                    <div class="wordmark">
-                      <div class="wordmark-title">Faraday</div>
-                      <div class="wordmark-baseline">Disconnect to reconnect</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="logo-stage dark" style="background:#111416;">
-                  <div class="logo-lockup type-loop" style="color:#f5efe7;">
-                    <svg class="mark" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <rect width="88" height="88" rx="24" fill="#111416"></rect>
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#F5EFE7" stroke-width="6" stroke-linecap="round"></path>
-                    </svg>
-                    <div class="wordmark">
-                      <div class="wordmark-title">Faraday</div>
-                      <div class="wordmark-baseline">Disconnect to reconnect</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="logo-stage" style="background:#e8e0d6;">
-                  <div class="logo-lockup type-loop" style="color:#111416;">
-                    <svg class="mark" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <rect width="88" height="88" rx="24" fill="#E8E0D6"></rect>
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                      <rect x="57" y="25" width="8" height="38" rx="4" fill="#C9734D"></rect>
-                    </svg>
-                    <div class="wordmark">
-                      <div class="wordmark-title">Faraday</div>
-                      <div class="wordmark-baseline">Variante avec barre</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mini-row">
-                <div class="mini-card">
-                  <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                  </svg>
-                  <span>Icône signature</span>
-                </div>
-                <div class="mini-card">
-                  <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                    <rect x="57" y="25" width="8" height="38" rx="4" fill="#C9734D"></rect>
-                  </svg>
-                  <span>Avec barre</span>
-                </div>
-                <div class="mini-card">
-                  <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                  </svg>
-                  <span>Gravure mono</span>
-                </div>
-                <div class="mini-card">
-                  <div class="type-loop" style="display:grid;place-items:center;height:48px;font-family:'Instrument Serif',serif;font-size:31px;letter-spacing:-0.03em;">Faraday</div>
-                  <span>Wordmark</span>
-                </div>
-                <div class="mini-card">
-                  <div class="stacked-lockup type-loop" style="color:#111416;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                    </svg>
-                    <div class="wordmark-title" style="font-size:24px;">Faraday</div>
-                    <div class="wordmark-baseline" style="font-size:9px;">Disconnect to reconnect</div>
-                  </div>
-                  <span>Empilé</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-pad">
-              <h3 class="panel-title">App icon, favicon, gravure</h3>
-              <div class="icon-grid">
-                <div>
-                  <div class="app-icon" style="background:#111416;">
-                    <svg class="mark" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <rect width="88" height="88" rx="24" fill="#111416"></rect>
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#F5EFE7" stroke-width="6" stroke-linecap="round"></path>
-                    </svg>
-                  </div>
-                  <div class="icon-label">App icon</div>
-                </div>
-                <div>
-                  <div class="favicon" style="background:#f5efe7;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                    </svg>
-                  </div>
-                  <div class="icon-label">32 px</div>
-                </div>
-                <div>
-                  <div class="favicon" style="background:#c9734d;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#F5EFE7" stroke-width="6" stroke-linecap="round"></path>
-                      <rect x="57" y="25" width="8" height="38" rx="4" fill="#111416"></rect>
-                    </svg>
-                  </div>
-                  <div class="icon-label">Accent avec barre</div>
-                </div>
-                <div>
-                  <div class="favicon" style="background:#90937e;">
-                    <svg class="mark small" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                      <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                    </svg>
-                  </div>
-                  <div class="icon-label">Sans barre</div>
-                </div>
-              </div>
-
-              <div class="engraving" style="margin-top:18px;background:linear-gradient(180deg, rgba(92,57,36,0.17), rgba(92,57,36,0.23)), linear-gradient(90deg, #9a714f 0%, #7b573c 100%);">
-                <div class="engraving-surface">
-                  <svg width="150" height="76" viewBox="0 0 150 76" fill="none" aria-hidden="true">
-                    <path d="M110 26C102.651 14.4589 89.7391 7 75 7C52.3563 7 34 25.3563 34 48C34 70.6437 52.3563 89 75 89C89.7391 89 102.651 81.5411 110 70" stroke="rgba(255,255,255,0.78)" stroke-width="4.5" stroke-linecap="round" transform="translate(-10 -10)"></path>
-                  </svg>
-                </div>
-                <div class="engraving-note">
-                  Très élégante en embossage ou marquage cuivre. Je garderais 1 ou 2 usages avec barre comme accents, mais la famille principale vit mieux sans.
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-pad">
-              <h3 class="panel-title">Palette &amp; système typo</h3>
-              <div class="swatches">
-                <div class="swatch">
-                  <div class="chip" style="background:#111416;"></div>
-                  <div><strong>Ink Black</strong><small>Assise premium, luxe discret, contraste fort.</small></div>
-                  <div class="hex">#111416</div>
-                </div>
-                <div class="swatch">
-                  <div class="chip" style="background:#f5efe7;"></div>
-                  <div><strong>Bone</strong><small>Chaleur, lifestyle, respiration éditoriale.</small></div>
-                  <div class="hex">#F5EFE7</div>
-                </div>
-                <div class="swatch">
-                  <div class="chip" style="background:#c9734d;"></div>
-                  <div><strong>Terracotta Pulse</strong><small>Vie, chaleur humaine, usage émotionnel.</small></div>
-                  <div class="hex">#C9734D</div>
-                </div>
-                <div class="swatch">
-                  <div class="chip" style="background:#90937e;"></div>
-                  <div><strong>Olive Stone</strong><small>Lien longevity, nature, stabilité.</small></div>
-                  <div class="hex">#90937E</div>
-                </div>
-                <div class="swatch">
-                  <div class="chip" style="background:#b4b9bc;"></div>
-                  <div><strong>Brushed Steel</strong><small>Référence matérielle, hardware, objet.</small></div>
-                  <div class="hex">#B4B9BC</div>
-                </div>
-              </div>
-
-              <div class="font-stack">
-                <div class="font-row"><strong>Instrument Serif</strong><small>Display marque. Plus éditorial, plus mature, plus désirable.</small></div>
-                <div class="font-row"><strong>Instrument Sans</strong><small>Interface souple, contemporaine, moins impersonnelle qu’un sans produit standard.</small></div>
-                <div class="font-row"><strong>IBM Plex Mono</strong><small>Temps, protocoles, métriques et streaks.</small></div>
-              </div>
-
-              <ul class="notes">
-                <li><strong>Pourquoi ça marche :</strong> la piste donne à Faraday une densité culturelle et premium très forte, idéale pour un public urbain et health-conscious.</li>
-                <li><strong>Risque :</strong> il faut tenir une exécution photo, éditoriale et packaging très cohérente pour ne pas basculer dans une marque trop “magazine”.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-
-        <div class="tag-row">
-          <span class="tag">Premium lifestyle</span>
-          <span class="tag">Longevity</span>
-          <span class="tag">Editorial</span>
-          <span class="tag">Marque culturelle</span>
-        </div>
-
-        <article class="panel" style="margin-top:18px;">
-          <div class="panel-pad">
-            <h3 class="panel-title">Animations proposées</h3>
-            <div class="anim-grid">
-              <div class="anim-card">
-                <div class="anim-preview anim-rotate" style="background:#f5efe7;">
-                  <svg width="82" height="82" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#111416" stroke-width="6" stroke-linecap="round"></path>
-                  </svg>
-                </div>
-                <div class="anim-meta"><strong>Slow Orbit</strong><small>Très belle animation pour la présence, la durée et la ritualisation.</small></div>
+                <div class="anim-meta"><strong>Wake Vertical</strong><small>La lumière monte comme un réveil calme. Très bon pour session start, wake lockup ou reveal produit.</small></div>
               </div>
               <div class="anim-card">
-                <div class="anim-preview anim-pulse" style="background:#111416;">
-                  <svg width="82" height="82" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#F5EFE7" stroke-width="6" stroke-linecap="round"></path>
+                <div class="anim-preview anim-led-blink" style="background:#181b1e;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="33" y="18" width="30" height="60" rx="15" class="led-aura" fill="#FFD2B1" opacity="0.16"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#F5F0E7"></rect>
                   </svg>
                 </div>
-                <div class="anim-meta"><strong>Breath Loop</strong><small>Version plus contemplative, parfaite pour les écrans d’attente ou de focus.</small></div>
-              </div>
-              <div class="anim-card">
-                <div class="anim-preview anim-glow" style="background:#c9734d;">
-                  <svg width="82" height="82" viewBox="0 0 88 88" fill="none" aria-hidden="true">
-                    <path d="M68 31C63.5637 22.1137 54.3895 16 44 16C28.536 16 16 28.536 16 44C16 59.464 28.536 72 44 72C54.3895 72 63.5637 65.8863 68 57" stroke="#F5EFE7" stroke-width="6" stroke-linecap="round"></path>
-                  </svg>
-                </div>
-                <div class="anim-meta"><strong>Warm Halo</strong><small>Accent émotionnel pour landing page, fin de session ou communication de marque.</small></div>
+                <div class="anim-meta"><strong>End Blink</strong><small>Un double clignement maîtrisé pour confirmer la fin d’un rituel sans tomber dans le vocabulaire d’alerte.</small></div>
               </div>
             </div>
           </div>
@@ -1523,23 +1434,21 @@
         <article class="decision-card">
           <h3>Lecture comparative</h3>
           <ul>
-            <li><strong>01 Signal Calm</strong> : la plus fluide à lancer immédiatement. Très Faraday, très lisible, très compatible avec l’existant.</li>
-            <li><strong>02 Protected Time</strong> : la plus stratégique. Forte en app, forte en système, forte pour faire grandir la marque.</li>
-            <li><strong>03 Presence Loop</strong> : la plus désirable si tu veux construire une marque de rituel et de design, plus premium et plus lifestyle.</li>
+            <li><strong>01 Signal Calm LED</strong> : la plus équilibrée. Elle garde la douceur de la piste 1, mais le signe devient enfin cohérent avec la promesse de vie, de présence et de calme actif.</li>
+            <li><strong>02 Living Beacon</strong> : la plus distinctive. Elle transforme la LED en système de marque complet, très fort en app icon, motion, statuts et narration hardware.</li>
           </ul>
         </article>
 
         <article class="decision-card">
           <h3>Mon conseil</h3>
           <p>
-            Si tu veux arbitrer vite : <strong>prends la structure de marque de la piste 02</strong>, puis
-            conserve de la piste 01 le soin apporté à la douceur et à la respiration. C’est le meilleur
-            point d’équilibre entre <strong>autonomie de marque</strong>, <strong>app icon mémorable</strong>,
-            <strong>gravure produit</strong> et <strong>ambition future de plateforme</strong>.
+            Si tu veux arbitrer vite : <strong>fais de la piste 01 la base de marque</strong>, puis emprunte
+            à la piste 02 son système de motion et d’états. Tu obtiens ainsi un ensemble plus juste :
+            <strong>une identité calme et premium</strong>, mais portée par un signe vivant qui appartient
+            réellement au produit.
           </p>
         </article>
       </section>
     </main>
-  <script src="nav.js"></script>
   </body>
 </html>
