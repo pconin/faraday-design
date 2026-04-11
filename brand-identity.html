@@ -232,63 +232,167 @@ icons.forEach(ic=>{
 });
 h+=`</div></div><div class="div"></div>`;
 
-// 08 APP — Light + Dark
-h+=`<div class="sect" style="background:${P.gc};max-width:none;padding:70px 40px;"><div style="max-width:1100px;margin:0 auto;"><div class="sh">08</div><div class="st">Application</div><div class="sd">Sauge comme couleur de marque, touches de Corail (defis) et Bleu (stats).</div><div class="g">`;
+// 08 APP — 5 ecrans V3 + Splash
+const A=P.s,AC=P.c,AW=P.w,AG=P.g,AGC=P.gc,ACO=P.co,ABL=P.bl;
+const nav=(act)=>`<div class="ph-nav"><div class="pni"${act==='h'?` style="color:${AC};font-weight:600;"`:''}>&#9679;<br>Home</div><div class="pni"${act==='g'?` style="color:${AC};font-weight:600;"`:''}>&#9829;<br>Groupes</div><div class="pni"${act==='b'?` style="color:${AC};font-weight:600;"`:''}>&#9632;<br>Boxes</div><div class="pni"${act==='s'?` style="color:${AC};font-weight:600;"`:''}>&#9650;<br>Stats</div><div class="pni">&#9783;<br>Plus</div></div>`;
 
-// Light phone
-h+=`<div><div class="sub" style="text-align:center;">Light mode</div><div class="ph" style="height:580px;">
+h+=`<div class="sect" style="background:${AGC};max-width:none;padding:70px 40px;"><div style="max-width:1200px;margin:0 auto;"><div class="sh">08</div><div class="st">Application — 5 ecrans</div><div class="sd">Sauge = marque, Corail = defis/CTA, Bleu = stats/data.</div><div class="g">`;
+
+// 01 HOME
+h+=`<div><div class="sub" style="text-align:center;">01 — Home</div><div class="ph" style="height:600px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
-<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.08em;">faraday</div></div>
+<div style="padding:10px 18px;display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,A,AC)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:15px;letter-spacing:.08em;">faraday</div></div>
 <div class="ph-ct">
-<div style="border-radius:8px;padding:10px;margin-bottom:8px;background:${P.s}30;border:1px solid ${P.s};">
-  <div style="display:flex;align-items:center;gap:6px;"><div style="width:6px;height:6px;border-radius:50%;background:${P.s};"></div><div style="flex:1;"><div style="font-size:11px;font-weight:600;">Session en cours</div><div style="font-size:9px;color:${P.g};">Salon &middot; 14:20</div></div><div style="font-family:'Space Mono',monospace;font-size:16px;font-weight:700;">1h42</div></div></div>
-<div style="text-align:center;padding:8px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;">9<span style="font-size:12px;color:${P.g};">h</span>46</div><div style="font-size:10px;color:${P.g};">deconnecte</div></div>
-<div style="display:flex;gap:5px;margin:6px 0;">
-  <div style="flex:1;background:${P.s}20;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;">5</div><div style="font-size:7px;color:${P.g};">sessions</div></div>
-  <div style="flex:1;background:${P.s}20;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;">1h57</div><div style="font-size:7px;color:${P.g};">moyenne</div></div>
-  <div style="flex:1;background:${P.s}20;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.bl};">+18%</div><div style="font-size:7px;color:${P.g};">vs sem.</div></div>
+<div style="border-radius:10px;padding:12px;margin-bottom:10px;background:${A}30;border:1px solid ${A};">
+  <div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:50%;background:${A};"></div><div style="flex:1;"><div style="font-size:12px;font-weight:600;">Session en cours</div><div style="font-size:9px;color:${AG};">Salon &middot; Depuis 14:20</div></div><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">1h42</div></div></div>
+<div style="text-align:center;padding:14px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;">9<span style="font-size:14px;color:${AG};">h</span>46</div><div style="font-size:11px;color:${AG};margin-top:2px;">deconnecte aujourd'hui</div></div>
+<div style="display:flex;gap:6px;margin-bottom:10px;">
+  <div style="flex:1;background:${A}18;border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;">5</div><div style="font-size:8px;color:${AG};">sessions</div></div>
+  <div style="flex:1;background:${A}18;border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;">1h57</div><div style="font-size:8px;color:${AG};">moyenne</div></div>
+  <div style="flex:1;background:${A}18;border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:${ABL};">&#9650; 18%</div><div style="font-size:8px;color:${AG};">vs sem.</div></div>
 </div>
-<div style="border:1px solid ${P.co}25;border-radius:8px;padding:8px;margin-top:6px;background:${P.co}06;">
-  <div style="font-size:9px;font-weight:600;color:${P.co};">&#127775; Defi en cours</div>
-  <div style="font-size:10px;margin-top:3px;">Semaine sans ecran</div>
-  <div style="height:4px;background:${P.gc};border-radius:2px;margin-top:4px;overflow:hidden;"><div style="height:100%;width:65%;background:${P.co};border-radius:2px;"></div></div>
+<div style="background:${A}12;border-radius:10px;padding:10px;">
+  <div style="font-size:9px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">&#128293; Streak — 12 jours</div>
+  <div style="display:flex;gap:2px;">`;
+'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:500;${i<6?`background:${A}35;color:${AC};`:`background:${A};color:${AC};font-weight:600;`}">${d}</div>`;});
+h+=`</div></div>
+<div style="border:1px solid ${ACO}22;border-radius:10px;padding:10px;margin-top:10px;background:${ACO}06;">
+  <div style="font-size:9px;font-weight:600;color:${ACO};">&#127775; Defi en cours</div>
+  <div style="font-size:11px;margin-top:3px;">Semaine sans ecran le soir</div>
+  <div style="height:5px;background:${AGC};border-radius:3px;margin-top:6px;overflow:hidden;"><div style="height:100%;width:65%;background:${ACO};border-radius:3px;"></div></div>
+  <div style="font-size:9px;color:${ACO};margin-top:4px;font-weight:600;">5/5 soirs &#10003;</div>
 </div>
-<div style="background:${P.s}15;border-radius:8px;padding:8px;margin-top:6px;">
-  <div style="font-size:8px;font-weight:600;color:${P.g};text-transform:uppercase;letter-spacing:.05em;">&#128293; Streak — 12j</div>
-  <div style="display:flex;gap:2px;margin-top:4px;">`;
-'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:16px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:500;${i<6?`background:${P.s}40;color:${P.c};`:`background:${P.s};color:${P.c};font-weight:600;`}">${d}</div>`;});
-h+=`</div></div></div>
-<div class="ph-nav"><div class="pni" style="color:${P.c};font-weight:600;">&#9679;<br>Home</div><div class="pni">&#9829;<br>Groupes</div><div class="pni">&#9632;<br>Boxes</div><div class="pni">&#9650;<br>Stats</div><div class="pni">&#9783;<br>Plus</div></div>
-</div></div>`;
+</div>
+${nav('h')}</div></div>`;
 
-// Dark phone
-h+=`<div><div class="sub" style="text-align:center;">Dark mode</div><div class="ph ph-dark" style="height:580px;">
+// 02 HOME SESSION TERMINEE
+h+=`<div><div class="sub" style="text-align:center;">02 — Session terminee</div><div class="ph" style="height:600px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
-<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.08em;color:${P.w};">faraday</div></div>
+<div style="padding:10px 18px;display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,A,AC)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:15px;letter-spacing:.08em;">faraday</div></div>
 <div class="ph-ct">
-<div style="border-radius:8px;padding:10px;margin-bottom:8px;background:${P.s}15;border:1px solid ${P.s}40;">
-  <div style="display:flex;align-items:center;gap:6px;"><div style="width:6px;height:6px;border-radius:50%;background:${P.s};"></div><div style="flex:1;"><div style="font-size:11px;font-weight:600;color:${P.w};">Session en cours</div><div style="font-size:9px;color:${P.g};">Salon &middot; 14:20</div></div><div style="font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:${P.s};">1h42</div></div></div>
-<div style="text-align:center;padding:8px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:${P.w};">9<span style="font-size:12px;color:${P.g};">h</span>46</div><div style="font-size:10px;color:${P.g};">deconnecte</div></div>
-<div style="display:flex;gap:5px;margin:6px 0;">
-  <div style="flex:1;background:#3a3b3980;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.w};">5</div><div style="font-size:7px;color:${P.g};">sessions</div></div>
-  <div style="flex:1;background:#3a3b3980;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.w};">1h57</div><div style="font-size:7px;color:${P.g};">moyenne</div></div>
-  <div style="flex:1;background:#3a3b3980;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.bl};">+18%</div><div style="font-size:7px;color:${P.g};">vs sem.</div></div>
+<div style="border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid #6b9b6b30;background:#6b9b6b08;">
+  <div style="display:flex;align-items:center;gap:8px;"><div style="width:30px;height:30px;border-radius:8px;background:#6b9b6b18;display:flex;align-items:center;justify-content:center;font-size:14px;">&#10003;</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;">Session terminee</div><div style="font-size:9px;color:${AG};">Salon &middot; 14:20 — 16:02</div></div><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">1h42</div></div></div>
+<div style="text-align:center;padding:10px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;">3<span style="font-size:14px;color:${AG};">h</span>22</div><div style="font-size:11px;color:${AG};">deconnecte aujourd'hui</div></div>
+<div style="background:${A}12;border-radius:10px;padding:12px;margin-top:10px;">
+  <div style="font-size:9px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Sessions recentes</div>
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid ${AGC};">
+    <div style="padding:5px 10px;border-radius:6px;background:${A}30;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;">1h42</div>
+    <div><div style="font-size:11px;font-weight:500;">Salon</div><div style="font-size:9px;color:${AG};">14:20 — 16:02</div></div></div>
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;">
+    <div style="padding:5px 10px;border-radius:6px;background:${A}30;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;">1h40</div>
+    <div><div style="font-size:11px;font-weight:500;">Chambre</div><div style="font-size:9px;color:${AG};">07:10 — 08:50</div></div></div>
 </div>
-<div style="border:1px solid ${P.co}30;border-radius:8px;padding:8px;margin-top:6px;background:${P.co}0a;">
-  <div style="font-size:9px;font-weight:600;color:${P.co};">&#127775; Defi en cours</div>
-  <div style="font-size:10px;margin-top:3px;color:${P.w};">Semaine sans ecran</div>
-  <div style="height:4px;background:#3a3b39;border-radius:2px;margin-top:4px;overflow:hidden;"><div style="height:100%;width:65%;background:${P.co};border-radius:2px;"></div></div>
+</div>
+${nav('h')}</div></div>`;
+
+// 04 CLASSEMENT
+h+=`<div><div class="sub" style="text-align:center;">04 — Classement</div><div class="ph" style="height:600px;">
+<div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+<div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Groupes</div>
+<div style="padding:4px 18px 10px;display:flex;align-items:center;gap:10px;">
+  <div style="width:36px;height:36px;border-radius:10px;background:${A}25;display:flex;align-items:center;justify-content:center;font-size:16px;">&#128106;</div>
+  <div><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">La Famille</div><div style="font-size:10px;color:${AG};">5 membres</div></div></div>
+<div class="ph-ct">
+<div style="display:flex;gap:6px;margin-bottom:10px;"><div style="padding:5px 12px;border-radius:14px;font-size:10px;font-weight:500;background:${A}25;color:${AC};">Cette semaine</div><div style="padding:5px 12px;border-radius:14px;font-size:10px;color:${AG};background:${AGC}40;">Ce mois</div></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px;border-radius:8px;background:#d4a44a12;border:1px solid #d4a44a30;margin-bottom:6px;">
+  <div style="width:22px;height:22px;border-radius:50%;background:#d4a44a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1a1a1a;">1</div>
+  <div style="width:28px;height:28px;border-radius:50%;background:${ACO};display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;">PC</div>
+  <div style="flex:1;"><div style="font-size:11px;font-weight:500;">Pol <span style="font-size:8px;padding:1px 5px;border-radius:3px;background:${A}30;color:${AC};">vous</span></div><div style="font-size:9px;color:${AG};">18 sessions</div></div>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;">12<span style="font-size:9px;color:${AG};">h</span></div></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px;border-radius:8px;border:1px solid ${AGC};margin-bottom:6px;">
+  <div style="width:22px;height:22px;border-radius:50%;background:#a0a0b0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1a1a1a;">2</div>
+  <div style="width:28px;height:28px;border-radius:50%;background:${ABL};display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;">EB</div>
+  <div style="flex:1;"><div style="font-size:11px;font-weight:500;">Elisabeth</div><div style="font-size:9px;color:${AG};">14 sessions</div></div>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;">10<span style="font-size:9px;color:${AG};">h</span></div></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px;border-radius:8px;border:1px solid #b0805030;margin-bottom:6px;">
+  <div style="width:22px;height:22px;border-radius:50%;background:#b08050;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">3</div>
+  <div style="width:28px;height:28px;border-radius:50%;background:#6b9b6b;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;">GM</div>
+  <div style="flex:1;"><div style="font-size:11px;font-weight:500;">Grand-mere</div></div>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;">9<span style="font-size:9px;color:${AG};">h</span></div></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px;border-radius:8px;background:${AGC}40;margin-bottom:6px;">
+  <div style="width:22px;height:22px;border-radius:50%;background:${AGC};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:${AG};">4</div>
+  <div style="width:28px;height:28px;border-radius:50%;background:#b8688a;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;">SC</div>
+  <div style="flex:1;font-size:11px;font-weight:500;">Sophie</div>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;">4<span style="font-size:9px;color:${AG};">h</span></div></div>
+</div>
+${nav('g')}</div></div>`;
+
+// 15 STATS DETAILLEES
+h+=`<div><div class="sub" style="text-align:center;">15 — Stats detaillees</div><div class="ph" style="height:600px;">
+<div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+<div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Mes Stats</div>
+<div style="padding:4px 18px 10px;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">Habitudes</div>
+<div class="ph-ct">
+<div style="border:1px solid ${AGC};border-radius:10px;padding:12px;margin-bottom:10px;">
+  <div style="font-size:9px;font-weight:500;color:${AG};text-transform:uppercase;">Heatmap — 4 semaines</div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:8px;">`;
+[.15,.3,.55,.8,.15,.3,.55,.3,.55,.8,.3,.15,.8,.55,.8,.3,.55,.8,.3,.8,.55,.15,.3,.55,.8,.55,.3,0].forEach(o=>{
+  h+=`<div style="aspect-ratio:1;border-radius:2px;background:${A};opacity:${o||.05};"></div>`;
+});
+h+=`</div></div>
+<div style="border:1px solid ${AGC};border-radius:10px;padding:12px;margin-bottom:10px;">
+  <div style="font-size:9px;font-weight:500;color:${AG};text-transform:uppercase;">Heures preferees</div>
+  <div style="display:flex;align-items:flex-end;gap:3px;height:60px;margin-top:8px;">`;
+[12,24,8,28,16,36,80,72].forEach((hh,i)=>{
+  h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;height:${hh*.7}px;border-radius:2px 2px 0 0;background:${ABL};"></div><div style="font-size:6px;color:${AG};">${['6h','8h','10h','12h','14h','18h','20h','22h'][i]}</div></div>`;
+});
+h+=`</div></div>
+<div style="display:flex;gap:6px;margin-bottom:10px;">
+  <div style="flex:1;border:1px solid ${AGC};border-radius:10px;padding:10px;text-align:center;"><div style="font-size:9px;color:${AG};text-transform:uppercase;">Meilleur jour</div><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-top:4px;">Samedi</div><div style="font-size:9px;color:${AG};">moy. 8h12</div></div>
+  <div style="flex:1;border:1px solid ${AGC};border-radius:10px;padding:10px;text-align:center;"><div style="font-size:9px;color:${AG};text-transform:uppercase;">Plus longue</div><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-top:4px;">9h42</div><div style="font-size:9px;color:${AG};">22 mars</div></div>
+</div>
+<div style="border:1px solid ${AGC};border-radius:10px;padding:12px;">
+  <div style="font-size:9px;font-weight:500;color:${AG};text-transform:uppercase;margin-bottom:8px;">Repartition</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="width:60px;height:60px;border-radius:50%;border:5px solid ${AGC};position:relative;"><div style="position:absolute;inset:-5px;border-radius:50%;border:5px solid transparent;border-top-color:${A};border-right-color:${A};transform:rotate(30deg);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;">68%</div></div>
+    <div><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><div style="width:8px;height:8px;border-radius:2px;background:${A};"></div><span style="font-size:10px;">Nuit 68%</span></div><div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:2px;background:${AGC};"></div><span style="font-size:10px;">Jour 32%</span></div></div>
+  </div>
 </div>
 </div>
-<div class="ph-nav"><div class="pni" style="color:${P.s};font-weight:600;">&#9679;<br>Home</div><div class="pni">&#9829;<br>Groupes</div><div class="pni">&#9632;<br>Boxes</div><div class="pni">&#9650;<br>Stats</div><div class="pni">&#9783;<br>Plus</div></div>
+${nav('s')}</div></div>`;
+
+// 17 ANALYTICS PAR BOX
+h+=`<div><div class="sub" style="text-align:center;">17 — Analytics box</div><div class="ph" style="height:600px;">
+<div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+<div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Analytics</div>
+<div style="padding:4px 18px 10px;display:flex;align-items:center;gap:10px;">
+  <div style="width:36px;height:36px;border-radius:10px;overflow:hidden;">${F(36,A,AC)}</div>
+  <div><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">Salon</div><div style="font-size:10px;color:${AG};">Faraday Box Pro</div></div></div>
+<div class="ph-ct">
+<div style="display:flex;gap:6px;margin-bottom:10px;">
+  <div style="padding:5px 12px;border-radius:14px;font-size:10px;font-weight:500;background:${A}25;color:${AC};">7 jours</div><div style="padding:5px 12px;border-radius:14px;font-size:10px;color:${AG};background:${AGC}40;">30 jours</div></div>
+<div style="display:flex;gap:6px;margin-bottom:10px;">
+  <div style="flex:1;border:1px solid ${AGC};border-radius:8px;padding:10px;"><div style="font-size:9px;color:${AG};text-transform:uppercase;">Total</div><div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;margin-top:2px;">18<span style="font-size:11px;color:${AG};">h</span></div><div style="font-size:9px;color:#6b9b6b;">&#9650; 22%</div></div>
+  <div style="flex:1;border:1px solid ${AGC};border-radius:8px;padding:10px;"><div style="font-size:9px;color:${AG};text-transform:uppercase;">Sessions</div><div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;margin-top:2px;">12</div></div></div>
+<div style="border:1px solid ${AGC};border-radius:10px;padding:10px;margin-bottom:10px;">
+  <div style="font-size:9px;color:${AG};text-transform:uppercase;margin-bottom:8px;">Activite</div>
+  <div style="display:flex;align-items:flex-end;gap:3px;height:50px;">`;
+[35,50,22,58,42,65,55].forEach((hh,i)=>{
+  h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;height:${hh*.8}px;border-radius:2px 2px 0 0;background:${A};"></div><div style="font-size:6px;color:${AG};">${'LMMJVSD'[i]}</div></div>`;
+});
+h+=`</div></div>
+<div style="border:1px solid ${AGC};border-radius:10px;padding:10px;">
+  <div style="font-size:9px;color:${AG};text-transform:uppercase;margin-bottom:8px;">Utilisateurs</div>
+  <div style="display:flex;align-items:center;gap:6px;padding:5px 0;border-bottom:1px solid ${AGC};">
+    <div style="width:20px;height:20px;border-radius:50%;background:${ACO};display:flex;align-items:center;justify-content:center;font-size:7px;color:#fff;font-weight:600;">PC</div>
+    <div style="flex:1;font-size:10px;">Vous</div><div style="font-size:10px;font-weight:600;">10h</div></div>
+  <div style="display:flex;align-items:center;gap:6px;padding:5px 0;border-bottom:1px solid ${AGC};">
+    <div style="width:20px;height:20px;border-radius:50%;background:${ABL};display:flex;align-items:center;justify-content:center;font-size:7px;color:#fff;font-weight:600;">EB</div>
+    <div style="flex:1;font-size:10px;">Elisabeth</div><div style="font-size:10px;font-weight:600;">6h</div></div>
+  <div style="display:flex;align-items:center;gap:6px;padding:5px 0;">
+    <div style="width:20px;height:20px;border-radius:50%;background:${AGC};display:flex;align-items:center;justify-content:center;font-size:7px;color:${AG};">?</div>
+    <div style="flex:1;font-size:10px;color:${AG};">Anonyme</div><div style="font-size:10px;font-weight:600;color:${AG};">1h55</div></div>
+</div>
+</div>
+${nav('s')}</div></div>`;
+
+// SPLASH
+h+=`<div><div class="sub" style="text-align:center;">Splash</div><div class="ph" style="height:600px;background:${A};align-items:center;justify-content:center;">
+  <div style="width:60px;height:60px;margin-bottom:12px;">${F(60,A,AC)}</div>
+  <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:.08em;color:${AC};">faraday</div>
+  <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;margin-top:5px;color:${AC};">disconnect to reconnect</div>
 </div></div>`;
 
-// Splash
-h+=`<div><div class="sub" style="text-align:center;">Splash</div><div class="ph" style="height:580px;background:${P.s};align-items:center;justify-content:center;">
-  <div style="width:60px;height:60px;margin-bottom:12px;">${F(60,P.s,P.c)}</div>
-  <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:.08em;color:${P.c};">faraday</div>
-  <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;margin-top:5px;color:${P.c};">disconnect to reconnect</div>
-</div></div>`;
 h+=`</div></div></div><div class="div"></div>`;
 
 // 09 NOTIFICATIONS
