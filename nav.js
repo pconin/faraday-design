@@ -1,6 +1,8 @@
 // Shared navigation bar for all Faraday design pages
 (function() {
   const pages = [
+    { label: 'Brand Props', file: 'faraday-brand-proposals.html', icon: '&#10022;' },
+    { label: 'Brand Book', file: 'brand-identity.html', icon: '&#10023;' },
     { label: 'Simulateur', file: 'logo-in-context.html', icon: '&#9654;' },
     { label: 'Selection', file: 'logo-selection.html', icon: '&#9733;' },
     { label: 'Palettes V2', file: 'color-palettes-v2.html', icon: '&#9673;' },
