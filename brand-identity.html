@@ -62,14 +62,14 @@
   .a9 path{animation:hb 3s linear infinite;}
   .a10 rect{animation:morph 4s ease-in-out infinite;}
 
-  /* Phone */
-  .ph{width:320px;border-radius:34px;border:2px solid var(--gc);overflow:hidden;display:flex;flex-direction:column;background:var(--w);box-shadow:0 12px 40px rgba(0,0,0,.05);}
-  .ph-dark{background:var(--c);color:var(--w);border-color:#3a3b39;}
-  .ph-dark .ph-sb{color:#666;}
-  .ph-sb{display:flex;justify-content:space-between;padding:10px 22px 4px;font-size:10px;font-weight:600;color:var(--g);}
-  .ph-nav{display:flex;justify-content:space-around;padding:6px 0 20px;border-top:1px solid var(--gc);font-size:8px;color:var(--g);}
-  .ph-dark .ph-nav{border-color:#3a3b39;}
-  .ph-ct{flex:1;overflow:hidden;padding:0 18px 8px;}
+  /* Phone — full iPhone size */
+  .ph{width:375px;height:812px;border-radius:44px;border:3px solid var(--gc);overflow:hidden;display:flex;flex-direction:column;background:var(--w);box-shadow:0 20px 60px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04);}
+  .ph-dark{background:#1a1b19;color:#e8e6e2;border-color:#333;}
+  .ph-dark .ph-sb{color:#555;}
+  .ph-sb{display:flex;justify-content:space-between;padding:14px 28px 8px;font-size:12px;font-weight:600;color:var(--g);}
+  .ph-nav{display:flex;justify-content:space-around;padding:10px 0 30px;border-top:1px solid var(--gc);font-size:9px;color:var(--g);}
+  .ph-dark .ph-nav{border-color:#333;color:#555;}
+  .ph-ct{flex:1;overflow-y:auto;padding:0 20px 16px;}
 
   /* Cards */
   .bc{width:380px;height:228px;border-radius:10px;display:flex;flex-direction:column;justify-content:space-between;padding:26px;box-shadow:0 4px 18px rgba(0,0,0,.05);}
@@ -210,10 +210,10 @@ h+=`</div></div><div class="div"></div>`;
 const A=P.s,AC=P.c,AW=P.w,AG=P.g,AGC=P.gc,ACO=P.co,ABL=P.bl;
 const nav=(act)=>`<div class="ph-nav"><div class="pni"${act==='h'?` style="color:${AC};font-weight:600;"`:''}>&#9679;<br>Home</div><div class="pni"${act==='g'?` style="color:${AC};font-weight:600;"`:''}>&#9829;<br>Groupes</div><div class="pni"${act==='b'?` style="color:${AC};font-weight:600;"`:''}>&#9632;<br>Boxes</div><div class="pni"${act==='s'?` style="color:${AC};font-weight:600;"`:''}>&#9650;<br>Stats</div><div class="pni">&#9783;<br>Plus</div></div>`;
 
-h+=`<div class="sect" style="background:${AGC};max-width:none;padding:70px 40px;"><div style="max-width:1200px;margin:0 auto;"><div class="sh">08</div><div class="st">Application — 5 ecrans</div><div class="sd">Sauge = marque, Corail = defis/CTA, Bleu = stats/data.</div><div class="g">`;
+h+=`<div style="background:${AGC};padding:70px 40px;"><div style="max-width:100%;margin:0 auto;"><div class="sh" style="max-width:1100px;margin:0 auto;">08</div><div class="st" style="max-width:1100px;margin:0 auto 12px;">Application</div><div class="sd" style="max-width:1100px;margin:0 auto 32px;">Sauge = marque, Corail = defis/CTA, Bleu = stats/data. Taille iPhone reelle.</div><div class="g" style="gap:32px;overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap;padding-bottom:20px;">`;
 
 // 01 HOME
-h+=`<div><div class="sub" style="text-align:center;">01 — Home</div><div class="ph" style="height:600px;">
+h+=`<div><div class="sub" style="text-align:center;">01 — Home</div><div class="ph" style="height:812px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
 <div style="padding:10px 18px;display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,A,AC)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:15px;letter-spacing:.08em;">faraday</div></div>
 <div class="ph-ct">
@@ -230,37 +230,116 @@ h+=`<div><div class="sub" style="text-align:center;">01 — Home</div><div class
   <div style="display:flex;gap:2px;">`;
 'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:500;${i<6?`background:${A}35;color:${AC};`:`background:${A};color:${AC};font-weight:600;`}">${d}</div>`;});
 h+=`</div></div>
-<div style="border:1px solid ${ACO}22;border-radius:10px;padding:10px;margin-top:10px;background:${ACO}06;">
+<div style="border:1px solid ${ACO}22;border-radius:10px;padding:12px;margin-top:10px;background:${ACO}06;">
   <div style="font-size:9px;font-weight:600;color:${ACO};">&#127775; Defi en cours</div>
-  <div style="font-size:11px;margin-top:3px;">Semaine sans ecran le soir</div>
-  <div style="height:5px;background:${AGC};border-radius:3px;margin-top:6px;overflow:hidden;"><div style="height:100%;width:65%;background:${ACO};border-radius:3px;"></div></div>
-  <div style="font-size:9px;color:${ACO};margin-top:4px;font-weight:600;">5/5 soirs &#10003;</div>
+  <div style="font-size:12px;margin-top:4px;">Semaine sans ecran le soir</div>
+  <div style="font-size:10px;color:${AG};margin-top:2px;">La Famille &middot; 5 jours restants</div>
+  <div style="height:6px;background:${AGC};border-radius:3px;margin-top:8px;overflow:hidden;"><div style="height:100%;width:65%;background:${ACO};border-radius:3px;"></div></div>
+  <div style="display:flex;justify-content:space-between;margin-top:4px;"><span style="font-size:9px;color:${AG};">4/5 participent</span><span style="font-size:9px;color:${ACO};font-weight:600;">65%</span></div>
+</div>
+
+<div style="margin-top:14px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><div style="font-size:10px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.06em;">Mes groupes</div><div style="font-size:10px;color:${A};font-weight:500;">Voir tout &rsaquo;</div></div>
+  <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid ${AGC};">
+    <div style="width:30px;height:30px;border-radius:8px;background:${A}25;display:flex;align-items:center;justify-content:center;font-size:14px;">&#128106;</div>
+    <div style="flex:1;font-size:12px;font-weight:500;">La Famille</div>
+    <div style="font-size:11px;font-weight:600;color:#d4a44a;">&#127942; 1er</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid ${AGC};">
+    <div style="width:30px;height:30px;border-radius:8px;background:${ABL}15;display:flex;align-items:center;justify-content:center;font-size:14px;">&#128188;</div>
+    <div style="flex:1;font-size:12px;font-weight:500;">Le Bureau</div>
+    <div style="font-size:11px;font-weight:600;color:#d4a44a;">&#127942; 1er</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;padding:10px 0;">
+    <div style="width:30px;height:30px;border-radius:8px;background:${ACO}12;display:flex;align-items:center;justify-content:center;font-size:14px;">&#127881;</div>
+    <div style="flex:1;font-size:12px;font-weight:500;">Les Deconnectes</div>
+    <div style="font-size:11px;font-weight:600;color:#b08050;">&#127942; 3e</div>
+  </div>
+</div>
+
+<div style="margin-top:14px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><div style="font-size:10px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.06em;">Mes boxes</div><div style="font-size:10px;color:${A};font-weight:500;">Voir tout &rsaquo;</div></div>
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid ${AGC};">
+    <div style="width:7px;height:7px;border-radius:50%;background:#6b9b6b;"></div>
+    <div style="flex:1;font-size:12px;font-weight:500;">Salon <span style="font-size:9px;padding:2px 6px;border-radius:4px;background:${A}20;color:${AG};margin-left:4px;">Maison</span></div>
+    <div style="font-size:12px;font-weight:600;">2h14</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid ${AGC};">
+    <div style="width:7px;height:7px;border-radius:50%;background:#6b9b6b;"></div>
+    <div style="flex:1;font-size:12px;font-weight:500;">Chambre <span style="font-size:9px;padding:2px 6px;border-radius:4px;background:${A}20;color:${AG};margin-left:4px;">Maison</span></div>
+    <div style="font-size:12px;font-weight:600;">7h32</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;">
+    <div style="width:7px;height:7px;border-radius:50%;background:#6b9b6b;"></div>
+    <div style="flex:1;font-size:12px;font-weight:500;">Salle de reu <span style="font-size:9px;padding:2px 6px;border-radius:4px;background:${ABL}12;color:${ABL};margin-left:4px;">Bureau</span></div>
+    <div style="font-size:12px;font-weight:600;">4h05</div>
+  </div>
 </div>
 </div>
 ${nav('h')}</div></div>`;
 
 // 02 HOME SESSION TERMINEE
-h+=`<div><div class="sub" style="text-align:center;">02 — Session terminee</div><div class="ph" style="height:600px;">
+h+=`<div><div class="sub" style="text-align:center;">02 — Session terminee</div><div class="ph" style="height:812px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
-<div style="padding:10px 18px;display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,A,AC)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:15px;letter-spacing:.08em;">faraday</div></div>
+<div style="padding:12px 20px;display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,A,AC)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:15px;letter-spacing:.08em;">faraday</div></div>
 <div class="ph-ct">
-<div style="border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid #6b9b6b30;background:#6b9b6b08;">
-  <div style="display:flex;align-items:center;gap:8px;"><div style="width:30px;height:30px;border-radius:8px;background:#6b9b6b18;display:flex;align-items:center;justify-content:center;font-size:14px;">&#10003;</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;">Session terminee</div><div style="font-size:9px;color:${AG};">Salon &middot; 14:20 — 16:02</div></div><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">1h42</div></div></div>
-<div style="text-align:center;padding:10px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;">3<span style="font-size:14px;color:${AG};">h</span>22</div><div style="font-size:11px;color:${AG};">deconnecte aujourd'hui</div></div>
-<div style="background:${A}12;border-radius:10px;padding:12px;margin-top:10px;">
-  <div style="font-size:9px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Sessions recentes</div>
-  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid ${AGC};">
-    <div style="padding:5px 10px;border-radius:6px;background:${A}30;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;">1h42</div>
-    <div><div style="font-size:11px;font-weight:500;">Salon</div><div style="font-size:9px;color:${AG};">14:20 — 16:02</div></div></div>
-  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;">
-    <div style="padding:5px 10px;border-radius:6px;background:${A}30;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;">1h40</div>
-    <div><div style="font-size:11px;font-weight:500;">Chambre</div><div style="font-size:9px;color:${AG};">07:10 — 08:50</div></div></div>
+
+<div style="border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #6b9b6b30;background:#6b9b6b08;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:36px;height:36px;border-radius:10px;background:#6b9b6b15;display:flex;align-items:center;justify-content:center;font-size:16px;">&#10003;</div>
+    <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Session terminee</div><div style="font-size:10px;color:${AG};margin-top:2px;">Salon &middot; 14:20 — 16:02</div></div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">1h42</div>
+  </div>
 </div>
+
+<div style="text-align:center;padding:20px 0;">
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;">3<span style="font-size:16px;color:${AG};">h</span>22</div>
+  <div style="font-size:12px;color:${AG};margin-top:4px;">deconnecte aujourd'hui</div>
+</div>
+
+<div style="display:flex;gap:8px;margin-bottom:14px;">
+  <div style="flex:1;background:${A}18;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">2</div><div style="font-size:9px;color:${AG};margin-top:2px;">sessions</div></div>
+  <div style="flex:1;background:${A}18;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">1h41</div><div style="font-size:9px;color:${AG};margin-top:2px;">moyenne</div></div>
+  <div style="flex:1;background:${A}18;border-radius:10px;padding:12px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#6b9b6b;">&#9650; 8%</div><div style="font-size:9px;color:${AG};margin-top:2px;">vs hier</div></div>
+</div>
+
+<div style="background:${A}12;border-radius:12px;padding:12px;margin-bottom:14px;">
+  <div style="font-size:9px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">&#128293; Streak — 12 jours</div>
+  <div style="display:flex;gap:2px;">`;
+'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:500;${i<6?`background:${A}35;color:${AC};`:`background:${A};color:${AC};font-weight:600;`}">${d}</div>`;});
+h+=`</div></div>
+
+<div style="margin-top:4px;">
+  <div style="font-size:10px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Sessions du jour</div>
+  <div style="display:flex;align-items:center;gap:10px;padding:12px;background:${A}10;border-radius:10px;margin-bottom:8px;">
+    <div style="padding:6px 12px;border-radius:8px;background:${A}35;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;min-width:52px;text-align:center;">1h42</div>
+    <div style="flex:1;"><div style="font-size:12px;font-weight:500;">Salon</div><div style="font-size:10px;color:${AG};margin-top:1px;">14:20 — 16:02</div></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;padding:12px;background:${A}10;border-radius:10px;margin-bottom:8px;">
+    <div style="padding:6px 12px;border-radius:8px;background:${A}35;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;min-width:52px;text-align:center;">1h40</div>
+    <div style="flex:1;"><div style="font-size:12px;font-weight:500;">Chambre</div><div style="font-size:10px;color:${AG};margin-top:1px;">07:10 — 08:50</div></div>
+  </div>
+</div>
+
+<div style="margin-top:14px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><div style="font-size:10px;font-weight:600;color:${AG};text-transform:uppercase;letter-spacing:.06em;">Mes groupes</div><div style="font-size:10px;color:${A};font-weight:500;">Voir tout &rsaquo;</div></div>
+  <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid ${AGC};">
+    <div style="width:30px;height:30px;border-radius:8px;background:${A}25;display:flex;align-items:center;justify-content:center;font-size:14px;">&#128106;</div>
+    <div style="flex:1;font-size:12px;font-weight:500;">La Famille</div>
+    <div style="font-size:11px;font-weight:600;color:#d4a44a;">&#127942; 1er</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;padding:10px 0;">
+    <div style="width:30px;height:30px;border-radius:8px;background:${ABL}15;display:flex;align-items:center;justify-content:center;font-size:14px;">&#128188;</div>
+    <div style="flex:1;font-size:12px;font-weight:500;">Le Bureau</div>
+    <div style="font-size:11px;font-weight:600;color:#d4a44a;">&#127942; 1er</div>
+  </div>
+</div>
+
 </div>
 ${nav('h')}</div></div>`;
 
 // 04 CLASSEMENT
-h+=`<div><div class="sub" style="text-align:center;">04 — Classement</div><div class="ph" style="height:600px;">
+h+=`<div><div class="sub" style="text-align:center;">04 — Classement</div><div class="ph" style="height:812px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
 <div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Groupes</div>
 <div style="padding:4px 18px 10px;display:flex;align-items:center;gap:10px;">
@@ -292,7 +371,7 @@ h+=`<div><div class="sub" style="text-align:center;">04 — Classement</div><div
 ${nav('g')}</div></div>`;
 
 // 15 STATS DETAILLEES
-h+=`<div><div class="sub" style="text-align:center;">15 — Stats detaillees</div><div class="ph" style="height:600px;">
+h+=`<div><div class="sub" style="text-align:center;">15 — Stats detaillees</div><div class="ph" style="height:812px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
 <div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Mes Stats</div>
 <div style="padding:4px 18px 10px;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;">Habitudes</div>
@@ -326,7 +405,7 @@ h+=`</div></div>
 ${nav('s')}</div></div>`;
 
 // 17 ANALYTICS PAR BOX
-h+=`<div><div class="sub" style="text-align:center;">17 — Analytics box</div><div class="ph" style="height:600px;">
+h+=`<div><div class="sub" style="text-align:center;">17 — Analytics box</div><div class="ph" style="height:812px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
 <div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Analytics</div>
 <div style="padding:4px 18px 10px;display:flex;align-items:center;gap:10px;">
@@ -361,7 +440,7 @@ h+=`</div></div>
 ${nav('s')}</div></div>`;
 
 // SPLASH
-h+=`<div><div class="sub" style="text-align:center;">Splash</div><div class="ph" style="height:600px;background:${A};align-items:center;justify-content:center;">
+h+=`<div><div class="sub" style="text-align:center;">Splash</div><div class="ph" style="height:812px;background:${A};align-items:center;justify-content:center;">
   <div style="width:60px;height:60px;margin-bottom:12px;">${F(60,A,AC)}</div>
   <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:.08em;color:${AC};">faraday</div>
   <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;margin-top:5px;color:${AC};">disconnect to reconnect</div>
@@ -374,7 +453,7 @@ const DB='#2a2b29',DT='#e8e6e2',DS='#4a4b49',DSB='#3a3b39';
 h+=`<div style="margin-top:40px;"><div class="sub" style="text-align:center;font-weight:600;font-size:12px;color:${P.c};">Dark Mode</div></div><div class="g" style="margin-top:16px;">`;
 
 // Dark Home
-h+=`<div><div class="sub" style="text-align:center;">Home dark</div><div class="ph ph-dark" style="height:600px;">
+h+=`<div><div class="sub" style="text-align:center;">Home dark</div><div class="ph ph-dark" style="height:812px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
 <div style="padding:10px 18px;display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,DB,DT)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:15px;letter-spacing:.08em;color:${DT};">faraday</div></div>
 <div class="ph-ct">
@@ -400,7 +479,7 @@ h+=`</div></div>
 ${nav('h').replace(/ph-nav/g,'ph-nav').replace(new RegExp(AC,'g'),A)}</div></div>`;
 
 // Dark Stats
-h+=`<div><div class="sub" style="text-align:center;">Stats dark</div><div class="ph ph-dark" style="height:600px;">
+h+=`<div><div class="sub" style="text-align:center;">Stats dark</div><div class="ph ph-dark" style="height:812px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
 <div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Mes Stats</div>
 <div style="padding:4px 18px 10px;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:${DT};">Habitudes</div>
