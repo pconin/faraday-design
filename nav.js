@@ -2,14 +2,15 @@
 (function() {
   const pages = [
     { label: 'Brand Props', file: 'faraday-brand-proposals.html', icon: '&#10022;' },
+    { label: 'LED Props', file: 'faraday-led-brand-proposals.html', icon: '&#9679;' },
     { label: 'Brand Book', file: 'brand-identity.html', icon: '&#10023;' },
+    { label: 'Recherche V4', file: 'logo-research-v4.html', icon: '&#9733;' },
+    { label: 'Recherche V5', file: 'logo-research-v5.html', icon: '&#9733;' },
+    { label: 'Recherche V6', file: 'logo-research-v6.html', icon: '&#9733;' },
     { label: 'Simulateur', file: 'logo-in-context.html', icon: '&#9654;' },
     { label: 'Selection', file: 'logo-selection.html', icon: '&#9733;' },
     { label: 'Palettes V2', file: 'color-palettes-v2.html', icon: '&#9673;' },
     { label: 'Palettes V1', file: 'color-palettes.html', icon: '&#9673;' },
-    { label: 'Recherche V6', file: 'logo-research-v6.html', icon: '&#9733;' },
-    { label: 'Recherche V5', file: 'logo-research-v5.html', icon: '&#9733;' },
-    { label: 'Recherche V4', file: 'logo-research-v4.html', icon: '&#9733;' },
     { label: 'Experiments', file: 'logo-experiments.html', icon: '&#9672;' },
     { label: 'Logos V3', file: 'logo-proposals-v3.html', icon: '&#9650;' },
     { label: 'Logos V2', file: 'logo-proposals-v2.html', icon: '&#9651;' },
