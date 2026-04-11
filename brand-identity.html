@@ -156,33 +156,7 @@ h+=`<div class="sub">Empile</div><div class="g">`;
 h+=`</div>`;
 h+=`</div><div class="div"></div>`;
 
-// 03 ANIMATIONS
-h+=`<div class="sect"><div class="sh">03</div><div class="st">Animations — 10 variantes</div><div class="sd">CSS pures. Chaque animation porte un sens lie a l'experience.</div>`;
-const anims=[
-  {c:'a1',n:'Line Draw',d:'Trace'},
-  {c:'a2',n:'Wave → Flat',d:'Splash screen'},
-  {c:'a3',n:'Flat → Wave',d:'Fin de session'},
-  {c:'a4',n:'Respiration',d:'Pendant session'},
-  {c:'a5',n:'Draw + Glow',d:'Hero, keynote'},
-  {c:'a6',n:'Micro Glitch',d:'Transition'},
-  {c:'a7',n:'Segments',d:'Loading',seg:true},
-  {c:'a8',n:'Scale In',d:'Notification'},
-  {c:'a9',n:'Heartbeat',d:'Monitoring'},
-  {c:'a10',n:'Morph ■↔●',d:'Transition forme'},
-];
-h+=`<div class="sub">Sur fond Sauge</div><div class="g">`;
-anims.forEach(a=>{
-  const svg = a.seg ? FS(120,P.s,P.c) : (a.c==='a2'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.s}"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="${P.c}" stroke-width="2.2" stroke-linecap="round"/></svg>`:a.c==='a3'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.s}"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="${P.c}" stroke-width="2.2" stroke-linecap="round"/></svg>`:FA(120,P.s,P.c));
-  h+=`<div><div class="lc ${a.c}" style="width:120px;height:120px;background:${P.s};border-radius:24px;">${svg}</div><div class="ll">${a.n}<br><span style="opacity:.5;">${a.d}</span></div></div>`;
-});
-h+=`</div><div class="sub">Sur fond Charbon</div><div class="g">`;
-anims.slice(0,5).forEach(a=>{
-  const svg = a.seg ? FS(120,P.c,P.w) : (a.c==='a2'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.c}"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="${P.w}" stroke-width="2.2" stroke-linecap="round"/></svg>`:a.c==='a3'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.c}"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="${P.w}" stroke-width="2.2" stroke-linecap="round"/></svg>`:FA(120,P.c,P.w));
-  h+=`<div><div class="lc ${a.c}" style="width:120px;height:120px;background:${P.c};border-radius:24px;">${svg}</div><div class="ll">${a.n}</div></div>`;
-});
-h+=`</div></div><div class="div"></div>`;
-
-// 04 COULEURS
+// 03 COULEURS (renumbered)
 h+=`<div class="sect"><div class="sh">04</div><div class="st">Palette</div><div class="sd">Primaires pour le logo. Secondaires pour l'UI uniquement (CTA, liens, data). Jamais de secondaire dans le logo.</div>`;
 h+=`<div class="sub">Primaires</div><div class="g gl">`;
 [{n:'Sauge',h:P.s,r:'Fond principal logo',l:true},{n:'Charbon',h:P.c,r:'Texte, declinaison',l:false},{n:'Blanc',h:P.w,r:'Fond clair, app',l:true}].forEach(c=>{
@@ -393,6 +367,73 @@ h+=`<div><div class="sub" style="text-align:center;">Splash</div><div class="ph"
   <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;margin-top:5px;color:${AC};">disconnect to reconnect</div>
 </div></div>`;
 
+h+=`</div></div>`;
+
+// DARK MODE SCREENS
+const DB='#2a2b29',DT='#e8e6e2',DS='#4a4b49',DSB='#3a3b39';
+h+=`<div style="margin-top:40px;"><div class="sub" style="text-align:center;font-weight:600;font-size:12px;color:${P.c};">Dark Mode</div></div><div class="g" style="margin-top:16px;">`;
+
+// Dark Home
+h+=`<div><div class="sub" style="text-align:center;">Home dark</div><div class="ph ph-dark" style="height:600px;">
+<div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+<div style="padding:10px 18px;display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,DB,DT)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:15px;letter-spacing:.08em;color:${DT};">faraday</div></div>
+<div class="ph-ct">
+<div style="border-radius:10px;padding:12px;margin-bottom:10px;background:${A}15;border:1px solid ${A}35;">
+  <div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:50%;background:${A};"></div><div style="flex:1;"><div style="font-size:12px;font-weight:600;color:${DT};">Session en cours</div><div style="font-size:9px;color:${DS};">Salon &middot; Depuis 14:20</div></div><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;color:${A};">1h42</div></div></div>
+<div style="text-align:center;padding:14px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:${DT};">9<span style="font-size:14px;color:${DS};">h</span>46</div><div style="font-size:11px;color:${DS};">deconnecte aujourd'hui</div></div>
+<div style="display:flex;gap:6px;margin-bottom:10px;">
+  <div style="flex:1;background:${DSB};border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:${DT};">5</div><div style="font-size:8px;color:${DS};">sessions</div></div>
+  <div style="flex:1;background:${DSB};border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:${DT};">1h57</div><div style="font-size:8px;color:${DS};">moyenne</div></div>
+  <div style="flex:1;background:${DSB};border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:${ABL};">&#9650; 18%</div><div style="font-size:8px;color:${DS};">vs sem.</div></div>
+</div>
+<div style="border:1px solid ${ACO}25;border-radius:10px;padding:10px;background:${ACO}08;">
+  <div style="font-size:9px;font-weight:600;color:${ACO};">&#127775; Defi en cours</div>
+  <div style="font-size:11px;margin-top:3px;color:${DT};">Semaine sans ecran le soir</div>
+  <div style="height:5px;background:${DSB};border-radius:3px;margin-top:6px;overflow:hidden;"><div style="height:100%;width:65%;background:${ACO};border-radius:3px;"></div></div>
+</div>
+<div style="background:${DSB};border-radius:10px;padding:10px;margin-top:10px;">
+  <div style="font-size:9px;font-weight:600;color:${DS};text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">&#128293; Streak — 12 jours</div>
+  <div style="display:flex;gap:2px;">`;
+'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:500;${i<6?`background:${A}20;color:${A};`:`background:${A};color:${AC};font-weight:600;`}">${d}</div>`;});
+h+=`</div></div>
+</div>
+${nav('h').replace(/ph-nav/g,'ph-nav').replace(new RegExp(AC,'g'),A)}</div></div>`;
+
+// Dark Stats
+h+=`<div><div class="sub" style="text-align:center;">Stats dark</div><div class="ph ph-dark" style="height:600px;">
+<div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+<div style="padding:6px 18px;font-size:11px;font-weight:500;color:${A};">&lsaquo; Mes Stats</div>
+<div style="padding:4px 18px 10px;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:${DT};">Habitudes</div>
+<div class="ph-ct">
+<div style="border:1px solid ${DSB};border-radius:10px;padding:12px;margin-bottom:10px;">
+  <div style="font-size:9px;font-weight:500;color:${DS};text-transform:uppercase;">Heatmap</div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:8px;">`;
+[.15,.3,.55,.8,.15,.3,.55,.3,.55,.8,.3,.15,.8,.55,.8,.3,.55,.8,.3,.8,.55,.15,.3,.55,.8,.55,.3,0].forEach(o=>{
+  h+=`<div style="aspect-ratio:1;border-radius:2px;background:${A};opacity:${o||.05};"></div>`;
+});
+h+=`</div></div>
+<div style="border:1px solid ${DSB};border-radius:10px;padding:12px;margin-bottom:10px;">
+  <div style="font-size:9px;font-weight:500;color:${DS};text-transform:uppercase;">Heures preferees</div>
+  <div style="display:flex;align-items:flex-end;gap:3px;height:60px;margin-top:8px;">`;
+[12,24,8,28,16,36,80,72].forEach((hh,i)=>{
+  h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;height:${hh*.7}px;border-radius:2px 2px 0 0;background:${ABL};"></div><div style="font-size:6px;color:${DS};">${['6h','8h','10h','12h','14h','18h','20h','22h'][i]}</div></div>`;
+});
+h+=`</div></div>
+<div style="display:flex;gap:6px;margin-bottom:10px;">
+  <div style="flex:1;border:1px solid ${DSB};border-radius:10px;padding:10px;text-align:center;"><div style="font-size:9px;color:${DS};text-transform:uppercase;">Meilleur jour</div><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:${DT};margin-top:4px;">Samedi</div></div>
+  <div style="flex:1;border:1px solid ${DSB};border-radius:10px;padding:10px;text-align:center;"><div style="font-size:9px;color:${DS};text-transform:uppercase;">Plus longue</div><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:${DT};margin-top:4px;">9h42</div></div>
+</div>
+<div style="border:1px solid ${DSB};border-radius:10px;padding:12px;">
+  <div style="font-size:9px;font-weight:500;color:${DS};text-transform:uppercase;margin-bottom:8px;">Repartition</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="width:60px;height:60px;border-radius:50%;border:5px solid ${DSB};position:relative;"><div style="position:absolute;inset:-5px;border-radius:50%;border:5px solid transparent;border-top-color:${A};border-right-color:${A};transform:rotate(30deg);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:${DT};">68%</div></div>
+    <div><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><div style="width:8px;height:8px;border-radius:2px;background:${A};"></div><span style="font-size:10px;color:${DT};">Nuit 68%</span></div><div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:2px;background:${DSB};"></div><span style="font-size:10px;color:${DS};">Jour 32%</span></div></div>
+  </div>
+</div>
+</div>
+<div class="ph-nav"><div class="pni">&#9679;<br>Home</div><div class="pni">&#9829;<br>Groupes</div><div class="pni">&#9632;<br>Boxes</div><div class="pni" style="color:${A};font-weight:600;">&#9650;<br>Stats</div><div class="pni">&#9783;<br>Plus</div></div>
+</div></div>`;
+
 h+=`</div></div></div><div class="div"></div>`;
 
 // 09 NOTIFICATIONS
@@ -453,6 +494,32 @@ h+=`<div class="web" style="background:${P.w};color:${P.c};border:1px solid #e8e
 // Charbon
 h+=`<div class="web" style="background:${P.c};color:${P.w};"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.08em;margin-bottom:6px;">faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.s};color:${P.c};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.c,P.w)}</div></div>`;
 h+=`</div><div class="div"></div>`;
+
+// ANIMATIONS (en bas)
+const anims=[
+  {c:'a1',n:'Line Draw',d:'Trace L→R'},
+  {c:'a2',n:'Wave → Flat',d:'Splash screen'},
+  {c:'a3',n:'Flat → Wave',d:'Fin de session'},
+  {c:'a4',n:'Respiration',d:'Pendant session'},
+  {c:'a5',n:'Draw + Glow',d:'Hero, keynote'},
+  {c:'a6',n:'Micro Glitch',d:'Transition'},
+  {c:'a7',n:'Segments',d:'Loading',seg:true},
+  {c:'a8',n:'Scale In',d:'Notification'},
+  {c:'a9',n:'Heartbeat',d:'Monitoring'},
+  {c:'a10',n:'Morph ■↔●',d:'Transition forme'},
+];
+h+=`<div class="sect"><div class="sh">15</div><div class="st">Animations</div><div class="sd">10 animations CSS pures. Chaque animation porte un sens lie a l'experience de deconnexion.</div>`;
+h+=`<div class="sub">Sur fond Sauge</div><div class="g">`;
+anims.forEach(a=>{
+  const svg = a.seg ? FS(120,P.s,P.c) : (a.c==='a2'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.s}"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="${P.c}" stroke-width="2.2" stroke-linecap="round"/></svg>`:a.c==='a3'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.s}"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="${P.c}" stroke-width="2.2" stroke-linecap="round"/></svg>`:FA(120,P.s,P.c));
+  h+=`<div><div class="lc ${a.c}" style="width:120px;height:120px;background:${P.s};border-radius:24px;">${svg}</div><div class="ll">${a.n}<br><span style="opacity:.5;">${a.d}</span></div></div>`;
+});
+h+=`</div><div class="sub">Sur fond Charbon</div><div class="g">`;
+anims.forEach(a=>{
+  const svg = a.seg ? FS(120,P.c,P.w) : (a.c==='a2'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.c}"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="${P.w}" stroke-width="2.2" stroke-linecap="round"/></svg>`:a.c==='a3'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.c}"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="${P.w}" stroke-width="2.2" stroke-linecap="round"/></svg>`:FA(120,P.c,P.w));
+  h+=`<div><div class="lc ${a.c}" style="width:120px;height:120px;background:${P.c};border-radius:24px;">${svg}</div><div class="ll">${a.n}</div></div>`;
+});
+h+=`</div></div><div class="div"></div>`;
 
 // 16 REGLES
 h+=`<div class="sect"><div class="sh">16</div><div class="st">Regles d'usage</div><div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:20px;">
