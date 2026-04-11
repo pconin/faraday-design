@@ -3,413 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faraday — Brand Identity</title>
+<title>Faraday — Brand Book</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--s:#CBD4C2;--c:#50514F;--w:#FFFCFF;--co:#DC766A;--bl:#247BA0;--g:#757780;--gc:#DBD4D3;--cd:#3a3b39;--sd:#a8b09e;}
+  body{background:var(--w);font-family:'Inter',sans-serif;color:var(--c);}
 
-  :root{
-    --sage:#cbd4c2;--charbon:#50514f;--blanc:#fffcff;
-    --coral:#dc766a;--bleu:#247ba0;
-    --gris:#757780;--gris-clair:#dbd4d3;
-  }
+  .hero{background:var(--s);text-align:center;padding:120px 40px 100px;}
+  .sect{max-width:1100px;margin:0 auto;padding:70px 40px;}
+  .div{height:1px;background:var(--gc);max-width:1100px;margin:0 auto;}
+  .sh{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:6px;}
+  .st{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;margin-bottom:12px;letter-spacing:-.01em;}
+  .sd{font-size:13px;color:var(--g);line-height:1.7;max-width:580px;margin-bottom:32px;}
+  .sub{font-size:10px;color:var(--g);margin:20px 0 10px;font-weight:500;}
+  .g{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:20px;}
+  .gl{justify-content:flex-start;}
 
-  body{background:var(--blanc);font-family:'Inter',sans-serif;color:var(--charbon);}
+  /* Logo */
+  .lc{border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .ll{font-size:9px;color:var(--g);text-align:center;margin-top:6px;line-height:1.3;}
 
-  /* HERO */
-  .hero{background:var(--charbon);color:var(--blanc);text-align:center;padding:100px 40px 80px;}
-  .hero-icon{width:120px;height:120px;margin:0 auto 28px;}
-  .hero-icon svg{width:100%;height:100%;}
-  .hero-wm{font-family:'Sora',sans-serif;font-weight:300;font-size:52px;letter-spacing:.12em;margin-bottom:10px;}
-  .hero-bl{font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.4;font-weight:300;}
+  /* Lockup */
+  .lk{display:flex;align-items:center;gap:12px;padding:24px 30px;border-radius:12px;}
+  .lk-i{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;} .lk-i svg{width:100%;height:100%;}
+  .lk-i.r{border-radius:50%;}
+  .lk-bl{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;margin-top:2px;font-weight:300;}
+  .lk-s{display:flex;flex-direction:column;align-items:center;gap:4px;padding:32px;border-radius:12px;}
+  .lk-si{width:50px;height:50px;border-radius:12px;overflow:hidden;} .lk-si svg{width:100%;height:100%;}
 
-  /* SECTIONS */
-  .section{max-width:1100px;margin:0 auto;padding:80px 40px;}
-  .sh{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);margin-bottom:8px;}
-  .st{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;margin-bottom:16px;letter-spacing:-.01em;}
-  .sd{font-size:14px;color:var(--gris);line-height:1.7;max-width:600px;margin-bottom:40px;}
-  .grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
-  .logo-card{border-radius:16px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-  .logo-label{font-size:10px;color:var(--gris);text-align:center;margin-top:8px;}
+  /* Swatch */
+  .sw{width:120px;border-radius:10px;overflow:hidden;}
+  .sw-c{height:80px;display:flex;align-items:flex-end;padding:8px 10px;}
+  .sw-inf{padding:8px 10px;background:#fff;}
+  .sw-n{font-size:10px;font-weight:600;} .sw-h{font-size:9px;color:var(--g);font-family:'Space Mono',monospace;}
+  .sw-r{font-size:8px;color:var(--g);margin-top:2px;}
 
-  /* SWATCHES */
-  .swatch{width:130px;border-radius:14px;overflow:hidden;}
-  .swatch-color{height:90px;display:flex;align-items:flex-end;padding:10px 12px;}
-  .swatch-info{padding:10px 12px;background:#fff;}
-  .swatch-name{font-size:11px;font-weight:600;}
-  .swatch-hex{font-size:10px;color:var(--gris);font-family:'Space Mono',monospace;}
-
-  /* LOCKUPS */
-  .lockup{display:flex;align-items:center;gap:16px;padding:30px 36px;border-radius:14px;}
-  .lockup-ico{width:46px;height:46px;border-radius:11px;overflow:hidden;flex-shrink:0;}
-  .lockup-ico.round{border-radius:50%;}
-  .lockup-ico svg{width:100%;height:100%;}
-  .lockup-wm{font-family:'Sora',sans-serif;font-weight:300;letter-spacing:.12em;}
-  .lockup-bl{font-size:8px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;margin-top:3px;font-weight:300;}
-  .lockup-stack{display:flex;flex-direction:column;align-items:center;gap:6px;padding:36px;border-radius:14px;}
-  .lockup-stack-ico{width:60px;height:60px;border-radius:14px;overflow:hidden;}
-  .lockup-stack-ico.round{border-radius:50%;}
-  .lockup-stack-ico svg{width:100%;height:100%;}
-
-  /* TYPO */
-  .typo-sample{margin-bottom:32px;}
-  .typo-name{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);margin-bottom:8px;}
-
-  /* FAVICONS */
-  .fav-row{display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap;}
-  .fav{display:flex;flex-direction:column;align-items:center;gap:6px;}
-  .fav-size{font-size:9px;color:var(--gris);}
-  .fav-box{border-radius:20%;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);}
-
-  /* APP GRID */
-  .app-grid{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:20px;background:var(--charbon);border-radius:20px;}
-  .app-slot{width:60px;height:60px;border-radius:14px;background:rgba(255,255,255,.08);}
-  .app-slot.active{overflow:hidden;background:none;}
-  .app-slot.active svg{width:100%;height:100%;}
-
-  /* ANIMATIONS */
+  /* Anim */
   @keyframes draw{0%{stroke-dashoffset:200;}100%{stroke-dashoffset:0;}}
-  .anim-draw path{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 2.5s cubic-bezier(.4,0,.2,1) forwards;}
-
-  @keyframes toFlat{
-    0%,10%{d:path("M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55");}
-    40%{d:path("M16.5,55 Q27.5,35 38.5,55 Q44,68 50.6,55 Q55,45 59.4,55 L93.5,55");}
-    70%{d:path("M16.5,55 Q27.5,45 38.5,55 Q44,60 50.6,55 Q55,50 59.4,55 L93.5,55");}
-    90%,100%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}
-  }
-  .anim-toflat path{animation:toFlat 4s cubic-bezier(.4,0,.2,1) forwards;}
-
-  @keyframes fromFlat{
-    0%,30%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}
-    60%{d:path("M16.5,55 Q27.5,45 38.5,55 Q44,62 50.6,55 Q55,48 59.4,55 L93.5,55");}
-    100%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}
-  }
-  .anim-fromflat path{animation:fromFlat 3.5s cubic-bezier(.2,0,.4,1) forwards;}
-
-  @keyframes breathe{
-    0%,100%{d:path("M16.5,55 Q27.5,40 38.5,55 Q44,63 50.6,55 Q55,48 59.4,55 L93.5,55");stroke-opacity:.6;}
-    50%{d:path("M16.5,55 Q27.5,28 38.5,55 Q44,72 50.6,55 Q55,42 59.4,55 L93.5,55");stroke-opacity:1;}
-  }
-  .anim-breathe path{animation:breathe 5s ease-in-out infinite;}
-
-  @keyframes drawGlow{0%{stroke-dashoffset:200;filter:drop-shadow(0 0 0px #fffcff);}60%{stroke-dashoffset:0;filter:drop-shadow(0 0 0px #fffcff);}80%{filter:drop-shadow(0 0 8px rgba(255,252,255,.6));}100%{filter:drop-shadow(0 0 3px rgba(255,252,255,.2));}}
-  .anim-glow path{stroke-dasharray:200;stroke-dashoffset:200;animation:drawGlow 3s cubic-bezier(.4,0,.2,1) forwards;}
-
-  @keyframes glitch{0%,90%,100%{transform:translate(0,0);}92%{transform:translate(-1px,.5px);}94%{transform:translate(1px,-.5px);}96%{transform:translate(-.5px,0);}98%{transform:translate(.5px,.5px);}}
-  .anim-glitch path{animation:glitch 4s ease-in-out infinite;}
-
-  @keyframes seg1{0%,15%{opacity:0;}25%,100%{opacity:1;}}
-  @keyframes seg2{0%,30%{opacity:0;}45%,100%{opacity:1;}}
-  @keyframes seg3{0%,50%{opacity:0;}65%,100%{opacity:1;}}
-  @keyframes seg4{0%,65%{opacity:0;}80%,100%{opacity:1;}}
-  .anim-segments .s1{opacity:0;animation:seg1 3s ease forwards;}
-  .anim-segments .s2{opacity:0;animation:seg2 3s ease forwards;}
-  .anim-segments .s3{opacity:0;animation:seg3 3s ease forwards;}
-  .anim-segments .s4{opacity:0;animation:seg4 3s ease forwards;}
-
+  @keyframes toFlat{0%,10%{d:path("M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55");}90%,100%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}}
+  @keyframes fromFlat{0%,30%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55");}100%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}}
+  @keyframes breathe{0%,100%{d:path("M16.5,55 Q27.5,40 38.5,55 Q44,63 50.6,55 Q55,48 59.4,55 L93.5,55");stroke-opacity:.6;}50%{d:path("M16.5,55 Q27.5,28 38.5,55 Q44,72 50.6,55 Q55,42 59.4,55 L93.5,55");stroke-opacity:1;}}
+  @keyframes glow{0%{stroke-dashoffset:200;filter:none;}60%{stroke-dashoffset:0;filter:none;}80%{filter:drop-shadow(0 0 6px rgba(80,81,79,.3));}100%{filter:drop-shadow(0 0 2px rgba(80,81,79,.1));}}
+  @keyframes glitch{0%,90%,100%{transform:translate(0);}92%{transform:translate(-1px,.5px);}94%{transform:translate(1px,-.5px);}96%{transform:translate(-.5px,0);}98%{transform:translate(.5px,.5px);}}
+  @keyframes s1{0%,15%{opacity:0;}25%,100%{opacity:1;}}@keyframes s2{0%,30%{opacity:0;}45%,100%{opacity:1;}}@keyframes s3{0%,50%{opacity:0;}65%,100%{opacity:1;}}@keyframes s4{0%,65%{opacity:0;}80%,100%{opacity:1;}}
   @keyframes scaleIn{0%{transform:scale(.3);opacity:0;}60%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);}}
-  .anim-scale svg{animation:scaleIn 1s cubic-bezier(.2,0,.2,1.4) forwards;}
-
-  @keyframes waveContinuous{
-    0%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}
-    33%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,33 50.6,55 Q55,66 59.4,55 L93.5,55");}
-    66%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,33 59.4,55 L93.5,55");}
-    100%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}
-  }
-  .anim-heartbeat path{animation:waveContinuous 3s linear infinite;}
-
+  @keyframes hb{0%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}33%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,33 50.6,55 Q55,66 59.4,55 L93.5,55");}66%{d:path("M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,33 59.4,55 L93.5,55");}100%{d:path("M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55");}}
   @keyframes morph{0%,100%{rx:22px;}50%{rx:55px;}}
-  .anim-morph rect{animation:morph 4s ease-in-out infinite;}
 
-  @keyframes scanLine{0%{transform:translateY(-30px);opacity:0;}20%{opacity:1;}80%{opacity:1;}100%{transform:translateY(30px);opacity:0;}}
-  .anim-scan .scan-line{animation:scanLine 2.5s ease-in-out infinite;}
+  .a1 path{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 2.5s cubic-bezier(.4,0,.2,1) forwards;}
+  .a2 path{animation:toFlat 4s cubic-bezier(.4,0,.2,1) forwards;}
+  .a3 path{animation:fromFlat 3.5s cubic-bezier(.2,0,.4,1) forwards;}
+  .a4 path{animation:breathe 5s ease-in-out infinite;}
+  .a5 path{stroke-dasharray:200;stroke-dashoffset:200;animation:glow 3s cubic-bezier(.4,0,.2,1) forwards;}
+  .a6 path{animation:glitch 4s ease-in-out infinite;}
+  .a7 .s1{opacity:0;animation:s1 3s ease forwards;}.a7 .s2{opacity:0;animation:s2 3s ease forwards;}.a7 .s3{opacity:0;animation:s3 3s ease forwards;}.a7 .s4{opacity:0;animation:s4 3s ease forwards;}
+  .a8 svg{animation:scaleIn 1s cubic-bezier(.2,0,.2,1.4) forwards;}
+  .a9 path{animation:hb 3s linear infinite;}
+  .a10 rect{animation:morph 4s ease-in-out infinite;}
 
-  /* CARDS */
-  .bcard{width:400px;height:240px;border-radius:12px;display:flex;flex-direction:column;justify-content:space-between;padding:30px;box-shadow:0 8px 30px rgba(0,0,0,.08);}
-  .bcard-back{width:400px;height:240px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;box-shadow:0 8px 30px rgba(0,0,0,.08);}
+  /* Phone */
+  .ph{width:320px;border-radius:34px;border:2px solid var(--gc);overflow:hidden;display:flex;flex-direction:column;background:var(--w);box-shadow:0 12px 40px rgba(0,0,0,.05);}
+  .ph-dark{background:var(--c);color:var(--w);border-color:#3a3b39;}
+  .ph-dark .ph-sb{color:#666;}
+  .ph-sb{display:flex;justify-content:space-between;padding:10px 22px 4px;font-size:10px;font-weight:600;color:var(--g);}
+  .ph-nav{display:flex;justify-content:space-around;padding:6px 0 20px;border-top:1px solid var(--gc);font-size:8px;color:var(--g);}
+  .ph-dark .ph-nav{border-color:#3a3b39;}
+  .ph-ct{flex:1;overflow:hidden;padding:0 18px 8px;}
 
-  /* PHONE */
-  .phone{width:340px;height:600px;border-radius:36px;border:2px solid #e0e0e0;overflow:hidden;display:flex;flex-direction:column;background:#fff;box-shadow:0 16px 50px rgba(0,0,0,.07);}
-  .ph-sb{display:flex;justify-content:space-between;padding:12px 24px 6px;font-size:11px;font-weight:600;color:#aaa;}
-  .ph-hd{padding:14px 20px 12px;display:flex;align-items:center;gap:12px;}
-  .ph-ico{width:34px;height:34px;border-radius:8px;overflow:hidden;} .ph-ico svg{width:100%;height:100%;}
-  .ph-wm{font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.12em;}
-  .ph-ct{flex:1;overflow:hidden;padding:0 20px 10px;}
-  .ph-nav{display:flex;justify-content:space-around;padding:8px 0 22px;border-top:1px solid #eee;font-size:9px;color:#aaa;}
+  /* Cards */
+  .bc{width:380px;height:228px;border-radius:10px;display:flex;flex-direction:column;justify-content:space-between;padding:26px;box-shadow:0 4px 18px rgba(0,0,0,.05);}
 
-  /* METRO */
-  .metro{width:100%;max-width:860px;height:360px;border-radius:14px;overflow:hidden;display:flex;align-items:center;margin:0 auto;position:relative;box-shadow:0 10px 36px rgba(0,0,0,.1);}
-  .metro-bg{position:absolute;inset:0;}
-  .metro-ct{position:relative;z-index:1;display:flex;align-items:center;gap:50px;padding:50px 60px;width:100%;}
+  /* Instagram */
+  .insta{width:340px;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.05);}
+
+  /* Packaging */
+  .pkg{width:200px;height:240px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 6px 20px rgba(0,0,0,.06);}
+
+  /* Web header */
+  .web{width:100%;max-width:800px;height:260px;border-radius:12px;overflow:hidden;display:flex;align-items:center;padding:40px 50px;gap:40px;box-shadow:0 6px 20px rgba(0,0,0,.05);margin-bottom:16px;}
+
+  /* Notif */
+  .nf{background:#fff;border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px;box-shadow:0 3px 12px rgba(0,0,0,.04);max-width:360px;}
+  .nf-i{width:34px;height:34px;border-radius:8px;overflow:hidden;flex-shrink:0;} .nf-i svg{width:100%;height:100%;}
+
+  /* Email sig */
+  .esig{background:#fff;border-radius:10px;padding:20px 24px;max-width:420px;box-shadow:0 3px 12px rgba(0,0,0,.04);display:flex;gap:16px;align-items:center;}
+  .esig-sep{width:2px;height:60px;border-radius:1px;flex-shrink:0;}
+
+  /* Icon system */
+  .icon-grid{display:flex;gap:24px;flex-wrap:wrap;}
+  .icon-ex{display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .icon-ex svg{width:32px;height:32px;}
+  .icon-ex span{font-size:8px;color:var(--g);}
 </style>
 </head>
 <body>
+<script>
+const P={s:'#CBD4C2',c:'#50514F',w:'#FFFCFF',co:'#DC766A',bl:'#247BA0',g:'#757780',gc:'#DBD4D3',cd:'#3a3b39'};
+const F=(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><rect width="${s}" height="${s}" rx="${s*.2}" fill="${bg}"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.025}" stroke-linecap="round"/></svg>`;
+const FR=(s,bg,fg)=>`<svg viewBox="0 0 ${s} ${s}"><circle cx="${s*.5}" cy="${s*.5}" r="${s*.5}" fill="${bg}"/><path d="M${s*.15},${s*.5} Q${s*.25},${s*.3} ${s*.35},${s*.5} Q${s*.4},${s*.6} ${s*.46},${s*.5} Q${s*.5},${s*.42} ${s*.54},${s*.5} L${s*.85},${s*.5}" fill="none" stroke="${fg}" stroke-width="${s*.025}" stroke-linecap="round"/></svg>`;
+const FA=(s,bg,fg)=>`<svg viewBox="0 0 110 110" width="${s}"><rect width="110" height="110" rx="22" fill="${bg}"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="${fg}" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+const FS=(s,bg,fg)=>`<svg viewBox="0 0 110 110" width="${s}"><rect width="110" height="110" rx="22" fill="${bg}"/><path class="s1" d="M16.5,55 Q27.5,33 38.5,55" fill="none" stroke="${fg}" stroke-width="2.2" stroke-linecap="round"/><path class="s2" d="M38.5,55 Q44,66 50.6,55" fill="none" stroke="${fg}" stroke-width="2.2" stroke-linecap="round"/><path class="s3" d="M50.6,55 Q55,46 59.4,55" fill="none" stroke="${fg}" stroke-width="2.2" stroke-linecap="round"/><path class="s4" d="M59.4,55 L93.5,55" fill="none" stroke="${fg}" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+const wm=(ff,fw,ls,sz,t)=>`<div style="font-family:${ff};font-weight:${fw};letter-spacing:${ls};font-size:${sz};">${t}</div>`;
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-icon">
-    <svg viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#50514f"/><path d="M18,60 Q30,36 42,60 Q48,72 55,60 Q60,50 65,60 L102,60" fill="none" stroke="#fffcff" stroke-width="2.5" stroke-linecap="round"/></svg>
-  </div>
-  <div class="hero-wm">Faraday</div>
-  <div class="hero-bl">disconnect to reconnect</div>
+const typos=[
+  {n:'Sora Light',f:"'Sora',sans-serif",w:'300',l:'.12em'},
+  {n:'Plus Jakarta Sans',f:"'Plus Jakarta Sans',sans-serif",w:'600',l:'.04em'},
+  {n:'Manrope Light',f:"'Manrope',sans-serif",w:'300',l:'.02em'},
+];
+const colors=[
+  {bg:P.s,fg:P.c,n:'Sauge',bdr:''},{bg:P.c,fg:P.w,n:'Charbon',bdr:''},{bg:P.w,fg:P.c,n:'Blanc',bdr:'border:1px solid #e0e0e0;'},{bg:P.gc,fg:P.c,n:'Gris clair',bdr:''},{bg:P.g,fg:P.w,n:'Gris',bdr:''}
+];
+
+let h='';
+
+// HERO
+h+=`<div class="hero"><div style="width:90px;height:90px;margin:0 auto 24px;">${F(90,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;letter-spacing:.12em;color:${P.c};">Faraday</div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.35;margin-top:10px;">disconnect to reconnect</div></div>`;
+
+// 01 LOGO
+h+=`<div class="sect"><div class="sh">01</div><div class="st">Logo principal & declinaisons</div><div class="sd">Fond Sauge en principal, Charbon en declinaison. Carres arrondis et ronds.</div>`;
+h+=`<div class="sub">Carres</div><div class="g">`;
+colors.forEach(c=>{h+=`<div><div class="lc" style="width:130px;height:130px;background:${c.bg};${c.bdr}">${F(130,c.bg,c.fg)}</div><div class="ll">${c.n}</div></div>`;});
+h+=`</div><div class="sub">Ronds</div><div class="g">`;
+colors.forEach(c=>{h+=`<div><div class="lc" style="width:130px;height:130px;border-radius:50%;background:${c.bg};${c.bdr}">${FR(130,c.bg,c.fg)}</div><div class="ll">${c.n}</div></div>`;});
+h+=`</div></div><div class="div"></div>`;
+
+// 02 LOCKUPS — 3 typos × 3 casses
+h+=`<div class="sect"><div class="sh">02</div><div class="st">Lockups — 3 typographies comparees</div><div class="sd">Chaque typo en Title case, minuscule et MAJUSCULE, avec et sans baseline.</div>`;
+typos.forEach((t,ti)=>{
+  h+=`<div class="sub" style="margin-top:${ti?30:10}px;font-weight:600;color:${P.c};font-size:12px;">${t.n}</div>`;
+  // 3 casses × avec baseline
+  ['Faraday','faraday','FARADAY'].forEach((txt,ci)=>{
+    const label=['Title case','Minuscule','Majuscule'][ci];
+    h+=`<div class="sub">${label} — avec baseline</div><div class="g" style="margin-bottom:12px;">`;
+    [{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'}].forEach(c=>{
+      h+=`<div class="lk" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-i">${F(40,c.bg,c.fg)}</div><div>${wm(t.f,t.w,t.l,'20px',txt)}<div class="lk-bl">disconnect to reconnect</div></div></div>`;
+    });
+    h+=`</div>`;
+  });
+  // Sans baseline
+  h+=`<div class="sub">Sans baseline</div><div class="g" style="margin-bottom:12px;">`;
+  [{bg:P.s,fg:P.c},{bg:P.c,fg:P.w}].forEach(c=>{
+    h+=`<div class="lk" style="background:${c.bg};color:${c.fg};""><div class="lk-i">${F(40,c.bg,c.fg)}</div>${wm(t.f,t.w,t.l,'20px','Faraday')}</div>`;
+  });
+  h+=`</div>`;
+  // Empile
+  h+=`<div class="sub">Empile</div><div class="g">`;
+  [{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'}].forEach(c=>{
+    h+=`<div class="lk-s" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-si">${F(50,c.bg,c.fg)}</div><div style="text-align:center;">${wm(t.f,t.w,t.l,'20px','Faraday')}<div class="lk-bl">disconnect to reconnect</div></div></div>`;
+  });
+  h+=`</div>`;
+});
+h+=`</div><div class="div"></div>`;
+
+// 03 ANIMATIONS
+h+=`<div class="sect"><div class="sh">03</div><div class="st">Animations — 10 variantes</div><div class="sd">CSS pures. Chaque animation porte un sens lie a l'experience.</div>`;
+const anims=[
+  {c:'a1',n:'Line Draw',d:'Trace'},
+  {c:'a2',n:'Wave → Flat',d:'Splash screen'},
+  {c:'a3',n:'Flat → Wave',d:'Fin de session'},
+  {c:'a4',n:'Respiration',d:'Pendant session'},
+  {c:'a5',n:'Draw + Glow',d:'Hero, keynote'},
+  {c:'a6',n:'Micro Glitch',d:'Transition'},
+  {c:'a7',n:'Segments',d:'Loading',seg:true},
+  {c:'a8',n:'Scale In',d:'Notification'},
+  {c:'a9',n:'Heartbeat',d:'Monitoring'},
+  {c:'a10',n:'Morph ■↔●',d:'Transition forme'},
+];
+h+=`<div class="sub">Sur fond Sauge</div><div class="g">`;
+anims.forEach(a=>{
+  const svg = a.seg ? FS(120,P.s,P.c) : (a.c==='a2'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.s}"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="${P.c}" stroke-width="2.2" stroke-linecap="round"/></svg>`:a.c==='a3'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.s}"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="${P.c}" stroke-width="2.2" stroke-linecap="round"/></svg>`:FA(120,P.s,P.c));
+  h+=`<div><div class="lc ${a.c}" style="width:120px;height:120px;background:${P.s};border-radius:24px;">${svg}</div><div class="ll">${a.n}<br><span style="opacity:.5;">${a.d}</span></div></div>`;
+});
+h+=`</div><div class="sub">Sur fond Charbon</div><div class="g">`;
+anims.slice(0,5).forEach(a=>{
+  const svg = a.seg ? FS(120,P.c,P.w) : (a.c==='a2'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.c}"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="${P.w}" stroke-width="2.2" stroke-linecap="round"/></svg>`:a.c==='a3'?`<svg viewBox="0 0 110 110" width="120"><rect width="110" height="110" rx="22" fill="${P.c}"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="${P.w}" stroke-width="2.2" stroke-linecap="round"/></svg>`:FA(120,P.c,P.w));
+  h+=`<div><div class="lc ${a.c}" style="width:120px;height:120px;background:${P.c};border-radius:24px;">${svg}</div><div class="ll">${a.n}</div></div>`;
+});
+h+=`</div></div><div class="div"></div>`;
+
+// 04 COULEURS
+h+=`<div class="sect"><div class="sh">04</div><div class="st">Palette</div><div class="sd">Primaires pour le logo. Secondaires pour l'UI uniquement (CTA, liens, data). Jamais de secondaire dans le logo.</div>`;
+h+=`<div class="sub">Primaires</div><div class="g gl">`;
+[{n:'Sauge',h:P.s,r:'Fond principal logo',l:true},{n:'Charbon',h:P.c,r:'Texte, declinaison',l:false},{n:'Blanc',h:P.w,r:'Fond clair, app',l:true}].forEach(c=>{
+  h+=`<div class="sw"><div class="sw-c" style="background:${c.h};${c.l?'border:1px solid #ddd;':''}"><span style="color:${c.l?P.c:P.w};font-size:9px;font-weight:600;">${c.n}</span></div><div class="sw-inf"><div class="sw-n">${c.n}</div><div class="sw-h">${c.h}</div><div class="sw-r">${c.r}</div></div></div>`;
+});
+h+=`</div><div class="sub">Secondaires — UI uniquement</div><div class="g gl">`;
+[{n:'Corail',h:P.co,r:'CTA secondaire, gamification'},{n:'Bleu',h:P.bl,r:'Liens, data, analytics'}].forEach(c=>{
+  h+=`<div class="sw"><div class="sw-c" style="background:${c.h};"><span style="color:#fff;font-size:9px;font-weight:600;">${c.n}</span></div><div class="sw-inf"><div class="sw-n">${c.n}</div><div class="sw-h">${c.h}</div><div class="sw-r">${c.r}</div></div></div>`;
+});
+h+=`</div><div class="sub">Gris</div><div class="g gl">`;
+[{n:'Gris',h:P.g,r:'Texte secondaire'},{n:'Gris Clair',h:P.gc,r:'Bordures, separateurs',l:true}].forEach(c=>{
+  h+=`<div class="sw"><div class="sw-c" style="background:${c.h};${c.l?'border:1px solid #c8c0c0;':''}"><span style="color:${c.l?P.c:'#fff'};font-size:9px;font-weight:600;">${c.n}</span></div><div class="sw-inf"><div class="sw-n">${c.n}</div><div class="sw-h">${c.h}</div><div class="sw-r">${c.r}</div></div></div>`;
+});
+h+=`</div></div><div class="div"></div>`;
+
+// 05 TYPO
+h+=`<div class="sect"><div class="sh">05</div><div class="st">Typographie</div><div class="sd">Sora pour la marque, Inter pour le corps, Space Mono pour les donnees.</div>`;
+h+=`<div class="sub">Sora — Display / Marque</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:36px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.06em;color:${P.g};">The present starts here</div><div style="font-family:'Sora',sans-serif;font-size:12px;margin-top:10px;color:${P.g};">Light 300 · Regular 400 · Medium 500</div>`;
+h+=`<div class="sub" style="margin-top:28px;">Inter — Corps / Interface</div><div style="font-size:16px;margin-bottom:6px;">Deposez votre telephone. Reprenez votre temps.</div><div style="font-size:13px;line-height:1.7;max-width:480px;color:${P.g};">La Faraday Box est un objet connecte dans lequel les utilisateurs deposent leur telephone afin de creer une boucle positive de deconnexion volontaire.</div>`;
+h+=`<div class="sub" style="margin-top:28px;">Space Mono — Donnees / Stats</div><div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;">9h46 <span style="font-size:14px;font-weight:400;color:${P.g};">aujourd'hui</span></div>`;
+h+=`</div><div class="div"></div>`;
+
+// 06 FAVICONS
+h+=`<div class="sect"><div class="sh">06</div><div class="st">Favicon & App Icon</div><div class="sd">Le symbole reste lisible de 16px a 512px.</div><div class="g" style="align-items:flex-end;">`;
+[16,32,64,120,180].forEach(sz=>{h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:${sz}px;height:${sz}px;border-radius:${sz*.2}px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.06);">${F(sz,P.s,P.c)}</div><div style="font-size:8px;color:${P.g};">${sz}px</div></div>`;});
+h+=`</div><div class="sub">App grid</div><div style="display:inline-block;margin-top:10px;"><div style="display:flex;gap:10px;flex-wrap:wrap;padding:16px;background:${P.c};border-radius:18px;max-width:300px;">`;
+for(let i=0;i<12;i++){if(i===5)h+=`<div style="width:52px;height:52px;border-radius:12px;overflow:hidden;">${F(52,P.s,P.c)}</div>`;else h+=`<div style="width:52px;height:52px;border-radius:12px;background:${P.g};opacity:.1;"></div>`;}
+h+=`</div></div></div><div class="div"></div>`;
+
+// 07 ICONOGRAPHIE
+h+=`<div class="sect"><div class="sh">07</div><div class="st">Iconographie</div><div class="sd">Icones en outline, stroke-width 1.5px, linecap round, border-radius 4px. Couleur Charbon sur clair, Blanc sur sombre.</div>`;
+h+=`<div class="icon-grid">`;
+const icons=[
+  {n:'Home',d:'M16,28 L16,18 L8,12 L0,18 L0,28 L6,28 L6,20 L10,20 L10,28Z'},
+  {n:'Groupes',d:'M5,10 A5,5 0 1,1 5,0 A5,5 0 1,1 5,10 M0,20 Q0,14 5,12 Q10,14 10,20 M18,8 A4,4 0 1,1 18,0 A4,4 0 1,1 18,8 M13,18 Q13,13 18,11 Q23,13 23,18'},
+  {n:'Box',d:'M2,8 L14,8 L14,24 L2,24Z M5,4 L11,4 M5,8 L5,4 M11,8 L11,4'},
+  {n:'Stats',d:'M2,22 L2,14 M7,22 L7,10 M12,22 L12,16 M17,22 L17,6'},
+  {n:'Profil',d:'M8,10 A5,5 0 1,1 8,0 A5,5 0 1,1 8,10 M0,22 Q0,15 8,13 Q16,15 16,22'},
+  {n:'Session',d:'M12,2 A10,10 0 1,1 2,12 M12,2 L12,12 L18,12'},
+];
+icons.forEach(ic=>{
+  h+=`<div class="icon-ex"><svg viewBox="-2 -2 28 28" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="${ic.d}"/></svg><span>${ic.n}</span></div>`;
+});
+h+=`</div></div><div class="div"></div>`;
+
+// 08 APP — Light + Dark
+h+=`<div class="sect" style="background:${P.gc};max-width:none;padding:70px 40px;"><div style="max-width:1100px;margin:0 auto;"><div class="sh">08</div><div class="st">Application</div><div class="sd">Sauge comme couleur de marque, touches de Corail (defis) et Bleu (stats).</div><div class="g">`;
+
+// Light phone
+h+=`<div><div class="sub" style="text-align:center;">Light mode</div><div class="ph" style="height:580px;">
+<div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.1em;">Faraday</div></div>
+<div class="ph-ct">
+<div style="border-radius:8px;padding:10px;margin-bottom:8px;background:${P.s}30;border:1px solid ${P.s};">
+  <div style="display:flex;align-items:center;gap:6px;"><div style="width:6px;height:6px;border-radius:50%;background:${P.s};"></div><div style="flex:1;"><div style="font-size:11px;font-weight:600;">Session en cours</div><div style="font-size:9px;color:${P.g};">Salon &middot; 14:20</div></div><div style="font-family:'Space Mono',monospace;font-size:16px;font-weight:700;">1h42</div></div></div>
+<div style="text-align:center;padding:8px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;">9<span style="font-size:12px;color:${P.g};">h</span>46</div><div style="font-size:10px;color:${P.g};">deconnecte</div></div>
+<div style="display:flex;gap:5px;margin:6px 0;">
+  <div style="flex:1;background:${P.s}20;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;">5</div><div style="font-size:7px;color:${P.g};">sessions</div></div>
+  <div style="flex:1;background:${P.s}20;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;">1h57</div><div style="font-size:7px;color:${P.g};">moyenne</div></div>
+  <div style="flex:1;background:${P.s}20;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.bl};">+18%</div><div style="font-size:7px;color:${P.g};">vs sem.</div></div>
 </div>
-
-<!-- 01 LOGO -->
-<div class="section">
-  <div class="sh">01 — Logo</div>
-  <div class="st">Symbole Flatline</div>
-  <div class="sd">L'onde du bruit numerique qui s'aplatit jusqu'au silence. Decline sur les 7 couleurs de la palette.</div>
-  <div class="grid">
-    <div><div class="logo-card" style="width:150px;height:150px;background:#50514f;"><svg viewBox="0 0 150 150" width="150"><rect width="150" height="150" rx="30" fill="#50514f"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#fffcff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Charbon</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#fffcff;border:1px solid #e0e0e0;"><svg viewBox="0 0 150 150" width="150"><rect width="150" height="150" rx="30" fill="#fffcff"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#50514f" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Blanc</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#cbd4c2;"><svg viewBox="0 0 150 150" width="150"><rect width="150" height="150" rx="30" fill="#cbd4c2"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#50514f" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Sauge</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#247ba0;"><svg viewBox="0 0 150 150" width="150"><rect width="150" height="150" rx="30" fill="#247ba0"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#fffcff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Bleu</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#dc766a;"><svg viewBox="0 0 150 150" width="150"><rect width="150" height="150" rx="30" fill="#dc766a"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#fffcff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Corail</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#c3b299;"><svg viewBox="0 0 150 150" width="150"><rect width="150" height="150" rx="30" fill="#c3b299"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#50514f" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Sable</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#757780;"><svg viewBox="0 0 150 150" width="150"><rect width="150" height="150" rx="30" fill="#757780"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#fffcff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Gris</div></div>
-    <!-- Ronds -->
-    <div><div class="logo-card" style="width:150px;height:150px;background:#50514f;border-radius:50%;"><svg viewBox="0 0 150 150" width="150"><circle cx="75" cy="75" r="75" fill="#50514f"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#fffcff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Charbon rond</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#247ba0;border-radius:50%;"><svg viewBox="0 0 150 150" width="150"><circle cx="75" cy="75" r="75" fill="#247ba0"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#fffcff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Bleu rond</div></div>
-    <div><div class="logo-card" style="width:150px;height:150px;background:#dc766a;border-radius:50%;"><svg viewBox="0 0 150 150" width="150"><circle cx="75" cy="75" r="75" fill="#dc766a"/><path d="M22,75 Q38,45 52,75 Q60,90 68,75 Q75,62 80,75 L128,75" fill="none" stroke="#fffcff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="logo-label">Corail rond</div></div>
-  </div>
+<div style="border:1px solid ${P.co}25;border-radius:8px;padding:8px;margin-top:6px;background:${P.co}06;">
+  <div style="font-size:9px;font-weight:600;color:${P.co};">&#127775; Defi en cours</div>
+  <div style="font-size:10px;margin-top:3px;">Semaine sans ecran</div>
+  <div style="height:4px;background:${P.gc};border-radius:2px;margin-top:4px;overflow:hidden;"><div style="height:100%;width:65%;background:${P.co};border-radius:2px;"></div></div>
 </div>
+<div style="background:${P.s}15;border-radius:8px;padding:8px;margin-top:6px;">
+  <div style="font-size:8px;font-weight:600;color:${P.g};text-transform:uppercase;letter-spacing:.05em;">&#128293; Streak — 12j</div>
+  <div style="display:flex;gap:2px;margin-top:4px;">`;
+'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:16px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:500;${i<6?`background:${P.s}40;color:${P.c};`:`background:${P.s};color:${P.c};font-weight:600;`}">${d}</div>`;});
+h+=`</div></div></div>
+<div class="ph-nav"><div class="pni" style="color:${P.c};font-weight:600;">&#9679;<br>Home</div><div class="pni">&#9829;<br>Groupes</div><div class="pni">&#9632;<br>Boxes</div><div class="pni">&#9650;<br>Stats</div><div class="pni">&#9783;<br>Plus</div></div>
+</div></div>`;
 
-<!-- 02 LOCKUPS -->
-<div class="section" style="background:#f8f7f5;margin:0;max-width:100%;padding:80px 40px;">
-<div style="max-width:1100px;margin:0 auto;">
-  <div class="sh">02 — Lockups</div>
-  <div class="st">Logotype complet</div>
-  <div class="sd">Majuscule, minuscule, avec et sans baseline, sur chaque couleur.</div>
-
-  <div class="sh" style="margin-top:20px;">Minuscule — avec baseline</div>
-  <div class="grid" style="margin-bottom:24px;">
-    <div class="lockup" style="background:#50514f;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#50514f"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:20px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup" style="background:#fffcff;color:#50514f;border:1px solid #e0e0e0;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#fffcff"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#50514f" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:20px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup" style="background:#247ba0;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#247ba0"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:20px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup" style="background:#dc766a;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#dc766a"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:20px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup" style="background:#cbd4c2;color:#50514f;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#cbd4c2"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#50514f" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:20px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup" style="background:#c3b299;color:#50514f;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#c3b299"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#50514f" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:20px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-  </div>
-
-  <div class="sh">MAJUSCULE — avec baseline</div>
-  <div class="grid" style="margin-bottom:24px;">
-    <div class="lockup" style="background:#50514f;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#50514f"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:18px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup" style="background:#247ba0;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#247ba0"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:18px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup" style="background:#dc766a;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#dc766a"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div><div class="lockup-wm" style="font-size:18px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-  </div>
-
-  <div class="sh">Sans baseline</div>
-  <div class="grid" style="margin-bottom:24px;">
-    <div class="lockup" style="background:#50514f;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#50514f"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div class="lockup-wm" style="font-size:20px;">Faraday</div></div>
-    <div class="lockup" style="background:#fffcff;color:#50514f;border:1px solid #e0e0e0;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#fffcff"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#50514f" stroke-width="1.1" stroke-linecap="round"/></svg></div><div class="lockup-wm" style="font-size:20px;">Faraday</div></div>
-    <div class="lockup" style="background:#cbd4c2;color:#50514f;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#cbd4c2"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#50514f" stroke-width="1.1" stroke-linecap="round"/></svg></div><div class="lockup-wm" style="font-size:20px;">Faraday</div></div>
-    <div class="lockup" style="background:#247ba0;color:#fffcff;"><div class="lockup-ico"><svg viewBox="0 0 46 46"><rect width="46" height="46" rx="10" fill="#247ba0"/><path d="M7,23 Q11,14 16,23 Q18,27 21,23 Q23,20 25,23 L39,23" fill="none" stroke="#fffcff" stroke-width="1.1" stroke-linecap="round"/></svg></div><div class="lockup-wm" style="font-size:20px;">Faraday</div></div>
-  </div>
-
-  <div class="sh">Empile</div>
-  <div class="grid">
-    <div class="lockup-stack" style="background:#50514f;color:#fffcff;"><div class="lockup-stack-ico"><svg viewBox="0 0 60 60"><rect width="60" height="60" rx="13" fill="#50514f"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#fffcff" stroke-width="1.5" stroke-linecap="round"/></svg></div><div style="text-align:center;"><div class="lockup-wm" style="font-size:22px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup-stack" style="background:#fffcff;color:#50514f;border:1px solid #e0e0e0;"><div class="lockup-stack-ico"><svg viewBox="0 0 60 60"><rect width="60" height="60" rx="13" fill="#fffcff"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#50514f" stroke-width="1.5" stroke-linecap="round"/></svg></div><div style="text-align:center;"><div class="lockup-wm" style="font-size:22px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup-stack" style="background:#247ba0;color:#fffcff;"><div class="lockup-stack-ico round"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="30" fill="#247ba0"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#fffcff" stroke-width="1.5" stroke-linecap="round"/></svg></div><div style="text-align:center;"><div class="lockup-wm" style="font-size:22px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup-stack" style="background:#dc766a;color:#fffcff;"><div class="lockup-stack-ico round"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="30" fill="#dc766a"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#fffcff" stroke-width="1.5" stroke-linecap="round"/></svg></div><div style="text-align:center;"><div class="lockup-wm" style="font-size:22px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-    <div class="lockup-stack" style="background:#cbd4c2;color:#50514f;"><div class="lockup-stack-ico"><svg viewBox="0 0 60 60"><rect width="60" height="60" rx="13" fill="#cbd4c2"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#50514f" stroke-width="1.5" stroke-linecap="round"/></svg></div><div style="text-align:center;"><div class="lockup-wm" style="font-size:22px;">Faraday</div><div class="lockup-bl">disconnect to reconnect</div></div></div>
-  </div>
+// Dark phone
+h+=`<div><div class="sub" style="text-align:center;">Dark mode</div><div class="ph ph-dark" style="height:580px;">
+<div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.1em;color:${P.w};">Faraday</div></div>
+<div class="ph-ct">
+<div style="border-radius:8px;padding:10px;margin-bottom:8px;background:${P.s}15;border:1px solid ${P.s}40;">
+  <div style="display:flex;align-items:center;gap:6px;"><div style="width:6px;height:6px;border-radius:50%;background:${P.s};"></div><div style="flex:1;"><div style="font-size:11px;font-weight:600;color:${P.w};">Session en cours</div><div style="font-size:9px;color:${P.g};">Salon &middot; 14:20</div></div><div style="font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:${P.s};">1h42</div></div></div>
+<div style="text-align:center;padding:8px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:${P.w};">9<span style="font-size:12px;color:${P.g};">h</span>46</div><div style="font-size:10px;color:${P.g};">deconnecte</div></div>
+<div style="display:flex;gap:5px;margin:6px 0;">
+  <div style="flex:1;background:#3a3b3980;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.w};">5</div><div style="font-size:7px;color:${P.g};">sessions</div></div>
+  <div style="flex:1;background:#3a3b3980;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.w};">1h57</div><div style="font-size:7px;color:${P.g};">moyenne</div></div>
+  <div style="flex:1;background:#3a3b3980;border-radius:6px;padding:6px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:${P.bl};">+18%</div><div style="font-size:7px;color:${P.g};">vs sem.</div></div>
 </div>
-</div>
-
-<!-- 03 ANIMATIONS -->
-<div class="section">
-  <div class="sh">03 — Animations</div>
-  <div class="st">Logo anime — 12 variantes</div>
-  <div class="sd">Animations CSS pures. Chaque animation porte un sens lie au produit.</div>
-  <div class="grid">
-    <div><div class="logo-card anim-draw" style="width:130px;height:130px;background:#50514f;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">1. Line Draw</div></div>
-    <div><div class="logo-card anim-toflat" style="width:130px;height:130px;background:#247ba0;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#247ba0"/><path d="M16.5,55 Q27.5,20 38.5,55 Q44,80 50.6,55 Q55,35 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">2. Wave → Flat</div></div>
-    <div><div class="logo-card anim-fromflat" style="width:130px;height:130px;background:#dc766a;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#dc766a"/><path d="M16.5,55 Q27.5,55 38.5,55 Q44,55 50.6,55 Q55,55 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">3. Flat → Wave</div></div>
-    <div><div class="logo-card anim-breathe" style="width:130px;height:130px;background:#cbd4c2;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#cbd4c2"/><path d="M16.5,55 Q27.5,40 38.5,55 Q44,63 50.6,55 Q55,48 59.4,55 L93.5,55" fill="none" stroke="#50514f" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">4. Respiration</div></div>
-    <div><div class="logo-card anim-glow" style="width:130px;height:130px;background:#50514f;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">5. Draw + Glow</div></div>
-    <div><div class="logo-card anim-glitch" style="width:130px;height:130px;background:#757780;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#757780"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">6. Micro Glitch</div></div>
-    <div><div class="logo-card anim-segments" style="width:130px;height:130px;background:#c3b299;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#c3b299"/><path class="s1" d="M16.5,55 Q27.5,33 38.5,55" fill="none" stroke="#50514f" stroke-width="2.2" stroke-linecap="round"/><path class="s2" d="M38.5,55 Q44,66 50.6,55" fill="none" stroke="#50514f" stroke-width="2.2" stroke-linecap="round"/><path class="s3" d="M50.6,55 Q55,46 59.4,55" fill="none" stroke="#50514f" stroke-width="2.2" stroke-linecap="round"/><path class="s4" d="M59.4,55 L93.5,55" fill="none" stroke="#50514f" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">7. Segments</div></div>
-    <div><div class="logo-card anim-scale" style="width:130px;height:130px;background:#50514f;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">8. Scale In</div></div>
-    <div><div class="logo-card anim-heartbeat" style="width:130px;height:130px;background:#247ba0;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#247ba0"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">9. Heartbeat</div></div>
-    <div><div class="logo-card anim-morph" style="width:130px;height:130px;background:#dc766a;border-radius:26px;"><svg viewBox="0 0 110 110" width="130"><rect width="110" height="110" rx="22" fill="#dc766a"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="logo-label">10. Morph</div></div>
-    <div><div class="logo-card anim-scan" style="width:130px;height:130px;background:#50514f;border-radius:26px;position:relative;overflow:hidden;"><svg viewBox="0 0 110 110" width="130" style="position:relative;z-index:1;"><rect width="110" height="110" rx="22" fill="#50514f"/><path d="M16.5,55 Q27.5,33 38.5,55 Q44,66 50.6,55 Q55,46 59.4,55 L93.5,55" fill="none" stroke="#fffcff" stroke-width="2.2" stroke-linecap="round"/></svg><div class="scan-line" style="position:absolute;left:10%;right:10%;height:2px;background:rgba(255,252,255,.4);z-index:2;top:50%;"></div></div><div class="logo-label">11. Scan</div></div>
-  </div>
-</div>
-
-<!-- 04 COULEURS -->
-<div class="section">
-  <div class="sh">04 — Couleurs</div>
-  <div class="st">Palette</div>
-  <div class="sd">Primaires, secondaires et degrades de gris.</div>
-  <div class="sh" style="margin-top:20px;">Primaires</div>
-  <div class="grid" style="margin-bottom:24px;justify-content:flex-start;">
-    <div class="swatch"><div class="swatch-color" style="background:#cbd4c2;"><span style="color:#50514f;font-size:10px;font-weight:600;">Sauge</span></div><div class="swatch-info"><div class="swatch-name">Sauge</div><div class="swatch-hex">#CBD4C2</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#50514f;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Charbon</span></div><div class="swatch-info"><div class="swatch-name">Charbon</div><div class="swatch-hex">#50514F</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#fffcff;border:1px solid #e0e0e0;"><span style="color:#50514f;font-size:10px;font-weight:600;">Blanc</span></div><div class="swatch-info"><div class="swatch-name">Blanc</div><div class="swatch-hex">#FFFCFF</div></div></div>
-  </div>
-  <div class="sh">Secondaires</div>
-  <div class="grid" style="margin-bottom:24px;justify-content:flex-start;">
-    <div class="swatch"><div class="swatch-color" style="background:#dc766a;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Corail</span></div><div class="swatch-info"><div class="swatch-name">Corail</div><div class="swatch-hex">#DC766A</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#247ba0;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Bleu</span></div><div class="swatch-info"><div class="swatch-name">Bleu</div><div class="swatch-hex">#247BA0</div></div></div>
-  </div>
-  <div class="sh">Degrades de gris</div>
-  <div class="grid" style="justify-content:flex-start;">
-    <div class="swatch"><div class="swatch-color" style="background:#757780;"><span style="color:#fffcff;font-size:10px;font-weight:600;">Gris</span></div><div class="swatch-info"><div class="swatch-name">Gris</div><div class="swatch-hex">#757780</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#dbd4d3;border:1px solid #ccc;"><span style="color:#50514f;font-size:10px;font-weight:600;">Gris Clair</span></div><div class="swatch-info"><div class="swatch-name">Gris Clair</div><div class="swatch-hex">#DBD4D3</div></div></div>
-  </div>
-</div>
-
-<!-- 05 TYPO -->
-<div class="section" style="background:#f8f7f5;margin:0;max-width:100%;padding:80px 40px;">
-<div style="max-width:1100px;margin:0 auto;">
-  <div class="sh">05 — Typographie</div>
-  <div class="st">Polices</div>
-  <div class="typo-sample">
-    <div class="typo-name">Sora — Display / Marque</div>
-    <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:42px;letter-spacing:.1em;margin-bottom:8px;">Faraday</div>
-    <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;letter-spacing:.08em;margin-bottom:8px;">The present starts here</div>
-    <div style="font-family:'Sora',sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:var(--gris);">Light 300 · Regular 400 · Medium 500 · SemiBold 600</div>
-  </div>
-  <div class="typo-sample">
-    <div class="typo-name">Inter — Corps / Interface</div>
-    <div style="font-family:'Inter',sans-serif;font-weight:400;font-size:20px;margin-bottom:8px;">Deposez votre telephone. Reprenez votre temps.</div>
-    <div style="font-family:'Inter',sans-serif;font-weight:300;font-size:14px;line-height:1.7;max-width:500px;color:var(--gris);">La Faraday Box est un objet connecte physique dans lequel les utilisateurs deposent leur telephone afin de creer une boucle positive de deconnexion volontaire.</div>
-  </div>
-  <div class="typo-sample">
-    <div class="typo-name">Space Mono — Donnees / Stats</div>
-    <div style="font-family:'Space Mono',monospace;font-size:32px;font-weight:700;margin-bottom:8px;">9h46 <span style="font-size:16px;font-weight:400;color:var(--gris);">aujourd'hui</span></div>
-  </div>
-</div>
-</div>
-
-<!-- 06 FAVICON -->
-<div class="section">
-  <div class="sh">06 — Favicon & App Icon</div>
-  <div class="st">Tailles d'icone</div>
-  <div class="fav-row" style="margin-bottom:30px;">
-    <div class="fav"><div class="fav-box" style="width:16px;height:16px;"><svg viewBox="0 0 16 16"><rect width="16" height="16" rx="3" fill="#50514f"/><path d="M2.4,8 Q4,4.8 5.6,8 Q6.4,9.6 7.3,8 Q8,7.2 8.6,8 L13.6,8" fill="none" stroke="#fffcff" stroke-width="1" stroke-linecap="round"/></svg></div><div class="fav-size">16px</div></div>
-    <div class="fav"><div class="fav-box" style="width:32px;height:32px;"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#50514f"/><path d="M4.8,16 Q8,9.6 11.2,16 Q12.8,19.2 14.6,16 Q16,13.4 17.2,16 L27.2,16" fill="none" stroke="#fffcff" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="fav-size">32px</div></div>
-    <div class="fav"><div class="fav-box" style="width:64px;height:64px;"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#50514f"/><path d="M10,32 Q16,19 23,32 Q26,38 29,32 Q32,27 34,32 L54,32" fill="none" stroke="#fffcff" stroke-width="1.6" stroke-linecap="round"/></svg></div><div class="fav-size">64px</div></div>
-    <div class="fav"><div class="fav-box" style="width:120px;height:120px;"><svg viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#50514f"/><path d="M18,60 Q30,36 42,60 Q48,72 55,60 Q60,50 65,60 L102,60" fill="none" stroke="#fffcff" stroke-width="2.4" stroke-linecap="round"/></svg></div><div class="fav-size">120px</div></div>
-    <div class="fav"><div class="fav-box" style="width:180px;height:180px;"><svg viewBox="0 0 180 180"><rect width="180" height="180" rx="40" fill="#50514f"/><path d="M27,90 Q45,54 63,90 Q72,108 82,90 Q90,75 97,90 L153,90" fill="none" stroke="#fffcff" stroke-width="3.6" stroke-linecap="round"/></svg></div><div class="fav-size">180px</div></div>
-  </div>
-  <div class="sh">App Grid</div>
-  <div class="app-grid">
-    <div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div>
-    <div class="app-slot"></div><div class="app-slot active"><svg viewBox="0 0 60 60"><rect width="60" height="60" rx="13" fill="#50514f"/><path d="M9,30 Q15,18 21,30 Q24,36 27,30 Q30,25 32,30 L51,30" fill="none" stroke="#fffcff" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="app-slot"></div><div class="app-slot"></div>
-    <div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div><div class="app-slot"></div>
-  </div>
-</div>
-
-<!-- 07 APPLICATIONS -->
-<div class="section" style="background:#f8f7f5;margin:0;max-width:100%;padding:80px 40px;">
-<div style="max-width:1100px;margin:0 auto;">
-  <div class="sh">07 — Applications</div>
-  <div class="st">En contexte</div>
-  <div class="grid">
-
-    <!-- App Home -->
-    <div>
-      <div class="logo-label" style="margin-bottom:10px;">App — Home</div>
-      <div class="phone">
-        <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
-        <div class="ph-hd"><div class="ph-ico"><svg viewBox="0 0 34 34"><rect width="34" height="34" rx="7" fill="#50514f"/><path d="M5,17 Q8,10 12,17 Q13,20 15,17 Q17,14 18,17 L29,17" fill="none" stroke="#fffcff" stroke-width=".8" stroke-linecap="round"/></svg></div><div class="ph-wm">Faraday</div></div>
-        <div class="ph-ct">
-          <div style="background:rgba(36,123,160,.08);border:1px solid rgba(36,123,160,.2);border-radius:10px;padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:#247ba0;"></div>
-            <div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#247ba0;">Session en cours</div><div style="font-size:10px;color:#999;">Salon &middot; 14:20</div></div>
-            <div style="font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:#247ba0;">1h42</div>
-          </div>
-          <div style="text-align:center;padding:10px 0;"><div style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;">9<span style="font-size:14px;color:#999;">h</span>46</div><div style="font-size:11px;color:#999;">deconnecte aujourd'hui</div></div>
-          <div style="display:flex;gap:6px;margin:8px 0;">
-            <div style="flex:1;background:#f5f4f2;border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;">5</div><div style="font-size:8px;color:#999;">sessions</div></div>
-            <div style="flex:1;background:#f5f4f2;border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;">1h57</div><div style="font-size:8px;color:#999;">moyenne</div></div>
-            <div style="flex:1;background:#f5f4f2;border-radius:8px;padding:8px;text-align:center;"><div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#247ba0;">+18%</div><div style="font-size:8px;color:#999;">vs sem.</div></div>
-          </div>
-          <div style="background:#f5f4f2;border-radius:10px;padding:10px;margin-top:6px;">
-            <div style="font-size:9px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.06em;">&#128293; Streak — 12 jours</div>
-            <div style="display:flex;gap:2px;margin-top:4px;">
-              <div style="flex:1;height:18px;border-radius:3px;background:rgba(36,123,160,.12);display:flex;align-items:center;justify-content:center;font-size:7px;color:#247ba0;">L</div>
-              <div style="flex:1;height:18px;border-radius:3px;background:rgba(36,123,160,.12);display:flex;align-items:center;justify-content:center;font-size:7px;color:#247ba0;">M</div>
-              <div style="flex:1;height:18px;border-radius:3px;background:rgba(36,123,160,.12);display:flex;align-items:center;justify-content:center;font-size:7px;color:#247ba0;">M</div>
-              <div style="flex:1;height:18px;border-radius:3px;background:rgba(36,123,160,.12);display:flex;align-items:center;justify-content:center;font-size:7px;color:#247ba0;">J</div>
-              <div style="flex:1;height:18px;border-radius:3px;background:rgba(36,123,160,.12);display:flex;align-items:center;justify-content:center;font-size:7px;color:#247ba0;">V</div>
-              <div style="flex:1;height:18px;border-radius:3px;background:rgba(36,123,160,.12);display:flex;align-items:center;justify-content:center;font-size:7px;color:#247ba0;">S</div>
-              <div style="flex:1;height:18px;border-radius:3px;background:#247ba0;display:flex;align-items:center;justify-content:center;font-size:7px;color:#fff;font-weight:600;">D</div>
-            </div>
-          </div>
-        </div>
-        <div class="ph-nav"><div style="color:#247ba0;font-weight:600;">&#9679; Home</div><div>&#9829; Groupes</div><div>&#9632; Boxes</div><div>&#9650; Stats</div></div>
-      </div>
-    </div>
-
-    <!-- Carte de visite -->
-    <div>
-      <div class="logo-label" style="margin-bottom:10px;">Carte de visite — recto</div>
-      <div class="bcard" style="background:#50514f;color:#fffcff;">
-        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:7px;overflow:hidden;"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#50514f"/><path d="M4.8,16 Q8,9.6 11.2,16 Q12.8,19.2 14.6,16 Q16,13.4 17.2,16 L27.2,16" fill="none" stroke="#fffcff" stroke-width="1.2" stroke-linecap="round"/></svg></div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.12em;">Faraday</div></div>
-        <div><div style="font-size:14px;font-weight:600;margin-bottom:4px;">Pol Conin</div><div style="font-size:11px;line-height:1.8;opacity:.65;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78</div></div>
-        <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div>
-      </div>
-
-      <div class="logo-label" style="margin-top:20px;margin-bottom:10px;">Carte de visite — verso</div>
-      <div class="bcard-back" style="background:#50514f;color:#fffcff;">
-        <div style="width:54px;height:54px;border-radius:12px;overflow:hidden;"><svg viewBox="0 0 54 54"><rect width="54" height="54" rx="12" fill="#50514f"/><path d="M8,27 Q14,16 19,27 Q22,32 24,27 Q27,23 29,27 L46,27" fill="none" stroke="#fffcff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:.12em;">Faraday</div>
-        <div style="font-size:8px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;">disconnect to reconnect</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Metro -->
-  <div style="margin-top:40px;">
-    <div class="logo-label" style="margin-bottom:10px;">Affiche metro</div>
-    <div class="metro">
-      <div class="metro-bg" style="background:linear-gradient(135deg,#50514fee,#50514fcc),linear-gradient(45deg,#cbd4c2,#247ba0);"></div>
-      <div class="metro-ct" style="color:#fffcff;">
-        <div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:42px;letter-spacing:.12em;margin-bottom:10px;">Faraday</div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.5;margin-bottom:24px;">disconnect to reconnect</div><div style="font-size:18px;line-height:1.5;opacity:.7;">Deposez votre telephone.<br>Reprenez votre temps.</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:120px;height:120px;border-radius:28px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.25);"><svg viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#50514f"/><path d="M18,60 Q30,36 42,60 Q48,72 55,60 Q60,50 65,60 L102,60" fill="none" stroke="#fffcff" stroke-width="2.4" stroke-linecap="round"/></svg></div><div style="font-size:11px;opacity:.4;margin-top:12px;">faraday-box.fr</div></div>
-      </div>
-    </div>
-  </div>
+<div style="border:1px solid ${P.co}30;border-radius:8px;padding:8px;margin-top:6px;background:${P.co}0a;">
+  <div style="font-size:9px;font-weight:600;color:${P.co};">&#127775; Defi en cours</div>
+  <div style="font-size:10px;margin-top:3px;color:${P.w};">Semaine sans ecran</div>
+  <div style="height:4px;background:#3a3b39;border-radius:2px;margin-top:4px;overflow:hidden;"><div style="height:100%;width:65%;background:${P.co};border-radius:2px;"></div></div>
 </div>
 </div>
+<div class="ph-nav"><div class="pni" style="color:${P.s};font-weight:600;">&#9679;<br>Home</div><div class="pni">&#9829;<br>Groupes</div><div class="pni">&#9632;<br>Boxes</div><div class="pni">&#9650;<br>Stats</div><div class="pni">&#9783;<br>Plus</div></div>
+</div></div>`;
 
-<!-- 08 REGLES -->
-<div class="section">
-  <div class="sh">08 — Regles d'usage</div>
-  <div class="st">A faire / ne pas faire</div>
-  <div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:20px;">
-    <div style="flex:1;min-width:250px;">
-      <div style="font-size:12px;font-weight:600;color:#247ba0;margin-bottom:12px;">&#10003; A faire</div>
-      <ul style="font-size:13px;line-height:2;color:var(--gris);list-style:none;">
-        <li>&#8226; Toujours un espace clair autour du logo</li>
-        <li>&#8226; Utiliser uniquement les couleurs de la palette</li>
-        <li>&#8226; Sora Light pour le wordmark</li>
-        <li>&#8226; Le symbole peut vivre seul</li>
-        <li>&#8226; La baseline est optionnelle</li>
-      </ul>
-    </div>
-    <div style="flex:1;min-width:250px;">
-      <div style="font-size:12px;font-weight:600;color:#dc766a;margin-bottom:12px;">&#10007; Ne pas faire</div>
-      <ul style="font-size:13px;line-height:2;color:var(--gris);list-style:none;">
-        <li>&#8226; Ne pas deformer le symbole</li>
-        <li>&#8226; Ne pas changer l'epaisseur</li>
-        <li>&#8226; Ne pas ajouter d'ombre ou d'effet</li>
-        <li>&#8226; Ne pas utiliser sur un fond charge</li>
-        <li>&#8226; Ne pas utiliser de couleurs hors palette</li>
-      </ul>
-    </div>
-  </div>
-</div>
+// Splash
+h+=`<div><div class="sub" style="text-align:center;">Splash</div><div class="ph" style="height:580px;background:${P.s};align-items:center;justify-content:center;">
+  <div style="width:60px;height:60px;margin-bottom:12px;">${F(60,P.s,P.c)}</div>
+  <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:.12em;color:${P.c};">Faraday</div>
+  <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;margin-top:5px;color:${P.c};">disconnect to reconnect</div>
+</div></div>`;
+h+=`</div></div></div><div class="div"></div>`;
 
-<div style="text-align:center;padding:60px 40px;color:var(--gris);font-size:12px;">
-  Faraday — Brand Identity — 2026<br>
-  <span style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.1em;margin-top:12px;display:inline-block;color:var(--charbon);">Faraday</span>
-</div>
+// 09 NOTIFICATIONS
+h+=`<div class="sect"><div class="sh">09</div><div class="st">Notifications</div><div class="sd">Ton chaleureux et encourageant.</div><div style="display:flex;flex-direction:column;gap:10px;max-width:380px;">`;
+[{t:'Bravo ! 1h42 de presence retrouvee',s:'Salon — continuez comme ca &#10024;'},{t:'Defi reussi : 5/5 soirs !',s:'Semaine sans ecran — La Famille &#127942;'},{t:'Vous etes passe 1er !',s:'Classement Le Bureau — belle semaine &#128170;'},{t:'12 jours de streak !',s:'Votre plus longue serie &#128293;'}].forEach(n=>{
+  h+=`<div class="nf"><div class="nf-i">${F(34,P.s,P.c)}</div><div style="flex:1;"><div style="font-size:9px;font-weight:600;color:${P.g};font-family:'Sora',sans-serif;letter-spacing:.06em;">FARADAY</div><div style="font-size:11px;font-weight:500;margin-top:1px;">${n.t}</div><div style="font-size:9px;color:${P.g};margin-top:1px;">${n.s}</div></div><div style="font-size:9px;color:${P.g};">now</div></div>`;
+});
+h+=`</div></div><div class="div"></div>`;
 
+// 10 CARTE DE VISITE
+h+=`<div class="sect"><div class="sh">10</div><div class="st">Carte de visite</div><div class="sd">Version complete avec toutes les informations.</div><div class="g">`;
+// Sauge recto
+h+=`<div class="bc" style="background:${P.s};color:${P.c};"><div><div style="display:flex;align-items:center;gap:8px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:.1em;">Faraday</div></div></div><div><div style="font-size:12px;font-weight:600;">Pol Conin</div><div style="font-size:10px;line-height:1.8;opacity:.6;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+// Sauge verso
+h+=`<div class="bc" style="background:${P.s};color:${P.c};align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:10px;overflow:hidden;margin-bottom:8px;">${F(44,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;margin-top:4px;">disconnect to reconnect</div></div>`;
+// Charbon recto
+h+=`<div class="bc" style="background:${P.c};color:${P.w};"><div><div style="display:flex;align-items:center;gap:8px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:.1em;">Faraday</div></div></div><div><div style="font-size:12px;font-weight:600;">Pol Conin</div><div style="font-size:10px;line-height:1.8;opacity:.6;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+// Charbon verso
+h+=`<div class="bc" style="background:${P.c};color:${P.w};align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:10px;overflow:hidden;margin-bottom:8px;">${F(44,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;margin-top:4px;">disconnect to reconnect</div></div>`;
+h+=`</div></div><div class="div"></div>`;
+
+// 11 AFFICHE
+h+=`<div class="sect"><div class="sh">11</div><div class="st">Affiche metro</div><div class="sd">Horizontale grand format.</div>`;
+[{bg:P.s,fg:P.c},{bg:P.c,fg:P.w}].forEach(c=>{
+  h+=`<div class="web" style="background:${c.bg};color:${c.fg};max-width:860px;height:320px;"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:38px;letter-spacing:.1em;margin-bottom:8px;">Faraday</div><div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;margin-bottom:20px;">disconnect to reconnect</div><div style="font-size:16px;line-height:1.5;opacity:.6;">Deposez votre telephone.<br>Reprenez votre temps.</div></div><div style="display:flex;flex-direction:column;align-items:center;"><div style="width:100px;height:100px;border-radius:24px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);">${F(100,c.bg,c.fg)}</div><div style="font-size:10px;opacity:.3;margin-top:10px;">faraday-box.fr</div></div></div>`;
+});
+h+=`</div><div class="div"></div>`;
+
+// 12 INSTAGRAM
+h+=`<div class="sect"><div class="sh">12</div><div class="st">Instagram</div><div class="sd">Post brand awareness + post data engageant.</div><div class="g">`;
+// Brand post
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;"><div style="width:26px;height:26px;border-radius:50%;overflow:hidden;">${FR(26,P.s,P.c)}</div><div style="font-size:11px;font-weight:600;">faraday.box</div></div><div style="width:100%;height:280px;background:${P.s};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;color:${P.c};">Faraday</div><div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.4;color:${P.c};">disconnect to reconnect</div></div><div style="padding:10px 12px;font-size:10px;line-height:1.4;"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. &#127793;</div></div>`;
+// Data post
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;"><div style="width:26px;height:26px;border-radius:50%;overflow:hidden;">${FR(26,P.s,P.c)}</div><div style="font-size:11px;font-weight:600;">faraday.box</div></div><div style="width:100%;height:280px;background:${P.c};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;"><div style="font-family:'Space Mono',monospace;font-size:48px;font-weight:700;color:${P.w};">4h12</div><div style="font-size:14px;color:${P.gc};max-width:260px;text-align:center;line-height:1.4;">Temps moyen passe sur son telephone chaque jour en France.</div><div style="font-size:10px;color:${P.s};letter-spacing:.1em;margin-top:6px;">ET VOUS ?</div></div><div style="padding:10px 12px;font-size:10px;line-height:1.4;"><b>faraday.box</b> 4h12 par jour. C'est le temps moyen que les Francais passent sur leur telephone. Et si on le deposait ? &#128268;</div></div>`;
+h+=`</div></div><div class="div"></div>`;
+
+// 13 EMAIL SIGNATURE
+h+=`<div class="sect"><div class="sh">13</div><div class="st">Signature email</div><div class="sd">Logo + baseline + nom + liens.</div>`;
+h+=`<div class="esig"><div style="width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;">${F(40,P.s,P.c)}</div><div class="esig-sep" style="background:${P.s};"></div><div><div style="font-size:13px;font-weight:600;">Pol Conin</div><div style="font-size:10px;color:${P.g};margin-top:2px;">Co-fondateur</div><div style="font-size:10px;color:${P.g};margin-top:6px;">pol@faraday-box.fr &middot; faraday-box.fr</div><div style="font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:${P.sd};margin-top:6px;">disconnect to reconnect</div></div></div>`;
+h+=`</div><div class="div"></div>`;
+
+// 14 PACKAGING
+h+=`<div class="sect"><div class="sh">14</div><div class="st">Packaging</div><div class="sd">3 variantes pour la boite physique de la Faraday Box.</div><div class="g">`;
+// Kraft
+h+=`<div><div class="pkg" style="background:#c8b898;color:${P.c};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,'#c8b898',P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Kraft</div></div>`;
+// Sauge
+h+=`<div><div class="pkg" style="background:${P.s};color:${P.c};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Sauge</div></div>`;
+// Charbon
+h+=`<div><div class="pkg" style="background:${P.c};color:${P.w};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Charbon premium</div></div>`;
+h+=`</div></div><div class="div"></div>`;
+
+// 15 WEB HEADER
+h+=`<div class="sect"><div class="sh">15</div><div class="st">Site web — Header</div><div class="sd">3 ambiances pour le hero du site.</div>`;
+// Sauge
+h+=`<div class="web" style="background:${P.s};color:${P.c};"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.c};color:${P.w};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.s,P.c)}</div></div>`;
+// Blanc
+h+=`<div class="web" style="background:${P.w};color:${P.c};border:1px solid #e8e4e0;"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.s};color:${P.c};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.s,P.c)}</div></div>`;
+// Charbon
+h+=`<div class="web" style="background:${P.c};color:${P.w};"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.s};color:${P.c};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.c,P.w)}</div></div>`;
+h+=`</div><div class="div"></div>`;
+
+// 16 REGLES
+h+=`<div class="sect"><div class="sh">16</div><div class="st">Regles d'usage</div><div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:20px;">
+<div style="flex:1;min-width:240px;"><div style="font-size:12px;font-weight:600;color:#6b9b6b;margin-bottom:10px;">&#10003; A faire</div><ul style="font-size:12px;line-height:2;color:${P.g};list-style:none;">
+  <li>&#8226; Logo principal sur fond Sauge</li><li>&#8226; Declinaison sur fond Charbon</li><li>&#8226; Espace libre = 1x hauteur symbole</li><li>&#8226; Sora Light pour le wordmark</li><li>&#8226; Symbole peut vivre seul</li><li>&#8226; Baseline optionnelle</li><li>&#8226; Corail + Bleu = UI uniquement</li><li>&#8226; Favicon border-radius 20%</li><li>&#8226; Rond = avatar + sticker</li></ul></div>
+<div style="flex:1;min-width:240px;"><div style="font-size:12px;font-weight:600;color:${P.co};margin-bottom:10px;">&#10007; Ne pas faire</div><ul style="font-size:12px;line-height:2;color:${P.g};list-style:none;">
+  <li>&#8226; Logo sur fond Corail ou Bleu</li><li>&#8226; Deformer le symbole</li><li>&#8226; Changer l'epaisseur du trait</li><li>&#8226; Ajouter ombre ou effet</li><li>&#8226; Fond charge derriere le logo</li><li>&#8226; Changer la police du wordmark</li><li>&#8226; Couleurs hors palette</li><li>&#8226; Cadre autour du logo</li></ul></div>
+</div></div>`;
+
+h+=`<div style="text-align:center;padding:60px 40px;color:${P.g};font-size:11px;">Faraday — Brand Book — 2026<br><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.1em;margin-top:10px;display:inline-block;color:${P.c};">Faraday</span></div>`;
+
+document.write(h);
+</script>
 <script src="nav.js"></script>
 </body>
 </html>
