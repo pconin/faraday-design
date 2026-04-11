@@ -108,9 +108,7 @@ const FS=(s,bg,fg)=>`<svg viewBox="0 0 110 110" width="${s}"><rect width="110" h
 const wm=(ff,fw,ls,sz,t)=>`<div style="font-family:${ff};font-weight:${fw};letter-spacing:${ls};font-size:${sz};">${t}</div>`;
 
 const typos=[
-  {n:'Sora Light',f:"'Sora',sans-serif",w:'300',l:'.12em'},
-  {n:'Plus Jakarta Sans',f:"'Plus Jakarta Sans',sans-serif",w:'600',l:'.04em'},
-  {n:'Manrope Light',f:"'Manrope',sans-serif",w:'300',l:'.02em'},
+  {n:'Sora Light',f:"'Sora',sans-serif",w:'300',l:'.08em'},
 ];
 const colors=[
   {bg:P.s,fg:P.c,n:'Sauge',bdr:''},{bg:P.c,fg:P.w,n:'Charbon',bdr:''},{bg:P.w,fg:P.c,n:'Blanc',bdr:'border:1px solid #e0e0e0;'},{bg:P.gc,fg:P.c,n:'Gris clair',bdr:''},{bg:P.g,fg:P.w,n:'Gris',bdr:''}
@@ -119,7 +117,7 @@ const colors=[
 let h='';
 
 // HERO
-h+=`<div class="hero"><div style="width:90px;height:90px;margin:0 auto 24px;">${F(90,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;letter-spacing:.12em;color:${P.c};">Faraday</div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.35;margin-top:10px;">disconnect to reconnect</div></div>`;
+h+=`<div class="hero"><div style="width:90px;height:90px;margin:0 auto 24px;">${F(90,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;letter-spacing:.08em;color:${P.c};">faraday</div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.35;margin-top:10px;">disconnect to reconnect</div></div>`;
 
 // 01 LOGO
 h+=`<div class="sect"><div class="sh">01</div><div class="st">Logo principal & declinaisons</div><div class="sd">Fond Sauge en principal, Charbon en declinaison. Carres arrondis et ronds.</div>`;
@@ -129,32 +127,33 @@ h+=`</div><div class="sub">Ronds</div><div class="g">`;
 colors.forEach(c=>{h+=`<div><div class="lc" style="width:130px;height:130px;border-radius:50%;background:${c.bg};${c.bdr}">${FR(130,c.bg,c.fg)}</div><div class="ll">${c.n}</div></div>`;});
 h+=`</div></div><div class="div"></div>`;
 
-// 02 LOCKUPS — 3 typos × 3 casses
-h+=`<div class="sect"><div class="sh">02</div><div class="st">Lockups — 3 typographies comparees</div><div class="sd">Chaque typo en Title case, minuscule et MAJUSCULE, avec et sans baseline.</div>`;
-typos.forEach((t,ti)=>{
-  h+=`<div class="sub" style="margin-top:${ti?30:10}px;font-weight:600;color:${P.c};font-size:12px;">${t.n}</div>`;
-  // 3 casses × avec baseline
-  ['Faraday','faraday','FARADAY'].forEach((txt,ci)=>{
-    const label=['Title case','Minuscule','Majuscule'][ci];
-    h+=`<div class="sub">${label} — avec baseline</div><div class="g" style="margin-bottom:12px;">`;
-    [{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'}].forEach(c=>{
-      h+=`<div class="lk" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-i">${F(40,c.bg,c.fg)}</div><div>${wm(t.f,t.w,t.l,'20px',txt)}<div class="lk-bl">disconnect to reconnect</div></div></div>`;
-    });
-    h+=`</div>`;
-  });
-  // Sans baseline
-  h+=`<div class="sub">Sans baseline</div><div class="g" style="margin-bottom:12px;">`;
-  [{bg:P.s,fg:P.c},{bg:P.c,fg:P.w}].forEach(c=>{
-    h+=`<div class="lk" style="background:${c.bg};color:${c.fg};""><div class="lk-i">${F(40,c.bg,c.fg)}</div>${wm(t.f,t.w,t.l,'20px','Faraday')}</div>`;
-  });
-  h+=`</div>`;
-  // Empile
-  h+=`<div class="sub">Empile</div><div class="g">`;
-  [{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'}].forEach(c=>{
-    h+=`<div class="lk-s" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-si">${F(50,c.bg,c.fg)}</div><div style="text-align:center;">${wm(t.f,t.w,t.l,'20px','Faraday')}<div class="lk-bl">disconnect to reconnect</div></div></div>`;
-  });
-  h+=`</div>`;
+// 02 LOCKUPS — Sora lowercase only
+h+=`<div class="sect"><div class="sh">02</div><div class="st">Lockups</div><div class="sd">Sora Light, minuscule. Avec et sans baseline, horizontal et empile.</div>`;
+const t=typos[0];
+// Avec baseline
+h+=`<div class="sub">Avec baseline</div><div class="g" style="margin-bottom:16px;">`;
+[{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'},{bg:P.gc,fg:P.c},{bg:P.g,fg:P.w}].forEach(c=>{
+  h+=`<div class="lk" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-i">${F(40,c.bg,c.fg)}</div><div>${wm(t.f,t.w,t.l,'20px','faraday')}<div class="lk-bl">disconnect to reconnect</div></div></div>`;
 });
+h+=`</div>`;
+// Sans baseline
+h+=`<div class="sub">Sans baseline</div><div class="g" style="margin-bottom:16px;">`;
+[{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'},{bg:P.gc,fg:P.c}].forEach(c=>{
+  h+=`<div class="lk" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-i">${F(40,c.bg,c.fg)}</div>${wm(t.f,t.w,t.l,'20px','faraday')}</div>`;
+});
+h+=`</div>`;
+// Rond
+h+=`<div class="sub">Rond</div><div class="g" style="margin-bottom:16px;">`;
+[{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'}].forEach(c=>{
+  h+=`<div class="lk" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-i r">${FR(40,c.bg,c.fg)}</div><div>${wm(t.f,t.w,t.l,'20px','faraday')}<div class="lk-bl">disconnect to reconnect</div></div></div>`;
+});
+h+=`</div>`;
+// Empile
+h+=`<div class="sub">Empile</div><div class="g">`;
+[{bg:P.s,fg:P.c},{bg:P.c,fg:P.w},{bg:P.w,fg:P.c,bdr:'border:1px solid #e0e0e0;'},{bg:P.gc,fg:P.c}].forEach(c=>{
+  h+=`<div class="lk-s" style="background:${c.bg};color:${c.fg};${c.bdr||''}"><div class="lk-si">${F(50,c.bg,c.fg)}</div><div style="text-align:center;">${wm(t.f,t.w,t.l,'20px','faraday')}<div class="lk-bl">disconnect to reconnect</div></div></div>`;
+});
+h+=`</div>`;
 h+=`</div><div class="div"></div>`;
 
 // 03 ANIMATIONS
@@ -201,7 +200,7 @@ h+=`</div></div><div class="div"></div>`;
 
 // 05 TYPO
 h+=`<div class="sect"><div class="sh">05</div><div class="st">Typographie</div><div class="sd">Sora pour la marque, Inter pour le corps, Space Mono pour les donnees.</div>`;
-h+=`<div class="sub">Sora — Display / Marque</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:36px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.06em;color:${P.g};">The present starts here</div><div style="font-family:'Sora',sans-serif;font-size:12px;margin-top:10px;color:${P.g};">Light 300 · Regular 400 · Medium 500</div>`;
+h+=`<div class="sub">Sora — Display / Marque</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:36px;letter-spacing:.08em;margin-bottom:6px;">faraday</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.06em;color:${P.g};">The present starts here</div><div style="font-family:'Sora',sans-serif;font-size:12px;margin-top:10px;color:${P.g};">Light 300 · Regular 400 · Medium 500</div>`;
 h+=`<div class="sub" style="margin-top:28px;">Inter — Corps / Interface</div><div style="font-size:16px;margin-bottom:6px;">Deposez votre telephone. Reprenez votre temps.</div><div style="font-size:13px;line-height:1.7;max-width:480px;color:${P.g};">La Faraday Box est un objet connecte dans lequel les utilisateurs deposent leur telephone afin de creer une boucle positive de deconnexion volontaire.</div>`;
 h+=`<div class="sub" style="margin-top:28px;">Space Mono — Donnees / Stats</div><div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;">9h46 <span style="font-size:14px;font-weight:400;color:${P.g};">aujourd'hui</span></div>`;
 h+=`</div><div class="div"></div>`;
@@ -214,18 +213,22 @@ for(let i=0;i<12;i++){if(i===5)h+=`<div style="width:52px;height:52px;border-rad
 h+=`</div></div></div><div class="div"></div>`;
 
 // 07 ICONOGRAPHIE
-h+=`<div class="sect"><div class="sh">07</div><div class="st">Iconographie</div><div class="sd">Icones en outline, stroke-width 1.5px, linecap round, border-radius 4px. Couleur Charbon sur clair, Blanc sur sombre.</div>`;
+h+=`<div class="sect"><div class="sh">07</div><div class="st">Iconographie</div><div class="sd">Style outline arrondi, stroke 1.5px, linecap et linejoin round. Coherent avec le trait fin du logo flatline.</div>`;
 h+=`<div class="icon-grid">`;
 const icons=[
-  {n:'Home',d:'M16,28 L16,18 L8,12 L0,18 L0,28 L6,28 L6,20 L10,20 L10,28Z'},
-  {n:'Groupes',d:'M5,10 A5,5 0 1,1 5,0 A5,5 0 1,1 5,10 M0,20 Q0,14 5,12 Q10,14 10,20 M18,8 A4,4 0 1,1 18,0 A4,4 0 1,1 18,8 M13,18 Q13,13 18,11 Q23,13 23,18'},
-  {n:'Box',d:'M2,8 L14,8 L14,24 L2,24Z M5,4 L11,4 M5,8 L5,4 M11,8 L11,4'},
-  {n:'Stats',d:'M2,22 L2,14 M7,22 L7,10 M12,22 L12,16 M17,22 L17,6'},
-  {n:'Profil',d:'M8,10 A5,5 0 1,1 8,0 A5,5 0 1,1 8,10 M0,22 Q0,15 8,13 Q16,15 16,22'},
-  {n:'Session',d:'M12,2 A10,10 0 1,1 2,12 M12,2 L12,12 L18,12'},
+  {n:'Home',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-4v-6h-2v6h-2v-6H8v6H4a1 1 0 01-1-1z"/></svg>`},
+  {n:'Groupes',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17.5" cy="8.5" r="2.5"/><path d="M19 14.5c2 .5 3.5 2 3.5 4.5"/></svg>`},
+  {n:'Box',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v12H4z"/><path d="M8 8V5h8v3"/><path d="M10 12h4"/></svg>`},
+  {n:'Stats',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V12M9 20V8M14 20V14M19 20V4"/></svg>`},
+  {n:'Profil',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>`},
+  {n:'Timer',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/></svg>`},
+  {n:'Streak',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 4-6 6-6 12a6 6 0 0012 0c0-6-6-8-6-12z"/></svg>`},
+  {n:'Notif',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 4 2 6 2 6H4s2-2 2-6z"/><path d="M10 20a2 2 0 004 0"/></svg>`},
+  {n:'Reglages',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>`},
+  {n:'Defi',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6-6 6 6M6 15l6 6 6-6"/></svg>`},
 ];
 icons.forEach(ic=>{
-  h+=`<div class="icon-ex"><svg viewBox="-2 -2 28 28" fill="none" stroke="${P.c}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="${ic.d}"/></svg><span>${ic.n}</span></div>`;
+  h+=`<div class="icon-ex">${ic.svg}<span>${ic.n}</span></div>`;
 });
 h+=`</div></div><div class="div"></div>`;
 
@@ -235,7 +238,7 @@ h+=`<div class="sect" style="background:${P.gc};max-width:none;padding:70px 40px
 // Light phone
 h+=`<div><div class="sub" style="text-align:center;">Light mode</div><div class="ph" style="height:580px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
-<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.1em;">Faraday</div></div>
+<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.08em;">faraday</div></div>
 <div class="ph-ct">
 <div style="border-radius:8px;padding:10px;margin-bottom:8px;background:${P.s}30;border:1px solid ${P.s};">
   <div style="display:flex;align-items:center;gap:6px;"><div style="width:6px;height:6px;border-radius:50%;background:${P.s};"></div><div style="flex:1;"><div style="font-size:11px;font-weight:600;">Session en cours</div><div style="font-size:9px;color:${P.g};">Salon &middot; 14:20</div></div><div style="font-family:'Space Mono',monospace;font-size:16px;font-weight:700;">1h42</div></div></div>
@@ -261,7 +264,7 @@ h+=`</div></div></div>
 // Dark phone
 h+=`<div><div class="sub" style="text-align:center;">Dark mode</div><div class="ph ph-dark" style="height:580px;">
 <div class="ph-sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
-<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.1em;color:${P.w};">Faraday</div></div>
+<div style="padding:12px 18px 10px;display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;border-radius:7px;overflow:hidden;">${F(30,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.08em;color:${P.w};">faraday</div></div>
 <div class="ph-ct">
 <div style="border-radius:8px;padding:10px;margin-bottom:8px;background:${P.s}15;border:1px solid ${P.s}40;">
   <div style="display:flex;align-items:center;gap:6px;"><div style="width:6px;height:6px;border-radius:50%;background:${P.s};"></div><div style="flex:1;"><div style="font-size:11px;font-weight:600;color:${P.w};">Session en cours</div><div style="font-size:9px;color:${P.g};">Salon &middot; 14:20</div></div><div style="font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:${P.s};">1h42</div></div></div>
@@ -283,7 +286,7 @@ h+=`<div><div class="sub" style="text-align:center;">Dark mode</div><div class="
 // Splash
 h+=`<div><div class="sub" style="text-align:center;">Splash</div><div class="ph" style="height:580px;background:${P.s};align-items:center;justify-content:center;">
   <div style="width:60px;height:60px;margin-bottom:12px;">${F(60,P.s,P.c)}</div>
-  <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:.12em;color:${P.c};">Faraday</div>
+  <div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:.08em;color:${P.c};">faraday</div>
   <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.35;margin-top:5px;color:${P.c};">disconnect to reconnect</div>
 </div></div>`;
 h+=`</div></div></div><div class="div"></div>`;
@@ -298,53 +301,53 @@ h+=`</div></div><div class="div"></div>`;
 // 10 CARTE DE VISITE
 h+=`<div class="sect"><div class="sh">10</div><div class="st">Carte de visite</div><div class="sd">Version complete avec toutes les informations.</div><div class="g">`;
 // Sauge recto
-h+=`<div class="bc" style="background:${P.s};color:${P.c};"><div><div style="display:flex;align-items:center;gap:8px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:.1em;">Faraday</div></div></div><div><div style="font-size:12px;font-weight:600;">Pol Conin</div><div style="font-size:10px;line-height:1.8;opacity:.6;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+h+=`<div class="bc" style="background:${P.s};color:${P.c};"><div><div style="display:flex;align-items:center;gap:8px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:.08em;">faraday</div></div></div><div><div style="font-size:12px;font-weight:600;">Pol Conin</div><div style="font-size:10px;line-height:1.8;opacity:.6;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
 // Sauge verso
-h+=`<div class="bc" style="background:${P.s};color:${P.c};align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:10px;overflow:hidden;margin-bottom:8px;">${F(44,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;margin-top:4px;">disconnect to reconnect</div></div>`;
+h+=`<div class="bc" style="background:${P.s};color:${P.c};align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:10px;overflow:hidden;margin-bottom:8px;">${F(44,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.08em;">faraday</div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;margin-top:4px;">disconnect to reconnect</div></div>`;
 // Charbon recto
-h+=`<div class="bc" style="background:${P.c};color:${P.w};"><div><div style="display:flex;align-items:center;gap:8px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:.1em;">Faraday</div></div></div><div><div style="font-size:12px;font-weight:600;">Pol Conin</div><div style="font-size:10px;line-height:1.8;opacity:.6;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+h+=`<div class="bc" style="background:${P.c};color:${P.w};"><div><div style="display:flex;align-items:center;gap:8px;"><div style="width:28px;height:28px;border-radius:6px;overflow:hidden;">${F(28,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:.08em;">faraday</div></div></div><div><div style="font-size:12px;font-weight:600;">Pol Conin</div><div style="font-size:10px;line-height:1.8;opacity:.6;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
 // Charbon verso
-h+=`<div class="bc" style="background:${P.c};color:${P.w};align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:10px;overflow:hidden;margin-bottom:8px;">${F(44,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;margin-top:4px;">disconnect to reconnect</div></div>`;
+h+=`<div class="bc" style="background:${P.c};color:${P.w};align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:10px;overflow:hidden;margin-bottom:8px;">${F(44,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:.08em;">faraday</div><div style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;opacity:.3;margin-top:4px;">disconnect to reconnect</div></div>`;
 h+=`</div></div><div class="div"></div>`;
 
 // 11 AFFICHE
 h+=`<div class="sect"><div class="sh">11</div><div class="st">Affiche metro</div><div class="sd">Horizontale grand format.</div>`;
 [{bg:P.s,fg:P.c},{bg:P.c,fg:P.w}].forEach(c=>{
-  h+=`<div class="web" style="background:${c.bg};color:${c.fg};max-width:860px;height:320px;"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:38px;letter-spacing:.1em;margin-bottom:8px;">Faraday</div><div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;margin-bottom:20px;">disconnect to reconnect</div><div style="font-size:16px;line-height:1.5;opacity:.6;">Deposez votre telephone.<br>Reprenez votre temps.</div></div><div style="display:flex;flex-direction:column;align-items:center;"><div style="width:100px;height:100px;border-radius:24px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);">${F(100,c.bg,c.fg)}</div><div style="font-size:10px;opacity:.3;margin-top:10px;">faraday-box.fr</div></div></div>`;
+  h+=`<div class="web" style="background:${c.bg};color:${c.fg};max-width:860px;height:320px;"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:38px;letter-spacing:.08em;margin-bottom:8px;">faraday</div><div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;margin-bottom:20px;">disconnect to reconnect</div><div style="font-size:16px;line-height:1.5;opacity:.6;">Deposez votre telephone.<br>Reprenez votre temps.</div></div><div style="display:flex;flex-direction:column;align-items:center;"><div style="width:100px;height:100px;border-radius:24px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);">${F(100,c.bg,c.fg)}</div><div style="font-size:10px;opacity:.3;margin-top:10px;">faraday-box.fr</div></div></div>`;
 });
 h+=`</div><div class="div"></div>`;
 
 // 12 INSTAGRAM
 h+=`<div class="sect"><div class="sh">12</div><div class="st">Instagram</div><div class="sd">Post brand awareness + post data engageant.</div><div class="g">`;
 // Brand post
-h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;"><div style="width:26px;height:26px;border-radius:50%;overflow:hidden;">${FR(26,P.s,P.c)}</div><div style="font-size:11px;font-weight:600;">faraday.box</div></div><div style="width:100%;height:280px;background:${P.s};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;color:${P.c};">Faraday</div><div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.4;color:${P.c};">disconnect to reconnect</div></div><div style="padding:10px 12px;font-size:10px;line-height:1.4;"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. &#127793;</div></div>`;
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;"><div style="width:26px;height:26px;border-radius:50%;overflow:hidden;">${FR(26,P.s,P.c)}</div><div style="font-size:11px;font-weight:600;">faraday.box</div></div><div style="width:100%;height:280px;background:${P.s};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.08em;color:${P.c};">faraday</div><div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.4;color:${P.c};">disconnect to reconnect</div></div><div style="padding:10px 12px;font-size:10px;line-height:1.4;"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. &#127793;</div></div>`;
 // Data post
-h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;"><div style="width:26px;height:26px;border-radius:50%;overflow:hidden;">${FR(26,P.s,P.c)}</div><div style="font-size:11px;font-weight:600;">faraday.box</div></div><div style="width:100%;height:280px;background:${P.c};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;"><div style="font-family:'Space Mono',monospace;font-size:48px;font-weight:700;color:${P.w};">4h12</div><div style="font-size:14px;color:${P.gc};max-width:260px;text-align:center;line-height:1.4;">Temps moyen passe sur son telephone chaque jour en France.</div><div style="font-size:10px;color:${P.s};letter-spacing:.1em;margin-top:6px;">ET VOUS ?</div></div><div style="padding:10px 12px;font-size:10px;line-height:1.4;"><b>faraday.box</b> 4h12 par jour. C'est le temps moyen que les Francais passent sur leur telephone. Et si on le deposait ? &#128268;</div></div>`;
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;"><div style="width:26px;height:26px;border-radius:50%;overflow:hidden;">${FR(26,P.s,P.c)}</div><div style="font-size:11px;font-weight:600;">faraday.box</div></div><div style="width:100%;height:280px;background:${P.c};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;"><div style="font-family:'Space Mono',monospace;font-size:48px;font-weight:700;color:${P.w};">4h12</div><div style="font-size:14px;color:${P.gc};max-width:260px;text-align:center;line-height:1.4;">Temps moyen passe sur son telephone chaque jour en France.</div><div style="font-size:10px;color:${P.s};letter-spacing:.08em;margin-top:6px;">ET VOUS ?</div></div><div style="padding:10px 12px;font-size:10px;line-height:1.4;"><b>faraday.box</b> 4h12 par jour. C'est le temps moyen que les Francais passent sur leur telephone. Et si on le deposait ? &#128268;</div></div>`;
 h+=`</div></div><div class="div"></div>`;
 
 // 13 EMAIL SIGNATURE
 h+=`<div class="sect"><div class="sh">13</div><div class="st">Signature email</div><div class="sd">Logo + baseline + nom + liens.</div>`;
-h+=`<div class="esig"><div style="width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;">${F(40,P.s,P.c)}</div><div class="esig-sep" style="background:${P.s};"></div><div><div style="font-size:13px;font-weight:600;">Pol Conin</div><div style="font-size:10px;color:${P.g};margin-top:2px;">Co-fondateur</div><div style="font-size:10px;color:${P.g};margin-top:6px;">pol@faraday-box.fr &middot; faraday-box.fr</div><div style="font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:${P.sd};margin-top:6px;">disconnect to reconnect</div></div></div>`;
+h+=`<div class="esig"><div style="width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;">${F(40,P.s,P.c)}</div><div class="esig-sep" style="background:${P.s};"></div><div><div style="font-size:13px;font-weight:600;">Pol Conin</div><div style="font-size:10px;color:${P.g};margin-top:2px;">Co-fondateur</div><div style="font-size:10px;color:${P.g};margin-top:6px;">pol@faraday-box.fr &middot; faraday-box.fr</div><div style="font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:${P.sd};margin-top:6px;">disconnect to reconnect</div></div></div>`;
 h+=`</div><div class="div"></div>`;
 
 // 14 PACKAGING
 h+=`<div class="sect"><div class="sh">14</div><div class="st">Packaging</div><div class="sd">3 variantes pour la boite physique de la Faraday Box.</div><div class="g">`;
 // Kraft
-h+=`<div><div class="pkg" style="background:#c8b898;color:${P.c};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,'#c8b898',P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Kraft</div></div>`;
+h+=`<div><div class="pkg" style="background:#c8b898;color:${P.c};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,'#c8b898',P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.08em;">faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Kraft</div></div>`;
 // Sauge
-h+=`<div><div class="pkg" style="background:${P.s};color:${P.c};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Sauge</div></div>`;
+h+=`<div><div class="pkg" style="background:${P.s};color:${P.c};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,P.s,P.c)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.08em;">faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Sauge</div></div>`;
 // Charbon
-h+=`<div><div class="pkg" style="background:${P.c};color:${P.w};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.1em;">Faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Charbon premium</div></div>`;
+h+=`<div><div class="pkg" style="background:${P.c};color:${P.w};"><div style="width:50px;height:50px;border-radius:12px;overflow:hidden;">${F(50,P.c,P.w)}</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:.08em;">faraday</div><div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;opacity:.35;">disconnect to reconnect</div></div><div class="ll">Charbon premium</div></div>`;
 h+=`</div></div><div class="div"></div>`;
 
 // 15 WEB HEADER
 h+=`<div class="sect"><div class="sh">15</div><div class="st">Site web — Header</div><div class="sd">3 ambiances pour le hero du site.</div>`;
 // Sauge
-h+=`<div class="web" style="background:${P.s};color:${P.c};"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.c};color:${P.w};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.s,P.c)}</div></div>`;
+h+=`<div class="web" style="background:${P.s};color:${P.c};"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.08em;margin-bottom:6px;">faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.c};color:${P.w};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.s,P.c)}</div></div>`;
 // Blanc
-h+=`<div class="web" style="background:${P.w};color:${P.c};border:1px solid #e8e4e0;"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.s};color:${P.c};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.s,P.c)}</div></div>`;
+h+=`<div class="web" style="background:${P.w};color:${P.c};border:1px solid #e8e4e0;"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.08em;margin-bottom:6px;">faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.s};color:${P.c};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.s,P.c)}</div></div>`;
 // Charbon
-h+=`<div class="web" style="background:${P.c};color:${P.w};"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.1em;margin-bottom:6px;">Faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.s};color:${P.c};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.c,P.w)}</div></div>`;
+h+=`<div class="web" style="background:${P.c};color:${P.w};"><div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:.08em;margin-bottom:6px;">faraday</div><div style="font-size:14px;line-height:1.5;opacity:.6;margin-bottom:16px;">Deposez votre telephone.<br>Reprenez votre temps.</div><div style="display:inline-block;padding:10px 24px;background:${P.s};color:${P.c};border-radius:8px;font-size:12px;font-weight:600;">Decouvrir</div></div><div style="width:80px;height:80px;border-radius:20px;overflow:hidden;">${F(80,P.c,P.w)}</div></div>`;
 h+=`</div><div class="div"></div>`;
 
 // 16 REGLES
@@ -355,7 +358,7 @@ h+=`<div class="sect"><div class="sh">16</div><div class="st">Regles d'usage</di
   <li>&#8226; Logo sur fond Corail ou Bleu</li><li>&#8226; Deformer le symbole</li><li>&#8226; Changer l'epaisseur du trait</li><li>&#8226; Ajouter ombre ou effet</li><li>&#8226; Fond charge derriere le logo</li><li>&#8226; Changer la police du wordmark</li><li>&#8226; Couleurs hors palette</li><li>&#8226; Cadre autour du logo</li></ul></div>
 </div></div>`;
 
-h+=`<div style="text-align:center;padding:60px 40px;color:${P.g};font-size:11px;">Faraday — Brand Book — 2026<br><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.1em;margin-top:10px;display:inline-block;color:${P.c};">Faraday</span></div>`;
+h+=`<div style="text-align:center;padding:60px 40px;color:${P.g};font-size:11px;">Faraday — Brand Book — 2026<br><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:.08em;margin-top:10px;display:inline-block;color:${P.c};">faraday</span></div>`;
 
 document.write(h);
 </script>
