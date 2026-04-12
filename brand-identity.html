@@ -528,10 +528,11 @@ h+=`<div class="sect"><div class="kicker">09 — Photographie</div><h2>Moodboard
 h+=`<p class="sect-desc">Intérieurs scandinaves, moments sans téléphone (personnes de dos/profil), matières nobles. Lumière naturelle uniquement.</p>`;
 
 // Helper for photo card
-const ph=(url,label,h2,w,ht)=>`<div style="height:${ht||'200'}px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);${w?'grid-column:span 2;':''}">
+const ph=(url,label,h2,w,ht)=>`<a href="https://unsplash.com/photos/${url}" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:${ht||'200'}px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);${w?'grid-column:span 2;':''}cursor:pointer;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 12px 32px rgba(17,22,29,.12)';this.querySelector('.unsplash-badge').style.opacity='1';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(17,22,29,.06)';this.querySelector('.unsplash-badge').style.opacity='0';">
 <img src="https://images.unsplash.com/${url}?w=${w?'800':'400'}&h=${ht?ht+100:'350'}&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.45));"></div>
-<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">${label}</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">${h2}</div></div></div>`;
+<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">${label}</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">${h2}</div></div>
+<div style="position:absolute;top:10px;right:10px;z-index:1;background:rgba(0,0,0,.4);border-radius:6px;padding:3px 8px;font-size:8px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.05em;opacity:0;transition:opacity .2s;" class="unsplash-badge">UNSPLASH ↗</div></a>`;
 
 // CAT 1: L'objet dans son contexte
 h+=`<div class="sub">L'objet dans son contexte</div>`;
