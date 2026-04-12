@@ -342,6 +342,15 @@ h+=`<div class="app-section-title" style="display:flex;justify-content:space-bet
 [{n:'Salon',t:'Maison',v:'2h14'},{n:'Chambre',t:'Maison',v:'7h32'},{n:'Salle de reu',t:'Bureau',v:'4h05'}].forEach(b=>{
   h+=`<div class="app-row"><div style="width:7px;height:7px;border-radius:50%;background:#6b9b6b;flex-shrink:0;"></div><div style="flex:1;font-size:13px;font-weight:500;">${b.n} <span class="app-tag">${b.t}</span></div><div class="app-stat" style="font-size:13px;">${b.v}</div></div>`;
 });
+// Gradient promo cards in app
+h+=`<div style="margin-top:16px;border-radius:14px;background:linear-gradient(135deg,#8a7a68,#4a3a28);padding:18px;display:flex;align-items:center;gap:14px;">`;
+h+=`${LED(32,'transparent','rgba(255,255,255,.15)',C.ember)}`;
+h+=`<div style="flex:1;"><div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.9);">Votre soirée vous attend</div><div style="font-size:10px;color:rgba(255,255,255,.45);margin-top:2px;">Déposez votre téléphone.</div></div></div>`;
+
+h+=`<div style="margin-top:10px;border-radius:14px;background:linear-gradient(180deg,#b8c4b0,#5a6a4a);padding:18px;display:flex;align-items:center;gap:14px;">`;
+h+=`${LED(32,'transparent','rgba(255,255,255,.15)',C.porcelain)}`;
+h+=`<div style="flex:1;"><div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.9);">Bon matin !</div><div style="font-size:10px;color:rgba(255,255,255,.45);margin-top:2px;">Hier soir : 2h14 sans écran. Bien joué.</div></div></div>`;
+
 h+=`</div>`;
 h+=iphoneEnd('h',false);
 
@@ -790,63 +799,24 @@ h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">`;
 });
 h+=`</div></div>`;
 
-// 14 — MERCHANDISING
+// 14 — MERCHANDISING — flat mockups
 h+=`<div class="sect"><div class="kicker">14 — Merchandising</div><h2>Goodies & objets</h2>`;
-h+=`<p class="sect-desc">Aperçu des applications sur textile et objets du quotidien.</p>`;
-h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">`;
+h+=`<p class="sect-desc">Utilisation du logo sur les supports physiques. Pas de mockup 3D — juste le placement et les couleurs autorisées.</p>`;
 
-// T-shirt front
-h+=`<div><div style="height:320px;border-radius:16px;background:#f0ede6;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
-h+=`<div style="width:180px;height:200px;background:#222;border-radius:4px 4px 0 0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">`;
-h+=`<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:14px;background:#f0ede6;border-radius:0 0 8px 8px;"></div>`;
-h+=`${LED(28,'transparent','rgba(255,255,255,.15)',C.ember)}`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:-.02em;color:rgba(255,255,255,.85);">faraday</div>`;
-h+=`</div></div>`;
-h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">T-shirt — Ink / Ember</div></div>`;
-
-// T-shirt back
-h+=`<div><div style="height:320px;border-radius:16px;background:#f0ede6;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
-h+=`<div style="width:180px;height:200px;background:${C.porcelain};border:1px solid #ddd;border-radius:4px 4px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:24px;gap:4px;">`;
-h+=`<div style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(21,29,42,.25);">disconnect to reconnect</div>`;
-h+=`<div style="font-size:9px;color:rgba(21,29,42,.2);">faraday-box.fr</div>`;
-h+=`</div></div>`;
-h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">T-shirt dos — baseline</div></div>`;
-
-// Tote bag
-h+=`<div><div style="height:320px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
-h+=`<div style="width:160px;height:180px;background:#d4cec0;border-radius:4px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;">`;
-h+=`<div style="position:absolute;top:-16px;left:35px;width:2px;height:20px;background:#b8b0a4;border-radius:1px;transform:rotate(-15deg);"></div>`;
-h+=`<div style="position:absolute;top:-16px;right:35px;width:2px;height:20px;background:#b8b0a4;border-radius:1px;transform:rotate(15deg);"></div>`;
-h+=`${LED_MONO(32,C.ink)}`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:-.02em;color:${C.ink};">faraday</div>`;
-h+=`</div></div>`;
-h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Tote bag — mono</div></div>`;
-h+=`</div>`;
-
-// Second row
-h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px;">`;
-// Mug
-h+=`<div><div style="height:200px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
-h+=`<div style="width:100px;height:120px;background:${C.porcelain};border-radius:8px;border:1px solid #ddd;position:relative;display:flex;align-items:center;justify-content:center;">`;
-h+=`<div style="position:absolute;right:-14px;top:30px;width:14px;height:40px;border:2px solid #ccc;border-left:none;border-radius:0 8px 8px 0;"></div>`;
-h+=`${LED_CORE(24,C.ember)}`;
-h+=`</div></div>`;
-h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Mug — LED core seule</div></div>`;
-
-// Sticker
-h+=`<div><div style="height:200px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
-h+=`<div style="width:70px;height:70px;border-radius:16px;background:${C.ink};display:grid;place-items:center;box-shadow:0 4px 12px rgba(17,22,29,.15);">${LED(42,C.ink,'rgba(246,243,236,.22)',C.ember)}</div>`;
-h+=`<div style="width:70px;height:70px;border-radius:50%;background:${C.ink};display:grid;place-items:center;box-shadow:0 4px 12px rgba(17,22,29,.15);">${LED_CORE(24,C.ember)}</div>`;
-h+=`</div>`;
-h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Stickers — carré + rond</div></div>`;
-
-// Notebook
-h+=`<div><div style="height:200px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
-h+=`<div style="width:100px;height:140px;background:${C.ink};border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 16px rgba(17,22,29,.15);">`;
-h+=`${LED(28,C.ink,'rgba(246,243,236,.15)',C.ember)}`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:11px;letter-spacing:-.02em;color:rgba(246,243,236,.7);">faraday</div>`;
-h+=`</div></div>`;
-h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Carnet — couverture Ink</div></div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">`;
+const merchCard=(bg,fg,content,label)=>`<div><div style="height:180px;border-radius:16px;background:${bg};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;border:1px solid var(--line);">${content}</div><div style="font-size:12px;color:var(--muted);margin-top:8px;">${label}</div></div>`;
+// T-shirt noir
+h+=merchCard(C.ink,C.porcelain,`${LED(36,C.ink,'rgba(246,243,236,.15)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div>`,'T-shirt — Ink + Ember');
+// T-shirt clair
+h+=merchCard(C.porcelain,C.ink,`${LED(36,C.porcelain,'rgba(21,29,42,.1)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:-.03em;color:${C.ink};">faraday</div>`,'T-shirt — Porcelain + Ember');
+// Tote bag mono
+h+=merchCard('#d8d0c4',C.ink,`${LED_MONO(36,C.ink)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:-.03em;color:${C.ink};">faraday</div>`,'Tote bag — toile naturelle, mono');
+// Stickers
+h+=merchCard(C.ink,C.porcelain,`<div style="display:flex;gap:14px;align-items:center;">${LED(40,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="width:40px;height:40px;border-radius:50%;background:${C.ink};display:grid;place-items:center;border:1px solid rgba(246,243,236,.1);">${LED_CORE(20,C.ember)}</div></div>`,'Stickers — carré + rond');
+// Carnet
+h+=merchCard(C.ink,C.porcelain,`${LED(28,C.ink,'rgba(246,243,236,.12)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;letter-spacing:-.02em;color:rgba(246,243,236,.6);">faraday</div>`,'Carnet — couverture Ink');
+// Baseline seule
+h+=merchCard(C.porcelain,C.ink,`<div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(21,29,42,.2);">disconnect to reconnect</div><div style="font-size:9px;color:rgba(21,29,42,.15);">faraday-box.fr</div>`,'Dos T-shirt / Tote — baseline seule');
 h+=`</div></div>`;
 
 // 15 — REGLES
