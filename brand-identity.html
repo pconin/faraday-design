@@ -61,6 +61,43 @@
   .anim-rise .led-aura{animation:led-halo-expand 2.9s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
   .anim-blink .led-core{animation:led-double-blink 4.2s ease-in-out infinite;}
 
+  /* 5. Beacon Morse — LED talks in short/long pulses */
+  @keyframes led-morse{0%,8%{opacity:1;}12%,20%{opacity:.15;}24%,36%{opacity:1;}40%,52%{opacity:.15;}56%,60%{opacity:1;}64%,100%{opacity:.15;}}
+  .anim-morse .led-core{animation:led-morse 4s ease-in-out infinite;}
+
+  /* 6. Surge — LED grows tall then shrinks */
+  @keyframes led-surge{0%,100%{transform:scaleY(1);}30%{transform:scaleY(1.3);}60%{transform:scaleY(.85);}80%{transform:scaleY(1.05);}}
+  .anim-surge .led-core{animation:led-surge 3s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+  .anim-surge .led-shell{animation:led-surge 3s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+
+  /* 7. Heartbeat LED — double pulse like a heart */
+  @keyframes led-heart{0%,100%{opacity:.3;transform:scale(1);}14%{opacity:1;transform:scale(1.08);}22%{opacity:.5;transform:scale(1);}32%{opacity:1;transform:scale(1.05);}44%{opacity:.3;transform:scale(1);}}
+  .anim-heart .led-core{animation:led-heart 2.4s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+
+  /* 8. Cascade — LED appears then aura ripples outward */
+  @keyframes led-cascade-core{0%{opacity:0;transform:scaleY(0);}25%{opacity:1;transform:scaleY(1);}100%{opacity:1;transform:scaleY(1);}}
+  @keyframes led-cascade-aura{0%,25%{opacity:0;transform:scale(.5);}50%{opacity:.4;transform:scale(1.15);}100%{opacity:0;transform:scale(1.4);}}
+  .anim-cascade .led-core{animation:led-cascade-core 3s ease-out infinite;transform-origin:center;transform-box:fill-box;}
+  .anim-cascade .led-aura{animation:led-cascade-aura 3s ease-out infinite;transform-origin:center;transform-box:fill-box;}
+
+  /* 9. Flicker — unstable signal becoming stable */
+  @keyframes led-flicker{0%{opacity:.1;}5%{opacity:.8;}10%{opacity:.2;}14%{opacity:.9;}18%{opacity:.15;}24%{opacity:.7;}30%{opacity:.3;}38%{opacity:1;}50%,100%{opacity:1;}}
+  .anim-flicker .led-core{animation:led-flicker 4s ease-in-out infinite;}
+
+  /* 10. Slow Fade In — cinematic reveal */
+  @keyframes led-slow-fade{0%{opacity:0;filter:blur(4px);}60%{opacity:.6;filter:blur(1px);}100%{opacity:1;filter:blur(0);}}
+  .anim-slow .led-core{animation:led-slow-fade 5s ease-out infinite;}
+  .anim-slow .led-shell{animation:led-slow-fade 5s ease-out infinite;animation-delay:.5s;opacity:0;}
+
+  /* 11. Bounce In — playful entrance */
+  @keyframes led-bounce{0%{transform:translateY(20px) scaleY(.4);opacity:0;}40%{transform:translateY(-4px) scaleY(1.1);opacity:1;}55%{transform:translateY(2px) scaleY(.95);}70%{transform:translateY(-1px) scaleY(1.02);}100%{transform:translateY(0) scaleY(1);opacity:1;}}
+  .anim-bounce .led-core{animation:led-bounce 2s cubic-bezier(.34,1.56,.64,1) infinite;transform-origin:center;transform-box:fill-box;}
+  .anim-bounce .led-shell{animation:led-bounce 2s cubic-bezier(.34,1.56,.64,1) infinite;animation-delay:.15s;transform-origin:center;transform-box:fill-box;opacity:0;}
+
+  /* 12. SOS — urgent triple-triple-triple */
+  @keyframes led-sos{0%,4%{opacity:1;}6%,10%{opacity:.1;}12%,16%{opacity:1;}18%,22%{opacity:.1;}24%,28%{opacity:1;}30%,40%{opacity:.1;}42%,50%{opacity:1;}52%,56%{opacity:.1;}58%,66%{opacity:1;}68%,72%{opacity:.1;}74%,82%{opacity:1;}84%,100%{opacity:.1;}}
+  .anim-sos .led-core{animation:led-sos 6s ease-in-out infinite;}
+
   /* Phone — real iPhone */
   .phone{width:375px;height:812px;border-radius:44px;border:3px solid rgba(17,22,29,.08);overflow:hidden;display:flex;flex-direction:column;background:var(--porcelain);box-shadow:0 24px 80px rgba(17,22,29,.12),0 0 0 1px rgba(17,22,29,.04);flex-shrink:0;}
   .phone.dark{background:#111820;color:var(--porcelain);border-color:rgba(255,255,255,.06);}
@@ -185,13 +222,21 @@ h+=`</div></div>`;
 // 02 — ANIMATIONS
 // ============================================================
 h+=`<div class="sect"><div class="kicker">02 — Motion</div><h2>Animations du mark</h2>`;
-h+=`<p class="sect-desc">4 etats animes, chacun lie a un moment de l'experience utilisateur.</p>`;
+h+=`<p class="sect-desc">12 animations LED, chacune liee a un moment de l'experience. Du splash screen au signal d'urgence.</p>`;
 h+=`<div class="grid" style="gap:14px;">`;
 [
-  {cls:'anim-breathe',n:'Gentle Wake',d:'Lancement, splash screen',bg:C.ink,dark:true},
-  {cls:'anim-breathe',n:'Quiet Halo',d:'Etat idle, focus, attente',bg:C.porcelain},
+  {cls:'anim-breathe',n:'Gentle Wake',d:'Splash screen, lancement',bg:C.ink,dark:true},
+  {cls:'anim-breathe',n:'Quiet Halo',d:'Idle, focus, attente',bg:C.porcelain},
   {cls:'anim-blink',n:'Soft Confirm',d:'Confirmation de session',bg:C.ink,dark:true},
-  {cls:'anim-rise',n:'Lock In',d:'Entree en session, detection box',bg:C.sage},
+  {cls:'anim-rise',n:'Lock In',d:'Detection box, entree session',bg:C.ink,dark:true},
+  {cls:'anim-morse',n:'Beacon Morse',d:'La LED parle en code',bg:C.ink,dark:true},
+  {cls:'anim-surge',n:'Surge',d:'Connexion box, pic de signal',bg:C.ink,dark:true},
+  {cls:'anim-heart',n:'Heartbeat',d:'Session active, presence',bg:C.ink,dark:true},
+  {cls:'anim-cascade',n:'Cascade',d:'Ripple, notification recue',bg:C.ink,dark:true},
+  {cls:'anim-flicker',n:'Flicker',d:'Signal instable → stable',bg:C.ink,dark:true},
+  {cls:'anim-slow',n:'Slow Reveal',d:'Cinema, keynote, hero',bg:C.ink,dark:true},
+  {cls:'anim-bounce',n:'Bounce In',d:'Entree playful, gamification',bg:C.porcelain},
+  {cls:'anim-sos',n:'SOS',d:'Alerte, rappel urgent',bg:C.ink,dark:true},
 ].forEach(a=>{
   const shell=a.dark?'rgba(246,243,236,.22)':'rgba(21,29,42,.15)';
   const core=a.dark?C.ember:C.ember;
@@ -402,11 +447,18 @@ h+=`</div></div>`;
 // 08 — INSTAGRAM
 // ============================================================
 h+=`<div class="sect"><div class="kicker">08 — Social</div><h2>Instagram</h2>`;
+h+=`<p class="sect-desc">Avatar profil : logo Ink+Ember. Posts avec decli 2 (Porcelain+Ember).</p>`;
 h+=`<div class="grid" style="gap:16px;">`;
-// Brand post
-h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${LED(28,C.sage,'rgba(21,29,42,.15)',C.ember)}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">${LED(80,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div><div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.4;color:${C.porcelain};">disconnect to reconnect</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. 🌿</div></div>`;
-// Data post
-h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${LED(28,C.sage,'rgba(21,29,42,.15)',C.ember)}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:56px;font-weight:600;color:${C.porcelain};">4h12</div><div style="font-size:16px;color:rgba(255,255,255,.5);max-width:280px;text-align:center;line-height:1.5;">C'est le temps moyen passe sur son telephone chaque jour en France.</div><div style="font-size:12px;color:${C.ember};font-weight:700;letter-spacing:.12em;">ET VOUS ?</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> 4h12 par jour. Et si on les recuperait ? 📱⬇️</div></div>`;
+// Avatar = Ink + Ember (primary, NEVER sage+ember)
+const instaAv=LED(28,C.ink,'rgba(246,243,236,.15)',C.ember);
+// Brand post — Decli 2 (Porcelain + Ember)
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.porcelain};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;">${LED(90,C.porcelain,'rgba(21,29,42,.12)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:34px;letter-spacing:-.03em;color:${C.ink};">faraday</div><div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.35;color:${C.ink};">disconnect to reconnect</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. 🌿</div></div>`;
+// Brand post — Primary (Ink + Ember)
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;">${LED(90,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:34px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div><div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.35;color:${C.porcelain};">disconnect to reconnect</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> Votre telephone ne vous manquera pas. Promis. ✨</div></div>`;
+// Data post — Decli 2
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.porcelain};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:60px;font-weight:600;color:${C.ink};">4h12</div><div style="font-size:16px;color:${C.muted};max-width:280px;text-align:center;line-height:1.5;">C'est le temps moyen passe sur son telephone chaque jour en France.</div><div style="font-size:13px;color:${C.ember};font-weight:700;letter-spacing:.1em;">ET VOUS ?</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> 4h12 par jour. Et si on les recuperait ? 📱⬇️</div></div>`;
+// Quote post — Decli 2
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.porcelain};display:flex;align-items:center;justify-content:center;flex-direction:column;padding:40px;"><div style="font-family:'Sora',sans-serif;font-size:26px;font-weight:400;letter-spacing:-.02em;color:${C.ink};text-align:center;line-height:1.4;max-width:300px;">"Le vrai luxe, c'est de ne pas etre joignable."</div><div style="font-size:12px;color:${C.muted};margin-top:16px;">— Un utilisateur faraday</div><div style="margin-top:24px;">${LED(40,C.porcelain,'rgba(21,29,42,.1)',C.ember)}</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> Qu'est-ce que le luxe pour vous ? 💭</div></div>`;
 h+=`</div></div>`;
 
 // ============================================================
