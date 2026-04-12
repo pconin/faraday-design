@@ -1,0 +1,8 @@
+<svg viewBox="0 0 96 130" width="96" height="130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- LED Mark -->
+  <rect width="96" height="96" rx="26" fill="#F6F3EC"/>
+  <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="2.5"/>
+  <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"/>
+  <!-- Wordmark -->
+  <text x="48" y="122" text-anchor="middle" font-family="Sora, sans-serif" font-weight="300" font-size="18" letter-spacing="-0.03em" fill="#151D2A">faraday</text>
+</svg>

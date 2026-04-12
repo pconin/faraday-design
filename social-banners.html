@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Bannieres Reseaux Sociaux</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --ink:#151D2A;--sage:#C5CFBF;--porcelain:#F6F3EC;--lake:#4A8395;--ember:#FF9361;
+    --muted:#69717a;--line:rgba(255,255,255,.08);
+  }
+  body{background:#111;font-family:'Inter',sans-serif;color:#eee;padding:60px 40px 120px;}
+  h1{font-family:'Sora',sans-serif;font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-.03em;margin-bottom:8px;}
+  .subtitle{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:48px;max-width:600px;line-height:1.7;}
+
+  /* Grid */
+  .banner-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:32px;}
+
+  /* Card */
+  .banner-card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:16px;transition:background .2s;}
+  .banner-card:hover{background:rgba(255,255,255,.06);}
+
+  /* Preview wrapper */
+  .preview-wrap{border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);position:relative;flex-shrink:0;}
+
+  /* Banner info */
+  .banner-info{text-align:center;width:100%;}
+  .banner-name{font-size:14px;font-weight:700;margin-bottom:4px;}
+  .banner-dims{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:4px;}
+  .banner-use{font-size:11px;color:rgba(255,255,255,.25);}
+
+  /* Badge */
+  .badge{position:absolute;top:8px;right:8px;background:var(--ember);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:6px;text-transform:uppercase;z-index:2;}
+
+  /* Copy button */
+  .btn-copy{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;letter-spacing:.04em;}
+  .btn-copy:hover{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2);}
+  .btn-copy.copied{background:rgba(255,147,97,.15);color:var(--ember);border-color:rgba(255,147,97,.3);}
+
+  /* Breathe animation */
+  @keyframes breathe{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}
+  .anim-breathe .led-core{animation:breathe 4s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+
+  /* Banner internals — shared */
+  .banner-surface{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .banner-brand{font-family:'Sora',sans-serif;font-weight:300;letter-spacing:-.02em;line-height:1;}
+  .banner-tagline{font-size:inherit;opacity:.5;line-height:1.4;}
+</style>
+</head>
+<body>
+
+<h1>Faraday — Bannieres Reseaux Sociaux</h1>
+<p class="subtitle">
+  Previews des bannieres pour les principaux reseaux sociaux. Cliquez "Copier SVG" pour obtenir le code inline pret a l'emploi.
+</p>
+
+<div class="banner-grid" id="grid"></div>
+
+<script>
+// ── LED Mark builder ──
+function ledMark(size, bg, shell, core, cls='') {
+  return `<svg viewBox="0 0 96 96" fill="none" width="${size}" height="${size}" class="${cls}">
+    <rect width="96" height="96" rx="26" fill="${bg}"/>
+    <rect x="31" y="14" width="34" height="68" rx="17" stroke="${shell}" stroke-width="2.5" class="led-shell"/>
+    <rect x="43" y="28" width="10" height="40" rx="5" fill="${core}" class="led-core"/>
+  </svg>`;
+}
+
+// ── Banner definitions ──
+const banners = [
+  // 1. Instagram Post
+  {
+    id: 'ig-post',
+    name: 'Instagram Post',
+    w: 1080, h: 1080,
+    dw: 360, dh: 360,
+    usage: 'Feed carré',
+    render(dw, dh) {
+      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">
+        ${ledMark(120, 'transparent', 'rgba(255,255,255,.2)', '#FF9361')}
+        <span class="banner-brand" style="color:#fff;font-size:28px;">faraday</span>
+        <span class="banner-tagline" style="color:rgba(255,255,255,.5);font-family:'Sora',sans-serif;font-weight:300;font-size:13px;">Deposez. Deconnectez.</span>
+      </div>`;
+    }
+  },
+  // 2. Instagram Post Animated
+  {
+    id: 'ig-post-anim',
+    name: 'Instagram Post',
+    w: 1080, h: 1080,
+    dw: 360, dh: 360,
+    usage: 'Feed carré — animé',
+    animated: true,
+    render(dw, dh) {
+      return `<div class="banner-surface anim-breathe" style="width:${dw}px;height:${dh}px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">
+        ${ledMark(120, 'transparent', 'rgba(255,255,255,.2)', '#FF9361')}
+        <span class="banner-brand" style="color:#fff;font-size:28px;">faraday</span>
+        <span class="banner-tagline" style="color:rgba(255,255,255,.5);font-family:'Sora',sans-serif;font-weight:300;font-size:13px;">Deposez. Deconnectez.</span>
+      </div>`;
+    }
+  },
+  // 3. Instagram Story
+  {
+    id: 'ig-story',
+    name: 'Instagram Story',
+    w: 1080, h: 1920,
+    dw: 200, dh: 356,
+    usage: 'Story / Reel cover',
+    animated: true,
+    render(dw, dh) {
+      return `<div class="banner-surface anim-breathe" style="width:${dw}px;height:${dh}px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));flex-direction:column;gap:14px;">
+        ${ledMark(140 * (dw / 1080), 'transparent', 'rgba(246,243,236,.15)', '#FF9361')}
+        <span class="banner-brand" style="color:#F6F3EC;font-size:${18 * (dw / 1080) > 10 ? 16 : 10}px;">faraday</span>
+      </div>`;
+    }
+  },
+  // 4. LinkedIn Banner
+  {
+    id: 'linkedin',
+    name: 'LinkedIn Banner',
+    w: 1584, h: 396,
+    dw: 528, dh: 132,
+    usage: 'Couverture profil / page entreprise',
+    render(dw, dh) {
+      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:#151D2A;justify-content:space-between;padding:0 28px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          ${ledMark(60 * (dh / 396), 'transparent', 'rgba(246,243,236,.2)', '#FF9361')}
+          <span class="banner-brand" style="color:#F6F3EC;font-size:18px;">faraday</span>
+        </div>
+        <span class="banner-tagline" style="color:rgba(246,243,236,.4);font-family:'Sora',sans-serif;font-weight:300;font-size:11px;text-align:right;">Deposez. Deconnectez.</span>
+      </div>`;
+    }
+  },
+  // 5. Twitter/X Header
+  {
+    id: 'twitter',
+    name: 'Twitter / X Header',
+    w: 1500, h: 500,
+    dw: 500, dh: 167,
+    usage: 'Couverture profil X',
+    render(dw, dh) {
+      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:#F6F3EC;flex-direction:row;gap:14px;border-bottom:2px solid #C5CFBF;">
+        ${ledMark(52, 'transparent', 'rgba(21,29,42,.15)', '#FF9361')}
+        <span class="banner-brand" style="color:#151D2A;font-size:22px;">faraday</span>
+      </div>`;
+    }
+  },
+  // 6. OG Image
+  {
+    id: 'og',
+    name: 'OG Image',
+    w: 1200, h: 630,
+    dw: 400, dh: 210,
+    usage: 'Apercu lien — clair',
+    render(dw, dh) {
+      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:10px;">
+        ${ledMark(64, 'transparent', 'rgba(255,255,255,.2)', '#FF9361')}
+        <span class="banner-brand" style="color:#fff;font-size:22px;">faraday</span>
+        <span style="color:rgba(255,255,255,.55);font-family:'Sora',sans-serif;font-weight:300;font-size:11px;text-align:center;max-width:80%;line-height:1.5;">La cage de Faraday pour votre telephone</span>
+      </div>`;
+    }
+  },
+  // 7. OG Image Dark
+  {
+    id: 'og-dark',
+    name: 'OG Image — Dark',
+    w: 1200, h: 630,
+    dw: 400, dh: 210,
+    usage: 'Apercu lien — sombre',
+    render(dw, dh) {
+      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:#151D2A;flex-direction:column;gap:10px;">
+        ${ledMark(64, 'transparent', 'rgba(246,243,236,.15)', '#FF9361')}
+        <span class="banner-brand" style="color:#F6F3EC;font-size:22px;">faraday</span>
+        <span style="color:rgba(246,243,236,.45);font-family:'Sora',sans-serif;font-weight:300;font-size:11px;text-align:center;max-width:80%;line-height:1.5;">La cage de Faraday pour votre telephone</span>
+      </div>`;
+    }
+  }
+];
+
+// ── Render ──
+const grid = document.getElementById('grid');
+
+banners.forEach(b => {
+  const card = document.createElement('div');
+  card.className = 'banner-card';
+  card.innerHTML = `
+    <div class="preview-wrap" style="width:${b.dw}px;">
+      ${b.animated ? '<div class="badge">anime</div>' : ''}
+      ${b.render(b.dw, b.dh)}
+    </div>
+    <div class="banner-info">
+      <div class="banner-name">${b.name}</div>
+      <div class="banner-dims">${b.w} x ${b.h} &mdash; affiche ${b.dw} x ${b.dh}</div>
+      <div class="banner-use">${b.usage}</div>
+    </div>
+    <button class="btn-copy" data-id="${b.id}" onclick="copySVG(this, '${b.id}')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      Copier SVG
+    </button>`;
+  grid.appendChild(card);
+});
+
+// ── Export as SVG with embedded fonts ──
+function bannerToSVG(id) {
+  const b = banners.find(x => x.id === id);
+  if (!b) return '';
+  const w = b.w, h = b.h;
+
+  // Build full-res SVG based on banner type
+  switch(id) {
+    case 'ig-post':
+    case 'ig-post-anim': {
+      const anim = id === 'ig-post-anim' ? `<style>@keyframes breathe{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}.led-core{animation:breathe 4s ease-in-out infinite;transform-origin:center;}</style>` : '';
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(138,122,104,.85)"/><stop offset="100%" stop-color="rgba(74,58,40,.9)"/></linearGradient></defs>
+  ${anim}
+  <rect width="${w}" height="${h}" fill="url(#bg)"/>
+  <g transform="translate(${w/2 - 60},${h/2 - 100})">
+    <rect width="120" height="120" rx="33" fill="transparent"/>
+    <rect x="${120*31/96}" y="${120*14/96}" width="${120*34/96}" height="${120*68/96}" rx="${120*17/96}" stroke="rgba(255,255,255,.2)" stroke-width="3" fill="none"/>
+    <rect x="${120*43/96}" y="${120*28/96}" width="${120*10/96}" height="${120*40/96}" rx="${120*5/96}" fill="#FF9361" class="led-core"/>
+  </g>
+  <text x="${w/2}" y="${h/2 + 100}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="80" fill="white">faraday</text>
+  <text x="${w/2}" y="${h/2 + 150}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="36" fill="rgba(255,255,255,.5)">Deposez. Deconnectez.</text>
+</svg>`;
+    }
+    case 'ig-story': {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2=".3" y2="1"><stop offset="0%" stop-color="rgba(21,29,42,.95)"/><stop offset="100%" stop-color="rgba(10,16,24,.98)"/></linearGradient></defs>
+  <style>@keyframes breathe{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}.led-core{animation:breathe 4s ease-in-out infinite;transform-origin:center;}</style>
+  <rect width="${w}" height="${h}" fill="url(#bg)"/>
+  <g transform="translate(${w/2 - 70},${h/2 - 120})">
+    <rect width="140" height="140" rx="38" fill="transparent"/>
+    <rect x="${140*31/96}" y="${140*14/96}" width="${140*34/96}" height="${140*68/96}" rx="${140*17/96}" stroke="rgba(246,243,236,.15)" stroke-width="3" fill="none"/>
+    <rect x="${140*43/96}" y="${140*28/96}" width="${140*10/96}" height="${140*40/96}" rx="${140*5/96}" fill="#FF9361" class="led-core"/>
+  </g>
+  <text x="${w/2}" y="${h/2 + 80}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="72" fill="#F6F3EC">faraday</text>
+</svg>`;
+    }
+    case 'linkedin': {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+  <rect width="${w}" height="${h}" fill="#151D2A"/>
+  <g transform="translate(80,${h/2 - 40})">
+    <rect width="80" height="80" rx="22" fill="transparent"/>
+    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(246,243,236,.2)" stroke-width="2" fill="none"/>
+    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
+  </g>
+  <text x="180" y="${h/2 + 14}" font-family="Sora,sans-serif" font-weight="300" font-size="56" fill="#F6F3EC">faraday</text>
+  <text x="${w - 80}" y="${h/2 + 8}" text-anchor="end" font-family="Sora,sans-serif" font-weight="300" font-size="28" fill="rgba(246,243,236,.4)">Deposez. Deconnectez.</text>
+</svg>`;
+    }
+    case 'twitter': {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+  <rect width="${w}" height="${h}" fill="#F6F3EC"/>
+  <rect x="0" y="${h - 4}" width="${w}" height="4" fill="#C5CFBF"/>
+  <g transform="translate(${w/2 - 80},${h/2 - 40})">
+    <rect width="80" height="80" rx="22" fill="transparent"/>
+    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(21,29,42,.15)" stroke-width="2" fill="none"/>
+    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
+  </g>
+  <text x="${w/2 + 50}" y="${h/2 + 14}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="64" fill="#151D2A">faraday</text>
+</svg>`;
+    }
+    case 'og': {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(138,122,104,.85)"/><stop offset="100%" stop-color="rgba(74,58,40,.9)"/></linearGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#bg)"/>
+  <g transform="translate(${w/2 - 40},${h/2 - 110})">
+    <rect width="80" height="80" rx="22" fill="transparent"/>
+    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(255,255,255,.2)" stroke-width="2" fill="none"/>
+    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
+  </g>
+  <text x="${w/2}" y="${h/2 + 30}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="64" fill="white">faraday</text>
+  <text x="${w/2}" y="${h/2 + 80}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="28" fill="rgba(255,255,255,.55)">La cage de Faraday pour votre telephone</text>
+</svg>`;
+    }
+    case 'og-dark': {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+  <rect width="${w}" height="${h}" fill="#151D2A"/>
+  <g transform="translate(${w/2 - 40},${h/2 - 110})">
+    <rect width="80" height="80" rx="22" fill="transparent"/>
+    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(246,243,236,.15)" stroke-width="2" fill="none"/>
+    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
+  </g>
+  <text x="${w/2}" y="${h/2 + 30}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="64" fill="#F6F3EC">faraday</text>
+  <text x="${w/2}" y="${h/2 + 80}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="28" fill="rgba(246,243,236,.45)">La cage de Faraday pour votre telephone</text>
+</svg>`;
+    }
+    default: return '';
+  }
+}
+
+// ── Copy to clipboard ──
+async function copySVG(btn, id) {
+  const svg = bannerToSVG(id);
+  if (!svg) return;
+  try {
+    await navigator.clipboard.writeText(svg);
+    btn.classList.add('copied');
+    btn.textContent = 'Copie !';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier SVG`;
+    }, 1800);
+  } catch(e) {
+    console.error('Clipboard write failed', e);
+  }
+}
+</script>
+<script src="research/nav.js"></script>
+</body>
+</html>

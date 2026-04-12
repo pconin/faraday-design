@@ -1,0 +1,8 @@
+<svg viewBox="0 0 1024 1024" width="1024" height="1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- App icon background -->
+  <rect width="1024" height="1024" rx="228" fill="#151D2A"/>
+  <!-- LED Shell -->
+  <rect x="330" y="149" width="362" height="725" rx="181" stroke="rgba(246,243,236,.18)" stroke-width="27"/>
+  <!-- LED Core -->
+  <rect x="458" y="299" width="107" height="426" rx="53" fill="#FF9361"/>
+</svg>
