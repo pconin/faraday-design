@@ -847,9 +847,20 @@ h+=`<p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Deux icône
 h+=`<div style="display:flex;gap:24px;margin-bottom:24px;">`;
 // Faraday Box icon: rounded rect (box) with LED shell+core inside, opening slit at top
 h+=`<div style="text-align:center;padding:16px 20px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
-h+=`<div style="display:grid;place-items:center;height:48px;"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="${C.ink}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="3"/><path d="M8 6V4.5C8 3.67 8.67 3 9.5 3h5c.83 0 1.5.67 1.5 1.5V6"/><rect x="10.5" y="9.5" width="3" height="8" rx="1.5" stroke-width="1.2"/><rect x="11.25" y="11" width="1.5" height="5" rx=".75" fill="${C.ember}" stroke="none"/></svg></div>`;
+h+=`<div style="display:grid;place-items:center;height:48px;"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="${C.ink}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<!-- Stand / socle arrondi -->
+<path d="M7.5 22h9a3 3 0 003-3v-1H4.5v1a3 3 0 003 3z"/>
+<!-- Corps vertical du boîtier -->
+<rect x="6" y="4" width="12" height="14" rx="2"/>
+<!-- Couvercle ouvert (basculé vers l'arrière) -->
+<path d="M6 4L7 1.5h10L19 4" stroke-width="1.3"/>
+<!-- Fente d'insertion en bas -->
+<line x1="9" y1="17" x2="15" y2="17" stroke-width="1.2" opacity=".4"/>
+<!-- LED core -->
+<rect x="11" y="13" width="2" height="3" rx="1" fill="${C.ember}" stroke="none"/>
+</svg></div>`;
 h+=`<div style="font-size:11px;font-weight:700;color:var(--muted);margin-top:8px;">Faraday Box</div>`;
-h+=`<div style="font-size:9px;color:var(--muted);margin-top:2px;">Box avec LED intégrée</div></div>`;
+h+=`<div style="font-size:9px;color:var(--muted);margin-top:2px;">Dock + couvercle + LED</div></div>`;
 // Flatline icon
 h+=`<div style="text-align:center;padding:16px 20px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
 h+=`<div style="display:grid;place-items:center;height:48px;"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="${C.ink}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 Q5 7 8 12 Q9.5 14.5 11 12 Q12 10.5 13 12 L22 12"/></svg></div>`;
