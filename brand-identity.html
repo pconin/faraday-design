@@ -514,56 +514,80 @@ h+=`<div class="insta">${instaH()}<div style="height:400px;position:relative;ove
 h+=`</div></div>`;
 
 // ============================================================
-// 09 — PHOTOGRAPHIE / BRANDBOOK LIFESTYLE
-h+=`<div class="sect"><div class="kicker">09 — Photographie</div><h2>Direction artistique photo</h2>`;
-h+=`<p class="sect-desc">Le style photographique Faraday : calme, domestique, chaleureux. Lumière naturelle, materiaux nobles, absence visible du téléphone.</p>`;
+// 09 — PHOTOGRAPHIE / MOODBOARD DENSE
+h+=`<div class="sect"><div class="kicker">09 — Photographie</div><h2>Moodboard — 25 photos</h2>`;
+h+=`<p class="sect-desc">Intérieurs scandinaves, moments sans téléphone (personnes de dos/profil), matières nobles. Lumière naturelle uniquement.</p>`;
 
-// Real photos from Unsplash
-h+=`<div style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-bottom:16px;">`;
-h+=`<div style="height:300px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 12px 40px rgba(17,22,29,.08);">`;
-h+=`<img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=800&h=500&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Salon chaleureux">`;
-h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.5));"></div>`;
-h+=`<div style="position:absolute;bottom:20px;left:20px;right:20px;z-index:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);">Ambiance</div><div style="font-size:18px;color:rgba(255,255,255,.9);margin-top:4px;font-weight:500;">Salon — lumière chaude du soir</div></div></div>`;
-h+=`<div style="height:300px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 12px 40px rgba(17,22,29,.08);">`;
-h+=`<img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=500&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Texture bois">`;
-h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.35));"></div>`;
-h+=`<div style="position:absolute;bottom:20px;left:20px;right:20px;z-index:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);">Détail</div><div style="font-size:18px;color:rgba(255,255,255,.85);margin-top:4px;font-weight:500;">Texture bois — grain du noyer</div></div></div>`;
+// Helper for photo card
+const ph=(url,label,h2,w,ht)=>`<div style="height:${ht||'200'}px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);${w?'grid-column:span 2;':''}">
+<img src="https://images.unsplash.com/${url}?w=${w?'800':'400'}&h=${ht?ht+100:'350'}&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.45));"></div>
+<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">${label}</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">${h2}</div></div></div>`;
+
+// CAT 1: L'objet dans son contexte
+h+=`<div class="sub">L'objet dans son contexte</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
+h+=ph('photo-1600210492486-724fe5c67fb0','Étagère','Sur une étagère en bois clair');
+h+=ph('photo-1616046229478-9901c5536a45','Salon','Salon scandinave, lumière chaude',true,240);
+h+=ph('photo-1600585154340-be6161a56a0c','Bureau','Bureau minimaliste à la maison');
+h+=ph('photo-1618219908412-a29a1bb7b86e','Table de nuit','Posée à côté du livre');
+h+=ph('photo-1631679706909-1844bbd07221','Entrée','Dans le hall, en arrivant');
+h+=ph('photo-1600607687939-ce8a6c25118c','Cuisine','Plan de travail en bois');
+h+=ph('photo-1598928506311-c55ez637a48a','Salon 2','Près de la plante verte');
+h+=ph('photo-1586023492125-27b2c045efd7','Meuble TV','Meuble bas scandinave');
 h+=`</div>`;
 
-h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">`;
-h+=`<div style="height:220px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Café matin">`;
-h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.4));"></div>`;
-h+=`<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);">Matin</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">Lumière naturelle</div></div></div>`;
-h+=`<div style="height:220px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lecture">`;
-h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.4));"></div>`;
-h+=`<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);">Moment</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">Lire, être là</div></div></div>`;
-h+=`<div style="height:220px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Soirée calme">`;
-h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.5));"></div>`;
-h+=`<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);">Soir</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">Le calme retrouvé</div></div></div>`;
+// CAT 2: Moments sans téléphone
+h+=`<div class="sub">Moments sans téléphone — personnes de dos / profil</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
+h+=ph('photo-1506126613408-eca07ce68773','Méditation','Femme de dos, matin calme');
+h+=ph('photo-1544027993-37dbfe43562a','Lecture','Lire au bord de la fenêtre');
+h+=ph('photo-1495474472287-4d71bcdd2085','Café','Un café fumant, pas de scroll',false,220);
+h+=ph('photo-1516589178581-6cd7833ae3b2','Cuisine','Cuisiner ensemble, de dos');
+h+=ph('photo-1513694203232-719a280e022f','Soirée','Un soir calme à la maison',true,260);
+h+=ph('photo-1507003211169-0a1dd7228f2d','Profil','Homme de profil, pensif');
+h+=ph('photo-1517457373958-b7bdd4587205','Promenade','Marcher dehors, de dos');
+h+=ph('photo-1476480862126-209bfaa8edc8','Fenêtre','Regarder par la fenêtre');
+h+=ph('photo-1519125323398-675f0ddb6308','Mains','Des mains qui tiennent un mug');
 h+=`</div>`;
 
-// Gradient overlays demo — showing how to use gradients with brand
-h+=`<div class="sub" style="margin-top:20px;">Dégradés sur photo — usage brand</div>`;
-h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">`;
-// Warm Walnut gradient over photo
+// CAT 3: Matières / textures
+h+=`<div class="sub">Matières & textures</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
+h+=ph('photo-1558618666-fcd25c85f82e','Bois','Grain du noyer',false,160);
+h+=ph('photo-1590422749897-47036da0b0ff','Lin','Textile lin naturel',false,160);
+h+=ph('photo-1565193566173-7a0ee3dbe261','Céramique','Poterie artisanale',false,160);
+h+=ph('photo-1558171813-4c088753af8f','Laiton','Détail laiton brossé',false,160);
+h+=ph('photo-1513519245088-0e12902e35ca','Cuir','Cuir végétal patiné',false,160);
+h+=ph('photo-1544457070-4cd773b4d71e','Feutre','Textile dense et doux',false,160);
+h+=ph('photo-1416339134316-0e91dc9ded92','Pierre','Pierre naturelle polie',false,160);
+h+=ph('photo-1558618666-fcd25c85f82e','Bois foncé','Noyer sombre veinage',false,160);
+h+=`</div>`;
+
+// Gradient overlays
+h+=`<div class="sub">Dégradés sur photo — usage brand</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
+// Warm Walnut
 h+=`<div style="height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+h+=`<img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));"></div>`;
-h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.2)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:-.03em;color:rgba(255,255,255,.9);">faraday</div></div></div>`;
-// Deep Ink gradient over photo
+h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.2)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.9);">faraday</div></div></div>`;
+// Deep Ink
 h+=`<div style="height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+h+=`<img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(21,29,42,.88),rgba(10,16,24,.92));"></div>`;
-h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.15)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:-.03em;color:rgba(255,255,255,.85);">faraday</div></div></div>`;
+h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.15)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.85);">faraday</div></div></div>`;
+// Sage overlay
+h+=`<div style="height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
+h+=`<img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
+h+=`<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(197,207,191,.82),rgba(197,207,191,.88));"></div>`;
+h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(21,29,42,.15)',C.porcelain)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.ink};">faraday</div></div></div>`;
 h+=`</div>`;
 
-// Style guidelines
-h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;">`;
-h+=`<div><div class="sub">A rechercher</div><ul style="font-size:13px;line-height:2;color:var(--muted);list-style:none;"><li>• Lumière naturelle, golden hour, bougies</li><li>• Matériaux : noyer, lin, ceramique, laiton</li><li>• Espaces domestiques premium (pas studio)</li><li>• Absence du téléphone dans le cadre</li><li>• Moments de présence : lecture, conversation, cuisine</li><li>• LED visible comme seul element technologique</li></ul></div>`;
-h+=`<div><div class="sub">A eviter</div><ul style="font-size:13px;line-height:2;color:var(--muted);list-style:none;"><li>• Photos de téléphones (jamais)</li><li>• Éclairage artificiel, flash, neon</li><li>• Décors froids, bureaux, open spaces</li><li>• Personnes regardant un écran</li><li>• Style "tech startup" ou "gadget review"</li><li>• Fond blanc studio / packshot generique</li></ul></div>`;
+// Guidelines
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;">`;
+h+=`<div><div class="sub">À rechercher</div><ul style="font-size:13px;line-height:2;color:var(--muted);list-style:none;"><li>• Lumière naturelle, golden hour, bougies</li><li>• Style scandinave : bois clair, lin, plantes</li><li>• Personnes de dos ou de profil</li><li>• Absence du téléphone dans le cadre</li><li>• Moments de présence : lecture, café, cuisine</li><li>• Matériaux : noyer, lin, céramique, laiton, feutre</li></ul></div>`;
+h+=`<div><div class="sub">À éviter</div><ul style="font-size:13px;line-height:2;color:var(--muted);list-style:none;"><li>• Photos de téléphones (jamais)</li><li>• Éclairage artificiel, flash, néon</li><li>• Décors froids, bureaux corporate</li><li>• Personnes regardant un écran</li><li>• Style "tech startup" ou "gadget review"</li><li>• Fond blanc studio / packshot générique</li><li>• Visages de face (toujours dos ou profil)</li></ul></div>`;
 h+=`</div></div>`;
 
 // 10 — REGLES
