@@ -487,8 +487,8 @@ h+=`</div></div>`;
 h+=`<div class="sect"><div class="kicker">08 — Social</div><h2>Instagram</h2>`;
 h+=`<p class="sect-desc">Avatar profil : logo Ink+Ember. Posts separes avec declinaisons Ink Charcoal et Porcelain. 2 posts avec photo en background.</p>`;
 const instaAv=LED(28,C.ink,'rgba(246,243,236,.15)',C.ember);
-const instaH=(cap)=>`<div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div>`;
-const instaF=(txt)=>`<div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> ${txt}</div>`;
+const instaH=(cap)=>`<div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};border-bottom:1px solid rgba(17,22,29,.08);"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div>`;
+const instaF=(txt)=>`<div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};border-top:1px solid rgba(17,22,29,.08);"><b>faraday.box</b> ${txt}</div>`;
 
 // Post 1 — Quote on Ink Charcoal
 h+=`<div class="sub">Citation — fond Ink Charcoal</div>`;
@@ -703,6 +703,38 @@ h+=`<div style="width:160px;"><div style="height:72px;border-radius:12px;backgro
 h+=`<div style="width:160px;"><div style="height:72px;border-radius:12px;background:linear-gradient(160deg,${C.ink},#1a2030,#0a1018);"></div><div style="font-size:11px;font-weight:700;margin-top:6px;">Deep Ink</div><div style="font-size:10px;color:var(--muted);">Nuit, cinéma, premium</div></div>`;
 h+=`<div style="width:160px;"><div style="height:72px;border-radius:12px;background:linear-gradient(135deg,#c4b8a4,#a0907a,#7a6a58);"></div><div style="font-size:11px;font-weight:700;margin-top:6px;">Linen</div><div style="font-size:10px;color:var(--muted);">Textile, craft, doux</div></div>`;
 h+=`</div>`;
+
+// Gradient usage examples
+h+=`<div class="sub" style="margin-top:24px;">Exemples d'application</div>`;
+h+=`<p style="font-size:12px;color:var(--muted);margin-bottom:14px;">Comment utiliser les dégradés dans des composants réels.</p>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">`;
+// Hero banner
+h+=`<div style="height:180px;border-radius:16px;background:linear-gradient(135deg,#8a7a68,#4a3a28);display:flex;align-items:center;padding:28px 32px;gap:20px;box-shadow:0 8px 24px rgba(17,22,29,.08);">`;
+h+=`<div style="flex:1;"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:-.03em;color:rgba(255,255,255,.9);margin-bottom:6px;">Votre soirée vous attend</div><div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.5;">Déposez votre téléphone,<br>reprenez le contrôle.</div><div style="display:inline-block;padding:8px 18px;background:${C.ember};color:#fff;border-radius:8px;font-size:11px;font-weight:600;margin-top:12px;">Commencer →</div></div>`;
+h+=`${LED(48,'transparent','rgba(255,255,255,.15)',C.ember)}</div>`;
+// Stats card on gradient
+h+=`<div style="height:180px;border-radius:16px;background:linear-gradient(160deg,${C.ink},#0a1018);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;box-shadow:0 8px 24px rgba(17,22,29,.1);">`;
+h+=`<div style="font-family:'IBM Plex Mono',monospace;font-size:48px;font-weight:600;color:${C.porcelain};">9h46</div>`;
+h+=`<div style="font-size:12px;color:rgba(255,255,255,.4);">déconnecté cette semaine</div>`;
+h+=`<div style="font-size:11px;color:${C.lake};font-weight:600;">↑ 18% vs semaine dernière</div></div>`;
+h+=`</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">`;
+// App notification card
+h+=`<div style="border-radius:14px;background:linear-gradient(180deg,#b8c4b0,#8a9a7a);padding:20px;box-shadow:0 6px 20px rgba(17,22,29,.06);">`;
+h+=`<div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;">Session active</div>`;
+h+=`<div style="font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;color:#fff;margin-top:8px;">1h42</div>`;
+h+=`<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;">Salon &middot; depuis 14:20</div></div>`;
+// Streak card on linen
+h+=`<div style="border-radius:14px;background:linear-gradient(135deg,#c4b8a4,#7a6a58);padding:20px;box-shadow:0 6px 20px rgba(17,22,29,.06);">`;
+h+=`<div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;">🔥 Streak</div>`;
+h+=`<div style="font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;color:#fff;margin-top:8px;">12 jours</div>`;
+h+=`<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;">Record personnel !</div></div>`;
+// CTA card on deep ink
+h+=`<div style="border-radius:14px;background:linear-gradient(160deg,${C.ink},#0a1018);padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 6px 20px rgba(17,22,29,.1);">`;
+h+=`<div><div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Défi</div>`;
+h+=`<div style="font-size:15px;font-weight:600;color:${C.porcelain};margin-top:8px;">Semaine sans écran le soir</div></div>`;
+h+=`<div style="display:inline-block;padding:8px 16px;background:${C.ember};color:#fff;border-radius:8px;font-size:11px;font-weight:600;margin-top:12px;text-align:center;">Rejoindre →</div></div>`;
+h+=`</div>`;
 h+=`</div>`;
 
 // 12 — EMAIL TEMPLATE
@@ -758,7 +790,66 @@ h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">`;
 });
 h+=`</div></div>`;
 
-// 14 — REGLES
+// 14 — MERCHANDISING
+h+=`<div class="sect"><div class="kicker">14 — Merchandising</div><h2>Goodies & objets</h2>`;
+h+=`<p class="sect-desc">Aperçu des applications sur textile et objets du quotidien.</p>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">`;
+
+// T-shirt front
+h+=`<div><div style="height:320px;border-radius:16px;background:#f0ede6;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
+h+=`<div style="width:180px;height:200px;background:#222;border-radius:4px 4px 0 0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">`;
+h+=`<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:14px;background:#f0ede6;border-radius:0 0 8px 8px;"></div>`;
+h+=`${LED(28,'transparent','rgba(255,255,255,.15)',C.ember)}`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:-.02em;color:rgba(255,255,255,.85);">faraday</div>`;
+h+=`</div></div>`;
+h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">T-shirt — Ink / Ember</div></div>`;
+
+// T-shirt back
+h+=`<div><div style="height:320px;border-radius:16px;background:#f0ede6;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
+h+=`<div style="width:180px;height:200px;background:${C.porcelain};border:1px solid #ddd;border-radius:4px 4px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:24px;gap:4px;">`;
+h+=`<div style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(21,29,42,.25);">disconnect to reconnect</div>`;
+h+=`<div style="font-size:9px;color:rgba(21,29,42,.2);">faraday-box.fr</div>`;
+h+=`</div></div>`;
+h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">T-shirt dos — baseline</div></div>`;
+
+// Tote bag
+h+=`<div><div style="height:320px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
+h+=`<div style="width:160px;height:180px;background:#d4cec0;border-radius:4px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;">`;
+h+=`<div style="position:absolute;top:-16px;left:35px;width:2px;height:20px;background:#b8b0a4;border-radius:1px;transform:rotate(-15deg);"></div>`;
+h+=`<div style="position:absolute;top:-16px;right:35px;width:2px;height:20px;background:#b8b0a4;border-radius:1px;transform:rotate(15deg);"></div>`;
+h+=`${LED_MONO(32,C.ink)}`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:-.02em;color:${C.ink};">faraday</div>`;
+h+=`</div></div>`;
+h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Tote bag — mono</div></div>`;
+h+=`</div>`;
+
+// Second row
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px;">`;
+// Mug
+h+=`<div><div style="height:200px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
+h+=`<div style="width:100px;height:120px;background:${C.porcelain};border-radius:8px;border:1px solid #ddd;position:relative;display:flex;align-items:center;justify-content:center;">`;
+h+=`<div style="position:absolute;right:-14px;top:30px;width:14px;height:40px;border:2px solid #ccc;border-left:none;border-radius:0 8px 8px 0;"></div>`;
+h+=`${LED_CORE(24,C.ember)}`;
+h+=`</div></div>`;
+h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Mug — LED core seule</div></div>`;
+
+// Sticker
+h+=`<div><div style="height:200px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
+h+=`<div style="width:70px;height:70px;border-radius:16px;background:${C.ink};display:grid;place-items:center;box-shadow:0 4px 12px rgba(17,22,29,.15);">${LED(42,C.ink,'rgba(246,243,236,.22)',C.ember)}</div>`;
+h+=`<div style="width:70px;height:70px;border-radius:50%;background:${C.ink};display:grid;place-items:center;box-shadow:0 4px 12px rgba(17,22,29,.15);">${LED_CORE(24,C.ember)}</div>`;
+h+=`</div>`;
+h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Stickers — carré + rond</div></div>`;
+
+// Notebook
+h+=`<div><div style="height:200px;border-radius:16px;background:#f0ede6;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,22,29,.05);">`;
+h+=`<div style="width:100px;height:140px;background:${C.ink};border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 16px rgba(17,22,29,.15);">`;
+h+=`${LED(28,C.ink,'rgba(246,243,236,.15)',C.ember)}`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:11px;letter-spacing:-.02em;color:rgba(246,243,236,.7);">faraday</div>`;
+h+=`</div></div>`;
+h+=`<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Carnet — couverture Ink</div></div>`;
+h+=`</div></div>`;
+
+// 15 — REGLES
 // ============================================================
 h+=`<div class="sect"><div class="kicker">14 — Règles</div><h2>Usage du logo</h2>`;
 h+=`<p class="sect-desc">Règles strictes pour garantir la cohérence de la marque sur tous les supports.</p>`;
@@ -773,30 +864,58 @@ h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14p
 h+=`<tr style="background:${C.ember}06;"><td style="padding:10px 14px;font-weight:600;color:${C.ember};">⛔ Interdit</td><td style="padding:10px 14px;color:${C.ember};">Sage Mist</td><td style="padding:10px 14px;color:${C.ember};">Beacon Ember</td><td style="padding:10px 14px;color:${C.ember};">Jamais cette combinaison</td></tr>`;
 h+=`</table></div>`;
 
-// Do / Don't
-h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">`;
-h+=`<div><div class="sub" style="color:#6b9b6b;">✓ Obligatoire</div>`;
+// Do / Don't with visual examples
+h+=`<div class="sub">Exemples visuels</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">`;
+// DO examples
+h+=`<div style="padding:20px;border-radius:16px;border:2px solid #6b9b6b30;background:#6b9b6b06;">`;
+h+=`<div style="font-size:12px;font-weight:700;color:#6b9b6b;margin-bottom:14px;">✓ Correct</div>`;
+h+=`<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">`;
+// Good: Ink + Ember
+h+=`<div style="text-align:center;"><div style="width:80px;height:80px;border-radius:18px;background:${C.ink};display:grid;place-items:center;">${LED(48,C.ink,'rgba(246,243,236,.22)',C.ember)}</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">Ink + Ember</div></div>`;
+// Good: Porcelain + Ember
+h+=`<div style="text-align:center;"><div style="width:80px;height:80px;border-radius:18px;background:${C.porcelain};border:1px solid var(--line);display:grid;place-items:center;">${LED(48,C.porcelain,'rgba(21,29,42,.12)',C.ember)}</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">Porcelain + Ember</div></div>`;
+// Good: Sage + Porcelain
+h+=`<div style="text-align:center;"><div style="width:80px;height:80px;border-radius:18px;background:${C.sage};display:grid;place-items:center;">${LED(48,C.sage,'rgba(21,29,42,.12)',C.porcelain)}</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">Sage + Porcelain</div></div>`;
+// Good: vertical
+h+=`<div style="text-align:center;"><div style="width:80px;height:80px;border-radius:18px;background:${C.ink};display:grid;place-items:center;">${LED(48,C.ink,'rgba(246,243,236,.22)',C.lake)}</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">Ink + Lake</div></div>`;
+h+=`</div></div>`;
+// DON'T examples
+h+=`<div style="padding:20px;border-radius:16px;border:2px solid ${C.ember}30;background:${C.ember}04;">`;
+h+=`<div style="font-size:12px;font-weight:700;color:${C.ember};margin-bottom:14px;">✗ Interdit</div>`;
+h+=`<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">`;
+// Bad: Sage + Ember
+h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:18px;background:${C.sage};display:grid;place-items:center;opacity:.5;">${LED(48,C.sage,'rgba(21,29,42,.12)',C.ember)}</div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">⛔</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Sage + Ember</div></div>`;
+// Bad: horizontal
+h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:18px;background:${C.ink};display:grid;place-items:center;opacity:.5;"><div style="transform:rotate(90deg);">${LED(48,C.ink,'rgba(246,243,236,.22)',C.ember)}</div></div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">✗</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Horizontal</div></div>`;
+// Bad: with shadow
+h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:18px;background:${C.ink};display:grid;place-items:center;opacity:.5;box-shadow:0 0 20px ${C.ember};">${LED(48,C.ink,'rgba(246,243,236,.22)',C.ember)}</div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">✗</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Avec ombre</div></div>`;
+// Bad: in circle
+h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:50%;border:3px solid ${C.ember}40;background:${C.ink};display:grid;place-items:center;opacity:.5;">${LED(40,C.ink,'rgba(246,243,236,.22)',C.ember)}</div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">✗</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Dans un cercle</div></div>`;
+h+=`</div></div></div>`;
+
+// Text rules
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px;">`;
+h+=`<div><div class="sub" style="color:#6b9b6b;">✓ Règles</div>`;
 h+=`<ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;">`;
-h+=`<li>• Le mark LED est toujours <strong style="color:var(--ink);">vertical</strong></li>`;
-h+=`<li>• Wordmark en <strong style="color:var(--ink);">Sora Light</strong>, letter-spacing -0.03em</li>`;
-h+=`<li>• Wordmark toujours en <strong style="color:var(--ink);">minuscules</strong> : "faraday"</li>`;
-h+=`<li>• Zone de protection ≥ <strong style="color:var(--ink);">1× hauteur du mark</strong></li>`;
-h+=`<li>• Le mark peut vivre <strong style="color:var(--ink);">seul</strong> (sans wordmark)</li>`;
-h+=`<li>• La baseline "disconnect to reconnect" est <strong style="color:var(--ink);">optionnelle</strong></li>`;
-h+=`<li>• Couleurs secondaires (Ember, Lake) = <strong style="color:var(--ink);">UI uniquement</strong>, jamais dans le fond du logo</li>`;
-h+=`<li>• Favicon : carré avec <strong style="color:var(--ink);">border-radius 20%</strong></li>`;
+h+=`<li>• Mark LED toujours <strong style="color:var(--ink);">vertical</strong></li>`;
+h+=`<li>• Wordmark <strong style="color:var(--ink);">Sora Light -0.03em</strong></li>`;
+h+=`<li>• Toujours en <strong style="color:var(--ink);">minuscules</strong> : "faraday"</li>`;
+h+=`<li>• Zone libre ≥ <strong style="color:var(--ink);">1× hauteur du mark</strong></li>`;
+h+=`<li>• Mark seul = <strong style="color:var(--ink);">OK</strong></li>`;
+h+=`<li>• Baseline = <strong style="color:var(--ink);">optionnelle</strong></li>`;
+h+=`<li>• Ember/Lake = <strong style="color:var(--ink);">UI uniquement</strong></li>`;
 h+=`</ul></div>`;
-h+=`<div><div class="sub" style="color:${C.ember};">✗ Interdit</div>`;
+h+=`<div><div class="sub" style="color:${C.ember};">✗ Interdictions</div>`;
 h+=`<ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;">`;
-h+=`<li>• ⛔ Fond Sage Mist + LED Ember (combinaison interdite)</li>`;
-h+=`<li>• Tourner, incliner ou coucher le mark LED</li>`;
-h+=`<li>• Modifier les proportions shell / core</li>`;
-h+=`<li>• Placer le mark sur un fond chargé ou photographique</li>`;
-h+=`<li>• Ajouter ombre portée, glow, contour au mark</li>`;
-h+=`<li>• Utiliser une autre police que Sora pour le wordmark</li>`;
-h+=`<li>• Écrire "Faraday" ou "FARADAY" (toujours minuscule)</li>`;
-h+=`<li>• Utiliser des couleurs hors palette</li>`;
-h+=`<li>• Entourer le mark dans un cadre ou un cercle</li>`;
+h+=`<li>• ⛔ Sage Mist + Ember</li>`;
+h+=`<li>• Tourner / incliner le mark</li>`;
+h+=`<li>• Changer proportions shell/core</li>`;
+h+=`<li>• Mark sur fond chargé</li>`;
+h+=`<li>• Ombre, glow, contour</li>`;
+h+=`<li>• Autre police que Sora</li>`;
+h+=`<li>• "Faraday" ou "FARADAY"</li>`;
+h+=`<li>• Couleurs hors palette</li>`;
 h+=`</ul></div></div></div>`;
 
 // Footer with archive links
