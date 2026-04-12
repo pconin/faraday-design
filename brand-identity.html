@@ -578,20 +578,20 @@ h+=`</div>`;
 h+=`<div class="sub">Dégradés sur photo — usage brand</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
 // Warm Walnut
-h+=`<div style="height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
+h+=`<a href="https://unsplash.com/photos/photo-1616046229478-9901c5536a45" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
 h+=`<img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));"></div>`;
-h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.2)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.9);">faraday</div></div></div>`;
+h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.2)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.9);">faraday</div></div></a>`;
 // Deep Ink
-h+=`<div style="height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
+h+=`<a href="https://unsplash.com/photos/photo-1513694203232-719a280e022f" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
 h+=`<img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(21,29,42,.88),rgba(10,16,24,.92));"></div>`;
-h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.15)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.85);">faraday</div></div></div>`;
+h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.15)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.85);">faraday</div></div></a>`;
 // Sage overlay
-h+=`<div style="height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
+h+=`<a href="https://unsplash.com/photos/photo-1506126613408-eca07ce68773" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
 h+=`<img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(197,207,191,.82),rgba(197,207,191,.88));"></div>`;
-h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(21,29,42,.15)',C.porcelain)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.ink};">faraday</div></div></div>`;
+h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(21,29,42,.15)',C.porcelain)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.ink};">faraday</div></div></a>`;
 h+=`</div>`;
 
 // Guidelines
@@ -842,26 +842,31 @@ HI.forEach(ic=>{
 h+=`</div>`;
 
 // Show on dark bg
-// Custom icons: Faraday Box + Flatline
+// Custom icons: Faraday Box (2 styles) + Flatline + LED Mark
 h+=`<div class="sub" style="margin-top:24px;">Icônes custom Faraday</div>`;
-h+=`<p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Deux icônes dessinées spécifiquement pour Faraday, cohérentes avec le mark LED.</p>`;
-h+=`<div style="display:flex;gap:24px;margin-bottom:24px;">`;
-// Faraday Box icon: rounded rect (box) with LED shell+core inside, opening slit at top
+h+=`<p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Quatre icônes dessinées spécifiquement pour Faraday, cohérentes avec le mark LED.</p>`;
+h+=`<div style="display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;">`;
+// Faraday Box — 01 Vue de face (détaillée)
 h+=`<div style="text-align:center;padding:16px 20px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
 h+=`<div style="display:grid;place-items:center;height:48px;"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="${C.ink}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-<!-- Stand / socle arrondi -->
-<path d="M7.5 22h9a3 3 0 003-3v-1H4.5v1a3 3 0 003 3z"/>
-<!-- Corps vertical du boîtier -->
-<rect x="6" y="4" width="12" height="14" rx="2"/>
-<!-- Couvercle ouvert (basculé vers l'arrière) -->
-<path d="M6 4L7 1.5h10L19 4" stroke-width="1.3"/>
-<!-- Fente d'insertion en bas -->
-<line x1="9" y1="17" x2="15" y2="17" stroke-width="1.2" opacity=".4"/>
-<!-- LED core -->
-<rect x="11" y="13" width="2" height="3" rx="1" fill="${C.ember}" stroke="none"/>
+<ellipse cx="12" cy="21.5" rx="5.5" ry="1.5"/>
+<rect x="10.5" y="18" width="3" height="3.5" rx=".5"/>
+<rect x="5.5" y="3" width="13" height="15" rx="2"/>
+<path d="M5.5 5 Q5.5 3 7.5 3 M18.5 5 Q18.5 3 16.5 3"/>
+<rect x="7.5" y="5" width="9" height="11" rx="1.5" stroke-width="1" opacity=".3"/>
+<circle cx="12" cy="17" r=".8" fill="${C.ember}" stroke="none"/>
 </svg></div>`;
-h+=`<div style="font-size:11px;font-weight:700;color:var(--muted);margin-top:8px;">Faraday Box</div>`;
-h+=`<div style="font-size:9px;color:var(--muted);margin-top:2px;">Dock + couvercle + LED</div></div>`;
+h+=`<div style="font-size:11px;font-weight:700;color:var(--muted);margin-top:8px;">Box — détaillée</div>`;
+h+=`<div style="font-size:9px;color:var(--muted);margin-top:2px;">Socle + pilier + panneau + LED</div></div>`;
+// Faraday Box — 05D Ultra minimal
+h+=`<div style="text-align:center;padding:16px 20px;border-radius:14px;border:2px solid ${C.ember};background:rgba(255,147,97,.04);">`;
+h+=`<div style="display:grid;place-items:center;height:48px;"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="${C.ink}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="7" y="2" width="10" height="16" rx="2"/>
+<ellipse cx="12" cy="20" rx="4" ry="1"/>
+<ellipse cx="12" cy="15" rx=".5" ry="1.3" fill="${C.ember}" stroke="none"/>
+</svg></div>`;
+h+=`<div style="font-size:11px;font-weight:700;color:${C.ember};margin-top:8px;">Box — principale ★</div>`;
+h+=`<div style="font-size:9px;color:var(--muted);margin-top:2px;">Ultra minimal, usage par défaut</div></div>`;
 // Flatline icon
 h+=`<div style="text-align:center;padding:16px 20px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
 h+=`<div style="display:grid;place-items:center;height:48px;"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="${C.ink}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 Q5 7 8 12 Q9.5 14.5 11 12 Q12 10.5 13 12 L22 12"/></svg></div>`;
@@ -881,6 +886,13 @@ HI.slice(0,12).forEach(ic=>{
   h+=`<div style="display:grid;place-items:center;height:32px;">${hiSvg(ic,24,C.porcelain)}</div>`;
   h+=`<div style="font-size:9px;color:rgba(246,243,236,.4);margin-top:4px;">${ic.l}</div></div>`;
 });
+// Add custom Faraday icons on dark
+h+=`<div style="text-align:center;width:70px;">`;
+h+=`<div style="display:grid;place-items:center;height:32px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="${C.porcelain}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="16" rx="2"/><ellipse cx="12" cy="20" rx="4" ry="1"/><ellipse cx="12" cy="15" rx=".5" ry="1.3" fill="${C.ember}" stroke="none"/></svg></div>`;
+h+=`<div style="font-size:9px;color:rgba(246,243,236,.4);margin-top:4px;">Box</div></div>`;
+h+=`<div style="text-align:center;width:70px;">`;
+h+=`<div style="display:grid;place-items:center;height:32px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="${C.porcelain}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 Q5 7 8 12 Q9.5 14.5 11 12 Q12 10.5 13 12 L22 12"/></svg></div>`;
+h+=`<div style="font-size:9px;color:rgba(246,243,236,.4);margin-top:4px;">Flatline</div></div>`;
 h+=`</div>`;
 
 // Specs
