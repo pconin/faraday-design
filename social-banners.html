@@ -3,310 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faraday — Bannieres Reseaux Sociaux</title>
+<title>Faraday — Bannières Réseaux Sociaux</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
   :root{
-    --ink:#151D2A;--sage:#C5CFBF;--porcelain:#F6F3EC;--lake:#4A8395;--ember:#FF9361;
-    --muted:#69717a;--line:rgba(255,255,255,.08);
+    --sage:#C5CFBF;--ink:#151D2A;--porcelain:#F6F3EC;--lake:#4A8395;--ember:#FF9361;
+    --muted:#69717a;--line:rgba(17,22,29,.1);--paper:rgba(255,255,255,.72);
   }
-  body{background:#111;font-family:'Inter',sans-serif;color:#eee;padding:60px 40px 120px;}
-  h1{font-family:'Sora',sans-serif;font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-.03em;margin-bottom:8px;}
-  .subtitle{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:48px;max-width:600px;line-height:1.7;}
+  body{margin:0;color:var(--ink);font-family:'Manrope',sans-serif;background:var(--porcelain);}
+  .page{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:40px 0 80px;}
+  .sect{margin-top:32px;padding:32px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.54));}
+  .sect-dark{background:linear-gradient(180deg,rgba(21,29,42,.97),rgba(21,29,42,.94));color:var(--porcelain);border-color:rgba(255,255,255,.06);}
+  .kicker{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(17,22,29,.06);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34404d;}
+  .sect-dark .kicker{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);}
+  h2{margin:14px 0 10px;font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,48px);line-height:.98;letter-spacing:-.04em;font-weight:700;}
+  .sect-desc{font-size:16px;line-height:1.7;color:var(--muted);max-width:600px;margin-bottom:28px;}
+  .sect-dark .sect-desc{color:rgba(255,255,255,.6);}
+  .sub{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;}
+  .sect-dark .sub{color:rgba(255,255,255,.5);}
 
-  /* Grid */
-  .banner-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:32px;}
+  /* LED Breathe */
+  @keyframes led-core-breathe{0%,100%{opacity:.64;}50%{opacity:1;}}
+  @keyframes led-halo-expand{0%,100%{opacity:.1;transform:scale(.92);}50%{opacity:.34;transform:scale(1.08);}}
+  .anim-breathe .led-core{animation:led-core-breathe 3.6s ease-in-out infinite;}
+  .anim-breathe .led-aura{animation:led-halo-expand 3.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
 
-  /* Card */
-  .banner-card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:16px;transition:background .2s;}
-  .banner-card:hover{background:rgba(255,255,255,.06);}
-
-  /* Preview wrapper */
-  .preview-wrap{border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);position:relative;flex-shrink:0;}
-
-  /* Banner info */
-  .banner-info{text-align:center;width:100%;}
-  .banner-name{font-size:14px;font-weight:700;margin-bottom:4px;}
-  .banner-dims{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:4px;}
-  .banner-use{font-size:11px;color:rgba(255,255,255,.25);}
-
-  /* Badge */
-  .badge{position:absolute;top:8px;right:8px;background:var(--ember);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:6px;text-transform:uppercase;z-index:2;}
+  /* Banner preview */
+  .banner-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;}
+  .banner-card{border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.58);overflow:hidden;display:flex;flex-direction:column;}
+  .sect-dark .banner-card{border-color:rgba(255,255,255,.06);background:rgba(255,255,255,.04);}
+  .banner-preview{display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+  .banner-meta{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .banner-meta-left{display:flex;flex-direction:column;gap:2px;}
+  .banner-name{font-size:13px;font-weight:700;}
+  .banner-dims{font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+  .sect-dark .banner-dims{color:rgba(255,255,255,.35);}
+  .banner-usage{font-size:10px;color:var(--muted);}
+  .anim-badge{position:absolute;top:10px;right:10px;background:var(--ember);color:#fff;font-size:8px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:6px;text-transform:uppercase;z-index:2;}
 
   /* Copy button */
-  .btn-copy{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;letter-spacing:.04em;}
-  .btn-copy:hover{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2);}
-  .btn-copy.copied{background:rgba(255,147,97,.15);color:var(--ember);border-color:rgba(255,147,97,.3);}
-
-  /* Breathe animation */
-  @keyframes breathe{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}
-  .anim-breathe .led-core{animation:breathe 4s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
-
-  /* Banner internals — shared */
-  .banner-surface{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-  .banner-brand{font-family:'Sora',sans-serif;font-weight:300;letter-spacing:-.02em;line-height:1;}
-  .banner-tagline{font-size:inherit;opacity:.5;line-height:1.4;}
+  .btn-copy{padding:6px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.5);color:var(--muted);font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;letter-spacing:.04em;flex-shrink:0;}
+  .btn-copy:hover{background:var(--ink);color:var(--porcelain);border-color:var(--ink);}
+  .btn-copy.copied{background:rgba(255,147,97,.12);color:var(--ember);border-color:rgba(255,147,97,.3);}
+  .sect-dark .btn-copy{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);}
+  .sect-dark .btn-copy:hover{background:var(--ember);color:#fff;border-color:var(--ember);}
 </style>
 </head>
 <body>
 
-<h1>Faraday — Bannieres Reseaux Sociaux</h1>
-<p class="subtitle">
-  Previews des bannieres pour les principaux reseaux sociaux. Cliquez "Copier SVG" pour obtenir le code inline pret a l'emploi.
-</p>
+<script>
+const LED=(s,bg,shellC,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const LED_AURA=(s,bg,shellC,coreC,auraC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="${auraC}" opacity=".12"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const C={sage:'#C5CFBF',ink:'#151D2A',porcelain:'#F6F3EC',lake:'#4A8395',ember:'#FF9361',muted:'#69717a'};
 
-<div class="banner-grid" id="grid"></div>
+let h='<div class="page">';
+
+// Header
+h+=`<div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">`;
+h+=LED(48,C.ink,'rgba(246,243,236,.22)',C.ember);
+h+=`<div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;letter-spacing:-.03em;">faraday</div><div style="font-size:11px;color:${C.muted};letter-spacing:.1em;text-transform:uppercase;font-weight:600;">Bannières Réseaux Sociaux</div></div></div>`;
+h+=`<div style="height:1px;background:var(--line);margin:20px 0;"></div>`;
+
+// ============================================================
+// SECTION 1 — Instagram
+h+=`<div class="sect"><div class="kicker">01 — Instagram</div><h2>Posts & Stories</h2>`;
+h+=`<p class="sect-desc">Formats carrés (1080×1080) pour le feed et verticaux (1080×1920) pour les stories. Gradient Warm Walnut ou Deep Ink.</p>`;
+
+h+=`<div class="sub">Feed — Warm Walnut</div>`;
+h+=`<div class="banner-row">`;
+
+// IG Post statique
+h+=`<div class="banner-card"><div class="banner-preview" style="width:360px;height:360px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">`;
+h+=LED_AURA(100,'transparent','rgba(255,255,255,.2)',C.ember,C.ember);
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;color:rgba(255,255,255,.9);letter-spacing:-.03em;">faraday</div>`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.05em;">Déposez. Déconnectez.</div>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Post Feed</div><div class="banner-dims">1080 × 1080</div></div><button class="btn-copy" onclick="copyB(this,'ig-post')">Copier SVG</button></div></div>`;
+
+// IG Post animé
+h+=`<div class="banner-card"><div class="banner-preview anim-breathe" style="width:360px;height:360px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">`;
+h+=`<div class="anim-badge">ANIMÉ</div>`;
+h+=LED_AURA(100,'transparent','rgba(255,255,255,.2)',C.ember,C.ember);
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;color:rgba(255,255,255,.9);letter-spacing:-.03em;">faraday</div>`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.05em;">Déposez. Déconnectez.</div>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Post Feed — Animé</div><div class="banner-dims">1080 × 1080</div></div><button class="btn-copy" onclick="copyB(this,'ig-post-anim')">Copier SVG</button></div></div>`;
+
+h+=`</div>`;
+
+// Stories
+h+=`<div class="sub">Stories — Deep Ink</div>`;
+h+=`<div class="banner-row">`;
+
+// Story statique
+h+=`<div class="banner-card"><div class="banner-preview" style="width:220px;height:390px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));flex-direction:column;gap:14px;">`;
+h+=LED_AURA(80,'transparent','rgba(246,243,236,.15)',C.ember,C.ember);
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;color:rgba(246,243,236,.85);letter-spacing:-.02em;">faraday</div>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Story</div><div class="banner-dims">1080 × 1920</div></div><button class="btn-copy" onclick="copyB(this,'ig-story')">Copier SVG</button></div></div>`;
+
+// Story animée
+h+=`<div class="banner-card"><div class="banner-preview anim-breathe" style="width:220px;height:390px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));flex-direction:column;gap:14px;">`;
+h+=`<div class="anim-badge">ANIMÉ</div>`;
+h+=LED_AURA(80,'transparent','rgba(246,243,236,.15)',C.ember,C.ember);
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;color:rgba(246,243,236,.85);letter-spacing:-.02em;">faraday</div>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Story — Animée</div><div class="banner-dims">1080 × 1920</div></div><button class="btn-copy" onclick="copyB(this,'ig-story-anim')">Copier SVG</button></div></div>`;
+
+h+=`</div></div>`;
+
+// ============================================================
+// SECTION 2 — LinkedIn + Twitter
+h+=`<div class="sect sect-dark"><div class="kicker">02 — LinkedIn & X</div><h2>Couvertures de profil</h2>`;
+h+=`<p class="sect-desc">Formats paysage pour les bannières de profil. Fond Ink ou Porcelain selon la plateforme.</p>`;
+
+h+=`<div class="sub">LinkedIn — 1584 × 396</div>`;
+h+=`<div class="banner-row">`;
+h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:132px;background:${C.ink};justify-content:space-between;padding:0 32px;">`;
+h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(52,'transparent','rgba(246,243,236,.2)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;color:${C.porcelain};letter-spacing:-.02em;">faraday</span></div>`;
+h+=`<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:11px;color:rgba(246,243,236,.4);text-align:right;">Déposez.<br>Déconnectez.</span>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">LinkedIn Banner</div><div class="banner-dims">1584 × 396</div><div class="banner-usage">Couverture profil / page entreprise</div></div><button class="btn-copy" onclick="copyB(this,'linkedin')">Copier SVG</button></div></div>`;
+h+=`</div>`;
+
+h+=`<div class="sub">Twitter / X — 1500 × 500</div>`;
+h+=`<div class="banner-row">`;
+h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:167px;background:${C.porcelain};gap:14px;border-bottom:3px solid ${C.sage};">`;
+h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(56,'transparent','rgba(21,29,42,.12)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:${C.ink};letter-spacing:-.02em;">faraday</span></div>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">X / Twitter Header</div><div class="banner-dims">1500 × 500</div><div class="banner-usage">Couverture profil</div></div><button class="btn-copy" onclick="copyB(this,'twitter')">Copier SVG</button></div></div>`;
+h+=`</div></div>`;
+
+// ============================================================
+// SECTION 3 — OG Images
+h+=`<div class="sect"><div class="kicker">03 — Open Graph</div><h2>Aperçus de liens</h2>`;
+h+=`<p class="sect-desc">Images de prévisualisation pour les partages de liens (Slack, iMessage, WhatsApp, etc.).</p>`;
+
+h+=`<div class="sub">Warm Walnut</div>`;
+h+=`<div class="banner-row">`;
+h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:210px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:10px;">`;
+h+=LED(56,'transparent','rgba(255,255,255,.2)',C.ember);
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:rgba(255,255,255,.9);letter-spacing:-.02em;">faraday</div>`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.5);text-align:center;max-width:75%;">La cage de Faraday pour votre téléphone</div>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">OG Image — Clair</div><div class="banner-dims">1200 × 630</div></div><button class="btn-copy" onclick="copyB(this,'og')">Copier SVG</button></div></div>`;
+h+=`</div>`;
+
+h+=`<div class="sub">Deep Ink</div>`;
+h+=`<div class="banner-row">`;
+h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:210px;background:${C.ink};flex-direction:column;gap:10px;">`;
+h+=LED(56,'transparent','rgba(246,243,236,.15)',C.ember);
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:rgba(246,243,236,.9);letter-spacing:-.02em;">faraday</div>`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(246,243,236,.45);text-align:center;max-width:75%;">La cage de Faraday pour votre téléphone</div>`;
+h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">OG Image — Sombre</div><div class="banner-dims">1200 × 630</div></div><button class="btn-copy" onclick="copyB(this,'og-dark')">Copier SVG</button></div></div>`;
+h+=`</div></div>`;
+
+// ============================================================
+// SECTION 4 — Specs
+h+=`<div class="sect"><div class="kicker">04 — Spécifications</div><h2>Récapitulatif</h2>`;
+h+=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;">`;
+[
+  {t:'Instagram Post',d:'1080 × 1080 px',u:'Feed carré'},
+  {t:'Instagram Story',d:'1080 × 1920 px',u:'Stories / Reels cover'},
+  {t:'LinkedIn Banner',d:'1584 × 396 px',u:'Couverture profil'},
+  {t:'Twitter / X',d:'1500 × 500 px',u:'Header profil'},
+  {t:'OG Image',d:'1200 × 630 px',u:'Aperçu de lien'},
+  {t:'Gradients',d:'Warm Walnut / Deep Ink',u:'Jamais Sage + Ember ⛔'},
+].forEach(s=>{
+  h+=`<div style="padding:16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
+  h+=`<div style="font-size:13px;font-weight:700;">${s.t}</div>`;
+  h+=`<div style="font-size:12px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:4px;">${s.d}</div>`;
+  h+=`<div style="font-size:11px;color:var(--muted);margin-top:2px;">${s.u}</div></div>`;
+});
+h+=`</div></div>`;
+
+h+=`</div>`; // .page
+
+document.write(h);
+</script>
 
 <script>
-// ── LED Mark builder ──
-function ledMark(size, bg, shell, core, cls='') {
-  return `<svg viewBox="0 0 96 96" fill="none" width="${size}" height="${size}" class="${cls}">
-    <rect width="96" height="96" rx="26" fill="${bg}"/>
-    <rect x="31" y="14" width="34" height="68" rx="17" stroke="${shell}" stroke-width="2.5" class="led-shell"/>
-    <rect x="43" y="28" width="10" height="40" rx="5" fill="${core}" class="led-core"/>
-  </svg>`;
-}
-
-// ── Banner definitions ──
-const banners = [
-  // 1. Instagram Post
-  {
-    id: 'ig-post',
-    name: 'Instagram Post',
-    w: 1080, h: 1080,
-    dw: 360, dh: 360,
-    usage: 'Feed carré',
-    render(dw, dh) {
-      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">
-        ${ledMark(120, 'transparent', 'rgba(255,255,255,.2)', '#FF9361')}
-        <span class="banner-brand" style="color:#fff;font-size:28px;">faraday</span>
-        <span class="banner-tagline" style="color:rgba(255,255,255,.5);font-family:'Sora',sans-serif;font-weight:300;font-size:13px;">Deposez. Deconnectez.</span>
-      </div>`;
-    }
-  },
-  // 2. Instagram Post Animated
-  {
-    id: 'ig-post-anim',
-    name: 'Instagram Post',
-    w: 1080, h: 1080,
-    dw: 360, dh: 360,
-    usage: 'Feed carré — animé',
-    animated: true,
-    render(dw, dh) {
-      return `<div class="banner-surface anim-breathe" style="width:${dw}px;height:${dh}px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">
-        ${ledMark(120, 'transparent', 'rgba(255,255,255,.2)', '#FF9361')}
-        <span class="banner-brand" style="color:#fff;font-size:28px;">faraday</span>
-        <span class="banner-tagline" style="color:rgba(255,255,255,.5);font-family:'Sora',sans-serif;font-weight:300;font-size:13px;">Deposez. Deconnectez.</span>
-      </div>`;
-    }
-  },
-  // 3. Instagram Story
-  {
-    id: 'ig-story',
-    name: 'Instagram Story',
-    w: 1080, h: 1920,
-    dw: 200, dh: 356,
-    usage: 'Story / Reel cover',
-    animated: true,
-    render(dw, dh) {
-      return `<div class="banner-surface anim-breathe" style="width:${dw}px;height:${dh}px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));flex-direction:column;gap:14px;">
-        ${ledMark(140 * (dw / 1080), 'transparent', 'rgba(246,243,236,.15)', '#FF9361')}
-        <span class="banner-brand" style="color:#F6F3EC;font-size:${18 * (dw / 1080) > 10 ? 16 : 10}px;">faraday</span>
-      </div>`;
-    }
-  },
-  // 4. LinkedIn Banner
-  {
-    id: 'linkedin',
-    name: 'LinkedIn Banner',
-    w: 1584, h: 396,
-    dw: 528, dh: 132,
-    usage: 'Couverture profil / page entreprise',
-    render(dw, dh) {
-      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:#151D2A;justify-content:space-between;padding:0 28px;">
-        <div style="display:flex;align-items:center;gap:14px;">
-          ${ledMark(60 * (dh / 396), 'transparent', 'rgba(246,243,236,.2)', '#FF9361')}
-          <span class="banner-brand" style="color:#F6F3EC;font-size:18px;">faraday</span>
-        </div>
-        <span class="banner-tagline" style="color:rgba(246,243,236,.4);font-family:'Sora',sans-serif;font-weight:300;font-size:11px;text-align:right;">Deposez. Deconnectez.</span>
-      </div>`;
-    }
-  },
-  // 5. Twitter/X Header
-  {
-    id: 'twitter',
-    name: 'Twitter / X Header',
-    w: 1500, h: 500,
-    dw: 500, dh: 167,
-    usage: 'Couverture profil X',
-    render(dw, dh) {
-      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:#F6F3EC;flex-direction:row;gap:14px;border-bottom:2px solid #C5CFBF;">
-        ${ledMark(52, 'transparent', 'rgba(21,29,42,.15)', '#FF9361')}
-        <span class="banner-brand" style="color:#151D2A;font-size:22px;">faraday</span>
-      </div>`;
-    }
-  },
-  // 6. OG Image
-  {
-    id: 'og',
-    name: 'OG Image',
-    w: 1200, h: 630,
-    dw: 400, dh: 210,
-    usage: 'Apercu lien — clair',
-    render(dw, dh) {
-      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:10px;">
-        ${ledMark(64, 'transparent', 'rgba(255,255,255,.2)', '#FF9361')}
-        <span class="banner-brand" style="color:#fff;font-size:22px;">faraday</span>
-        <span style="color:rgba(255,255,255,.55);font-family:'Sora',sans-serif;font-weight:300;font-size:11px;text-align:center;max-width:80%;line-height:1.5;">La cage de Faraday pour votre telephone</span>
-      </div>`;
-    }
-  },
-  // 7. OG Image Dark
-  {
-    id: 'og-dark',
-    name: 'OG Image — Dark',
-    w: 1200, h: 630,
-    dw: 400, dh: 210,
-    usage: 'Apercu lien — sombre',
-    render(dw, dh) {
-      return `<div class="banner-surface" style="width:${dw}px;height:${dh}px;background:#151D2A;flex-direction:column;gap:10px;">
-        ${ledMark(64, 'transparent', 'rgba(246,243,236,.15)', '#FF9361')}
-        <span class="banner-brand" style="color:#F6F3EC;font-size:22px;">faraday</span>
-        <span style="color:rgba(246,243,236,.45);font-family:'Sora',sans-serif;font-weight:300;font-size:11px;text-align:center;max-width:80%;line-height:1.5;">La cage de Faraday pour votre telephone</span>
-      </div>`;
-    }
-  }
-];
-
-// ── Render ──
-const grid = document.getElementById('grid');
-
-banners.forEach(b => {
-  const card = document.createElement('div');
-  card.className = 'banner-card';
-  card.innerHTML = `
-    <div class="preview-wrap" style="width:${b.dw}px;">
-      ${b.animated ? '<div class="badge">anime</div>' : ''}
-      ${b.render(b.dw, b.dh)}
-    </div>
-    <div class="banner-info">
-      <div class="banner-name">${b.name}</div>
-      <div class="banner-dims">${b.w} x ${b.h} &mdash; affiche ${b.dw} x ${b.dh}</div>
-      <div class="banner-use">${b.usage}</div>
-    </div>
-    <button class="btn-copy" data-id="${b.id}" onclick="copySVG(this, '${b.id}')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-      Copier SVG
-    </button>`;
-  grid.appendChild(card);
-});
-
-// ── Export as SVG with embedded fonts ──
-function bannerToSVG(id) {
-  const b = banners.find(x => x.id === id);
-  if (!b) return '';
-  const w = b.w, h = b.h;
-
-  // Build full-res SVG based on banner type
-  switch(id) {
-    case 'ig-post':
-    case 'ig-post-anim': {
-      const anim = id === 'ig-post-anim' ? `<style>@keyframes breathe{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}.led-core{animation:breathe 4s ease-in-out infinite;transform-origin:center;}</style>` : '';
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(138,122,104,.85)"/><stop offset="100%" stop-color="rgba(74,58,40,.9)"/></linearGradient></defs>
-  ${anim}
-  <rect width="${w}" height="${h}" fill="url(#bg)"/>
-  <g transform="translate(${w/2 - 60},${h/2 - 100})">
-    <rect width="120" height="120" rx="33" fill="transparent"/>
-    <rect x="${120*31/96}" y="${120*14/96}" width="${120*34/96}" height="${120*68/96}" rx="${120*17/96}" stroke="rgba(255,255,255,.2)" stroke-width="3" fill="none"/>
-    <rect x="${120*43/96}" y="${120*28/96}" width="${120*10/96}" height="${120*40/96}" rx="${120*5/96}" fill="#FF9361" class="led-core"/>
-  </g>
-  <text x="${w/2}" y="${h/2 + 100}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="80" fill="white">faraday</text>
-  <text x="${w/2}" y="${h/2 + 150}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="36" fill="rgba(255,255,255,.5)">Deposez. Deconnectez.</text>
-</svg>`;
-    }
-    case 'ig-story': {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2=".3" y2="1"><stop offset="0%" stop-color="rgba(21,29,42,.95)"/><stop offset="100%" stop-color="rgba(10,16,24,.98)"/></linearGradient></defs>
-  <style>@keyframes breathe{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}.led-core{animation:breathe 4s ease-in-out infinite;transform-origin:center;}</style>
-  <rect width="${w}" height="${h}" fill="url(#bg)"/>
-  <g transform="translate(${w/2 - 70},${h/2 - 120})">
-    <rect width="140" height="140" rx="38" fill="transparent"/>
-    <rect x="${140*31/96}" y="${140*14/96}" width="${140*34/96}" height="${140*68/96}" rx="${140*17/96}" stroke="rgba(246,243,236,.15)" stroke-width="3" fill="none"/>
-    <rect x="${140*43/96}" y="${140*28/96}" width="${140*10/96}" height="${140*40/96}" rx="${140*5/96}" fill="#FF9361" class="led-core"/>
-  </g>
-  <text x="${w/2}" y="${h/2 + 80}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="72" fill="#F6F3EC">faraday</text>
-</svg>`;
-    }
-    case 'linkedin': {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
-  <rect width="${w}" height="${h}" fill="#151D2A"/>
-  <g transform="translate(80,${h/2 - 40})">
-    <rect width="80" height="80" rx="22" fill="transparent"/>
-    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(246,243,236,.2)" stroke-width="2" fill="none"/>
-    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
-  </g>
-  <text x="180" y="${h/2 + 14}" font-family="Sora,sans-serif" font-weight="300" font-size="56" fill="#F6F3EC">faraday</text>
-  <text x="${w - 80}" y="${h/2 + 8}" text-anchor="end" font-family="Sora,sans-serif" font-weight="300" font-size="28" fill="rgba(246,243,236,.4)">Deposez. Deconnectez.</text>
-</svg>`;
-    }
-    case 'twitter': {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
-  <rect width="${w}" height="${h}" fill="#F6F3EC"/>
-  <rect x="0" y="${h - 4}" width="${w}" height="4" fill="#C5CFBF"/>
-  <g transform="translate(${w/2 - 80},${h/2 - 40})">
-    <rect width="80" height="80" rx="22" fill="transparent"/>
-    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(21,29,42,.15)" stroke-width="2" fill="none"/>
-    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
-  </g>
-  <text x="${w/2 + 50}" y="${h/2 + 14}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="64" fill="#151D2A">faraday</text>
-</svg>`;
-    }
-    case 'og': {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(138,122,104,.85)"/><stop offset="100%" stop-color="rgba(74,58,40,.9)"/></linearGradient></defs>
-  <rect width="${w}" height="${h}" fill="url(#bg)"/>
-  <g transform="translate(${w/2 - 40},${h/2 - 110})">
-    <rect width="80" height="80" rx="22" fill="transparent"/>
-    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(255,255,255,.2)" stroke-width="2" fill="none"/>
-    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
-  </g>
-  <text x="${w/2}" y="${h/2 + 30}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="64" fill="white">faraday</text>
-  <text x="${w/2}" y="${h/2 + 80}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="28" fill="rgba(255,255,255,.55)">La cage de Faraday pour votre telephone</text>
-</svg>`;
-    }
-    case 'og-dark': {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
-  <rect width="${w}" height="${h}" fill="#151D2A"/>
-  <g transform="translate(${w/2 - 40},${h/2 - 110})">
-    <rect width="80" height="80" rx="22" fill="transparent"/>
-    <rect x="${80*31/96}" y="${80*14/96}" width="${80*34/96}" height="${80*68/96}" rx="${80*17/96}" stroke="rgba(246,243,236,.15)" stroke-width="2" fill="none"/>
-    <rect x="${80*43/96}" y="${80*28/96}" width="${80*10/96}" height="${80*40/96}" rx="${80*5/96}" fill="#FF9361"/>
-  </g>
-  <text x="${w/2}" y="${h/2 + 30}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="64" fill="#F6F3EC">faraday</text>
-  <text x="${w/2}" y="${h/2 + 80}" text-anchor="middle" font-family="Sora,sans-serif" font-weight="300" font-size="28" fill="rgba(246,243,236,.45)">La cage de Faraday pour votre telephone</text>
-</svg>`;
-    }
-    default: return '';
-  }
-}
-
-// ── Copy to clipboard ──
-async function copySVG(btn, id) {
-  const svg = bannerToSVG(id);
-  if (!svg) return;
+// Copy SVG to clipboard
+async function copyB(btn,id){
+  // Get the banner preview element
+  const card = btn.closest('.banner-card');
+  const preview = card.querySelector('.banner-preview');
+  const svg = preview.innerHTML;
   try {
     await navigator.clipboard.writeText(svg);
     btn.classList.add('copied');
-    btn.textContent = 'Copie !';
-    setTimeout(() => {
-      btn.classList.remove('copied');
-      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier SVG`;
-    }, 1800);
-  } catch(e) {
-    console.error('Clipboard write failed', e);
-  }
+    btn.textContent='Copié !';
+    setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Copier SVG';},1800);
+  } catch(e){ console.error(e); }
 }
 </script>
 <script src="research/nav.js"></script>
