@@ -524,11 +524,11 @@ h+=`</div></div>`;
 
 // ============================================================
 // 09 — PHOTOGRAPHIE / MOODBOARD DENSE
-h+=`<div class="sect"><div class="kicker">09 — Photographie</div><h2>Moodboard — 25 photos</h2>`;
+h+=`<div class="sect"><div class="kicker">09 — Photographie</div><h2>Moodboard — 17 photos</h2>`;
 h+=`<p class="sect-desc">Intérieurs scandinaves, moments sans téléphone (personnes de dos/profil), matières nobles. Lumière naturelle uniquement.</p>`;
 
-// Helper for photo card — theme = Unsplash search query
-const ph=(url,label,h2,theme,w,ht)=>`<a href="https://unsplash.com/s/photos/${encodeURIComponent(theme)}" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:${ht||'200'}px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);${w?'grid-column:span 2;':''}cursor:pointer;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 12px 32px rgba(17,22,29,.12)';this.querySelector('.unsplash-badge').style.opacity='1';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(17,22,29,.06)';this.querySelector('.unsplash-badge').style.opacity='0';">
+// Helper for photo card — link = full Unsplash page URL
+const ph=(url,label,h2,link,w,ht)=>`<a href="${link}" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:${ht||'200'}px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);${w?'grid-column:span 2;':''}cursor:pointer;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 12px 32px rgba(17,22,29,.12)';this.querySelector('.unsplash-badge').style.opacity='1';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(17,22,29,.06)';this.querySelector('.unsplash-badge').style.opacity='0';">
 <img src="https://images.unsplash.com/${url}?w=${w?'800':'400'}&h=${ht?ht+100:'350'}&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.45));"></div>
 <div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">${label}</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">${h2}</div></div>
@@ -537,41 +537,33 @@ const ph=(url,label,h2,theme,w,ht)=>`<a href="https://unsplash.com/s/photos/${en
 // CAT 1: L'objet dans son contexte
 h+=`<div class="sub">L'objet dans son contexte</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
-h+=ph('photo-1600210492486-724fe5c67fb0','Étagère','Sur une étagère en bois clair','wooden shelf scandinavian');
-h+=ph('photo-1616046229478-9901c5536a45','Salon','Salon scandinave, lumière chaude','scandinavian living room',true,240);
-h+=ph('photo-1600585154340-be6161a56a0c','Bureau','Bureau minimaliste à la maison','minimalist home desk');
-h+=ph('photo-1618219908412-a29a1bb7b86e','Table de nuit','Posée à côté du livre','bedside table book');
-h+=ph('photo-1631679706909-1844bbd07221','Entrée','Dans le hall, en arrivant','home entrance hallway');
-h+=ph('photo-1600607687939-ce8a6c25118c','Cuisine','Plan de travail en bois','wooden kitchen countertop');
-h+=ph('photo-1556909114-f6e7ad7d3136','Salon 2','Près de la plante verte','living room indoor plants');
-h+=ph('photo-1586023492125-27b2c045efd7','Meuble TV','Meuble bas scandinave','scandinavian tv furniture');
+h+=ph('photo-1765371513189-44702dcee4be','Étagère','Armoire en bois, objets déco','https://unsplash.com/fr/photos/XneRmPhXl0w');
+h+=ph('photo-1772442363851-738a548f6c5c','Salon','Salle à manger baignée de lumière','https://unsplash.com/fr/photos/caA5D7QCHyA',true,240);
+h+=ph('photo-1609798310302-2cd56312db02','Bureau','Écran sur bureau en bois','https://unsplash.com/fr/photos/7OyMTNTdRTk');
+h+=ph('photo-1584125969728-5bb6ab425715','Table','Télécommande sur table en bois','https://unsplash.com/fr/photos/rwKZGDE3WBw');
+h+=ph('photo-1518550996869-f6674df1051c','Entrée','Pièce avec table et chaise','https://unsplash.com/fr/photos/-Y7s-HXjtso');
+h+=ph('photo-1765371515651-faa86f08f0ae','Cuisine','Cuisine bois et crédence marbre','https://unsplash.com/fr/photos/V7bvc-hJUw0');
+h+=ph('photo-1651407825746-f7a3ded5b07a','Salon 2','Salon avec cheminée','https://unsplash.com/fr/photos/rYuZ6WdEX_8');
+h+=ph('photo-1634403665443-81dc4d75843a','Meuble TV','Smart TV mur en bois','https://unsplash.com/fr/photos/hIEx7tRAiKM');
 h+=`</div>`;
 
 // CAT 2: Moments sans téléphone
 h+=`<div class="sub">Moments sans téléphone — personnes de dos / profil</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
-h+=ph('photo-1506126613408-eca07ce68773','Méditation','Femme de dos, matin calme','morning meditation calm');
-h+=ph('photo-1544027993-37dbfe43562a','Lecture','Lire au bord de la fenêtre','reading by window');
-h+=ph('photo-1495474472287-4d71bcdd2085','Café','Un café fumant, pas de scroll','coffee morning cozy',false,220);
-h+=ph('photo-1516589178581-6cd7833ae3b2','Cuisine','Cuisiner ensemble, de dos','cooking together home');
-h+=ph('photo-1513694203232-719a280e022f','Soir��e','Un soir calme à la maison','cozy evening home',true,260);
-h+=ph('photo-1507003211169-0a1dd7228f2d','Profil','Homme de profil, pensif','man profile thinking');
-h+=ph('photo-1517457373958-b7bdd4587205','Promenade','Marcher dehors, de dos','walking outdoors nature');
-h+=ph('photo-1476480862126-209bfaa8edc8','Fenêtre','Regarder par la fenêtre','looking through window');
-h+=ph('photo-1519125323398-675f0ddb6308','Mains','Des mains qui tiennent un mug','hands holding coffee mug');
+h+=ph('photo-1627586718259-20c7fc926a01','Horizon','Grand plan d\`eau sous ciel bleu','https://unsplash.com/fr/photos/u4ki0OhkdVM');
+h+=ph('photo-1747418962997-02ea64c265d8','Fenêtre','Femme à la fenêtre, montagnes','https://unsplash.com/fr/photos/IlN9RrxatB4',true,240);
+h+=ph('photo-1767298045382-3d6e64016c03','Café','Latte art près de la fenêtre','https://unsplash.com/fr/photos/ZMqx5FG6nzA');
+h+=ph('photo-1772724317813-c7aec42c9d26','Cuisine','Faire des pizzas ensemble','https://unsplash.com/fr/photos/SatHwYJdlRA');
+h+=ph('photo-1725940889849-563633569163','Soirée','Pièce sombre, canapé et lampe','https://unsplash.com/fr/photos/pTkAf4EHIcE');
 h+=`</div>`;
 
 // CAT 3: Matières / textures
 h+=`<div class="sub">Matières & textures</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
-h+=ph('photo-1489171078254-c3365d6e359f','Bois','Grain du noyer','walnut wood grain texture',false,160);
-h+=ph('photo-1590422749897-47036da0b0ff','Lin','Textile lin naturel','linen textile natural',false,160);
-h+=ph('photo-1565193566173-7a0ee3dbe261','Céramique','Poterie artisanale','handmade ceramic pottery',false,160);
-h+=ph('photo-1558171813-4c088753af8f','Laiton','Détail laiton brossé','brushed brass detail',false,160);
-h+=ph('photo-1497366216548-37526070297c','Cuir','Cuir végétal patiné','leather texture patina',false,160);
-h+=ph('photo-1544457070-4cd773b4d71e','Feutre','Textile dense et doux','felt textile fabric',false,160);
-h+=ph('photo-1416339134316-0e91dc9ded92','Pierre','Pierre naturelle polie','natural polished stone',false,160);
-h+=ph('photo-1489171078254-c3365d6e359f','Bois foncé','Noyer sombre veinage','dark walnut wood',false,160);
+h+=ph('photo-1736506159776-22ca388780fa','Bois','Grain brun foncé du bois','https://unsplash.com/fr/photos/AD8nr59mr5c',false,160);
+h+=ph('photo-1675503861565-c5364a67356b','Sombre','Surface noire et grise','https://unsplash.com/fr/photos/DUPI0aUFKYg',false,160);
+h+=ph('photo-1687941544146-351d41b57cbd','Cuir','Surface usée avec rayures','https://unsplash.com/fr/photos/G-z7hyyXmwA',false,160);
+h+=ph('photo-1775226236182-ceb0c39b562d','Lin','Tissu beige texturé','https://unsplash.com/fr/photos/qhy9t6lgDvw',false,160);
 h+=`</div>`;
 
 // Gradient overlays
