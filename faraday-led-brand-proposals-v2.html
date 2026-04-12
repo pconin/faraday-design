@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faraday — Pistes LED V2</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap");
+
+      :root {
+        --bg: #f4efe8;
+        --paper: rgba(255, 255, 255, 0.72);
+        --ink: #11161d;
+        --muted: #69717a;
+        --line: rgba(17, 22, 29, 0.1);
+        --shadow: 0 24px 80px rgba(27, 33, 41, 0.1);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --radius-sm: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(232, 227, 216, 0.9), transparent 32%),
+          radial-gradient(circle at top right, rgba(205, 220, 233, 0.5), transparent 26%),
+          linear-gradient(180deg, #faf7f2 0%, #f3ede5 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1440px, calc(100% - 48px));
+        margin: 0 auto;
+        padding: 32px 0 80px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        gap: 28px;
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 40px;
+        background:
+          linear-gradient(140deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.52)),
+          linear-gradient(120deg, rgba(197, 207, 191, 0.2), rgba(14, 24, 38, 0.04));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(12px);
+        opacity: 0.6;
+      }
+
+      .hero::before {
+        top: -120px;
+        right: -80px;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(circle, rgba(74, 131, 149, 0.22), transparent 70%);
+      }
+
+      .hero::after {
+        bottom: -100px;
+        left: -100px;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(199, 115, 77, 0.18), transparent 70%);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(17, 22, 29, 0.06);
+        color: #34404d;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-top {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr;
+        gap: 32px;
+        align-items: start;
+      }
+
+      .hero-copy h1 {
+        margin: 16px 0 12px;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: clamp(42px, 6vw, 82px);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .hero-copy p {
+        max-width: 820px;
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .hero-copy strong {
+        color: var(--ink);
+      }
+
+      .hero-images {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .product-shot {
+        overflow: hidden;
+        border-radius: 28px;
+        background: linear-gradient(180deg, #f7f3ee, #ebe2d6);
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        box-shadow: 0 18px 50px rgba(17, 22, 29, 0.08);
+      }
+
+      .product-shot img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-shot.led-ref img {
+        object-position: 64% 48%;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.1fr 1.1fr 0.9fr;
+        gap: 16px;
+      }
+
+      .summary-card {
+        padding: 22px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.6);
+      }
+
+      .summary-card h3 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .summary-card p,
+      .summary-card li {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #4f5965;
+      }
+
+      .summary-card ul {
+        display: grid;
+        gap: 6px;
+        padding-left: 18px;
+        margin: 0;
+      }
+
+      .recommendation {
+        background:
+          linear-gradient(135deg, rgba(16, 24, 38, 0.96), rgba(27, 37, 52, 0.92)),
+          linear-gradient(135deg, rgba(42, 208, 193, 0.2), transparent);
+        color: white;
+      }
+
+      .recommendation p,
+      .recommendation li {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .recommendation strong {
+        color: white;
+      }
+
+      .section {
+        margin-top: 28px;
+        padding: 28px;
+        border-radius: 34px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        box-shadow: var(--shadow);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.54)),
+          var(--section-bg);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(17, 22, 29, 0.06);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .section h2 {
+        margin: 16px 0 10px;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: clamp(34px, 4vw, 58px);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+
+      .section-header p {
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #56616d;
+      }
+
+      .fit-box {
+        padding: 18px 20px;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background: rgba(255, 255, 255, 0.58);
+      }
+
+      .fit-box strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .fit-box p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #4f5965;
+      }
+
+      .concept-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.95fr 0.95fr;
+        gap: 18px;
+      }
+
+      .panel {
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background: rgba(255, 255, 255, 0.62);
+        overflow: hidden;
+      }
+
+      .panel-pad {
+        padding: 22px;
+      }
+
+      .panel-title {
+        margin: 0 0 14px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .lockups {
+        display: grid;
+        gap: 14px;
+      }
+
+      .logo-stage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 168px;
+        padding: 26px;
+        border-radius: 22px;
+      }
+
+      .logo-stage.dark {
+        color: white;
+      }
+
+      .logo-lockup {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .stacked-lockup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .wordmark {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .wordmark-title {
+        font-size: 38px;
+        line-height: 1;
+      }
+
+      .wordmark-baseline {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        opacity: 0.6;
+      }
+
+      .mark {
+        width: 74px;
+        height: 74px;
+        flex: 0 0 74px;
+      }
+
+      .mark.small {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+      }
+
+      .mini-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .mini-card {
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background: rgba(255, 255, 255, 0.58);
+        text-align: center;
+      }
+
+      .mini-card span {
+        display: block;
+        margin-top: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #63707d;
+      }
+
+      .anim-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .anim-card {
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background: rgba(255, 255, 255, 0.56);
+      }
+
+      .anim-preview {
+        display: grid;
+        place-items: center;
+        min-height: 96px;
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .anim-meta {
+        margin-top: 10px;
+      }
+
+      .anim-meta strong {
+        display: block;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .anim-meta small {
+        display: block;
+        margin-top: 4px;
+        color: #63707d;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      @keyframes draw-stroke {
+        from {
+          stroke-dashoffset: 180;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes soft-pulse {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 0.92;
+        }
+        50% {
+          transform: scale(1.06);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slow-float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @keyframes glow-breathe {
+        0%, 100% {
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+        50% {
+          box-shadow: 0 0 26px rgba(47, 208, 193, 0.24);
+        }
+      }
+
+      @keyframes led-core-breathe {
+        0%, 100% {
+          opacity: 0.64;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes led-halo-expand {
+        0%, 100% {
+          opacity: 0.1;
+          transform: scale(0.92);
+        }
+        50% {
+          opacity: 0.34;
+          transform: scale(1.08);
+        }
+      }
+
+      @keyframes led-double-blink {
+        0%, 18%, 32%, 100% {
+          opacity: 0.28;
+        }
+        8%, 24% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes led-rise-in {
+        0% {
+          opacity: 0;
+          transform: translateY(10px) scaleY(0.72);
+        }
+        40% {
+          opacity: 0.92;
+          transform: translateY(0) scaleY(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scaleY(1);
+        }
+      }
+
+      @keyframes led-shell-settle {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slow-rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .anim-draw path.stroke-anim {
+        stroke-dasharray: 180;
+        stroke-dashoffset: 180;
+        animation: draw-stroke 3.2s ease-in-out infinite alternate;
+      }
+
+      .anim-pulse svg {
+        animation: soft-pulse 3.6s ease-in-out infinite;
+      }
+
+      .anim-float svg {
+        animation: slow-float 3.8s ease-in-out infinite;
+      }
+
+      .anim-glow {
+        animation: glow-breathe 3.4s ease-in-out infinite;
+      }
+
+      .anim-rotate svg {
+        animation: slow-rotate 10s linear infinite;
+      }
+
+      .anim-led-breathe .led-core,
+      .anim-led-halo .led-core {
+        animation: led-core-breathe 3.6s ease-in-out infinite;
+      }
+
+      .anim-led-breathe .led-aura,
+      .anim-led-halo .led-aura {
+        animation: led-halo-expand 3.6s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .anim-led-blink .led-core {
+        animation: led-double-blink 4.2s ease-in-out infinite;
+      }
+
+      .anim-led-rise .led-core {
+        animation: led-rise-in 2.9s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .anim-led-rise .led-shell {
+        animation: led-shell-settle 2.9s ease-in-out infinite;
+      }
+
+      .anim-led-rise .led-aura {
+        animation: led-halo-expand 2.9s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .icon-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .app-icon,
+      .favicon {
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        box-shadow: 0 10px 24px rgba(17, 22, 29, 0.08);
+      }
+
+      .app-icon {
+        min-height: 112px;
+      }
+
+      .favicon {
+        min-height: 64px;
+        border-radius: 16px;
+      }
+
+      .icon-label {
+        margin-top: 8px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #69717a;
+        text-align: center;
+      }
+
+      .engraving {
+        padding: 18px;
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(92, 57, 36, 0.16), rgba(92, 57, 36, 0.2)),
+          linear-gradient(90deg, #9a714f 0%, #7b573c 100%);
+      }
+
+      .engraving-surface {
+        display: grid;
+        place-items: center;
+        min-height: 120px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.08)),
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.06) 0,
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px,
+            transparent 24px
+          );
+      }
+
+      .engraving-note {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .swatches {
+        display: grid;
+        gap: 10px;
+      }
+
+      .swatch {
+        display: grid;
+        grid-template-columns: 64px 1fr auto;
+        gap: 14px;
+        align-items: center;
+        padding: 10px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.56);
+        border: 1px solid rgba(17, 22, 29, 0.06);
+      }
+
+      .chip {
+        width: 64px;
+        height: 50px;
+        border-radius: 14px;
+      }
+
+      .swatch strong,
+      .font-row strong,
+      .notes strong {
+        font-size: 14px;
+      }
+
+      .swatch small,
+      .font-row small {
+        display: block;
+        margin-top: 2px;
+        color: #63707d;
+        font-size: 12px;
+      }
+
+      .hex {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12px;
+        color: #55606c;
+      }
+
+      .font-stack,
+      .notes {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .font-row,
+      .notes li {
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.56);
+        border: 1px solid rgba(17, 22, 29, 0.06);
+        list-style: none;
+      }
+
+      .notes {
+        padding: 0;
+        margin-bottom: 0;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background: rgba(255, 255, 255, 0.56);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #495562;
+      }
+
+      .led-blur {
+        filter: blur(8px);
+        opacity: 0.22;
+      }
+
+      .led-blur.soft {
+        filter: blur(14px);
+        opacity: 0.12;
+      }
+
+      .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .preview-card {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        gap: 14px;
+        min-height: 220px;
+        padding: 18px;
+        border-radius: 24px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.74)),
+          rgba(255, 255, 255, 0.7);
+        box-shadow: 0 14px 34px rgba(17, 22, 29, 0.08);
+      }
+
+      .preview-card::before {
+        content: "";
+        position: absolute;
+        inset: auto -40px -54px auto;
+        width: 160px;
+        height: 160px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(255, 147, 97, 0.18), transparent 72%);
+        pointer-events: none;
+      }
+
+      .preview-card.dark {
+        background:
+          linear-gradient(165deg, rgba(18, 25, 36, 0.98), rgba(26, 37, 51, 0.95)),
+          #151d2a;
+        color: #f6f3ec;
+      }
+
+      .preview-card.dark::before {
+        background: radial-gradient(circle, rgba(255, 147, 97, 0.22), transparent 70%);
+      }
+
+      .preview-card.tall {
+        min-height: 360px;
+      }
+
+      .preview-card.wide {
+        grid-column: span 2;
+      }
+
+      .preview-kicker {
+        display: inline-flex;
+        width: fit-content;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(17, 22, 29, 0.06);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .preview-card.dark .preview-kicker {
+        background: rgba(246, 243, 236, 0.1);
+        color: rgba(246, 243, 236, 0.88);
+      }
+
+      .preview-card h4 {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.06;
+        letter-spacing: -0.04em;
+      }
+
+      .preview-card p {
+        margin: 0;
+        color: #5b6672;
+        line-height: 1.65;
+        font-size: 14px;
+      }
+
+      .preview-card.dark p {
+        color: rgba(246, 243, 236, 0.76);
+      }
+
+      .preview-box-shot {
+        align-self: end;
+        padding: 18px;
+        border-radius: 20px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+          linear-gradient(90deg, rgba(140, 97, 63, 0.28), rgba(98, 67, 43, 0.16));
+      }
+
+      .preview-metrics,
+      .preview-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .metric-pill,
+      .preview-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(17, 22, 29, 0.06);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .preview-card.dark .metric-pill,
+      .preview-card.dark .preview-pill {
+        background: rgba(246, 243, 236, 0.1);
+        color: #f6f3ec;
+      }
+
+      .phone-shell {
+        position: relative;
+        width: min(100%, 280px);
+        margin: 0 auto;
+        padding: 12px;
+        border-radius: 30px;
+        background: #10161f;
+        box-shadow: 0 24px 44px rgba(17, 22, 29, 0.22);
+      }
+
+      .phone-shell.light {
+        background: #efe8dc;
+      }
+
+      .phone-inner {
+        overflow: hidden;
+        min-height: 486px;
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 243, 236, 0.95));
+      }
+
+      .phone-shell.dark-ui .phone-inner {
+        background:
+          linear-gradient(180deg, rgba(20, 27, 39, 0.98), rgba(24, 34, 49, 0.95));
+        color: #f6f3ec;
+      }
+
+      .phone-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 18px 12px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .phone-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 18px;
+      }
+
+      .mini-led {
+        width: 8px;
+        height: 28px;
+        border-radius: 999px;
+        background: #ff9361;
+        box-shadow: 0 0 18px rgba(255, 147, 97, 0.45);
+      }
+
+      .mini-led.ivory {
+        background: #f6f3ec;
+        box-shadow: none;
+      }
+
+      .mini-led.lake {
+        background: #4a8395;
+        box-shadow: 0 0 18px rgba(74, 131, 149, 0.35);
+      }
+
+      .phone-stat {
+        margin: 16px 18px 0;
+        padding: 18px;
+        border-radius: 20px;
+        background: rgba(17, 22, 29, 0.05);
+      }
+
+      .phone-shell.dark-ui .phone-stat {
+        background: rgba(246, 243, 236, 0.08);
+      }
+
+      .phone-stat strong {
+        display: block;
+        font-size: 34px;
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+
+      .phone-stat small,
+      .phone-row small,
+      .leader-row small {
+        color: #6b7380;
+      }
+
+      .phone-shell.dark-ui .phone-stat small,
+      .phone-shell.dark-ui .phone-row small,
+      .phone-shell.dark-ui .leader-row small {
+        color: rgba(246, 243, 236, 0.64);
+      }
+
+      .phone-list,
+      .leaderboard-list {
+        display: grid;
+        gap: 10px;
+        padding: 16px 18px 18px;
+      }
+
+      .phone-row,
+      .leader-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(17, 22, 29, 0.05);
+      }
+
+      .phone-shell.dark-ui .phone-row,
+      .phone-shell.dark-ui .leader-row {
+        background: rgba(246, 243, 236, 0.08);
+      }
+
+      .splash-stage {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 280px;
+        border-radius: 28px;
+        background:
+          radial-gradient(circle, rgba(255, 147, 97, 0.2), transparent 32%),
+          linear-gradient(180deg, #121826 0%, #151d2a 100%);
+      }
+
+      .splash-orb {
+        position: absolute;
+        width: 170px;
+        height: 170px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(255, 147, 97, 0.28), transparent 68%);
+        animation: splash-pulse 3.8s ease-in-out infinite;
+      }
+
+      .splash-logo {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 14px;
+        justify-items: center;
+        color: #f6f3ec;
+      }
+
+      .business-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .business-card {
+        min-height: 184px;
+        padding: 18px;
+        border-radius: 20px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background: #f6f3ec;
+      }
+
+      .business-card.dark {
+        background: #151d2a;
+        color: #f6f3ec;
+      }
+
+      .poster-copy {
+        display: grid;
+        gap: 12px;
+        max-width: 360px;
+      }
+
+      .poster-copy h5 {
+        margin: 0;
+        font-size: 42px;
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+      }
+
+      .progress-track {
+        overflow: hidden;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(17, 22, 29, 0.08);
+      }
+
+      .progress-fill {
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #ff9361 0%, #f7bf9b 100%);
+      }
+
+      .preview-note {
+        margin-top: auto;
+        font-size: 12px;
+        line-height: 1.55;
+        color: #7a818b;
+      }
+
+      .preview-card.dark .preview-note {
+        color: rgba(246, 243, 236, 0.58);
+      }
+
+      @keyframes splash-pulse {
+        0%, 100% {
+          transform: scale(0.92);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.08);
+          opacity: 1;
+        }
+      }
+
+      .footer {
+        margin-top: 26px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+      }
+
+      .decision-card {
+        padding: 22px;
+        border-radius: 26px;
+        border: 1px solid rgba(17, 22, 29, 0.08);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .decision-card h3 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .decision-card p,
+      .decision-card li {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.75;
+        color: #4f5965;
+      }
+
+      .decision-card ul {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .concept-1 {
+        --section-bg:
+          radial-gradient(circle at top right, rgba(197, 207, 191, 0.48), transparent 28%),
+          linear-gradient(180deg, rgba(250, 247, 242, 0.9), rgba(244, 238, 228, 0.72));
+      }
+
+      .concept-2 {
+        --section-bg:
+          radial-gradient(circle at top right, rgba(47, 208, 193, 0.2), transparent 30%),
+          linear-gradient(180deg, rgba(239, 245, 246, 0.88), rgba(231, 238, 241, 0.72));
+      }
+
+      .concept-3 {
+        --section-bg:
+          radial-gradient(circle at top right, rgba(201, 115, 77, 0.15), transparent 30%),
+          linear-gradient(180deg, rgba(248, 243, 237, 0.9), rgba(239, 232, 222, 0.72));
+      }
+
+      .type-signal .wordmark-title {
+        font-family: "Sora", sans-serif;
+        font-weight: 300;
+        letter-spacing: -0.03em;
+      }
+
+      .type-portal .wordmark-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        letter-spacing: -0.04em;
+      }
+
+      .type-loop .wordmark-title {
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+      }
+
+      @media (max-width: 1100px) {
+        .hero-top,
+        .hero-grid,
+        .section-header,
+        .concept-grid,
+        .footer {
+          grid-template-columns: 1fr;
+        }
+
+        .preview-grid,
+        .business-pair {
+          grid-template-columns: 1fr;
+        }
+
+        .preview-card.wide {
+          grid-column: auto;
+        }
+
+        .poster-copy {
+          max-width: 100%;
+        }
+
+        .page {
+          width: min(100% - 24px, 1440px);
+        }
+
+        .hero,
+        .section {
+          padding: 22px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .hero-images,
+        .icon-grid,
+        .mini-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .wordmark-title {
+          font-size: 30px;
+        }
+
+        .logo-lockup {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="hero-top">
+          <div class="hero-copy">
+            <span class="eyebrow">Faraday · Brand Exploration V2</span>
+            <h1>Approfondissement LED V2 : 2 pistes de charte graphique qui gardent l’ancienne page intacte.</h1>
+            <p>
+              Point de départ retenu : <strong>la LED frontale est l’un des détails les plus propriétaires du produit</strong>.
+              Elle raconte mieux Faraday qu’une flatline : <strong>présence, statut, rituel, calme actif</strong>.
+              J’ai donc recentré le travail sur <strong>deux pistes complémentaires</strong> :
+              une évolution douce de la piste 1, puis une direction plus radicale où la LED devient
+              le cœur complet du système de marque.
+            </p>
+          </div>
+
+          <div class="hero-images">
+            <div class="product-shot">
+              <img src="./assets/box-black.jpeg" alt="Faraday Box noire" />
+            </div>
+            <div class="product-shot led-ref">
+              <img src="./assets/led-reference.jpg" alt="Référence LED Faraday" />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <article class="summary-card">
+            <h3>Ce qui doit rester vrai</h3>
+            <ul>
+              <li>Le logo doit être fort en <strong>app icon</strong>, favicon et très lisible à petite taille.</li>
+              <li>La marque doit rester crédible en <strong>gravure, embossage et marquage monochrome</strong>.</li>
+              <li>Le signe doit exprimer <strong>la vie et la présence</strong>, pas l’arrêt ou la coupure au sens anxiogène.</li>
+            </ul>
+          </article>
+
+          <article class="summary-card">
+            <h3>Lecture produit</h3>
+            <p>
+              Le bois, le métal et la lumière chaude créent déjà une grammaire riche :
+              <strong>objet domestique premium, presque rituel</strong>. La LED est intéressante parce qu’elle
+              fait le lien entre <strong>hardware, app, statut, session et émotion</strong> avec un seul geste graphique.
+            </p>
+          </article>
+
+          <article class="summary-card recommendation">
+            <h3>Recommandation</h3>
+            <p>
+              <strong>Je recommande la piste 01 — Signal Calm LED V2.</strong> Sur cette page, c’est le meilleur compromis :
+              elle garde la douceur et la retenue de la première proposition, tout en remplaçant la
+              métaphore problématique de l’EEG plat par un signe plus juste, plus vivant et plus propriétaire.
+              Le board précédent reste volontairement conservé à part.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section concept-1">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">01 · Signal Calm LED V2</span>
+            <h2>On garde l’élégance de la piste 1, mais le signe maître devient le bleu nuit + LED ember.</h2>
+            <p>
+              Cette itération tranche plus clairement. Le <strong>logo principal</strong> n’est plus la version sauge :
+              il devient une <strong>version Ink Charcoal avec LED Beacon Ember</strong>, plus dense, plus premium,
+              plus crédible en app et plus mémorisable. Les autres versions existent, mais elles sont
+              hiérarchisées : <strong>Porcelain + Ink Charcoal + Ember</strong> pour les contextes clairs, puis
+              <strong>Sage Mist + Porcelain</strong> pour les usages doux et domestiques. Le Lake Accent reste présent,
+              mais uniquement comme accent digital et motion, pas comme couleur de LED sur la version sauge.
+            </p>
+          </div>
+
+          <aside class="fit-box">
+            <strong>Quand la choisir</strong>
+            <p>
+              Si tu veux une marque <strong>grand public mais sérieuse</strong>, qui reste chaleureuse en lifestyle
+              et suffisamment structurée pour l’app, les statuts, les stores et la gravure produit.
+            </p>
+          </aside>
+        </div>
+
+        <div class="concept-grid">
+          <article class="panel">
+            <div class="panel-pad">
+              <h3 class="panel-title">Logo principal &amp; déclinaisons</h3>
+              <div class="lockups">
+                <div class="logo-stage dark" style="background:#151d2a;">
+                  <div class="logo-lockup type-signal" style="color:#f6f3ec;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#151D2A"></rect>
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(246,243,236,0.22)" stroke-width="2.5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark">
+                      <div class="wordmark-title">faraday</div>
+                      <div class="wordmark-baseline">Disconnect to reconnect</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="logo-stage" style="background:#f6f3ec;">
+                  <div class="logo-lockup type-signal" style="color:#151d2a;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#F6F3EC"></rect>
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(21,29,42,0.18)" stroke-width="2.5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark">
+                      <div class="wordmark-title">faraday</div>
+                      <div class="wordmark-baseline">Disconnect to reconnect</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="logo-stage" style="background:#c5cfbf;">
+                  <div class="logo-lockup type-signal" style="color:#151d2a;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#C5CFBF"></rect>
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(21,29,42,0.18)" stroke-width="2.5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#F6F3EC"></rect>
+                    </svg>
+                    <div class="wordmark">
+                      <div class="wordmark-title">faraday</div>
+                      <div class="wordmark-baseline">Disconnect to reconnect</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mini-row">
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="4"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" fill="#151D2A"></rect>
+                  </svg>
+                  <span>Gravure mono</span>
+                </div>
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="34" y="20" width="28" height="56" rx="14" fill="#FF9361" opacity="0.18" class="led-blur"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                  </svg>
+                  <span>Blur ember</span>
+                </div>
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="34" y="20" width="28" height="56" rx="14" fill="#F6F3EC" opacity="0.24" class="led-blur soft"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" fill="#F6F3EC"></rect>
+                  </svg>
+                  <span>Blur ivory</span>
+                </div>
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect width="96" height="96" rx="26" fill="#151D2A"></rect>
+                    <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(246,243,236,0.22)" stroke-width="2.5"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                  </svg>
+                  <span>App icon</span>
+                </div>
+                <div class="mini-card">
+                  <div class="stacked-lockup type-signal" style="color:#151d2a;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="4"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark-title" style="font-size:25px;">faraday</div>
+                    <div class="wordmark-baseline" style="font-size:9px;">Disconnect to reconnect</div>
+                  </div>
+                  <span>Empilé</span>
+                </div>
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="43" y="26" width="10" height="44" rx="5" fill="#4A8395"></rect>
+                  </svg>
+                  <span>Lake accent UI</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-pad">
+              <h3 class="panel-title">App icon, favicon, gravure</h3>
+              <div class="icon-grid">
+                <div>
+                  <div class="app-icon" style="background:#151d2a;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#151D2A"></rect>
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(246,243,236,0.22)" stroke-width="2.5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">Primary</div>
+                </div>
+                <div>
+                  <div class="favicon" style="background:#f6f3ec;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">Porcelain + ember</div>
+                </div>
+                <div>
+                  <div class="favicon" style="background:#c5cfbf;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="#151D2A" stroke-width="5"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#F6F3EC"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">Sage + porcelain</div>
+                </div>
+                <div>
+                  <div class="favicon" style="background:#151d2a;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(246,243,236,0.22)" stroke-width="5"></rect>
+                      <rect x="36" y="20" width="24" height="56" rx="12" fill="#FF9361" opacity="0.2" class="led-blur"></rect>
+                      <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">Halo option</div>
+                </div>
+              </div>
+
+              <div class="engraving" style="margin-top:18px;">
+                <div class="engraving-surface">
+                  <svg width="150" height="72" viewBox="0 0 150 72" fill="none" aria-hidden="true">
+                    <rect x="56" y="8" width="38" height="56" rx="19" stroke="rgba(255,255,255,0.78)" stroke-width="4"></rect>
+                    <rect x="70" y="20" width="10" height="32" rx="5" fill="rgba(255,255,255,0.78)"></rect>
+                  </svg>
+                </div>
+                <div class="engraving-note">
+                  La gravure reste ultra simple. Le halo est facultatif et ne doit vivre que dans les
+                  contextes motion, splash ou campagne, jamais comme dépendance structurelle du signe.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-pad">
+              <h3 class="panel-title">Palette &amp; système typo</h3>
+              <div class="swatches">
+                <div class="swatch">
+                  <div class="chip" style="background:#151d2a;"></div>
+                  <div><strong>Ink Charcoal</strong><small>Version maître. Donne la profondeur premium et fait mieux ressortir la LED.</small></div>
+                  <div class="hex">#151D2A</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#f6f3ec;"></div>
+                  <div><strong>Porcelain</strong><small>Base claire, respirante, élégante, parfaite pour la déclinaison éditoriale.</small></div>
+                  <div class="hex">#F6F3EC</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#c5cfbf;"></div>
+                  <div><strong>Sage Mist</strong><small>Couleur environnement. À réserver aux surfaces et à la version douce du système.</small></div>
+                  <div class="hex">#C5CFBF</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#ff9361;"></div>
+                  <div><strong>Beacon Ember</strong><small>Accent vivant, chaleureux, lié au rituel de présence et à la LED physique.</small></div>
+                  <div class="hex">#FF9361</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#4a8395;"></div>
+                  <div><strong>Lake Accent</strong><small>Accent d’interface et de motion. Il revient dans l’app, les états focus et les vues data.</small></div>
+                  <div class="hex">#4A8395</div>
+                </div>
+              </div>
+
+              <div class="font-stack">
+                <div class="font-row"><strong>Sora</strong><small>Wordmark léger et précis. Il garde le calme et la singularité de la piste 1.</small></div>
+                <div class="font-row"><strong>Manrope</strong><small>Interface douce, contemporaine, moins générique qu’un sans strictement SaaS.</small></div>
+                <div class="font-row"><strong>IBM Plex Mono</strong><small>Temps, statuts, compteurs, défis et métriques de session.</small></div>
+              </div>
+
+              <ul class="notes">
+                <li><strong>Hiérarchie retenue :</strong> bleu nuit + ember en primary, porcelain + ember en secondaire claire, sage mist + porcelain en version douce.</li>
+                <li><strong>Point clé :</strong> sur la version Sage Mist, la LED reste toujours Porcelain. Pas de bleu, pas d’orange, sinon on refroidit ou on gadgetise inutilement.</li>
+                <li><strong>Pourquoi ça marche :</strong> l’orange n’est plus un thème global, c’est une impulsion mesurée. Il fait vivre le signe sans contaminer toute la marque.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Calme premium</span>
+          <span class="tag">Primary nuit + ember</span>
+          <span class="tag">Gravure solide</span>
+          <span class="tag">Lake réservé au digital</span>
+        </div>
+
+        <article class="panel" style="margin-top:18px;">
+          <div class="panel-pad">
+            <h3 class="panel-title">Animations proposées</h3>
+            <div class="anim-grid">
+              <div class="anim-card">
+                <div class="anim-preview anim-led-breathe" style="background:#151d2a;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" stroke="rgba(246,243,236,0.22)" stroke-width="2.5"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#FF9361"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Gentle wake</strong><small>Reveal principal du logo. La LED apparaît, se stabilise, puis laisse la place au wordmark.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-halo" style="background:#151d2a;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" stroke="rgba(246,243,236,0.22)" stroke-width="2.5"></rect>
+                    <rect x="36" y="20" width="24" height="56" rx="12" class="led-aura" fill="#FF9361" opacity="0.2"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#FF9361"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Quiet halo</strong><small>Version campagne ou splash. Le blur reste ici, pas dans le logo maître.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-blink" style="background:#f6f3ec;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" stroke="rgba(21,29,42,0.18)" stroke-width="2.5"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#FF9361"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Soft confirm</strong><small>Double blink ember pour confirmer une session lancée ou un temps atteint.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-rise" style="background:#c5cfbf;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" stroke="rgba(21,29,42,0.18)" stroke-width="2.5"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#F6F3EC"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Porcelain settle</strong><small>Version maison et nuit. Plus mate, plus calme, presque silencieuse.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-halo" style="background:#4a8395;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="31" y="14" width="34" height="68" rx="17" class="led-shell" stroke="rgba(246,243,236,0.22)" stroke-width="2.5"></rect>
+                    <rect x="36" y="20" width="24" height="56" rx="12" class="led-aura" fill="#F6F3EC" opacity="0.12"></rect>
+                    <rect x="43" y="28" width="10" height="40" rx="5" class="led-core" fill="#F6F3EC"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Lake focus</strong><small>Accent app et data uniquement. Le lake revient ici comme vibration digitale, pas comme couleur maître du logo.</small></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" style="margin-top:18px;">
+          <div class="panel-pad">
+            <h3 class="panel-title">Previews marketing &amp; produit</h3>
+            <div class="preview-grid">
+              <div class="preview-card dark wide">
+                <span class="preview-kicker">Pub métro · calme / premium / longevity</span>
+                <div class="poster-copy">
+                  <h5>Dépose ton téléphone. Reprends ta présence.</h5>
+                  <p>Faraday transforme la déconnexion en rituel mesurable. Une box chez soi. Une LED discrète. Une session qui commence sans bruit.</p>
+                  <div class="preview-chips">
+                    <span class="preview-pill">disconnect to reconnect</span>
+                    <span class="preview-pill">sessions à la maison</span>
+                    <span class="preview-pill">longévité attentionnelle</span>
+                  </div>
+                </div>
+                <div class="preview-box-shot">
+                  <div class="preview-metrics">
+                    <span class="metric-pill">Maison</span>
+                    <span class="metric-pill">2h14 aujourd’hui</span>
+                    <span class="metric-pill">LED ember active</span>
+                  </div>
+                  <div class="preview-note">Le tone of voice reste français, posé, premium, sans rhétorique gadget.</div>
+                </div>
+              </div>
+
+              <div class="preview-card tall">
+                <span class="preview-kicker">Preview app · session réelle</span>
+                <div class="phone-shell">
+                  <div class="phone-inner">
+                    <div class="phone-topbar">
+                      <span>Session en cours</span>
+                      <span>Maison</span>
+                    </div>
+                    <div class="phone-brand">
+                      <div class="mini-led"></div>
+                      <div>
+                        <strong style="display:block;font-size:26px;line-height:1;">2h14</strong>
+                        <small>Aujourd’hui</small>
+                      </div>
+                    </div>
+                    <div class="phone-stat">
+                      <strong>Salon</strong>
+                      <small>Box active · Téléphone déposé · Focus calme</small>
+                    </div>
+                    <div class="phone-list">
+                      <div class="phone-row">
+                        <div>
+                          <strong>Chambre parentale</strong>
+                          <small>Aucune session pour le moment</small>
+                        </div>
+                        <small>Disponible</small>
+                      </div>
+                      <div class="phone-row">
+                        <div>
+                          <strong>Semaine</strong>
+                          <small>11h38 déconnectées</small>
+                        </div>
+                        <small>+18%</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-card tall">
+                <span class="preview-kicker">Preview app · social / challenge</span>
+                <div class="phone-shell light">
+                  <div class="phone-inner">
+                    <div class="phone-topbar">
+                      <span>Mes groupes</span>
+                      <span>Défis</span>
+                    </div>
+                    <div class="phone-brand">
+                      <div class="mini-led lake"></div>
+                      <div>
+                        <strong style="display:block;font-size:24px;line-height:1;">Marathon déconnexion</strong>
+                        <small>5 membres · 3 boxes · Défi en cours</small>
+                      </div>
+                    </div>
+                    <div class="phone-stat">
+                      <strong>84 h</strong>
+                      <small>Temps collectif cette semaine</small>
+                      <div class="progress-track" style="margin-top:14px;">
+                        <div class="progress-fill" style="width:68%;background:linear-gradient(90deg,#4A8395 0%, #9dd3df 100%);"></div>
+                      </div>
+                    </div>
+                    <div class="leaderboard-list">
+                      <div class="leader-row">
+                        <div>
+                          <strong>Pauline</strong>
+                          <small>Salon · 9h12</small>
+                        </div>
+                        <small>#1</small>
+                      </div>
+                      <div class="leader-row">
+                        <div>
+                          <strong>Nicolas</strong>
+                          <small>Maison · 8h41</small>
+                        </div>
+                        <small>#2</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-card">
+                <span class="preview-kicker">Post Instagram · éditorial</span>
+                <h4>Le calme n’a pas besoin d’être froid.</h4>
+                <p>Un feed sobre, matière, lumière et une LED ember comme seul point de chaleur. Direction lifestyle plus premium que “detox app”.</p>
+                <div class="preview-chips">
+                  <span class="preview-pill">bois</span>
+                  <span class="preview-pill">porcelain</span>
+                  <span class="preview-pill">ember</span>
+                </div>
+                <div class="preview-box-shot" style="background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)), linear-gradient(90deg, rgba(197,207,191,0.38), rgba(246,243,236,0.22));">
+                  <div class="preview-note">Version idéale pour carrousel produit, détail LED, citation et bénéfice usage.</div>
+                </div>
+              </div>
+
+              <div class="preview-card dark">
+                <span class="preview-kicker">Splashscreen animé</span>
+                <div class="splash-stage">
+                  <div class="splash-orb"></div>
+                  <div class="splash-logo">
+                    <svg width="86" height="86" viewBox="0 0 96 96" fill="none" aria-hidden="true" class="anim-led-breathe">
+                      <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(246,243,236,0.22)" stroke-width="2.5"></rect>
+                      <rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark-title" style="font-family:'Sora',sans-serif;font-size:32px;font-weight:300;letter-spacing:-0.03em;">faraday</div>
+                    <div class="wordmark-baseline">Disconnect to reconnect</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-card wide">
+                <span class="preview-kicker">Carte de visite · recto / verso</span>
+                <div class="business-pair">
+                  <div class="business-card dark">
+                    <div style="display:grid;gap:18px;height:100%;">
+                      <div class="logo-lockup type-signal" style="color:#f6f3ec;align-items:center;">
+                        <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                          <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(246,243,236,0.22)" stroke-width="4"></rect>
+                          <rect x="43" y="28" width="10" height="40" rx="5" fill="#FF9361"></rect>
+                        </svg>
+                        <div class="wordmark-title" style="font-size:28px;">faraday</div>
+                      </div>
+                      <div class="preview-note">Recto ultra simple, presque objet. La LED joue seule.</div>
+                    </div>
+                  </div>
+                  <div class="business-card">
+                    <div style="display:grid;gap:12px;">
+                      <strong style="font-size:20px;">Faraday</strong>
+                      <span>Disconnect to reconnect</span>
+                      <span>Maison, session, groupe, présence.</span>
+                      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;">faraday.design / contact@faraday</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section concept-2">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">02 · Living Beacon V2</span>
+            <h2>Une piste plus radicale, entièrement centrée sur la LED comme balise active.</h2>
+            <p>
+              Ici on pousse la logique jusqu’au bout. Le logo se réduit à <strong>la LED elle-même</strong>,
+              sans demi-cercle, sans support additionnel, sans forme parasite. Le système devient plus
+              motion-first et plus iconique. La version <strong>Bone Light + ember</strong> rejoint maintenant
+              le cœur du territoire, tandis que les variations bleues restent réservées à certains états
+              digitaux. J’interdis aussi le mélange <strong>Wake Vertical / End Blink</strong> avec les mêmes couples
+              de couleurs : chaque animation a désormais sa propre logique chromatique.
+            </p>
+          </div>
+
+          <aside class="fit-box">
+            <strong>Quand la choisir</strong>
+            <p>
+              Si tu veux une marque plus <strong>propriétaire et plus mémorisable</strong>, capable de porter des campagnes
+              plus visuelles, un splash plus fort et une vraie grammaire d’états dans l’app.
+            </p>
+          </aside>
+        </div>
+
+        <div class="concept-grid">
+          <article class="panel">
+            <div class="panel-pad">
+              <h3 class="panel-title">Logo principal &amp; déclinaisons</h3>
+              <div class="lockups">
+                <div class="logo-stage dark" style="background:#181b1e;">
+                  <div class="logo-lockup" style="color:#f5f0e7;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#181B1E"></rect>
+                      <rect x="36" y="18" width="24" height="60" rx="12" fill="#FF9361" opacity="0.14"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark" style="font-family:'Plus Jakarta Sans',sans-serif;">
+                      <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
+                      <div class="wordmark-baseline">Disconnect to reconnect</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="logo-stage" style="background:#F5F0E7;">
+                  <div class="logo-lockup" style="color:#181b1e;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#F5F0E7"></rect>
+                      <rect x="36" y="18" width="24" height="60" rx="12" fill="#FF9361" opacity="0.12"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark" style="font-family:'Plus Jakarta Sans',sans-serif;">
+                      <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
+                      <div class="wordmark-baseline">Disconnect to reconnect</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="logo-stage dark" style="background:#181b1e;">
+                  <div class="logo-lockup" style="color:#f5f0e7;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#181B1E"></rect>
+                      <rect x="36" y="18" width="24" height="60" rx="12" fill="#5DA9D6" opacity="0.14"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#5DA9D6"></rect>
+                    </svg>
+                    <div class="wordmark" style="font-family:'Plus Jakarta Sans',sans-serif;">
+                      <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
+                      <div class="wordmark-baseline">Signal system / UI states</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mini-row">
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                  </svg>
+                  <span>Core ember</span>
+                </div>
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="43" y="27" width="10" height="42" rx="5" fill="#5DA9D6"></rect>
+                  </svg>
+                  <span>Current blue</span>
+                </div>
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="43" y="27" width="10" height="42" rx="5" fill="#181B1E"></rect>
+                  </svg>
+                  <span>Gravure mono</span>
+                </div>
+                <div class="mini-card">
+                  <div style="display:grid;place-items:center;height:48px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.05em;">Faraday</div>
+                  <span>Wordmark</span>
+                </div>
+                <div class="mini-card">
+                  <div class="stacked-lockup" style="color:#181b1e;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="36" y="18" width="24" height="60" rx="12" fill="#FF9361" opacity="0.14"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
+                    <div class="wordmark-baseline" style="font-size:9px;">Disconnect to reconnect</div>
+                  </div>
+                  <span>Empilé</span>
+                </div>
+                <div class="mini-card">
+                  <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="36" y="18" width="24" height="60" rx="12" fill="#FF9361" opacity="0.18" class="led-blur"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                  </svg>
+                  <span>Halo ad only</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-pad">
+              <h3 class="panel-title">App icon, favicon, gravure</h3>
+              <div class="icon-grid">
+                <div>
+                  <div class="app-icon" style="background:#181b1e;">
+                    <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect width="96" height="96" rx="26" fill="#181B1E"></rect>
+                      <rect x="36" y="18" width="24" height="60" rx="12" fill="#FF9361" opacity="0.14"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">Primary</div>
+                </div>
+                <div>
+                  <div class="favicon" style="background:#f5f0e7;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="36" y="18" width="24" height="60" rx="12" fill="#FF9361" opacity="0.12"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">Bone + ember</div>
+                </div>
+                <div>
+                  <div class="favicon" style="background:#181b1e;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="36" y="18" width="24" height="60" rx="12" fill="#5DA9D6" opacity="0.14"></rect>
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#5DA9D6"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">UI state only</div>
+                </div>
+                <div>
+                  <div class="favicon" style="background:#181b1e;">
+                    <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                      <rect x="43" y="27" width="10" height="42" rx="5" fill="#F5F0E7"></rect>
+                    </svg>
+                  </div>
+                  <div class="icon-label">Sleep / end</div>
+                </div>
+              </div>
+
+              <div class="engraving" style="margin-top:18px;background:linear-gradient(180deg, rgba(17,22,29,0.18), rgba(17,22,29,0.22)), linear-gradient(90deg, #9a714f 0%, #7b573c 100%);">
+                <div class="engraving-surface">
+                  <svg width="130" height="72" viewBox="0 0 130 72" fill="none" aria-hidden="true">
+                    <rect x="58" y="16" width="14" height="40" rx="7" fill="rgba(255,255,255,0.82)"></rect>
+                  </svg>
+                </div>
+                <div class="engraving-note">
+                  Ici la force vient de l’épure : une seule capsule lumineuse tient en gravure, en voyant,
+                  en pictogramme d’app et en état système.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-pad">
+              <h3 class="panel-title">Palette &amp; système typo</h3>
+              <div class="swatches">
+                <div class="swatch">
+                  <div class="chip" style="background:#181b1e;"></div>
+                  <div><strong>Graphite</strong><small>Fond maître. Fait exister la lumière et pose le territoire hardware premium.</small></div>
+                  <div class="hex">#181B1E</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#f5f0e7;"></div>
+                  <div><strong>Bone Light</strong><small>Version claire domestique, plus tactile et plus lifestyle.</small></div>
+                  <div class="hex">#F5F0E7</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#ff9361;"></div>
+                  <div><strong>Beacon Ember</strong><small>Couleur-signature des états vivants, du rituel, du réveil et de l’appel à la présence.</small></div>
+                  <div class="hex">#FF9361</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#5da9d6;"></div>
+                  <div><strong>Current Blue</strong><small>Secondaire digital. À isoler sur certains flows app, jamais comme doublon concurrent des motions ember.</small></div>
+                  <div class="hex">#5DA9D6</div>
+                </div>
+                <div class="swatch">
+                  <div class="chip" style="background:#8f877b;"></div>
+                  <div><strong>Warm Alloy</strong><small>Liant matière entre métal, bois, packaging et supports print.</small></div>
+                  <div class="hex">#8F877B</div>
+                </div>
+              </div>
+
+              <div class="font-stack">
+                <div class="font-row"><strong>Plus Jakarta Sans</strong><small>Plus dense, plus signalétique, très bonne présence sur stores et interfaces.</small></div>
+                <div class="font-row"><strong>Inter</strong><small>Base solide pour l’UI et les écrans plus chargés.</small></div>
+                <div class="font-row"><strong>IBM Plex Mono</strong><small>Protocoles, durées, statuts, vues groupes et objectifs.</small></div>
+              </div>
+
+              <ul class="notes">
+                <li><strong>Décision couleur :</strong> Bone Light + ember est validée comme vraie déclinaison de marque, pas comme simple variante temporaire.</li>
+                <li><strong>Règle motion :</strong> Wake Vertical reste en ember chaud. End Blink passe en ivory sur graphite. On ne mélange plus ces deux signatures avec les mêmes couples chromatiques.</li>
+                <li><strong>Pourquoi ça marche :</strong> le signe devient presque universel. Il peut porter autant la promesse wellbeing que la logique challenge / app lifestyle.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Iconique</span>
+          <span class="tag">LED seule</span>
+          <span class="tag">Bone + ember</span>
+          <span class="tag">Motion system</span>
+        </div>
+
+        <article class="panel" style="margin-top:18px;">
+          <div class="panel-pad">
+            <h3 class="panel-title">Animations proposées</h3>
+            <div class="anim-grid">
+              <div class="anim-card">
+                <div class="anim-preview anim-led-breathe" style="background:#181b1e;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="36" y="18" width="24" height="60" rx="12" class="led-aura" fill="#FF9361" opacity="0.14"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#FF9361"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Beacon breathe</strong><small>Respiration warm maîtresse. Premium, hypnotique, idéale pour splash et reveal hero.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-rise" style="background:#F5F0E7;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="36" y="18" width="24" height="60" rx="12" class="led-aura" fill="#FF9361" opacity="0.12"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#FF9361"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Wake vertical</strong><small>Départ de session warm. On le garde ember only pour préserver une sémantique claire.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-blink" style="background:#181b1e;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#F5F0E7"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>End blink</strong><small>Fin de session ivory sur graphite. Plus calme, plus net, sans collision avec le warm du réveil.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-halo" style="background:#181b1e;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="36" y="18" width="24" height="60" rx="12" class="led-aura" fill="#5DA9D6" opacity="0.16"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#5DA9D6"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Current focus</strong><small>Variant UI/data. Blue réservé aux états focus, à certains défis et aux écrans insight.</small></div>
+              </div>
+              <div class="anim-card">
+                <div class="anim-preview anim-led-halo" style="background:#F5F0E7;">
+                  <svg width="84" height="84" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                    <rect x="36" y="18" width="24" height="60" rx="12" class="led-aura" fill="#FF9361" opacity="0.12"></rect>
+                    <rect x="43" y="27" width="10" height="42" rx="5" class="led-core" fill="#FF9361"></rect>
+                  </svg>
+                </div>
+                <div class="anim-meta"><strong>Campaign pulse</strong><small>Version halo large pour affichage, DOOH, social loop et placements métro.</small></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" style="margin-top:18px;">
+          <div class="panel-pad">
+            <h3 class="panel-title">Previews marketing &amp; produit</h3>
+            <div class="preview-grid">
+              <div class="preview-card dark wide">
+                <span class="preview-kicker">Pub métro · social / challenge / app lifestyle</span>
+                <div class="poster-copy">
+                  <h5>Débranche le réflexe. Garde la dynamique.</h5>
+                  <p>Faraday fait de la déconnexion un geste visible, partageable et mesurable. Une LED, une session, un groupe, une trace.</p>
+                  <div class="preview-chips">
+                    <span class="preview-pill">mes groupes</span>
+                    <span class="preview-pill">défis en cours</span>
+                    <span class="preview-pill">disconnect to reconnect</span>
+                  </div>
+                </div>
+                <div class="preview-box-shot">
+                  <div class="preview-metrics">
+                    <span class="metric-pill">5 membres</span>
+                    <span class="metric-pill">3 boxes</span>
+                    <span class="metric-pill">84 h collectives</span>
+                  </div>
+                  <div class="preview-note">Direction plus énergique, mais toujours tenue par une seule capsule lumineuse.</div>
+                </div>
+              </div>
+
+              <div class="preview-card tall dark">
+                <span class="preview-kicker">Preview app · groupe</span>
+                <div class="phone-shell dark-ui">
+                  <div class="phone-inner">
+                    <div class="phone-topbar">
+                      <span>Mes groupes</span>
+                      <span>En direct</span>
+                    </div>
+                    <div class="phone-brand">
+                      <div class="mini-led"></div>
+                      <div>
+                        <strong style="display:block;font-size:24px;line-height:1;">Marathon déconnexion</strong>
+                        <small>5 membres · 3 boxes</small>
+                      </div>
+                    </div>
+                    <div class="phone-stat">
+                      <strong>84 h</strong>
+                      <small>Temps collectif cette semaine</small>
+                      <div class="progress-track" style="margin-top:14px;background:rgba(246,243,236,0.12);">
+                        <div class="progress-fill" style="width:72%;"></div>
+                      </div>
+                    </div>
+                    <div class="leaderboard-list">
+                      <div class="leader-row">
+                        <div>
+                          <strong>Pauline</strong>
+                          <small>+ 2h14 aujourd’hui</small>
+                        </div>
+                        <small>#1</small>
+                      </div>
+                      <div class="leader-row">
+                        <div>
+                          <strong>Faraday Box Pro</strong>
+                          <small>Salon · En ligne</small>
+                        </div>
+                        <small>Active</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-card tall">
+                <span class="preview-kicker">Preview app · insight / longevity</span>
+                <div class="phone-shell light">
+                  <div class="phone-inner">
+                    <div class="phone-topbar">
+                      <span>Statistiques</span>
+                      <span>Semaine</span>
+                    </div>
+                    <div class="phone-brand">
+                      <div class="mini-led lake"></div>
+                      <div>
+                        <strong style="display:block;font-size:26px;line-height:1;">11h38</strong>
+                        <small>Temps sans écran cette semaine</small>
+                      </div>
+                    </div>
+                    <div class="phone-stat">
+                      <strong>+18%</strong>
+                      <small>Par rapport à la semaine dernière</small>
+                    </div>
+                    <div class="phone-list">
+                      <div class="phone-row">
+                        <div>
+                          <strong>Session moyenne</strong>
+                          <small>46 minutes</small>
+                        </div>
+                        <small>stable</small>
+                      </div>
+                      <div class="phone-row">
+                        <div>
+                          <strong>Déclencheur principal</strong>
+                          <small>Soir · 21h</small>
+                        </div>
+                        <small>rituel</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-card">
+                <span class="preview-kicker">Post Instagram · social loop</span>
+                <h4>Une LED. Un rituel. Un groupe qui tient.</h4>
+                <p>Format social plus rythmé, avec capsules de progression, UGC box à la maison et cartes de groupe qui donnent envie de rejoindre un défi.</p>
+                <div class="preview-chips">
+                  <span class="preview-pill">défi 7 jours</span>
+                  <span class="preview-pill">focus</span>
+                  <span class="preview-pill">friends &amp; family</span>
+                </div>
+                <div class="preview-note">Cette piste accepte mieux un ton plus lifestyle / challenge sans sortir de la cohérence produit.</div>
+              </div>
+
+              <div class="preview-card dark">
+                <span class="preview-kicker">Splashscreen animé</span>
+                <div class="splash-stage">
+                  <div class="splash-orb" style="background:radial-gradient(circle, rgba(255,147,97,0.32), transparent 68%);"></div>
+                  <div class="splash-logo">
+                    <svg width="74" height="92" viewBox="0 0 96 96" fill="none" aria-hidden="true" class="anim-led-breathe">
+                      <rect x="36" y="18" width="24" height="60" rx="12" class="led-aura" fill="#FF9361" opacity="0.16"></rect>
+                      <rect class="led-core" x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                    </svg>
+                    <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
+                    <div class="wordmark-baseline">Disconnect to reconnect</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-card wide">
+                <span class="preview-kicker">Carte de visite · recto / verso</span>
+                <div class="business-pair">
+                  <div class="business-card dark">
+                    <div style="display:grid;gap:18px;height:100%;">
+                      <div class="logo-lockup" style="color:#f5f0e7;align-items:center;">
+                        <svg class="mark small" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                          <rect x="36" y="18" width="24" height="60" rx="12" fill="#FF9361" opacity="0.16"></rect>
+                          <rect x="43" y="27" width="10" height="42" rx="5" fill="#FF9361"></rect>
+                        </svg>
+                        <div class="wordmark-title" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.05em;">Faraday</div>
+                      </div>
+                      <div class="preview-note">Recto plus iconique, presque comme un marqueur d’appareil ou de protocole.</div>
+                    </div>
+                  </div>
+                  <div class="business-card">
+                    <div style="display:grid;gap:12px;">
+                      <strong style="font-size:20px;">Faraday</strong>
+                      <span>Disconnect to reconnect</span>
+                      <span>Produit, application, groupes et rituels de présence.</span>
+                      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;">hello@faraday / faraday.design</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="footer">
+        <article class="decision-card">
+          <h3>Lecture comparative</h3>
+          <ul>
+            <li><strong>01 Signal Calm LED V2</strong> : la plus équilibrée. La version nuit + ember donne enfin une hiérarchie claire, et la déclinaison sauge reste douce sans refroidir le système.</li>
+            <li><strong>02 Living Beacon V2</strong> : la plus iconique. Elle fonctionne très bien dès qu’on veut pousser l’app, le motion et les usages sociaux sans perdre le lien au produit.</li>
+          </ul>
+        </article>
+
+        <article class="decision-card">
+          <h3>Mon conseil</h3>
+          <p>
+            Si tu veux avancer vite, je figerais <strong>la piste 01 V2 comme base de marque</strong> et
+            je récupérerais à la piste 02 V2 son vocabulaire motion et ses codes de campagne.
+            C’est le meilleur compromis entre <strong>calme premium</strong>, cohérence produit et potentiel marketing.
+          </p>
+        </article>
+      </section>
+    </main>
+  <script src="nav.js"></script>
+  </body>
+</html>
