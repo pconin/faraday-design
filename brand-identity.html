@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faraday — Brand Book</title>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -283,16 +285,32 @@ h+=`<div><div class="sub">IBM Plex Mono — Donnees</div><div style="font-family
 h+=`</div>`;
 
 // ============================================================
-// 05 — APP SCREENS
+// 05 — APP SCREENS (DaisyUI)
 // ============================================================
-h+=`<div class="sect" style="background:${C.ink};border-color:rgba(255,255,255,.04);overflow:hidden;">`;
+h+=`<div class="sect sect-dark" style="background:${C.ink};border-color:rgba(255,255,255,.04);overflow:visible;">`;
 h+=`<div class="kicker" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);">05 — Application</div>`;
-h+=`<h2 style="color:${C.porcelain};">Ecrans</h2>`;
-h+=`<p class="sect-desc" style="color:rgba(255,255,255,.5);">6 écrans taille reelle. Sage = marque, Ember = defis, Lake = data.</p>`;
+h+=`<h2 style="color:${C.porcelain};">Écrans</h2>`;
+h+=`<p class="sect-desc" style="color:rgba(255,255,255,.5);">DaisyUI. Taille iPhone réelle. Icônes larges. Splash immersif.</p>`;
 h+=`<div class="grid-scroll">`;
 
+// iPhone frame helper using DaisyUI mockup
+const iphoneStart=(dark)=>`<div class="mockup-phone border-${dark?'neutral':'base-300'}" style="flex-shrink:0;"><div class="camera"></div><div class="display" style="overflow:hidden;">
+<div class="artboard artboard-demo phone-1" style="background:${dark?C.ink:C.porcelain};color:${dark?C.porcelain:C.ink};overflow-y:auto;justify-content:flex-start;align-items:stretch;font-family:'Manrope',sans-serif;padding:0;">`;
+const iphoneEnd=(active,dark)=>{
+  const items=[
+    {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-4v-6h-2v6h-2v-6H8v6H4a1 1 0 01-1-1z"/></svg>',n:'Home',k:'h'},
+    {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="9" cy="7" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17.5" cy="8.5" r="2.5"/><path d="M19 14.5c2 .5 3.5 2 3.5 4.5"/></svg>',n:'Groupes',k:'g'},
+    {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M4 8h16v12H4z"/><path d="M8 8V5h8v3"/><path d="M10 12h4"/></svg>',n:'Boxes',k:'b'},
+    {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M4 20V12M9 20V8M14 20V14M19 20V4"/></svg>',n:'Stats',k:'s'},
+    {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>',n:'Plus',k:'p'},
+  ];
+  return `<div class="btm-nav btm-nav-sm" style="position:relative;border-top:1px solid ${dark?'rgba(255,255,255,.06)':'rgba(17,22,29,.08)'};">
+    ${items.map(it=>`<button class="${active===it.k?'active text-primary':''}" style="${active===it.k?(dark?'color:'+C.sage:'color:'+C.ink):''}">${it.i}<span class="btm-nav-label" style="font-size:9px;font-family:'Manrope',sans-serif;">${it.n}</span></button>`).join('')}
+  </div></div></div></div>`;
+};
+
 // HOME LIGHT
-h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=iphoneStart(false);
 h+=`<div class="ph-header"><div style="width:28px;height:28px;">${LED(28,C.porcelain,'rgba(21,29,42,.12)',C.ember)}</div><div class="wm">faraday</div></div>`;
 h+=`<div class="ph-body">`;
 // Session active
@@ -321,10 +339,11 @@ h+=`<div class="app-section-title" style="display:flex;justify-content:space-bet
 [{n:'Salon',t:'Maison',v:'2h14'},{n:'Chambre',t:'Maison',v:'7h32'},{n:'Salle de reu',t:'Bureau',v:'4h05'}].forEach(b=>{
   h+=`<div class="app-row"><div style="width:7px;height:7px;border-radius:50%;background:#6b9b6b;flex-shrink:0;"></div><div style="flex:1;font-size:13px;font-weight:500;">${b.n} <span class="app-tag">${b.t}</span></div><div class="app-stat" style="font-size:13px;">${b.v}</div></div>`;
 });
-h+=`</div>${appNav('h')}</div>`;
+h+=`</div>`;
+h+=iphoneEnd('h',false);
 
 // HOME DARK
-h+=`<div class="phone dark"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=iphoneStart(true);
 h+=`<div class="ph-header"><div style="width:28px;height:28px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.lake)}</div><div class="wm" style="color:${C.porcelain};">faraday</div></div>`;
 h+=`<div class="ph-body">`;
 h+=`<div class="app-card" style="background:${C.sage}12;border:1px solid ${C.sage}30;border-radius:14px;padding:14px;margin-bottom:14px;"><div style="display:flex;align-items:center;gap:10px;"><div style="width:10px;height:10px;border-radius:50%;background:${C.sage};"></div><div style="flex:1;"><div style="font-size:14px;font-weight:600;color:${C.porcelain};">Session en cours</div><div style="font-size:11px;color:#556;margin-top:2px;">Salon &middot; Depuis 14:20</div></div><div class="app-stat" style="font-size:24px;color:${C.sage};">1h42</div></div></div>`;
@@ -338,10 +357,11 @@ h+=`<div class="app-card" style="border:1px solid ${C.ember}20;background:${C.em
 h+=`<div class="app-card app-card-outline" style="padding:14px;margin-top:12px;"><div class="app-section-title" style="margin:0 0 8px;color:rgba(255,255,255,.3);">&#128293; Streak — 12 jours</div><div style="display:flex;gap:3px;">`;
 'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;${i<6?`background:${C.sage}18;color:${C.sage};`:`background:${C.sage};color:${C.ink};`}">${d}</div>`;});
 h+=`</div></div>`;
-h+=`</div>${appNav('h')}</div>`;
+h+=`</div>`;
+h+=iphoneEnd('h',true);
 
 // CLASSEMENT
-h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=iphoneStart(false);
 h+=`<div style="padding:6px 24px;font-size:12px;font-weight:500;color:${C.lake};">← Groupes</div>`;
 h+=`<div style="padding:4px 24px 14px;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:12px;background:${C.sage}25;display:flex;align-items:center;justify-content:center;font-size:18px;">&#128106;</div><div><div style="font-family:'Sora',sans-serif;font-size:20px;font-weight:600;letter-spacing:-.02em;">La Famille</div><div style="font-size:11px;color:var(--muted);">5 membres &middot; Cette semaine</div></div></div>`;
 h+=`<div class="ph-body">`;
@@ -367,10 +387,11 @@ h+=`<div style="display:flex;gap:8px;">`;
 h+=`<div style="flex:1;background:rgba(17,22,29,.03);border-radius:12px;padding:14px;"><div class="app-label">Total groupe</div><div class="app-stat" style="font-size:22px;margin-top:4px;">38<span style="font-size:12px;color:var(--muted);">h</span>58</div></div>`;
 h+=`<div style="flex:1;background:rgba(17,22,29,.03);border-radius:12px;padding:14px;"><div class="app-label">Moy / membre</div><div class="app-stat" style="font-size:22px;margin-top:4px;">7<span style="font-size:12px;color:var(--muted);">h</span>48</div></div>`;
 h+=`</div>`;
-h+=`</div>${appNav('g')}</div>`;
+h+=`</div>`;
+h+=iphoneEnd('g',false);
 
 // STATS DETAILLEES
-h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=iphoneStart(false);
 h+=`<div style="padding:6px 24px;font-size:12px;font-weight:500;color:${C.lake};">← Mes Stats</div>`;
 h+=`<div style="padding:4px 24px 14px;font-family:'Sora',sans-serif;font-size:22px;font-weight:600;letter-spacing:-.02em;">Habitudes</div>`;
 h+=`<div class="ph-body">`;
@@ -397,10 +418,11 @@ h+=`</div>`;
 h+=`<div class="app-card app-card-outline" style="padding:16px;"><div class="app-section-title" style="margin:0 0 12px;">Repartition</div>`;
 h+=`<div style="display:flex;align-items:center;gap:16px;"><div style="width:72px;height:72px;border-radius:50%;border:6px solid rgba(17,22,29,.06);position:relative;"><div style="position:absolute;inset:-6px;border-radius:50%;border:6px solid transparent;border-top-color:${C.lake};border-right-color:${C.lake};transform:rotate(30deg);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div class="app-stat" style="font-size:16px;">68%</div></div></div>`;
 h+=`<div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:10px;height:10px;border-radius:3px;background:${C.lake};"></div><span style="font-size:12px;">Nuit (20h-8h) — 68%</span></div><div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:3px;background:rgba(17,22,29,.06);"></div><span style="font-size:12px;">Jour (8h-20h) — 32%</span></div></div></div></div>`;
-h+=`</div>${appNav('s')}</div>`;
+h+=`</div>`;
+h+=iphoneEnd('s',false);
 
 // ANALYTICS BOX
-h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=iphoneStart(false);
 h+=`<div style="padding:6px 24px;font-size:12px;font-weight:500;color:${C.lake};">← Analytics</div>`;
 h+=`<div style="padding:4px 24px 14px;display:flex;align-items:center;gap:12px;"><div style="width:36px;height:36px;">${LED(36,C.porcelain,'rgba(21,29,42,.12)',C.ember)}</div><div><div style="font-family:'Sora',sans-serif;font-size:20px;font-weight:600;letter-spacing:-.02em;">Salon</div><div style="font-size:11px;color:var(--muted);">Faraday Box Pro &middot; Maison</div></div></div>`;
 h+=`<div class="ph-body">`;
@@ -420,14 +442,18 @@ h+=`<div class="app-card app-card-outline" style="padding:16px;"><div class="app
 [{n:'Vous',a:'PC',c:C.ember,v:'10h'},{n:'Elisabeth',a:'EB',c:C.lake,v:'6h'},{n:'Gabriel',a:'G',c:'#aaa',v:'45m',tag:'partage'},{n:'Anonyme',a:'?',c:'#ddd',v:'1h55',tag:'anonyme',dim:true}].forEach(u=>{
   h+=`<div class="app-row" style="${u.dim?'opacity:.5;':''}"><div class="app-avatar" style="background:${u.c};${u.c==='#ddd'?'color:var(--muted);':''}">${u.a}</div><div style="flex:1;font-size:13px;font-weight:500;">${u.n}${u.tag?` <span class="app-tag">${u.tag}</span>`:''}</div><div class="app-stat" style="font-size:13px;">${u.v}</div></div>`;
 });
-h+=`</div></div>${appNav('s')}</div>`;
+h+=`</div></div>`;
+h+=iphoneEnd('s',false);
 
-// SPLASH
-h+=`<div class="phone" style="background:${C.ink};align-items:center;justify-content:center;">`;
-h+=`<div class="anim-rise" style="width:80px;height:80px;margin-bottom:16px;">${LED_AURA(80,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div>`;
-h+=`<div style="font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.35;margin-top:8px;color:${C.porcelain};">disconnect to reconnect</div>`;
-h+=`</div>`;
+// SPLASH — immersif avec animation
+h+=`<div class="mockup-phone border-neutral" style="flex-shrink:0;"><div class="camera"></div><div class="display" style="overflow:hidden;">
+<div class="artboard artboard-demo phone-1" style="background:${C.ink};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;overflow:hidden;position:relative;">
+<style>.splash-glow{animation:splash-glow-anim 4s ease-in-out infinite;}@keyframes splash-glow-anim{0%,100%{box-shadow:0 0 40px rgba(255,147,97,.08),0 0 80px rgba(255,147,97,.04);}50%{box-shadow:0 0 60px rgba(255,147,97,.15),0 0 120px rgba(255,147,97,.08);}}.splash-mark{animation:splash-mark-in 2s cubic-bezier(.2,0,.2,1) forwards;}@keyframes splash-mark-in{0%{opacity:0;transform:scale(.6) translateY(20px);}50%{opacity:1;transform:scale(1.03) translateY(-2px);}100%{opacity:1;transform:scale(1) translateY(0);}}.splash-text{animation:splash-text-in 2s cubic-bezier(.2,0,.2,1) forwards;animation-delay:.6s;opacity:0;}@keyframes splash-text-in{0%{opacity:0;transform:translateY(10px);}100%{opacity:1;transform:translateY(0);}}.splash-bl{animation:splash-text-in 2s ease forwards;animation-delay:1.2s;opacity:0;}</style>
+<div class="splash-glow" style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,147,97,.1),transparent 70%);"></div>
+<div class="splash-mark anim-breathe" style="width:90px;height:90px;margin-bottom:20px;position:relative;z-index:1;">${LED_AURA(90,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>
+<div class="splash-text" style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:-.03em;color:${C.porcelain};position:relative;z-index:1;">faraday</div>
+<div class="splash-bl" style="font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.3;margin-top:10px;color:${C.porcelain};position:relative;z-index:1;">disconnect to reconnect</div>
+</div></div></div>`;
 
 h+=`</div></div>`;
 
@@ -493,26 +519,26 @@ h+=`<p class="sect-desc">Le style photographique Faraday : calme, domestique, ch
 // Real photos from Unsplash
 h+=`<div style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-bottom:16px;">`;
 h+=`<div style="height:300px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 12px 40px rgba(17,22,29,.08);">`;
-h+=`<img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=800&h=500&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Salon chaleureux">`;
+h+=`<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Salon chaleureux">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.5));"></div>`;
 h+=`<div style="position:absolute;bottom:20px;left:20px;right:20px;z-index:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);">Ambiance</div><div style="font-size:18px;color:rgba(255,255,255,.9);margin-top:4px;font-weight:500;">Salon — lumière chaude du soir</div></div></div>`;
 h+=`<div style="height:300px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 12px 40px rgba(17,22,29,.08);">`;
-h+=`<img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=500&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Texture bois">`;
+h+=`<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=500&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Texture bois">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.35));"></div>`;
 h+=`<div style="position:absolute;bottom:20px;left:20px;right:20px;z-index:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);">Détail</div><div style="font-size:18px;color:rgba(255,255,255,.85);margin-top:4px;font-weight:500;">Texture bois — grain du noyer</div></div></div>`;
 h+=`</div>`;
 
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">`;
 h+=`<div style="height:220px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Café matin">`;
+h+=`<img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Café matin">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.4));"></div>`;
 h+=`<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);">Matin</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">Lumière naturelle</div></div></div>`;
 h+=`<div style="height:220px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lecture">`;
+h+=`<img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lecture">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.4));"></div>`;
 h+=`<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);">Moment</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">Lire, être là</div></div></div>`;
 h+=`<div style="height:220px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);">`;
-h+=`<img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Soirée calme">`;
+h+=`<img src="https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=400&h=350&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Soirée calme">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.5));"></div>`;
 h+=`<div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);">Soir</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">Le calme retrouvé</div></div></div>`;
 h+=`</div>`;
