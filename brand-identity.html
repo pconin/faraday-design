@@ -590,9 +590,188 @@ h+=`<div><div class="sub">À rechercher</div><ul style="font-size:13px;line-heig
 h+=`<div><div class="sub">À éviter</div><ul style="font-size:13px;line-height:2;color:var(--muted);list-style:none;"><li>• Photos de téléphones (jamais)</li><li>• Éclairage artificiel, flash, néon</li><li>• Décors froids, bureaux corporate</li><li>• Personnes regardant un écran</li><li>• Style "tech startup" ou "gadget review"</li><li>• Fond blanc studio / packshot générique</li><li>• Visages de face (toujours dos ou profil)</li></ul></div>`;
 h+=`</div></div>`;
 
-// 10 — REGLES
+// 10 — TONE OF VOICE
+h+=`<div class="sect"><div class="kicker">10 — Tone of Voice</div><h2>Comment Faraday parle</h2>`;
+h+=`<p class="sect-desc">Chaleureux mais pas niais. Direct mais pas agressif. On parle comme un ami bienveillant qui a compris quelque chose avant les autres.</p>`;
+
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">`;
+// DO
+h+=`<div><div class="sub" style="color:#6b9b6b;">✓ Faraday dit</div>`;
+const dos=[
+  {ex:'"Bravo ! 1h42 de présence retrouvée ✨"',why:'Chaleureux, célèbre sans infantiliser'},
+  {ex:'"Votre téléphone ne vous manquera pas. Promis."',why:'Confiant, un brin complice'},
+  {ex:'"4h12 par jour. Et si on arrêtait ?"',why:'Factuel puis interpelle'},
+  {ex:`"Le vrai luxe, c'est de ne pas être joignable."`,why:`Aspirationnel, repositionne le luxe`},
+  {ex:'"Déposez. Respirez. Vivez."',why:'Court, impératif doux, rythme ternaire'},
+  {ex:'"12 jours de streak ! Votre plus longue série 🔥"',why:'Gamifié mais pas forcé'},
+];
+dos.forEach(d=>{h+=`<div style="padding:14px;border-radius:12px;background:rgba(107,155,107,.06);border:1px solid rgba(107,155,107,.12);margin-bottom:10px;"><div style="font-size:14px;font-weight:600;margin-bottom:4px;">${d.ex}</div><div style="font-size:11px;color:var(--muted);">${d.why}</div></div>`;});
+h+=`</div>`;
+// DON'T
+h+=`<div><div class="sub" style="color:${C.ember};">✗ Faraday ne dit jamais</div>`;
+const donts=[
+  {ex:'"Vous avez passé trop de temps sur votre téléphone !"',why:'Culpabilisant, moralisateur'},
+  {ex:'"Détox digitale — nettoyez votre vie !"',why:'Anxiogène, vocabulaire médical'},
+  {ex:`"Super, vous êtes un champion de la déconnexion ! 🏆🎉🥳"`,why:`Surjoué, trop d'emojis, infantilisant`},
+  {ex:'"URGENT : déposez votre téléphone MAINTENANT"',why:'Agressif, caps lock, pression'},
+  {ex:`"Le calme n'a pas besoin d'être froid."`,why:`Creux, ne veut rien dire, pseudo-poétique`},
+  {ex:`"Notification : vous n'avez pas utilisé Faraday depuis 3 jours"`,why:`Guilt trip, spam`},
+];
+donts.forEach(d=>{h+=`<div style="padding:14px;border-radius:12px;background:rgba(220,118,106,.04);border:1px solid rgba(220,118,106,.12);margin-bottom:10px;"><div style="font-size:14px;font-weight:600;margin-bottom:4px;text-decoration:line-through;opacity:.6;">${d.ex}</div><div style="font-size:11px;color:var(--muted);">${d.why}</div></div>`;});
+h+=`</div></div>`;
+
+h+=`<div class="sub" style="margin-top:20px;">Principes</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">`;
+[{t:'Complice',d:'On est du même côté. On sait que le téléphone est addictif. On ne juge pas, on aide.'},{t:'Factuel',d:'Des chiffres vrais, pas du blabla wellness. 4h12/jour, 63 jours/an. Les faits parlent.'},{t:'Bref',d:'Pas de paragraphes. Des phrases courtes. Un verbe, un impact. Déposez. Respirez. Vivez.'}].forEach(p=>{
+  h+=`<div style="padding:18px;border-radius:14px;border:1px solid var(--line);"><div style="font-size:14px;font-weight:700;margin-bottom:6px;">${p.t}</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">${p.d}</div></div>`;
+});
+h+=`</div></div>`;
+
+// 11 — DESIGN SYSTEM
+h+=`<div class="sect"><div class="kicker">11 — Design System</div><h2>Composants UI</h2>`;
+h+=`<p class="sect-desc">Grille 8px. Border-radius cohérents. Tous les composants dans les couleurs de la palette.</p>`;
+
+// Spacing
+h+=`<div class="sub">Grille d'espacement — base 8px</div>`;
+h+=`<div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:24px;">`;
+[4,8,12,16,24,32,48,64].forEach(s=>{
+  h+=`<div style="text-align:center;"><div style="width:${s}px;height:${s}px;background:${C.lake}20;border:1px solid ${C.lake}40;border-radius:4px;"></div><div style="font-size:10px;color:var(--muted);margin-top:4px;font-family:'IBM Plex Mono',monospace;">${s}</div></div>`;
+});
+h+=`</div>`;
+
+// Border radius
+h+=`<div class="sub">Border radius</div>`;
+h+=`<div style="display:flex;gap:12px;align-items:center;margin-bottom:24px;">`;
+[{r:8,n:'Inputs'},{r:12,n:'Cards'},{r:16,n:'Modals'},{r:20,n:'Sections'},{r:52,n:'iPhone frame'}].forEach(b=>{
+  h+=`<div style="text-align:center;"><div style="width:60px;height:60px;background:${C.sage};border-radius:${b.r}px;"></div><div style="font-size:10px;color:var(--muted);margin-top:4px;">${b.r}px — ${b.n}</div></div>`;
+});
+h+=`</div>`;
+
+// Buttons
+h+=`<div class="sub">Boutons</div>`;
+h+=`<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:24px;">`;
+h+=`<div style="padding:12px 28px;background:${C.ink};color:${C.porcelain};border-radius:10px;font-size:14px;font-weight:600;">Primary</div>`;
+h+=`<div style="padding:12px 28px;background:${C.ember};color:#fff;border-radius:10px;font-size:14px;font-weight:600;">CTA / Défi</div>`;
+h+=`<div style="padding:12px 28px;background:${C.sage};color:${C.ink};border-radius:10px;font-size:14px;font-weight:600;">Secondary</div>`;
+h+=`<div style="padding:12px 28px;background:transparent;color:${C.ink};border:1.5px solid ${C.ink};border-radius:10px;font-size:14px;font-weight:600;">Outline</div>`;
+h+=`<div style="padding:12px 28px;background:transparent;color:${C.lake};border-radius:10px;font-size:14px;font-weight:500;">Text link →</div>`;
+h+=`<div style="padding:10px 20px;background:${C.ink};color:${C.porcelain};border-radius:10px;font-size:12px;font-weight:600;opacity:.5;">Disabled</div>`;
+h+=`</div>`;
+
+// Input
+h+=`<div class="sub">Inputs</div>`;
+h+=`<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">`;
+h+=`<div style="width:240px;"><div style="padding:12px 16px;border:1.5px solid rgba(17,22,29,.12);border-radius:8px;font-size:14px;color:var(--muted);">Nom de la box...</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Default</div></div>`;
+h+=`<div style="width:240px;"><div style="padding:12px 16px;border:1.5px solid ${C.lake};border-radius:8px;font-size:14px;color:${C.ink};">Salon</div><div style="font-size:10px;color:${C.lake};margin-top:4px;">Focus</div></div>`;
+h+=`<div style="width:240px;"><div style="padding:12px 16px;border:1.5px solid ${C.ember};border-radius:8px;font-size:14px;color:${C.ink};">abc</div><div style="font-size:10px;color:${C.ember};margin-top:4px;">Erreur — Nom trop court</div></div>`;
+h+=`</div>`;
+
+// Cards
+h+=`<div class="sub">Cards</div>`;
+h+=`<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;">`;
+h+=`<div style="width:220px;padding:20px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.5);box-shadow:0 4px 16px rgba(17,22,29,.04);"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700;">Temps total</div><div style="font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;margin-top:8px;">9h46</div><div style="font-size:11px;color:#6b9b6b;margin-top:4px;">↑ 12% vs semaine</div></div>`;
+h+=`<div style="width:220px;padding:20px;border-radius:14px;background:${C.ink};color:${C.porcelain};box-shadow:0 4px 16px rgba(17,22,29,.1);"><div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;font-weight:700;">Sessions</div><div style="font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;margin-top:8px;">23</div><div style="font-size:11px;color:${C.lake};margin-top:4px;">↑ 4 de plus</div></div>`;
+h+=`<div style="width:220px;padding:20px;border-radius:14px;border:1px solid ${C.ember}20;background:${C.ember}06;box-shadow:0 4px 16px rgba(17,22,29,.04);"><div style="font-size:10px;color:${C.ember};text-transform:uppercase;letter-spacing:.08em;font-weight:700;">🏆 Défi en cours</div><div style="font-size:14px;font-weight:600;margin-top:8px;">Semaine sans écran</div><div style="height:6px;background:rgba(17,22,29,.06);border-radius:3px;margin-top:10px;overflow:hidden;"><div style="height:100%;width:65%;background:${C.ember};border-radius:3px;"></div></div></div>`;
+h+=`</div>`;
+
+// Toasts / Notifications
+h+=`<div class="sub">Toasts</div>`;
+h+=`<div style="display:flex;flex-direction:column;gap:10px;max-width:400px;margin-bottom:24px;">`;
+h+=`<div style="padding:14px 18px;border-radius:12px;background:#6b9b6b12;border:1px solid #6b9b6b25;display:flex;align-items:center;gap:10px;"><div style="font-size:16px;">✅</div><div style="flex:1;font-size:13px;font-weight:500;">Session terminée — 1h42 de présence</div></div>`;
+h+=`<div style="padding:14px 18px;border-radius:12px;background:${C.ember}08;border:1px solid ${C.ember}20;display:flex;align-items:center;gap:10px;"><div style="font-size:16px;">🔥</div><div style="flex:1;font-size:13px;font-weight:500;">12 jours de streak ! Record battu</div></div>`;
+h+=`<div style="padding:14px 18px;border-radius:12px;background:${C.lake}08;border:1px solid ${C.lake}20;display:flex;align-items:center;gap:10px;"><div style="font-size:16px;">📊</div><div style="flex:1;font-size:13px;font-weight:500;">Nouveau classement disponible</div></div>`;
+h+=`<div style="padding:14px 18px;border-radius:12px;background:rgba(17,22,29,.04);border:1px solid var(--line);display:flex;align-items:center;gap:10px;"><div style="font-size:16px;">📦</div><div style="flex:1;font-size:13px;font-weight:500;">Box "Salon" connectée avec succès</div></div>`;
+h+=`</div>`;
+
+// Badges / Tags
+h+=`<div class="sub">Badges & Tags</div>`;
+h+=`<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;">`;
+h+=`<span style="padding:4px 12px;border-radius:8px;background:${C.sage}40;color:${C.ink};font-size:12px;font-weight:600;">Maison</span>`;
+h+=`<span style="padding:4px 12px;border-radius:8px;background:${C.lake}15;color:${C.lake};font-size:12px;font-weight:600;">Bureau</span>`;
+h+=`<span style="padding:4px 12px;border-radius:8px;background:${C.ember}12;color:${C.ember};font-size:12px;font-weight:600;">Défi actif</span>`;
+h+=`<span style="padding:4px 12px;border-radius:8px;background:#6b9b6b15;color:#6b9b6b;font-size:12px;font-weight:600;">En ligne</span>`;
+h+=`<span style="padding:4px 12px;border-radius:8px;background:rgba(17,22,29,.06);color:var(--muted);font-size:12px;font-weight:600;">Visiteur</span>`;
+h+=`<span style="padding:4px 12px;border-radius:8px;background:#d4a44a18;color:#b8902a;font-size:12px;font-weight:600;">🏆 1er</span>`;
+h+=`</div>`;
+h+=`</div>`;
+
+// 12 — EMAIL TEMPLATE
+h+=`<div class="sect"><div class="kicker">12 — Email</div><h2>Template transactionnel</h2>`;
+h+=`<p class="sect-desc">Emails de session, streaks et défis. Clean, bref, mobile-first.</p>`;
+h+=`<div style="max-width:480px;margin:0 auto;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden;box-shadow:0 8px 30px rgba(17,22,29,.06);">`;
+// Email header
+h+=`<div style="background:${C.ink};padding:28px 32px;text-align:center;">`;
+h+=`${LED(40,C.ink,'rgba(246,243,236,.22)',C.ember)}`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.porcelain};margin-top:10px;">faraday</div>`;
+h+=`</div>`;
+// Email body
+h+=`<div style="padding:32px;">`;
+h+=`<div style="font-size:22px;font-weight:700;margin-bottom:16px;">Bravo ! Session terminée ✨</div>`;
+h+=`<div style="font-size:15px;line-height:1.7;color:var(--muted);margin-bottom:20px;">Vous venez de passer <strong style="color:${C.ink};">1h42</strong> sans votre téléphone. C'est ça, reprendre le contrôle.</div>`;
+h+=`<div style="background:rgba(17,22,29,.03);border-radius:12px;padding:20px;margin-bottom:20px;">`;
+h+=`<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;color:var(--muted);">Durée</span><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;">1h42</span></div>`;
+h+=`<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;color:var(--muted);">Box</span><span style="font-size:14px;font-weight:600;">Salon</span></div>`;
+h+=`<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;color:var(--muted);">Total aujourd'hui</span><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;">3h22</span></div>`;
+h+=`<div style="display:flex;justify-content:space-between;"><span style="font-size:13px;color:var(--muted);">Streak</span><span style="font-size:14px;font-weight:600;">🔥 12 jours</span></div>`;
+h+=`</div>`;
+h+=`<div style="text-align:center;"><a style="display:inline-block;padding:14px 32px;background:${C.ink};color:${C.porcelain};border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;">Voir mes stats →</a></div>`;
+h+=`</div>`;
+// Email footer
+h+=`<div style="padding:20px 32px;border-top:1px solid var(--line);text-align:center;">`;
+h+=`<div style="font-size:11px;color:var(--muted);line-height:1.6;">faraday-box.fr &middot; Disconnect to reconnect<br>Se désabonner</div>`;
+h+=`</div></div></div>`;
+
+// 13 — MOTION GUIDELINES
+h+=`<div class="sect"><div class="kicker">13 — Motion</div><h2>Règles d'animation</h2>`;
+h+=`<p class="sect-desc">Quand utiliser quelle animation, avec quelles durées et courbes.</p>`;
+
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">`;
+// Durations
+h+=`<div style="padding:20px;border-radius:14px;border:1px solid var(--line);">`;
+h+=`<div style="font-size:13px;font-weight:700;margin-bottom:12px;">Durées</div>`;
+[{d:'200ms',n:'Micro — hover, press',e:'ease-out'},{d:'400ms',n:'Petit — toggle, badge',e:'ease-in-out'},{d:'800ms',n:'Moyen — card, modal',e:'cubic-bezier(.2,0,.2,1)'},{d:'2-3s',n:'Splash — LED reveal',e:'cubic-bezier(.4,0,.2,1)'},{d:'3-5s',n:'Boucle — respiration LED',e:'ease-in-out'}].forEach(t=>{
+  h+=`<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><code style="font-family:'IBM Plex Mono',monospace;font-weight:600;min-width:60px;">${t.d}</code><span style="flex:1;color:var(--muted);">${t.n}</span><code style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">${t.e}</code></div>`;
+});
+h+=`</div>`;
+// When to use
+h+=`<div style="padding:20px;border-radius:14px;border:1px solid var(--line);">`;
+h+=`<div style="font-size:13px;font-weight:700;margin-bottom:12px;">Quand animer quoi</div>`;
+[{ctx:'Splash screen',anim:'Gentle Wake ou Slow Reveal',dur:'2-3s'},{ctx:'Session détectée',anim:'Lock In (rise)',dur:'2.9s'},{ctx:'Session terminée',anim:'Soft Confirm (blink)',dur:'4.2s'},{ctx:'En session (idle)',anim:'Heartbeat',dur:'2.4s boucle'},{ctx:'Box en veille',anim:'Dim Out',dur:'5s boucle'},{ctx:'Notification reçue',anim:'Glow Pulse',dur:'3s'},{ctx:'Signal instable',anim:'Flicker',dur:'4s'},{ctx:'Alerte / rappel',anim:'SOS',dur:'6s'}].forEach(r=>{
+  h+=`<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><span style="min-width:130px;font-weight:600;">${r.ctx}</span><span style="flex:1;color:var(--muted);">${r.anim}</span><code style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">${r.dur}</code></div>`;
+});
+h+=`</div></div>`;
+
+h+=`<div class="sub">Principes</div>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">`;
+[{t:'Calme',d:'Jamais de bounce excessif, jamais de shake agressif. Les animations doivent apaiser, pas distraire.'},{t:'Purposeful',d:'Chaque animation a un sens. Si elle ne communique rien, elle ne devrait pas exister.'},{t:'Subtile',d:`On ne doit pas "voir" l'animation. On doit ressentir que quelque chose est vivant.`}].forEach(p=>{
+  h+=`<div style="padding:18px;border-radius:14px;border:1px solid var(--line);"><div style="font-size:14px;font-weight:700;margin-bottom:6px;">${p.t}</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">${p.d}</div></div>`;
+});
+h+=`</div></div>`;
+
+// 14 — PACKAGING
+h+=`<div class="sect"><div class="kicker">14 — Packaging</div><h2>Box physique</h2>`;
+h+=`<p class="sect-desc">3 vues de la boîte de la Faraday Box. Minimaliste, premium, zéro plastique.</p>`;
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">`;
+// Front
+h+=`<div><div style="height:300px;border-radius:16px;background:${C.ink};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;box-shadow:0 8px 30px rgba(17,22,29,.1);">${LED(56,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,243,236,.3);">disconnect to reconnect</div></div><div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Face avant</div></div>`;
+// Side
+h+=`<div><div style="height:300px;width:120px;margin:0 auto;border-radius:16px;background:${C.ink};display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:24px;gap:8px;box-shadow:0 8px 30px rgba(17,22,29,.1);"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:-.02em;color:${C.porcelain};writing-mode:vertical-rl;transform:rotate(180deg);">faraday</div></div><div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Tranche</div></div>`;
+// Top
+h+=`<div><div style="height:200px;border-radius:16px;background:${C.ink};display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(17,22,29,.1);">${LED_CORE(32,C.ember)}</div><div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Dessus — LED core seule</div></div>`;
+h+=`</div>`;
+// Materials note
+h+=`<div style="margin-top:20px;padding:18px;border-radius:14px;border:1px solid var(--line);max-width:500px;">`;
+h+=`<div style="font-size:13px;font-weight:700;margin-bottom:8px;">Matériaux packaging</div>`;
+h+=`<ul style="font-size:13px;line-height:2;color:var(--muted);list-style:none;">`;
+h+=`<li>• Carton recyclé non blanchi (kraft sombre)</li>`;
+h+=`<li>• Logo en estampage à chaud (sans encre)</li>`;
+h+=`<li>• Zéro plastique — calage en feutre ou papier</li>`;
+h+=`<li>• Encre soja pour les textes réglementaires</li>`;
+h+=`</ul></div></div>`;
+
+// 15 — REGLES (was 10)
 // ============================================================
-h+=`<div class="sect"><div class="kicker">10 — Usage</div><h2>Regles</h2>`;
+h+=`<div class="sect"><div class="kicker">15 — Usage</div><h2>Règles</h2>`;
 h+=`<div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:16px;">`;
 h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:700;color:#6b9b6b;margin-bottom:12px;">✓ A faire</div><ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;"><li>• Logo principal sur fond Ink Charcoal (LED Ember ou Lake)</li><li>• Decli 2 : fond Porcelain + LED Ember</li><li>• Decli 3 : fond Sage Mist + LED Porcelain</li><li>• Sora Light pour le wordmark</li><li>• INTERDIT : fond Sage Mist + LED Ember</li><li>• Espace libre ≥ 1× hauteur du mark</li><li>• Le mark peut vivre seul</li><li>• Baseline optionnelle</li></ul></div>`;
 h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:700;color:${C.ember};margin-bottom:12px;">✗ Ne pas faire</div><ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;"><li>• Tourner le mark LED a l'horizontale</li><li>• Changer les proportions shell/core</li><li>• Utiliser le mark sur fond charge</li><li>• Ajouter ombre ou effet au mark</li><li>• Utiliser Ember et Lake dans le logo</li><li>• Changer la police du wordmark</li><li>• Entourer le mark d'un cadre</li></ul></div>`;
