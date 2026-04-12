@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faraday — Bannières Réseaux Sociaux</title>
+<!-- No DaisyUI/Tailwind CDN — conflicts with custom layout -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -12,6 +13,8 @@
     --muted:#69717a;--line:rgba(17,22,29,.1);--paper:rgba(255,255,255,.72);
   }
   body{margin:0;color:var(--ink);font-family:'Manrope',sans-serif;background:var(--porcelain);}
+
+  /* Layout */
   .page{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:40px 0 80px;}
   .sect{margin-top:32px;padding:32px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.54));}
   .sect-dark{background:linear-gradient(180deg,rgba(21,29,42,.97),rgba(21,29,42,.94));color:var(--porcelain);border-color:rgba(255,255,255,.06);}
@@ -23,174 +26,208 @@
   .sub{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;}
   .sect-dark .sub{color:rgba(255,255,255,.5);}
 
-  /* LED Breathe */
+  /* Swatch */
+  .swatch{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px;border-radius:14px;background:rgba(255,255,255,.56);border:1px solid var(--line);}
+  .swatch-n{font-size:13px;font-weight:700;}
+  .swatch-h{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+  /* Lockup */
+  .logo-stage{display:flex;align-items:center;justify-content:center;min-height:160px;padding:28px;border-radius:22px;}
+  .wm-title{font-family:'Sora',sans-serif;font-weight:300;font-size:36px;letter-spacing:-.03em;line-height:1;}
+
+  /* Anim */
   @keyframes led-core-breathe{0%,100%{opacity:.64;}50%{opacity:1;}}
   @keyframes led-halo-expand{0%,100%{opacity:.1;transform:scale(.92);}50%{opacity:.34;transform:scale(1.08);}}
   .anim-breathe .led-core{animation:led-core-breathe 3.6s ease-in-out infinite;}
   .anim-breathe .led-aura{animation:led-halo-expand 3.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
 
-  /* Banner preview */
-  .banner-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;}
-  .banner-card{border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.58);overflow:hidden;display:flex;flex-direction:column;}
-  .sect-dark .banner-card{border-color:rgba(255,255,255,.06);background:rgba(255,255,255,.04);}
-  .banner-preview{display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
-  .banner-meta{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-  .banner-meta-left{display:flex;flex-direction:column;gap:2px;}
-  .banner-name{font-size:13px;font-weight:700;}
-  .banner-dims{font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
-  .sect-dark .banner-dims{color:rgba(255,255,255,.35);}
-  .banner-usage{font-size:10px;color:var(--muted);}
-  .anim-badge{position:absolute;top:10px;right:10px;background:var(--ember);color:#fff;font-size:8px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:6px;text-transform:uppercase;z-index:2;}
+  /* Insta */
+  .insta{width:360px;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(17,22,29,.06);border:1px solid rgba(17,22,29,.1);}
 
-  /* Copy button */
-  .btn-copy{padding:6px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.5);color:var(--muted);font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;letter-spacing:.04em;flex-shrink:0;}
-  .btn-copy:hover{background:var(--ink);color:var(--porcelain);border-color:var(--ink);}
-  .btn-copy.copied{background:rgba(255,147,97,.12);color:var(--ember);border-color:rgba(255,147,97,.3);}
-  .sect-dark .btn-copy{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);}
-  .sect-dark .btn-copy:hover{background:var(--ember);color:#fff;border-color:var(--ember);}
+  /* Metro / banner */
+  .metro{width:100%;border-radius:20px;overflow:hidden;display:flex;align-items:center;box-shadow:0 20px 60px rgba(17,22,29,.1);margin-bottom:16px;}
+
+  /* Mini card */
+  .mini-card{padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.58);text-align:center;}
+  .mini-card span{display:block;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+  /* Anim badge */
+  .anim-badge{position:absolute;top:12px;right:12px;background:var(--ember);color:#fff;font-size:8px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:6px;text-transform:uppercase;z-index:2;}
 </style>
 </head>
 <body>
 
 <script>
+// LED mark SVGs — from Codex
 const LED=(s,bg,shellC,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
 const LED_AURA=(s,bg,shellC,coreC,auraC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="${auraC}" opacity=".12"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const LED_CORE=(s,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="43" y="26" width="10" height="44" rx="5" fill="${coreC}"/></svg>`;
+const LED_MONO=(s,c)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="31" y="14" width="34" height="68" rx="17" stroke="${c}" stroke-width="4"/><rect x="43" y="28" width="10" height="40" rx="5" fill="${c}"/></svg>`;
+
 const C={sage:'#C5CFBF',ink:'#151D2A',porcelain:'#F6F3EC',lake:'#4A8395',ember:'#FF9361',muted:'#69717a'};
 
-let h='<div class="page">';
-
-// Header
-h+=`<div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">`;
-h+=LED(48,C.ink,'rgba(246,243,236,.22)',C.ember);
-h+=`<div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;letter-spacing:-.03em;">faraday</div><div style="font-size:11px;color:${C.muted};letter-spacing:.1em;text-transform:uppercase;font-weight:600;">Bannières Réseaux Sociaux</div></div></div>`;
-h+=`<div style="height:1px;background:var(--line);margin:20px 0;"></div>`;
+let h='';
 
 // ============================================================
-// SECTION 1 — Instagram
-h+=`<div class="sect"><div class="kicker">01 — Instagram</div><h2>Posts & Stories</h2>`;
-h+=`<p class="sect-desc">Formats carrés (1080×1080) pour le feed et verticaux (1080×1920) pour les stories. Gradient Warm Walnut ou Deep Ink.</p>`;
+// HERO
+// ============================================================
+h+=`<div class="page">`;
+h+=`<div class="sect" style="padding:48px;background:linear-gradient(140deg,rgba(255,255,255,.76),rgba(255,255,255,.52)),linear-gradient(120deg,rgba(197,207,191,.2),rgba(14,24,38,.04));position:relative;overflow:hidden;">`;
+h+=`<div style="display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center;">`;
+h+=`<div>`;
+h+=`<div class="kicker">Bannières Réseaux Sociaux — 2026</div>`;
+h+=`<h2 style="font-size:clamp(48px,6vw,78px);">faraday</h2>`;
+h+=`<p class="sect-desc" style="margin-top:16px;">Templates de bannières pour les réseaux sociaux, en version statique et animée. Chaque format respecte la charte graphique Faraday.</p>`;
+h+=`<div style="font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.5;">Social Media Assets</div>`;
+h+=`</div>`;
+h+=`<div style="display:flex;justify-content:center;align-items:center;">`;
+h+=`<div class="anim-breathe" style="width:160px;height:160px;">${LED_AURA(160,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>`;
+h+=`</div></div></div>`;
 
-h+=`<div class="sub">Feed — Warm Walnut</div>`;
-h+=`<div class="banner-row">`;
+// ============================================================
+// 01 — INSTAGRAM
+// ============================================================
+h+=`<div class="sect"><div class="kicker">01 — Instagram</div><h2>Posts & Stories</h2>`;
+h+=`<p class="sect-desc">Formats carré (1080×1080) pour le feed et vertical (1080×1920) pour les stories. Gradient Warm Walnut ou Deep Ink.</p>`;
+
+// Feed posts
+h+=`<div class="sub">Feed — Warm Walnut — 1080 × 1080</div>`;
+h+=`<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;">`;
 
 // IG Post statique
-h+=`<div class="banner-card"><div class="banner-preview" style="width:360px;height:360px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">`;
+h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
+h+=`<div class="insta" style="width:360px;height:360px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));">`;
 h+=LED_AURA(100,'transparent','rgba(255,255,255,.2)',C.ember,C.ember);
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;color:rgba(255,255,255,.9);letter-spacing:-.03em;">faraday</div>`;
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.05em;">Déposez. Déconnectez.</div>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Post Feed</div><div class="banner-dims">1080 × 1080</div></div><button class="btn-copy" onclick="copyB(this,'ig-post')">Copier SVG</button></div></div>`;
+h+=`</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);"><strong>Post Feed</strong> — Statique</div>`;
+h+=`</div>`;
 
 // IG Post animé
-h+=`<div class="banner-card"><div class="banner-preview anim-breathe" style="width:360px;height:360px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:16px;">`;
+h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
+h+=`<div class="insta anim-breathe" style="width:360px;height:360px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));position:relative;">`;
 h+=`<div class="anim-badge">ANIMÉ</div>`;
 h+=LED_AURA(100,'transparent','rgba(255,255,255,.2)',C.ember,C.ember);
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;color:rgba(255,255,255,.9);letter-spacing:-.03em;">faraday</div>`;
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.05em;">Déposez. Déconnectez.</div>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Post Feed — Animé</div><div class="banner-dims">1080 × 1080</div></div><button class="btn-copy" onclick="copyB(this,'ig-post-anim')">Copier SVG</button></div></div>`;
+h+=`</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);"><strong>Post Feed</strong> — Animé (LED breathe)</div>`;
+h+=`</div>`;
 
 h+=`</div>`;
 
 // Stories
-h+=`<div class="sub">Stories — Deep Ink</div>`;
-h+=`<div class="banner-row">`;
+h+=`<div class="sub">Stories — Deep Ink — 1080 × 1920</div>`;
+h+=`<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;">`;
 
 // Story statique
-h+=`<div class="banner-card"><div class="banner-preview" style="width:220px;height:390px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));flex-direction:column;gap:14px;">`;
+h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
+h+=`<div style="width:220px;height:390px;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));box-shadow:0 8px 30px rgba(17,22,29,.06);border:1px solid rgba(17,22,29,.1);">`;
 h+=LED_AURA(80,'transparent','rgba(246,243,236,.15)',C.ember,C.ember);
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;color:rgba(246,243,236,.85);letter-spacing:-.02em;">faraday</div>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Story</div><div class="banner-dims">1080 × 1920</div></div><button class="btn-copy" onclick="copyB(this,'ig-story')">Copier SVG</button></div></div>`;
+h+=`</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);"><strong>Story</strong> — Statique</div>`;
+h+=`</div>`;
 
 // Story animée
-h+=`<div class="banner-card"><div class="banner-preview anim-breathe" style="width:220px;height:390px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));flex-direction:column;gap:14px;">`;
+h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
+h+=`<div class="anim-breathe" style="width:220px;height:390px;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));box-shadow:0 8px 30px rgba(17,22,29,.06);border:1px solid rgba(17,22,29,.1);position:relative;">`;
 h+=`<div class="anim-badge">ANIMÉ</div>`;
 h+=LED_AURA(80,'transparent','rgba(246,243,236,.15)',C.ember,C.ember);
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;color:rgba(246,243,236,.85);letter-spacing:-.02em;">faraday</div>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">Story — Animée</div><div class="banner-dims">1080 × 1920</div></div><button class="btn-copy" onclick="copyB(this,'ig-story-anim')">Copier SVG</button></div></div>`;
-
-h+=`</div></div>`;
-
-// ============================================================
-// SECTION 2 — LinkedIn + Twitter
-h+=`<div class="sect sect-dark"><div class="kicker">02 — LinkedIn & X</div><h2>Couvertures de profil</h2>`;
-h+=`<p class="sect-desc">Formats paysage pour les bannières de profil. Fond Ink ou Porcelain selon la plateforme.</p>`;
-
-h+=`<div class="sub">LinkedIn — 1584 × 396</div>`;
-h+=`<div class="banner-row">`;
-h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:132px;background:${C.ink};justify-content:space-between;padding:0 32px;">`;
-h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(52,'transparent','rgba(246,243,236,.2)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;color:${C.porcelain};letter-spacing:-.02em;">faraday</span></div>`;
-h+=`<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:11px;color:rgba(246,243,236,.4);text-align:right;">Déposez.<br>Déconnectez.</span>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">LinkedIn Banner</div><div class="banner-dims">1584 × 396</div><div class="banner-usage">Couverture profil / page entreprise</div></div><button class="btn-copy" onclick="copyB(this,'linkedin')">Copier SVG</button></div></div>`;
+h+=`</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);"><strong>Story</strong> — Animée (LED breathe)</div>`;
 h+=`</div>`;
 
-h+=`<div class="sub">Twitter / X — 1500 × 500</div>`;
-h+=`<div class="banner-row">`;
-h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:167px;background:${C.porcelain};gap:14px;border-bottom:3px solid ${C.sage};">`;
-h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(56,'transparent','rgba(21,29,42,.12)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:${C.ink};letter-spacing:-.02em;">faraday</span></div>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">X / Twitter Header</div><div class="banner-dims">1500 × 500</div><div class="banner-usage">Couverture profil</div></div><button class="btn-copy" onclick="copyB(this,'twitter')">Copier SVG</button></div></div>`;
 h+=`</div></div>`;
 
 // ============================================================
-// SECTION 3 — OG Images
+// 02 — LINKEDIN + X (dark section)
+// ============================================================
+h+=`<div class="sect sect-dark"><div class="kicker">02 — LinkedIn & X</div><h2>Couvertures de profil</h2>`;
+h+=`<p class="sect-desc">Formats paysage pour les bannières de profil. Fond Ink pour LinkedIn, Porcelain pour X.</p>`;
+
+// LinkedIn
+h+=`<div class="sub">LinkedIn — 1584 × 396</div>`;
+h+=`<div class="metro" style="height:132px;background:${C.ink};justify-content:space-between;padding:0 32px;border:1px solid rgba(255,255,255,.06);">`;
+h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(52,'transparent','rgba(246,243,236,.2)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;color:${C.porcelain};letter-spacing:-.02em;">faraday</span></div>`;
+h+=`<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:11px;color:rgba(246,243,236,.4);text-align:right;">Déposez.<br>Déconnectez.</span>`;
+h+=`</div>`;
+h+=`<div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:-8px;margin-bottom:16px;">Couverture profil / page entreprise</div>`;
+
+// Twitter / X
+h+=`<div class="sub">Twitter / X — 1500 × 500</div>`;
+h+=`<div class="metro" style="height:167px;background:${C.porcelain};gap:14px;justify-content:center;border-bottom:3px solid ${C.sage};">`;
+h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(56,'transparent','rgba(21,29,42,.12)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:${C.ink};letter-spacing:-.02em;">faraday</span></div>`;
+h+=`</div>`;
+h+=`<div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:-8px;">Couverture profil X</div>`;
+
+h+=`</div>`;
+
+// ============================================================
+// 03 — OG IMAGES
+// ============================================================
 h+=`<div class="sect"><div class="kicker">03 — Open Graph</div><h2>Aperçus de liens</h2>`;
-h+=`<p class="sect-desc">Images de prévisualisation pour les partages de liens (Slack, iMessage, WhatsApp, etc.).</p>`;
+h+=`<p class="sect-desc">Images de prévisualisation pour les partages de liens (Slack, iMessage, WhatsApp). Format 1200 × 630.</p>`;
 
 h+=`<div class="sub">Warm Walnut</div>`;
-h+=`<div class="banner-row">`;
-h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:210px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:10px;">`;
+h+=`<div class="metro" style="height:210px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:10px;justify-content:center;padding:0;">`;
 h+=LED(56,'transparent','rgba(255,255,255,.2)',C.ember);
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:rgba(255,255,255,.9);letter-spacing:-.02em;">faraday</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.5);text-align:center;max-width:75%;">La cage de Faraday pour votre téléphone</div>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">OG Image — Clair</div><div class="banner-dims">1200 × 630</div></div><button class="btn-copy" onclick="copyB(this,'og')">Copier SVG</button></div></div>`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.5);text-align:center;">La cage de Faraday pour votre téléphone</div>`;
 h+=`</div>`;
 
 h+=`<div class="sub">Deep Ink</div>`;
-h+=`<div class="banner-row">`;
-h+=`<div class="banner-card" style="flex:1;"><div class="banner-preview" style="width:100%;height:210px;background:${C.ink};flex-direction:column;gap:10px;">`;
+h+=`<div class="metro" style="height:210px;background:${C.ink};flex-direction:column;gap:10px;justify-content:center;padding:0;">`;
 h+=LED(56,'transparent','rgba(246,243,236,.15)',C.ember);
 h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:rgba(246,243,236,.9);letter-spacing:-.02em;">faraday</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(246,243,236,.45);text-align:center;max-width:75%;">La cage de Faraday pour votre téléphone</div>`;
-h+=`</div><div class="banner-meta"><div class="banner-meta-left"><div class="banner-name">OG Image — Sombre</div><div class="banner-dims">1200 × 630</div></div><button class="btn-copy" onclick="copyB(this,'og-dark')">Copier SVG</button></div></div>`;
-h+=`</div></div>`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(246,243,236,.45);text-align:center;">La cage de Faraday pour votre téléphone</div>`;
+h+=`</div>`;
+
+h+=`</div>`;
 
 // ============================================================
-// SECTION 4 — Specs
-h+=`<div class="sect"><div class="kicker">04 — Spécifications</div><h2>Récapitulatif</h2>`;
-h+=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;">`;
+// 04 — SPECS
+// ============================================================
+h+=`<div class="sect"><div class="kicker">04 — Spécifications</div><h2>Récapitulatif des formats</h2>`;
+h+=`<p class="sect-desc">Tous les formats et leurs usages. Exporter depuis cette page ou depuis les SVG dans <code style="background:rgba(17,22,29,.06);padding:2px 8px;border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:13px;">exports/</code>.</p>`;
+
+h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">`;
 [
-  {t:'Instagram Post',d:'1080 × 1080 px',u:'Feed carré'},
-  {t:'Instagram Story',d:'1080 × 1920 px',u:'Stories / Reels cover'},
-  {t:'LinkedIn Banner',d:'1584 × 396 px',u:'Couverture profil'},
-  {t:'Twitter / X',d:'1500 × 500 px',u:'Header profil'},
-  {t:'OG Image',d:'1200 × 630 px',u:'Aperçu de lien'},
-  {t:'Gradients',d:'Warm Walnut / Deep Ink',u:'Jamais Sage + Ember ⛔'},
+  {t:'Instagram Post',d:'1080 × 1080',u:'Feed carré',c:C.ember},
+  {t:'Instagram Story',d:'1080 × 1920',u:'Stories / Reels cover',c:C.ember},
+  {t:'LinkedIn Banner',d:'1584 × 396',u:'Couverture profil',c:C.lake},
+  {t:'Twitter / X',d:'1500 × 500',u:'Header profil',c:C.lake},
+  {t:'OG Image',d:'1200 × 630',u:'Aperçu de lien',c:C.lake},
+  {t:'Gradients autorisés',d:'Warm Walnut / Deep Ink',u:'Jamais Sage + Ember ⛔',c:'#c44'},
 ].forEach(s=>{
-  h+=`<div style="padding:16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
-  h+=`<div style="font-size:13px;font-weight:700;">${s.t}</div>`;
-  h+=`<div style="font-size:12px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:4px;">${s.d}</div>`;
-  h+=`<div style="font-size:11px;color:var(--muted);margin-top:2px;">${s.u}</div></div>`;
+  h+=`<div style="padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
+  h+=`<div style="width:8px;height:8px;border-radius:50%;background:${s.c};margin-bottom:10px;"></div>`;
+  h+=`<div style="font-size:14px;font-weight:700;">${s.t}</div>`;
+  h+=`<div style="font-size:12px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:6px;">${s.d}</div>`;
+  h+=`<div style="font-size:11px;color:var(--muted);margin-top:4px;">${s.u}</div></div>`;
 });
 h+=`</div></div>`;
 
-h+=`</div>`; // .page
+// ============================================================
+// FOOTER (identique au brandbook)
+// ============================================================
+h+=`<div style="text-align:center;padding:60px 40px;border-top:1px solid var(--line);margin-top:40px;">`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.ink};margin-bottom:10px;">faraday</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);margin-bottom:24px;">Bannières Réseaux Sociaux — 2026</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);margin-top:16px;">`;
+h+=`<div style="font-weight:700;margin-bottom:8px;">Voir aussi</div>`;
+h+=`<a href="brand-identity.html" style="color:${C.lake};margin:0 8px;">Brand Book</a>`;
+h+=`<a href="research/faraday-led-brand-proposals.html" style="color:${C.lake};margin:0 8px;">LED Proposals</a>`;
+h+=`<a href="research/app-mockups-v3.html" style="color:${C.lake};margin:0 8px;">App Mockups V3</a>`;
+h+=`<a href="research/logo-selection.html" style="color:${C.lake};margin:0 8px;">Sélection</a>`;
+h+=`</div></div>`;
+h+=`</div>`;
 
 document.write(h);
 </script>
 
-<script>
-// Copy SVG to clipboard
-async function copyB(btn,id){
-  // Get the banner preview element
-  const card = btn.closest('.banner-card');
-  const preview = card.querySelector('.banner-preview');
-  const svg = preview.innerHTML;
-  try {
-    await navigator.clipboard.writeText(svg);
-    btn.classList.add('copied');
-    btn.textContent='Copié !';
-    setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Copier SVG';},1800);
-  } catch(e){ console.error(e); }
-}
-</script>
-<script src="research/nav.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>
