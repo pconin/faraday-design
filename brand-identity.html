@@ -602,7 +602,7 @@ const dos=[
   {ex:'"Votre téléphone ne vous manquera pas. Promis."',why:'Confiant, un brin complice'},
   {ex:'"4h12 par jour. Et si on arrêtait ?"',why:'Factuel puis interpelle'},
   {ex:`"Le vrai luxe, c'est de ne pas être joignable."`,why:`Aspirationnel, repositionne le luxe`},
-  {ex:'"Déposez. Respirez. Vivez."',why:'Court, impératif doux, rythme ternaire'},
+  {ex:'"Déposez-le. Reprenez votre soirée."',why:'Court, direct, concret — on sait quoi faire'},
   {ex:'"12 jours de streak ! Votre plus longue série 🔥"',why:'Gamifié mais pas forcé'},
 ];
 dos.forEach(d=>{h+=`<div style="padding:14px;border-radius:12px;background:rgba(107,155,107,.06);border:1px solid rgba(107,155,107,.12);margin-bottom:10px;"><div style="font-size:14px;font-weight:600;margin-bottom:4px;">${d.ex}</div><div style="font-size:11px;color:var(--muted);">${d.why}</div></div>`;});
@@ -693,6 +693,16 @@ h+=`<span style="padding:4px 12px;border-radius:8px;background:#6b9b6b15;color:#
 h+=`<span style="padding:4px 12px;border-radius:8px;background:rgba(17,22,29,.06);color:var(--muted);font-size:12px;font-weight:600;">Visiteur</span>`;
 h+=`<span style="padding:4px 12px;border-radius:8px;background:#d4a44a18;color:#b8902a;font-size:12px;font-weight:600;">🏆 1er</span>`;
 h+=`</div>`;
+
+// Gradients in DS
+h+=`<div class="sub" style="margin-top:20px;">Dégradés utilitaires</div>`;
+h+=`<p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Pour backgrounds immersifs (Instagram, hero, packaging). Jamais dans le logo.</p>`;
+h+=`<div style="display:flex;gap:14px;flex-wrap:wrap;">`;
+h+=`<div style="width:160px;"><div style="height:72px;border-radius:12px;background:linear-gradient(135deg,#8a7a68,#6a5a48,#4a3a28);"></div><div style="font-size:11px;font-weight:700;margin-top:6px;">Warm Walnut</div><div style="font-size:10px;color:var(--muted);">Salon, soirée, intimité</div></div>`;
+h+=`<div style="width:160px;"><div style="height:72px;border-radius:12px;background:linear-gradient(180deg,#b8c4b0,#8a9a7a,#5a6a4a);"></div><div style="font-size:11px;font-weight:700;margin-top:6px;">Morning Sage</div><div style="font-size:10px;color:var(--muted);">Matin, nature, fraîcheur</div></div>`;
+h+=`<div style="width:160px;"><div style="height:72px;border-radius:12px;background:linear-gradient(160deg,${C.ink},#1a2030,#0a1018);"></div><div style="font-size:11px;font-weight:700;margin-top:6px;">Deep Ink</div><div style="font-size:10px;color:var(--muted);">Nuit, cinéma, premium</div></div>`;
+h+=`<div style="width:160px;"><div style="height:72px;border-radius:12px;background:linear-gradient(135deg,#c4b8a4,#a0907a,#7a6a58);"></div><div style="font-size:11px;font-weight:700;margin-top:6px;">Linen</div><div style="font-size:10px;color:var(--muted);">Textile, craft, doux</div></div>`;
+h+=`</div>`;
 h+=`</div>`;
 
 // 12 — EMAIL TEMPLATE
@@ -748,36 +758,61 @@ h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">`;
 });
 h+=`</div></div>`;
 
-// 14 — PACKAGING
-h+=`<div class="sect"><div class="kicker">14 — Packaging</div><h2>Box physique</h2>`;
-h+=`<p class="sect-desc">3 vues de la boîte de la Faraday Box. Minimaliste, premium, zéro plastique.</p>`;
-h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">`;
-// Front
-h+=`<div><div style="height:300px;border-radius:16px;background:${C.ink};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;box-shadow:0 8px 30px rgba(17,22,29,.1);">${LED(56,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,243,236,.3);">disconnect to reconnect</div></div><div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Face avant</div></div>`;
-// Side
-h+=`<div><div style="height:300px;width:120px;margin:0 auto;border-radius:16px;background:${C.ink};display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:24px;gap:8px;box-shadow:0 8px 30px rgba(17,22,29,.1);"><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:14px;letter-spacing:-.02em;color:${C.porcelain};writing-mode:vertical-rl;transform:rotate(180deg);">faraday</div></div><div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Tranche</div></div>`;
-// Top
-h+=`<div><div style="height:200px;border-radius:16px;background:${C.ink};display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(17,22,29,.1);">${LED_CORE(32,C.ember)}</div><div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">Dessus — LED core seule</div></div>`;
-h+=`</div>`;
-// Materials note
-h+=`<div style="margin-top:20px;padding:18px;border-radius:14px;border:1px solid var(--line);max-width:500px;">`;
-h+=`<div style="font-size:13px;font-weight:700;margin-bottom:8px;">Matériaux packaging</div>`;
-h+=`<ul style="font-size:13px;line-height:2;color:var(--muted);list-style:none;">`;
-h+=`<li>• Carton recyclé non blanchi (kraft sombre)</li>`;
-h+=`<li>• Logo en estampage à chaud (sans encre)</li>`;
-h+=`<li>• Zéro plastique — calage en feutre ou papier</li>`;
-h+=`<li>• Encre soja pour les textes réglementaires</li>`;
-h+=`</ul></div></div>`;
-
-// 15 — REGLES (was 10)
+// 14 — REGLES
 // ============================================================
-h+=`<div class="sect"><div class="kicker">15 — Usage</div><h2>Règles</h2>`;
-h+=`<div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:16px;">`;
-h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:700;color:#6b9b6b;margin-bottom:12px;">✓ A faire</div><ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;"><li>• Logo principal sur fond Ink Charcoal (LED Ember ou Lake)</li><li>• Decli 2 : fond Porcelain + LED Ember</li><li>• Decli 3 : fond Sage Mist + LED Porcelain</li><li>• Sora Light pour le wordmark</li><li>• INTERDIT : fond Sage Mist + LED Ember</li><li>• Espace libre ≥ 1× hauteur du mark</li><li>• Le mark peut vivre seul</li><li>• Baseline optionnelle</li></ul></div>`;
-h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:700;color:${C.ember};margin-bottom:12px;">✗ Ne pas faire</div><ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;"><li>• Tourner le mark LED a l'horizontale</li><li>• Changer les proportions shell/core</li><li>• Utiliser le mark sur fond charge</li><li>• Ajouter ombre ou effet au mark</li><li>• Utiliser Ember et Lake dans le logo</li><li>• Changer la police du wordmark</li><li>• Entourer le mark d'un cadre</li></ul></div>`;
-h+=`</div></div>`;
+h+=`<div class="sect"><div class="kicker">14 — Règles</div><h2>Usage du logo</h2>`;
+h+=`<p class="sect-desc">Règles strictes pour garantir la cohérence de la marque sur tous les supports.</p>`;
 
-h+=`<div style="text-align:center;padding:60px 40px;color:var(--muted);font-size:12px;">Faraday — Brand Book — 2026<br><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:-.03em;margin-top:10px;display:inline-block;color:${C.ink};">faraday</span></div>`;
+// Logo hierarchy
+h+=`<div class="sub">Hiérarchie des logos</div>`;
+h+=`<div style="overflow-x:auto;margin-bottom:24px;"><table style="width:100%;border-collapse:collapse;font-size:13px;">`;
+h+=`<tr style="border-bottom:2px solid var(--line);"><th style="text-align:left;padding:10px 14px;font-weight:700;">Niveau</th><th style="text-align:left;padding:10px 14px;font-weight:700;">Fond</th><th style="text-align:left;padding:10px 14px;font-weight:700;">LED</th><th style="text-align:left;padding:10px 14px;font-weight:700;">Usage</th></tr>`;
+h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14px;font-weight:600;">Primary</td><td style="padding:10px 14px;">Ink Charcoal</td><td style="padding:10px 14px;">Beacon Ember ou Lake Accent</td><td style="padding:10px 14px;color:var(--muted);">Logo principal, partout</td></tr>`;
+h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14px;font-weight:600;">Décli 2</td><td style="padding:10px 14px;">Porcelain</td><td style="padding:10px 14px;">Beacon Ember</td><td style="padding:10px 14px;color:var(--muted);">Fond clair, print, web</td></tr>`;
+h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14px;font-weight:600;">Décli 3</td><td style="padding:10px 14px;">Sage Mist</td><td style="padding:10px 14px;">Porcelain</td><td style="padding:10px 14px;color:var(--muted);">Fond sauge, packaging</td></tr>`;
+h+=`<tr style="background:${C.ember}06;"><td style="padding:10px 14px;font-weight:600;color:${C.ember};">⛔ Interdit</td><td style="padding:10px 14px;color:${C.ember};">Sage Mist</td><td style="padding:10px 14px;color:${C.ember};">Beacon Ember</td><td style="padding:10px 14px;color:${C.ember};">Jamais cette combinaison</td></tr>`;
+h+=`</table></div>`;
+
+// Do / Don't
+h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">`;
+h+=`<div><div class="sub" style="color:#6b9b6b;">✓ Obligatoire</div>`;
+h+=`<ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;">`;
+h+=`<li>• Le mark LED est toujours <strong style="color:var(--ink);">vertical</strong></li>`;
+h+=`<li>• Wordmark en <strong style="color:var(--ink);">Sora Light</strong>, letter-spacing -0.03em</li>`;
+h+=`<li>• Wordmark toujours en <strong style="color:var(--ink);">minuscules</strong> : "faraday"</li>`;
+h+=`<li>• Zone de protection ≥ <strong style="color:var(--ink);">1× hauteur du mark</strong></li>`;
+h+=`<li>• Le mark peut vivre <strong style="color:var(--ink);">seul</strong> (sans wordmark)</li>`;
+h+=`<li>• La baseline "disconnect to reconnect" est <strong style="color:var(--ink);">optionnelle</strong></li>`;
+h+=`<li>• Couleurs secondaires (Ember, Lake) = <strong style="color:var(--ink);">UI uniquement</strong>, jamais dans le fond du logo</li>`;
+h+=`<li>• Favicon : carré avec <strong style="color:var(--ink);">border-radius 20%</strong></li>`;
+h+=`</ul></div>`;
+h+=`<div><div class="sub" style="color:${C.ember};">✗ Interdit</div>`;
+h+=`<ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;">`;
+h+=`<li>• ⛔ Fond Sage Mist + LED Ember (combinaison interdite)</li>`;
+h+=`<li>• Tourner, incliner ou coucher le mark LED</li>`;
+h+=`<li>• Modifier les proportions shell / core</li>`;
+h+=`<li>• Placer le mark sur un fond chargé ou photographique</li>`;
+h+=`<li>• Ajouter ombre portée, glow, contour au mark</li>`;
+h+=`<li>• Utiliser une autre police que Sora pour le wordmark</li>`;
+h+=`<li>• Écrire "Faraday" ou "FARADAY" (toujours minuscule)</li>`;
+h+=`<li>• Utiliser des couleurs hors palette</li>`;
+h+=`<li>• Entourer le mark dans un cadre ou un cercle</li>`;
+h+=`</ul></div></div></div>`;
+
+// Footer with archive links
+h+=`<div style="text-align:center;padding:60px 40px;border-top:1px solid var(--line);margin-top:40px;">`;
+h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.ink};margin-bottom:10px;">faraday</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);margin-bottom:24px;">Brand Book — 2026</div>`;
+h+=`<div style="font-size:11px;color:var(--muted);margin-top:16px;">`;
+h+=`<div style="font-weight:700;margin-bottom:8px;">Archives de recherche</div>`;
+h+=`<a href="research/faraday-led-brand-proposals.html" style="color:${C.lake};margin:0 8px;">LED Proposals</a>`;
+h+=`<a href="research/faraday-brand-proposals.html" style="color:${C.lake};margin:0 8px;">Brand Proposals</a>`;
+h+=`<a href="research/brand-identity-p2.html" style="color:${C.lake};margin:0 8px;">Piste 2</a>`;
+h+=`<a href="research/app-mockups-v3.html" style="color:${C.lake};margin:0 8px;">App Mockups V3</a>`;
+h+=`<a href="research/logo-in-context.html" style="color:${C.lake};margin:0 8px;">Simulateur</a>`;
+h+=`<a href="research/logo-selection.html" style="color:${C.lake};margin:0 8px;">Sélection</a>`;
+h+=`<a href="research/logo-research-v6.html" style="color:${C.lake};margin:0 8px;">Recherche V6</a>`;
+h+=`</div></div>`;
 h+=`</div>`;
 
 document.write(h);

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday — Piste 2 : Living Beacon</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --sage:#8F877B;--ink:#181B1E;--porcelain:#F5F0E7;--lake:#5DA9D6;--ember:#FF9361;
+    --muted:#69717a;--line:rgba(17,22,29,.1);--paper:rgba(255,255,255,.72);
+  }
+  body{margin:0;color:var(--ink);font-family:'Inter',sans-serif;background:var(--porcelain);}
+
+  /* Layout */
+  .page{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:40px 0 80px;}
+  .sect{margin-top:32px;padding:32px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.54));}
+  .sect-dark{background:linear-gradient(180deg,rgba(21,29,42,.97),rgba(21,29,42,.94));color:var(--porcelain);border-color:rgba(255,255,255,.06);}
+  .kicker{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(17,22,29,.06);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34404d;}
+  .sect-dark .kicker{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);}
+  h2{margin:14px 0 10px;font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,48px);line-height:.98;letter-spacing:-.04em;font-weight:700;}
+  .sect-desc{font-size:16px;line-height:1.7;color:var(--muted);max-width:600px;margin-bottom:28px;}
+  .sect-dark .sect-desc{color:rgba(255,255,255,.6);}
+  .sub{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;}
+  .sect-dark .sub{color:rgba(255,255,255,.5);}
+  .grid{display:flex;flex-wrap:wrap;gap:16px;}
+  .grid-scroll{display:flex;gap:28px;overflow-x:auto;padding-bottom:16px;flex-wrap:nowrap;}
+
+  /* LED Mark SVG */
+  .mark{width:74px;height:74px;flex:0 0 74px;}
+  .mark.sm{width:48px;height:48px;flex-basis:48px;}
+  .mark.xs{width:32px;height:32px;flex-basis:32px;}
+  .mark.lg{width:96px;height:96px;flex-basis:96px;}
+
+  /* Lockup */
+  .logo-stage{display:flex;align-items:center;justify-content:center;min-height:160px;padding:28px;border-radius:22px;}
+  .logo-lockup{display:flex;align-items:center;gap:16px;}
+  .stacked-lockup{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+  .wm-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:36px;letter-spacing:-.04em;line-height:1;}
+  .wm-bl{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.55;margin-top:6px;}
+
+  /* Swatch */
+  .swatch{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px;border-radius:14px;background:rgba(255,255,255,.56);border:1px solid var(--line);}
+  .chip{width:56px;height:44px;border-radius:12px;}
+  .swatch-n{font-size:13px;font-weight:700;}
+  .swatch-h{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+  .swatch-r{font-size:11px;color:var(--muted);}
+
+  /* Anim */
+  @keyframes led-core-breathe{0%,100%{opacity:.64;}50%{opacity:1;}}
+  @keyframes led-halo-expand{0%,100%{opacity:.1;transform:scale(.92);}50%{opacity:.34;transform:scale(1.08);}}
+  @keyframes led-rise-in{0%{opacity:0;transform:translateY(10px) scaleY(.72);}40%{opacity:.92;transform:translateY(0) scaleY(1.02);}100%{opacity:1;transform:translateY(0) scaleY(1);}}
+  @keyframes led-shell-settle{0%{opacity:0;}100%{opacity:1;}}
+  @keyframes led-double-blink{0%,18%,32%,100%{opacity:.28;}8%,24%{opacity:1;}}
+
+  .anim-breathe .led-core{animation:led-core-breathe 3.6s ease-in-out infinite;}
+  .anim-breathe .led-aura{animation:led-halo-expand 3.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+  .anim-rise .led-core{animation:led-rise-in 2.9s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+  .anim-rise .led-shell{animation:led-shell-settle 2.9s ease-in-out infinite;}
+  .anim-rise .led-aura{animation:led-halo-expand 2.9s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+  .anim-blink .led-core{animation:led-double-blink 4.2s ease-in-out infinite;}
+
+  /* Phone — real iPhone */
+  .phone{width:375px;height:812px;border-radius:44px;border:3px solid rgba(17,22,29,.08);overflow:hidden;display:flex;flex-direction:column;background:var(--porcelain);box-shadow:0 24px 80px rgba(17,22,29,.12),0 0 0 1px rgba(17,22,29,.04);flex-shrink:0;}
+  .phone.dark{background:#111820;color:var(--porcelain);border-color:rgba(255,255,255,.06);}
+  .ph-status{display:flex;justify-content:space-between;padding:14px 28px 8px;font-size:13px;font-weight:600;color:var(--muted);}
+  .phone.dark .ph-status{color:#555;}
+  .ph-header{padding:12px 24px;display:flex;align-items:center;gap:12px;}
+  .ph-header .wm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em;}
+  .ph-body{flex:1;overflow-y:auto;padding:0 24px 20px;}
+  .ph-nav{display:flex;justify-content:space-around;padding:10px 16px 32px;border-top:1px solid var(--line);font-size:10px;color:var(--muted);}
+  .phone.dark .ph-nav{border-color:rgba(255,255,255,.06);color:#555;}
+  .ph-nav .pni{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .ph-nav .pni.active{color:var(--ink);font-weight:600;}
+  .phone.dark .ph-nav .pni.active{color:var(--sage);}
+
+  /* App components */
+  .app-card{border-radius:16px;padding:16px;margin-bottom:12px;}
+  .app-card-outline{border:1px solid var(--line);background:rgba(255,255,255,.5);}
+  .phone.dark .app-card-outline{border-color:rgba(255,255,255,.06);background:rgba(255,255,255,.03);}
+  .app-stat{font-family:'IBM Plex Mono',monospace;font-weight:600;}
+  .app-label{font-size:10px;color:var(--muted);margin-top:2px;}
+  .phone.dark .app-label{color:#556;}
+  .app-section-title{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px;}
+  .phone.dark .app-section-title{color:rgba(255,255,255,.35);}
+  .app-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
+  .phone.dark .app-row{border-color:rgba(255,255,255,.06);}
+  .app-row:last-child{border-bottom:none;}
+  .app-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;}
+  .app-badge{font-size:9px;padding:2px 7px;border-radius:6px;font-weight:600;}
+  .app-tag{font-size:9px;padding:2px 7px;border-radius:5px;background:rgba(17,22,29,.05);color:var(--muted);margin-left:4px;}
+  .phone.dark .app-tag{background:rgba(255,255,255,.06);}
+
+  /* Metro ad */
+  .metro{width:100%;height:320px;border-radius:20px;overflow:hidden;display:flex;align-items:center;padding:48px 56px;gap:48px;box-shadow:0 20px 60px rgba(17,22,29,.1);margin-bottom:16px;}
+
+  /* Business card */
+  .bcard{width:400px;height:240px;border-radius:14px;display:flex;flex-direction:column;justify-content:space-between;padding:28px;box-shadow:0 8px 30px rgba(17,22,29,.06);}
+
+  /* Instagram */
+  .insta{width:360px;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(17,22,29,.06);}
+
+  /* Mini card */
+  .mini-card{padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.58);text-align:center;}
+  .mini-card span{display:block;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<script>
+// LED mark SVGs — from Codex
+const LED=(s,bg,shellC,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const LED_AURA=(s,bg,shellC,coreC,auraC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="${auraC}" opacity=".12"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const LED_CORE=(s,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="43" y="26" width="10" height="44" rx="5" fill="${coreC}"/></svg>`;
+const LED_MONO=(s,c)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="31" y="14" width="34" height="68" rx="17" stroke="${c}" stroke-width="4"/><rect x="43" y="28" width="10" height="40" rx="5" fill="${c}"/></svg>`;
+
+const C={sage:'#8F877B',ink:'#181B1E',porcelain:'#F5F0E7',lake:'#5DA9D6',ember:'#FF9361',muted:'#69717a'};
+
+// Nav helper for phones
+const appNav=(active)=>{
+  const items=[{i:'&#9679;',n:'Home',k:'h'},{i:'&#9829;',n:'Groupes',k:'g'},{i:'&#9632;',n:'Boxes',k:'b'},{i:'&#9650;',n:'Stats',k:'s'},{i:'&#9783;',n:'Plus',k:'p'}];
+  return `<div class="ph-nav">${items.map(it=>`<div class="pni${active===it.k?' active':''}">${it.i}<br>${it.n}</div>`).join('')}</div>`;
+};
+
+let h='';
+
+// ============================================================
+// HERO
+// ============================================================
+h+=`<div class="page">`;
+h+=`<div class="sect" style="padding:48px;background:linear-gradient(140deg,rgba(255,255,255,.76),rgba(255,255,255,.52)),linear-gradient(120deg,rgba(197,207,191,.2),rgba(14,24,38,.04));position:relative;overflow:hidden;">`;
+h+=`<div style="display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center;">`;
+h+=`<div>`;
+h+=`<div class="kicker">Piste 2 — Living Beacon</div>`;
+h+=`<h2 style="font-size:clamp(48px,6vw,78px);">faraday</h2>`;
+h+=`<p class="sect-desc" style="margin-top:16px;">Un objet connecte qui protege votre attention. Deposez votre telephone, reprenez votre temps. Chaque detail de cette identite sert un objectif : rendre le calme desirable.</p>`;
+h+=`<div style="font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.5;">Disconnect to reconnect</div>`;
+h+=`</div>`;
+h+=`<div style="display:flex;justify-content:center;align-items:center;">`;
+h+=`<div class="anim-breathe" style="width:160px;height:160px;">${LED_AURA(160,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>`;
+h+=`</div></div></div>`;
+
+// ============================================================
+// 01 — LOGO SYSTEM
+// ============================================================
+h+=`<div class="sect"><div class="kicker">01 — Logo</div><h2>Systeme de marque</h2>`;
+h+=`<p class="sect-desc">Le mark LED represente la presence lumineuse de la box — un temoin discret qui dit "je suis la, deposez votre telephone".</p>`;
+
+// Primary: Ink + Ember, Ink + Lake
+h+=`<div class="sub">Logo principal — fond Ink Charcoal</div><div class="grid" style="gap:14px;">`;
+h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.porcelain};">${LED(74,C.ink,'rgba(246,243,236,.22)',C.ember)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.porcelain};">${LED(74,C.ink,'rgba(246,243,236,.22)',C.lake)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`</div>`;
+// Decli 2: Porcelain + Ember
+h+=`<div class="sub">Declinaison 2 — fond Porcelain</div><div class="grid" style="gap:14px;">`;
+h+=`<div class="logo-stage" style="background:${C.porcelain};border:1px solid var(--line);flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.ink};">${LED(74,C.porcelain,'rgba(21,29,42,.15)',C.ember)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`</div>`;
+// Decli 3: Sage + Porcelain LED
+h+=`<div class="sub">Declinaison 3 — fond Sage Mist</div><div class="grid" style="gap:14px;">`;
+h+=`<div class="logo-stage" style="background:${C.sage};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.ink};">${LED(74,C.sage,'rgba(21,29,42,.15)',C.porcelain)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`</div>`;
+
+// Stacked
+h+=`<div class="sub">Empile</div><div class="grid" style="gap:14px;">`;
+h+=`<div class="logo-stage" style="background:${C.ink};padding:32px 40px;"><div class="stacked-lockup" style="color:${C.porcelain};">${LED(56,C.ink,'rgba(246,243,236,.22)',C.ember)}<div class="wm-title" style="font-size:28px;">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div>`;
+h+=`<div class="logo-stage" style="background:${C.porcelain};border:1px solid var(--line);padding:32px 40px;"><div class="stacked-lockup" style="color:${C.ink};">${LED(56,C.porcelain,'rgba(21,29,42,.15)',C.ember)}<div class="wm-title" style="font-size:28px;">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div>`;
+h+=`<div class="logo-stage" style="background:${C.sage};padding:32px 40px;"><div class="stacked-lockup" style="color:${C.ink};">${LED(56,C.sage,'rgba(21,29,42,.15)',C.porcelain)}<div class="wm-title" style="font-size:28px;">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div>`;
+h+=`</div>`;
+
+// Mark variations mini
+h+=`<div class="sub">Declinaisons du mark</div><div class="grid" style="gap:10px;">`;
+[
+  {svg:LED(48,C.ink,'rgba(246,243,236,.22)',C.ember),n:'Primary Ember'},
+  {svg:LED(48,C.ink,'rgba(246,243,236,.22)',C.lake),n:'Primary Lake'},
+  {svg:LED(48,C.porcelain,'rgba(21,29,42,.15)',C.ember),n:'Decli Porcelain'},
+  {svg:LED(48,C.sage,'rgba(21,29,42,.15)',C.porcelain),n:'Decli Sage'},
+  {svg:LED_MONO(48,C.ink),n:'Gravure mono'},
+  {svg:LED_CORE(48,C.ember),n:'Beacon Ember'},
+  {svg:LED_CORE(48,C.lake),n:'Lake Accent'},
+].forEach(v=>{h+=`<div class="mini-card"><div style="display:grid;place-items:center;height:52px;">${v.svg}</div><span>${v.n}</span></div>`;});
+h+=`</div></div>`;
+
+// ============================================================
+// 02 — ANIMATIONS
+// ============================================================
+h+=`<div class="sect"><div class="kicker">02 — Motion</div><h2>Animations du mark</h2>`;
+h+=`<p class="sect-desc">4 etats animes, chacun lie a un moment de l'experience utilisateur.</p>`;
+h+=`<div class="grid" style="gap:14px;">`;
+[
+  {cls:'anim-breathe',n:'Gentle Wake',d:'Lancement, splash screen',bg:C.ink,dark:true},
+  {cls:'anim-breathe',n:'Quiet Halo',d:'Etat idle, focus, attente',bg:C.porcelain},
+  {cls:'anim-blink',n:'Soft Confirm',d:'Confirmation de session',bg:C.ink,dark:true},
+  {cls:'anim-rise',n:'Lock In',d:'Entree en session, detection box',bg:C.sage},
+].forEach(a=>{
+  const shell=a.dark?'rgba(246,243,236,.22)':'rgba(21,29,42,.15)';
+  const core=a.dark?C.ember:C.ember;
+  const aura=a.dark?C.ember:C.ember;
+  h+=`<div style="flex:1;min-width:200px;"><div class="${a.cls}" style="display:grid;place-items:center;min-height:140px;border-radius:22px;background:${a.bg};">${LED_AURA(80,a.bg,shell,core,aura)}</div><div style="margin-top:10px;"><strong style="font-size:13px;font-weight:700;">${a.n}</strong><div style="font-size:12px;color:var(--muted);margin-top:2px;">${a.d}</div></div></div>`;
+});
+h+=`</div></div>`;
+
+// ============================================================
+// 03 — COULEURS
+// ============================================================
+h+=`<div class="sect"><div class="kicker">03 — Couleurs</div><h2>Palette</h2>`;
+h+=`<p class="sect-desc">5 couleurs avec des roles semantiques precis. Jamais de secondaire dans le logo.</p>`;
+h+=`<div style="display:grid;gap:8px;max-width:600px;">`;
+[
+  {n:'Warm Alloy',h:C.sage,r:'Neutral relay — entre objet, bois et interface'},
+  {n:'Graphite',h:C.ink,r:'Premium hardware — fond principal, densite'},
+  {n:'Bone Light',h:C.porcelain,r:'Respiration chaude — fond, premium',l:true},
+  {n:'Current Blue',h:C.lake,r:'Digital — focus, app-native, etats actifs'},
+  {n:'Beacon Ember',h:C.ember,r:'Coeur de marque — energie, memorabilite'},
+].forEach(c=>{
+  h+=`<div class="swatch"><div class="chip" style="background:${c.h};${c.l?'border:1px solid var(--line);':''}"></div><div><div class="swatch-n">${c.n}</div><div class="swatch-r">${c.r}</div></div><div class="swatch-h">${c.h}</div></div>`;
+});
+h+=`</div></div>`;
+
+// ============================================================
+// 04 — TYPOGRAPHIE
+// ============================================================
+h+=`<div class="sect"><div class="kicker">04 — Typographie</div><h2>Polices</h2>`;
+h+=`<p class="sect-desc">Plus Jakarta Sans pour la marque (dense, contemporaine, app-native). Inter pour l'interface. IBM Plex Mono pour les donnees.</p>`;
+h+=`<div style="margin-bottom:28px;"><div class="sub">Plus Jakarta Sans — Marque</div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:42px;letter-spacing:-.03em;">faraday</div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--muted);margin-top:4px;">disconnect to reconnect</div></div>`;
+h+=`<div style="margin-bottom:28px;"><div class="sub">Manrope — Interface</div><div style="font-size:18px;">Deposez votre telephone. Reprenez votre temps.</div><div style="font-size:14px;line-height:1.7;color:var(--muted);margin-top:8px;max-width:480px;">La Faraday Box est un objet connecte dans lequel les utilisateurs deposent leur telephone afin de creer une boucle positive de deconnexion volontaire.</div></div>`;
+h+=`<div><div class="sub">IBM Plex Mono — Donnees</div><div style="font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;">9h46 <span style="font-size:14px;font-weight:400;color:var(--muted);">aujourd'hui</span></div></div>`;
+h+=`</div>`;
+
+// ============================================================
+// 05 — APP SCREENS
+// ============================================================
+h+=`<div class="sect" style="background:${C.ink};border-color:rgba(255,255,255,.04);overflow:hidden;">`;
+h+=`<div class="kicker" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);">05 — Application</div>`;
+h+=`<h2 style="color:${C.porcelain};">Ecrans</h2>`;
+h+=`<p class="sect-desc" style="color:rgba(255,255,255,.5);">6 ecrans taille reelle. Sage = marque, Ember = defis, Lake = data.</p>`;
+h+=`<div class="grid-scroll">`;
+
+// HOME LIGHT
+h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=`<div class="ph-header"><div style="width:28px;height:28px;">${LED(28,C.porcelain,'rgba(21,29,42,.12)',C.ember)}</div><div class="wm">faraday</div></div>`;
+h+=`<div class="ph-body">`;
+// Session active
+h+=`<div class="app-card" style="background:${C.sage}25;border:1px solid ${C.sage};border-radius:14px;padding:14px;margin-bottom:14px;"><div style="display:flex;align-items:center;gap:10px;"><div style="width:10px;height:10px;border-radius:50%;background:${C.sage};"></div><div style="flex:1;"><div style="font-size:14px;font-weight:600;">Session en cours</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">Salon &middot; Depuis 14:20</div></div><div class="app-stat" style="font-size:24px;">1h42</div></div></div>`;
+// Hero stat
+h+=`<div style="text-align:center;padding:20px 0;"><div class="app-stat" style="font-size:52px;">9<span style="font-size:16px;color:var(--muted);">h</span>46</div><div class="app-label" style="font-size:12px;">deconnecte aujourd'hui</div></div>`;
+// Quick stats
+h+=`<div style="display:flex;gap:8px;margin-bottom:16px;">`;
+[{v:'5',l:'sessions'},{v:'1h57',l:'moyenne'},{v:'↑18%',l:'vs semaine',c:C.lake}].forEach(s=>{
+  h+=`<div style="flex:1;background:${C.sage}15;border-radius:12px;padding:12px;text-align:center;"><div class="app-stat" style="font-size:18px;${s.c?'color:'+s.c+';':''}">${s.v}</div><div class="app-label">${s.l}</div></div>`;
+});
+h+=`</div>`;
+// Streak
+h+=`<div class="app-card app-card-outline" style="padding:14px;"><div class="app-section-title" style="margin:0 0 8px;">&#128293; Streak — 12 jours</div><div style="display:flex;gap:3px;">`;
+'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;${i<6?`background:${C.sage}30;color:${C.ink};`:`background:${C.sage};color:${C.ink};`}">${d}</div>`;});
+h+=`</div></div>`;
+// Defi
+h+=`<div class="app-card" style="border:1px solid ${C.ember}20;background:${C.ember}06;border-radius:14px;padding:14px;margin-top:12px;"><div style="font-size:11px;font-weight:700;color:${C.ember};">&#127775; Defi en cours</div><div style="font-size:13px;margin-top:4px;">Semaine sans ecran le soir</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">La Famille &middot; 5 jours restants</div><div style="height:6px;background:rgba(17,22,29,.06);border-radius:3px;margin-top:10px;overflow:hidden;"><div style="height:100%;width:65%;background:${C.ember};border-radius:3px;"></div></div><div style="display:flex;justify-content:space-between;margin-top:4px;"><span style="font-size:10px;color:var(--muted);">4/5 participent</span><span style="font-size:10px;color:${C.ember};font-weight:600;">65%</span></div></div>`;
+// Groupes
+h+=`<div class="app-section-title" style="display:flex;justify-content:space-between;"><span>Mes groupes</span><span style="color:${C.lake};font-weight:500;text-transform:none;letter-spacing:0;">Voir tout →</span></div>`;
+[{n:'La Famille',e:'&#128106;',r:'&#127942; 1er',rc:'#d4a44a'},{n:'Le Bureau',e:'&#128188;',r:'&#127942; 1er',rc:'#d4a44a'},{n:'Les Deconnectes',e:'&#127881;',r:'&#127942; 3e',rc:'#b08050'}].forEach(g=>{
+  h+=`<div class="app-row"><div style="width:30px;height:30px;border-radius:8px;background:${C.sage}25;display:flex;align-items:center;justify-content:center;font-size:14px;">${g.e}</div><div style="flex:1;font-size:13px;font-weight:600;">${g.n}</div><div style="font-size:11px;font-weight:700;color:${g.rc};">${g.r}</div></div>`;
+});
+// Boxes
+h+=`<div class="app-section-title" style="display:flex;justify-content:space-between;margin-top:18px;"><span>Mes boxes</span><span style="color:${C.lake};font-weight:500;text-transform:none;letter-spacing:0;">Voir tout →</span></div>`;
+[{n:'Salon',t:'Maison',v:'2h14'},{n:'Chambre',t:'Maison',v:'7h32'},{n:'Salle de reu',t:'Bureau',v:'4h05'}].forEach(b=>{
+  h+=`<div class="app-row"><div style="width:7px;height:7px;border-radius:50%;background:#6b9b6b;flex-shrink:0;"></div><div style="flex:1;font-size:13px;font-weight:500;">${b.n} <span class="app-tag">${b.t}</span></div><div class="app-stat" style="font-size:13px;">${b.v}</div></div>`;
+});
+h+=`</div>${appNav('h')}</div>`;
+
+// HOME DARK
+h+=`<div class="phone dark"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=`<div class="ph-header"><div style="width:28px;height:28px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.lake)}</div><div class="wm" style="color:${C.porcelain};">faraday</div></div>`;
+h+=`<div class="ph-body">`;
+h+=`<div class="app-card" style="background:${C.sage}12;border:1px solid ${C.sage}30;border-radius:14px;padding:14px;margin-bottom:14px;"><div style="display:flex;align-items:center;gap:10px;"><div style="width:10px;height:10px;border-radius:50%;background:${C.sage};"></div><div style="flex:1;"><div style="font-size:14px;font-weight:600;color:${C.porcelain};">Session en cours</div><div style="font-size:11px;color:#556;margin-top:2px;">Salon &middot; Depuis 14:20</div></div><div class="app-stat" style="font-size:24px;color:${C.sage};">1h42</div></div></div>`;
+h+=`<div style="text-align:center;padding:20px 0;"><div class="app-stat" style="font-size:52px;color:${C.porcelain};">9<span style="font-size:16px;color:#556;">h</span>46</div><div style="font-size:12px;color:#556;">deconnecte aujourd'hui</div></div>`;
+h+=`<div style="display:flex;gap:8px;margin-bottom:16px;">`;
+[{v:'5',l:'sessions'},{v:'1h57',l:'moyenne'},{v:'↑18%',l:'vs semaine',c:C.lake}].forEach(s=>{
+  h+=`<div style="flex:1;background:rgba(255,255,255,.04);border-radius:12px;padding:12px;text-align:center;"><div class="app-stat" style="font-size:18px;color:${s.c||C.porcelain};">${s.v}</div><div style="font-size:10px;color:#556;margin-top:2px;">${s.l}</div></div>`;
+});
+h+=`</div>`;
+h+=`<div class="app-card" style="border:1px solid ${C.ember}20;background:${C.ember}08;border-radius:14px;padding:14px;"><div style="font-size:11px;font-weight:700;color:${C.ember};">&#127775; Defi en cours</div><div style="font-size:13px;margin-top:4px;color:${C.porcelain};">Semaine sans ecran le soir</div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:10px;overflow:hidden;"><div style="height:100%;width:65%;background:${C.ember};border-radius:3px;"></div></div></div>`;
+h+=`<div class="app-card app-card-outline" style="padding:14px;margin-top:12px;"><div class="app-section-title" style="margin:0 0 8px;color:rgba(255,255,255,.3);">&#128293; Streak — 12 jours</div><div style="display:flex;gap:3px;">`;
+'LMMJVSD'.split('').forEach((d,i)=>{h+=`<div style="flex:1;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;${i<6?`background:${C.sage}18;color:${C.sage};`:`background:${C.sage};color:${C.ink};`}">${d}</div>`;});
+h+=`</div></div>`;
+h+=`</div>${appNav('h')}</div>`;
+
+// CLASSEMENT
+h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=`<div style="padding:6px 24px;font-size:12px;font-weight:500;color:${C.lake};">← Groupes</div>`;
+h+=`<div style="padding:4px 24px 14px;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:12px;background:${C.sage}25;display:flex;align-items:center;justify-content:center;font-size:18px;">&#128106;</div><div><div style="font-family:'Sora',sans-serif;font-size:20px;font-weight:600;letter-spacing:-.02em;">La Famille</div><div style="font-size:11px;color:var(--muted);">5 membres &middot; Cette semaine</div></div></div>`;
+h+=`<div class="ph-body">`;
+h+=`<div style="display:flex;gap:6px;margin-bottom:14px;"><div style="padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;background:${C.sage}30;color:${C.ink};">Cette semaine</div><div style="padding:6px 14px;border-radius:20px;font-size:11px;color:var(--muted);background:rgba(17,22,29,.04);">Ce mois</div></div>`;
+// Rankings
+const ranks=[
+  {p:1,n:'Pol',a:'PC',c:C.ember,t:'12h08',s:'18 sessions',bg:'#d4a44a12',bdr:'#d4a44a30',you:true},
+  {p:2,n:'Elisabeth',a:'EB',c:C.lake,t:'10h30',s:'14 sessions',bg:'',bdr:'rgba(160,160,176,.2)'},
+  {p:3,n:'Grand-mere',a:'GM',c:'#6b9b6b',t:'9h10',s:'22 sessions',bg:'',bdr:'rgba(176,128,80,.2)'},
+  {p:4,n:'Sophie',a:'SC',c:'#b8688a',t:'4h40',s:'8 sessions'},
+  {p:5,n:'Jean-Pierre',a:'JP',c:'#8878c8',t:'2h30',s:'5 sessions'},
+];
+const medals=['#d4a44a','#a0a0b0','#b08050','rgba(17,22,29,.08)','rgba(17,22,29,.08)'];
+ranks.forEach(r=>{
+  h+=`<div style="display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;margin-bottom:8px;${r.bg?'background:'+r.bg+';':''}${r.bdr?'border:1px solid '+r.bdr+';':'background:rgba(17,22,29,.03);'}">`;
+  h+=`<div style="width:26px;height:26px;border-radius:50%;background:${medals[r.p-1]};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:${r.p<=3?'#1a1a1a':'var(--muted)'};">${r.p}</div>`;
+  h+=`<div class="app-avatar" style="background:${r.c};">${r.a}</div>`;
+  h+=`<div style="flex:1;"><div style="font-size:13px;font-weight:600;">${r.n}${r.you?` <span class="app-badge" style="background:${C.sage}30;color:${C.ink};">vous</span>`:''}</div><div style="font-size:10px;color:var(--muted);">${r.s}</div></div>`;
+  h+=`<div class="app-stat" style="font-size:17px;">${r.t}</div></div>`;
+});
+h+=`<div class="app-section-title" style="margin-top:18px;">Stats du groupe</div>`;
+h+=`<div style="display:flex;gap:8px;">`;
+h+=`<div style="flex:1;background:rgba(17,22,29,.03);border-radius:12px;padding:14px;"><div class="app-label">Total groupe</div><div class="app-stat" style="font-size:22px;margin-top:4px;">38<span style="font-size:12px;color:var(--muted);">h</span>58</div></div>`;
+h+=`<div style="flex:1;background:rgba(17,22,29,.03);border-radius:12px;padding:14px;"><div class="app-label">Moy / membre</div><div class="app-stat" style="font-size:22px;margin-top:4px;">7<span style="font-size:12px;color:var(--muted);">h</span>48</div></div>`;
+h+=`</div>`;
+h+=`</div>${appNav('g')}</div>`;
+
+// STATS DETAILLEES
+h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=`<div style="padding:6px 24px;font-size:12px;font-weight:500;color:${C.lake};">← Mes Stats</div>`;
+h+=`<div style="padding:4px 24px 14px;font-family:'Sora',sans-serif;font-size:22px;font-weight:600;letter-spacing:-.02em;">Habitudes</div>`;
+h+=`<div class="ph-body">`;
+// Heatmap
+h+=`<div class="app-card app-card-outline" style="padding:16px;"><div class="app-section-title" style="margin:0 0 10px;">Heatmap — 4 semaines</div>`;
+h+=`<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;">`;
+[.15,.3,.55,.8,.15,.3,.55,.3,.55,.8,.3,.15,.8,.55,.8,.3,.55,.8,.3,.8,.55,.15,.3,.55,.8,.55,.3,0].forEach(o=>{
+  h+=`<div style="aspect-ratio:1;border-radius:3px;background:${C.lake};opacity:${o||.05};"></div>`;
+});
+h+=`</div></div>`;
+// Hours
+h+=`<div class="app-card app-card-outline" style="padding:16px;"><div class="app-section-title" style="margin:0 0 10px;">Heures preferees</div>`;
+h+=`<div style="display:flex;align-items:flex-end;gap:4px;height:70px;">`;
+[12,24,8,28,16,36,80,72].forEach((hh,i)=>{
+  h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:100%;height:${hh*.8}px;border-radius:3px 3px 0 0;background:${C.lake};"></div><div style="font-size:7px;color:var(--muted);">${['6h','8h','10h','12h','14h','18h','20h','22h'][i]}</div></div>`;
+});
+h+=`</div></div>`;
+// Best day + longest
+h+=`<div style="display:flex;gap:10px;margin-bottom:12px;">`;
+h+=`<div class="app-card app-card-outline" style="flex:1;text-align:center;padding:16px;"><div class="app-label">Meilleur jour</div><div class="app-stat" style="font-size:20px;margin-top:6px;">Samedi</div><div class="app-label">moy. 8h12</div></div>`;
+h+=`<div class="app-card app-card-outline" style="flex:1;text-align:center;padding:16px;"><div class="app-label">Plus longue session</div><div class="app-stat" style="font-size:20px;margin-top:6px;">9h42</div><div class="app-label">Nuit du 22 mars</div></div>`;
+h+=`</div>`;
+// Donut
+h+=`<div class="app-card app-card-outline" style="padding:16px;"><div class="app-section-title" style="margin:0 0 12px;">Repartition</div>`;
+h+=`<div style="display:flex;align-items:center;gap:16px;"><div style="width:72px;height:72px;border-radius:50%;border:6px solid rgba(17,22,29,.06);position:relative;"><div style="position:absolute;inset:-6px;border-radius:50%;border:6px solid transparent;border-top-color:${C.lake};border-right-color:${C.lake};transform:rotate(30deg);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div class="app-stat" style="font-size:16px;">68%</div></div></div>`;
+h+=`<div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:10px;height:10px;border-radius:3px;background:${C.lake};"></div><span style="font-size:12px;">Nuit (20h-8h) — 68%</span></div><div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:3px;background:rgba(17,22,29,.06);"></div><span style="font-size:12px;">Jour (8h-20h) — 32%</span></div></div></div></div>`;
+h+=`</div>${appNav('s')}</div>`;
+
+// ANALYTICS BOX
+h+=`<div class="phone"><div class="ph-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>`;
+h+=`<div style="padding:6px 24px;font-size:12px;font-weight:500;color:${C.lake};">← Analytics</div>`;
+h+=`<div style="padding:4px 24px 14px;display:flex;align-items:center;gap:12px;"><div style="width:36px;height:36px;">${LED(36,C.porcelain,'rgba(21,29,42,.12)',C.ember)}</div><div><div style="font-family:'Sora',sans-serif;font-size:20px;font-weight:600;letter-spacing:-.02em;">Salon</div><div style="font-size:11px;color:var(--muted);">Faraday Box Pro &middot; Maison</div></div></div>`;
+h+=`<div class="ph-body">`;
+h+=`<div style="display:flex;gap:6px;margin-bottom:14px;"><div style="padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;background:${C.sage}30;color:${C.ink};">7 jours</div><div style="padding:6px 14px;border-radius:20px;font-size:11px;color:var(--muted);background:rgba(17,22,29,.04);">30 jours</div></div>`;
+h+=`<div style="display:flex;gap:10px;margin-bottom:14px;">`;
+h+=`<div class="app-card app-card-outline" style="flex:1;padding:14px;"><div class="app-label">Temps total</div><div class="app-stat" style="font-size:24px;margin-top:4px;">18<span style="font-size:12px;color:var(--muted);">h</span>40</div><div style="font-size:10px;color:#6b9b6b;margin-top:2px;">↑ 22%</div></div>`;
+h+=`<div class="app-card app-card-outline" style="flex:1;padding:14px;"><div class="app-label">Sessions</div><div class="app-stat" style="font-size:24px;margin-top:4px;">12</div></div></div>`;
+// Activity chart
+h+=`<div class="app-card app-card-outline" style="padding:16px;"><div class="app-section-title" style="margin:0 0 10px;">Activite</div>`;
+h+=`<div style="display:flex;align-items:flex-end;gap:4px;height:60px;">`;
+[35,50,22,58,42,65,55].forEach((v,i)=>{
+  h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:100%;height:${v*.9}px;border-radius:3px 3px 0 0;background:${C.sage};"></div><div style="font-size:7px;color:var(--muted);">${'LMMJVSD'[i]}</div></div>`;
+});
+h+=`</div></div>`;
+// Users
+h+=`<div class="app-card app-card-outline" style="padding:16px;"><div class="app-section-title" style="margin:0 0 10px;">Utilisateurs de cette box</div>`;
+[{n:'Vous',a:'PC',c:C.ember,v:'10h'},{n:'Elisabeth',a:'EB',c:C.lake,v:'6h'},{n:'Gabriel',a:'G',c:'#aaa',v:'45m',tag:'partage'},{n:'Anonyme',a:'?',c:'#ddd',v:'1h55',tag:'anonyme',dim:true}].forEach(u=>{
+  h+=`<div class="app-row" style="${u.dim?'opacity:.5;':''}"><div class="app-avatar" style="background:${u.c};${u.c==='#ddd'?'color:var(--muted);':''}">${u.a}</div><div style="flex:1;font-size:13px;font-weight:500;">${u.n}${u.tag?` <span class="app-tag">${u.tag}</span>`:''}</div><div class="app-stat" style="font-size:13px;">${u.v}</div></div>`;
+});
+h+=`</div></div>${appNav('s')}</div>`;
+
+// SPLASH
+h+=`<div class="phone" style="background:${C.ink};align-items:center;justify-content:center;">`;
+h+=`<div class="anim-rise" style="width:80px;height:80px;margin-bottom:16px;">${LED_AURA(80,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>`;
+h+=`<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div>`;
+h+=`<div style="font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.35;margin-top:8px;color:${C.porcelain};">disconnect to reconnect</div>`;
+h+=`</div>`;
+
+h+=`</div></div>`;
+
+// ============================================================
+// 06 — PUB METRO
+// ============================================================
+h+=`<div class="sect"><div class="kicker">06 — Campagne</div><h2>Affiche metro</h2>`;
+h+=`<p class="sect-desc">Format rectangle horizontal. Ton direct, un brin provocateur.</p>`;
+// Sage
+h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">Votre telephone ne vous manquera pas.<br>Promis.</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">Deposez-le dans la box. Reprenez votre soiree. Vos notifications survivront.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
+// Ink
+h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">4h12 par jour<br>sur votre telephone.<br>Et si on arretait ?</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">La Faraday Box. Deposez votre telephone, reprenez le controle.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
+h+=`</div>`;
+
+// ============================================================
+// 07 — CARTE DE VISITE
+// ============================================================
+h+=`<div class="sect"><div class="kicker">07 — Print</div><h2>Carte de visite</h2>`;
+h+=`<div class="grid" style="gap:16px;">`;
+h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};"><div><div style="display:flex;align-items:center;gap:10px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.ember)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;">faraday</div></div></div><div><div style="font-size:14px;font-weight:700;">Pol Conin</div><div style="font-size:11px;line-height:1.8;opacity:.55;margin-top:2px;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};"><div><div style="display:flex;align-items:center;gap:10px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.lake)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;">faraday</div></div></div><div><div style="font-size:14px;font-weight:700;">Pol Conin</div><div style="font-size:11px;line-height:1.8;opacity:.55;margin-top:2px;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+h+=`<div class="bcard" style="background:${C.sage};color:${C.ink};align-items:center;justify-content:center;text-align:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;">${LED(52,C.sage,'rgba(21,29,42,.15)',C.porcelain)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.03em;">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div></div>`;
+h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};align-items:center;justify-content:center;text-align:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;">${LED(52,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.03em;">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div></div>`;
+h+=`</div></div>`;
+
+// ============================================================
+// 08 — INSTAGRAM
+// ============================================================
+h+=`<div class="sect"><div class="kicker">08 — Social</div><h2>Instagram</h2>`;
+h+=`<div class="grid" style="gap:16px;">`;
+// Brand post
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${LED(28,C.sage,'rgba(21,29,42,.15)',C.ember)}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">${LED(80,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:32px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div><div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.4;color:${C.porcelain};">disconnect to reconnect</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. 🌿</div></div>`;
+// Data post
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${LED(28,C.sage,'rgba(21,29,42,.15)',C.ember)}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:56px;font-weight:600;color:${C.porcelain};">4h12</div><div style="font-size:16px;color:rgba(255,255,255,.5);max-width:280px;text-align:center;line-height:1.5;">C'est le temps moyen passe sur son telephone chaque jour en France.</div><div style="font-size:12px;color:${C.ember};font-weight:700;letter-spacing:.12em;">ET VOUS ?</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> 4h12 par jour. Et si on les recuperait ? 📱⬇️</div></div>`;
+h+=`</div></div>`;
+
+// ============================================================
+// 09 — REGLES
+// ============================================================
+h+=`<div class="sect"><div class="kicker">09 — Usage</div><h2>Regles</h2>`;
+h+=`<div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:16px;">`;
+h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:700;color:#6b9b6b;margin-bottom:12px;">✓ A faire</div><ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;"><li>• Logo principal sur fond Ink Charcoal (LED Ember ou Lake)</li><li>• Decli 2 : fond Porcelain + LED Ember</li><li>• Decli 3 : fond Sage Mist + LED Porcelain</li><li>• Sora Light pour le wordmark</li><li>• INTERDIT : fond Sage Mist + LED Ember</li><li>• Espace libre ≥ 1× hauteur du mark</li><li>• Le mark peut vivre seul</li><li>• Baseline optionnelle</li></ul></div>`;
+h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:700;color:${C.ember};margin-bottom:12px;">✗ Ne pas faire</div><ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;"><li>• Tourner le mark LED a l'horizontale</li><li>• Changer les proportions shell/core</li><li>• Utiliser le mark sur fond charge</li><li>• Ajouter ombre ou effet au mark</li><li>• Utiliser Ember et Lake dans le logo</li><li>• Changer la police du wordmark</li><li>• Entourer le mark d'un cadre</li></ul></div>`;
+h+=`</div></div>`;
+
+h+=`<div style="text-align:center;padding:60px 40px;color:var(--muted);font-size:12px;">Faraday — Brand Book — 2026<br><span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.03em;margin-top:10px;display:inline-block;color:${C.ink};">faraday</span></div>`;
+h+=`</div>`;
+
+document.write(h);
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>
