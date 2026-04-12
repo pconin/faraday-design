@@ -527,8 +527,8 @@ h+=`</div></div>`;
 h+=`<div class="sect"><div class="kicker">09 — Photographie</div><h2>Moodboard — 25 photos</h2>`;
 h+=`<p class="sect-desc">Intérieurs scandinaves, moments sans téléphone (personnes de dos/profil), matières nobles. Lumière naturelle uniquement.</p>`;
 
-// Helper for photo card
-const ph=(url,label,h2,w,ht)=>`<a href="https://unsplash.com/photos/${url}" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:${ht||'200'}px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);${w?'grid-column:span 2;':''}cursor:pointer;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 12px 32px rgba(17,22,29,.12)';this.querySelector('.unsplash-badge').style.opacity='1';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(17,22,29,.06)';this.querySelector('.unsplash-badge').style.opacity='0';">
+// Helper for photo card — theme = Unsplash search query
+const ph=(url,label,h2,theme,w,ht)=>`<a href="https://unsplash.com/s/photos/${encodeURIComponent(theme)}" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:${ht||'200'}px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);${w?'grid-column:span 2;':''}cursor:pointer;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 12px 32px rgba(17,22,29,.12)';this.querySelector('.unsplash-badge').style.opacity='1';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(17,22,29,.06)';this.querySelector('.unsplash-badge').style.opacity='0';">
 <img src="https://images.unsplash.com/${url}?w=${w?'800':'400'}&h=${ht?ht+100:'350'}&fit=crop&crop=center" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.45));"></div>
 <div style="position:absolute;bottom:14px;left:14px;z-index:1;"><div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">${label}</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:2px;font-weight:500;">${h2}</div></div>
@@ -537,58 +537,58 @@ const ph=(url,label,h2,w,ht)=>`<a href="https://unsplash.com/photos/${url}" targ
 // CAT 1: L'objet dans son contexte
 h+=`<div class="sub">L'objet dans son contexte</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
-h+=ph('photo-1600210492486-724fe5c67fb0','Étagère','Sur une étagère en bois clair');
-h+=ph('photo-1616046229478-9901c5536a45','Salon','Salon scandinave, lumière chaude',true,240);
-h+=ph('photo-1600585154340-be6161a56a0c','Bureau','Bureau minimaliste à la maison');
-h+=ph('photo-1618219908412-a29a1bb7b86e','Table de nuit','Posée à côté du livre');
-h+=ph('photo-1631679706909-1844bbd07221','Entrée','Dans le hall, en arrivant');
-h+=ph('photo-1600607687939-ce8a6c25118c','Cuisine','Plan de travail en bois');
-h+=ph('photo-1556909114-f6e7ad7d3136','Salon 2','Près de la plante verte');
-h+=ph('photo-1586023492125-27b2c045efd7','Meuble TV','Meuble bas scandinave');
+h+=ph('photo-1600210492486-724fe5c67fb0','Étagère','Sur une étagère en bois clair','wooden shelf scandinavian');
+h+=ph('photo-1616046229478-9901c5536a45','Salon','Salon scandinave, lumière chaude','scandinavian living room',true,240);
+h+=ph('photo-1600585154340-be6161a56a0c','Bureau','Bureau minimaliste à la maison','minimalist home desk');
+h+=ph('photo-1618219908412-a29a1bb7b86e','Table de nuit','Posée à côté du livre','bedside table book');
+h+=ph('photo-1631679706909-1844bbd07221','Entrée','Dans le hall, en arrivant','home entrance hallway');
+h+=ph('photo-1600607687939-ce8a6c25118c','Cuisine','Plan de travail en bois','wooden kitchen countertop');
+h+=ph('photo-1556909114-f6e7ad7d3136','Salon 2','Près de la plante verte','living room indoor plants');
+h+=ph('photo-1586023492125-27b2c045efd7','Meuble TV','Meuble bas scandinave','scandinavian tv furniture');
 h+=`</div>`;
 
 // CAT 2: Moments sans téléphone
 h+=`<div class="sub">Moments sans téléphone — personnes de dos / profil</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
-h+=ph('photo-1506126613408-eca07ce68773','Méditation','Femme de dos, matin calme');
-h+=ph('photo-1544027993-37dbfe43562a','Lecture','Lire au bord de la fenêtre');
-h+=ph('photo-1495474472287-4d71bcdd2085','Café','Un café fumant, pas de scroll',false,220);
-h+=ph('photo-1516589178581-6cd7833ae3b2','Cuisine','Cuisiner ensemble, de dos');
-h+=ph('photo-1513694203232-719a280e022f','Soirée','Un soir calme à la maison',true,260);
-h+=ph('photo-1507003211169-0a1dd7228f2d','Profil','Homme de profil, pensif');
-h+=ph('photo-1517457373958-b7bdd4587205','Promenade','Marcher dehors, de dos');
-h+=ph('photo-1476480862126-209bfaa8edc8','Fenêtre','Regarder par la fenêtre');
-h+=ph('photo-1519125323398-675f0ddb6308','Mains','Des mains qui tiennent un mug');
+h+=ph('photo-1506126613408-eca07ce68773','Méditation','Femme de dos, matin calme','morning meditation calm');
+h+=ph('photo-1544027993-37dbfe43562a','Lecture','Lire au bord de la fenêtre','reading by window');
+h+=ph('photo-1495474472287-4d71bcdd2085','Café','Un café fumant, pas de scroll','coffee morning cozy',false,220);
+h+=ph('photo-1516589178581-6cd7833ae3b2','Cuisine','Cuisiner ensemble, de dos','cooking together home');
+h+=ph('photo-1513694203232-719a280e022f','Soir��e','Un soir calme à la maison','cozy evening home',true,260);
+h+=ph('photo-1507003211169-0a1dd7228f2d','Profil','Homme de profil, pensif','man profile thinking');
+h+=ph('photo-1517457373958-b7bdd4587205','Promenade','Marcher dehors, de dos','walking outdoors nature');
+h+=ph('photo-1476480862126-209bfaa8edc8','Fenêtre','Regarder par la fenêtre','looking through window');
+h+=ph('photo-1519125323398-675f0ddb6308','Mains','Des mains qui tiennent un mug','hands holding coffee mug');
 h+=`</div>`;
 
 // CAT 3: Matières / textures
 h+=`<div class="sub">Matières & textures</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
-h+=ph('photo-1489171078254-c3365d6e359f','Bois','Grain du noyer',false,160);
-h+=ph('photo-1590422749897-47036da0b0ff','Lin','Textile lin naturel',false,160);
-h+=ph('photo-1565193566173-7a0ee3dbe261','Céramique','Poterie artisanale',false,160);
-h+=ph('photo-1558171813-4c088753af8f','Laiton','Détail laiton brossé',false,160);
-h+=ph('photo-1497366216548-37526070297c','Cuir','Cuir végétal patiné',false,160);
-h+=ph('photo-1544457070-4cd773b4d71e','Feutre','Textile dense et doux',false,160);
-h+=ph('photo-1416339134316-0e91dc9ded92','Pierre','Pierre naturelle polie',false,160);
-h+=ph('photo-1489171078254-c3365d6e359f','Bois foncé','Noyer sombre veinage',false,160);
+h+=ph('photo-1489171078254-c3365d6e359f','Bois','Grain du noyer','walnut wood grain texture',false,160);
+h+=ph('photo-1590422749897-47036da0b0ff','Lin','Textile lin naturel','linen textile natural',false,160);
+h+=ph('photo-1565193566173-7a0ee3dbe261','Céramique','Poterie artisanale','handmade ceramic pottery',false,160);
+h+=ph('photo-1558171813-4c088753af8f','Laiton','Détail laiton brossé','brushed brass detail',false,160);
+h+=ph('photo-1497366216548-37526070297c','Cuir','Cuir végétal patiné','leather texture patina',false,160);
+h+=ph('photo-1544457070-4cd773b4d71e','Feutre','Textile dense et doux','felt textile fabric',false,160);
+h+=ph('photo-1416339134316-0e91dc9ded92','Pierre','Pierre naturelle polie','natural polished stone',false,160);
+h+=ph('photo-1489171078254-c3365d6e359f','Bois foncé','Noyer sombre veinage','dark walnut wood',false,160);
 h+=`</div>`;
 
 // Gradient overlays
 h+=`<div class="sub">Dégradés sur photo — usage brand</div>`;
 h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">`;
 // Warm Walnut
-h+=`<a href="https://unsplash.com/photos/photo-1616046229478-9901c5536a45" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
+h+=`<a href="https://unsplash.com/s/photos/warm-walnut-interior" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
 h+=`<img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));"></div>`;
 h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.2)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.9);">faraday</div></div></a>`;
 // Deep Ink
-h+=`<a href="https://unsplash.com/photos/photo-1513694203232-719a280e022f" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
+h+=`<a href="https://unsplash.com/s/photos/dark-moody-interior" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
 h+=`<img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(21,29,42,.88),rgba(10,16,24,.92));"></div>`;
 h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(255,255,255,.15)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:rgba(255,255,255,.85);">faraday</div></div></a>`;
 // Sage overlay
-h+=`<a href="https://unsplash.com/photos/photo-1506126613408-eca07ce68773" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
+h+=`<a href="https://unsplash.com/s/photos/sage-green-calm" target="_blank" rel="noopener" style="text-decoration:none;display:block;height:200px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(17,22,29,.06);cursor:pointer;">`;
 h+=`<img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=350&fit=crop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
 h+=`<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(197,207,191,.82),rgba(197,207,191,.88));"></div>`;
 h+=`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:1;">${LED(44,'transparent','rgba(21,29,42,.15)',C.porcelain)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.ink};">faraday</div></div></a>`;
