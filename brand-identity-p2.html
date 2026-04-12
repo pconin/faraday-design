@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faraday — Brand Book</title>
+<title>Faraday — Piste 2 : Living Beacon</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
   :root{
-    --sage:#C5CFBF;--ink:#151D2A;--porcelain:#F6F3EC;--lake:#4A8395;--ember:#FF9361;
+    --sage:#8F877B;--ink:#181B1E;--porcelain:#F5F0E7;--lake:#5DA9D6;--ember:#FF9361;
     --muted:#69717a;--line:rgba(17,22,29,.1);--paper:rgba(255,255,255,.72);
   }
-  body{margin:0;color:var(--ink);font-family:'Manrope',sans-serif;background:var(--porcelain);}
+  body{margin:0;color:var(--ink);font-family:'Inter',sans-serif;background:var(--porcelain);}
 
   /* Layout */
   .page{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:40px 0 80px;}
@@ -37,7 +37,7 @@
   .logo-stage{display:flex;align-items:center;justify-content:center;min-height:160px;padding:28px;border-radius:22px;}
   .logo-lockup{display:flex;align-items:center;gap:16px;}
   .stacked-lockup{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
-  .wm-title{font-family:'Sora',sans-serif;font-weight:300;font-size:36px;letter-spacing:-.03em;line-height:1;}
+  .wm-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:36px;letter-spacing:-.04em;line-height:1;}
   .wm-bl{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.55;margin-top:6px;}
 
   /* Swatch */
@@ -67,7 +67,7 @@
   .ph-status{display:flex;justify-content:space-between;padding:14px 28px 8px;font-size:13px;font-weight:600;color:var(--muted);}
   .phone.dark .ph-status{color:#555;}
   .ph-header{padding:12px 24px;display:flex;align-items:center;gap:12px;}
-  .ph-header .wm{font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:-.02em;}
+  .ph-header .wm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em;}
   .ph-body{flex:1;overflow-y:auto;padding:0 24px 20px;}
   .ph-nav{display:flex;justify-content:space-around;padding:10px 16px 32px;border-top:1px solid var(--line);font-size:10px;color:var(--muted);}
   .phone.dark .ph-nav{border-color:rgba(255,255,255,.06);color:#555;}
@@ -115,7 +115,7 @@ const LED_AURA=(s,bg,shellC,coreC,auraC)=>`<svg viewBox="0 0 96 96" width="${s}"
 const LED_CORE=(s,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="43" y="26" width="10" height="44" rx="5" fill="${coreC}"/></svg>`;
 const LED_MONO=(s,c)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="31" y="14" width="34" height="68" rx="17" stroke="${c}" stroke-width="4"/><rect x="43" y="28" width="10" height="40" rx="5" fill="${c}"/></svg>`;
 
-const C={sage:'#C5CFBF',ink:'#151D2A',porcelain:'#F6F3EC',lake:'#4A8395',ember:'#FF9361',muted:'#69717a'};
+const C={sage:'#8F877B',ink:'#181B1E',porcelain:'#F5F0E7',lake:'#5DA9D6',ember:'#FF9361',muted:'#69717a'};
 
 // Nav helper for phones
 const appNav=(active)=>{
@@ -132,7 +132,7 @@ h+=`<div class="page">`;
 h+=`<div class="sect" style="padding:48px;background:linear-gradient(140deg,rgba(255,255,255,.76),rgba(255,255,255,.52)),linear-gradient(120deg,rgba(197,207,191,.2),rgba(14,24,38,.04));position:relative;overflow:hidden;">`;
 h+=`<div style="display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center;">`;
 h+=`<div>`;
-h+=`<div class="kicker">Piste 1 — Brand Book 2026</div>`;
+h+=`<div class="kicker">Piste 2 — Living Beacon</div>`;
 h+=`<h2 style="font-size:clamp(48px,6vw,78px);">faraday</h2>`;
 h+=`<p class="sect-desc" style="margin-top:16px;">Un objet connecte qui protege votre attention. Deposez votre telephone, reprenez votre temps. Chaque detail de cette identite sert un objectif : rendre le calme desirable.</p>`;
 h+=`<div style="font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.5;">Disconnect to reconnect</div>`;
@@ -207,11 +207,11 @@ h+=`<div class="sect"><div class="kicker">03 — Couleurs</div><h2>Palette</h2>`
 h+=`<p class="sect-desc">5 couleurs avec des roles semantiques precis. Jamais de secondaire dans le logo.</p>`;
 h+=`<div style="display:grid;gap:8px;max-width:600px;">`;
 [
-  {n:'Sage Mist',h:C.sage,r:'Master calm — fond logo, identite domestique premium',l:true},
-  {n:'Ink Charcoal',h:C.ink,r:'Tech foundation — texte, contrastes, declinaison sombre'},
-  {n:'Porcelain',h:C.porcelain,r:'Respiration — fond clair, app, site',l:true},
-  {n:'Lake Accent',h:C.lake,r:'Digital accent — liens, data, stats, dark mode LED'},
-  {n:'Beacon Ember',h:C.ember,r:'Chaleur — CTA, gamification, LED light mode'},
+  {n:'Warm Alloy',h:C.sage,r:'Neutral relay — entre objet, bois et interface'},
+  {n:'Graphite',h:C.ink,r:'Premium hardware — fond principal, densite'},
+  {n:'Bone Light',h:C.porcelain,r:'Respiration chaude — fond, premium',l:true},
+  {n:'Current Blue',h:C.lake,r:'Digital — focus, app-native, etats actifs'},
+  {n:'Beacon Ember',h:C.ember,r:'Coeur de marque — energie, memorabilite'},
 ].forEach(c=>{
   h+=`<div class="swatch"><div class="chip" style="background:${c.h};${c.l?'border:1px solid var(--line);':''}"></div><div><div class="swatch-n">${c.n}</div><div class="swatch-r">${c.r}</div></div><div class="swatch-h">${c.h}</div></div>`;
 });
@@ -221,8 +221,8 @@ h+=`</div></div>`;
 // 04 — TYPOGRAPHIE
 // ============================================================
 h+=`<div class="sect"><div class="kicker">04 — Typographie</div><h2>Polices</h2>`;
-h+=`<p class="sect-desc">Sora pour la marque (calme, precise). Manrope pour l'interface (chaleureuse, lisible). IBM Plex Mono pour les donnees.</p>`;
-h+=`<div style="margin-bottom:28px;"><div class="sub">Sora — Marque</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:42px;letter-spacing:-.03em;">faraday</div><div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:-.02em;color:var(--muted);margin-top:4px;">disconnect to reconnect</div></div>`;
+h+=`<p class="sect-desc">Plus Jakarta Sans pour la marque (dense, contemporaine, app-native). Inter pour l'interface. IBM Plex Mono pour les donnees.</p>`;
+h+=`<div style="margin-bottom:28px;"><div class="sub">Plus Jakarta Sans — Marque</div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:42px;letter-spacing:-.03em;">faraday</div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--muted);margin-top:4px;">disconnect to reconnect</div></div>`;
 h+=`<div style="margin-bottom:28px;"><div class="sub">Manrope — Interface</div><div style="font-size:18px;">Deposez votre telephone. Reprenez votre temps.</div><div style="font-size:14px;line-height:1.7;color:var(--muted);margin-top:8px;max-width:480px;">La Faraday Box est un objet connecte dans lequel les utilisateurs deposent leur telephone afin de creer une boucle positive de deconnexion volontaire.</div></div>`;
 h+=`<div><div class="sub">IBM Plex Mono — Donnees</div><div style="font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;">9h46 <span style="font-size:14px;font-weight:400;color:var(--muted);">aujourd'hui</span></div></div>`;
 h+=`</div>`;
@@ -370,7 +370,7 @@ h+=`</div></div>${appNav('s')}</div>`;
 // SPLASH
 h+=`<div class="phone" style="background:${C.ink};align-items:center;justify-content:center;">`;
 h+=`<div class="anim-rise" style="width:80px;height:80px;margin-bottom:16px;">${LED_AURA(80,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div>`;
+h+=`<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div>`;
 h+=`<div style="font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.35;margin-top:8px;color:${C.porcelain};">disconnect to reconnect</div>`;
 h+=`</div>`;
 
@@ -382,9 +382,9 @@ h+=`</div></div>`;
 h+=`<div class="sect"><div class="kicker">06 — Campagne</div><h2>Affiche metro</h2>`;
 h+=`<p class="sect-desc">Format rectangle horizontal. Ton direct, un brin provocateur.</p>`;
 // Sage
-h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">Votre telephone ne vous manquera pas.<br>Promis.</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">Deposez-le dans la box. Reprenez votre soiree. Vos notifications survivront.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
+h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">Votre telephone ne vous manquera pas.<br>Promis.</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">Deposez-le dans la box. Reprenez votre soiree. Vos notifications survivront.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
 // Ink
-h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">4h12 par jour<br>sur votre telephone.<br>Et si on arretait ?</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">La Faraday Box. Deposez votre telephone, reprenez le controle.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
+h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">4h12 par jour<br>sur votre telephone.<br>Et si on arretait ?</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">La Faraday Box. Deposez votre telephone, reprenez le controle.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
 h+=`</div>`;
 
 // ============================================================
@@ -392,10 +392,10 @@ h+=`</div>`;
 // ============================================================
 h+=`<div class="sect"><div class="kicker">07 — Print</div><h2>Carte de visite</h2>`;
 h+=`<div class="grid" style="gap:16px;">`;
-h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};"><div><div style="display:flex;align-items:center;gap:10px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:-.02em;">faraday</div></div></div><div><div style="font-size:14px;font-weight:700;">Pol Conin</div><div style="font-size:11px;line-height:1.8;opacity:.55;margin-top:2px;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
-h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};"><div><div style="display:flex;align-items:center;gap:10px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:16px;letter-spacing:-.02em;">faraday</div></div></div><div><div style="font-size:14px;font-weight:700;">Pol Conin</div><div style="font-size:11px;line-height:1.8;opacity:.55;margin-top:2px;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
-h+=`<div class="bcard" style="background:${C.sage};color:${C.ink};align-items:center;justify-content:center;text-align:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;">${LED(52,C.sage,'rgba(21,29,42,.15)',C.porcelain)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:-.03em;">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div></div>`;
-h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};align-items:center;justify-content:center;text-align:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;">${LED(52,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:22px;letter-spacing:-.03em;">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div></div>`;
+h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};"><div><div style="display:flex;align-items:center;gap:10px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.ember)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;">faraday</div></div></div><div><div style="font-size:14px;font-weight:700;">Pol Conin</div><div style="font-size:11px;line-height:1.8;opacity:.55;margin-top:2px;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};"><div><div style="display:flex;align-items:center;gap:10px;">${LED(28,C.ink,'rgba(246,243,236,.15)',C.lake)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;">faraday</div></div></div><div><div style="font-size:14px;font-weight:700;">Pol Conin</div><div style="font-size:11px;line-height:1.8;opacity:.55;margin-top:2px;">Co-fondateur<br>pol@faraday-box.fr<br>+33 6 12 34 56 78<br>faraday-box.fr</div></div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div>`;
+h+=`<div class="bcard" style="background:${C.sage};color:${C.ink};align-items:center;justify-content:center;text-align:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;">${LED(52,C.sage,'rgba(21,29,42,.15)',C.porcelain)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.03em;">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div></div>`;
+h+=`<div class="bcard" style="background:${C.ink};color:${C.porcelain};align-items:center;justify-content:center;text-align:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;">${LED(52,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.03em;">faraday</div><div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;">disconnect to reconnect</div></div></div>`;
 h+=`</div></div>`;
 
 // ============================================================
@@ -404,7 +404,7 @@ h+=`</div></div>`;
 h+=`<div class="sect"><div class="kicker">08 — Social</div><h2>Instagram</h2>`;
 h+=`<div class="grid" style="gap:16px;">`;
 // Brand post
-h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${LED(28,C.sage,'rgba(21,29,42,.15)',C.ember)}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">${LED(80,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:32px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div><div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.4;color:${C.porcelain};">disconnect to reconnect</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. 🌿</div></div>`;
+h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${LED(28,C.sage,'rgba(21,29,42,.15)',C.ember)}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">${LED(80,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:32px;letter-spacing:-.03em;color:${C.porcelain};">faraday</div><div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.4;color:${C.porcelain};">disconnect to reconnect</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> The present starts here. Deposez votre telephone, reprenez votre temps. 🌿</div></div>`;
 // Data post
 h+=`<div class="insta"><div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${LED(28,C.sage,'rgba(21,29,42,.15)',C.ember)}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div><div style="height:360px;background:${C.ink};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:56px;font-weight:600;color:${C.porcelain};">4h12</div><div style="font-size:16px;color:rgba(255,255,255,.5);max-width:280px;text-align:center;line-height:1.5;">C'est le temps moyen passe sur son telephone chaque jour en France.</div><div style="font-size:12px;color:${C.ember};font-weight:700;letter-spacing:.12em;">ET VOUS ?</div></div><div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};"><b>faraday.box</b> 4h12 par jour. Et si on les recuperait ? 📱⬇️</div></div>`;
 h+=`</div></div>`;
@@ -418,7 +418,7 @@ h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:
 h+=`<div style="flex:1;min-width:260px;"><div style="font-size:13px;font-weight:700;color:${C.ember};margin-bottom:12px;">✗ Ne pas faire</div><ul style="font-size:13px;line-height:2.2;color:var(--muted);list-style:none;"><li>• Tourner le mark LED a l'horizontale</li><li>• Changer les proportions shell/core</li><li>• Utiliser le mark sur fond charge</li><li>• Ajouter ombre ou effet au mark</li><li>• Utiliser Ember et Lake dans le logo</li><li>• Changer la police du wordmark</li><li>• Entourer le mark d'un cadre</li></ul></div>`;
 h+=`</div></div>`;
 
-h+=`<div style="text-align:center;padding:60px 40px;color:var(--muted);font-size:12px;">Faraday — Brand Book — 2026<br><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;letter-spacing:-.03em;margin-top:10px;display:inline-block;color:${C.ink};">faraday</span></div>`;
+h+=`<div style="text-align:center;padding:60px 40px;color:var(--muted);font-size:12px;">Faraday — Brand Book — 2026<br><span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.03em;margin-top:10px;display:inline-block;color:${C.ink};">faraday</span></div>`;
 h+=`</div>`;
 
 document.write(h);

@@ -3,9 +3,8 @@
   const pages = [
     { label: 'Brand Props', file: 'faraday-brand-proposals.html', icon: '&#10022;' },
     { label: 'LED Props', file: 'faraday-led-brand-proposals.html', icon: '&#9679;' },
-    { label: 'LED Props V2', file: 'faraday-led-brand-proposals-v2.html', icon: '&#9680;' },
-    { label: 'LED Props V3', file: 'faraday-led-brand-proposals-v3.html', icon: '&#9728;' },
-    { label: 'Brand Book', file: 'brand-identity.html', icon: '&#10023;' },
+    { label: 'Piste 1', file: 'brand-identity.html', icon: '&#10023;' },
+    { label: 'Piste 2', file: 'brand-identity-p2.html', icon: '&#10023;' },
     { label: 'Recherche V4', file: 'logo-research-v4.html', icon: '&#9733;' },
     { label: 'Recherche V5', file: 'logo-research-v5.html', icon: '&#9733;' },
     { label: 'Recherche V6', file: 'logo-research-v6.html', icon: '&#9733;' },
