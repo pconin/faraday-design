@@ -236,7 +236,7 @@ function buildLogoSvg(variant) {
     const titleSize = Math.round(variant.markSize * 0.52);
     const baselineSize = Math.round(variant.markSize * 0.15);
     const baselineTracking = Math.max(8, Math.round(variant.markSize * 0.048));
-    const baselineOffset = Math.round(titleSize * 0.56);
+    const baselineOffset = Math.round(titleSize * 0.62);
     return svgDoc(
       variant.width,
       variant.height,
@@ -276,7 +276,7 @@ function buildLogoSvg(variant) {
     const markY = variant.markY ?? 228;
     const titleSize = Math.round(variant.markSize * 0.5);
     const titleY = markY + variant.markSize + Math.round(titleSize * 0.74) + Math.round(variant.markSize * 0.08);
-    const baselineY = titleY + Math.round(titleSize * 0.58);
+    const baselineY = titleY + Math.round(titleSize * 0.64);
     return svgDoc(
       variant.width,
       variant.height,
@@ -321,7 +321,7 @@ function buildLogoSvg(variant) {
   if (variant.layout === 'wordmark') {
     const titleSize = 170;
     const titleY = variant.height / 2 - 4;
-    const baselineY = titleY + Math.round(titleSize * 0.58);
+    const baselineY = titleY + Math.round(titleSize * 0.64);
     return svgDoc(
       variant.width,
       variant.height,
@@ -768,7 +768,7 @@ function lockupMarkup({
 
   if (layout === 'horizontal') {
     const titleSize = Math.round(markSize * 0.5);
-    const baselineOffset = Math.round(titleSize * 0.56);
+    const baselineOffset = Math.round(titleSize * 0.62);
     return `
       ${mark}
       ${logoWordmark({
@@ -789,7 +789,7 @@ function lockupMarkup({
   const centerX = x + (markSize / 2);
   const titleSize = Math.round(markSize * 0.5);
   const titleY = y + markSize + Math.round(titleSize * 0.74) + Math.round(markSize * 0.06);
-  const baselineY = titleY + Math.round(titleSize * 0.58);
+  const baselineY = titleY + Math.round(titleSize * 0.64);
   return `
     ${mark}
     ${textPath({
