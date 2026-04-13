@@ -1,0 +1,550 @@
+{
+  "generatedAt": "2026-04-13T10:45:34.844229Z",
+  "package": {
+    "zip": "exports/deliverables/faraday-social-assets.zip"
+  },
+  "logos": [
+    {
+      "id": "mark-on-ink-ember",
+      "label": "Mark \u00b7 Ink Charcoal / Ember",
+      "category": "Symbol",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-ink-ember.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-ink-ember-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-ink-ember-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-ink-ember-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-ink-ember-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-ink-ember-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-ink-ember-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-ink-ember-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-ink-ember-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-ink-ember-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-ink-ember-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-ink-ember-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-ink-ember-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-ink-ember-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-ink-ember-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-on-ink-lake",
+      "label": "Mark \u00b7 Ink Charcoal / Lake",
+      "category": "Symbol",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-ink-lake.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-ink-lake-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-ink-lake-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-ink-lake-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-ink-lake-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-ink-lake-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-ink-lake-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-ink-lake-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-ink-lake-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-ink-lake-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-ink-lake-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-ink-lake-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-ink-lake-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-ink-lake-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-ink-lake-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-on-porcelain-ember",
+      "label": "Mark \u00b7 Porcelain / Ember",
+      "category": "Symbol",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-porcelain-ember.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-porcelain-ember-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-porcelain-ember-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-porcelain-ember-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-porcelain-ember-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-porcelain-ember-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-porcelain-ember-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-porcelain-ember-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-porcelain-ember-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-porcelain-ember-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-porcelain-ember-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-porcelain-ember-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-porcelain-ember-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-porcelain-ember-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-porcelain-ember-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-on-sage-porcelain",
+      "label": "Mark \u00b7 Sage Mist / Porcelain",
+      "category": "Symbol",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-sage-porcelain.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-sage-porcelain-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-sage-porcelain-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-sage-porcelain-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-sage-porcelain-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-sage-porcelain-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-sage-porcelain-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-sage-porcelain-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-sage-porcelain-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-sage-porcelain-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-sage-porcelain-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-sage-porcelain-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-sage-porcelain-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-sage-porcelain-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-sage-porcelain-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-gravure-ink",
+      "label": "Mark \u00b7 Gravure mono Ink",
+      "category": "Monochrome",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-gravure-ink.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-gravure-ink-32.png",
+          "64": "exports/deliverables/logos/png/mark-gravure-ink-64.png",
+          "128": "exports/deliverables/logos/png/mark-gravure-ink-128.png",
+          "256": "exports/deliverables/logos/png/mark-gravure-ink-256.png",
+          "512": "exports/deliverables/logos/png/mark-gravure-ink-512.png",
+          "1024": "exports/deliverables/logos/png/mark-gravure-ink-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-gravure-ink-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-gravure-ink-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-gravure-ink-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-gravure-ink-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-gravure-ink-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-gravure-ink-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-gravure-ink-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-gravure-ink-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-gravure-porcelain",
+      "label": "Mark \u00b7 Gravure mono Porcelain",
+      "category": "Monochrome",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-gravure-porcelain.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-gravure-porcelain-32.png",
+          "64": "exports/deliverables/logos/png/mark-gravure-porcelain-64.png",
+          "128": "exports/deliverables/logos/png/mark-gravure-porcelain-128.png",
+          "256": "exports/deliverables/logos/png/mark-gravure-porcelain-256.png",
+          "512": "exports/deliverables/logos/png/mark-gravure-porcelain-512.png",
+          "1024": "exports/deliverables/logos/png/mark-gravure-porcelain-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-gravure-porcelain-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-gravure-porcelain-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-gravure-porcelain-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-gravure-porcelain-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-gravure-porcelain-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-gravure-porcelain-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-gravure-porcelain-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-gravure-porcelain-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-ink-ember-baseline",
+      "label": "Horizontal \u00b7 Ink Charcoal / Ember \u00b7 baseline",
+      "category": "Wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-ember-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-ink-ember-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-ink-ember-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-ink-ember-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-ink-lake-baseline",
+      "label": "Horizontal \u00b7 Ink Charcoal / Lake \u00b7 baseline",
+      "category": "Wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-lake-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-ink-lake-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-ink-lake-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-ink-lake-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-ink-lake-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-ink-lake-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-ink-lake-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-porcelain-ember-baseline",
+      "label": "Horizontal \u00b7 Porcelain / Ember \u00b7 baseline",
+      "category": "Wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-porcelain-ember-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-porcelain-ember-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-porcelain-ember-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-porcelain-ember-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-porcelain-ember-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-porcelain-ember-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-porcelain-ember-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-sage-porcelain-baseline",
+      "label": "Horizontal \u00b7 Sage Mist / Porcelain \u00b7 baseline",
+      "category": "Wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-sage-porcelain-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-sage-porcelain-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-sage-porcelain-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-sage-porcelain-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-sage-porcelain-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-sage-porcelain-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-sage-porcelain-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-ink-ember",
+      "label": "Horizontal \u00b7 Ink Charcoal / Ember",
+      "category": "Wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-ember.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-ink-ember-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-ink-ember-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-ink-ember-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-ink-ember-baseline",
+      "label": "Stacked \u00b7 Ink Charcoal / Ember \u00b7 baseline",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-ink-ember-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-ink-ember-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-ink-ember-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-ink-ember-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-ink-ember-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-ink-ember-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-ink-ember-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-ink-lake-baseline",
+      "label": "Stacked \u00b7 Ink Charcoal / Lake \u00b7 baseline",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-ink-lake-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-ink-lake-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-ink-lake-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-ink-lake-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-ink-lake-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-ink-lake-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-ink-lake-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-porcelain-ember-baseline",
+      "label": "Stacked \u00b7 Porcelain / Ember \u00b7 baseline",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-porcelain-ember-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-sage-porcelain-baseline",
+      "label": "Stacked \u00b7 Sage Mist / Porcelain \u00b7 baseline",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-sage-porcelain-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "wordmark-transparent-ink",
+      "label": "Wordmark transparent \u00b7 Ink",
+      "category": "Transparent",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/wordmark-transparent-ink.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/wordmark-transparent-ink-512.png",
+          "1024": "exports/deliverables/logos/png/wordmark-transparent-ink-1024.png",
+          "2048": "exports/deliverables/logos/png/wordmark-transparent-ink-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/wordmark-transparent-ink-512.webp",
+          "1024": "exports/deliverables/logos/webp/wordmark-transparent-ink-1024.webp",
+          "2048": "exports/deliverables/logos/webp/wordmark-transparent-ink-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "wordmark-transparent-porcelain",
+      "label": "Wordmark transparent \u00b7 Porcelain",
+      "category": "Transparent",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/wordmark-transparent-porcelain.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/wordmark-transparent-porcelain-512.png",
+          "1024": "exports/deliverables/logos/png/wordmark-transparent-porcelain-1024.png",
+          "2048": "exports/deliverables/logos/png/wordmark-transparent-porcelain-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-512.webp",
+          "1024": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-1024.webp",
+          "2048": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-2048.webp"
+        }
+      }
+    }
+  ],
+  "staticBanners": [
+    {
+      "id": "instagram-portrait-quiet-promise",
+      "label": "Instagram portrait \u00b7 quote",
+      "platform": "Instagram portrait",
+      "format": "1080x1350",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-portrait-quiet-promise.png",
+        "webp": "exports/deliverables/social/static/instagram-portrait-quiet-promise.webp"
+      }
+    },
+    {
+      "id": "instagram-portrait-evening-photo",
+      "label": "Instagram portrait \u00b7 photo",
+      "platform": "Instagram portrait",
+      "format": "1080x1350",
+      "withImage": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-portrait-evening-photo.png",
+        "webp": "exports/deliverables/social/static/instagram-portrait-evening-photo.webp"
+      }
+    },
+    {
+      "id": "instagram-square-412",
+      "label": "Instagram square \u00b7 stat",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-412.png",
+        "webp": "exports/deliverables/social/static/instagram-square-412.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-photo",
+      "label": "Instagram square \u00b7 photo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-photo.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-photo.webp"
+      }
+    },
+    {
+      "id": "instagram-story-disconnect",
+      "label": "Instagram story \u00b7 typographic",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-story-disconnect.png",
+        "webp": "exports/deliverables/social/static/instagram-story-disconnect.webp"
+      }
+    },
+    {
+      "id": "instagram-story-living-room",
+      "label": "Instagram story \u00b7 photo",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "withImage": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-story-living-room.png",
+        "webp": "exports/deliverables/social/static/instagram-story-living-room.webp"
+      }
+    },
+    {
+      "id": "linkedin-feed-presence",
+      "label": "LinkedIn feed \u00b7 typographic",
+      "platform": "LinkedIn feed",
+      "format": "1200x627",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-feed-presence.png",
+        "webp": "exports/deliverables/social/static/linkedin-feed-presence.webp"
+      }
+    },
+    {
+      "id": "linkedin-feed-led-photo",
+      "label": "LinkedIn feed \u00b7 photo",
+      "platform": "LinkedIn feed",
+      "format": "1200x627",
+      "withImage": true,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-feed-led-photo.png",
+        "webp": "exports/deliverables/social/static/linkedin-feed-led-photo.webp"
+      }
+    },
+    {
+      "id": "linkedin-page-cover-minimal",
+      "label": "LinkedIn page cover \u00b7 minimal",
+      "platform": "LinkedIn page cover",
+      "format": "1584x396",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-page-cover-minimal.png",
+        "webp": "exports/deliverables/social/static/linkedin-page-cover-minimal.webp"
+      }
+    },
+    {
+      "id": "linkedin-page-cover-photo",
+      "label": "LinkedIn page cover \u00b7 photo",
+      "platform": "LinkedIn page cover",
+      "format": "1584x396",
+      "withImage": true,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-page-cover-photo.png",
+        "webp": "exports/deliverables/social/static/linkedin-page-cover-photo.webp"
+      }
+    },
+    {
+      "id": "linkedin-personal-cover-editorial",
+      "label": "LinkedIn personal cover \u00b7 editorial",
+      "platform": "LinkedIn personal cover",
+      "format": "1584x396",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-personal-cover-editorial.png",
+        "webp": "exports/deliverables/social/static/linkedin-personal-cover-editorial.webp"
+      }
+    },
+    {
+      "id": "linkedin-personal-cover-photo",
+      "label": "LinkedIn personal cover \u00b7 photo",
+      "platform": "LinkedIn personal cover",
+      "format": "1584x396",
+      "withImage": true,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-personal-cover-photo.png",
+        "webp": "exports/deliverables/social/static/linkedin-personal-cover-photo.webp"
+      }
+    }
+  ],
+  "animatedBanners": [
+    {
+      "id": "instagram-story-led-pulse",
+      "label": "Instagram story \u00b7 LED pulse",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "pulse",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-pulse.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-pulse.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-pulse.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-pulse-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink",
+      "label": "Instagram square \u00b7 double blink",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-portrait-led-breathe-photo",
+      "label": "Instagram portrait \u00b7 breathe photo",
+      "platform": "Instagram portrait",
+      "format": "1080x1350",
+      "animation": "pulse",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-portrait-led-breathe-photo.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-portrait-led-breathe-photo.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-portrait-led-breathe-photo.webm",
+        "poster": "exports/deliverables/social/animated/instagram-portrait-led-breathe-photo-poster.png"
+      }
+    },
+    {
+      "id": "linkedin-feed-lake-breathe",
+      "label": "LinkedIn feed \u00b7 lake breathe",
+      "platform": "LinkedIn feed",
+      "format": "1200x627",
+      "animation": "breathe-lake",
+      "files": {
+        "gif": "exports/deliverables/social/animated/linkedin-feed-lake-breathe.gif",
+        "mp4": "exports/deliverables/social/animated/linkedin-feed-lake-breathe.mp4",
+        "webm": "exports/deliverables/social/animated/linkedin-feed-lake-breathe.webm",
+        "poster": "exports/deliverables/social/animated/linkedin-feed-lake-breathe-poster.png"
+      }
+    }
+  ]
+}

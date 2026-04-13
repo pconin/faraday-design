@@ -5,8 +5,9 @@
 | Fichier | Description |
 |---------|-------------|
 | `brand-identity.html` | Brandbook complet interactif (16 sections) |
-| `DESIGN_SYSTEM.md` | Guidelines pour les agents développeurs |
 | `social-banners.html` | Prévisualisation des bannières réseaux sociaux |
+| `content-redaction.html` | Territoire éditorial, catchlines et guidelines de rédaction |
+| `DESIGN_SYSTEM.md` | Guidelines pour les agents développeurs |
 
 ## Exports (`exports/`)
 
@@ -16,6 +17,7 @@
 | `exports/icons/` | 6 SVG : Box minimal/detailed + Flatline (ink & white) |
 | `exports/app-icons/` | App icon 1024, favicon SVG |
 | `exports/animations.css` | 12 animations LED CSS standalone |
+| `exports/deliverables/` | Pack social complet : logos raster, bannières statiques, loops animés, manifest, ZIP |
 
 ## Tokens partagés
 

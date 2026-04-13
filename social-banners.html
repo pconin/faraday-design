@@ -1,233 +1,276 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faraday — Bannières Réseaux Sociaux</title>
-<!-- No DaisyUI/Tailwind CDN — conflicts with custom layout -->
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box;}
-  :root{
-    --sage:#C5CFBF;--ink:#151D2A;--porcelain:#F6F3EC;--lake:#4A8395;--ember:#FF9361;
-    --muted:#69717a;--line:rgba(17,22,29,.1);--paper:rgba(255,255,255,.72);
-  }
-  body{margin:0;color:var(--ink);font-family:'Manrope',sans-serif;background:var(--porcelain);}
-
-  /* Layout */
-  .page{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:40px 0 80px;}
-  .sect{margin-top:32px;padding:32px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.54));}
-  .sect-dark{background:linear-gradient(180deg,rgba(21,29,42,.97),rgba(21,29,42,.94));color:var(--porcelain);border-color:rgba(255,255,255,.06);}
-  .kicker{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(17,22,29,.06);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34404d;}
-  .sect-dark .kicker{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);}
-  h2{margin:14px 0 10px;font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,48px);line-height:.98;letter-spacing:-.04em;font-weight:700;}
-  .sect-desc{font-size:16px;line-height:1.7;color:var(--muted);max-width:600px;margin-bottom:28px;}
-  .sect-dark .sect-desc{color:rgba(255,255,255,.6);}
-  .sub{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;}
-  .sect-dark .sub{color:rgba(255,255,255,.5);}
-
-  /* Swatch */
-  .swatch{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px;border-radius:14px;background:rgba(255,255,255,.56);border:1px solid var(--line);}
-  .swatch-n{font-size:13px;font-weight:700;}
-  .swatch-h{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
-
-  /* Lockup */
-  .logo-stage{display:flex;align-items:center;justify-content:center;min-height:160px;padding:28px;border-radius:22px;}
-  .wm-title{font-family:'Sora',sans-serif;font-weight:300;font-size:36px;letter-spacing:-.03em;line-height:1;}
-
-  /* Anim */
-  @keyframes led-core-breathe{0%,100%{opacity:.64;}50%{opacity:1;}}
-  @keyframes led-halo-expand{0%,100%{opacity:.1;transform:scale(.92);}50%{opacity:.34;transform:scale(1.08);}}
-  .anim-breathe .led-core{animation:led-core-breathe 3.6s ease-in-out infinite;}
-  .anim-breathe .led-aura{animation:led-halo-expand 3.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
-
-  /* Insta */
-  .insta{width:360px;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(17,22,29,.06);border:1px solid rgba(17,22,29,.1);}
-
-  /* Metro / banner */
-  .metro{width:100%;border-radius:20px;overflow:hidden;display:flex;align-items:center;box-shadow:0 20px 60px rgba(17,22,29,.1);margin-bottom:16px;}
-
-  /* Mini card */
-  .mini-card{padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.58);text-align:center;}
-  .mini-card span{display:block;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-
-  /* Anim badge */
-  .anim-badge{position:absolute;top:12px;right:12px;background:var(--ember);color:#fff;font-size:8px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:6px;text-transform:uppercase;z-index:2;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="exports/app-icons/favicon.svg" rel="icon" type="image/svg+xml">
+  <title>Faraday — Social assets</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+    *{box-sizing:border-box}
+    :root{
+      --ink:#151D2A;
+      --porcelain:#F6F3EC;
+      --sage:#C5CFBF;
+      --ember:#FF9361;
+      --lake:#4A8395;
+      --muted:#60707f;
+      --line:rgba(21,29,42,.12);
+      --panel:rgba(255,255,255,.68);
+    }
+    body{margin:0;background:var(--porcelain);color:var(--ink);font-family:'Manrope',sans-serif}
+    .page{width:min(1320px,calc(100% - 48px));margin:0 auto;padding:40px 0 72px}
+    .hero,.section{border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.58))}
+    .hero{padding:42px}
+    .section{padding:30px;margin-top:24px}
+    .kicker{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(21,29,42,.06);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#45525f}
+    h1,h2,h3{margin:0}
+    h1{margin-top:16px;font-family:'Sora',sans-serif;font-size:clamp(42px,6vw,78px);line-height:.94;letter-spacing:-.05em}
+    h2{margin-top:10px;font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,46px);line-height:1;letter-spacing:-.04em}
+    p{margin:0}
+    .hero-copy{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:end}
+    .lede{margin-top:18px;max-width:760px;font-size:18px;line-height:1.75;color:var(--muted)}
+    .micro{margin-top:10px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(21,29,42,.44)}
+    .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .metric{padding:18px;border-radius:22px;background:var(--panel);border:1px solid var(--line)}
+    .metric strong{display:block;font-family:'IBM Plex Mono',monospace;font-size:28px}
+    .metric span{display:block;margin-top:8px;font-size:13px;line-height:1.6;color:var(--muted)}
+    .downloads{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 14px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.04em;background:#fff}
+    .btn.primary{background:var(--ink);color:var(--porcelain);border-color:var(--ink)}
+    .sub{margin-top:8px;font-size:13px;color:var(--muted)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+    .section-copy{max-width:680px;font-size:15px;line-height:1.7;color:var(--muted)}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{display:inline-flex;padding:7px 11px;border-radius:999px;border:1px solid var(--line);font-size:11px;font-weight:700;color:#4e5a66;background:#fff}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .logo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .card{padding:18px;border-radius:22px;background:rgba(255,255,255,.78);border:1px solid var(--line)}
+    .asset-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    .asset-title{font-size:16px;font-weight:800;line-height:1.3}
+    .asset-meta{margin-top:6px;font-size:12px;line-height:1.6;color:var(--muted)}
+    .preview{margin-top:16px;border-radius:18px;overflow:hidden;background:#e9e3da;border:1px solid rgba(21,29,42,.08);display:flex;align-items:center;justify-content:center;min-height:220px}
+    .preview img,.preview video{width:100%;height:100%;display:block;object-fit:contain}
+    .preview.logo{padding:22px;background:linear-gradient(180deg,#fff,#f2eee6)}
+    .preview.logo img{max-width:100%;max-height:260px;margin:auto}
+    .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .link{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:11px;font-weight:800;text-decoration:none;color:var(--ink)}
+    .stack{display:grid;gap:16px}
+    .split{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .spec-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .spec{padding:16px;border-radius:20px;background:rgba(255,255,255,.76);border:1px solid var(--line)}
+    .spec strong{display:block;font-size:14px}
+    .spec span{display:block;margin-top:6px;font-size:12px;line-height:1.6;color:var(--muted)}
+    .empty{padding:32px;border-radius:20px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+    @media (max-width: 1080px){
+      .hero-copy,.split,.summary,.grid,.logo-grid,.spec-list{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
+  <main class="page">
+    <section class="hero">
+      <div class="kicker">Social assets · livraison finale</div>
+      <div class="hero-copy">
+        <div>
+          <h1>Logos, bannières, loops et fichiers prêts à l’emploi.</h1>
+          <p class="lede">
+            Cette page centralise tous les exports brand et social de Faraday : logos SVG / PNG / WebP,
+            formats Instagram et LinkedIn, variantes avec et sans image, ainsi que les loops animés en GIF et en format vidéo.
+          </p>
+          <div class="micro">Disconnect to reconnect</div>
+          <div class="downloads">
+            <a class="btn primary" href="exports/deliverables/faraday-social-assets.zip">Télécharger le pack ZIP</a>
+            <a class="btn" href="brand-identity.html">Voir le brandbook</a>
+            <a class="btn" href="content-redaction.html">Voir le territoire éditorial</a>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="metric">
+            <strong id="logo-count">0</strong>
+            <span>Exports logo multi-formats : symbole, wordmark, empilé, baseline, gravure mono.</span>
+          </div>
+          <div class="metric">
+            <strong id="static-count">0</strong>
+            <span>Assets sociaux statiques Instagram et LinkedIn, avec variantes typographiques et photo.</span>
+          </div>
+          <div class="metric">
+            <strong id="animated-count">0</strong>
+            <span>Loops animés pour stories, posts et formats feed, prêts pour tests créa et canaux paid / organiques.</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script>
-// LED mark SVGs — from Codex
-const LED=(s,bg,shellC,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
-const LED_AURA=(s,bg,shellC,coreC,auraC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="${auraC}" opacity=".12"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
-const LED_CORE=(s,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="43" y="26" width="10" height="44" rx="5" fill="${coreC}"/></svg>`;
-const LED_MONO=(s,c)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="31" y="14" width="34" height="68" rx="17" stroke="${c}" stroke-width="4"/><rect x="43" y="28" width="10" height="40" rx="5" fill="${c}"/></svg>`;
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Formats</div>
+          <h2>Formats retenus et recommandés</h2>
+        </div>
+        <div class="chips">
+          <span class="chip">Instagram · 1080×1350</span>
+          <span class="chip">Instagram · 1080×1080</span>
+          <span class="chip">Instagram · 1080×1920</span>
+          <span class="chip">LinkedIn · 1200×627</span>
+          <span class="chip">LinkedIn cover · 1584×396</span>
+          <span class="chip">Logo · SVG / PNG / WebP</span>
+        </div>
+      </div>
+      <div class="spec-list">
+        <div class="spec">
+          <strong>Instagram</strong>
+          <span>Portrait, carré et story. Les trois existent en version typographique et en version photo pour varier entre éditorial et lifestyle.</span>
+        </div>
+        <div class="spec">
+          <strong>LinkedIn</strong>
+          <span>Feed, page cover et personal cover. Traitement plus premium, plus propre, plus lisible dans des usages corporate ou founder-led.</span>
+        </div>
+        <div class="spec">
+          <strong>Canva-ready</strong>
+          <span>Le pack contient des PNG transparents, des SVG, des visuels fondus et des loops vidéo faciles à réimporter dans Canva comme base de template.</span>
+        </div>
+      </div>
+    </section>
 
-const C={sage:'#C5CFBF',ink:'#151D2A',porcelain:'#F6F3EC',lake:'#4A8395',ember:'#FF9361',muted:'#69717a'};
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">01 · Logos</div>
+          <h2>Exports logo</h2>
+          <p class="section-copy">Système canonique validé : primary Ink Charcoal avec LED Ember ou Lake, secondary Porcelain + Ember, tertiary Sage Mist + Porcelain, plus gravure mono et coupes transparentes.</p>
+        </div>
+      </div>
+      <div id="logos" class="logo-grid">
+        <div class="empty">Les exports logo sont en cours de chargement.</div>
+      </div>
+    </section>
 
-let h='';
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">02 · Statiques</div>
+          <h2>Bannières sociales statiques</h2>
+          <p class="section-copy">Formats produits avec et sans image. Chaque carte affiche l’aperçu et les liens directs vers PNG / WebP, pour intégration immédiate dans Meta, LinkedIn, e-mail ou Canva.</p>
+        </div>
+      </div>
+      <div id="static-banners" class="grid">
+        <div class="empty">Les bannières statiques sont en cours de chargement.</div>
+      </div>
+    </section>
 
-// ============================================================
-// HERO
-// ============================================================
-h+=`<div class="page">`;
-h+=`<div class="sect" style="padding:48px;background:linear-gradient(140deg,rgba(255,255,255,.76),rgba(255,255,255,.52)),linear-gradient(120deg,rgba(197,207,191,.2),rgba(14,24,38,.04));position:relative;overflow:hidden;">`;
-h+=`<div style="display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center;">`;
-h+=`<div>`;
-h+=`<div class="kicker">Bannières Réseaux Sociaux — 2026</div>`;
-h+=`<h2 style="font-size:clamp(48px,6vw,78px);">faraday</h2>`;
-h+=`<p class="sect-desc" style="margin-top:16px;">Templates de bannières pour les réseaux sociaux, en version statique et animée. Chaque format respecte la charte graphique Faraday.</p>`;
-h+=`<div style="font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.5;">Social Media Assets</div>`;
-h+=`</div>`;
-h+=`<div style="display:flex;justify-content:center;align-items:center;">`;
-h+=`<div class="anim-breathe" style="width:160px;height:160px;">${LED_AURA(160,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>`;
-h+=`</div></div></div>`;
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">03 · Motion</div>
+          <h2>Loops animés</h2>
+          <p class="section-copy">Versions animées pensées comme previews de story, cover motion ou paid social léger. Livraison en GIF pour la prévisualisation et en vidéo pour des usages plus propres.</p>
+        </div>
+      </div>
+      <div id="animated-banners" class="grid">
+        <div class="empty">Les animations sont en cours de chargement.</div>
+      </div>
+    </section>
+  </main>
 
-// ============================================================
-// 01 — INSTAGRAM
-// ============================================================
-h+=`<div class="sect"><div class="kicker">01 — Instagram</div><h2>Posts & Stories</h2>`;
-h+=`<p class="sect-desc">Formats carré (1080×1080) pour le feed et vertical (1080×1920) pour les stories. Gradient Warm Walnut ou Deep Ink.</p>`;
+  <script>
+    const firstKey = (map) => {
+      if (!map) return null;
+      const keys = Object.keys(map).sort((a, b) => Number(a) - Number(b));
+      return keys.length ? map[keys[keys.length - 1]] : null;
+    };
 
-// Feed posts
-h+=`<div class="sub">Feed — Warm Walnut — 1080 × 1080</div>`;
-h+=`<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;">`;
+    const chip = (value) => `<span class="chip">${value}</span>`;
 
-// IG Post statique
-h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
-h+=`<div class="insta" style="width:360px;height:360px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));">`;
-h+=LED_AURA(100,'transparent','rgba(255,255,255,.2)',C.ember,C.ember);
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;color:rgba(255,255,255,.9);letter-spacing:-.03em;">faraday</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.05em;">Déposez. Déconnectez.</div>`;
-h+=`</div>`;
-h+=`<div style="font-size:11px;color:var(--muted);"><strong>Post Feed</strong> — Statique</div>`;
-h+=`</div>`;
+    const downloadLinks = (files) => Object.entries(files).map(([key, value]) => {
+      if (typeof value === 'string') {
+        return `<a class="link" href="${value}">${key.toUpperCase()}</a>`;
+      }
+      return Object.entries(value).map(([size, file]) => `<a class="link" href="${file}">${key.toUpperCase()} ${size}</a>`).join('');
+    }).join('');
 
-// IG Post animé
-h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
-h+=`<div class="insta anim-breathe" style="width:360px;height:360px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));position:relative;">`;
-h+=`<div class="anim-badge">ANIMÉ</div>`;
-h+=LED_AURA(100,'transparent','rgba(255,255,255,.2)',C.ember,C.ember);
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:28px;color:rgba(255,255,255,.9);letter-spacing:-.03em;">faraday</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.05em;">Déposez. Déconnectez.</div>`;
-h+=`</div>`;
-h+=`<div style="font-size:11px;color:var(--muted);"><strong>Post Feed</strong> — Animé (LED breathe)</div>`;
-h+=`</div>`;
+    fetch('exports/deliverables/manifest.json')
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById('logo-count').textContent = data.logos.length;
+        document.getElementById('static-count').textContent = data.staticBanners.length;
+        document.getElementById('animated-count').textContent = data.animatedBanners.length;
 
-h+=`</div>`;
+        const logoTarget = document.getElementById('logos');
+        logoTarget.innerHTML = data.logos.map((asset) => {
+          const preview = asset.files.png['512'] || firstKey(asset.files.png) || asset.files.svg;
+          return `
+            <article class="card">
+              <div class="asset-head">
+                <div>
+                  <div class="asset-title">${asset.label}</div>
+                  <div class="asset-meta">${asset.category}</div>
+                </div>
+                <div class="chips">${chip(asset.category)}</div>
+              </div>
+              <div class="preview logo"><img src="${preview}" alt="${asset.label}"></div>
+              <div class="links">${downloadLinks(asset.files)}</div>
+            </article>
+          `;
+        }).join('');
 
-// Stories
-h+=`<div class="sub">Stories — Deep Ink — 1080 × 1920</div>`;
-h+=`<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;">`;
+        const staticTarget = document.getElementById('static-banners');
+        staticTarget.innerHTML = data.staticBanners.map((asset) => `
+          <article class="card">
+            <div class="asset-head">
+              <div>
+                <div class="asset-title">${asset.label}</div>
+                <div class="asset-meta">${asset.platform} · ${asset.format}</div>
+              </div>
+              <div class="chips">
+                ${chip(asset.platform)}
+                ${asset.withImage ? chip('Avec image') : chip('Sans image')}
+              </div>
+            </div>
+            <div class="preview"><img src="${asset.files.png}" alt="${asset.label}"></div>
+            <div class="links">
+              <a class="link" href="${asset.files.png}">PNG</a>
+              <a class="link" href="${asset.files.webp}">WebP</a>
+            </div>
+          </article>
+        `).join('');
 
-// Story statique
-h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
-h+=`<div style="width:220px;height:390px;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));box-shadow:0 8px 30px rgba(17,22,29,.06);border:1px solid rgba(17,22,29,.1);">`;
-h+=LED_AURA(80,'transparent','rgba(246,243,236,.15)',C.ember,C.ember);
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;color:rgba(246,243,236,.85);letter-spacing:-.02em;">faraday</div>`;
-h+=`</div>`;
-h+=`<div style="font-size:11px;color:var(--muted);"><strong>Story</strong> — Statique</div>`;
-h+=`</div>`;
-
-// Story animée
-h+=`<div style="display:flex;flex-direction:column;gap:10px;">`;
-h+=`<div class="anim-breathe" style="width:220px;height:390px;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;background:linear-gradient(160deg,rgba(21,29,42,.95),rgba(10,16,24,.98));box-shadow:0 8px 30px rgba(17,22,29,.06);border:1px solid rgba(17,22,29,.1);position:relative;">`;
-h+=`<div class="anim-badge">ANIMÉ</div>`;
-h+=LED_AURA(80,'transparent','rgba(246,243,236,.15)',C.ember,C.ember);
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:18px;color:rgba(246,243,236,.85);letter-spacing:-.02em;">faraday</div>`;
-h+=`</div>`;
-h+=`<div style="font-size:11px;color:var(--muted);"><strong>Story</strong> — Animée (LED breathe)</div>`;
-h+=`</div>`;
-
-h+=`</div></div>`;
-
-// ============================================================
-// 02 — LINKEDIN + X (dark section)
-// ============================================================
-h+=`<div class="sect sect-dark"><div class="kicker">02 — LinkedIn & X</div><h2>Couvertures de profil</h2>`;
-h+=`<p class="sect-desc">Formats paysage pour les bannières de profil. Fond Ink pour LinkedIn, Porcelain pour X.</p>`;
-
-// LinkedIn
-h+=`<div class="sub">LinkedIn — 1584 × 396</div>`;
-h+=`<div class="metro" style="height:132px;background:${C.ink};justify-content:space-between;padding:0 32px;border:1px solid rgba(255,255,255,.06);">`;
-h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(52,'transparent','rgba(246,243,236,.2)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;color:${C.porcelain};letter-spacing:-.02em;">faraday</span></div>`;
-h+=`<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:11px;color:rgba(246,243,236,.4);text-align:right;">Déposez.<br>Déconnectez.</span>`;
-h+=`</div>`;
-h+=`<div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:-8px;margin-bottom:16px;">Couverture profil / page entreprise</div>`;
-
-// Twitter / X
-h+=`<div class="sub">Twitter / X — 1500 × 500</div>`;
-h+=`<div class="metro" style="height:167px;background:${C.porcelain};gap:14px;justify-content:center;border-bottom:3px solid ${C.sage};">`;
-h+=`<div style="display:flex;align-items:center;gap:14px;">${LED(56,'transparent','rgba(21,29,42,.12)',C.ember)}<span style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:${C.ink};letter-spacing:-.02em;">faraday</span></div>`;
-h+=`</div>`;
-h+=`<div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:-8px;">Couverture profil X</div>`;
-
-h+=`</div>`;
-
-// ============================================================
-// 03 — OG IMAGES
-// ============================================================
-h+=`<div class="sect"><div class="kicker">03 — Open Graph</div><h2>Aperçus de liens</h2>`;
-h+=`<p class="sect-desc">Images de prévisualisation pour les partages de liens (Slack, iMessage, WhatsApp). Format 1200 × 630.</p>`;
-
-h+=`<div class="sub">Warm Walnut</div>`;
-h+=`<div class="metro" style="height:210px;background:linear-gradient(135deg,rgba(138,122,104,.85),rgba(74,58,40,.9));flex-direction:column;gap:10px;justify-content:center;padding:0;">`;
-h+=LED(56,'transparent','rgba(255,255,255,.2)',C.ember);
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:rgba(255,255,255,.9);letter-spacing:-.02em;">faraday</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(255,255,255,.5);text-align:center;">La cage de Faraday pour votre téléphone</div>`;
-h+=`</div>`;
-
-h+=`<div class="sub">Deep Ink</div>`;
-h+=`<div class="metro" style="height:210px;background:${C.ink};flex-direction:column;gap:10px;justify-content:center;padding:0;">`;
-h+=LED(56,'transparent','rgba(246,243,236,.15)',C.ember);
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;color:rgba(246,243,236,.9);letter-spacing:-.02em;">faraday</div>`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:12px;color:rgba(246,243,236,.45);text-align:center;">La cage de Faraday pour votre téléphone</div>`;
-h+=`</div>`;
-
-h+=`</div>`;
-
-// ============================================================
-// 04 — SPECS
-// ============================================================
-h+=`<div class="sect"><div class="kicker">04 — Spécifications</div><h2>Récapitulatif des formats</h2>`;
-h+=`<p class="sect-desc">Tous les formats et leurs usages. Exporter depuis cette page ou depuis les SVG dans <code style="background:rgba(17,22,29,.06);padding:2px 8px;border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:13px;">exports/</code>.</p>`;
-
-h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">`;
-[
-  {t:'Instagram Post',d:'1080 × 1080',u:'Feed carré',c:C.ember},
-  {t:'Instagram Story',d:'1080 × 1920',u:'Stories / Reels cover',c:C.ember},
-  {t:'LinkedIn Banner',d:'1584 × 396',u:'Couverture profil',c:C.lake},
-  {t:'Twitter / X',d:'1500 × 500',u:'Header profil',c:C.lake},
-  {t:'OG Image',d:'1200 × 630',u:'Aperçu de lien',c:C.lake},
-  {t:'Gradients autorisés',d:'Warm Walnut / Deep Ink',u:'Jamais Sage + Ember ⛔',c:'#c44'},
-].forEach(s=>{
-  h+=`<div style="padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.5);">`;
-  h+=`<div style="width:8px;height:8px;border-radius:50%;background:${s.c};margin-bottom:10px;"></div>`;
-  h+=`<div style="font-size:14px;font-weight:700;">${s.t}</div>`;
-  h+=`<div style="font-size:12px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:6px;">${s.d}</div>`;
-  h+=`<div style="font-size:11px;color:var(--muted);margin-top:4px;">${s.u}</div></div>`;
-});
-h+=`</div></div>`;
-
-// ============================================================
-// FOOTER (identique au brandbook)
-// ============================================================
-h+=`<div style="text-align:center;padding:60px 40px;border-top:1px solid var(--line);margin-top:40px;">`;
-h+=`<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:20px;letter-spacing:-.03em;color:${C.ink};margin-bottom:10px;">faraday</div>`;
-h+=`<div style="font-size:11px;color:var(--muted);margin-bottom:24px;">Bannières Réseaux Sociaux — 2026</div>`;
-h+=`<div style="font-size:11px;color:var(--muted);margin-top:16px;">`;
-h+=`<div style="font-weight:700;margin-bottom:8px;">Voir aussi</div>`;
-h+=`<a href="brand-identity.html" style="color:${C.lake};margin:0 8px;">Brand Book</a>`;
-h+=`<a href="research/faraday-led-brand-proposals.html" style="color:${C.lake};margin:0 8px;">LED Proposals</a>`;
-h+=`<a href="research/app-mockups-v3.html" style="color:${C.lake};margin:0 8px;">App Mockups V3</a>`;
-h+=`<a href="research/logo-selection.html" style="color:${C.lake};margin:0 8px;">Sélection</a>`;
-h+=`</div></div>`;
-h+=`</div>`;
-
-document.write(h);
-</script>
-
-<script src="nav.js"></script>
+        const animatedTarget = document.getElementById('animated-banners');
+        animatedTarget.innerHTML = data.animatedBanners.map((asset) => `
+          <article class="card">
+            <div class="asset-head">
+              <div>
+                <div class="asset-title">${asset.label}</div>
+                <div class="asset-meta">${asset.platform} · ${asset.format} · ${asset.animation}</div>
+              </div>
+              <div class="chips">
+                ${chip(asset.platform)}
+                ${chip(asset.animation)}
+              </div>
+            </div>
+            <div class="preview">
+              <video autoplay muted loop playsinline poster="${asset.files.poster}">
+                <source src="${asset.files.webm}" type="video/webm">
+                <source src="${asset.files.mp4}" type="video/mp4">
+              </video>
+            </div>
+            <div class="links">
+              <a class="link" href="${asset.files.gif}">GIF</a>
+              <a class="link" href="${asset.files.webm}">WebM</a>
+              <a class="link" href="${asset.files.mp4}">MP4</a>
+              <a class="link" href="${asset.files.poster}">Poster PNG</a>
+            </div>
+          </article>
+        `).join('');
+      })
+      .catch(() => {
+        const message = '<div class="empty">Manifest introuvable. Lance la génération des assets pour peupler cette page.</div>';
+        document.getElementById('logos').innerHTML = message;
+        document.getElementById('static-banners').innerHTML = message;
+        document.getElementById('animated-banners').innerHTML = message;
+      });
+  </script>
+  <script src="final-nav.js"></script>
+  <script src="final-footer.js"></script>
 </body>
 </html>

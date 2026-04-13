@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="exports/app-icons/favicon.svg" rel="icon" type="image/svg+xml"/>
 <title>Faraday — Brand Book</title>
 <!-- No DaisyUI/Tailwind CDN — conflicts with custom layout -->
 <style>
@@ -174,7 +175,7 @@ h+=`<div class="page">`;
 h+=`<div class="sect" style="padding:48px;background:linear-gradient(140deg,rgba(255,255,255,.76),rgba(255,255,255,.52)),linear-gradient(120deg,rgba(197,207,191,.2),rgba(14,24,38,.04));position:relative;overflow:hidden;">`;
 h+=`<div style="display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center;">`;
 h+=`<div>`;
-h+=`<div class="kicker">Piste 1 — Brand Book 2026</div>`;
+h+=`<div class="kicker">Brandbook final — 2026</div>`;
 h+=`<h2 style="font-size:clamp(48px,6vw,78px);">faraday</h2>`;
 h+=`<p class="sect-desc" style="margin-top:16px;">Un objet connecte qui protege votre attention. Déposez votre téléphone, reprenez votre temps. Chaque detail de cette identite sert un objectif : rendre le calme desirable.</p>`;
 h+=`<div style="font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.5;">Disconnect to reconnect</div>`;
@@ -496,8 +497,8 @@ h+=`</div></div>`;
 h+=`<div class="sect"><div class="kicker">08 — Social</div><h2>Instagram</h2>`;
 h+=`<p class="sect-desc">Avatar profil : logo Ink+Ember. Posts separes avec declinaisons Ink Charcoal et Porcelain. 2 posts avec photo en background.</p>`;
 const instaAv=LED(28,C.ink,'rgba(246,243,236,.15)',C.ember);
-const instaH=(cap)=>`<div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};border-bottom:1px solid rgba(17,22,29,.08);"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faraday.box</div></div>`;
-const instaF=(txt)=>`<div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};border-top:1px solid rgba(17,22,29,.08);"><b>faraday.box</b> ${txt}</div>`;
+const instaH=(cap)=>`<div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:${C.porcelain};border-bottom:1px solid rgba(17,22,29,.08);"><div style="width:28px;height:28px;border-radius:50%;overflow:hidden;">${instaAv}</div><div style="font-size:12px;font-weight:700;">faradaybox</div></div>`;
+const instaF=(txt)=>`<div style="padding:12px 14px;font-size:12px;line-height:1.5;background:${C.porcelain};border-top:1px solid rgba(17,22,29,.08);"><b>faradaybox</b> ${txt}</div>`;
 
 // Post 1 — Quote on Ink Charcoal
 h+=`<div class="sub">Citation — fond Ink Charcoal</div>`;
@@ -1051,6 +1052,6 @@ h+=`</div>`;
 document.write(h);
 </script>
 
-<script src="nav.js"></script>
+<script src="final-nav.js"></script>
 </body>
 </html>
