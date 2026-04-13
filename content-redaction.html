@@ -17,80 +17,118 @@
       --muted:#64707c;
       --line:rgba(21,29,42,.12);
       --panel:rgba(255,255,255,.74);
-      --soft:#ECE7DF;
+      --paper:#ECE7DF;
     }
     body{margin:0;background:var(--porcelain);color:var(--ink);font-family:'Manrope',sans-serif}
     .page{width:min(1320px,calc(100% - 48px));margin:0 auto;padding:40px 0 72px}
-    .hero,.section{border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.84),rgba(255,255,255,.6))}
-    .hero{padding:42px}
-    .section{padding:28px;margin-top:24px}
+    .hero,.section{border:1px solid var(--line);border-radius:30px}
+    .hero{
+      padding:42px;
+      background:
+        linear-gradient(160deg,rgba(255,255,255,.84),rgba(255,255,255,.62)),
+        linear-gradient(120deg,rgba(197,207,191,.12),rgba(255,147,97,.06));
+    }
+    .section{padding:28px;margin-top:24px;background:linear-gradient(180deg,rgba(255,255,255,.84),rgba(255,255,255,.58))}
     .kicker{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(21,29,42,.06);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#45525f}
-    h1,h2,h3{margin:0}
+    h1,h2,h3,p{margin:0}
     h1{margin-top:16px;font-family:'Sora',sans-serif;font-size:clamp(42px,6vw,78px);line-height:.94;letter-spacing:-.05em}
     h2{margin-top:10px;font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,44px);line-height:1;letter-spacing:-.04em}
     h3{font-family:'Sora',sans-serif;font-size:20px;letter-spacing:-.03em}
-    .lede{margin-top:18px;max-width:860px;font-size:18px;line-height:1.75;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .lede{margin-top:18px;max-width:880px;font-size:18px;line-height:1.75;color:var(--muted)}
     .split{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .small-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
     .stack{display:grid;gap:16px}
-    .card{padding:18px;border-radius:22px;background:var(--panel);border:1px solid var(--line)}
-    .card p,.body{margin-top:10px;font-size:14px;line-height:1.75;color:var(--muted)}
-    .quote{padding:22px;border-radius:24px;background:var(--ink);color:var(--porcelain)}
+    .card,.quote,.headline,.item,.note{
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:var(--panel);
+    }
+    .card,.note{padding:18px}
+    .quote{padding:22px;background:linear-gradient(180deg,#151D2A,#101824);color:var(--porcelain);border-color:rgba(255,255,255,.08)}
     .quote strong{display:block;font-family:'Sora',sans-serif;font-size:28px;line-height:1.08;letter-spacing:-.04em}
     .quote span{display:block;margin-top:12px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;opacity:.52}
+    .body,.card p{margin-top:10px;font-size:14px;line-height:1.75;color:var(--muted)}
     .list{display:grid;gap:10px;margin-top:12px}
-    .item{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.82);border:1px solid var(--line)}
+    .item{padding:14px 16px;background:rgba(255,255,255,.82)}
     .item strong{display:block;font-size:14px}
     .item span{display:block;margin-top:6px;font-size:13px;line-height:1.7;color:var(--muted)}
-    .headline{padding:18px;border-radius:22px;background:var(--soft);border:1px solid var(--line)}
-    .headline strong{display:block;font-family:'Sora',sans-serif;font-size:22px;line-height:1.12;letter-spacing:-.04em}
+    .headline{padding:18px;background:rgba(255,255,255,.82)}
+    .headline strong{display:block;font-family:'Sora',sans-serif;font-size:22px;line-height:1.14;letter-spacing:-.04em}
     .headline span{display:block;margin-top:8px;font-size:12px;line-height:1.7;color:var(--muted)}
-    .tone{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .tone .card{height:100%}
     .mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
-    .banned{color:#9f5138}
-    .allowed{color:#35644f}
-    .small-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-    @media (max-width: 1080px){
-      .grid,.split,.tone,.small-grid{grid-template-columns:1fr}
+    .keep{color:#35644f}
+    .rewrite{color:#986037}
+    .ban{color:#9f5138}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .chip{display:inline-flex;padding:7px 11px;border-radius:999px;border:1px solid var(--line);font-size:11px;font-weight:700;color:#4e5a66;background:#fff}
+    .ref{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .ref a{color:var(--ink)}
+    .note{background:#fff}
+    @media (max-width:1080px){
+      .split,.grid,.grid-4,.small-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
   <main class="page">
     <section class="hero">
-      <div class="kicker">Territoire éditorial · proposition complète</div>
-      <h1>Faraday doit parler comme une marque premium, présente, maligne et jamais moralisatrice.</h1>
+      <div class="kicker">Territoire éditorial · version itérée</div>
+      <h1>Faraday doit parler comme une marque premium, présente, maligne et jamais gadget.</h1>
       <p class="lede">
-        La marque ne vend ni la culpabilité digitale, ni un gadget anti-tech. Elle vend un geste clair, désirable et presque
-        libérateur : poser son téléphone pour récupérer un peu de vie réelle. La tonalité finale recommandée est
-        <strong style="color:var(--ink)">premium / présence à 60%</strong> et <strong style="color:var(--ink)">drôle / franc à 40%</strong>.
+        La marque ne vend pas une punition digitale. Elle vend un geste désirable qui remet de la présence dans la journée.
+        Le ton recommandé reste <strong style="color:var(--ink)">premium / présence en registre principal</strong>, avec un
+        <strong style="color:var(--ink)">humour sec et complice en registre secondaire</strong>. L’objectif n’est pas d’être drôle tout le temps.
+        L’objectif est d’être juste, net, et parfois légèrement plus malin que le problème.
       </p>
+    </section>
+
+    <section class="section">
+      <div class="kicker">01 · Audit du site</div>
+      <h2>Ce qui existe déjà dans le site web</h2>
+      <div class="grid" style="margin-top:18px;">
+        <div class="card">
+          <h3 class="keep">À conserver</h3>
+          <div class="list">
+            <div class="item"><strong>Posez votre téléphone. Retrouvez votre temps.</strong><span>Le hero du site est fort, direct et très compréhensible.</span></div>
+            <div class="item"><strong>Posez. Vivez. Retrouvez.</strong><span>Excellente structure de rituel. Elle peut vivre dans le site, l’app, le retail et le social.</span></div>
+            <div class="item"><strong>Chaque minute compte.</strong><span>Très bon niveau de densité pour CRM, stats et messages de fin de session.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="rewrite">À réécrire</h3>
+          <div class="list">
+            <div class="item"><strong>Faraday est l’objet connecté de la déconnexion volontaire.</strong><span>Juste sur le fond, mais encore trop descriptif et un peu froid. À rendre plus désirable.</span></div>
+            <div class="item"><strong>Votre téléphone mérite une pause.</strong><span>Pas faux, mais trop générique. Le bénéfice utilisateur disparaît.</span></div>
+            <div class="item"><strong>Le spa digital dont vous aviez besoin.</strong><span>Trop gimmick. La marque devient blague avant de devenir crédible.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="ban">À supprimer</h3>
+          <div class="list">
+            <div class="item"><strong>La cage de Faraday, mais en version luxe.</strong><span>Contredit directement le territoire final. Trop technique, trop froide, pas désirable.</span></div>
+            <div class="item"><strong>Le premier hôtel 5 étoiles pour smartphone.</strong><span>Le centre de gravité part du mauvais côté. On ne vend pas une literie pour téléphone.</span></div>
+            <div class="item"><strong>Un lit douillet pour votre téléphone.</strong><span>Infantilise le propos et réduit la valeur perçue.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section">
       <div class="split">
         <div class="card">
-          <div class="kicker">01 · Plateforme</div>
-          <h2>Positionnement</h2>
+          <div class="kicker">02 · Plateforme</div>
+          <h2>Positionnement éditorial</h2>
           <p class="body">
-            Faraday est la marque premium de la déconnexion volontaire. Elle transforme un problème diffus
-            d’attention en objet, en rituel et en signe visible de présence. Là où d’autres produits promettent
-            du contrôle, Faraday rend la reprise en main désirable, simple et presque évidente.
+            Faraday est une marque de déconnexion volontaire premium. Elle transforme un problème diffus d’attention
+            en geste simple, visible et désirable. Le récit doit toujours partir de la vie retrouvée, jamais de la cage,
+            jamais de la peur, jamais du gadget.
           </p>
           <div class="list">
-            <div class="item">
-              <strong>Promesse</strong>
-              <span>Vous ne disparaissez pas du monde. Vous réapparaissez dans votre vraie vie.</span>
-            </div>
-            <div class="item">
-              <strong>Proof</strong>
-              <span>Un objet physique, une lumière frontale, une app de suivi, des groupes et des rituels qui rendent la déconnexion concrète.</span>
-            </div>
-            <div class="item">
-              <strong>Signature</strong>
-              <span><strong>Disconnect to reconnect</strong> reste la baseline maître. Tout le reste doit la renforcer, jamais la parasiter.</span>
-            </div>
+            <div class="item"><strong>Promesse</strong><span>Vous ne disparaissez pas du monde. Vous réapparaissez dans votre moment.</span></div>
+            <div class="item"><strong>Preuve</strong><span>Un objet physique, une LED frontale, une app et des stats. La promesse n’est pas abstraite.</span></div>
+            <div class="item"><strong>Signature</strong><span><strong>Disconnect to reconnect</strong> reste la baseline maître. Tout le reste doit venir en soutien.</span></div>
           </div>
         </div>
         <div class="stack">
@@ -98,41 +136,10 @@
             <strong>Votre téléphone ne vous manquera pas. Promis.</strong>
             <span>Territoire recommandé</span>
           </div>
-          <div class="quote" style="background:linear-gradient(180deg,#C5CFBF,#B8C2B2);color:var(--ink);">
+          <div class="quote">
             <strong>Le vrai luxe, c’est de ne pas être joignable.</strong>
-            <span style="opacity:.58">Social / affichage / landing</span>
+            <span>Social / affichage / LinkedIn</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="kicker">02 · Piliers de message</div>
-      <h2>Quatre piliers à tenir partout</h2>
-      <div class="grid" style="margin-top:18px;">
-        <div class="card">
-          <h3>Présence</h3>
-          <p>Faraday ne coupe pas le monde. Elle redonne de la place aux gens, aux soirées, aux moments, aux repas, aux vrais silences.</p>
-        </div>
-        <div class="card">
-          <h3>Rituel</h3>
-          <p>La marque parle d’un geste simple : on dépose, on respire, on reprend la main. L’objet et la LED rendent ce rituel visible.</p>
-        </div>
-        <div class="card">
-          <h3>Désirabilité</h3>
-          <p>Le discours doit rester premium, net, beau, presque éditorial. On n’est ni dans l’accessoire geek ni dans la punition digitale.</p>
-        </div>
-        <div class="card">
-          <h3>Humour lucide</h3>
-          <p>Faraday a le droit d’être drôle, tant qu’elle ne devient ni cynique ni agressive. Le sourire doit soulager, pas sermonner.</p>
-        </div>
-        <div class="card">
-          <h3>Contrôle sans injonction</h3>
-          <p>On évite les slogans trop autoritaires. Faraday propose une reprise en main douce, pas un ordre de se corriger.</p>
-        </div>
-        <div class="card">
-          <h3>Technologie silencieuse</h3>
-          <p>La tech est présente mais discrète. Elle sert le calme. Elle n’est jamais le sujet principal du récit.</p>
         </div>
       </div>
     </section>
@@ -140,49 +147,95 @@
     <section class="section">
       <div class="kicker">03 · Ton de voix</div>
       <h2>Comment la marque parle</h2>
-      <div class="tone" style="margin-top:18px;">
+      <div class="small-grid" style="margin-top:18px;">
         <div class="card">
-          <h3 class="allowed">À faire</h3>
+          <h3>Registre principal</h3>
+          <div class="chips">
+            <span class="chip">Premium</span>
+            <span class="chip">Présence</span>
+            <span class="chip">Rituel</span>
+            <span class="chip">Concret</span>
+          </div>
+          <p class="body">La marque doit paraître calme, précise, très lisible. Pas creuse, pas trop wellness, pas pseudo-spirituelle.</p>
+        </div>
+        <div class="card">
+          <h3>Registre secondaire</h3>
+          <div class="chips">
+            <span class="chip">Drôle</span>
+            <span class="chip">Franc</span>
+            <span class="chip">Complice</span>
+            <span class="chip">Sec</span>
+          </div>
+          <p class="body">L’humour arrive après la clarté. Une bonne ligne Faraday doit d’abord être juste, puis légèrement sourire.</p>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:16px;">
+        <div class="card">
+          <h3 class="keep">À faire</h3>
           <div class="list">
-            <div class="item"><strong>Parler concret</strong><span>Soirées, repas, lecture, matin, présence, dîner, vraie vie.</span></div>
-            <div class="item"><strong>Rester élégant</strong><span>Peu de bruit, peu de jargon, peu d’effets. Une phrase forte vaut mieux qu’un manifeste confus.</span></div>
-            <div class="item"><strong>Utiliser l’humour sec</strong><span>Promis. Vos notifications survivront. Votre téléphone s’en remettra très bien.</span></div>
-            <div class="item"><strong>Faire sentir le bénéfice</strong><span>Plus de présence, plus de temps utile, plus de calme choisi.</span></div>
+            <div class="item"><strong>Parler de moments réels</strong><span>Dîner, matin, lecture, conversation, silence, soirée.</span></div>
+            <div class="item"><strong>Rester bref</strong><span>Une phrase forte vaut mieux qu’un paragraphe explicatif.</span></div>
+            <div class="item"><strong>Utiliser l’humour comme décompression</strong><span>Promis. Vos notifications survivront. Votre téléphone s’en remettra.</span></div>
           </div>
         </div>
         <div class="card">
-          <h3 class="banned">À éviter</h3>
+          <h3 class="rewrite">À cadrer</h3>
           <div class="list">
-            <div class="item"><strong>Moraliser</strong><span>Ne jamais faire culpabiliser l’utilisateur sur son usage d’écran.</span></div>
-            <div class="item"><strong>Tech-splainer</strong><span>Éviter le ton “solution scientifique miracle” ou le jargon pseudo-expert.</span></div>
-            <div class="item"><strong>Claim médical</strong><span>Pas de promesse de soin, de guérison ou d’optimisation santé prise au premier degré.</span></div>
-            <div class="item"><strong>Lexique interdit</strong><span>Supprimer toute formule du type <strong>“La cage de Faraday pour votre téléphone”</strong>.</span></div>
+            <div class="item"><strong>Claims santé</strong><span>Évoquer sommeil, dopamine ou cerveau seulement avec distance, jamais comme promesse produit.</span></div>
+            <div class="item"><strong>Stats</strong><span>Le chiffre 4h12 est bon si assumé. Il faut éviter d’empiler des chiffres non tenus.</span></div>
+            <div class="item"><strong>Tech</strong><span>La LED et l’objet doivent servir le récit. Ils ne doivent pas le rendre plus froid.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="ban">À éviter</h3>
+          <div class="list">
+            <div class="item"><strong>Moraliser</strong><span>Pas de sermon sur le temps d’écran. La marque aide, elle ne juge pas.</span></div>
+            <div class="item"><strong>Infantiliser</strong><span>Éviter les blagues sur le téléphone “au lit”, “au coin”, “à l’hôtel”.</span></div>
+            <div class="item"><strong>Injonction frontale</strong><span>Éviter les slogans type “reprends le contrôle de ta vie”. Trop agressif, trop simpliste.</span></div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="kicker">04 · Lexique</div>
-      <h2>Lexique autorisé / interdit</h2>
-      <div class="small-grid" style="margin-top:18px;">
+      <div class="kicker">04 · Benchmarks humour</div>
+      <h2>Exemples utiles de ton humoristique maîtrisé</h2>
+      <p class="lede" style="max-width:980px;font-size:16px;">
+        J’ai regardé trois références utiles. Pas pour les copier, mais pour isoler ce qui fonctionne :
+        la précision factuelle chez Back Market, la cohérence radicale chez Liquid Death, et l’auto-conscience conversationnelle chez Oatly.
+      </p>
+      <div class="grid" style="margin-top:18px;">
         <div class="card">
-          <h3 class="allowed">Autorisé</h3>
-          <div class="list">
-            <div class="item"><strong>Déconnexion volontaire</strong><span>La formule la plus juste pour parler du geste.</span></div>
-            <div class="item"><strong>Temps retrouvé</strong><span>Angle fort pour campagne, site, app et social.</span></div>
-            <div class="item"><strong>Présence</strong><span>Le mot le plus premium, le plus émotionnel et le plus large.</span></div>
-            <div class="item"><strong>Rituel</strong><span>Permet de parler du geste sans tomber dans la fonctionnalité produit.</span></div>
-            <div class="item"><strong>Lumière / signal / balise</strong><span>Très bon territoire autour de la LED.</span></div>
+          <div class="ref">
+            <h3>Back Market</h3>
+            <a href="https://invisibletech.backmarket.com/" target="_blank" rel="noopener">Source officielle</a>
+          </div>
+          <p class="body">Le ton mélange chiffres sérieux et aside complice. Exemple utile : un pourcentage ultra-précis, immédiatement désamorcé par un “jokes aside”.</p>
+          <div class="note">
+            <strong>Leçon Faraday</strong>
+            <p class="body">Faraday peut utiliser la stat 4h12, à condition d’ajouter ensuite une ligne humaine, courte, sans ton professoral.</p>
           </div>
         </div>
         <div class="card">
-          <h3 class="banned">Interdit</h3>
-          <div class="list">
-            <div class="item"><strong>“Cage de Faraday”</strong><span>Réduction trop technique, froide, anxiogène et non désirable.</span></div>
-            <div class="item"><strong>Addiction / detox</strong><span>À manier seulement avec humour et distance, jamais comme promesse frontale.</span></div>
-            <div class="item"><strong>Solution santé</strong><span>Ne pas promettre du sommeil, de la dopamine ou de la santé mentale comme bénéfice médical.</span></div>
-            <div class="item"><strong>Discipline punitive</strong><span>Éviter “reprends le contrôle de ta vie” ou toute formulation trop injonctive.</span></div>
+          <div class="ref">
+            <h3>Liquid Death</h3>
+            <a href="https://liquiddeath.com/" target="_blank" rel="noopener">Source officielle</a>
+          </div>
+          <p class="body">La marque pousse une promesse absurde mais totalement tenue. Tout est cohérent autour de “Murder Your Thirst”.</p>
+          <div class="note">
+            <strong>Leçon Faraday</strong>
+            <p class="body">Faraday ne doit pas reprendre l’excès, mais peut assumer des accroches plus nettes si tout le système reste discipliné et premium.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ref">
+            <h3>Oatly</h3>
+            <a href="https://www.oatly.com/en-us/things-we-do/brainwashing/i-read-oatly-cartons?modal=carton-reader-form" target="_blank" rel="noopener">Source officielle</a>
+          </div>
+          <p class="body">Le ton est conversationnel, auto-conscient, parfois légèrement insolent, sans jamais casser la lisibilité du bénéfice.</p>
+          <div class="note">
+            <strong>Leçon Faraday</strong>
+            <p class="body">L’humour peut aussi vivre dans les détails : FAQ, onboarding, microcopy app, caption social. Pas seulement dans les affiches.</p>
           </div>
         </div>
       </div>
@@ -190,130 +243,125 @@
 
     <section class="section">
       <div class="kicker">05 · Catchlines</div>
-      <h2>Baselines et signatures secondaires</h2>
+      <h2>Hiérarchie des accroches</h2>
       <div class="grid" style="margin-top:18px;">
         <div class="headline">
           <strong>Disconnect to reconnect</strong>
-          <span>Baseline principale. À garder comme signature maître de marque.</span>
+          <span>Baseline principale. Signature de marque, pas slogan de campagne à répéter partout en titre.</span>
         </div>
         <div class="headline">
           <strong>Votre téléphone ne vous manquera pas. Promis.</strong>
-          <span>Très bon territoire pour l’affichage, le paid social et les ads de conversion.</span>
+          <span>Probablement la meilleure phrase d’attaque pour affichage, paid social et splash de campagne.</span>
         </div>
         <div class="headline">
           <strong>Le vrai luxe, c’est de ne pas être joignable.</strong>
-          <span>Parfait pour les prises de parole premium, éditoriales et LinkedIn.</span>
+          <span>Très bon territoire premium. À utiliser sur LinkedIn, social éditorial et visuels photo plus installés.</span>
         </div>
         <div class="headline">
           <strong>Déposez le téléphone. Gardez le moment.</strong>
-          <span>Idéal pour le site, le retail et les supports photo.</span>
+          <span>Simple, retail-friendly, compatible photo produit et environnement intérieur.</span>
+        </div>
+        <div class="headline">
+          <strong>Posez votre téléphone. Retrouvez votre temps.</strong>
+          <span>Hero site et performance. Très lisible, très produit, pas assez “campagne” pour tout porter seul.</span>
         </div>
         <div class="headline">
           <strong>Vos notifications survivront.</strong>
-          <span>Angle drôle et léger, très utile en social et en onboarding app.</span>
-        </div>
-        <div class="headline">
-          <strong>Le calme peut être très vivant.</strong>
-          <span>Bonne ligne pour expliquer la LED et le système visuel sans tomber dans le froid.</span>
+          <span>Très bonne ligne secondaire pour story, onboarding, CRM et captions sociales.</span>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="kicker">06 · Headlines</div>
-      <h2>Bibliothèque de phrases par canal</h2>
+      <div class="kicker">06 · Quote slider</div>
+      <h2>Réécriture recommandée du quote slider du site</h2>
+      <div class="grid-4" style="margin-top:18px;">
+        <div class="headline"><strong>Votre téléphone ne vous manquera pas. Promis.</strong><span>Complice, simple, immédiatement compréhensible.</span></div>
+        <div class="headline"><strong>Le vrai luxe, c’est de ne pas être joignable.</strong><span>Premium, socialisable, mémorisable.</span></div>
+        <div class="headline"><strong>Vos notifications survivront.</strong><span>Humour sec. Très bonne chute.</span></div>
+        <div class="headline"><strong>Déposez-le dans la box. Reprenez votre soirée.</strong><span>Plus produit, très bon pour retail / ads.</span></div>
+        <div class="headline"><strong>Le plus dur, c’est juste de commencer.</strong><span>Bonne ligne de passage à l’action.</span></div>
+        <div class="headline"><strong>4h12 par jour sur votre téléphone. Et si on arrêtait ?</strong><span>À utiliser si la stat est assumée en campagne.</span></div>
+        <div class="headline"><strong>Personne n’a jamais regretté une soirée sans téléphone.</strong><span>Très bon angle lifestyle.</span></div>
+        <div class="headline"><strong>Chaque minute compte.</strong><span>Parfait pour stats, CRM et écrans de fin de session.</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="kicker">07 · Bibliothèque</div>
+      <h2>Messages prêts à l’emploi par canal</h2>
       <div class="grid" style="margin-top:18px;">
         <div class="card">
           <h3>Métro / affichage</h3>
           <div class="list">
-            <div class="item"><strong>Votre téléphone ne vous manquera pas. Promis.</strong><span>Le meilleur compromis entre sourire et efficacité.</span></div>
-            <div class="item"><strong>4h12 par jour sur votre téléphone. Et si on arrêtait ?</strong><span>À utiliser seulement si la stat est assumée.</span></div>
-            <div class="item"><strong>Déposez-le dans la box. Reprenez votre soirée.</strong><span>Plus produit, plus concret, très bon pour proximité retail.</span></div>
+            <div class="item"><strong>Votre téléphone ne vous manquera pas. Promis.</strong><span>La ligne la plus forte et la plus simple.</span></div>
+            <div class="item"><strong>4h12 par jour sur votre téléphone. Et si on arrêtait ?</strong><span>À réserver aux formats où la stat peut respirer.</span></div>
+            <div class="item"><strong>Déposez-le dans la box. Reprenez votre soirée.</strong><span>Version plus concrète, plus proche du geste.</span></div>
           </div>
         </div>
         <div class="card">
           <h3>Instagram / social</h3>
           <div class="list">
             <div class="item"><strong>Le vrai luxe, c’est de ne pas être joignable.</strong><span>Post citation premium.</span></div>
-            <div class="item"><strong>Vos notifications survivront.</strong><span>Story ou reel cover.</span></div>
-            <div class="item"><strong>Personne n’a jamais regretté une soirée sans téléphone.</strong><span>Très bon angle témoignage / lifestyle.</span></div>
+            <div class="item"><strong>Vos notifications survivront.</strong><span>Story, reel cover, motion loops.</span></div>
+            <div class="item"><strong>Le plus dur, c’est juste de commencer.</strong><span>Très bon pour photo LED, paid social et landing social.</span></div>
           </div>
         </div>
         <div class="card">
-          <h3>Landing page</h3>
+          <h3>Site / app / CRM</h3>
           <div class="list">
-            <div class="item"><strong>Déposez votre téléphone. Reprenez votre temps.</strong><span>Hero simple, juste, immédiatement compréhensible.</span></div>
-            <div class="item"><strong>Une box, un geste, plus de présence.</strong><span>Version plus courte, plus directe.</span></div>
-            <div class="item"><strong>Disconnect to reconnect.</strong><span>Signature finale en soutien du hero, pas à sa place.</span></div>
+            <div class="item"><strong>Posez votre téléphone. Retrouvez votre temps.</strong><span>Hero site.</span></div>
+            <div class="item"><strong>Session terminée. Votre téléphone s’en est remis.</strong><span>Notification / email complice.</span></div>
+            <div class="item"><strong>2h14 retrouvées ce soir.</strong><span>Stat screen ou fin de session.</span></div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="kicker">07 · Microcopy</div>
-      <h2>Site, app et CRM</h2>
+      <div class="kicker">08 · Lexique</div>
+      <h2>Lexique autorisé / interdit</h2>
       <div class="small-grid" style="margin-top:18px;">
         <div class="card">
-          <h3>Hero site</h3>
-          <p class="body"><strong>Déposez votre téléphone. Reprenez votre temps.</strong><br>Faraday transforme la déconnexion volontaire en geste simple, visible et désirable.</p>
-          <p class="mono">CTA primaire : Découvrir la box<br>CTA secondaire : Voir le brandbook</p>
-        </div>
-        <div class="card">
-          <h3>App onboarding</h3>
-          <p class="body"><strong>Bienvenue chez Faraday.</strong><br>Quelques minutes sans téléphone suffisent déjà à changer la soirée.</p>
-          <p class="mono">CTA : Commencer une session</p>
-        </div>
-        <div class="card">
-          <h3>Notification douce</h3>
-          <p class="body"><strong>Session terminée.</strong><br>Votre téléphone s’en est remis. Et vous ?</p>
-        </div>
-        <div class="card">
-          <h3>Session stats</h3>
-          <p class="body"><strong>2h14 retrouvées ce soir.</strong><br>Pas mal pour une boîte et une bonne décision.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="kicker">08 · Bios & descriptions</div>
-      <h2>Textes prêts à l’emploi</h2>
-      <div class="grid" style="margin-top:18px;">
-        <div class="card">
-          <h3>Bio Instagram</h3>
-          <p class="body">Déconnexion volontaire, présence retrouvée.<br>Disconnect to reconnect.<br><strong>faraday-box.fr</strong></p>
-        </div>
-        <div class="card">
-          <h3>Description LinkedIn</h3>
-          <p class="body">Faraday conçoit une nouvelle manière de se déconnecter volontairement : un objet, une lumière, une app, et surtout un rituel simple pour récupérer du vrai temps.</p>
-        </div>
-        <div class="card">
-          <h3>App Store short description</h3>
-          <p class="body">Posez le téléphone. Suivez vos sessions. Reprenez votre temps.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="kicker">09 · Longévité & humour</div>
-      <h2>Le registre “health” à manier avec intelligence</h2>
-      <div class="split" style="margin-top:18px;">
-        <div class="card">
-          <p class="body">
-            Faraday peut effleurer les bénéfices de santé ou de longévité, mais uniquement avec distance et légèreté.
-            On suggère un mieux-être, on ne promet pas une guérison.
-          </p>
+          <h3 class="keep">Autorisé</h3>
           <div class="list">
-            <div class="item"><strong>Acceptable</strong><span>“Moins de scroll, plus de sommeil. Enfin, en théorie.”</span></div>
-            <div class="item"><strong>Acceptable</strong><span>“Une petite dose de silence. Sans ordonnance.”</span></div>
-            <div class="item"><strong>Acceptable</strong><span>“Votre dopamine peut attendre le dessert.”</span></div>
+            <div class="item"><strong>Déconnexion volontaire</strong><span>La formule la plus juste pour le site et LinkedIn.</span></div>
+            <div class="item"><strong>Temps retrouvé</strong><span>Très bon pour social, CRM et stats.</span></div>
+            <div class="item"><strong>Présence</strong><span>Le mot premium, émotionnel et large.</span></div>
+            <div class="item"><strong>Rituel</strong><span>Permet de parler du geste sans tomber dans la fiche produit.</span></div>
+            <div class="item"><strong>Lumière / signal / balise</strong><span>Très bon territoire autour de la LED.</span></div>
           </div>
         </div>
         <div class="card">
+          <h3 class="ban">Interdit</h3>
           <div class="list">
-            <div class="item"><strong>À éviter</strong><span>“Améliore votre santé mentale.”</span></div>
-            <div class="item"><strong>À éviter</strong><span>“Traite l’addiction au smartphone.”</span></div>
-            <div class="item"><strong>À éviter</strong><span>“Optimise votre sommeil / votre cerveau / votre dopamine.”</span></div>
+            <div class="item"><strong>“Cage de Faraday”</strong><span>La marque n’a rien à gagner à s’auto-réduire à un terme technique froid.</span></div>
+            <div class="item"><strong>Hôtel / lit / coin pour smartphone</strong><span>Le téléphone ne doit pas devenir le héros attendrissant du récit.</span></div>
+            <div class="item"><strong>Addiction / detox</strong><span>À manier seulement au second degré, jamais comme promesse frontale.</span></div>
+            <div class="item"><strong>Promesse médicale</strong><span>Pas de guérison, pas d’optimisation santé, pas de pseudo-neurosciences en slogan.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="kicker">09 · Longévité</div>
+      <h2>Comment aborder le registre santé / humour</h2>
+      <div class="small-grid" style="margin-top:18px;">
+        <div class="card">
+          <h3>Acceptable</h3>
+          <div class="list">
+            <div class="item"><strong>Votre dopamine peut attendre le dessert.</strong><span>Bonne ligne humoristique si le contexte visuel reste léger.</span></div>
+            <div class="item"><strong>Une petite dose de silence. Sans ordonnance.</strong><span>Amusant si utilisé avec parcimonie.</span></div>
+            <div class="item"><strong>Moins de scroll, plus de soirée.</strong><span>Plus simple, plus sûr, très réutilisable.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>À éviter</h3>
+          <div class="list">
+            <div class="item"><strong>Améliore votre santé mentale</strong><span>Trop médical, trop engageant juridiquement.</span></div>
+            <div class="item"><strong>Traite l’addiction au smartphone</strong><span>Promesse non tenable et ton inadapté.</span></div>
+            <div class="item"><strong>Optimise votre sommeil / votre cerveau / votre dopamine</strong><span>Territoire pseudo-scientifique à éviter.</span></div>
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-04-13T10:45:34.844229Z",
+  "generatedAt": "2026-04-13T11:23:36.539Z",
   "package": {
     "zip": "exports/deliverables/faraday-social-assets.zip"
   },
   "logos": [
     {
       "id": "mark-on-ink-ember",
-      "label": "Mark \u00b7 Ink Charcoal / Ember",
+      "label": "Mark · Ink Charcoal / Ember",
       "category": "Symbol",
       "files": {
         "svg": "exports/deliverables/logos/svg/mark-on-ink-ember.svg",
@@ -32,7 +32,7 @@
     },
     {
       "id": "mark-on-ink-lake",
-      "label": "Mark \u00b7 Ink Charcoal / Lake",
+      "label": "Mark · Ink Charcoal / Lake",
       "category": "Symbol",
       "files": {
         "svg": "exports/deliverables/logos/svg/mark-on-ink-lake.svg",
@@ -58,7 +58,7 @@
     },
     {
       "id": "mark-on-porcelain-ember",
-      "label": "Mark \u00b7 Porcelain / Ember",
+      "label": "Mark · Porcelain / Ember",
       "category": "Symbol",
       "files": {
         "svg": "exports/deliverables/logos/svg/mark-on-porcelain-ember.svg",
@@ -84,7 +84,7 @@
     },
     {
       "id": "mark-on-sage-porcelain",
-      "label": "Mark \u00b7 Sage Mist / Porcelain",
+      "label": "Mark · Sage Mist / Porcelain",
       "category": "Symbol",
       "files": {
         "svg": "exports/deliverables/logos/svg/mark-on-sage-porcelain.svg",
@@ -110,7 +110,7 @@
     },
     {
       "id": "mark-gravure-ink",
-      "label": "Mark \u00b7 Gravure mono Ink",
+      "label": "Mark · Gravure mono Ink",
       "category": "Monochrome",
       "files": {
         "svg": "exports/deliverables/logos/svg/mark-gravure-ink.svg",
@@ -136,7 +136,7 @@
     },
     {
       "id": "mark-gravure-porcelain",
-      "label": "Mark \u00b7 Gravure mono Porcelain",
+      "label": "Mark · Gravure mono Porcelain",
       "category": "Monochrome",
       "files": {
         "svg": "exports/deliverables/logos/svg/mark-gravure-porcelain.svg",
@@ -162,7 +162,7 @@
     },
     {
       "id": "logo-horizontal-ink-ember-baseline",
-      "label": "Horizontal \u00b7 Ink Charcoal / Ember \u00b7 baseline",
+      "label": "Horizontal · Ink Charcoal / Ember · baseline",
       "category": "Wordmark",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-ember-baseline.svg",
@@ -180,7 +180,7 @@
     },
     {
       "id": "logo-horizontal-ink-lake-baseline",
-      "label": "Horizontal \u00b7 Ink Charcoal / Lake \u00b7 baseline",
+      "label": "Horizontal · Ink Charcoal / Lake · baseline",
       "category": "Wordmark",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-lake-baseline.svg",
@@ -198,7 +198,7 @@
     },
     {
       "id": "logo-horizontal-porcelain-ember-baseline",
-      "label": "Horizontal \u00b7 Porcelain / Ember \u00b7 baseline",
+      "label": "Horizontal · Porcelain / Ember · baseline",
       "category": "Wordmark",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-horizontal-porcelain-ember-baseline.svg",
@@ -216,7 +216,7 @@
     },
     {
       "id": "logo-horizontal-sage-porcelain-baseline",
-      "label": "Horizontal \u00b7 Sage Mist / Porcelain \u00b7 baseline",
+      "label": "Horizontal · Sage Mist / Porcelain · baseline",
       "category": "Wordmark",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-horizontal-sage-porcelain-baseline.svg",
@@ -234,7 +234,7 @@
     },
     {
       "id": "logo-horizontal-ink-ember",
-      "label": "Horizontal \u00b7 Ink Charcoal / Ember",
+      "label": "Horizontal · Ink Charcoal / Ember",
       "category": "Wordmark",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-ember.svg",
@@ -252,7 +252,7 @@
     },
     {
       "id": "logo-stacked-ink-ember-baseline",
-      "label": "Stacked \u00b7 Ink Charcoal / Ember \u00b7 baseline",
+      "label": "Stacked · Ink Charcoal / Ember · baseline",
       "category": "Stacked",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-stacked-ink-ember-baseline.svg",
@@ -270,7 +270,7 @@
     },
     {
       "id": "logo-stacked-ink-lake-baseline",
-      "label": "Stacked \u00b7 Ink Charcoal / Lake \u00b7 baseline",
+      "label": "Stacked · Ink Charcoal / Lake · baseline",
       "category": "Stacked",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-stacked-ink-lake-baseline.svg",
@@ -288,7 +288,7 @@
     },
     {
       "id": "logo-stacked-porcelain-ember-baseline",
-      "label": "Stacked \u00b7 Porcelain / Ember \u00b7 baseline",
+      "label": "Stacked · Porcelain / Ember · baseline",
       "category": "Stacked",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-stacked-porcelain-ember-baseline.svg",
@@ -306,7 +306,7 @@
     },
     {
       "id": "logo-stacked-sage-porcelain-baseline",
-      "label": "Stacked \u00b7 Sage Mist / Porcelain \u00b7 baseline",
+      "label": "Stacked · Sage Mist / Porcelain · baseline",
       "category": "Stacked",
       "files": {
         "svg": "exports/deliverables/logos/svg/logo-stacked-sage-porcelain-baseline.svg",
@@ -324,7 +324,7 @@
     },
     {
       "id": "wordmark-transparent-ink",
-      "label": "Wordmark transparent \u00b7 Ink",
+      "label": "Wordmark transparent · Ink",
       "category": "Transparent",
       "files": {
         "svg": "exports/deliverables/logos/svg/wordmark-transparent-ink.svg",
@@ -342,7 +342,7 @@
     },
     {
       "id": "wordmark-transparent-porcelain",
-      "label": "Wordmark transparent \u00b7 Porcelain",
+      "label": "Wordmark transparent · Porcelain",
       "category": "Transparent",
       "files": {
         "svg": "exports/deliverables/logos/svg/wordmark-transparent-porcelain.svg",
@@ -362,7 +362,7 @@
   "staticBanners": [
     {
       "id": "instagram-portrait-quiet-promise",
-      "label": "Instagram portrait \u00b7 quote",
+      "label": "Instagram portrait · quote",
       "platform": "Instagram portrait",
       "format": "1080x1350",
       "withImage": false,
@@ -373,7 +373,7 @@
     },
     {
       "id": "instagram-portrait-evening-photo",
-      "label": "Instagram portrait \u00b7 photo",
+      "label": "Instagram portrait · photo",
       "platform": "Instagram portrait",
       "format": "1080x1350",
       "withImage": true,
@@ -384,7 +384,7 @@
     },
     {
       "id": "instagram-square-412",
-      "label": "Instagram square \u00b7 stat",
+      "label": "Instagram square · stat",
       "platform": "Instagram square",
       "format": "1080x1080",
       "withImage": false,
@@ -395,7 +395,7 @@
     },
     {
       "id": "instagram-square-led-photo",
-      "label": "Instagram square \u00b7 photo",
+      "label": "Instagram square · photo",
       "platform": "Instagram square",
       "format": "1080x1080",
       "withImage": true,
@@ -406,7 +406,7 @@
     },
     {
       "id": "instagram-story-disconnect",
-      "label": "Instagram story \u00b7 typographic",
+      "label": "Instagram story · typographic",
       "platform": "Instagram story",
       "format": "1080x1920",
       "withImage": false,
@@ -417,7 +417,7 @@
     },
     {
       "id": "instagram-story-living-room",
-      "label": "Instagram story \u00b7 photo",
+      "label": "Instagram story · photo",
       "platform": "Instagram story",
       "format": "1080x1920",
       "withImage": true,
@@ -428,7 +428,7 @@
     },
     {
       "id": "linkedin-feed-presence",
-      "label": "LinkedIn feed \u00b7 typographic",
+      "label": "LinkedIn feed · typographic",
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "withImage": false,
@@ -439,7 +439,7 @@
     },
     {
       "id": "linkedin-feed-led-photo",
-      "label": "LinkedIn feed \u00b7 photo",
+      "label": "LinkedIn feed · photo",
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "withImage": true,
@@ -450,7 +450,7 @@
     },
     {
       "id": "linkedin-page-cover-minimal",
-      "label": "LinkedIn page cover \u00b7 minimal",
+      "label": "LinkedIn page cover · minimal",
       "platform": "LinkedIn page cover",
       "format": "1584x396",
       "withImage": false,
@@ -461,7 +461,7 @@
     },
     {
       "id": "linkedin-page-cover-photo",
-      "label": "LinkedIn page cover \u00b7 photo",
+      "label": "LinkedIn page cover · photo",
       "platform": "LinkedIn page cover",
       "format": "1584x396",
       "withImage": true,
@@ -472,7 +472,7 @@
     },
     {
       "id": "linkedin-personal-cover-editorial",
-      "label": "LinkedIn personal cover \u00b7 editorial",
+      "label": "LinkedIn personal cover · editorial",
       "platform": "LinkedIn personal cover",
       "format": "1584x396",
       "withImage": false,
@@ -483,7 +483,7 @@
     },
     {
       "id": "linkedin-personal-cover-photo",
-      "label": "LinkedIn personal cover \u00b7 photo",
+      "label": "LinkedIn personal cover · photo",
       "platform": "LinkedIn personal cover",
       "format": "1584x396",
       "withImage": true,
@@ -491,12 +491,78 @@
         "png": "exports/deliverables/social/static/linkedin-personal-cover-photo.png",
         "webp": "exports/deliverables/social/static/linkedin-personal-cover-photo.webp"
       }
+    },
+    {
+      "id": "instagram-square-luxury-quote",
+      "label": "Instagram square · luxury quote",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-luxury-quote.png",
+        "webp": "exports/deliverables/social/static/instagram-square-luxury-quote.webp"
+      }
+    },
+    {
+      "id": "instagram-square-ritual-steps",
+      "label": "Instagram square · ritual steps",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-ritual-steps.png",
+        "webp": "exports/deliverables/social/static/instagram-square-ritual-steps.webp"
+      }
+    },
+    {
+      "id": "instagram-portrait-time-back",
+      "label": "Instagram portrait · hero statement",
+      "platform": "Instagram portrait",
+      "format": "1080x1350",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-portrait-time-back.png",
+        "webp": "exports/deliverables/social/static/instagram-portrait-time-back.webp"
+      }
+    },
+    {
+      "id": "instagram-story-notifications-photo",
+      "label": "Instagram story · notifications",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "withImage": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-story-notifications-photo.png",
+        "webp": "exports/deliverables/social/static/instagram-story-notifications-photo.webp"
+      }
+    },
+    {
+      "id": "linkedin-feed-ritual-platform",
+      "label": "LinkedIn feed · ritual platform",
+      "platform": "LinkedIn feed",
+      "format": "1200x627",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-feed-ritual-platform.png",
+        "webp": "exports/deliverables/social/static/linkedin-feed-ritual-platform.webp"
+      }
+    },
+    {
+      "id": "linkedin-feed-stat-editorial",
+      "label": "LinkedIn feed · editorial stat",
+      "platform": "LinkedIn feed",
+      "format": "1200x627",
+      "withImage": false,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-feed-stat-editorial.png",
+        "webp": "exports/deliverables/social/static/linkedin-feed-stat-editorial.webp"
+      }
     }
   ],
   "animatedBanners": [
     {
       "id": "instagram-story-led-pulse",
-      "label": "Instagram story \u00b7 LED pulse",
+      "label": "Instagram story · LED pulse",
       "platform": "Instagram story",
       "format": "1080x1920",
       "animation": "pulse",
@@ -509,7 +575,7 @@
     },
     {
       "id": "instagram-square-led-blink",
-      "label": "Instagram square \u00b7 double blink",
+      "label": "Instagram square · double blink",
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
@@ -522,7 +588,7 @@
     },
     {
       "id": "instagram-portrait-led-breathe-photo",
-      "label": "Instagram portrait \u00b7 breathe photo",
+      "label": "Instagram portrait · breathe photo",
       "platform": "Instagram portrait",
       "format": "1080x1350",
       "animation": "pulse",
@@ -535,7 +601,7 @@
     },
     {
       "id": "linkedin-feed-lake-breathe",
-      "label": "LinkedIn feed \u00b7 lake breathe",
+      "label": "LinkedIn feed · lake breathe",
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "animation": "breathe-lake",
@@ -544,6 +610,32 @@
         "mp4": "exports/deliverables/social/animated/linkedin-feed-lake-breathe.mp4",
         "webm": "exports/deliverables/social/animated/linkedin-feed-lake-breathe.webm",
         "poster": "exports/deliverables/social/animated/linkedin-feed-lake-breathe-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-notifications-pulse",
+      "label": "Instagram story · notifications pulse",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "pulse",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-notifications-pulse.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-notifications-pulse.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-notifications-pulse.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-notifications-pulse-poster.png"
+      }
+    },
+    {
+      "id": "linkedin-feed-promise-pulse",
+      "label": "LinkedIn feed · promise pulse",
+      "platform": "LinkedIn feed",
+      "format": "1200x627",
+      "animation": "pulse",
+      "files": {
+        "gif": "exports/deliverables/social/animated/linkedin-feed-promise-pulse.gif",
+        "mp4": "exports/deliverables/social/animated/linkedin-feed-promise-pulse.mp4",
+        "webm": "exports/deliverables/social/animated/linkedin-feed-promise-pulse.webm",
+        "poster": "exports/deliverables/social/animated/linkedin-feed-promise-pulse-poster.png"
       }
     }
   ]

@@ -363,7 +363,7 @@ function rel(file) {
 }
 
 async function basePhoto(file, width, height, position = 'centre') {
-  return sharp(file).resize(width, height, { fit: 'cover', position }).toBuffer();
+  return sharp(file).rotate().resize(width, height, { fit: 'cover', position }).toBuffer();
 }
 
 function roundedRectSvg(width, height, radius, fill, opacity = 1, stroke = null, strokeWidth = 0) {
@@ -612,6 +612,78 @@ function renderLinkedInSplit(cfg) {
   `);
 }
 
+function renderRitualSteps(cfg) {
+  const stepWidth = cfg.stepWidth ?? 286;
+  const stepGap = cfg.stepGap ?? 18;
+  const stepHeight = cfg.stepHeight ?? 250;
+  return layerFromMarkup(cfg.width, cfg.height, `
+    ${cfg.kicker ? textPath({
+      text: cfg.kicker.toUpperCase(),
+      font: FONTS.manrope,
+      fontSize: cfg.kickerSize,
+      x: cfg.padding,
+      y: cfg.padding,
+      fill: cfg.kickerFill,
+      tracking: cfg.kickerTracking,
+      opacity: 0.72,
+    }) : ''}
+    ${multilineText({
+      lines: cfg.lines,
+      font: FONTS.sora,
+      fontSize: cfg.titleSize,
+      x: cfg.padding,
+      y: cfg.titleY,
+      lineHeight: cfg.lineHeight,
+      fill: cfg.titleFill,
+    })}
+    ${cfg.bodyLines ? multilineText({
+      lines: cfg.bodyLines,
+      font: FONTS.manrope,
+      fontSize: cfg.bodySize,
+      x: cfg.padding,
+      y: cfg.bodyY,
+      lineHeight: cfg.bodyLineHeight,
+      fill: cfg.bodyFill,
+    }) : ''}
+    ${cfg.steps.map((step, index) => {
+      const x = cfg.padding + (index * (stepWidth + stepGap));
+      const y = cfg.stepsY;
+      return `
+        <rect x="${x}" y="${y}" width="${stepWidth}" height="${stepHeight}" rx="28" fill="${step.fill}" stroke="${step.stroke}" stroke-width="2"/>
+        <rect x="${x + 24}" y="${y + 24}" width="56" height="28" rx="14" fill="${step.badgeFill}"/>
+        ${textPath({
+          text: String(index + 1).padStart(2, '0'),
+          font: FONTS.manrope,
+          fontSize: 16,
+          x: x + 52,
+          y: y + 43,
+          fill: step.badgeLabelFill,
+          anchor: 'center',
+          tracking: 2,
+        })}
+        ${textPath({
+          text: step.title,
+          font: FONTS.sora,
+          fontSize: step.titleSize ?? 34,
+          x: x + 24,
+          y: y + 112,
+          fill: step.titleFill,
+        })}
+        ${multilineText({
+          lines: step.body,
+          font: FONTS.manrope,
+          fontSize: step.bodySize ?? 19,
+          x: x + 24,
+          y: y + 156,
+          lineHeight: step.lineHeight ?? 28,
+          fill: step.bodyFill,
+        })}
+      `;
+    }).join('')}
+    ${cfg.logoMarkup ?? ''}
+  `);
+}
+
 function logoSnippet({ x, y, size, style }) {
   const variants = {
     ember: { tile: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.ember, aura: null },
@@ -628,6 +700,80 @@ function logoSnippet({ x, y, size, style }) {
     core: token.core,
     aura: token.aura,
   });
+}
+
+function collectStrings(value, bucket = []) {
+  if (typeof value === 'string') {
+    bucket.push(value);
+    return bucket;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((entry) => collectStrings(entry, bucket));
+    return bucket;
+  }
+  if (value && typeof value === 'object') {
+    Object.values(value).forEach((entry) => collectStrings(entry, bucket));
+  }
+  return bucket;
+}
+
+function isColor(value, token) {
+  return typeof value === 'string' && value.toLowerCase() === token.toLowerCase();
+}
+
+function validateBannerConfig(config) {
+  const expectedSizes = {
+    'Instagram portrait': [1080, 1350],
+    'Instagram square': [1080, 1080],
+    'Instagram story': [1080, 1920],
+    'LinkedIn feed': [1200, 627],
+    'LinkedIn page cover': [1584, 396],
+    'LinkedIn personal cover': [1584, 396],
+  };
+
+  const expected = expectedSizes[config.platform];
+  if (expected && (config.width !== expected[0] || config.height !== expected[1])) {
+    throw new Error(`Invalid format for ${config.id}: expected ${expected[0]}x${expected[1]}, received ${config.width}x${config.height}`);
+  }
+
+  const usesSageSurface = [config.background, config.mark?.tileFill].some((value) => isColor(value, COLORS.sage));
+  const usesEmberCore = isColor(config.mark?.core, COLORS.ember);
+  if (usesSageSurface && usesEmberCore) {
+    throw new Error(`Forbidden Sage Mist + Ember combination in ${config.id}`);
+  }
+  if (usesSageSurface && config.animation) {
+    throw new Error(`Animated Sage Mist asset forbidden in ${config.id}: LED core would drift away from Porcelain`);
+  }
+
+  if (config.mark?.tileFill) {
+    const { tileFill, core } = config.mark;
+    const isInk = isColor(tileFill, COLORS.ink);
+    const isPorcelain = isColor(tileFill, COLORS.porcelain);
+    const isSage = isColor(tileFill, COLORS.sage);
+    if (isInk && ![COLORS.ember, COLORS.lake].some((token) => isColor(core, token))) {
+      throw new Error(`Invalid LED core on Ink tile in ${config.id}`);
+    }
+    if (isPorcelain && !isColor(core, COLORS.ember)) {
+      throw new Error(`Porcelain tile must keep Ember core in ${config.id}`);
+    }
+    if (isSage && !isColor(core, COLORS.porcelain)) {
+      throw new Error(`Sage tile must keep Porcelain core in ${config.id}`);
+    }
+  }
+
+  const textBlob = collectStrings(config.text).join(' ').toLowerCase();
+  const bannedPhrases = [
+    'la cage de faraday',
+    'le calme n’a pas besoin d’être froid',
+    "le calme n'a pas besoin d'être froid",
+    'reprends le contrôle de ta vie',
+    'la présence n’est pas une option',
+    "la présence n'est pas une option",
+  ];
+  const banned = bannedPhrases.find((phrase) => textBlob.includes(phrase));
+  if (banned) {
+    throw new Error(`Forbidden copy in ${config.id}: "${banned}"`);
+  }
 }
 
 async function renderBanner(config, frame = null) {
@@ -686,6 +832,7 @@ async function renderBanner(config, frame = null) {
 }
 
 async function saveStaticBanner(config) {
+  validateBannerConfig(config);
   const pngPath = path.join(socialDir, 'static', `${config.id}.png`);
   const webpPath = path.join(socialDir, 'static', `${config.id}.webp`);
   const pngBuffer = await renderBanner(config);
@@ -743,6 +890,7 @@ function animationFrame(type, index, total) {
 }
 
 async function saveAnimatedBanner(config) {
+  validateBannerConfig(config);
   const workDir = path.join(tempDir, config.id);
   await ensureDir(workDir);
   const totalFrames = config.frames ?? 36;
@@ -773,6 +921,7 @@ async function saveAnimatedBanner(config) {
     '-nostdin',
     '-framerate', String(config.fps ?? 12),
     '-i', path.join(workDir, 'frame-%03d.png'),
+    '-vf', 'pad=ceil(iw/2)*2:ceil(ih/2)*2',
     '-c:v', 'libx264',
     '-pix_fmt', 'yuv420p',
     '-movflags', '+faststart',
@@ -1232,12 +1381,12 @@ async function generateStaticBanners() {
         kickerTracking: 6,
         kickerFill: 'rgba(246,243,236,.58)',
         padding: 82,
-        lines: ['Disconnect.', 'Reconnect.'],
+        lines: ['Posez.', 'Vivez.', 'Retrouvez.'],
         titleSize: 98,
         lineHeight: 112,
         titleFill: COLORS.porcelain,
         bottomOffset: 520,
-        bodyLines: ['Déposez le téléphone.', 'Gardez le moment.'],
+        bodyLines: ['Un rituel simple.', 'Un vrai temps retrouvé.'],
         bodySize: 34,
         bodyLineHeight: 48,
         bodyFill: 'rgba(246,243,236,.78)',
@@ -1302,22 +1451,22 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       mark: { x: 824, y: 184, size: 160, tileFill: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.ember, aura: COLORS.ember },
       text: {
-        kicker: 'Faraday brand platform',
+        kicker: 'Rituel Faraday',
         kickerSize: 18,
         kickerTracking: 4,
         kickerFill: 'rgba(21,29,42,.5)',
         padding: 74,
-        lines: ['La présence', "n'est pas", 'une option.'],
+        lines: ['Posez.', 'Vivez.', 'Retrouvez.'],
         titleSize: 66,
         lineHeight: 80,
         titleFill: COLORS.ink,
         titleY: 184,
-        bodyLines: ['Faraday transforme la déconnexion volontaire en geste', 'désirable, concret et quotidien. Disconnect to reconnect.'],
+        bodyLines: ['Trois verbes. Un rituel. Une présence retrouvée.', 'Faraday rend la déconnexion volontaire visible et désirable.'],
         bodySize: 24,
         bodyLineHeight: 36,
         bodyFill: COLORS.mutedInk,
         bodyY: 434,
-        accentPill: { x: 826, y: 396, width: 178, height: 44, fill: COLORS.ink, label: 'social asset', labelFill: COLORS.porcelain },
+        accentPill: { x: 826, y: 396, width: 196, height: 44, fill: COLORS.ink, label: 'brand ritual', labelFill: COLORS.porcelain },
       },
     },
     {
@@ -1432,12 +1581,12 @@ async function generateStaticBanners() {
         kickerTracking: 5,
         kickerFill: 'rgba(21,29,42,.48)',
         padding: 78,
-        lines: ['Le vrai luxe,', "c'est de", 'disparaître.'],
+        lines: ['Le vrai luxe,', "c'est de ne pas", 'être joignable.'],
         titleSize: 46,
         lineHeight: 56,
         titleFill: COLORS.ink,
         titleY: 140,
-        bodyLines: ['Faraday rend ce luxe simple,', 'quotidien et très lisible.'],
+        bodyLines: ['Une marque qui retire du bruit.', 'Pas de la valeur.'],
         bodySize: 22,
         bodyLineHeight: 34,
         bodyFill: COLORS.mutedInk,
@@ -1478,6 +1627,242 @@ async function generateStaticBanners() {
         bodyY: 338,
       },
     },
+    {
+      id: 'instagram-square-luxury-quote',
+      label: 'Instagram square · luxury quote',
+      platform: 'Instagram square',
+      width: 1080,
+      height: 1080,
+      background: COLORS.ink,
+      textRenderer: renderQuoteCenter,
+      mark: { x: 84, y: 84, size: 88, ...commonMark },
+      text: {
+        overline: 'Faraday quote card',
+        overlineFill: 'rgba(246,243,236,.6)',
+        smallSize: 20,
+        smallTracking: 5,
+        top: 120,
+        overlineX: 84,
+        overlineAnchor: 'left',
+        textX: 84,
+        anchor: 'left',
+        offsetY: 316,
+        lines: ['Le vrai luxe,', "c'est de ne pas", 'être joignable.'],
+        titleSize: 78,
+        lineHeight: 92,
+        titleFill: COLORS.porcelain,
+        divider: 120,
+        dividerY: 636,
+        dividerHeight: 8,
+        accent: COLORS.ember,
+        subLines: ['Disconnect to reconnect'],
+        subSize: 22,
+        subX: 84,
+        subAnchor: 'left',
+        subY: 704,
+        subLineHeight: 30,
+        subFill: 'rgba(246,243,236,.72)',
+      },
+    },
+    {
+      id: 'instagram-square-ritual-steps',
+      label: 'Instagram square · ritual steps',
+      platform: 'Instagram square',
+      width: 1080,
+      height: 1080,
+      background: COLORS.porcelain,
+      textRenderer: renderRitualSteps,
+      mark: { x: 902, y: 86, size: 92, tileFill: COLORS.porcelain, shell: 'rgba(21,29,42,.15)', core: COLORS.ember },
+      text: {
+        kicker: 'Rituel Faraday',
+        kickerSize: 18,
+        kickerTracking: 6,
+        kickerFill: 'rgba(21,29,42,.48)',
+        padding: 84,
+        lines: ['Posez. Vivez.', 'Retrouvez.'],
+        titleSize: 74,
+        lineHeight: 82,
+        titleFill: COLORS.ink,
+        titleY: 192,
+        bodyLines: ['Le cœur du site tient déjà en trois verbes.', 'On les transforme ici en asset social propre et mémorisable.'],
+        bodySize: 22,
+        bodyLineHeight: 34,
+        bodyFill: COLORS.mutedInk,
+        bodyY: 388,
+        stepsY: 530,
+        stepWidth: 286,
+        stepGap: 18,
+        stepHeight: 300,
+        steps: [
+          {
+            fill: '#FFFFFF',
+            stroke: 'rgba(21,29,42,.08)',
+            badgeFill: COLORS.ink,
+            badgeLabelFill: COLORS.porcelain,
+            title: 'Posez',
+            titleFill: COLORS.ink,
+            body: ['Déposez votre', 'téléphone', 'dans la box.'],
+            bodyFill: COLORS.mutedInk,
+          },
+          {
+            fill: '#ECE7DF',
+            stroke: 'rgba(21,29,42,.08)',
+            badgeFill: COLORS.ember,
+            badgeLabelFill: COLORS.ink,
+            title: 'Vivez',
+            titleFill: COLORS.ink,
+            body: ['La session', 'commence.', 'Le temps vous appartient.'],
+            bodyFill: COLORS.mutedInk,
+          },
+          {
+            fill: COLORS.sage,
+            stroke: 'rgba(21,29,42,.06)',
+            badgeFill: COLORS.porcelain,
+            badgeLabelFill: COLORS.ink,
+            title: 'Retrouvez',
+            titleFill: COLORS.ink,
+            body: ['Chaque minute', 'compte.', 'Recevez votre récap.'],
+            bodyFill: 'rgba(21,29,42,.76)',
+          },
+        ],
+      },
+    },
+    {
+      id: 'instagram-portrait-time-back',
+      label: 'Instagram portrait · hero statement',
+      platform: 'Instagram portrait',
+      width: 1080,
+      height: 1350,
+      background: COLORS.ink,
+      textRenderer: renderPhotoOverlay,
+      mark: { x: 86, y: 84, size: 96, ...commonMark },
+      text: {
+        kicker: 'Hero website',
+        kickerSize: 20,
+        kickerTracking: 6,
+        kickerFill: 'rgba(246,243,236,.58)',
+        padding: 86,
+        lines: ['Posez votre', 'téléphone.', 'Retrouvez votre', 'temps.'],
+        titleSize: 76,
+        lineHeight: 88,
+        titleFill: COLORS.porcelain,
+        bottomOffset: 470,
+        bodyLines: ['Ligne déjà présente sur le site.', 'Très forte pour paid et organique.'],
+        bodySize: 24,
+        bodyLineHeight: 38,
+        bodyFill: 'rgba(246,243,236,.76)',
+        bodyOffset: 164,
+      },
+    },
+    {
+      id: 'instagram-story-notifications-photo',
+      label: 'Instagram story · notifications',
+      platform: 'Instagram story',
+      width: 1080,
+      height: 1920,
+      background: COLORS.ink,
+      photo: { file: PHOTO.led, position: 'attention' },
+      overlayGradient: {
+        stops: [
+          { offset: '0%', color: '#0F1722', opacity: 0.42 },
+          { offset: '55%', color: '#0F1722', opacity: 0.58 },
+          { offset: '100%', color: '#0F1722', opacity: 0.92 },
+        ],
+      },
+      textRenderer: renderStoryCta,
+      mark: { x: 78, y: 114, size: 92, ...commonMark },
+      text: {
+        logoMarkup: `
+          <rect x="734" y="196" width="232" height="74" rx="24" fill="rgba(246,243,236,.12)"/>
+          <rect x="734" y="288" width="272" height="74" rx="24" fill="rgba(246,243,236,.09)"/>
+          <rect x="734" y="380" width="214" height="74" rx="24" fill="rgba(246,243,236,.06)"/>
+        `,
+        anchor: 'left',
+        titleX: 82,
+        lines: ['Vos notifications', 'survivront.'],
+        titleSize: 90,
+        lineHeight: 102,
+        titleFill: COLORS.porcelain,
+        titleY: 1130,
+        bodyLines: ['Votre dîner mérite mieux.', 'Et votre cerveau aussi.'],
+        bodySize: 34,
+        bodyLineHeight: 48,
+        bodyFill: 'rgba(246,243,236,.8)',
+        bodyX: 82,
+        bodyY: 1418,
+        ctaX: 82,
+        ctaY: 1650,
+        ctaWidth: 364,
+        ctaHeight: 82,
+        ctaFill: COLORS.ember,
+        ctaLabel: 'faraday-box.fr',
+        ctaLabelFill: COLORS.ink,
+      },
+    },
+    {
+      id: 'linkedin-feed-ritual-platform',
+      label: 'LinkedIn feed · ritual platform',
+      platform: 'LinkedIn feed',
+      width: 1200,
+      height: 627,
+      background: COLORS.porcelain,
+      card: {
+        left: 720,
+        top: 82,
+        width: 380,
+        height: 456,
+        radius: 30,
+        fill: '#ECE7DF',
+      },
+      textRenderer: renderLinkedInSplit,
+      mark: { x: 842, y: 132, size: 148, tileFill: COLORS.porcelain, shell: 'rgba(21,29,42,.15)', core: COLORS.ember },
+      text: {
+        kicker: 'Positionnement',
+        kickerSize: 18,
+        kickerTracking: 4,
+        kickerFill: 'rgba(21,29,42,.5)',
+        padding: 74,
+        lines: ['Faraday transforme', 'la déconnexion', 'volontaire en rituel.'],
+        titleSize: 58,
+        lineHeight: 72,
+        titleFill: COLORS.ink,
+        titleY: 180,
+        bodyLines: ['Un objet. Une lumière. Une app.', 'Et surtout un geste simple qui remet la présence au centre.'],
+        bodySize: 23,
+        bodyLineHeight: 34,
+        bodyFill: COLORS.mutedInk,
+        bodyY: 430,
+        accentPill: { x: 832, y: 398, width: 204, height: 44, fill: COLORS.ink, label: 'brand platform', labelFill: COLORS.porcelain },
+      },
+    },
+    {
+      id: 'linkedin-feed-stat-editorial',
+      label: 'LinkedIn feed · editorial stat',
+      platform: 'LinkedIn feed',
+      width: 1200,
+      height: 627,
+      background: COLORS.ink,
+      textRenderer: renderLinkedInSplit,
+      mark: { x: 1018, y: 90, size: 92, tileFill: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.lake },
+      text: {
+        kicker: 'Temps retrouvé',
+        kickerSize: 18,
+        kickerTracking: 5,
+        kickerFill: 'rgba(246,243,236,.56)',
+        padding: 74,
+        lines: ['4h12 par jour.', '63 jours par an.'],
+        titleSize: 70,
+        lineHeight: 84,
+        titleFill: COLORS.porcelain,
+        titleY: 214,
+        bodyLines: ['Une stat simple, un angle fort, un visuel lisible.', 'Parfait pour LinkedIn feed et social paid.'],
+        bodySize: 23,
+        bodyLineHeight: 34,
+        bodyFill: 'rgba(246,243,236,.76)',
+        bodyY: 458,
+        accentPill: { x: 74, y: 516, width: 174, height: 40, fill: 'rgba(246,243,236,.08)', label: 'editorial stat', labelFill: COLORS.porcelain },
+      },
+    },
   ];
 
   for (const config of configs) {
@@ -1503,7 +1888,7 @@ async function generateAnimatedBanners() {
       text: {
         anchor: 'left',
         titleX: 82,
-        lines: ['Disconnect.', 'Reconnect.'],
+        lines: ['Posez.', 'Vivez.', 'Retrouvez.'],
         titleSize: 94,
         lineHeight: 112,
         titleFill: COLORS.porcelain,
@@ -1547,7 +1932,7 @@ async function generateAnimatedBanners() {
         textX: 84,
         anchor: 'left',
         offsetY: 468,
-        lines: ['Le calme peut', 'être vivant.'],
+        lines: ['Vos notifications', 'survivront.'],
         titleSize: 80,
         lineHeight: 96,
         titleFill: COLORS.porcelain,
@@ -1623,17 +2008,97 @@ async function generateAnimatedBanners() {
         kickerTracking: 4,
         kickerFill: 'rgba(246,243,236,.5)',
         padding: 78,
-        lines: ['Une marque qui', 'respire au lieu', 'de clignoter.'],
+        lines: ['Une présence visible,', 'une tech silencieuse.'],
         titleSize: 58,
         lineHeight: 72,
         titleFill: COLORS.porcelain,
         titleY: 178,
-        bodyLines: ['Faraday ne dramatise pas la déconnexion.', 'Elle la rend simplement plus désirable.'],
+        bodyLines: ['Le système lumineux sert le rituel.', 'Pas l’inverse.'],
         bodySize: 22,
         bodyLineHeight: 34,
         bodyFill: 'rgba(246,243,236,.72)',
         bodyY: 438,
         accentPill: { x: 832, y: 406, width: 206, height: 44, fill: 'rgba(246,243,236,.08)', label: 'motion loop', labelFill: COLORS.porcelain },
+      },
+    },
+    {
+      id: 'instagram-story-notifications-pulse',
+      label: 'Instagram story · notifications pulse',
+      platform: 'Instagram story',
+      width: 1080,
+      height: 1920,
+      background: COLORS.ink,
+      photo: { file: PHOTO.led, position: 'attention' },
+      overlayGradient: {
+        stops: [
+          { offset: '0%', color: '#0F1722', opacity: 0.48 },
+          { offset: '100%', color: '#0F1722', opacity: 0.9 },
+        ],
+      },
+      glow: { cx: 124, cy: 160, radius: 72, color: COLORS.ember, opacity: 0.16 },
+      animation: 'pulse',
+      fps: 12,
+      frames: 36,
+      textRenderer: renderStoryCta,
+      mark: { x: 78, y: 108, size: 92, tileFill: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.ember, aura: COLORS.ember },
+      text: {
+        logoMarkup: `
+          <rect x="720" y="212" width="252" height="76" rx="24" fill="rgba(246,243,236,.12)"/>
+          <rect x="740" y="308" width="212" height="76" rx="24" fill="rgba(246,243,236,.08)"/>
+          <rect x="760" y="404" width="172" height="76" rx="24" fill="rgba(246,243,236,.05)"/>
+        `,
+        anchor: 'left',
+        titleX: 82,
+        lines: ['Vos notifications', 'survivront.'],
+        titleSize: 92,
+        lineHeight: 104,
+        titleFill: COLORS.porcelain,
+        titleY: 1100,
+        bodyLines: ['Le plus dur, c’est juste de commencer.', 'Le reste est étonnamment agréable.'],
+        bodySize: 34,
+        bodyLineHeight: 48,
+        bodyFill: 'rgba(246,243,236,.8)',
+        bodyX: 82,
+        bodyY: 1410,
+        ctaX: 82,
+        ctaY: 1652,
+        ctaWidth: 334,
+        ctaHeight: 82,
+        ctaFill: COLORS.porcelain,
+        ctaLabel: 'faradaybox',
+        ctaLabelFill: COLORS.ink,
+      },
+    },
+    {
+      id: 'linkedin-feed-promise-pulse',
+      label: 'LinkedIn feed · promise pulse',
+      platform: 'LinkedIn feed',
+      width: 1200,
+      height: 627,
+      background: COLORS.ink,
+      glow: { cx: 948, cy: 200, radius: 92, color: COLORS.ember, opacity: 0.14 },
+      animation: 'pulse',
+      fps: 12,
+      frames: 40,
+      textRenderer: renderLinkedInSplit,
+      mark: { x: 868, y: 120, size: 156, tileFill: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.ember, aura: COLORS.ember },
+      text: {
+        kicker: 'Social motion asset',
+        kickerSize: 18,
+        kickerTracking: 4,
+        kickerFill: 'rgba(246,243,236,.5)',
+        padding: 78,
+        lines: ['Votre téléphone', 'ne vous manquera', 'pas. Promis.'],
+        titleSize: 60,
+        lineHeight: 72,
+        titleFill: COLORS.porcelain,
+        titleY: 178,
+        bodyLines: ['Une promesse claire, un mouvement discret,', 'une signature immédiatement reconnaissable.'],
+        bodySize: 22,
+        bodyLineHeight: 34,
+        bodyFill: 'rgba(246,243,236,.72)',
+        bodyY: 438,
+        accentPill: { x: 832, y: 406, width: 226, height: 44, fill: 'rgba(246,243,236,.08)', label: 'promise motion', labelFill: COLORS.porcelain },
       },
     },
   ];
