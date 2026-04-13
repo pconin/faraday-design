@@ -2,11 +2,12 @@
 (function() {
   const pages = [
     { label: 'Brandbook', file: 'brand-identity.html' },
-    { label: 'Social assets', file: 'social-banners.html' },
+    { label: 'Assets', file: 'assets.html' },
     { label: 'Content redaction', file: 'content-redaction.html' },
   ];
 
-  const current = window.location.pathname.split('/').pop() || 'brand-identity.html';
+  const currentFile = window.location.pathname.split('/').pop() || 'brand-identity.html';
+  const current = currentFile === 'social-banners.html' ? 'assets.html' : currentFile;
 
   const nav = document.createElement('header');
   nav.innerHTML = `

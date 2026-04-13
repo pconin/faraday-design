@@ -2,7 +2,7 @@
 (function() {
   const finalPages = [
     { label: 'Brandbook', file: 'brand-identity.html' },
-    { label: 'Social assets', file: 'social-banners.html' },
+    { label: 'Assets', file: 'assets.html' },
     { label: 'Content redaction', file: 'content-redaction.html' },
   ];
 

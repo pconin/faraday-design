@@ -1,7 +1,8 @@
 {
-  "generatedAt": "2026-04-13T14:04:04.168Z",
+  "generatedAt": "2026-04-13T14:08:24.810Z",
   "package": {
-    "zip": "exports/deliverables/faraday-social-assets.zip"
+    "zip": "exports/deliverables/faraday-assets.zip",
+    "motionZip": "exports/deliverables/faraday-motion-assets.zip"
   },
   "logos": [
     {

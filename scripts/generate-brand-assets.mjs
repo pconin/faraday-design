@@ -45,7 +45,8 @@ const PHOTO = {
 const manifest = {
   generatedAt: new Date().toISOString(),
   package: {
-    zip: 'exports/deliverables/faraday-social-assets.zip',
+    zip: 'exports/deliverables/faraday-assets.zip',
+    motionZip: 'exports/deliverables/faraday-motion-assets.zip',
   },
   logos: [],
   staticBanners: [],
@@ -2641,16 +2642,24 @@ async function generateAnimatedBanners() {
 }
 
 async function buildZip() {
-  const zipPath = path.join(exportsDir, 'faraday-social-assets.zip');
-  try {
-    await fs.unlink(zipPath);
-  } catch {}
+  const zipPath = path.join(exportsDir, 'faraday-assets.zip');
+  const motionZipPath = path.join(exportsDir, 'faraday-motion-assets.zip');
+  try { await fs.unlink(zipPath); } catch {}
+  try { await fs.unlink(motionZipPath); } catch {}
   spawnSync('zip', [
     '-rq',
     zipPath,
     'logos',
     'social',
     'manifest.json',
+  ], {
+    cwd: exportsDir,
+    stdio: 'ignore',
+  });
+  spawnSync('zip', [
+    '-rq',
+    motionZipPath,
+    'social/animated',
   ], {
     cwd: exportsDir,
     stdio: 'ignore',
