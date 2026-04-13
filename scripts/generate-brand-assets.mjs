@@ -235,7 +235,7 @@ function buildLogoSvg(variant) {
     const titleSize = Math.round(variant.markSize * 0.52);
     const baselineSize = Math.round(variant.markSize * 0.15);
     const baselineTracking = Math.max(8, Math.round(variant.markSize * 0.048));
-    const baselineOffset = Math.round(titleSize * 0.5);
+    const baselineOffset = Math.round(titleSize * 0.56);
     return svgDoc(
       variant.width,
       variant.height,
@@ -272,10 +272,10 @@ function buildLogoSvg(variant) {
   if (variant.layout === 'stacked') {
     const centerX = variant.width / 2;
     const markX = centerX - (variant.markSize / 2);
-    const markY = 126;
+    const markY = variant.markY ?? 228;
     const titleSize = Math.round(variant.markSize * 0.5);
     const titleY = markY + variant.markSize + Math.round(titleSize * 0.74) + Math.round(variant.markSize * 0.08);
-    const baselineY = titleY + Math.round(titleSize * 0.53);
+    const baselineY = titleY + Math.round(titleSize * 0.58);
     return svgDoc(
       variant.width,
       variant.height,
@@ -320,7 +320,7 @@ function buildLogoSvg(variant) {
   if (variant.layout === 'wordmark') {
     const titleSize = 170;
     const titleY = variant.height / 2 - 4;
-    const baselineY = titleY + Math.round(titleSize * 0.52);
+    const baselineY = titleY + Math.round(titleSize * 0.58);
     return svgDoc(
       variant.width,
       variant.height,
@@ -767,7 +767,7 @@ function lockupMarkup({
 
   if (layout === 'horizontal') {
     const titleSize = Math.round(markSize * 0.5);
-    const baselineOffset = Math.round(titleSize * 0.5);
+    const baselineOffset = Math.round(titleSize * 0.56);
     return `
       ${mark}
       ${logoWordmark({
@@ -788,7 +788,7 @@ function lockupMarkup({
   const centerX = x + (markSize / 2);
   const titleSize = Math.round(markSize * 0.5);
   const titleY = y + markSize + Math.round(titleSize * 0.74) + Math.round(markSize * 0.06);
-  const baselineY = titleY + Math.round(titleSize * 0.52);
+  const baselineY = titleY + Math.round(titleSize * 0.58);
   return `
     ${mark}
     ${textPath({
@@ -1420,6 +1420,24 @@ async function generateLogos() {
       rasterSizes: [512, 1024, 2048],
     },
     {
+      id: 'logo-stacked-ink-ember',
+      label: 'Stacked · Ink Charcoal / Ember',
+      category: 'Stacked',
+      layout: 'stacked',
+      width: 1200,
+      height: 900,
+      markSize: 220,
+      background: COLORS.ink,
+      tileFill: COLORS.ink,
+      shell: 'rgba(246,243,236,.22)',
+      core: COLORS.ember,
+      wordFill: COLORS.porcelain,
+      baselineFill: COLORS.porcelain,
+      baselineOpacity: 0.72,
+      baseline: false,
+      rasterSizes: [512, 1024, 2048],
+    },
+    {
       id: 'logo-stacked-ink-lake-baseline',
       label: 'Stacked · Ink Charcoal / Lake · baseline',
       category: 'Stacked',
@@ -1435,6 +1453,24 @@ async function generateLogos() {
       baselineFill: COLORS.porcelain,
       baselineOpacity: 0.72,
       baseline: true,
+      rasterSizes: [512, 1024, 2048],
+    },
+    {
+      id: 'logo-stacked-ink-lake',
+      label: 'Stacked · Ink Charcoal / Lake',
+      category: 'Stacked',
+      layout: 'stacked',
+      width: 1200,
+      height: 900,
+      markSize: 220,
+      background: COLORS.ink,
+      tileFill: COLORS.ink,
+      shell: 'rgba(246,243,236,.22)',
+      core: COLORS.lake,
+      wordFill: COLORS.porcelain,
+      baselineFill: COLORS.porcelain,
+      baselineOpacity: 0.72,
+      baseline: false,
       rasterSizes: [512, 1024, 2048],
     },
     {
@@ -1456,6 +1492,24 @@ async function generateLogos() {
       rasterSizes: [512, 1024, 2048],
     },
     {
+      id: 'logo-stacked-porcelain-ember',
+      label: 'Stacked · Porcelain / Ember',
+      category: 'Stacked',
+      layout: 'stacked',
+      width: 1200,
+      height: 900,
+      markSize: 220,
+      background: COLORS.porcelain,
+      tileFill: COLORS.porcelain,
+      shell: 'rgba(21,29,42,.15)',
+      core: COLORS.ember,
+      wordFill: COLORS.ink,
+      baselineFill: COLORS.ink,
+      baselineOpacity: 0.62,
+      baseline: false,
+      rasterSizes: [512, 1024, 2048],
+    },
+    {
       id: 'logo-stacked-sage-porcelain-baseline',
       label: 'Stacked · Sage Mist / Porcelain · baseline',
       category: 'Stacked',
@@ -1471,6 +1525,24 @@ async function generateLogos() {
       baselineFill: COLORS.ink,
       baselineOpacity: 0.6,
       baseline: true,
+      rasterSizes: [512, 1024, 2048],
+    },
+    {
+      id: 'logo-stacked-sage-porcelain',
+      label: 'Stacked · Sage Mist / Porcelain',
+      category: 'Stacked',
+      layout: 'stacked',
+      width: 1200,
+      height: 900,
+      markSize: 220,
+      background: COLORS.sage,
+      tileFill: COLORS.sage,
+      shell: 'rgba(21,29,42,.15)',
+      core: COLORS.porcelain,
+      wordFill: COLORS.ink,
+      baselineFill: COLORS.ink,
+      baselineOpacity: 0.6,
+      baseline: false,
       rasterSizes: [512, 1024, 2048],
     },
     {
@@ -1568,12 +1640,40 @@ async function generateLogos() {
       wordFill: COLORS.ink,
       baselineFill: COLORS.ink,
       baselineOpacity: 0.62,
+      baseline: false,
+      rasterSizes: [512, 1024, 2048],
+    },
+    {
+      id: 'wordmark-transparent-ink-baseline',
+      label: 'Wordmark transparent · Ink · baseline',
+      category: 'Transparent',
+      layout: 'wordmark',
+      width: 2200,
+      height: 780,
+      background: null,
+      wordFill: COLORS.ink,
+      baselineFill: COLORS.ink,
+      baselineOpacity: 0.62,
       baseline: true,
       rasterSizes: [512, 1024, 2048],
     },
     {
       id: 'wordmark-transparent-porcelain',
       label: 'Wordmark transparent · Porcelain',
+      category: 'Transparent',
+      layout: 'wordmark',
+      width: 2200,
+      height: 780,
+      background: null,
+      wordFill: COLORS.porcelain,
+      baselineFill: COLORS.porcelain,
+      baselineOpacity: 0.72,
+      baseline: false,
+      rasterSizes: [512, 1024, 2048],
+    },
+    {
+      id: 'wordmark-transparent-porcelain-baseline',
+      label: 'Wordmark transparent · Porcelain · baseline',
       category: 'Transparent',
       layout: 'wordmark',
       width: 2200,

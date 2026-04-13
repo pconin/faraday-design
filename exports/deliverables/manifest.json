@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T13:57:22.847Z",
+  "generatedAt": "2026-04-13T14:04:04.168Z",
   "package": {
     "zip": "exports/deliverables/faraday-social-assets.zip"
   },
@@ -445,6 +445,24 @@
       }
     },
     {
+      "id": "logo-stacked-ink-ember",
+      "label": "Stacked · Ink Charcoal / Ember",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-ink-ember.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-ink-ember-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-ink-ember-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-ink-ember-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-ink-ember-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-ink-ember-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-ink-ember-2048.webp"
+        }
+      }
+    },
+    {
       "id": "logo-stacked-ink-lake-baseline",
       "label": "Stacked · Ink Charcoal / Lake · baseline",
       "category": "Stacked",
@@ -459,6 +477,24 @@
           "512": "exports/deliverables/logos/webp/logo-stacked-ink-lake-baseline-512.webp",
           "1024": "exports/deliverables/logos/webp/logo-stacked-ink-lake-baseline-1024.webp",
           "2048": "exports/deliverables/logos/webp/logo-stacked-ink-lake-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-ink-lake",
+      "label": "Stacked · Ink Charcoal / Lake",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-ink-lake.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-ink-lake-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-ink-lake-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-ink-lake-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-ink-lake-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-ink-lake-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-ink-lake-2048.webp"
         }
       }
     },
@@ -481,6 +517,24 @@
       }
     },
     {
+      "id": "logo-stacked-porcelain-ember",
+      "label": "Stacked · Porcelain / Ember",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-porcelain-ember.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-2048.webp"
+        }
+      }
+    },
+    {
       "id": "logo-stacked-sage-porcelain-baseline",
       "label": "Stacked · Sage Mist / Porcelain · baseline",
       "category": "Stacked",
@@ -495,6 +549,24 @@
           "512": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-512.webp",
           "1024": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-1024.webp",
           "2048": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-sage-porcelain",
+      "label": "Stacked · Sage Mist / Porcelain",
+      "category": "Stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-sage-porcelain.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-2048.webp"
         }
       }
     },
@@ -589,6 +661,24 @@
       }
     },
     {
+      "id": "wordmark-transparent-ink-baseline",
+      "label": "Wordmark transparent · Ink · baseline",
+      "category": "Transparent",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/wordmark-transparent-ink-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/wordmark-transparent-ink-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/wordmark-transparent-ink-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/wordmark-transparent-ink-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/wordmark-transparent-ink-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/wordmark-transparent-ink-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/wordmark-transparent-ink-baseline-2048.webp"
+        }
+      }
+    },
+    {
       "id": "wordmark-transparent-porcelain",
       "label": "Wordmark transparent · Porcelain",
       "category": "Transparent",
@@ -603,6 +693,24 @@
           "512": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-512.webp",
           "1024": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-1024.webp",
           "2048": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "wordmark-transparent-porcelain-baseline",
+      "label": "Wordmark transparent · Porcelain · baseline",
+      "category": "Transparent",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/wordmark-transparent-porcelain-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/wordmark-transparent-porcelain-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/wordmark-transparent-porcelain-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/wordmark-transparent-porcelain-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/wordmark-transparent-porcelain-baseline-2048.webp"
         }
       }
     }
