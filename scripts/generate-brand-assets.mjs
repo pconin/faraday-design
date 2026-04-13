@@ -30,7 +30,9 @@ const COLORS = {
 
 const FONTS = {
   sora: TextToSVG.loadSync(path.join(assetsDir, 'fonts', 'Sora.ttf')),
-  manrope: TextToSVG.loadSync(path.join(assetsDir, 'fonts', 'Manrope.ttf')),
+  soraLight: TextToSVG.loadSync(path.join(assetsDir, 'fonts', 'Sora-Light.ttf')),
+  manrope: TextToSVG.loadSync(path.join(assetsDir, 'fonts', 'Manrope-Regular.ttf')),
+  manropeBold: TextToSVG.loadSync(path.join(assetsDir, 'fonts', 'Manrope-Bold.ttf')),
   plex: TextToSVG.loadSync(path.join(assetsDir, 'fonts', 'IBMPlexMono-Medium.ttf')),
 };
 
@@ -179,10 +181,11 @@ function logoWordmark({
   titleSize = 154,
   baselineSize = 28,
   baselineTracking = 12,
+  baselineOffset = 62,
 }) {
   const title = textPath({
     text: 'faraday',
-    font: FONTS.sora,
+    font: FONTS.soraLight,
     fontSize: titleSize,
     x,
     y,
@@ -191,10 +194,10 @@ function logoWordmark({
   });
   const base = baseline ? textPath({
     text: 'DISCONNECT TO RECONNECT',
-    font: FONTS.manrope,
+    font: FONTS.manropeBold,
     fontSize: baselineSize,
     x,
-    y: y + 74,
+    y: y + baselineOffset,
     fill: baselineFill,
     anchor: align,
     tracking: baselineTracking,
@@ -228,6 +231,9 @@ function buildLogoSvg(variant) {
     const markX = 156;
     const markY = (variant.height - variant.markSize) / 2;
     const wordX = markX + variant.markSize + 54;
+    const titleSize = Math.round(variant.markSize * 0.52);
+    const baselineSize = Math.round(variant.markSize * 0.15);
+    const baselineTracking = Math.max(8, Math.round(variant.markSize * 0.048));
     return svgDoc(
       variant.width,
       variant.height,
@@ -246,14 +252,15 @@ function buildLogoSvg(variant) {
         })}
         ${logoWordmark({
           x: wordX,
-          y: variant.height / 2 - 8,
+          y: variant.height / 2 + Math.round(variant.markSize * 0.02),
           fill: variant.wordFill,
           baselineFill: variant.baselineFill,
           baselineOpacity: variant.baselineOpacity,
           baseline: variant.baseline,
-          titleSize: 168,
-          baselineSize: 28,
-          baselineTracking: 10,
+          titleSize,
+          baselineSize,
+          baselineTracking,
+          baselineOffset: Math.round(titleSize * 0.44),
         })}
       `,
       variant.background,
@@ -282,8 +289,8 @@ function buildLogoSvg(variant) {
         })}
         ${textPath({
           text: 'faraday',
-          font: FONTS.sora,
-          fontSize: 124,
+          font: FONTS.soraLight,
+          fontSize: Math.round(variant.markSize * 0.5),
           x: centerX,
           y: 540,
           fill: variant.wordFill,
@@ -291,13 +298,13 @@ function buildLogoSvg(variant) {
         })}
         ${variant.baseline ? textPath({
           text: 'DISCONNECT TO RECONNECT',
-          font: FONTS.manrope,
-          fontSize: 24,
+          font: FONTS.manropeBold,
+          fontSize: Math.round(variant.markSize * 0.15),
           x: centerX,
-          y: 602,
+          y: 590,
           fill: variant.baselineFill,
           anchor: 'center',
-          tracking: 10,
+          tracking: Math.max(8, Math.round(variant.markSize * 0.045)),
           opacity: variant.baselineOpacity ?? 0.82,
         }) : ''}
       `,
@@ -312,22 +319,22 @@ function buildLogoSvg(variant) {
       `
         ${textPath({
           text: 'faraday',
-          font: FONTS.sora,
-          fontSize: 214,
+          font: FONTS.soraLight,
+          fontSize: 170,
           x: variant.width / 2,
-          y: variant.height / 2,
+          y: variant.height / 2 - 4,
           fill: variant.wordFill,
           anchor: 'center',
         })}
         ${variant.baseline ? textPath({
           text: 'DISCONNECT TO RECONNECT',
-          font: FONTS.manrope,
-          fontSize: 34,
+          font: FONTS.manropeBold,
+          fontSize: 30,
           x: variant.width / 2,
-          y: variant.height / 2 + 84,
+          y: variant.height / 2 + 70,
           fill: variant.baselineFill,
           anchor: 'center',
-          tracking: 12,
+          tracking: 10,
           opacity: variant.baselineOpacity ?? 0.82,
         }) : ''}
       `,
@@ -751,18 +758,20 @@ function lockupMarkup({
   });
 
   if (layout === 'horizontal') {
+    const titleSize = Math.round(markSize * 0.5);
     return `
       ${mark}
       ${logoWordmark({
         x: x + markSize + gap,
-        y: y + (markSize * 0.54),
+        y: y + (markSize * 0.55),
         fill: wordFill ?? token.word,
         baselineFill: baselineFill ?? (wordFill ?? token.word),
         baselineOpacity,
         baseline,
-        titleSize: Math.round(markSize * 0.96),
-        baselineSize: Math.round(markSize * 0.17),
-        baselineTracking: Math.round(markSize * 0.05),
+        titleSize,
+        baselineSize: Math.max(10, Math.round(markSize * 0.15)),
+        baselineTracking: Math.max(3, Math.round(markSize * 0.05)),
+        baselineOffset: Math.round(titleSize * 0.44),
       })}
     `;
   }
@@ -772,19 +781,19 @@ function lockupMarkup({
     ${mark}
     ${textPath({
       text: 'faraday',
-      font: FONTS.sora,
-      fontSize: Math.round(markSize * 0.78),
+      font: FONTS.soraLight,
+      fontSize: Math.round(markSize * 0.5),
       x: centerX,
-      y: y + markSize + gap + Math.round(markSize * 0.56),
+      y: y + markSize + gap + Math.round(markSize * 0.5),
       fill: wordFill ?? token.word,
       anchor: 'center',
     })}
     ${baseline ? textPath({
       text: 'DISCONNECT TO RECONNECT',
-      font: FONTS.manrope,
-      fontSize: Math.round(markSize * 0.14),
+      font: FONTS.manropeBold,
+      fontSize: Math.max(10, Math.round(markSize * 0.15)),
       x: centerX,
-      y: y + markSize + gap + Math.round(markSize * 0.9),
+      y: y + markSize + gap + Math.round(markSize * 0.72),
       fill: baselineFill ?? (wordFill ?? token.word),
       anchor: 'center',
       tracking: Math.round(markSize * 0.05),
@@ -1789,13 +1798,13 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 776,
-          y: 112,
+          x: 760,
+          y: 102,
           style: 'ember',
           layout: 'horizontal',
           baseline: true,
-          markSize: 72,
-          gap: 14,
+          markSize: 54,
+          gap: 12,
           baselineOpacity: 0.72,
         }),
         kicker: 'Typographic asset',
@@ -1834,13 +1843,13 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 74,
-          y: 70,
+          x: 852,
+          y: 96,
           style: 'ember',
           layout: 'horizontal',
           baseline: true,
-          markSize: 58,
-          gap: 14,
+          markSize: 50,
+          gap: 12,
           baselineOpacity: 0.72,
         }),
         kicker: 'LinkedIn cover',
@@ -1870,13 +1879,13 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 1176,
-          y: 72,
+          x: 1182,
+          y: 74,
           style: 'lake',
           layout: 'horizontal',
           baseline: true,
-          markSize: 66,
-          gap: 14,
+          markSize: 50,
+          gap: 12,
           baselineOpacity: 0.72,
         }),
         kicker: 'Disconnect to reconnect',
@@ -1885,15 +1894,15 @@ async function generateStaticBanners() {
         kickerFill: 'rgba(246,243,236,.54)',
         padding: 78,
         lines: ['Votre téléphone', 'ne vous manquera', 'pas. Promis.'],
-        titleSize: 54,
-        lineHeight: 64,
+        titleSize: 48,
+        lineHeight: 58,
         titleFill: COLORS.porcelain,
-        titleY: 168,
+        titleY: 156,
         bodyLines: ['Une phrase simple, une présence nette, un objet que l’on comprend immédiatement.'],
         bodySize: 20,
-        bodyLineHeight: 38,
+        bodyLineHeight: 34,
         bodyFill: 'rgba(246,243,236,.72)',
-        bodyY: 294,
+        bodyY: 314,
         accentPill: { x: 78, y: 316, width: 168, height: 40, fill: 'rgba(246,243,236,.08)', label: 'page cover', labelFill: COLORS.porcelain },
       },
     },
@@ -1915,12 +1924,12 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 1248,
-          y: 264,
+          x: 1242,
+          y: 248,
           style: 'ember',
           layout: 'horizontal',
           baseline: true,
-          markSize: 52,
+          markSize: 48,
           gap: 12,
           baselineOpacity: 0.72,
         }),
@@ -1930,15 +1939,15 @@ async function generateStaticBanners() {
         kickerFill: 'rgba(246,243,236,.56)',
         padding: 78,
         lines: ['Le plus dur,', "c'est juste de", 'commencer.'],
-        titleSize: 60,
-        lineHeight: 72,
+        titleSize: 56,
+        lineHeight: 66,
         titleFill: COLORS.porcelain,
-        titleY: 192,
+        titleY: 176,
         bodyLines: ['Une impulsion simple. Un vrai temps retrouvé.'],
         bodySize: 22,
         bodyLineHeight: 34,
         bodyFill: 'rgba(246,243,236,.76)',
-        bodyY: 314,
+        bodyY: 330,
       },
     },
     {
@@ -1951,12 +1960,12 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 1216,
-          y: 262,
+          x: 1212,
+          y: 246,
           style: 'porcelain',
           layout: 'horizontal',
           baseline: true,
-          markSize: 52,
+          markSize: 48,
           gap: 12,
           baselineOpacity: 0.6,
         }),
@@ -1994,12 +2003,12 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 1246,
-          y: 262,
+          x: 1238,
+          y: 246,
           style: 'ember',
           layout: 'horizontal',
           baseline: true,
-          markSize: 52,
+          markSize: 48,
           gap: 12,
           baselineOpacity: 0.72,
         }),
@@ -2065,7 +2074,7 @@ async function generateStaticBanners() {
       height: 1080,
       background: COLORS.porcelain,
       textRenderer: renderRitualSteps,
-      mark: { x: 902, y: 86, size: 92, tileFill: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.lake },
+      mark: { x: 902, y: 86, size: 92, tileFill: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.ember },
       text: {
         kicker: 'Rituel Faraday',
         kickerSize: 18,
@@ -2100,7 +2109,7 @@ async function generateStaticBanners() {
           {
             fill: '#FFFFFF',
             stroke: 'rgba(21,29,42,.08)',
-            badgeFill: COLORS.lake,
+            badgeFill: COLORS.ink,
             badgeLabelFill: COLORS.porcelain,
             title: 'Vivez',
             titleFill: COLORS.ink,
@@ -2247,7 +2256,7 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 924,
+          x: 858,
           y: 88,
           style: 'lake',
           layout: 'horizontal',
