@@ -230,10 +230,12 @@ function buildLogoSvg(variant) {
   if (variant.layout === 'horizontal') {
     const markX = 156;
     const markY = (variant.height - variant.markSize) / 2;
-    const wordX = markX + variant.markSize + 54;
+    const wordGap = variant.wordGap ?? Math.round(variant.markSize * 0.15);
+    const wordX = markX + variant.markSize + wordGap;
     const titleSize = Math.round(variant.markSize * 0.52);
     const baselineSize = Math.round(variant.markSize * 0.15);
     const baselineTracking = Math.max(8, Math.round(variant.markSize * 0.048));
+    const baselineOffset = Math.round(titleSize * 0.5);
     return svgDoc(
       variant.width,
       variant.height,
@@ -260,7 +262,7 @@ function buildLogoSvg(variant) {
           titleSize,
           baselineSize,
           baselineTracking,
-          baselineOffset: Math.round(titleSize * 0.44),
+          baselineOffset,
         })}
       `,
       variant.background,
@@ -270,7 +272,10 @@ function buildLogoSvg(variant) {
   if (variant.layout === 'stacked') {
     const centerX = variant.width / 2;
     const markX = centerX - (variant.markSize / 2);
-    const markY = 110;
+    const markY = 126;
+    const titleSize = Math.round(variant.markSize * 0.5);
+    const titleY = markY + variant.markSize + Math.round(titleSize * 0.74) + Math.round(variant.markSize * 0.08);
+    const baselineY = titleY + Math.round(titleSize * 0.53);
     return svgDoc(
       variant.width,
       variant.height,
@@ -290,9 +295,9 @@ function buildLogoSvg(variant) {
         ${textPath({
           text: 'faraday',
           font: FONTS.soraLight,
-          fontSize: Math.round(variant.markSize * 0.5),
+          fontSize: titleSize,
           x: centerX,
-          y: 540,
+          y: titleY,
           fill: variant.wordFill,
           anchor: 'center',
         })}
@@ -301,7 +306,7 @@ function buildLogoSvg(variant) {
           font: FONTS.manropeBold,
           fontSize: Math.round(variant.markSize * 0.15),
           x: centerX,
-          y: 590,
+          y: baselineY,
           fill: variant.baselineFill,
           anchor: 'center',
           tracking: Math.max(8, Math.round(variant.markSize * 0.045)),
@@ -313,6 +318,9 @@ function buildLogoSvg(variant) {
   }
 
   if (variant.layout === 'wordmark') {
+    const titleSize = 170;
+    const titleY = variant.height / 2 - 4;
+    const baselineY = titleY + Math.round(titleSize * 0.52);
     return svgDoc(
       variant.width,
       variant.height,
@@ -320,9 +328,9 @@ function buildLogoSvg(variant) {
         ${textPath({
           text: 'faraday',
           font: FONTS.soraLight,
-          fontSize: 170,
+          fontSize: titleSize,
           x: variant.width / 2,
-          y: variant.height / 2 - 4,
+          y: titleY,
           fill: variant.wordFill,
           anchor: 'center',
         })}
@@ -331,7 +339,7 @@ function buildLogoSvg(variant) {
           font: FONTS.manropeBold,
           fontSize: 30,
           x: variant.width / 2,
-          y: variant.height / 2 + 70,
+          y: baselineY,
           fill: variant.baselineFill,
           anchor: 'center',
           tracking: 10,
@@ -730,7 +738,7 @@ function lockupMarkup({
   layout = 'horizontal',
   baseline = true,
   markSize = 84,
-  gap = 18,
+  gap = 12,
   wordFill,
   baselineFill,
   baselineOpacity = 0.7,
@@ -759,6 +767,7 @@ function lockupMarkup({
 
   if (layout === 'horizontal') {
     const titleSize = Math.round(markSize * 0.5);
+    const baselineOffset = Math.round(titleSize * 0.5);
     return `
       ${mark}
       ${logoWordmark({
@@ -771,20 +780,23 @@ function lockupMarkup({
         titleSize,
         baselineSize: Math.max(10, Math.round(markSize * 0.15)),
         baselineTracking: Math.max(3, Math.round(markSize * 0.05)),
-        baselineOffset: Math.round(titleSize * 0.44),
+        baselineOffset,
       })}
     `;
   }
 
   const centerX = x + (markSize / 2);
+  const titleSize = Math.round(markSize * 0.5);
+  const titleY = y + markSize + Math.round(titleSize * 0.74) + Math.round(markSize * 0.06);
+  const baselineY = titleY + Math.round(titleSize * 0.52);
   return `
     ${mark}
     ${textPath({
       text: 'faraday',
       font: FONTS.soraLight,
-      fontSize: Math.round(markSize * 0.5),
+      fontSize: titleSize,
       x: centerX,
-      y: y + markSize + gap + Math.round(markSize * 0.5),
+      y: titleY,
       fill: wordFill ?? token.word,
       anchor: 'center',
     })}
@@ -793,7 +805,7 @@ function lockupMarkup({
       font: FONTS.manropeBold,
       fontSize: Math.max(10, Math.round(markSize * 0.15)),
       x: centerX,
-      y: y + markSize + gap + Math.round(markSize * 0.72),
+      y: baselineY,
       fill: baselineFill ?? (wordFill ?? token.word),
       anchor: 'center',
       tracking: Math.round(markSize * 0.05),
