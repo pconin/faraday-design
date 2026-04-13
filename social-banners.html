@@ -206,14 +206,14 @@
           <span>Ink + Ember ou Lake, Porcelain + Ember, Sage Mist + Porcelain uniquement. Le script interdit Sage Mist + Ember et les marqueurs hors système.</span>
         </div>
         <div class="audit-card">
-          <div class="ok">OK · Brandbook</div>
-          <strong>Réemploi des codes validés</strong>
-          <span>Quote cards premium, rectangle métro, LED mark, stats éditoriales, intérieurs chauds et langage du rituel viennent directement du brandbook final.</span>
+          <div class="ok">OK · Halo</div>
+          <strong>Variante halo cadrée</strong>
+          <span>Les déclinaisons halo remplissent désormais la capsule interne autour de la LED, jusqu’au premier contour arrondi. Elles sont livrées comme variantes officielles, pas comme effets ajoutés au cas par cas.</span>
         </div>
         <div class="audit-card">
-          <div class="warn">À confirmer · Sage Mist</div>
-          <strong>Token actuel du repo</strong>
-          <span>Le pack respecte le token actuellement défini dans le repo pour Sage Mist. Dès que le hex final est validé, toute la chaîne d’exports pourra être régénérée proprement.</span>
+          <div class="ok">OK · Brandbook</div>
+          <strong>Réemploi des codes validés</strong>
+          <span>Quote cards premium, rectangle métro, LED mark, stats éditoriales, lockups complets et photos 3/4 viennent directement du brandbook final.</span>
         </div>
       </div>
     </section>
@@ -333,6 +333,17 @@
         .join('');
     }).join('');
 
+    const previewStyle = (asset) => {
+      const label = asset.label || '';
+      if (label.includes('transparent · Porcelain') || label.includes('Gravure mono Porcelain')) {
+        return 'background:linear-gradient(180deg,#151D2A,#111824);';
+      }
+      if (label.includes('transparent · Ink') || label.includes('Gravure mono Ink')) {
+        return 'background:linear-gradient(180deg,#fff,#f2eee6);';
+      }
+      return '';
+    };
+
     const createAssetCard = (asset, previewFile, extraChips = []) => `
       <article class="card">
         <div class="asset-head">
@@ -342,7 +353,7 @@
           </div>
           <div class="chips">${extraChips.join('')}</div>
         </div>
-        <div class="preview${asset.category ? ' logo' : ''}">
+        <div class="preview${asset.category ? ' logo' : ''}" style="${previewStyle(asset)}">
           ${asset.files?.mp4
             ? `<video src="${asset.files.mp4}" autoplay muted loop playsinline></video>`
             : `<img src="${previewFile}" alt="${asset.label}">`
@@ -362,7 +373,7 @@
       'instagram-square-ritual-steps': {
         eyebrow: 'Rituel',
         title: 'Le cœur du produit résumé en trois temps.',
-        body: 'Posez. Vivez. Retrouvez. Cet asset transforme les verbes forts du site en mécanique sociale mémorisable et réutilisable.',
+        body: 'Le rituel ne devient pas un slogan. Il devient un asset propre, utile et beaucoup plus réutilisable en social.',
       },
       'linkedin-feed-stat-editorial': {
         eyebrow: 'Proof',

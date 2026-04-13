@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T11:23:36.539Z",
+  "generatedAt": "2026-04-13T12:37:01.132Z",
   "package": {
     "zip": "exports/deliverables/faraday-social-assets.zip"
   },
@@ -105,6 +105,110 @@
           "512": "exports/deliverables/logos/webp/mark-on-sage-porcelain-512.webp",
           "1024": "exports/deliverables/logos/webp/mark-on-sage-porcelain-1024.webp",
           "2048": "exports/deliverables/logos/webp/mark-on-sage-porcelain-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-on-ink-ember-halo",
+      "label": "Mark · Ink Charcoal / Ember · halo",
+      "category": "Halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-ink-ember-halo.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-ink-ember-halo-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-ink-ember-halo-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-ink-ember-halo-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-ink-ember-halo-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-ink-ember-halo-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-ink-ember-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-ink-ember-halo-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-ink-ember-halo-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-ink-ember-halo-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-ink-ember-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-ink-ember-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-ink-ember-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-ink-ember-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-ink-ember-halo-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-on-ink-lake-halo",
+      "label": "Mark · Ink Charcoal / Lake · halo",
+      "category": "Halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-ink-lake-halo.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-ink-lake-halo-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-ink-lake-halo-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-ink-lake-halo-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-ink-lake-halo-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-ink-lake-halo-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-ink-lake-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-ink-lake-halo-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-ink-lake-halo-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-ink-lake-halo-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-ink-lake-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-ink-lake-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-ink-lake-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-ink-lake-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-ink-lake-halo-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-on-porcelain-ember-halo",
+      "label": "Mark · Porcelain / Ember · halo",
+      "category": "Halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-porcelain-ember-halo.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-porcelain-ember-halo-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-porcelain-ember-halo-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-porcelain-ember-halo-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-porcelain-ember-halo-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-porcelain-ember-halo-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-porcelain-ember-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-porcelain-ember-halo-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-porcelain-ember-halo-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-porcelain-ember-halo-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-porcelain-ember-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-porcelain-ember-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-porcelain-ember-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-porcelain-ember-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-porcelain-ember-halo-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "mark-on-sage-porcelain-halo",
+      "label": "Mark · Sage Mist / Porcelain · halo",
+      "category": "Halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/mark-on-sage-porcelain-halo.svg",
+        "png": {
+          "32": "exports/deliverables/logos/png/mark-on-sage-porcelain-halo-32.png",
+          "64": "exports/deliverables/logos/png/mark-on-sage-porcelain-halo-64.png",
+          "128": "exports/deliverables/logos/png/mark-on-sage-porcelain-halo-128.png",
+          "256": "exports/deliverables/logos/png/mark-on-sage-porcelain-halo-256.png",
+          "512": "exports/deliverables/logos/png/mark-on-sage-porcelain-halo-512.png",
+          "1024": "exports/deliverables/logos/png/mark-on-sage-porcelain-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/mark-on-sage-porcelain-halo-2048.png"
+        },
+        "webp": {
+          "32": "exports/deliverables/logos/webp/mark-on-sage-porcelain-halo-32.webp",
+          "64": "exports/deliverables/logos/webp/mark-on-sage-porcelain-halo-64.webp",
+          "128": "exports/deliverables/logos/webp/mark-on-sage-porcelain-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/mark-on-sage-porcelain-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/mark-on-sage-porcelain-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/mark-on-sage-porcelain-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/mark-on-sage-porcelain-halo-2048.webp"
         }
       }
     },
@@ -251,6 +355,78 @@
       }
     },
     {
+      "id": "logo-horizontal-ink-ember-halo-baseline",
+      "label": "Horizontal · Ink Charcoal / Ember · halo · baseline",
+      "category": "Halo wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-ember-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-ink-ember-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-ink-ember-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-ink-ember-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-ink-ember-halo-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-ink-lake-halo-baseline",
+      "label": "Horizontal · Ink Charcoal / Lake · halo · baseline",
+      "category": "Halo wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-ink-lake-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-ink-lake-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-ink-lake-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-ink-lake-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-ink-lake-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-ink-lake-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-ink-lake-halo-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-porcelain-ember-halo-baseline",
+      "label": "Horizontal · Porcelain / Ember · halo · baseline",
+      "category": "Halo wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-porcelain-ember-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-porcelain-ember-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-porcelain-ember-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-porcelain-ember-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-porcelain-ember-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-porcelain-ember-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-porcelain-ember-halo-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-horizontal-sage-porcelain-halo-baseline",
+      "label": "Horizontal · Sage Mist / Porcelain · halo · baseline",
+      "category": "Halo wordmark",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-horizontal-sage-porcelain-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-horizontal-sage-porcelain-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-horizontal-sage-porcelain-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-horizontal-sage-porcelain-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-horizontal-sage-porcelain-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-horizontal-sage-porcelain-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-horizontal-sage-porcelain-halo-baseline-2048.webp"
+        }
+      }
+    },
+    {
       "id": "logo-stacked-ink-ember-baseline",
       "label": "Stacked · Ink Charcoal / Ember · baseline",
       "category": "Stacked",
@@ -319,6 +495,78 @@
           "512": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-512.webp",
           "1024": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-1024.webp",
           "2048": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-ink-ember-halo-baseline",
+      "label": "Stacked · Ink Charcoal / Ember · halo · baseline",
+      "category": "Halo stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-ink-ember-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-ink-ember-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-ink-ember-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-ink-ember-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-ink-ember-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-ink-ember-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-ink-ember-halo-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-ink-lake-halo-baseline",
+      "label": "Stacked · Ink Charcoal / Lake · halo · baseline",
+      "category": "Halo stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-ink-lake-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-ink-lake-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-ink-lake-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-ink-lake-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-ink-lake-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-ink-lake-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-ink-lake-halo-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-porcelain-ember-halo-baseline",
+      "label": "Stacked · Porcelain / Ember · halo · baseline",
+      "category": "Halo stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-porcelain-ember-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-porcelain-ember-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-porcelain-ember-halo-baseline-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "logo-stacked-sage-porcelain-halo-baseline",
+      "label": "Stacked · Sage Mist / Porcelain · halo · baseline",
+      "category": "Halo stacked",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/logo-stacked-sage-porcelain-halo-baseline.svg",
+        "png": {
+          "512": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-halo-baseline-512.png",
+          "1024": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-halo-baseline-1024.png",
+          "2048": "exports/deliverables/logos/png/logo-stacked-sage-porcelain-halo-baseline-2048.png"
+        },
+        "webp": {
+          "512": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-halo-baseline-512.webp",
+          "1024": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-halo-baseline-1024.webp",
+          "2048": "exports/deliverables/logos/webp/logo-stacked-sage-porcelain-halo-baseline-2048.webp"
         }
       }
     },

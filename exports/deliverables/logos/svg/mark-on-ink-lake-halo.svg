@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  
+  <g transform="translate(132 132) scale(7.916666666666667)">
+    <rect width="96" height="96" rx="26" fill="#151D2A"/>
+    <rect class="led-aura" x="32" y="15" width="32" height="66" rx="16" fill="#4A8395" opacity="0.18"/>
+    <rect x="31" y="14" width="34" height="68" rx="17" stroke="rgba(246,243,236,.22)" stroke-width="2.6"/>
+    <rect x="43" y="28" width="10" height="40" rx="5" fill="#4A8395"/>
+  </g>
+</svg>

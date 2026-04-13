@@ -28,6 +28,14 @@
 | Porcelain | Ink + Lake | ✅ Mode clair, liens |
 | Sage | Porcelain | ✅ Déclinaison nature |
 
+### Règle baseline
+
+- La baseline `Disconnect to reconnect` suit toujours la couleur du wordmark.
+- Sur fond **Ink** : baseline **Porcelain** à ~72% d’opacité.
+- Sur fond **Porcelain** : baseline **Ink** à ~62% d’opacité.
+- Sur fond **Sage Mist** : baseline **Ink** à ~60% d’opacité.
+- La baseline ne prend jamais la couleur **Lake** ni **Ember**.
+
 ### ⛔ Combinaison interdite
 
 > **JAMAIS Sage Mist (#C5CFBF) + Ember (#FF9361) ensemble.**
@@ -94,6 +102,17 @@
 | **Mono Ink** | transparent | Ink (stroke 4) | Ink | `exports/logos/led-mark-mono-ink.svg` |
 | **Mono White** | transparent | White (stroke 4) | White | `exports/logos/led-mark-mono-white.svg` |
 
+### Variantes halo approuvées
+
+- Le halo remplit la capsule interne autour de la LED, jusqu’au premier contour arrondi. Il ne va pas jusqu’au bord extérieur de la tuile.
+- Le halo reprend toujours la couleur du core :
+  - **Ink + Ember** → halo Ember
+  - **Ink + Lake** → halo Lake
+  - **Porcelain + Ember** → halo Ember
+  - **Sage Mist + Porcelain** → halo Porcelain
+- Les variantes halo sont autorisées pour splash, motion, social et surfaces immersives.
+- Elles ne remplacent pas le logo standard dans les usages courants.
+
 ### Variantes additionnelles (LED)
 
 | Variante | Fichier |
@@ -114,7 +133,7 @@
 - **Taille minimum** : 24px (mark seul), 120px (lockup)
 - **Zone de protection** : 25% de la largeur du mark autour
 - **Fond minimum** : toujours un fond uni ou un gradient brand. Jamais sur une photo non traitée.
-- **Ne jamais** : déformer, tourner, changer les proportions shell/core, ajouter d'ombre portée
+- **Ne jamais** : déformer, tourner, changer les proportions shell/core, ajouter un glow non approuvé, recolorer la baseline avec un accent
 
 ---
 

@@ -155,6 +155,7 @@
 // LED mark SVGs — from Codex
 const LED=(s,bg,shellC,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
 const LED_AURA=(s,bg,shellC,coreC,auraC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="${auraC}" opacity=".12"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const LED_HALO=(s,bg,shellC,coreC,auraC,a=.18)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="32" y="15" width="32" height="66" rx="16" fill="${auraC}" opacity="${a}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
 const LED_CORE=(s,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="43" y="26" width="10" height="44" rx="5" fill="${coreC}"/></svg>`;
 const LED_MONO=(s,c)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="31" y="14" width="34" height="68" rx="17" stroke="${c}" stroke-width="4"/><rect x="43" y="28" width="10" height="40" rx="5" fill="${c}"/></svg>`;
 
@@ -177,18 +178,18 @@ h+=`<div style="display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-ite
 h+=`<div>`;
 h+=`<div class="kicker">Brandbook final — 2026</div>`;
 h+=`<h2 style="font-size:clamp(48px,6vw,78px);">faraday</h2>`;
-h+=`<p class="sect-desc" style="margin-top:16px;">Un objet connecte qui protege votre attention. Déposez votre téléphone, reprenez votre temps. Chaque detail de cette identite sert un objectif : rendre le calme desirable.</p>`;
+h+=`<p class="sect-desc" style="margin-top:16px;">Un objet connecte qui protege votre attention. Déposez votre téléphone, reprenez votre temps. Chaque detail de cette identite sert un objectif : rendre le calme desirable, tangible et immédiatement compréhensible.</p>`;
 h+=`<div style="font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.5;">Disconnect to reconnect</div>`;
 h+=`</div>`;
 h+=`<div style="display:flex;justify-content:center;align-items:center;">`;
-h+=`<div class="anim-breathe" style="width:160px;height:160px;">${LED_AURA(160,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember)}</div>`;
+h+=`<div class="anim-breathe" style="width:160px;height:160px;">${LED_HALO(160,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember,.18)}</div>`;
 h+=`</div></div></div>`;
 
 // ============================================================
 // 01 — LOGO SYSTEM
 // ============================================================
 h+=`<div class="sect"><div class="kicker">01 — Logo</div><h2>Systeme de marque</h2>`;
-h+=`<p class="sect-desc">Le mark LED represente la présence lumineuse de la box — un temoin discret qui dit "je suis la, déposez votre téléphone".</p>`;
+h+=`<p class="sect-desc">Le mark LED represente la présence lumineuse de la box — un temoin discret qui dit "je suis la, déposez votre téléphone". Le halo est une variante approuvée du système, jamais un glow improvisé.</p>`;
 
 // Primary: Ink + Ember, Ink + Lake
 h+=`<div class="sub">Logo principal — fond Ink Charcoal</div><div class="grid" style="gap:14px;">`;
@@ -211,6 +212,15 @@ h+=`<div class="logo-stage" style="background:${C.porcelain};border:1px solid va
 h+=`<div class="logo-stage" style="background:${C.sage};padding:32px 40px;"><div class="stacked-lockup" style="color:${C.ink};">${LED(56,C.sage,'rgba(21,29,42,.15)',C.porcelain)}<div class="wm-title" style="font-size:28px;">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div>`;
 h+=`</div>`;
 
+h+=`<div class="sub">Version halo — capsule interne</div>`;
+h+=`<p style="font-size:13px;color:var(--muted);margin-bottom:14px;max-width:720px;">Le halo remplit la capsule interne autour de la LED, jusqu’au premier contour arrondi. Il sert aux surfaces sociales, au motion et aux contextes de splash. Il ne remplace pas le logo standard.</p>`;
+h+=`<div class="grid" style="gap:14px;">`;
+h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.porcelain};">${LED_HALO(74,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember,.18)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.porcelain};">${LED_HALO(74,C.ink,'rgba(246,243,236,.22)',C.lake,C.lake,.18)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`<div class="logo-stage" style="background:${C.porcelain};border:1px solid var(--line);flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.ink};">${LED_HALO(74,C.porcelain,'rgba(21,29,42,.15)',C.ember,C.ember,.11)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`<div class="logo-stage" style="background:${C.sage};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.ink};">${LED_HALO(74,C.sage,'rgba(21,29,42,.15)',C.porcelain,C.porcelain,.16)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`</div>`;
+
 // Mark variations mini
 h+=`<div class="sub">Declinaisons du mark</div><div class="grid" style="gap:10px;">`;
 [
@@ -218,6 +228,10 @@ h+=`<div class="sub">Declinaisons du mark</div><div class="grid" style="gap:10px
   {svg:LED(48,C.ink,'rgba(246,243,236,.22)',C.lake),n:'Primary Lake'},
   {svg:LED(48,C.porcelain,'rgba(21,29,42,.15)',C.ember),n:'Decli Porcelain'},
   {svg:LED(48,C.sage,'rgba(21,29,42,.15)',C.porcelain),n:'Decli Sage'},
+  {svg:LED_HALO(48,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember,.18),n:'Halo Ember'},
+  {svg:LED_HALO(48,C.ink,'rgba(246,243,236,.22)',C.lake,C.lake,.18),n:'Halo Lake'},
+  {svg:LED_HALO(48,C.porcelain,'rgba(21,29,42,.15)',C.ember,C.ember,.11),n:'Halo Porcelain'},
+  {svg:LED_HALO(48,C.sage,'rgba(21,29,42,.15)',C.porcelain,C.porcelain,.16),n:'Halo Sage'},
   {svg:LED_MONO(48,C.ink),n:'Gravure mono'},
   {svg:LED_CORE(48,C.ember),n:'Beacon Ember'},
   {svg:LED_CORE(48,C.lake),n:'Lake Accent'},
@@ -475,9 +489,9 @@ h+=`</div></div>`;
 h+=`<div class="sect"><div class="kicker">06 — Campagne</div><h2>Affiche metro</h2>`;
 h+=`<p class="sect-desc">Format rectangle horizontal. Ton direct, un brin provocateur.</p>`;
 // Sage
-h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">Votre téléphone ne vous manquera pas.<br>Promis.</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">Déposez-le dans la box. Reprenez votre soirée. Vos notifications survivront.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
+h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">Votre téléphone ne vous manquera pas.<br>Promis.</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">Vos notifications survivront. Votre soirée aussi.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.ember)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
 // Ink
-h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">4h12 par jour<br>sur votre téléphone.<br>Et si on arrêtait ?</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">La Faraday Box. Déposez votre téléphone, reprenez le controle.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
+h+=`<div class="metro" style="background:${C.ink};color:${C.porcelain};"><div style="flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.3;margin-bottom:12px;">faraday-box.fr</div><div style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;max-width:420px;">Votre téléphone mérite<br>une pause.</div><div style="font-size:15px;line-height:1.6;opacity:.45;margin-top:16px;max-width:360px;">Le spa digital dont vous aviez besoin. Temps retrouve inclus.</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;">${LED(100,C.ink,'rgba(246,243,236,.22)',C.lake)}<div style="font-family:'Sora',sans-serif;font-weight:300;font-size:24px;letter-spacing:-.03em;">faraday</div></div></div>`;
 h+=`</div>`;
 
 // ============================================================
