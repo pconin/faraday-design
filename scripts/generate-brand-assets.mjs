@@ -161,11 +161,7 @@ function ledGroup({
   const scale = size / 96;
   return `<g transform="translate(${x} ${y}) scale(${scale})">
     ${transparentTile ? '' : `<rect width="96" height="96" rx="26" fill="${tileFill}"/>`}
-    ${aura ? (
-      auraMode === 'full'
-        ? `<rect class="led-aura" x="32" y="15" width="32" height="66" rx="16" fill="${aura}" opacity="${auraOpacity}"/>`
-        : `<rect class="led-aura" x="33" y="18" width="30" height="60" rx="15" fill="${aura}" opacity="${auraOpacity}"/>`
-    ) : ''}
+    ${aura ? `<rect class="led-aura" x="31" y="14" width="34" height="68" rx="17" fill="${aura}" opacity="${auraOpacity}"/>` : ''}
     <rect x="31" y="14" width="34" height="68" rx="17" stroke="${shell}" stroke-width="2.6"/>
     <rect x="43" y="28" width="10" height="40" rx="5" fill="${core}"/>
   </g>`;
