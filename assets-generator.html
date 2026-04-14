@@ -96,7 +96,7 @@
       background:#151D2A;
     }
     .preview-surface svg{display:block;width:100%;height:100%}
-    .downloads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px}
+    .downloads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:20px}
     .downloads a,.downloads button{
       display:flex;align-items:center;justify-content:center;
       padding:14px 16px;border-radius:18px;border:1px solid var(--line);background:#fff;text-decoration:none;color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.04em;cursor:pointer
@@ -185,6 +185,7 @@
             <select id="animation">
               <option value="static">Static</option>
               <option value="halo">Halo</option>
+              <option value="write-on">Texte qui s'écrit</option>
               <option value="soft-confirm">Soft Confirm</option>
               <option value="double-blink">Double Blink</option>
               <option value="beacon-morse">Beacon Morse</option>
@@ -265,8 +266,9 @@
           <a id="download-svg" class="primary" href="#" download>Telecharger SVG</a>
           <a id="download-png" href="#" download>Telecharger PNG</a>
           <a id="download-webp" href="#" download>Telecharger WebP</a>
+          <button id="download-video" type="button">Telecharger MP4 / WebM</button>
         </div>
-        <p class="downloads-note"><strong>Note.</strong> Si une animation est active, le fichier SVG garde l’effet. PNG et WebP exportent le poster frame actuellement rendu.</p>
+        <p class="downloads-note"><strong>Note.</strong> Si une animation est active, le fichier SVG garde l’effet. PNG et WebP exportent le poster frame final. Le bouton video sert surtout pour les stories animees et bascule en WebM si votre navigateur ne sait pas encoder du MP4.</p>
         <p class="status" id="status"><strong>Etat :</strong> generation du preview...</p>
       </section>
     </div>
@@ -322,8 +324,9 @@
     };
 
     const ANIMATIONS = {
-      static: { label: 'Static', className: '', aura: false },
-      halo: { label: 'Halo', className: '', aura: true },
+      static: { label: 'Static', className: '', aura: false, duration: 3.2 },
+      halo: { label: 'Halo', className: '', aura: true, duration: 3.2 },
+      'write-on': { label: "Texte qui s'écrit", className: '', aura: false, duration: 3.4 },
       'soft-confirm': { label: 'Soft Confirm', className: 'anim-soft', aura: false },
       'double-blink': { label: 'Double Blink', className: 'anim-double', aura: true },
       'beacon-morse': { label: 'Beacon Morse', className: 'anim-morse', aura: false },
@@ -353,6 +356,7 @@
     const downloadSvg = document.getElementById('download-svg');
     const downloadPng = document.getElementById('download-png');
     const downloadWebp = document.getElementById('download-webp');
+    const downloadVideo = document.getElementById('download-video');
 
     const state = {
       format: 'post',
@@ -682,24 +686,69 @@
       });
     }
 
-    function headlineMarkup(width, height, theme) {
+    function headlineMarkup(width, height, theme, options = {}) {
       const alignCenter = state.alignment === 'center';
       const fit = fitHeadline(state.copy.trim(), state.format, state.alignment);
       const x = alignCenter ? width / 2 : 84;
       const anchor = alignCenter ? 'middle' : 'start';
       const startY = FORMATS[state.format].textY - ((fit.lines.length - 1) * fit.lineHeight / 2);
-      const lines = fit.lines.map((line, index) => textSvg(line, x, startY + (index * fit.lineHeight), {
-        family: 'Sora',
-        size: fit.fontSize,
-        weight: 300,
-        fill: theme.text,
-        anchor,
-      })).join('');
+      const lineX = (lineWidth) => alignCenter ? (width / 2) - (lineWidth / 2) : 84;
+      const animatedWriteOn = state.animation === 'write-on' && !options.forRaster;
+      let lines = '';
+      let defs = '';
+      if (animatedWriteOn) {
+        fit.lines.forEach((line, index) => {
+          const measured = measureTracked(line, 'Sora', fit.fontSize, 300, 0);
+          const left = lineX(measured);
+          const top = startY + (index * fit.lineHeight) - fit.fontSize;
+          const maskId = `write-mask-${index}`;
+          const cursorId = `write-cursor-${index}`;
+          const begin = 0.18 + (index * 0.42);
+          defs += `
+            <mask id="${maskId}">
+              <rect width="${width}" height="${height}" fill="black"/>
+              <rect x="${left - 8}" y="${top - 8}" width="0" height="${fit.lineHeight + 22}" rx="10" fill="white">
+                <animate attributeName="width" from="0" to="${measured + 16}" begin="${begin}s" dur="0.42s" fill="freeze"/>
+              </rect>
+            </mask>
+            <rect id="${cursorId}" x="${left - 2}" y="${top + 8}" width="6" height="${fit.fontSize + 4}" rx="3" fill="${theme.core}" opacity="0">
+              <animate attributeName="x" from="${left - 2}" to="${left + measured + 4}" begin="${begin}s" dur="0.42s" fill="freeze"/>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.04;0.88;1" begin="${begin}s" dur="0.42s" fill="freeze"/>
+            </rect>
+          `;
+          lines += `
+            <g mask="url(#${maskId})">
+              ${textSvg(line, x, startY + (index * fit.lineHeight), {
+                family: 'Sora',
+                size: fit.fontSize,
+                weight: 300,
+                fill: theme.text,
+                anchor,
+              })}
+            </g>
+            <use href="#${cursorId}"></use>
+          `;
+        });
+      } else {
+        lines = fit.lines.map((line, index) => textSvg(line, x, startY + (index * fit.lineHeight), {
+          family: 'Sora',
+          size: fit.fontSize,
+          weight: 300,
+          fill: theme.text,
+          anchor,
+        })).join('');
+      }
       const accentY = startY + (fit.lines.length * fit.lineHeight) + 24;
       const accentX = alignCenter ? (width - 110) / 2 : 84;
+      const accent = animatedWriteOn
+        ? `<rect x="${accentX}" y="${accentY}" width="110" height="8" rx="4" fill="${theme.core}" opacity="0">
+             <animate attributeName="opacity" from="0" to="1" begin="${0.25 + (fit.lines.length * 0.42)}s" dur="0.18s" fill="freeze"/>
+           </rect>`
+        : `<rect x="${accentX}" y="${accentY}" width="110" height="8" rx="4" fill="${theme.core}"/>`;
       return `
+        ${defs ? `<defs>${defs}</defs>` : ''}
         ${lines}
-        <rect x="${accentX}" y="${accentY}" width="110" height="8" rx="4" fill="${theme.core}"/>
+        ${accent}
       `;
     }
 
@@ -725,7 +774,7 @@
       `;
     }
 
-    async function buildSvg() {
+    async function buildSvg(options = {}) {
       const format = FORMATS[state.format];
       const theme = THEMES[state.theme];
       const bg = await backgroundMarkup(format.width, format.height, theme);
@@ -741,7 +790,7 @@
           </style>
           ${bg}
           ${logoMarkup(format.width, theme, state.format)}
-          ${headlineMarkup(format.width, format.height, theme)}
+          ${headlineMarkup(format.width, format.height, theme, options)}
           ${footerMarkup(format.width, format.height, theme)}
         </svg>
       `.trim();
@@ -775,6 +824,62 @@
       });
     }
 
+    async function recordAnimatedPreview() {
+      const format = FORMATS[state.format];
+      const animation = ANIMATIONS[state.animation];
+      const animatedSvg = await buildSvg({ forRaster: false });
+      await document.fonts.ready;
+
+      const svgBlob = new Blob([animatedSvg], { type: 'image/svg+xml;charset=utf-8' });
+      const svgUrl = URL.createObjectURL(svgBlob);
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = svgUrl;
+      await img.decode();
+
+      const canvas = document.createElement('canvas');
+      canvas.width = format.width;
+      canvas.height = format.height;
+      const ctx = canvas.getContext('2d');
+      const fps = 30;
+      const stream = canvas.captureStream(fps);
+      const mimeCandidates = ['video/mp4;codecs=h264', 'video/webm;codecs=vp9', 'video/webm'];
+      const mimeType = mimeCandidates.find((value) => typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported(value)) || '';
+      if (typeof MediaRecorder === 'undefined' || !mimeType) {
+        URL.revokeObjectURL(svgUrl);
+        throw new Error('Votre navigateur ne supporte pas l’export video depuis cette page.');
+      }
+
+      const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
+      const chunks = [];
+      recorder.ondataavailable = (event) => {
+        if (event.data?.size) chunks.push(event.data);
+      };
+
+      recorder.start();
+      const duration = Math.max(3.2, animation.duration || 3.6);
+      const start = performance.now();
+      await new Promise((resolve) => {
+        const draw = (now) => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          if (now - start < duration * 1000) {
+            requestAnimationFrame(draw);
+          } else {
+            resolve();
+          }
+        };
+        requestAnimationFrame(draw);
+      });
+
+      await new Promise((resolve) => {
+        recorder.onstop = resolve;
+        recorder.stop();
+      });
+      URL.revokeObjectURL(svgUrl);
+      return new Blob(chunks, { type: mimeType });
+    }
+
     async function render() {
       try {
         syncForm();
@@ -784,7 +889,8 @@
         metaStyle.textContent = `${LAYOUTS[state.layout].label} · ${ANIMATIONS[state.animation].label} · ${THEMES[state.theme].label}`;
         metaBackground.textContent = BACKGROUNDS[state.background].label;
 
-        const svg = await buildSvg();
+        const svg = await buildSvg({ forRaster: false });
+        const rasterSvg = await buildSvg({ forRaster: true });
         surface.innerHTML = svg;
         revokeUrls();
 
@@ -794,15 +900,20 @@
         downloadSvg.href = urls.svg;
         downloadSvg.download = `${base}.svg`;
 
-        const pngBlob = await svgToRaster(svg, 'image/png');
+        const pngBlob = await svgToRaster(rasterSvg, 'image/png');
         urls.png = URL.createObjectURL(pngBlob);
         downloadPng.href = urls.png;
         downloadPng.download = `${base}.png`;
 
-        const webpBlob = await svgToRaster(svg, 'image/webp');
+        const webpBlob = await svgToRaster(rasterSvg, 'image/webp');
         urls.webp = URL.createObjectURL(webpBlob);
         downloadWebp.href = urls.webp;
         downloadWebp.download = `${base}.webp`;
+
+        const videoEnabled = state.format === 'story' && state.animation !== 'static' && state.animation !== 'halo';
+        downloadVideo.disabled = !videoEnabled;
+        downloadVideo.style.opacity = videoEnabled ? '1' : '.42';
+        downloadVideo.style.cursor = videoEnabled ? 'pointer' : 'not-allowed';
 
         status.innerHTML = '<strong>Etat :</strong> preview et exports prets.';
       } catch (error) {
@@ -854,6 +965,26 @@
     document.getElementById('footerCustom').addEventListener('input', (event) => {
       state.footerCustom = event.target.value;
       scheduleRender();
+    });
+
+    downloadVideo.addEventListener('click', async () => {
+      const videoEnabled = state.format === 'story' && state.animation !== 'static' && state.animation !== 'halo';
+      if (!videoEnabled) return;
+      try {
+        status.innerHTML = '<strong>Etat :</strong> generation de la video...';
+        const blob = await recordAnimatedPreview();
+        const ext = blob.type.includes('mp4') ? 'mp4' : 'webm';
+        const href = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = href;
+        a.download = `${filenameBase()}.${ext}`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(href), 2000);
+        status.innerHTML = `<strong>Etat :</strong> video ${ext.toUpperCase()} prete.`;
+      } catch (error) {
+        console.error(error);
+        status.innerHTML = `<strong>Etat :</strong> export video impossible. ${escapeHtml(error.message || String(error))}`;
+      }
     });
 
     document.querySelectorAll('#quick-text button').forEach((button) => {
