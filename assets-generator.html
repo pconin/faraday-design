@@ -232,6 +232,8 @@
             <select id="footerMode">
               <option value="none">Aucun</option>
               <option value="faraday-box" selected>faraday box</option>
+              <option value="stacked-logo">Empilé · avec symbole</option>
+              <option value="stacked-wordmark">Empilé · sans symbole</option>
               <option value="disconnect">Disconnect to reconnect</option>
               <option value="custom">Texte personnalisé</option>
             </select>
@@ -430,6 +432,8 @@
     function getFooterText() {
       if (state.footerMode === 'none') return '';
       if (state.footerMode === 'faraday-box') return 'faraday box';
+      if (state.footerMode === 'stacked-logo') return 'stacked-logo';
+      if (state.footerMode === 'stacked-wordmark') return 'stacked-wordmark';
       if (state.footerMode === 'disconnect') return 'Disconnect to reconnect';
       return state.footerCustom.trim();
     }
@@ -614,6 +618,46 @@
           opacity: .84,
           anchor: alignCenter ? 'middle' : 'start',
         });
+      }
+
+      if (state.footerMode === 'stacked-logo' || state.footerMode === 'stacked-wordmark') {
+        const withMark = state.footerMode === 'stacked-logo';
+        const markSize = state.format === 'story' ? 52 : 40;
+        const wordSize = state.format === 'story' ? 24 : 18;
+        const baselineSize = state.format === 'story' ? 10 : 8;
+        const baselineTracking = state.format === 'story' ? 2.8 : 2.2;
+        const centerX = alignCenter ? width / 2 : 124;
+        const markX = centerX - (markSize / 2);
+        const markY = y - (withMark ? (state.format === 'story' ? 92 : 70) : 0);
+        const titleY = y - (state.format === 'story' ? 24 : 18);
+        const baselineY = y + (state.format === 'story' ? 2 : 0);
+        return `
+          ${withMark ? ledGroupSvg({
+            x: markX,
+            y: markY,
+            size: markSize,
+            theme,
+            aura: false,
+            animationClass: '',
+          }) : ''}
+          ${textSvg('faraday', centerX, titleY, {
+            family: 'Sora',
+            size: wordSize,
+            weight: 300,
+            fill: theme.text,
+            opacity: .9,
+            anchor: 'middle',
+          })}
+          ${textSvg('DISCONNECT TO RECONNECT', centerX, baselineY, {
+            family: 'Manrope',
+            size: baselineSize,
+            weight: 800,
+            fill: theme.text,
+            opacity: theme.baselineOpacity,
+            anchor: 'middle',
+            tracking: baselineTracking,
+          })}
+        `;
       }
 
       if (state.footerMode === 'disconnect') {
