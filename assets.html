@@ -349,7 +349,26 @@
       return '';
     };
 
-    const createAssetCard = (asset, previewFile, extraChips = []) => `
+    const createExtraDownloadLinks = (data, asset) => {
+      const links = [];
+      if (asset.id?.startsWith('instagram-square-led-blink-')) {
+        const staticAsset = data.staticBanners.find((candidate) => candidate.id === `${asset.id}-static`);
+        const storyAsset = data.animatedBanners.find((candidate) => candidate.id === asset.id.replace('instagram-square-', 'instagram-story-'));
+        if (staticAsset) {
+          links.push(`<a class="link" href="${staticAsset.files.png}" download>STATIC PNG</a>`);
+          links.push(`<a class="link" href="${staticAsset.files.webp}" download>STATIC WEBP</a>`);
+        }
+        if (storyAsset) {
+          links.push(`<a class="link" href="${storyAsset.files.gif}" download>STORY GIF</a>`);
+          links.push(`<a class="link" href="${storyAsset.files.mp4}" download>STORY MP4</a>`);
+          links.push(`<a class="link" href="${storyAsset.files.webm}" download>STORY WEBM</a>`);
+          links.push(`<a class="link" href="${storyAsset.files.poster}" download>STORY POSTER</a>`);
+        }
+      }
+      return links.join('');
+    };
+
+    const createAssetCard = (asset, previewFile, extraChips = [], extraDownloads = '') => `
       <article class="card">
         <div class="asset-head">
           <div>
@@ -364,7 +383,7 @@
             : `<img src="${previewFile}" alt="${asset.label}">`
           }
         </div>
-        <div class="links">${downloadLinks(asset.files)}</div>
+        <div class="links">${downloadLinks(asset.files)}${extraDownloads}</div>
       </article>
     `;
 
@@ -399,9 +418,12 @@
           const motionButtons = document.querySelectorAll('#motion-pack-link, .downloads .btn[href*="motion"]');
           motionButtons.forEach((link) => { link.href = data.package.motionZip; });
         }
+        const visibleStatic = data.staticBanners.filter((asset) => !asset.hidden);
+        const visibleAnimated = data.animatedBanners.filter((asset) => !asset.hidden);
+
         document.getElementById('logo-count').textContent = data.logos.length;
-        document.getElementById('static-count').textContent = data.staticBanners.length;
-        document.getElementById('animated-count').textContent = data.animatedBanners.length;
+        document.getElementById('static-count').textContent = visibleStatic.length;
+        document.getElementById('animated-count').textContent = visibleAnimated.length;
 
         const logoPriority = (asset) => {
           if (asset.category === 'Round avatar') return 0;
@@ -426,7 +448,7 @@
           return createAssetCard(asset, preview, [chip(asset.category)]);
         }).join('');
 
-        const instagramStatic = data.staticBanners.filter((asset) => asset.platform.startsWith('Instagram'));
+        const instagramStatic = visibleStatic.filter((asset) => asset.platform.startsWith('Instagram'));
         document.getElementById('instagram-static').innerHTML = instagramStatic.map((asset) => createAssetCard(
           asset,
           asset.files.png,
@@ -436,7 +458,7 @@
           ],
         )).join('');
 
-        const linkedinStatic = data.staticBanners.filter((asset) => asset.platform.startsWith('LinkedIn'));
+        const linkedinStatic = visibleStatic.filter((asset) => asset.platform.startsWith('LinkedIn'));
         document.getElementById('linkedin-static').innerHTML = linkedinStatic.map((asset) => createAssetCard(
           asset,
           asset.files.png,
@@ -447,13 +469,14 @@
         )).join('');
 
         const animated = document.getElementById('animated-banners');
-        animated.innerHTML = data.animatedBanners.map((asset) => createAssetCard(
+        animated.innerHTML = visibleAnimated.map((asset) => createAssetCard(
           asset,
           asset.files.poster,
           [
             chip(asset.platform.startsWith('Instagram') ? 'Instagram' : 'LinkedIn'),
             chip(asset.animation),
           ],
+          createExtraDownloadLinks(data, asset),
         )).join('');
 
         const featuredIds = [
@@ -462,7 +485,7 @@
           'linkedin-feed-stat-editorial',
         ];
         const featuredAssets = featuredIds
-          .map((id) => data.staticBanners.find((asset) => asset.id === id))
+          .map((id) => visibleStatic.find((asset) => asset.id === id))
           .filter(Boolean);
         document.getElementById('featured-assets').innerHTML = featuredAssets.map((asset, index) => {
           const meta = featuredMeta[asset.id] || {};

@@ -1012,6 +1012,7 @@ async function saveStaticBanner(config) {
     platform: config.platform,
     format: `${config.width}x${config.height}`,
     withImage: Boolean(config.photo),
+    hidden: Boolean(config.hidden),
     files: {
       png: rel(pngPath),
       webp: rel(webpPath),
@@ -1053,6 +1054,126 @@ function animationFrame(type, index, total) {
     aura: null,
     glowScale: 1,
     glowOpacity: 0,
+  };
+}
+
+const blinkMessageSets = [
+  { id: 'feed-dinner', label: 'Le feed peut attendre', lines: ['Le feed peut attendre.', 'Le dîner, non.'], titleSize: 80, lineHeight: 96 },
+  { id: '412', label: '4h12 par jour', lines: ['4h12', 'par jour.'], titleSize: 150, lineHeight: 142 },
+  { id: 'evg-pedro', label: 'EVG Pedro survivra', lines: ['Le groupe WhatsApp', '“EVG Pedro” survivra.'], titleSize: 70, lineHeight: 88 },
+  { id: 'pause-needed', label: 'La pause dont votre téléphone avait besoin', lines: ['La pause dont votre', 'téléphone avait besoin.'], titleSize: 72, lineHeight: 88 },
+  { id: 'luxe-joignable', label: 'Le vrai luxe', lines: ['Le vrai luxe,', 'c’est de ne pas', 'être joignable.'], titleSize: 76, lineHeight: 90 },
+  { id: 'soiree-sans-telephone', label: 'Soirée sans téléphone', lines: ['Personne n’a jamais', 'regretté une soirée', 'sans téléphone.'], titleSize: 70, lineHeight: 84 },
+  { id: 'spa-digital', label: 'Le spa digital', lines: ['Le spa digital', 'dont vous aviez', 'besoin.'], titleSize: 78, lineHeight: 92 },
+];
+
+function buildBlinkSquareVariant(message, theme) {
+  const isInk = theme === 'ink';
+  const background = isInk ? COLORS.ink : COLORS.porcelain;
+  return {
+    id: `instagram-square-led-blink-${message.id}-${theme}`,
+    label: `Instagram square · double blink · ${isInk ? 'Ink' : 'Porcelain'} · ${message.label}`,
+    platform: 'Instagram square',
+    width: 1080,
+    height: 1080,
+    background,
+    glow: {
+      cx: 540,
+      cy: 324,
+      radius: 118,
+      color: COLORS.ember,
+      opacity: isInk ? 0.12 : 0.06,
+    },
+    animation: 'blink',
+    fps: 12,
+    frames: 36,
+    textRenderer: renderQuoteCenter,
+    mark: {
+      x: 420,
+      y: 144,
+      size: 240,
+      tileFill: background,
+      shell: isInk ? 'rgba(246,243,236,.22)' : 'rgba(21,29,42,.15)',
+      core: COLORS.ember,
+      aura: COLORS.ember,
+    },
+    text: {
+      overline: null,
+      top: 118,
+      textX: 540,
+      anchor: 'center',
+      offsetY: 472,
+      lines: message.lines,
+      titleSize: message.titleSize,
+      lineHeight: message.lineHeight,
+      titleFill: isInk ? COLORS.porcelain : COLORS.ink,
+      divider: 112,
+      dividerY: message.dividerY ?? 724,
+      dividerHeight: 8,
+      accent: COLORS.ember,
+    },
+  };
+}
+
+function buildBlinkStaticSquareVariant(message, theme) {
+  const animated = buildBlinkSquareVariant(message, theme);
+  return {
+    ...animated,
+    id: `${animated.id}-static`,
+    label: `${animated.label} · static halo`,
+    hidden: true,
+    animation: undefined,
+    fps: undefined,
+    frames: undefined,
+  };
+}
+
+function buildBlinkStoryVariant(message, theme) {
+  const isInk = theme === 'ink';
+  const background = isInk ? COLORS.ink : COLORS.porcelain;
+  return {
+    id: `instagram-story-led-blink-${message.id}-${theme}`,
+    label: `Instagram story · double blink · ${isInk ? 'Ink' : 'Porcelain'} · ${message.label}`,
+    platform: 'Instagram story',
+    width: 1080,
+    height: 1920,
+    background,
+    hidden: true,
+    glow: {
+      cx: 540,
+      cy: 430,
+      radius: 136,
+      color: COLORS.ember,
+      opacity: isInk ? 0.12 : 0.06,
+    },
+    animation: 'blink',
+    fps: 12,
+    frames: 36,
+    textRenderer: renderQuoteCenter,
+    mark: {
+      x: 414,
+      y: 206,
+      size: 252,
+      tileFill: background,
+      shell: isInk ? 'rgba(246,243,236,.22)' : 'rgba(21,29,42,.15)',
+      core: COLORS.ember,
+      aura: COLORS.ember,
+    },
+    text: {
+      overline: null,
+      top: 178,
+      textX: 540,
+      anchor: 'center',
+      offsetY: 760,
+      lines: message.lines,
+      titleSize: Math.min(message.titleSize + 6, 156),
+      lineHeight: Math.min(message.lineHeight + 8, 148),
+      titleFill: isInk ? COLORS.porcelain : COLORS.ink,
+      divider: 128,
+      dividerY: 1186,
+      dividerHeight: 8,
+      accent: COLORS.ember,
+    },
   };
 }
 
@@ -1113,6 +1234,7 @@ async function saveAnimatedBanner(config) {
     platform: config.platform,
     format: `${config.width}x${config.height}`,
     animation: config.animation,
+    hidden: Boolean(config.hidden),
     files: {
       gif: rel(gifPath),
       mp4: rel(mp4Path),
@@ -2559,6 +2681,7 @@ async function generateStaticBanners() {
         accentPill: null,
       },
     },
+    ...blinkMessageSets.flatMap((message) => ['ink', 'porcelain'].map((theme) => buildBlinkStaticSquareVariant(message, theme))),
   ];
 
   for (const config of configs) {
@@ -2567,64 +2690,6 @@ async function generateStaticBanners() {
 }
 
 async function generateAnimatedBanners() {
-  const blinkMessageSets = [
-    { id: 'feed-dinner', label: 'Le feed peut attendre', lines: ['Le feed peut attendre.', 'Le dîner, non.'], titleSize: 80, lineHeight: 96 },
-    { id: '412', label: '4h12 par jour', lines: ['4h12', 'par jour.'], titleSize: 150, lineHeight: 142 },
-    { id: 'evg-pedro', label: 'EVG Pedro survivra', lines: ['Le groupe WhatsApp', '“EVG Pedro” survivra.'], titleSize: 70, lineHeight: 88 },
-    { id: 'pause-needed', label: 'La pause dont votre téléphone avait besoin', lines: ['La pause dont votre', 'téléphone avait besoin.'], titleSize: 72, lineHeight: 88 },
-    { id: 'luxe-joignable', label: 'Le vrai luxe', lines: ['Le vrai luxe,', 'c’est de ne pas', 'être joignable.'], titleSize: 76, lineHeight: 90 },
-    { id: 'soiree-sans-telephone', label: 'Soirée sans téléphone', lines: ['Personne n’a jamais', 'regretté une soirée', 'sans téléphone.'], titleSize: 70, lineHeight: 84 },
-    { id: 'spa-digital', label: 'Le spa digital', lines: ['Le spa digital', 'dont vous aviez', 'besoin.'], titleSize: 78, lineHeight: 92 },
-  ];
-
-  const buildBlinkSquareVariant = (message, theme) => {
-    const isInk = theme === 'ink';
-    const background = isInk ? COLORS.ink : COLORS.porcelain;
-    return {
-      id: `instagram-square-led-blink-${message.id}-${theme}`,
-      label: `Instagram square · double blink · ${isInk ? 'Ink' : 'Porcelain'} · ${message.label}`,
-      platform: 'Instagram square',
-      width: 1080,
-      height: 1080,
-      background,
-      glow: {
-        cx: 540,
-        cy: 324,
-        radius: 118,
-        color: COLORS.ember,
-        opacity: isInk ? 0.12 : 0.06,
-      },
-      animation: 'blink',
-      fps: 12,
-      frames: 36,
-      textRenderer: renderQuoteCenter,
-      mark: {
-        x: 420,
-        y: 144,
-        size: 240,
-        tileFill: background,
-        shell: isInk ? 'rgba(246,243,236,.22)' : 'rgba(21,29,42,.15)',
-        core: COLORS.ember,
-        aura: COLORS.ember,
-      },
-      text: {
-        overline: null,
-        top: 118,
-        textX: 540,
-        anchor: 'center',
-        offsetY: 472,
-        lines: message.lines,
-        titleSize: message.titleSize,
-        lineHeight: message.lineHeight,
-        titleFill: isInk ? COLORS.porcelain : COLORS.ink,
-        divider: 112,
-        dividerY: message.dividerY ?? 724,
-        dividerHeight: 8,
-        accent: COLORS.ember,
-      },
-    };
-  };
-
   const configs = [
     {
       id: 'instagram-story-led-pulse',
@@ -2692,6 +2757,7 @@ async function generateAnimatedBanners() {
       },
     },
     ...blinkMessageSets.flatMap((message) => ['ink', 'porcelain'].map((theme) => buildBlinkSquareVariant(message, theme))),
+    ...blinkMessageSets.flatMap((message) => ['ink', 'porcelain'].map((theme) => buildBlinkStoryVariant(message, theme))),
     {
       id: 'instagram-portrait-led-breathe-photo',
       label: 'Instagram portrait · breathe photo',

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T13:59:28.049Z",
+  "generatedAt": "2026-04-14T14:23:38.806Z",
   "package": {
     "zip": "exports/deliverables/faraday-assets.zip",
     "motionZip": "exports/deliverables/faraday-motion-assets.zip"
@@ -899,6 +899,7 @@
       "platform": "Instagram portrait",
       "format": "1080x1350",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-portrait-quiet-promise.png",
         "webp": "exports/deliverables/social/static/instagram-portrait-quiet-promise.webp"
@@ -910,6 +911,7 @@
       "platform": "Instagram portrait",
       "format": "1080x1350",
       "withImage": true,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-portrait-evening-photo.png",
         "webp": "exports/deliverables/social/static/instagram-portrait-evening-photo.webp"
@@ -921,6 +923,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-square-412.png",
         "webp": "exports/deliverables/social/static/instagram-square-412.webp"
@@ -932,6 +935,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "withImage": true,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-square-led-photo.png",
         "webp": "exports/deliverables/social/static/instagram-square-led-photo.webp"
@@ -943,6 +947,7 @@
       "platform": "Instagram story",
       "format": "1080x1920",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-story-disconnect.png",
         "webp": "exports/deliverables/social/static/instagram-story-disconnect.webp"
@@ -954,6 +959,7 @@
       "platform": "Instagram story",
       "format": "1080x1920",
       "withImage": true,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-story-living-room.png",
         "webp": "exports/deliverables/social/static/instagram-story-living-room.webp"
@@ -965,6 +971,7 @@
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-feed-presence.png",
         "webp": "exports/deliverables/social/static/linkedin-feed-presence.webp"
@@ -976,6 +983,7 @@
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "withImage": true,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-feed-led-photo.png",
         "webp": "exports/deliverables/social/static/linkedin-feed-led-photo.webp"
@@ -987,6 +995,7 @@
       "platform": "LinkedIn page cover",
       "format": "1584x396",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-page-cover-minimal.png",
         "webp": "exports/deliverables/social/static/linkedin-page-cover-minimal.webp"
@@ -998,6 +1007,7 @@
       "platform": "LinkedIn page cover",
       "format": "1584x396",
       "withImage": true,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-page-cover-photo.png",
         "webp": "exports/deliverables/social/static/linkedin-page-cover-photo.webp"
@@ -1009,6 +1019,7 @@
       "platform": "LinkedIn personal cover",
       "format": "1584x396",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-personal-cover-editorial.png",
         "webp": "exports/deliverables/social/static/linkedin-personal-cover-editorial.webp"
@@ -1020,6 +1031,7 @@
       "platform": "LinkedIn personal cover",
       "format": "1584x396",
       "withImage": true,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-personal-cover-photo.png",
         "webp": "exports/deliverables/social/static/linkedin-personal-cover-photo.webp"
@@ -1031,6 +1043,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-square-luxury-quote.png",
         "webp": "exports/deliverables/social/static/instagram-square-luxury-quote.webp"
@@ -1042,6 +1055,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-square-ritual-steps.png",
         "webp": "exports/deliverables/social/static/instagram-square-ritual-steps.webp"
@@ -1053,6 +1067,7 @@
       "platform": "Instagram portrait",
       "format": "1080x1350",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-portrait-time-back.png",
         "webp": "exports/deliverables/social/static/instagram-portrait-time-back.webp"
@@ -1064,6 +1079,7 @@
       "platform": "Instagram story",
       "format": "1080x1920",
       "withImage": true,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/instagram-story-notifications-photo.png",
         "webp": "exports/deliverables/social/static/instagram-story-notifications-photo.webp"
@@ -1075,6 +1091,7 @@
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-feed-ritual-platform.png",
         "webp": "exports/deliverables/social/static/linkedin-feed-ritual-platform.webp"
@@ -1086,9 +1103,178 @@
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "withImage": false,
+      "hidden": false,
       "files": {
         "png": "exports/deliverables/social/static/linkedin-feed-stat-editorial.png",
         "webp": "exports/deliverables/social/static/linkedin-feed-stat-editorial.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-feed-dinner-ink-static",
+      "label": "Instagram square · double blink · Ink · Le feed peut attendre · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-feed-dinner-ink-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-feed-dinner-ink-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-feed-dinner-porcelain-static",
+      "label": "Instagram square · double blink · Porcelain · Le feed peut attendre · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-feed-dinner-porcelain-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-feed-dinner-porcelain-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-412-ink-static",
+      "label": "Instagram square · double blink · Ink · 4h12 par jour · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-412-ink-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-412-ink-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-412-porcelain-static",
+      "label": "Instagram square · double blink · Porcelain · 4h12 par jour · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-412-porcelain-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-412-porcelain-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-evg-pedro-ink-static",
+      "label": "Instagram square · double blink · Ink · EVG Pedro survivra · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-evg-pedro-ink-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-evg-pedro-ink-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-evg-pedro-porcelain-static",
+      "label": "Instagram square · double blink · Porcelain · EVG Pedro survivra · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-evg-pedro-porcelain-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-evg-pedro-porcelain-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-pause-needed-ink-static",
+      "label": "Instagram square · double blink · Ink · La pause dont votre téléphone avait besoin · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-pause-needed-ink-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-pause-needed-ink-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-pause-needed-porcelain-static",
+      "label": "Instagram square · double blink · Porcelain · La pause dont votre téléphone avait besoin · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-pause-needed-porcelain-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-pause-needed-porcelain-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-luxe-joignable-ink-static",
+      "label": "Instagram square · double blink · Ink · Le vrai luxe · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-luxe-joignable-ink-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-luxe-joignable-ink-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-luxe-joignable-porcelain-static",
+      "label": "Instagram square · double blink · Porcelain · Le vrai luxe · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-luxe-joignable-porcelain-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-luxe-joignable-porcelain-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-soiree-sans-telephone-ink-static",
+      "label": "Instagram square · double blink · Ink · Soirée sans téléphone · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-soiree-sans-telephone-ink-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-soiree-sans-telephone-ink-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-soiree-sans-telephone-porcelain-static",
+      "label": "Instagram square · double blink · Porcelain · Soirée sans téléphone · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-soiree-sans-telephone-porcelain-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-soiree-sans-telephone-porcelain-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-spa-digital-ink-static",
+      "label": "Instagram square · double blink · Ink · Le spa digital · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-spa-digital-ink-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-spa-digital-ink-static.webp"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-spa-digital-porcelain-static",
+      "label": "Instagram square · double blink · Porcelain · Le spa digital · static halo",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": true,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-led-blink-spa-digital-porcelain-static.png",
+        "webp": "exports/deliverables/social/static/instagram-square-led-blink-spa-digital-porcelain-static.webp"
       }
     }
   ],
@@ -1099,6 +1285,7 @@
       "platform": "Instagram story",
       "format": "1080x1920",
       "animation": "pulse",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-story-led-pulse.gif",
         "mp4": "exports/deliverables/social/animated/instagram-story-led-pulse.mp4",
@@ -1112,6 +1299,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink.mp4",
@@ -1125,6 +1313,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-ink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-ink.mp4",
@@ -1138,6 +1327,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-porcelain.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-porcelain.mp4",
@@ -1151,6 +1341,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-412-ink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-412-ink.mp4",
@@ -1164,6 +1355,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-412-porcelain.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-412-porcelain.mp4",
@@ -1177,6 +1369,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-ink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-ink.mp4",
@@ -1190,6 +1383,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-porcelain.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-porcelain.mp4",
@@ -1203,6 +1397,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-ink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-ink.mp4",
@@ -1216,6 +1411,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-porcelain.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-porcelain.mp4",
@@ -1229,6 +1425,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-ink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-ink.mp4",
@@ -1242,6 +1439,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-porcelain.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-porcelain.mp4",
@@ -1255,6 +1453,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-ink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-ink.mp4",
@@ -1268,6 +1467,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-porcelain.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-porcelain.mp4",
@@ -1281,6 +1481,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-ink.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-ink.mp4",
@@ -1294,6 +1495,7 @@
       "platform": "Instagram square",
       "format": "1080x1080",
       "animation": "blink",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-porcelain.gif",
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-porcelain.mp4",
@@ -1302,11 +1504,208 @@
       }
     },
     {
+      "id": "instagram-story-led-blink-feed-dinner-ink",
+      "label": "Instagram story · double blink · Ink · Le feed peut attendre",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-feed-dinner-porcelain",
+      "label": "Instagram story · double blink · Porcelain · Le feed peut attendre",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-feed-dinner-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-412-ink",
+      "label": "Instagram story · double blink · Ink · 4h12 par jour",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-412-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-412-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-412-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-412-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-412-porcelain",
+      "label": "Instagram story · double blink · Porcelain · 4h12 par jour",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-412-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-412-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-412-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-412-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-evg-pedro-ink",
+      "label": "Instagram story · double blink · Ink · EVG Pedro survivra",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-evg-pedro-porcelain",
+      "label": "Instagram story · double blink · Porcelain · EVG Pedro survivra",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-evg-pedro-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-pause-needed-ink",
+      "label": "Instagram story · double blink · Ink · La pause dont votre téléphone avait besoin",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-pause-needed-porcelain",
+      "label": "Instagram story · double blink · Porcelain · La pause dont votre téléphone avait besoin",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-pause-needed-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-luxe-joignable-ink",
+      "label": "Instagram story · double blink · Ink · Le vrai luxe",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-luxe-joignable-porcelain",
+      "label": "Instagram story · double blink · Porcelain · Le vrai luxe",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-luxe-joignable-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-soiree-sans-telephone-ink",
+      "label": "Instagram story · double blink · Ink · Soirée sans téléphone",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-soiree-sans-telephone-porcelain",
+      "label": "Instagram story · double blink · Porcelain · Soirée sans téléphone",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-soiree-sans-telephone-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-spa-digital-ink",
+      "label": "Instagram story · double blink · Ink · Le spa digital",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-story-led-blink-spa-digital-porcelain",
+      "label": "Instagram story · double blink · Porcelain · Le spa digital",
+      "platform": "Instagram story",
+      "format": "1080x1920",
+      "animation": "blink",
+      "hidden": true,
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-story-led-blink-spa-digital-porcelain-poster.png"
+      }
+    },
+    {
       "id": "instagram-portrait-led-breathe-photo",
       "label": "Instagram portrait · breathe photo",
       "platform": "Instagram portrait",
       "format": "1080x1350",
       "animation": "pulse",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-portrait-led-breathe-photo.gif",
         "mp4": "exports/deliverables/social/animated/instagram-portrait-led-breathe-photo.mp4",
@@ -1320,6 +1719,7 @@
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "animation": "breathe-lake",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/linkedin-feed-lake-breathe.gif",
         "mp4": "exports/deliverables/social/animated/linkedin-feed-lake-breathe.mp4",
@@ -1333,6 +1733,7 @@
       "platform": "Instagram story",
       "format": "1080x1920",
       "animation": "pulse",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/instagram-story-notifications-pulse.gif",
         "mp4": "exports/deliverables/social/animated/instagram-story-notifications-pulse.mp4",
@@ -1346,6 +1747,7 @@
       "platform": "LinkedIn feed",
       "format": "1200x627",
       "animation": "pulse",
+      "hidden": false,
       "files": {
         "gif": "exports/deliverables/social/animated/linkedin-feed-promise-pulse.gif",
         "mp4": "exports/deliverables/social/animated/linkedin-feed-promise-pulse.mp4",
