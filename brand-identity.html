@@ -156,6 +156,8 @@
 const LED=(s,bg,shellC,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
 const LED_AURA=(s,bg,shellC,coreC,auraC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="31" y="14" width="34" height="68" rx="17" fill="${auraC}" opacity=".12"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
 const LED_HALO=(s,bg,shellC,coreC,auraC,a=.18)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect width="96" height="96" rx="26" fill="${bg}"/><rect class="led-aura" x="31" y="14" width="34" height="68" rx="17" fill="${auraC}" opacity="${a}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const LED_ROUND=(s,bg,shellC,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><circle cx="48" cy="48" r="48" fill="${bg}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
+const LED_ROUND_HALO=(s,bg,shellC,coreC,auraC,a=.18)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><circle cx="48" cy="48" r="48" fill="${bg}"/><rect class="led-aura" x="31" y="14" width="34" height="68" rx="17" fill="${auraC}" opacity="${a}"/><rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${shellC}" stroke-width="2.5"/><rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${coreC}"/></svg>`;
 const LED_CORE=(s,coreC)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="43" y="26" width="10" height="44" rx="5" fill="${coreC}"/></svg>`;
 const LED_MONO=(s,c)=>`<svg viewBox="0 0 96 96" width="${s}" height="${s}" fill="none"><rect x="31" y="14" width="34" height="68" rx="17" stroke="${c}" stroke-width="4"/><rect x="43" y="28" width="10" height="40" rx="5" fill="${c}"/></svg>`;
 
@@ -219,6 +221,19 @@ h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:320px;">
 h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.porcelain};">${LED_HALO(74,C.ink,'rgba(246,243,236,.22)',C.lake,C.lake,.18)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
 h+=`<div class="logo-stage" style="background:${C.porcelain};border:1px solid var(--line);flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.ink};">${LED_HALO(74,C.porcelain,'rgba(21,29,42,.15)',C.ember,C.ember,.11)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
 h+=`<div class="logo-stage" style="background:${C.sage};flex:1;min-width:320px;"><div class="logo-lockup" style="color:${C.ink};">${LED_HALO(74,C.sage,'rgba(21,29,42,.15)',C.porcelain,C.porcelain,.16)}<div><div class="wm-title">faraday</div><div class="wm-bl">Disconnect to reconnect</div></div></div></div>`;
+h+=`</div>`;
+
+h+=`<div class="sub">Avatar social — variante ronde officielle</div>`;
+h+=`<p style="font-size:13px;color:var(--muted);margin-bottom:14px;max-width:760px;">Pour les profils Instagram, LinkedIn, Slack, WhatsApp ou les avatars de groupe, Faraday utilise une variante ronde dédiée. Ce n’est pas le logo carré recadré : c’est un support circulaire officiel, conçu pour les plateformes qui affichent les logos en rond.</p>`;
+h+=`<div class="grid" style="gap:14px;">`;
+h+=`<div class="logo-stage" style="background:linear-gradient(180deg,#fff,#f2eee6);border:1px solid var(--line);flex:1;min-width:250px;justify-content:center;">${LED_ROUND(96,C.ink,'rgba(246,243,236,.22)',C.ember)}</div>`;
+h+=`<div class="logo-stage" style="background:linear-gradient(180deg,#fff,#f2eee6);border:1px solid var(--line);flex:1;min-width:250px;justify-content:center;">${LED_ROUND(96,C.ink,'rgba(246,243,236,.22)',C.lake)}</div>`;
+h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:250px;justify-content:center;">${LED_ROUND(96,C.porcelain,'rgba(21,29,42,.15)',C.ember)}</div>`;
+h+=`<div class="logo-stage" style="background:linear-gradient(180deg,#fff,#f2eee6);border:1px solid var(--line);flex:1;min-width:250px;justify-content:center;">${LED_ROUND(96,C.sage,'rgba(21,29,42,.15)',C.porcelain)}</div>`;
+h+=`<div class="logo-stage" style="background:linear-gradient(180deg,#fff,#f2eee6);border:1px solid var(--line);flex:1;min-width:250px;justify-content:center;">${LED_ROUND_HALO(96,C.ink,'rgba(246,243,236,.22)',C.ember,C.ember,.18)}</div>`;
+h+=`<div class="logo-stage" style="background:linear-gradient(180deg,#fff,#f2eee6);border:1px solid var(--line);flex:1;min-width:250px;justify-content:center;">${LED_ROUND_HALO(96,C.ink,'rgba(246,243,236,.22)',C.lake,C.lake,.18)}</div>`;
+h+=`<div class="logo-stage" style="background:${C.ink};flex:1;min-width:250px;justify-content:center;">${LED_ROUND_HALO(96,C.porcelain,'rgba(21,29,42,.15)',C.ember,C.ember,.11)}</div>`;
+h+=`<div class="logo-stage" style="background:linear-gradient(180deg,#fff,#f2eee6);border:1px solid var(--line);flex:1;min-width:250px;justify-content:center;">${LED_ROUND_HALO(96,C.sage,'rgba(21,29,42,.15)',C.porcelain,C.porcelain,.16)}</div>`;
 h+=`</div>`;
 
 // Mark variations mini
@@ -990,6 +1005,7 @@ h+=`<tr style="border-bottom:2px solid var(--line);"><th style="text-align:left;
 h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14px;font-weight:600;">Primary</td><td style="padding:10px 14px;">Ink Charcoal</td><td style="padding:10px 14px;">Beacon Ember ou Lake Accent</td><td style="padding:10px 14px;color:var(--muted);">Logo principal, partout</td></tr>`;
 h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14px;font-weight:600;">Décli 2</td><td style="padding:10px 14px;">Porcelain</td><td style="padding:10px 14px;">Beacon Ember</td><td style="padding:10px 14px;color:var(--muted);">Fond clair, print, web</td></tr>`;
 h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14px;font-weight:600;">Décli 3</td><td style="padding:10px 14px;">Sage Mist</td><td style="padding:10px 14px;">Porcelain</td><td style="padding:10px 14px;color:var(--muted);">Fond sauge, packaging</td></tr>`;
+h+=`<tr style="border-bottom:1px solid var(--line);"><td style="padding:10px 14px;font-weight:600;">Avatar social</td><td style="padding:10px 14px;">Rond officiel</td><td style="padding:10px 14px;">Même couples couleur</td><td style="padding:10px 14px;color:var(--muted);">Profils sociaux, communautés, avatars</td></tr>`;
 h+=`<tr style="background:${C.ember}06;"><td style="padding:10px 14px;font-weight:600;color:${C.ember};">⛔ Interdit</td><td style="padding:10px 14px;color:${C.ember};">Sage Mist</td><td style="padding:10px 14px;color:${C.ember};">Beacon Ember</td><td style="padding:10px 14px;color:${C.ember};">Jamais cette combinaison</td></tr>`;
 h+=`</table></div>`;
 
@@ -1019,8 +1035,8 @@ h+=`<div style="text-align:center;position:relative;"><div style="width:80px;hei
 h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:18px;background:${C.ink};display:grid;place-items:center;opacity:.5;"><div style="transform:rotate(90deg);">${LED(48,C.ink,'rgba(246,243,236,.22)',C.ember)}</div></div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">✗</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Horizontal</div></div>`;
 // Bad: with shadow
 h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:18px;background:${C.ink};display:grid;place-items:center;opacity:.5;box-shadow:0 0 20px ${C.ember};">${LED(48,C.ink,'rgba(246,243,236,.22)',C.ember)}</div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">✗</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Avec ombre</div></div>`;
-// Bad: in circle
-h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:50%;border:3px solid ${C.ember}40;background:${C.ink};display:grid;place-items:center;opacity:.5;">${LED(40,C.ink,'rgba(246,243,236,.22)',C.ember)}</div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">✗</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Dans un cercle</div></div>`;
+// Bad: improvised circle crop
+h+=`<div style="text-align:center;position:relative;"><div style="width:80px;height:80px;border-radius:50%;border:3px solid ${C.ember}40;background:${C.ink};display:grid;place-items:center;opacity:.5;">${LED(40,C.ink,'rgba(246,243,236,.22)',C.ember)}</div><div style="position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:${C.ember};">✗</div><div style="font-size:9px;color:${C.ember};margin-top:4px;">Cercle improvisé</div></div>`;
 h+=`</div></div></div>`;
 
 // Text rules
@@ -1032,6 +1048,7 @@ h+=`<li>• Wordmark <strong style="color:var(--ink);">Sora Light -0.03em</stron
 h+=`<li>• Toujours en <strong style="color:var(--ink);">minuscules</strong> : "faraday"</li>`;
 h+=`<li>• Zone libre ≥ <strong style="color:var(--ink);">1× hauteur du mark</strong></li>`;
 h+=`<li>• Mark seul = <strong style="color:var(--ink);">OK</strong></li>`;
+h+=`<li>• Avatar rond = <strong style="color:var(--ink);">OK</strong> via export dédié</li>`;
 h+=`<li>• Baseline = <strong style="color:var(--ink);">optionnelle</strong></li>`;
 h+=`<li>• Ember/Lake = <strong style="color:var(--ink);">UI uniquement</strong></li>`;
 h+=`</ul></div>`;
@@ -1042,6 +1059,7 @@ h+=`<li>• Tourner / incliner le mark</li>`;
 h+=`<li>• Changer proportions shell/core</li>`;
 h+=`<li>• Mark sur fond chargé</li>`;
 h+=`<li>• Ombre, glow, contour</li>`;
+h+=`<li>• Cercle improvisé autour du mark carré</li>`;
 h+=`<li>• Autre police que Sora</li>`;
 h+=`<li>• "Faraday" ou "FARADAY"</li>`;
 h+=`<li>• Couleurs hors palette</li>`;

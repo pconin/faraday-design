@@ -245,6 +245,7 @@
           <span class="chip">LinkedIn · 1200×627</span>
           <span class="chip">LinkedIn cover · 1584×396</span>
           <span class="chip">Logo · SVG / PNG / WebP</span>
+          <span class="chip">Avatar rond · social</span>
         </div>
       </div>
       <div class="spec-list">
@@ -268,7 +269,7 @@
         <div>
           <div class="kicker">04 · Logos</div>
           <h2>Exports logo</h2>
-          <p class="section-copy">Toutes les configurations utiles sont disponibles en fichiers natifs : symbole seul, wordmark horizontal, empilé, version baseline, version sans baseline et gravure mono.</p>
+          <p class="section-copy">Toutes les configurations utiles sont disponibles en fichiers natifs : symbole seul, avatars ronds pour profils sociaux, wordmark horizontal, empilé, version baseline, version sans baseline et gravure mono.</p>
         </div>
       </div>
       <div id="logos" class="logo-grid">
@@ -339,7 +340,7 @@
 
     const previewStyle = (asset) => {
       const label = asset.label || '';
-      if (label.includes('transparent · Porcelain') || label.includes('Gravure mono Porcelain')) {
+      if (label.includes('transparent · Porcelain') || label.includes('Gravure mono Porcelain') || label.includes('Round avatar · Porcelain')) {
         return 'background:linear-gradient(180deg,#151D2A,#111824);';
       }
       if (label.includes('transparent · Ink') || label.includes('Gravure mono Ink')) {
@@ -402,8 +403,25 @@
         document.getElementById('static-count').textContent = data.staticBanners.length;
         document.getElementById('animated-count').textContent = data.animatedBanners.length;
 
+        const logoPriority = (asset) => {
+          if (asset.category === 'Round avatar') return 0;
+          if (asset.category === 'Round avatar halo') return 1;
+          if (asset.category === 'Symbol') return 2;
+          if (asset.category === 'Halo') return 3;
+          if (asset.category === 'Wordmark') return 4;
+          if (asset.category === 'Stacked') return 5;
+          if (asset.category === 'Halo wordmark') return 6;
+          if (asset.category === 'Halo stacked') return 7;
+          if (asset.category === 'Transparent') return 8;
+          if (asset.category === 'Monochrome') return 9;
+          return 10;
+        };
+
         const logos = document.getElementById('logos');
-        logos.innerHTML = data.logos.map((asset) => {
+        logos.innerHTML = data.logos
+          .slice()
+          .sort((a, b) => logoPriority(a) - logoPriority(b))
+          .map((asset) => {
           const preview = asset.files.png?.['512'] || firstKey(asset.files.png) || asset.files.svg;
           return createAssetCard(asset, preview, [chip(asset.category)]);
         }).join('');

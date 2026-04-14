@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T15:07:01.934Z",
+  "generatedAt": "2026-04-14T13:30:30.597Z",
   "package": {
     "zip": "exports/deliverables/faraday-assets.zip",
     "motionZip": "exports/deliverables/faraday-motion-assets.zip"
@@ -106,6 +106,182 @@
           "512": "exports/deliverables/logos/webp/mark-on-sage-porcelain-512.webp",
           "1024": "exports/deliverables/logos/webp/mark-on-sage-porcelain-1024.webp",
           "2048": "exports/deliverables/logos/webp/mark-on-sage-porcelain-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-ink-ember",
+      "label": "Round avatar · Ink Charcoal / Ember",
+      "category": "Round avatar",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-ink-ember.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-ink-ember-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-ink-ember-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-ink-ember-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-ink-ember-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-ink-ember-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-ink-ember-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-ink-ember-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-ink-ember-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-ink-ember-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-ink-ember-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-ink-lake",
+      "label": "Round avatar · Ink Charcoal / Lake",
+      "category": "Round avatar",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-ink-lake.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-ink-lake-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-ink-lake-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-ink-lake-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-ink-lake-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-ink-lake-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-ink-lake-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-ink-lake-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-ink-lake-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-ink-lake-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-ink-lake-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-porcelain-ember",
+      "label": "Round avatar · Porcelain / Ember",
+      "category": "Round avatar",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-porcelain-ember.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-porcelain-ember-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-porcelain-ember-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-porcelain-ember-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-porcelain-ember-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-porcelain-ember-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-sage-porcelain",
+      "label": "Round avatar · Sage Mist / Porcelain",
+      "category": "Round avatar",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-sage-porcelain.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-sage-porcelain-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-sage-porcelain-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-sage-porcelain-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-sage-porcelain-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-sage-porcelain-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-ink-ember-halo",
+      "label": "Round avatar · Ink Charcoal / Ember · halo",
+      "category": "Round avatar halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-ink-ember-halo.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-ink-ember-halo-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-ink-ember-halo-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-ink-ember-halo-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-ink-ember-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-ink-ember-halo-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-ink-ember-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-ink-ember-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-ink-ember-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-ink-ember-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-ink-ember-halo-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-ink-lake-halo",
+      "label": "Round avatar · Ink Charcoal / Lake · halo",
+      "category": "Round avatar halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-ink-lake-halo.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-ink-lake-halo-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-ink-lake-halo-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-ink-lake-halo-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-ink-lake-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-ink-lake-halo-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-ink-lake-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-ink-lake-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-ink-lake-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-ink-lake-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-ink-lake-halo-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-porcelain-ember-halo",
+      "label": "Round avatar · Porcelain / Ember · halo",
+      "category": "Round avatar halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-porcelain-ember-halo.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-porcelain-ember-halo-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-porcelain-ember-halo-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-porcelain-ember-halo-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-porcelain-ember-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-porcelain-ember-halo-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-porcelain-ember-halo-2048.webp"
+        }
+      }
+    },
+    {
+      "id": "avatar-round-sage-porcelain-halo",
+      "label": "Round avatar · Sage Mist / Porcelain · halo",
+      "category": "Round avatar halo",
+      "files": {
+        "svg": "exports/deliverables/logos/svg/avatar-round-sage-porcelain-halo.svg",
+        "png": {
+          "128": "exports/deliverables/logos/png/avatar-round-sage-porcelain-halo-128.png",
+          "256": "exports/deliverables/logos/png/avatar-round-sage-porcelain-halo-256.png",
+          "512": "exports/deliverables/logos/png/avatar-round-sage-porcelain-halo-512.png",
+          "1024": "exports/deliverables/logos/png/avatar-round-sage-porcelain-halo-1024.png",
+          "2048": "exports/deliverables/logos/png/avatar-round-sage-porcelain-halo-2048.png"
+        },
+        "webp": {
+          "128": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-halo-128.webp",
+          "256": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-halo-256.webp",
+          "512": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-halo-512.webp",
+          "1024": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-halo-1024.webp",
+          "2048": "exports/deliverables/logos/webp/avatar-round-sage-porcelain-halo-2048.webp"
         }
       }
     },

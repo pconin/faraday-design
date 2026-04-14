@@ -113,6 +113,19 @@
 - Les variantes halo sont autorisées pour splash, motion, social et surfaces immersives.
 - Elles ne remplacent pas le logo standard dans les usages courants.
 
+### Variantes rondes approuvées
+
+- Une famille `Round avatar` est autorisée pour les profils sociaux, avatars de groupe, communautés et usages où la plateforme impose un crop circulaire.
+- Cette variante n'est pas un simple cercle ajouté autour du mark carré.
+- Le support est circulaire, mais la LED conserve sa géométrie verticale et ses proportions officielles.
+- Les couples couleur autorisés restent les mêmes :
+  - Ink + Ember
+  - Ink + Lake
+  - Porcelain + Ember
+  - Sage Mist + Porcelain
+- Les versions halo rondes sont autorisées pour le social et le motion.
+- Il reste interdit d'improviser un cercle autour du mark carré standard.
+
 ### Variantes additionnelles (LED)
 
 | Variante | Fichier |
