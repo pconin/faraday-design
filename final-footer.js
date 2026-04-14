@@ -3,6 +3,7 @@
   const finalPages = [
     { label: 'Brandbook', file: 'brand-identity.html' },
     { label: 'Assets', file: 'assets.html' },
+    { label: 'Assets generator', file: 'assets-generator.html' },
     { label: 'Content redaction', file: 'content-redaction.html' },
   ];
 

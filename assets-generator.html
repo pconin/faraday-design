@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="exports/app-icons/favicon.svg" rel="icon" type="image/svg+xml">
+  <title>Faraday — Assets generator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+    *{box-sizing:border-box}
+    :root{
+      --ink:#151D2A;
+      --porcelain:#F6F3EC;
+      --sage:#C5CFBF;
+      --ember:#FF9361;
+      --lake:#4A8395;
+      --muted:#69717A;
+      --line:rgba(21,29,42,.12);
+      --panel:rgba(255,255,255,.8);
+      --paper:#ECE7DF;
+    }
+    body{margin:0;background:var(--porcelain);color:var(--ink);font-family:'Manrope',sans-serif}
+    h1,h2,h3,p{margin:0}
+    .page{width:min(1360px,calc(100% - 48px));margin:0 auto;padding:40px 0 72px}
+    .hero,.section,.panel{
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.62));
+    }
+    .hero{padding:34px}
+    .kicker{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(21,29,42,.06);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#45515e}
+    h1{margin-top:14px;font-family:'Sora',sans-serif;font-size:clamp(42px,5vw,72px);line-height:.92;letter-spacing:-.05em}
+    .lede{margin-top:18px;max-width:840px;font-size:18px;line-height:1.75;color:var(--muted)}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;text-decoration:none;color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.04em;cursor:pointer}
+    .btn.primary{background:var(--ink);color:var(--porcelain);border-color:var(--ink)}
+    .layout{display:grid;grid-template-columns:420px minmax(0,1fr);gap:18px;margin-top:22px;align-items:start}
+    .panel{padding:24px}
+    .panel h2{font-family:'Sora',sans-serif;font-size:24px;letter-spacing:-.04em}
+    .panel p{margin-top:10px;font-size:14px;line-height:1.7;color:var(--muted)}
+    .control-stack{display:grid;gap:16px;margin-top:20px}
+    .field{display:grid;gap:8px}
+    .field label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#4d5965}
+    .field select,.field textarea,.field input{
+      width:100%;
+      padding:14px 16px;
+      border-radius:18px;
+      border:1px solid rgba(21,29,42,.12);
+      background:#fff;
+      font:inherit;
+      color:var(--ink);
+    }
+    .field textarea{min-height:130px;resize:vertical;line-height:1.5}
+    .help{font-size:12px;color:var(--muted);line-height:1.6}
+    .segmented{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .segmented button,.swatches button,.quick-text button{
+      padding:11px 12px;border-radius:16px;border:1px solid rgba(21,29,42,.12);background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.15s ease;
+    }
+    .segmented button.active,.swatches button.active,.quick-text button.active{
+      background:var(--ink);color:var(--porcelain);border-color:var(--ink)
+    }
+    .swatches{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .swatches button{display:flex;align-items:center;gap:10px;justify-content:flex-start}
+    .dot{width:18px;height:18px;border-radius:999px;flex:0 0 18px;border:1px solid rgba(0,0,0,.08)}
+    .quick-text{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .preview-shell{
+      min-height:780px;
+      border-radius:28px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 12%,rgba(255,147,97,.1),transparent 22%),
+        linear-gradient(180deg,rgba(255,255,255,.74),rgba(236,231,223,.68));
+      display:grid;
+      place-items:center;
+      padding:28px;
+    }
+    .preview-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .meta-chip{display:inline-flex;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#56616c}
+    .preview-stage{
+      width:min(100%,560px);
+      display:grid;
+      place-items:center;
+    }
+    .preview-frame{
+      width:100%;
+      border-radius:34px;
+      background:#fff;
+      border:1px solid rgba(21,29,42,.1);
+      box-shadow:0 24px 80px rgba(21,29,42,.14);
+      overflow:hidden;
+    }
+    .preview-surface{
+      width:100%;
+      display:block;
+      aspect-ratio:1 / 1;
+      background:#151D2A;
+    }
+    .preview-surface svg{display:block;width:100%;height:100%}
+    .downloads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px}
+    .downloads a,.downloads button{
+      display:flex;align-items:center;justify-content:center;
+      padding:14px 16px;border-radius:18px;border:1px solid var(--line);background:#fff;text-decoration:none;color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.04em;cursor:pointer
+    }
+    .downloads .primary{background:var(--ink);color:var(--porcelain);border-color:var(--ink)}
+    .downloads-note{margin-top:12px;font-size:12px;line-height:1.7;color:var(--muted)}
+    .downloads-note strong{color:var(--ink)}
+    .status{margin-top:14px;font-size:12px;line-height:1.6;color:var(--muted)}
+    .status strong{color:var(--ink)}
+    .section{padding:24px;margin-top:18px}
+    .section h3{font-family:'Sora',sans-serif;font-size:18px;letter-spacing:-.03em}
+    .checklist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+    .check{padding:16px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+    .check strong{display:block;font-size:13px}
+    .check span{display:block;margin-top:8px;font-size:12px;line-height:1.65;color:var(--muted)}
+    @media (max-width: 1100px){
+      .layout{grid-template-columns:1fr}
+      .preview-shell{min-height:auto}
+    }
+    @media (max-width: 720px){
+      .downloads,.checklist,.swatches,.quick-text{grid-template-columns:1fr}
+      .page{width:min(100% - 24px,1360px)}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="kicker">Assets generator · production tool</div>
+      <h1>Construire un visuel social Faraday sans repartir de zero.</h1>
+      <p class="lede">
+        Choisissez le format, l’alignement, la combinaison couleur, le type de logo ou d’animation, votre texte,
+        et un label bas de visuel. Le rendu garde les codes validés du Brandbook, y compris les vues exactes de l’app
+        quand vous les utilisez en background.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="brand-identity.html">Voir le Brandbook</a>
+        <a class="btn" href="assets.html">Voir les Assets livrés</a>
+        <a class="btn" href="content-redaction.html">Voir le territoire éditorial</a>
+      </div>
+    </section>
+
+    <div class="layout">
+      <aside class="panel">
+        <h2>Paramètres</h2>
+        <p>Le SVG conserve l’animation. Les exports PNG et WebP génèrent la version image, prête à poster ou à reprendre dans Canva.</p>
+        <div class="control-stack">
+          <div class="field">
+            <label for="format">Format</label>
+            <div class="segmented" id="format-group">
+              <button type="button" data-format="post" class="active">Post Instagram</button>
+              <button type="button" data-format="story">Story Instagram</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="alignment">Alignement</label>
+            <div class="segmented" id="alignment-group">
+              <button type="button" data-align="center" class="active">Centre</button>
+              <button type="button" data-align="left">Gauche</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="theme">Couleur</label>
+            <div class="swatches" id="theme-group">
+              <button type="button" data-theme="ink-ember" class="active"><span class="dot" style="background:#151D2A;box-shadow:inset 9px 0 0 #FF9361"></span>Ink / Ember</button>
+              <button type="button" data-theme="ink-lake"><span class="dot" style="background:#151D2A;box-shadow:inset 9px 0 0 #4A8395"></span>Ink / Lake</button>
+              <button type="button" data-theme="porcelain-ember"><span class="dot" style="background:#F6F3EC;box-shadow:inset 9px 0 0 #FF9361"></span>Porcelain / Ember</button>
+              <button type="button" data-theme="sage-porcelain"><span class="dot" style="background:#C5CFBF;box-shadow:inset 9px 0 0 #F6F3EC"></span>Sage / Porcelain</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="layout">Logo</label>
+            <select id="layout">
+              <option value="mark">Mark seul</option>
+              <option value="horizontal">Horizontal</option>
+              <option value="stacked">Empile</option>
+              <option value="round">Rond social</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="animation">Animation / variante</label>
+            <select id="animation">
+              <option value="static">Static</option>
+              <option value="halo">Halo</option>
+              <option value="soft-confirm">Soft Confirm</option>
+              <option value="double-blink">Double Blink</option>
+              <option value="beacon-morse">Beacon Morse</option>
+              <option value="breathe">Breathe</option>
+              <option value="glow-pulse">Glow Pulse</option>
+              <option value="heartbeat">Heartbeat</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="background">Background</label>
+            <select id="background">
+              <option value="none">Aucun</option>
+              <option value="product-cream">Produit · cream 3/4</option>
+              <option value="product-black">Produit · black 3/4</option>
+              <option value="app-home">App · Home exact Brandbook</option>
+              <option value="app-groups">App · Groups exact Brandbook</option>
+              <option value="app-stats">App · Stats exact Brandbook</option>
+              <option value="app-analytics">App · Analytics exact Brandbook</option>
+              <option value="app-splash">App · Splash exact Brandbook</option>
+            </select>
+            <div class="help">Les vues app réutilisent les captures exactes du Brandbook final.</div>
+          </div>
+
+          <div class="field">
+            <label for="copy">Texte principal</label>
+            <textarea id="copy">Votre téléphone mérite une pause.</textarea>
+            <div class="help">Retour à la ligne manuel autorisé. Sinon le générateur replie automatiquement le texte.</div>
+          </div>
+
+          <div class="field">
+            <label>Textes rapides</label>
+            <div class="quick-text" id="quick-text">
+              <button type="button" data-copy="Votre téléphone mérite une pause.">Votre téléphone mérite une pause.</button>
+              <button type="button" data-copy="Le feed peut attendre. Le dîner, non.">Le feed peut attendre. Le dîner, non.</button>
+              <button type="button" data-copy="4h12 par jour.">4h12 par jour.</button>
+              <button type="button" data-copy="Le groupe WhatsApp “EVG Pedro” survivra.">EVG Pedro survivra.</button>
+              <button type="button" data-copy="Le vrai luxe, c’est de ne pas être joignable.">Le vrai luxe…</button>
+              <button type="button" data-copy="Le spa digital dont vous aviez besoin.">Le spa digital…</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="footerMode">Texte bas de visuel</label>
+            <select id="footerMode">
+              <option value="none">Aucun</option>
+              <option value="faraday-box" selected>faraday box</option>
+              <option value="disconnect">Disconnect to reconnect</option>
+              <option value="custom">Texte personnalisé</option>
+            </select>
+          </div>
+
+          <div class="field" id="footerCustomField" style="display:none;">
+            <label for="footerCustom">Texte personnalisé</label>
+            <input id="footerCustom" type="text" placeholder="Entrez votre texte">
+          </div>
+        </div>
+      </aside>
+
+      <section class="panel">
+        <h2>Preview et exports</h2>
+        <p>Le preview est vivant : si vous choisissez une animation, elle tourne ici. Le téléchargement SVG conserve cette animation. Les exports PNG et WebP créent une image statique propre.</p>
+        <div class="preview-shell">
+          <div class="preview-stage">
+            <div class="preview-frame">
+              <div id="preview-surface" class="preview-surface"></div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-meta">
+          <span class="meta-chip" id="meta-format">Post Instagram · 1080×1080</span>
+          <span class="meta-chip" id="meta-style">Mark · Static · Ink / Ember</span>
+          <span class="meta-chip" id="meta-background">Sans background</span>
+        </div>
+        <div class="downloads">
+          <a id="download-svg" class="primary" href="#" download>Telecharger SVG</a>
+          <a id="download-png" href="#" download>Telecharger PNG</a>
+          <a id="download-webp" href="#" download>Telecharger WebP</a>
+        </div>
+        <p class="downloads-note"><strong>Note.</strong> Si une animation est active, le fichier SVG garde l’effet. PNG et WebP exportent le poster frame actuellement rendu.</p>
+        <p class="status" id="status"><strong>Etat :</strong> generation du preview...</p>
+      </section>
+    </div>
+
+    <section class="section">
+      <div class="kicker">Checklist</div>
+      <h3>Ce que cet outil respecte deja</h3>
+      <div class="checklist">
+        <div class="check">
+          <strong>Couples couleur autorises</strong>
+          <span>Le select couleur se limite aux combinaisons validées : Ink / Ember, Ink / Lake, Porcelain / Ember et Sage / Porcelain.</span>
+        </div>
+        <div class="check">
+          <strong>Logo et halo</strong>
+          <span>Le halo reste contenu dans la capsule interne, jusqu’au premier contour arrondi. Il ne remplit jamais la tuile exterieure.</span>
+        </div>
+        <div class="check">
+          <strong>Vues app exactes</strong>
+          <span>Les backgrounds app viennent des captures exactes du Brandbook final, pas d’une recréation approximative.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const COLORS = {
+      ink: '#151D2A',
+      porcelain: '#F6F3EC',
+      sage: '#C5CFBF',
+      ember: '#FF9361',
+      lake: '#4A8395',
+      muted: '#69717A',
+      mutedInk: '#5F6D7A',
+    };
+
+    const THEMES = {
+      'ink-ember': { label: 'Ink / Ember', background: COLORS.ink, text: COLORS.porcelain, muted: 'rgba(246,243,236,.74)', tile: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.ember, aura: COLORS.ember, baselineOpacity: .72 },
+      'ink-lake': { label: 'Ink / Lake', background: COLORS.ink, text: COLORS.porcelain, muted: 'rgba(246,243,236,.74)', tile: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.lake, aura: COLORS.lake, baselineOpacity: .72 },
+      'porcelain-ember': { label: 'Porcelain / Ember', background: COLORS.porcelain, text: COLORS.ink, muted: COLORS.mutedInk, tile: COLORS.porcelain, shell: 'rgba(21,29,42,.15)', core: COLORS.ember, aura: COLORS.ember, baselineOpacity: .62 },
+      'sage-porcelain': { label: 'Sage / Porcelain', background: COLORS.sage, text: COLORS.ink, muted: 'rgba(21,29,42,.72)', tile: COLORS.sage, shell: 'rgba(21,29,42,.15)', core: COLORS.porcelain, aura: COLORS.porcelain, baselineOpacity: .60 },
+    };
+
+    const FORMATS = {
+      post: { label: 'Post Instagram', width: 1080, height: 1080, aspect: '1 / 1', titleSize: 86, lineHeight: 98, maxWidthCenter: 640, maxWidthLeft: 600, textY: 620, topPad: 84 },
+      story: { label: 'Story Instagram', width: 1080, height: 1920, aspect: '9 / 16', titleSize: 116, lineHeight: 128, maxWidthCenter: 760, maxWidthLeft: 720, textY: 1180, topPad: 118 },
+    };
+
+    const LAYOUTS = {
+      mark: { label: 'Mark seul' },
+      horizontal: { label: 'Horizontal' },
+      stacked: { label: 'Empile' },
+      round: { label: 'Rond social' },
+    };
+
+    const ANIMATIONS = {
+      static: { label: 'Static', className: '', aura: false },
+      halo: { label: 'Halo', className: '', aura: true },
+      'soft-confirm': { label: 'Soft Confirm', className: 'anim-soft', aura: false },
+      'double-blink': { label: 'Double Blink', className: 'anim-double', aura: true },
+      'beacon-morse': { label: 'Beacon Morse', className: 'anim-morse', aura: false },
+      breathe: { label: 'Breathe', className: 'anim-breathe', aura: true },
+      'glow-pulse': { label: 'Glow Pulse', className: 'anim-glow', aura: true },
+      heartbeat: { label: 'Heartbeat', className: 'anim-heart', aura: false },
+    };
+
+    const BACKGROUNDS = {
+      none: { label: 'Sans background' },
+      'product-cream': { label: 'Produit · cream 3/4', type: 'photo', file: 'assets/box-cream.jpeg', mode: 'cover' },
+      'product-black': { label: 'Produit · black 3/4', type: 'photo', file: 'assets/box-black.jpeg', mode: 'cover' },
+      'app-home': { label: 'App · Home', type: 'app', file: 'assets/app-screens/home-light.png' },
+      'app-groups': { label: 'App · Groups', type: 'app', file: 'assets/app-screens/groups.png' },
+      'app-stats': { label: 'App · Stats', type: 'app', file: 'assets/app-screens/stats.png' },
+      'app-analytics': { label: 'App · Analytics', type: 'app', file: 'assets/app-screens/analytics.png' },
+      'app-splash': { label: 'App · Splash', type: 'app', file: 'assets/app-screens/splash.png' },
+    };
+
+    const cache = new Map();
+    const urls = { svg: null, png: null, webp: null };
+    const surface = document.getElementById('preview-surface');
+    const status = document.getElementById('status');
+    const metaFormat = document.getElementById('meta-format');
+    const metaStyle = document.getElementById('meta-style');
+    const metaBackground = document.getElementById('meta-background');
+    const downloadSvg = document.getElementById('download-svg');
+    const downloadPng = document.getElementById('download-png');
+    const downloadWebp = document.getElementById('download-webp');
+
+    const state = {
+      format: 'post',
+      alignment: 'center',
+      theme: 'ink-ember',
+      layout: 'mark',
+      animation: 'static',
+      background: 'none',
+      copy: 'Votre téléphone mérite une pause.',
+      footerMode: 'faraday-box',
+      footerCustom: '',
+    };
+
+    function escapeHtml(value) {
+      return value
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function escapeSvg(value) {
+      return escapeHtml(value);
+    }
+
+    async function assetDataUrl(path) {
+      if (cache.has(path)) return cache.get(path);
+      const response = await fetch(path);
+      const blob = await response.blob();
+      const dataUrl = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+      cache.set(path, dataUrl);
+      return dataUrl;
+    }
+
+    function revokeUrls() {
+      Object.keys(urls).forEach((key) => {
+        if (urls[key]) URL.revokeObjectURL(urls[key]);
+        urls[key] = null;
+      });
+    }
+
+    function filenameBase() {
+      const textSlug = (state.copy || 'faraday')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 42) || 'faraday';
+      return `faraday-${state.format}-${state.theme}-${state.layout}-${state.animation}-${textSlug}`;
+    }
+
+    function setButtonGroup(groupId, key, attr) {
+      document.querySelectorAll(`#${groupId} button`).forEach((button) => {
+        button.classList.toggle('active', button.dataset[attr] === state[key]);
+      });
+    }
+
+    function syncForm() {
+      setButtonGroup('format-group', 'format', 'format');
+      setButtonGroup('alignment-group', 'alignment', 'align');
+      setButtonGroup('theme-group', 'theme', 'theme');
+      document.getElementById('layout').value = state.layout;
+      document.getElementById('animation').value = state.animation;
+      document.getElementById('background').value = state.background;
+      document.getElementById('copy').value = state.copy;
+      document.getElementById('footerMode').value = state.footerMode;
+      document.getElementById('footerCustom').value = state.footerCustom;
+      document.getElementById('footerCustomField').style.display = state.footerMode === 'custom' ? 'grid' : 'none';
+    }
+
+    function getFooterText() {
+      if (state.footerMode === 'none') return '';
+      if (state.footerMode === 'faraday-box') return 'faraday box';
+      if (state.footerMode === 'disconnect') return 'Disconnect to reconnect';
+      return state.footerCustom.trim();
+    }
+
+    function measureTracked(text, fontFamily, fontSize, weight = 400, tracking = 0) {
+      const canvas = measureTracked.canvas || (measureTracked.canvas = document.createElement('canvas'));
+      const ctx = canvas.getContext('2d');
+      ctx.font = `${weight} ${fontSize}px "${fontFamily}"`;
+      const base = ctx.measureText(text).width;
+      return base + (Math.max(0, text.length - 1) * tracking);
+    }
+
+    function wrapText(text, maxWidth, fontFamily, fontSize, weight = 400, tracking = 0) {
+      const blocks = text.split('\n').map((line) => line.trim()).filter(Boolean);
+      if (!blocks.length) return ['Votre téléphone mérite une pause.'];
+      const lines = [];
+      blocks.forEach((block) => {
+        const words = block.split(/\s+/);
+        let current = '';
+        words.forEach((word) => {
+          const candidate = current ? `${current} ${word}` : word;
+          if (!current || measureTracked(candidate, fontFamily, fontSize, weight, tracking) <= maxWidth) {
+            current = candidate;
+          } else {
+            lines.push(current);
+            current = word;
+          }
+        });
+        if (current) lines.push(current);
+      });
+      return lines;
+    }
+
+    function fitHeadline(text, formatKey, alignment) {
+      const format = FORMATS[formatKey];
+      const maxWidth = alignment === 'center' ? format.maxWidthCenter : format.maxWidthLeft;
+      let fontSize = format.titleSize;
+      let lineHeight = format.lineHeight;
+      let lines = wrapText(text, maxWidth, 'Sora', fontSize, 300, 0);
+      while (fontSize > 54 && lines.length > (formatKey === 'story' ? 5 : 3)) {
+        fontSize -= 4;
+        lineHeight -= 4;
+        lines = wrapText(text, maxWidth, 'Sora', fontSize, 300, 0);
+      }
+      while (fontSize > 48 && lines.some((line) => measureTracked(line, 'Sora', fontSize, 300, 0) > maxWidth)) {
+        fontSize -= 2;
+        lineHeight -= 2;
+        lines = wrapText(text, maxWidth, 'Sora', fontSize, 300, 0);
+      }
+      return { lines, fontSize, lineHeight, maxWidth };
+    }
+
+    function textSvg(line, x, y, opts = {}) {
+      const anchor = opts.anchor || 'start';
+      const tracking = opts.tracking || 0;
+      const opacity = opts.opacity == null ? 1 : opts.opacity;
+      const family = opts.family || 'Manrope';
+      const weight = opts.weight || 400;
+      return `<text x="${x}" y="${y}" fill="${opts.fill}" opacity="${opacity}" text-anchor="${anchor}" font-family="${family}" font-size="${opts.size}" font-weight="${weight}" letter-spacing="${tracking}px">${escapeSvg(line)}</text>`;
+    }
+
+    function ledGroupSvg({ x, y, size, theme, transparentTile = false, aura = false, animationClass = '' }) {
+      const scale = size / 96;
+      const auraNode = aura
+        ? `<rect class="led-aura" x="31" y="14" width="34" height="68" rx="17" fill="${theme.aura}" opacity="${theme.background === COLORS.ink ? 0.18 : 0.14}"/>`
+        : '';
+      return `
+        <g class="${animationClass}" transform="translate(${x} ${y}) scale(${scale})">
+          ${transparentTile ? '' : `<rect width="96" height="96" rx="26" fill="${theme.tile}"/>`}
+          ${auraNode}
+          <rect class="led-shell" x="31" y="14" width="34" height="68" rx="17" stroke="${theme.shell}" stroke-width="2.6"/>
+          <rect class="led-core" x="43" y="28" width="10" height="40" rx="5" fill="${theme.core}"/>
+        </g>
+      `;
+    }
+
+    function logoMarkup(width, theme, formatKey) {
+      const format = FORMATS[formatKey];
+      const animation = ANIMATIONS[state.animation];
+      const alignCenter = state.alignment === 'center';
+      const top = format.topPad;
+      const markSize = formatKey === 'story' ? 132 : 98;
+      const wordSize = Math.round(markSize * 0.52);
+      const baselineSize = Math.max(12, Math.round(markSize * 0.16));
+      const baselineTracking = 4;
+      const baselineOpacity = theme.baselineOpacity;
+
+      if (state.layout === 'mark') {
+        const x = alignCenter ? (width - markSize) / 2 : 84;
+        return ledGroupSvg({ x, y: top, size: markSize, theme, aura: animation.aura, animationClass: animation.className });
+      }
+
+      if (state.layout === 'round') {
+        const size = formatKey === 'story' ? 132 : 104;
+        const x = alignCenter ? (width - size) / 2 : 82;
+        const y = top;
+        return `
+          <g transform="translate(${x} ${y})">
+            <circle cx="${size / 2}" cy="${size / 2}" r="${size / 2}" fill="${theme.background}"/>
+            ${ledGroupSvg({ x: (size - (size * 0.66)) / 2, y: (size - (size * 0.66)) / 2, size: size * 0.66, theme, transparentTile: true, aura: animation.aura, animationClass: animation.className })}
+          </g>
+        `;
+      }
+
+      if (state.layout === 'horizontal') {
+        const gap = Math.round(markSize * 0.15);
+        const wordWidth = measureTracked('faraday', 'Sora', wordSize, 300, 0);
+        const baselineWidth = measureTracked('DISCONNECT TO RECONNECT', 'Manrope', baselineSize, 800, baselineTracking);
+        const textWidth = Math.max(wordWidth, baselineWidth);
+        const totalWidth = markSize + gap + textWidth;
+        const x = alignCenter ? (width - totalWidth) / 2 : 82;
+        const y = top;
+        const wordX = x + markSize + gap;
+        const wordY = y + Math.round(markSize * 0.56);
+        const baselineY = wordY + Math.round(wordSize * 0.78);
+        return `
+          ${ledGroupSvg({ x, y, size: markSize, theme, aura: animation.aura, animationClass: animation.className })}
+          ${textSvg('faraday', wordX, wordY, { family: 'Sora', size: wordSize, weight: 300, fill: theme.text })}
+          ${textSvg('DISCONNECT TO RECONNECT', wordX, baselineY, { family: 'Manrope', size: baselineSize, weight: 800, fill: theme.text, opacity: baselineOpacity, tracking: baselineTracking })}
+        `;
+      }
+
+      const x = alignCenter ? (width - markSize) / 2 : 82;
+      const y = top;
+      const titleX = alignCenter ? width / 2 : 82 + (markSize / 2);
+      const titleAnchor = alignCenter ? 'middle' : 'middle';
+      const titleY = y + markSize + Math.round(wordSize * 0.94);
+      const baseY = titleY + Math.round(wordSize * 0.70);
+      return `
+        ${ledGroupSvg({ x, y, size: markSize, theme, aura: animation.aura, animationClass: animation.className })}
+        ${textSvg('faraday', titleX, titleY, { family: 'Sora', size: wordSize, weight: 300, fill: theme.text, anchor: titleAnchor })}
+        ${textSvg('DISCONNECT TO RECONNECT', titleX, baseY, { family: 'Manrope', size: baselineSize, weight: 800, fill: theme.text, opacity: baselineOpacity, tracking: baselineTracking, anchor: titleAnchor })}
+      `;
+    }
+
+    async function backgroundMarkup(width, height, theme) {
+      const config = BACKGROUNDS[state.background];
+      const overlay = theme.background === COLORS.ink
+        ? 'rgba(15,23,34,.46)'
+        : 'rgba(246,243,236,.28)';
+      if (!config || config.type == null) {
+        return `
+          <rect width="${width}" height="${height}" fill="${theme.background}"/>
+          <circle cx="${width / 2}" cy="${Math.round(height * 0.22)}" r="${Math.round(Math.min(width, height) * 0.18)}" fill="${theme.core}" opacity="${theme.background === COLORS.ink ? 0.08 : 0.06}"/>
+          <circle cx="${width / 2}" cy="${Math.round(height * 0.22)}" r="${Math.round(Math.min(width, height) * 0.09)}" fill="${theme.core}" opacity="${theme.background === COLORS.ink ? 0.12 : 0.08}"/>
+        `;
+      }
+
+      const href = await assetDataUrl(config.file);
+      if (config.type === 'photo') {
+        return `
+          <rect width="${width}" height="${height}" fill="${theme.background}"/>
+          <image href="${href}" x="0" y="0" width="${width}" height="${height}" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="${width}" height="${height}" fill="${overlay}"/>
+        `;
+      }
+
+      const imgWidth = state.format === 'story' ? Math.round(width * 0.74) : Math.round(width * 0.62);
+      const imgHeight = Math.round(imgWidth * 2.1679);
+      const x = Math.round((width - imgWidth) / 2);
+      const y = state.format === 'story' ? 220 : 148;
+      return `
+        <rect width="${width}" height="${height}" fill="${theme.background}"/>
+        <image href="${href}" x="${x}" y="${y}" width="${imgWidth}" height="${imgHeight}" preserveAspectRatio="xMidYMid meet" opacity="${theme.background === COLORS.ink ? 0.44 : 0.48}" filter="url(#bg-blur)"/>
+        <rect width="${width}" height="${height}" fill="${theme.background === COLORS.ink ? 'rgba(21,29,42,.42)' : 'rgba(246,243,236,.24)'}"/>
+      `;
+    }
+
+    function footerMarkup(width, height, theme) {
+      const label = getFooterText();
+      if (!label) return '';
+      const alignCenter = state.alignment === 'center';
+      const x = alignCenter ? width / 2 : 84;
+      const y = height - 112;
+      const accentX = alignCenter ? (width - 110) / 2 : 84;
+      return `
+        <rect x="${accentX}" y="${y - 34}" width="110" height="8" rx="4" fill="${theme.core}"/>
+        ${textSvg(label, x, y + 16, {
+          family: 'Manrope',
+          size: 22,
+          weight: 700,
+          fill: theme.text,
+          opacity: .74,
+          anchor: alignCenter ? 'middle' : 'start',
+          tracking: 3,
+        })}
+      `;
+    }
+
+    function headlineMarkup(width, height, theme) {
+      const alignCenter = state.alignment === 'center';
+      const fit = fitHeadline(state.copy.trim(), state.format, state.alignment);
+      const x = alignCenter ? width / 2 : 84;
+      const anchor = alignCenter ? 'middle' : 'start';
+      const startY = FORMATS[state.format].textY - ((fit.lines.length - 1) * fit.lineHeight / 2);
+      const lines = fit.lines.map((line, index) => textSvg(line, x, startY + (index * fit.lineHeight), {
+        family: 'Sora',
+        size: fit.fontSize,
+        weight: 300,
+        fill: theme.text,
+        anchor,
+      })).join('');
+      const accentY = startY + (fit.lines.length * fit.lineHeight) + 24;
+      const accentX = alignCenter ? (width - 110) / 2 : 84;
+      return `
+        ${lines}
+        <rect x="${accentX}" y="${accentY}" width="110" height="8" rx="4" fill="${theme.core}"/>
+      `;
+    }
+
+    function animationStyles() {
+      return `
+        @keyframes led-core-breathe{0%,100%{opacity:.64;}50%{opacity:1;}}
+        @keyframes led-halo-expand{0%,100%{opacity:.1;transform:scale(.92);}50%{opacity:.34;transform:scale(1.08);}}
+        @keyframes led-double-blink{0%,18%,32%,100%{opacity:.28;}8%,24%{opacity:1;}}
+        @keyframes led-soft-blink{0%,14%,100%{opacity:.24;}7%{opacity:1;}}
+        @keyframes led-morse{0%,8%{opacity:1;}12%,20%{opacity:.15;}24%,36%{opacity:1;}40%,52%{opacity:.15;}56%,60%{opacity:1;}64%,100%{opacity:.15;}}
+        @keyframes led-heart{0%,100%{opacity:.3;transform:scale(1);}14%{opacity:1;transform:scale(1.08);}22%{opacity:.5;transform:scale(1);}32%{opacity:1;transform:scale(1.05);}44%{opacity:.3;transform:scale(1);}}
+        @keyframes led-glow-core{0%,100%{opacity:.7;filter:brightness(1);}50%{opacity:1;filter:brightness(1.25);}}
+        @keyframes led-glow-aura{0%,100%{opacity:0;transform:scale(.82);}50%{opacity:.25;transform:scale(1.18);}}
+        .led-group .led-aura,.led-group .led-core,.led-group .led-shell{transform-origin:center;transform-box:fill-box}
+        .anim-breathe .led-core{animation:led-core-breathe 3.6s ease-in-out infinite}
+        .anim-breathe .led-aura{animation:led-halo-expand 3.6s ease-in-out infinite}
+        .anim-soft .led-core{animation:led-soft-blink 2.8s ease-in-out infinite}
+        .anim-double .led-core{animation:led-double-blink 4.2s ease-in-out infinite}
+        .anim-morse .led-core{animation:led-morse 4s ease-in-out infinite}
+        .anim-heart .led-core{animation:led-heart 2.4s ease-in-out infinite}
+        .anim-glow .led-core{animation:led-glow-core 3s ease-in-out infinite}
+        .anim-glow .led-aura{animation:led-glow-aura 3s ease-in-out infinite}
+      `;
+    }
+
+    async function buildSvg() {
+      const format = FORMATS[state.format];
+      const theme = THEMES[state.theme];
+      const bg = await backgroundMarkup(format.width, format.height, theme);
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${format.width}" height="${format.height}" viewBox="0 0 ${format.width} ${format.height}" fill="none">
+          <defs>
+            <filter id="bg-blur" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="${state.format === 'story' ? 8 : 6}"/>
+            </filter>
+          </defs>
+          <style>
+            ${animationStyles()}
+          </style>
+          ${bg}
+          ${logoMarkup(format.width, theme, state.format)}
+          ${headlineMarkup(format.width, format.height, theme)}
+          ${footerMarkup(format.width, format.height, theme)}
+        </svg>
+      `.trim();
+    }
+
+    function debounce(fn, delay = 220) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+      };
+    }
+
+    async function svgToRaster(svgString, mimeType) {
+      await document.fonts.ready;
+      const format = FORMATS[state.format];
+      const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+      const svgUrl = URL.createObjectURL(svgBlob);
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = svgUrl;
+      await img.decode();
+      const canvas = document.createElement('canvas');
+      canvas.width = format.width;
+      canvas.height = format.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, format.width, format.height);
+      URL.revokeObjectURL(svgUrl);
+      return await new Promise((resolve) => {
+        canvas.toBlob((blob) => resolve(blob), mimeType, 0.96);
+      });
+    }
+
+    async function render() {
+      try {
+        syncForm();
+        status.innerHTML = '<strong>Etat :</strong> generation du preview...';
+        surface.style.aspectRatio = FORMATS[state.format].aspect;
+        metaFormat.textContent = `${FORMATS[state.format].label} · ${FORMATS[state.format].width}×${FORMATS[state.format].height}`;
+        metaStyle.textContent = `${LAYOUTS[state.layout].label} · ${ANIMATIONS[state.animation].label} · ${THEMES[state.theme].label}`;
+        metaBackground.textContent = BACKGROUNDS[state.background].label;
+
+        const svg = await buildSvg();
+        surface.innerHTML = svg;
+        revokeUrls();
+
+        const base = filenameBase();
+        const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+        urls.svg = URL.createObjectURL(svgBlob);
+        downloadSvg.href = urls.svg;
+        downloadSvg.download = `${base}.svg`;
+
+        const pngBlob = await svgToRaster(svg, 'image/png');
+        urls.png = URL.createObjectURL(pngBlob);
+        downloadPng.href = urls.png;
+        downloadPng.download = `${base}.png`;
+
+        const webpBlob = await svgToRaster(svg, 'image/webp');
+        urls.webp = URL.createObjectURL(webpBlob);
+        downloadWebp.href = urls.webp;
+        downloadWebp.download = `${base}.webp`;
+
+        status.innerHTML = '<strong>Etat :</strong> preview et exports prets.';
+      } catch (error) {
+        console.error(error);
+        status.innerHTML = `<strong>Etat :</strong> erreur de generation. ${escapeHtml(error.message || String(error))}`;
+      }
+    }
+
+    const scheduleRender = debounce(render, 180);
+
+    document.querySelectorAll('#format-group button').forEach((button) => {
+      button.addEventListener('click', () => { state.format = button.dataset.format; scheduleRender(); });
+    });
+
+    document.querySelectorAll('#alignment-group button').forEach((button) => {
+      button.addEventListener('click', () => { state.alignment = button.dataset.align; scheduleRender(); });
+    });
+
+    document.querySelectorAll('#theme-group button').forEach((button) => {
+      button.addEventListener('click', () => { state.theme = button.dataset.theme; scheduleRender(); });
+    });
+
+    document.getElementById('layout').addEventListener('change', (event) => {
+      state.layout = event.target.value;
+      scheduleRender();
+    });
+
+    document.getElementById('animation').addEventListener('change', (event) => {
+      state.animation = event.target.value;
+      scheduleRender();
+    });
+
+    document.getElementById('background').addEventListener('change', (event) => {
+      state.background = event.target.value;
+      scheduleRender();
+    });
+
+    document.getElementById('copy').addEventListener('input', (event) => {
+      state.copy = event.target.value;
+      scheduleRender();
+    });
+
+    document.getElementById('footerMode').addEventListener('change', (event) => {
+      state.footerMode = event.target.value;
+      syncForm();
+      scheduleRender();
+    });
+
+    document.getElementById('footerCustom').addEventListener('input', (event) => {
+      state.footerCustom = event.target.value;
+      scheduleRender();
+    });
+
+    document.querySelectorAll('#quick-text button').forEach((button) => {
+      button.addEventListener('click', () => {
+        state.copy = button.dataset.copy;
+        document.getElementById('copy').value = state.copy;
+        scheduleRender();
+      });
+    });
+
+    window.addEventListener('beforeunload', revokeUrls);
+    render();
+  </script>
+
+  <script src="final-nav.js"></script>
+  <script src="final-footer.js"></script>
+</body>
+</html>
