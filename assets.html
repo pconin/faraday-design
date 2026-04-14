@@ -329,12 +329,26 @@
 
     const chip = (value) => `<span class="chip">${value}</span>`;
 
+    const mediaKind = (file) => {
+      if (!file) return null;
+      const normalized = file.toLowerCase();
+      if (normalized.endsWith('.png') || normalized.endsWith('.webp') || normalized.endsWith('.jpg') || normalized.endsWith('.jpeg')) return 'image';
+      if (normalized.endsWith('.gif') || normalized.endsWith('.mp4') || normalized.endsWith('.webm')) return 'video';
+      return null;
+    };
+
+    const downloadLink = (label, file) => {
+      const kind = mediaKind(file);
+      const iosAttrs = kind ? ` data-ios-media="${kind}"` : '';
+      return `<a class="link" href="${file}" download${iosAttrs}>${label}</a>`;
+    };
+
     const downloadLinks = (files) => Object.entries(files).map(([key, value]) => {
       if (typeof value === 'string') {
-        return `<a class="link" href="${value}" download>${key.toUpperCase()}</a>`;
+        return downloadLink(key.toUpperCase(), value);
       }
       return Object.entries(value)
-        .map(([size, file]) => `<a class="link" href="${file}" download>${key.toUpperCase()} ${size}</a>`)
+        .map(([size, file]) => downloadLink(`${key.toUpperCase()} ${size}`, file))
         .join('');
     }).join('');
 
@@ -355,14 +369,14 @@
         const staticAsset = data.staticBanners.find((candidate) => candidate.id === `${asset.id}-static`);
         const storyAsset = data.animatedBanners.find((candidate) => candidate.id === asset.id.replace('instagram-square-', 'instagram-story-'));
         if (staticAsset) {
-          links.push(`<a class="link" href="${staticAsset.files.png}" download>STATIC PNG</a>`);
-          links.push(`<a class="link" href="${staticAsset.files.webp}" download>STATIC WEBP</a>`);
+          links.push(downloadLink('STATIC PNG', staticAsset.files.png));
+          links.push(downloadLink('STATIC WEBP', staticAsset.files.webp));
         }
         if (storyAsset) {
-          links.push(`<a class="link" href="${storyAsset.files.gif}" download>STORY GIF</a>`);
-          links.push(`<a class="link" href="${storyAsset.files.mp4}" download>STORY MP4</a>`);
-          links.push(`<a class="link" href="${storyAsset.files.webm}" download>STORY WEBM</a>`);
-          links.push(`<a class="link" href="${storyAsset.files.poster}" download>STORY POSTER</a>`);
+          links.push(downloadLink('STORY GIF', storyAsset.files.gif));
+          links.push(downloadLink('STORY MP4', storyAsset.files.mp4));
+          links.push(downloadLink('STORY WEBM', storyAsset.files.webm));
+          links.push(downloadLink('STORY POSTER', storyAsset.files.poster));
         }
       }
       return links.join('');
@@ -510,6 +524,41 @@
         document.getElementById('linkedin-static').innerHTML = '<div class="empty">Impossible de charger les assets LinkedIn.</div>';
         document.getElementById('animated-banners').innerHTML = '<div class="empty">Impossible de charger les animations.</div>';
       });
+
+    const isIPhoneSafari = () => {
+      const ua = navigator.userAgent || '';
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+      const isWebkit = /WebKit/i.test(ua);
+      const isOtherBrowser = /CriOS|FxiOS|EdgiOS/i.test(ua);
+      return isIOS && isWebkit && !isOtherBrowser;
+    };
+
+    const shareToIOS = async (url, kind) => {
+      const absoluteUrl = new URL(url, window.location.href);
+      const response = await fetch(absoluteUrl.href);
+      const blob = await response.blob();
+      const filename = absoluteUrl.pathname.split('/').pop() || `faraday-${kind}`;
+      const file = new File([blob], filename, { type: blob.type || (kind === 'image' ? 'image/png' : 'video/mp4') });
+
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], title: filename });
+        return;
+      }
+
+      window.open(absoluteUrl.href, '_blank', 'noopener');
+    };
+
+    document.addEventListener('click', async (event) => {
+      const link = event.target.closest('a[data-ios-media]');
+      if (!link || !isIPhoneSafari()) return;
+      event.preventDefault();
+      try {
+        await shareToIOS(link.getAttribute('href'), link.dataset.iosMedia);
+      } catch (error) {
+        console.error(error);
+        window.open(link.href, '_blank', 'noopener');
+      }
+    });
   </script>
   <script src="final-nav.js"></script>
   <script src="final-footer.js"></script>
