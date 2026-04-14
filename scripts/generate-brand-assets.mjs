@@ -42,6 +42,14 @@ const PHOTO = {
   led: path.join(assetsDir, 'led-reference-v2.jpg'),
 };
 
+const APP = {
+  homeLight: path.join(assetsDir, 'app-screens', 'home-light.png'),
+  groups: path.join(assetsDir, 'app-screens', 'groups.png'),
+  stats: path.join(assetsDir, 'app-screens', 'stats.png'),
+  analytics: path.join(assetsDir, 'app-screens', 'analytics.png'),
+  splash: path.join(assetsDir, 'app-screens', 'splash.png'),
+};
+
 const manifest = {
   generatedAt: new Date().toISOString(),
   package: {
@@ -132,13 +140,20 @@ function multilineText({
   anchor = 'left',
   tracking = 0,
   opacity = 1,
+  fitWidth = null,
 }) {
+  const maxWidth = fitWidth
+    ? Math.max(...lines.map((line) => measureTracked(line, font, fontSize, tracking)))
+    : 0;
+  const scale = fitWidth && maxWidth > fitWidth ? fitWidth / maxWidth : 1;
+  const scaledFontSize = fontSize * scale;
+  const scaledLineHeight = lineHeight * scale;
   return lines.map((line, index) => textPath({
     text: line,
     font,
-    fontSize,
+    fontSize: scaledFontSize,
     x,
-    y: y + (index * lineHeight),
+    y: y + (index * scaledLineHeight),
     fill,
     anchor,
     tracking,
@@ -439,8 +454,20 @@ function rel(file) {
   return path.relative(root, file).replaceAll(path.sep, '/');
 }
 
+async function preparedImage(file, width, height, options = {}) {
+  const {
+    fit = 'cover',
+    position = 'centre',
+    blur = 0,
+    background = { r: 0, g: 0, b: 0, alpha: 0 },
+  } = options;
+  let image = sharp(file).rotate().resize(width, height, { fit, position, background });
+  if (blur) image = image.blur(blur);
+  return image.png().toBuffer();
+}
+
 async function basePhoto(file, width, height, position = 'centre') {
-  return sharp(file).rotate().resize(width, height, { fit: 'cover', position }).toBuffer();
+  return preparedImage(file, width, height, { fit: 'cover', position });
 }
 
 function roundedRectSvg(width, height, radius, fill, opacity = 1, stroke = null, strokeWidth = 0) {
@@ -526,6 +553,7 @@ function renderQuoteCenter(cfg) {
       lineHeight: cfg.lineHeight,
       fill: cfg.titleFill,
       anchor,
+      fitWidth: cfg.titleFitWidth,
     })}
     ${cfg.divider ? `<rect x="${(cfg.width / 2) - (cfg.divider / 2)}" y="${cfg.top + cfg.dividerY}" width="${cfg.divider}" height="${cfg.dividerHeight}" rx="${cfg.dividerHeight / 2}" fill="${cfg.accent}"/>` : ''}
     ${cfg.subLines ? multilineText({
@@ -537,6 +565,7 @@ function renderQuoteCenter(cfg) {
       lineHeight: cfg.subLineHeight,
       fill: cfg.subFill,
       anchor: subAnchor,
+      fitWidth: cfg.subFitWidth,
     }) : ''}
     ${cfg.logoMarkup ?? ''}
   `);
@@ -564,6 +593,7 @@ function renderPhotoOverlay(cfg) {
       lineHeight: cfg.lineHeight,
       fill: cfg.titleFill,
       anchor: cfg.titleAnchor ?? 'left',
+      fitWidth: cfg.titleFitWidth,
     })}
     ${cfg.bodyLines ? multilineText({
       lines: cfg.bodyLines,
@@ -574,6 +604,7 @@ function renderPhotoOverlay(cfg) {
       lineHeight: cfg.bodyLineHeight,
       fill: cfg.bodyFill,
       anchor: cfg.bodyAnchor ?? 'left',
+      fitWidth: cfg.bodyFitWidth,
     }) : ''}
     ${cfg.logoMarkup ?? ''}
   `);
@@ -642,6 +673,7 @@ function renderStoryCta(cfg) {
       lineHeight: cfg.lineHeight,
       fill: cfg.titleFill,
       anchor,
+      fitWidth: cfg.titleFitWidth,
     })}
     ${multilineText({
       lines: cfg.bodyLines,
@@ -652,6 +684,7 @@ function renderStoryCta(cfg) {
       lineHeight: cfg.bodyLineHeight,
       fill: cfg.bodyFill,
       anchor: cfg.bodyAnchor ?? anchor,
+      fitWidth: cfg.bodyFitWidth,
     })}
     ${pillMarkup(cfg.ctaX, cfg.ctaY, cfg.ctaWidth, cfg.ctaHeight, cfg.ctaFill, cfg.ctaLabel, cfg.ctaLabelFill)}
   `);
@@ -958,6 +991,19 @@ async function renderBanner(config, frame = null) {
   if (config.photo) {
     composites.push({ input: await basePhoto(config.photo.file, config.width, config.height, config.photo.position), left: 0, top: 0 });
   }
+  if (config.insetImages) {
+    for (const inset of config.insetImages) {
+      composites.push({
+        input: await preparedImage(inset.file, inset.width, inset.height, {
+          fit: inset.fit ?? 'contain',
+          position: inset.position ?? 'centre',
+          blur: inset.blur ?? 0,
+        }),
+        left: inset.left,
+        top: inset.top,
+      });
+    }
+  }
   if (config.overlayGradient) {
     composites.push({ input: gradientLayer(config.width, config.height, config.overlayGradient.stops, config.overlayGradient.options), left: 0, top: 0 });
   }
@@ -1107,6 +1153,7 @@ function buildBlinkSquareVariant(message, theme) {
       titleSize: message.titleSize,
       lineHeight: message.lineHeight,
       titleFill: isInk ? COLORS.porcelain : COLORS.ink,
+      titleFitWidth: 680,
       divider: 112,
       dividerY: message.dividerY ?? 724,
       dividerHeight: 8,
@@ -1169,6 +1216,7 @@ function buildBlinkStoryVariant(message, theme) {
       titleSize: Math.min(message.titleSize + 6, 156),
       lineHeight: Math.min(message.lineHeight + 8, 148),
       titleFill: isInk ? COLORS.porcelain : COLORS.ink,
+      titleFitWidth: 720,
       divider: 128,
       dividerY: 1186,
       dividerHeight: 8,
@@ -2087,6 +2135,7 @@ async function generateStaticBanners() {
         bottomOffset: 360,
         titleX: 540,
         titleAnchor: 'center',
+        titleFitWidth: 650,
         bodyLines: ['Ça fait beaucoup pour un appareil qui devait nous faire gagner du temps.'],
         bodySize: 24,
         bodyLineHeight: 36,
@@ -2094,6 +2143,7 @@ async function generateStaticBanners() {
         bodyOffset: 132,
         bodyX: 540,
         bodyAnchor: 'center',
+        bodyFitWidth: 620,
       },
     },
     {
@@ -2125,6 +2175,7 @@ async function generateStaticBanners() {
         bottomOffset: 322,
         titleX: 540,
         titleAnchor: 'center',
+        titleFitWidth: 680,
         bodyLines: ['Une impulsion simple.', 'Un vrai moment retrouvé.'],
         bodySize: 24,
         bodyLineHeight: 38,
@@ -2132,6 +2183,166 @@ async function generateStaticBanners() {
         bodyOffset: 120,
         bodyX: 540,
         bodyAnchor: 'center',
+        bodyFitWidth: 620,
+      },
+    },
+    {
+      id: 'instagram-square-app-home-background',
+      label: 'Instagram square · app background · home',
+      platform: 'Instagram square',
+      width: 1080,
+      height: 1080,
+      background: COLORS.ink,
+      insetImages: [
+        { file: APP.homeLight, left: 330, top: 88, width: 420, height: 904, fit: 'contain', blur: 0.6 },
+      ],
+      overlaySolid: { fill: COLORS.ink, opacity: 0.34 },
+      glow: { cx: 540, cy: 316, radius: 122, color: COLORS.ember, opacity: 0.08 },
+      textRenderer: renderQuoteCenter,
+      mark: { x: 494, y: 92, size: 92, ...commonMark },
+      text: {
+        overline: null,
+        top: 96,
+        textX: 540,
+        anchor: 'center',
+        offsetY: 560,
+        lines: ['Votre téléphone', 'mérite une pause.'],
+        titleSize: 82,
+        lineHeight: 96,
+        titleFill: COLORS.porcelain,
+        titleFitWidth: 600,
+        divider: 108,
+        dividerY: 792,
+        dividerHeight: 8,
+        accent: COLORS.ember,
+        subLines: ['L’app garde la preuve. Le moment reste à vous.'],
+        subSize: 22,
+        subX: 540,
+        subAnchor: 'center',
+        subY: 842,
+        subLineHeight: 30,
+        subFill: 'rgba(246,243,236,.74)',
+        subFitWidth: 520,
+      },
+    },
+    {
+      id: 'instagram-square-app-groups-background',
+      label: 'Instagram square · app background · groups',
+      platform: 'Instagram square',
+      width: 1080,
+      height: 1080,
+      background: COLORS.porcelain,
+      insetImages: [
+        { file: APP.groups, left: 84, top: 176, width: 332, height: 720, fit: 'contain', blur: 0.4 },
+        { file: APP.homeLight, left: 664, top: 120, width: 296, height: 640, fit: 'contain', blur: 0.8 },
+      ],
+      overlaySolid: { fill: COLORS.porcelain, opacity: 0.28 },
+      textRenderer: renderQuoteCenter,
+      mark: { x: 494, y: 92, size: 92, tileFill: COLORS.ink, shell: 'rgba(246,243,236,.22)', core: COLORS.ember },
+      text: {
+        overline: null,
+        top: 100,
+        textX: 540,
+        anchor: 'center',
+        offsetY: 522,
+        lines: ['Le groupe WhatsApp', '“EVG Pedro” survivra.'],
+        titleSize: 72,
+        lineHeight: 88,
+        titleFill: COLORS.ink,
+        titleFitWidth: 620,
+        divider: 108,
+        dividerY: 760,
+        dividerHeight: 8,
+        accent: COLORS.ember,
+        subLines: ['Le dîner, lui, mérite votre attention complète.'],
+        subSize: 22,
+        subX: 540,
+        subAnchor: 'center',
+        subY: 812,
+        subLineHeight: 30,
+        subFill: COLORS.mutedInk,
+        subFitWidth: 560,
+      },
+    },
+    {
+      id: 'instagram-square-app-stats-background',
+      label: 'Instagram square · app background · stats',
+      platform: 'Instagram square',
+      width: 1080,
+      height: 1080,
+      background: COLORS.ink,
+      insetImages: [
+        { file: APP.stats, left: 116, top: 170, width: 346, height: 750, fit: 'contain', blur: 0.6 },
+        { file: APP.analytics, left: 618, top: 118, width: 310, height: 672, fit: 'contain', blur: 0.9 },
+      ],
+      overlaySolid: { fill: COLORS.ink, opacity: 0.42 },
+      textRenderer: renderQuoteCenter,
+      mark: { x: 494, y: 92, size: 92, ...commonMark },
+      text: {
+        overline: null,
+        top: 98,
+        textX: 540,
+        anchor: 'center',
+        offsetY: 526,
+        lines: ['4h12 par jour.'],
+        titleSize: 132,
+        lineHeight: 142,
+        titleFill: COLORS.porcelain,
+        titleFitWidth: 620,
+        divider: 108,
+        dividerY: 712,
+        dividerHeight: 8,
+        accent: COLORS.ember,
+        subLines: ['L’app rend le temps retrouvé visible, semaine après semaine.'],
+        subSize: 22,
+        subX: 540,
+        subAnchor: 'center',
+        subY: 770,
+        subLineHeight: 30,
+        subFill: 'rgba(246,243,236,.74)',
+        subFitWidth: 560,
+      },
+    },
+    {
+      id: 'instagram-square-product-dinner-background',
+      label: 'Instagram square · product background',
+      platform: 'Instagram square',
+      width: 1080,
+      height: 1080,
+      background: COLORS.ink,
+      photo: { file: PHOTO.boxCream, position: 'attention' },
+      overlayGradient: {
+        stops: [
+          { offset: '0%', color: '#0F1722', opacity: 0.34 },
+          { offset: '54%', color: '#0F1722', opacity: 0.52 },
+          { offset: '100%', color: '#0F1722', opacity: 0.82 },
+        ],
+      },
+      textRenderer: renderQuoteCenter,
+      mark: { x: 494, y: 92, size: 92, ...commonMark },
+      text: {
+        overline: null,
+        top: 98,
+        textX: 540,
+        anchor: 'center',
+        offsetY: 542,
+        lines: ['Le feed peut attendre.', 'Le dîner, non.'],
+        titleSize: 78,
+        lineHeight: 92,
+        titleFill: COLORS.porcelain,
+        titleFitWidth: 620,
+        divider: 108,
+        dividerY: 760,
+        dividerHeight: 8,
+        accent: COLORS.ember,
+        subLines: ['Le produit rend la pause visible dans la pièce.'],
+        subSize: 22,
+        subX: 540,
+        subAnchor: 'center',
+        subY: 812,
+        subLineHeight: 30,
+        subFill: 'rgba(246,243,236,.74)',
+        subFitWidth: 560,
       },
     },
     {
@@ -2458,6 +2669,7 @@ async function generateStaticBanners() {
         titleSize: 78,
         lineHeight: 92,
         titleFill: COLORS.porcelain,
+        titleFitWidth: 700,
         divider: 120,
         dividerY: 654,
         dividerHeight: 8,
@@ -2469,6 +2681,7 @@ async function generateStaticBanners() {
         subY: 732,
         subLineHeight: 30,
         subFill: 'rgba(246,243,236,.72)',
+        subFitWidth: 560,
       },
     },
     {
@@ -2490,6 +2703,7 @@ async function generateStaticBanners() {
         titleY: 214,
         titleX: 540,
         titleAnchor: 'center',
+        titleFitWidth: 700,
         bodyLines: ['Trois gestes, aucun sermon.', 'Juste un meilleur réflexe quotidien.'],
         bodySize: 22,
         bodyLineHeight: 34,
@@ -2497,6 +2711,7 @@ async function generateStaticBanners() {
         bodyY: 404,
         bodyX: 540,
         bodyAnchor: 'center',
+        bodyFitWidth: 650,
         stepsY: 530,
         stepWidth: 286,
         stepGap: 18,
@@ -2553,11 +2768,13 @@ async function generateStaticBanners() {
         lineHeight: 88,
         titleFill: COLORS.porcelain,
         bottomOffset: 470,
+        titleFitWidth: 680,
         bodyLines: ['Votre téléphone mérite une pause.'],
         bodySize: 24,
         bodyLineHeight: 38,
         bodyFill: 'rgba(246,243,236,.76)',
         bodyOffset: 164,
+        bodyFitWidth: 620,
       },
     },
     {
@@ -2750,6 +2967,7 @@ async function generateAnimatedBanners() {
         titleSize: 80,
         lineHeight: 96,
         titleFill: COLORS.porcelain,
+        titleFitWidth: 680,
         divider: 110,
         dividerY: 724,
         dividerHeight: 8,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T14:23:38.806Z",
+  "generatedAt": "2026-04-14T15:46:19.521Z",
   "package": {
     "zip": "exports/deliverables/faraday-assets.zip",
     "motionZip": "exports/deliverables/faraday-motion-assets.zip"
@@ -939,6 +939,54 @@
       "files": {
         "png": "exports/deliverables/social/static/instagram-square-led-photo.png",
         "webp": "exports/deliverables/social/static/instagram-square-led-photo.webp"
+      }
+    },
+    {
+      "id": "instagram-square-app-home-background",
+      "label": "Instagram square · app background · home",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-app-home-background.png",
+        "webp": "exports/deliverables/social/static/instagram-square-app-home-background.webp"
+      }
+    },
+    {
+      "id": "instagram-square-app-groups-background",
+      "label": "Instagram square · app background · groups",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-app-groups-background.png",
+        "webp": "exports/deliverables/social/static/instagram-square-app-groups-background.webp"
+      }
+    },
+    {
+      "id": "instagram-square-app-stats-background",
+      "label": "Instagram square · app background · stats",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": false,
+      "hidden": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-app-stats-background.png",
+        "webp": "exports/deliverables/social/static/instagram-square-app-stats-background.webp"
+      }
+    },
+    {
+      "id": "instagram-square-product-dinner-background",
+      "label": "Instagram square · product background",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "withImage": true,
+      "hidden": false,
+      "files": {
+        "png": "exports/deliverables/social/static/instagram-square-product-dinner-background.png",
+        "webp": "exports/deliverables/social/static/instagram-square-product-dinner-background.webp"
       }
     },
     {
