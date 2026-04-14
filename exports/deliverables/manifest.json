@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T13:30:30.597Z",
+  "generatedAt": "2026-04-14T13:59:28.049Z",
   "package": {
     "zip": "exports/deliverables/faraday-assets.zip",
     "motionZip": "exports/deliverables/faraday-motion-assets.zip"
@@ -1117,6 +1117,188 @@
         "mp4": "exports/deliverables/social/animated/instagram-square-led-blink.mp4",
         "webm": "exports/deliverables/social/animated/instagram-square-led-blink.webm",
         "poster": "exports/deliverables/social/animated/instagram-square-led-blink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-feed-dinner-ink",
+      "label": "Instagram square · double blink · Ink · Le feed peut attendre",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-feed-dinner-porcelain",
+      "label": "Instagram square · double blink · Porcelain · Le feed peut attendre",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-feed-dinner-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-412-ink",
+      "label": "Instagram square · double blink · Ink · 4h12 par jour",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-412-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-412-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-412-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-412-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-412-porcelain",
+      "label": "Instagram square · double blink · Porcelain · 4h12 par jour",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-412-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-412-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-412-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-412-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-evg-pedro-ink",
+      "label": "Instagram square · double blink · Ink · EVG Pedro survivra",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-evg-pedro-porcelain",
+      "label": "Instagram square · double blink · Porcelain · EVG Pedro survivra",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-evg-pedro-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-pause-needed-ink",
+      "label": "Instagram square · double blink · Ink · La pause dont votre téléphone avait besoin",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-pause-needed-porcelain",
+      "label": "Instagram square · double blink · Porcelain · La pause dont votre téléphone avait besoin",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-pause-needed-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-luxe-joignable-ink",
+      "label": "Instagram square · double blink · Ink · Le vrai luxe",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-luxe-joignable-porcelain",
+      "label": "Instagram square · double blink · Porcelain · Le vrai luxe",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-luxe-joignable-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-soiree-sans-telephone-ink",
+      "label": "Instagram square · double blink · Ink · Soirée sans téléphone",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-soiree-sans-telephone-porcelain",
+      "label": "Instagram square · double blink · Porcelain · Soirée sans téléphone",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-soiree-sans-telephone-porcelain-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-spa-digital-ink",
+      "label": "Instagram square · double blink · Ink · Le spa digital",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-ink.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-ink.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-ink.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-ink-poster.png"
+      }
+    },
+    {
+      "id": "instagram-square-led-blink-spa-digital-porcelain",
+      "label": "Instagram square · double blink · Porcelain · Le spa digital",
+      "platform": "Instagram square",
+      "format": "1080x1080",
+      "animation": "blink",
+      "files": {
+        "gif": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-porcelain.gif",
+        "mp4": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-porcelain.mp4",
+        "webm": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-porcelain.webm",
+        "poster": "exports/deliverables/social/animated/instagram-square-led-blink-spa-digital-porcelain-poster.png"
       }
     },
     {
