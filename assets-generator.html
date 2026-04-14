@@ -603,20 +603,39 @@
       if (!label) return '';
       const alignCenter = state.alignment === 'center';
       const x = alignCenter ? width / 2 : 84;
-      const y = height - 112;
-      const accentX = alignCenter ? (width - 110) / 2 : 84;
-      return `
-        <rect x="${accentX}" y="${y - 34}" width="110" height="8" rx="4" fill="${theme.core}"/>
-        ${textSvg(label, x, y + 16, {
-          family: 'Manrope',
-          size: 22,
-          weight: 700,
+      const y = height - 86;
+
+      if (state.footerMode === 'faraday-box') {
+        return textSvg('faraday box', x, y, {
+          family: 'Sora',
+          size: state.format === 'story' ? 28 : 22,
+          weight: 300,
           fill: theme.text,
-          opacity: .74,
+          opacity: .84,
           anchor: alignCenter ? 'middle' : 'start',
-          tracking: 3,
-        })}
-      `;
+        });
+      }
+
+      if (state.footerMode === 'disconnect') {
+        return textSvg('DISCONNECT TO RECONNECT', x, y, {
+          family: 'Manrope',
+          size: state.format === 'story' ? 16 : 12,
+          weight: 800,
+          fill: theme.text,
+          opacity: theme.baselineOpacity,
+          anchor: alignCenter ? 'middle' : 'start',
+          tracking: state.format === 'story' ? 4.8 : 4,
+        });
+      }
+
+      return textSvg(label, x, y, {
+        family: 'Manrope',
+        size: state.format === 'story' ? 22 : 18,
+        weight: 600,
+        fill: theme.text,
+        opacity: .78,
+        anchor: alignCenter ? 'middle' : 'start',
+      });
     }
 
     function headlineMarkup(width, height, theme) {
