@@ -2739,16 +2739,6 @@ async function generateStaticBanners(onlyId = null) {
       background: COLORS.ink,
       insetImages: [
         {
-          file: APP.groups,
-          left: 1058,
-          top: 116,
-          width: 74,
-          height: 160,
-          fit: 'contain',
-          position: 'centre',
-          opacity: 0.96,
-        },
-        {
           file: APP.homeLight,
           left: 988,
           top: 64,
@@ -2757,6 +2747,16 @@ async function generateStaticBanners(onlyId = null) {
           fit: 'contain',
           position: 'centre',
           opacity: 0.98,
+        },
+        {
+          file: APP.groups,
+          left: 1088,
+          top: 116,
+          width: 74,
+          height: 160,
+          fit: 'contain',
+          position: 'centre',
+          opacity: 0.96,
         },
         {
           file: PRODUCT.boxCreamOpen,
