@@ -2739,7 +2739,7 @@ async function generateStaticBanners(onlyId = null) {
       background: COLORS.ink,
       insetImages: [
         {
-          file: PRODUCT.boxCreamClosed,
+          file: PRODUCT.boxCreamOpen,
           left: 1126,
           top: 8,
           width: 350,
@@ -2758,19 +2758,8 @@ async function generateStaticBanners(onlyId = null) {
       },
       textRenderer: renderLinkedInSplit,
       text: {
-        logoMarkup: lockupMarkup({
-          x: 390,
-          y: 290,
-          style: 'ember',
-          layout: 'horizontal',
-          baseline: true,
-          markSize: 44,
-          gap: 10,
-          baselineOpacity: 0.72,
-        }),
-        logoExtra: `
-          <rect x="362" y="276" width="430" height="72" rx="24" fill="rgba(246,243,236,.05)" stroke="rgba(246,243,236,.11)" stroke-width="1.5"/>
-        `,
+        logoMarkup: '',
+        logoExtra: '',
         kicker: null,
         padding: 78,
         titleX: 390,
@@ -2778,11 +2767,11 @@ async function generateStaticBanners(onlyId = null) {
         titleFitWidth: 760,
         titleAnchor: 'left',
         lines: ['Personne n’a jamais', 'regretté une soirée', 'sans téléphone.'],
-        titleSize: 48,
-        lineHeight: 58,
+        titleSize: 46,
+        lineHeight: 56,
         titleFill: COLORS.porcelain,
         bodyX: 390,
-        bodyY: 290,
+        bodyY: 306,
         bodyFitWidth: 520,
         bodyAnchor: 'left',
         bodyLines: ['Le plus dur, c’est juste de commencer.'],
