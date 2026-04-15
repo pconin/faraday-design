@@ -2740,10 +2740,10 @@ async function generateStaticBanners(onlyId = null) {
       insetImages: [
         {
           file: APP.homeLight,
-          left: 996,
-          top: 34,
-          width: 148,
-          height: 320,
+          left: 1008,
+          top: 48,
+          width: 132,
+          height: 286,
           fit: 'contain',
           position: 'centre',
           opacity: 0.98,
