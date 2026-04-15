@@ -1086,6 +1086,18 @@
       }
     },
     {
+      "id": "linkedin-personal-cover-evening-centered",
+      "label": "LinkedIn personal cover · centered evening",
+      "platform": "LinkedIn personal cover",
+      "format": "1584x396",
+      "withImage": false,
+      "hidden": false,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-personal-cover-evening-centered.png",
+        "webp": "exports/deliverables/social/static/linkedin-personal-cover-evening-centered.webp"
+      }
+    },
+    {
       "id": "instagram-square-luxury-quote",
       "label": "Instagram square · luxury quote",
       "platform": "Instagram square",
