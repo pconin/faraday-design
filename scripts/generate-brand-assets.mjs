@@ -42,6 +42,13 @@ const PHOTO = {
   led: path.join(assetsDir, 'led-reference-v2.jpg'),
 };
 
+const PRODUCT = {
+  boxBlackClosed: path.join(assetsDir, 'product-renders', 'box-black-closed-transparent.png'),
+  boxBlackOpen: path.join(assetsDir, 'product-renders', 'box-black-open-transparent.png'),
+  boxCreamClosed: path.join(assetsDir, 'product-renders', 'box-cream-closed-transparent.png'),
+  boxCreamOpen: path.join(assetsDir, 'product-renders', 'box-cream-open-transparent.png'),
+};
+
 const APP = {
   homeLight: path.join(assetsDir, 'app-screens', 'home-light.png'),
   groups: path.join(assetsDir, 'app-screens', 'groups.png'),
@@ -483,10 +490,12 @@ async function preparedImage(file, width, height, options = {}) {
     fit = 'cover',
     position = 'centre',
     blur = 0,
+    opacity = 1,
     background = { r: 0, g: 0, b: 0, alpha: 0 },
   } = options;
   let image = sharp(file).rotate().resize(width, height, { fit, position, background });
   if (blur) image = image.blur(blur);
+  if (opacity !== 1) image = image.ensureAlpha(opacity);
   return image.png().toBuffer();
 }
 
@@ -1086,7 +1095,7 @@ async function saveStaticBanner(config) {
     label: config.label,
     platform: config.platform,
     format: `${config.width}x${config.height}`,
-    withImage: Boolean(config.photo),
+    withImage: Boolean(config.photo || (config.insetImages && config.insetImages.length)),
     hidden: Boolean(config.hidden),
     files: {
       png: rel(pngPath),
@@ -2712,6 +2721,67 @@ async function generateStaticBanners(onlyId = null) {
         lineHeight: 58,
         titleFill: COLORS.porcelain,
         bodyX: 392,
+        bodyY: 290,
+        bodyFitWidth: 520,
+        bodyAnchor: 'left',
+        bodyLines: ['Le plus dur, c’est juste de commencer.'],
+        bodySize: 22,
+        bodyLineHeight: 34,
+        bodyFill: 'rgba(246,243,236,.76)',
+      },
+    },
+    {
+      id: 'linkedin-personal-cover-evening-product-cutout',
+      label: 'LinkedIn personal cover · centered evening · product',
+      platform: 'LinkedIn personal cover',
+      width: 1584,
+      height: 396,
+      background: COLORS.ink,
+      insetImages: [
+        {
+          file: PRODUCT.boxCreamClosed,
+          left: 1126,
+          top: 8,
+          width: 350,
+          height: 380,
+          fit: 'contain',
+          position: 'centre',
+          opacity: 0.86,
+        },
+      ],
+      overlayGradient: {
+        stops: [
+          { offset: '0%', color: '#151D2A', opacity: 0 },
+          { offset: '58%', color: '#151D2A', opacity: 0.08 },
+          { offset: '100%', color: '#151D2A', opacity: 0.18 },
+        ],
+      },
+      textRenderer: renderLinkedInSplit,
+      text: {
+        logoMarkup: lockupMarkup({
+          x: 390,
+          y: 290,
+          style: 'ember',
+          layout: 'horizontal',
+          baseline: true,
+          markSize: 44,
+          gap: 10,
+          baselineOpacity: 0.72,
+        }),
+        logoExtra: `
+          <rect x="362" y="276" width="430" height="72" rx="24" fill="rgba(246,243,236,.05)" stroke="rgba(246,243,236,.11)" stroke-width="1.5"/>
+        `,
+        kicker: null,
+        padding: 78,
+        titleX: 390,
+        titleY: 142,
+        titleFitWidth: 760,
+        titleAnchor: 'left',
+        lines: ['Personne n’a jamais', 'regretté une soirée', 'sans téléphone.'],
+        titleSize: 48,
+        lineHeight: 58,
+        titleFill: COLORS.porcelain,
+        bodyX: 390,
         bodyY: 290,
         bodyFitWidth: 520,
         bodyAnchor: 'left',

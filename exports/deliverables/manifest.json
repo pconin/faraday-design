@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-15T14:53:19.953Z",
+  "generatedAt": "2026-04-15T15:02:30.915Z",
   "package": {
     "zip": "exports/deliverables/faraday-assets.zip",
     "motionZip": "exports/deliverables/faraday-motion-assets.zip"
@@ -1335,6 +1335,18 @@
       "files": {
         "png": "exports/deliverables/social/static/instagram-square-led-blink-spa-digital-porcelain-static.png",
         "webp": "exports/deliverables/social/static/instagram-square-led-blink-spa-digital-porcelain-static.webp"
+      }
+    },
+    {
+      "id": "linkedin-personal-cover-evening-product-cutout",
+      "label": "LinkedIn personal cover · centered evening · product",
+      "platform": "LinkedIn personal cover",
+      "format": "1584x396",
+      "withImage": true,
+      "hidden": false,
+      "files": {
+        "png": "exports/deliverables/social/static/linkedin-personal-cover-evening-product-cutout.png",
+        "webp": "exports/deliverables/social/static/linkedin-personal-cover-evening-product-cutout.webp"
       }
     }
   ],
