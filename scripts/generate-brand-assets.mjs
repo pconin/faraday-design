@@ -50,6 +50,10 @@ const APP = {
   splash: path.join(assetsDir, 'app-screens', 'splash.png'),
 };
 
+const cliArgs = process.argv.slice(2);
+const staticIdFlagIndex = cliArgs.indexOf('--static-id');
+const selectiveStaticId = staticIdFlagIndex >= 0 ? cliArgs[staticIdFlagIndex + 1] : null;
+
 const manifest = {
   generatedAt: new Date().toISOString(),
   package: {
@@ -452,6 +456,26 @@ async function saveLogoVariant(variant) {
 
 function rel(file) {
   return path.relative(root, file).replaceAll(path.sep, '/');
+}
+
+async function loadExistingManifest() {
+  try {
+    const existing = JSON.parse(await fs.readFile(path.join(exportsDir, 'manifest.json'), 'utf8'));
+    manifest.generatedAt = new Date().toISOString();
+    manifest.package = existing.package ?? manifest.package;
+    manifest.logos = existing.logos ?? [];
+    manifest.staticBanners = existing.staticBanners ?? [];
+    manifest.animatedBanners = existing.animatedBanners ?? [];
+  } catch {}
+}
+
+function upsertManifestEntry(collection, entry) {
+  const index = collection.findIndex((item) => item.id === entry.id);
+  if (index >= 0) {
+    collection[index] = entry;
+    return;
+  }
+  collection.push(entry);
 }
 
 async function preparedImage(file, width, height, options = {}) {
@@ -1041,7 +1065,7 @@ async function renderBanner(config, frame = null) {
     width: config.width,
     height: config.height,
     ...config.text,
-    logoMarkup: `${config.text.logoMarkup ?? ''}${config.text.logoExtra ?? ''}`,
+    logoMarkup: `${config.text.logoExtra ?? ''}${config.text.logoMarkup ?? ''}`,
   });
 
   composites.push({ input: overlayMarkup, left: 0, top: 0 });
@@ -1057,7 +1081,7 @@ async function saveStaticBanner(config) {
   await fs.writeFile(pngPath, pngBuffer);
   await sharp(pngBuffer).webp({ quality: 92 }).toFile(webpPath);
 
-  manifest.staticBanners.push({
+  upsertManifestEntry(manifest.staticBanners, {
     id: config.id,
     label: config.label,
     platform: config.platform,
@@ -2050,7 +2074,7 @@ async function generateLogos() {
   }
 }
 
-async function generateStaticBanners() {
+async function generateStaticBanners(onlyId = null) {
   const commonMark = {
     tileFill: COLORS.ink,
     shell: 'rgba(246,243,236,.22)',
@@ -2665,22 +2689,25 @@ async function generateStaticBanners() {
       textRenderer: renderLinkedInSplit,
       text: {
         logoMarkup: lockupMarkup({
-          x: 1214,
-          y: 70,
+          x: 1060,
+          y: 262,
           style: 'ember',
           layout: 'horizontal',
           baseline: true,
-          markSize: 48,
-          gap: 12,
+          markSize: 44,
+          gap: 10,
           baselineOpacity: 0.72,
         }),
+        logoExtra: `
+          <rect x="1032" y="248" width="430" height="72" rx="24" fill="rgba(246,243,236,.06)" stroke="rgba(246,243,236,.12)" stroke-width="1.5"/>
+        `,
         kicker: null,
         padding: 78,
         titleX: 392,
         titleY: 142,
         titleFitWidth: 800,
         titleAnchor: 'left',
-        lines: ['Personne n’a jamais regretté', 'une soirée sans téléphone.'],
+        lines: ['Personne n’a jamais', 'regretté une soirée', 'sans téléphone.'],
         titleSize: 48,
         lineHeight: 58,
         titleFill: COLORS.porcelain,
@@ -2945,7 +2972,7 @@ async function generateStaticBanners() {
     ...blinkMessageSets.flatMap((message) => ['ink', 'porcelain'].map((theme) => buildBlinkStaticSquareVariant(message, theme))),
   ];
 
-  for (const config of configs) {
+  for (const config of configs.filter((entry) => !onlyId || entry.id === onlyId)) {
     await saveStaticBanner(config);
   }
 }
@@ -3213,6 +3240,14 @@ async function cleanAndPrepare() {
 
 async function main() {
   await cleanAndPrepare();
+  if (selectiveStaticId) {
+    await loadExistingManifest();
+    await generateStaticBanners(selectiveStaticId);
+    await writeManifest();
+    await buildZip();
+    console.log('Updated static asset', selectiveStaticId);
+    return;
+  }
   await generateLogos();
   await generateStaticBanners();
   await generateAnimatedBanners();
